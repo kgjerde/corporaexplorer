@@ -39,3 +39,5 @@ LazyData: true
 RoxygenNote: 6.1.1
 Encoding: UTF-8
 Suggests: shinytest, testthat
+URL: https://github.com/kgjerde/corpusexplorationr
+BugReports: https://github.com/kgjerde/corpusexplorationr/issues
