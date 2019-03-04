@@ -1,0 +1,92 @@
+---
+title: "Documents"
+params:
+  dataset: NA
+  terms_highlight: NA
+  case_sensitive: NA
+output:
+  html_document:
+      theme: journal
+      toc: true
+      toc_float:
+        collapsed: true
+        smooth_scroll: false
+---
+
+```{r include=FALSE}
+# library(stringr)
+```
+
+```{r include=FALSE}
+my_colours <-
+    rep(c("red", "blue", "green", "purple", "orange", "gray"), 10)
+```
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r include=FALSE}
+utvalg <- params$dataset
+```
+
+
+```{r include=FALSE}
+terms_highlight <- params$terms_highlight
+```
+
+```{r include=FALSE}
+case_sensitive <- params$case_sensitive
+```
+
+
+```{r include=FALSE}
+for (i in seq_along(terms_highlight)) {
+  utvalg$Text <-
+    stringr::str_replace_all(
+      utvalg$Text,
+      stringr::regex(
+        paste0("(", terms_highlight[i], ")"),
+        ignore_case = !case_sensitive
+      ),
+      sprintf('<span style="color:%s">\\1</span>',
+              my_colours[i])
+    ) %>%
+    stringr::str_replace_all("\n", "<br>")
+}
+```
+
+
+```{r include=FALSE}
+utvalg_url <-     paste0("\n## Info\n\n",
+                        "URL: <a href='",
+                         utvalg$URL,
+                         "' target='_blank'>",
+                         utvalg$URL,
+                         "</a>")
+
+utvalg_title <- paste0(
+    "# (",
+    seq_len(nrow(utvalg)),
+    ") ",
+    format(utvalg$Date, "%d %B %Y"),
+    "--",
+    utvalg$Title,
+    ' {.tabset .tabset-fade}'
+)
+
+utvalg_tekst <- paste(utvalg_title,
+paste0("\n\n## Text\n",
+                      utvalg$Text),
+                      #"\n___\n",
+                      utvalg_url,
+                      "\n___\n",
+                      sep = "\n"
+)
+```
+
+
+```{r cars, echo=FALSE}
+rmarkdown::html_notebook_output_html(utvalg_tekst)
+```

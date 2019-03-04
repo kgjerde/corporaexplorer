@@ -1,0 +1,41 @@
+Package: corpusexplorationr
+Type: Package
+Title: A Shiny App for Exploration of Text Collections
+Version: 0.0.0.9000
+Authors@R: person("Kristian Lundby", "Gjerde", email = "kristian.gjerde@gmail.com",
+  role = c("aut", "cre"))
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+Depends:
+	R (>= 3.0.0)
+Imports:
+	data.table,
+	dplyr,
+	forcats,
+	ggplot2,
+	lubridate,
+	magrittr,
+	padr,
+	plyr,
+	RColorBrewer,
+	re2r,
+	readr,
+	rlang,
+	rmarkdown,
+	scales,
+	shiny,
+	shinycssloaders,
+	shinydashboard,
+	shinyjs,
+	shinyWidgets,
+	stringi,
+	stringr,
+	tibble,
+	tidyr,
+	zoo
+License: GPL-3
+Date/Publication: 2018
+LazyData: true
+RoxygenNote: 6.1.1
+Encoding: UTF-8
+Suggests: shinytest, testthat

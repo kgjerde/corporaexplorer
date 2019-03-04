@@ -1,0 +1,85 @@
+{
+  "input": {
+    "adjust_plotsize": null,
+    "antall_linjer": "1",
+    "area": "",
+    "area_2": "",
+    "area_3": "",
+    "area_4": "",
+    "area_5": "",
+    "area_6": "",
+    "case_sensitivity": false,
+    "corpus_box": "korpuskart_tab",
+    "date_slider": [
+      2011,
+      2020
+    ],
+    "dobbeltklikk": null,
+    "dokumentboks": null,
+    "filter_text": "",
+    "modus": "data_365",
+    "more_terms_button": null,
+    "plot_click": null,
+    "plot_hover": null,
+    "PLOTSIZE": 675,
+    "search_text": "october",
+    "sidebarCollapsed": false,
+    "sidebarItemExpanded": null,
+    "subset_corpus": null,
+    "trykk": 1
+  },
+  "output": {
+    "hover_info": null,
+    "korpuskart": {
+      "src": "[image data sha1: f4e21a5ac4ffb3bf542c6d492729a66822054d9e]",
+      "width": 323,
+      "height": 675,
+      "coordmap": {
+        "panels": [
+          {
+            "panel": 1,
+            "row": 1,
+            "col": 1,
+            "panel_vars": {
+
+            },
+            "log": {
+              "x": null,
+              "y": null
+            },
+            "domain": {
+              "left": 0.3,
+              "right": 81.2,
+              "bottom": 1110,
+              "top": 1005.8
+            },
+            "mapping": {
+              "x": null,
+              "y": null,
+              "xmin": "x_min",
+              "xmax": "x_max",
+              "ymin": "y_min",
+              "ymax": "y_max",
+              "fill": "Term_color"
+            },
+            "range": {
+              "left": 29.9875217855793,
+              "right": 317.520547945205,
+              "bottom": 669.520547945205,
+              "top": 58.4333766348196
+            }
+          }
+        ],
+        "dims": {
+          "width": 323,
+          "height": 675
+        }
+      },
+      "error": null
+    },
+    "korpuskarttittel": "Calendar view"
+  },
+  "export": {
+
+  }
+}

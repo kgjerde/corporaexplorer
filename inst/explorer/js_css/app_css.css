@@ -1,0 +1,226 @@
+.tittel {
+  font-size: 18px;
+}
+
+.boxed_doc {
+  border: 1px solid LightGray;
+  border-radius: 1px;
+  padding: 10px;
+  /*max-height: 300px;*/
+  /*height: 400px;*/
+  height: calc(100vh - 300px);
+  overflow: scroll;
+  font-size: 14px;
+}
+
+.boxed_docinfo {
+  border: 1px solid LightGray;
+  border-radius: 5px;
+  padding: 10px;
+  max-height: 50px;
+  overflow: scroll;
+  font-size: 10px;
+}
+
+
+.boxed_docinfo_2 {
+  border: 1px solid LightGray;
+  border-radius: 5px;
+  padding: 8px;
+  max-height: 70px;
+  overflow: scroll;
+  font-size: 10px;
+}
+
+#area, #filter_text {
+  padding-left:10px;
+  padding-top: 10px;
+  padding-right:10px;
+  margin-top:-2em;
+  margin_bottom: -1em;
+  resize: vertical;
+  background-color: white;
+}
+
+/*https://stackoverflow.com/a/32506173/8399819*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-transition-delay: 9999s;
+    -webkit-transition: color 9999s ease-out, background-color 9999s ease-out;
+}
+
+#search_text {
+  padding-left:10px;
+  padding-top: 10px;
+  padding-right:10px;
+  padding-bottom:10px;
+  margin-bottom:-1em;
+  margin-top: 0em;
+  resize: none;
+  background-color: red;
+  /*font-size:10px;*/
+  height:25px;
+  color: white;
+}
+
+#area_2 {
+  padding-left:10px;
+  padding-top: 10px;
+  padding-right:10px;
+  padding-bottom:10px;
+  margin-top:-1em;
+  margin-bottom:-1em;
+  resize: none;
+  background-color: blue;
+  height:25px;
+  color: white;
+}
+
+#area_3 {
+  padding-left:10px;
+  padding-top: 10px;
+  padding-right:10px;
+  padding-bottom:10px;
+  margin-top:-1em;
+  margin-bottom:-1em;
+  resize: none;
+  background-color: green;
+  height:25px;
+  color: white;
+}
+
+#area_4 {
+  padding-left:10px;
+  padding-top: 10px;
+  padding-right:10px;
+  padding-bottom:10px;
+  margin-top:-1em;
+  margin-bottom:-1em;
+  resize: none;
+  background-color: purple;
+  height:25px;
+  color: white;
+}
+
+#area_5 {
+  padding-left:10px;
+  padding-top: 10px;
+  padding-right:10px;
+  padding-bottom:10px;
+  margin-top:-1em;
+  margin-bottom:-1em;
+  resize: none;
+  background-color: orange;
+  height:25px;
+  color: white;
+}
+
+#area_6 {
+  padding-left:10px;
+  padding-top: 10px;
+  padding-right:10px;
+  padding-bottom:10px;
+  margin-top:-1em;
+  margin-bottom:-1em;
+  resize: none;
+  background-color: gray;
+  height:25px;
+  color: white;
+}
+
+#trykk {
+  /*margin-left:1em;
+  margin-right:1em;*/
+  width: 87%;
+  background-color: white;
+  color: red;
+  margin-top: 1em;
+}
+
+#graf_trykk {
+  /*margin-left:1em;
+  margin-right:1em;*/
+  width: 100%;
+  background-color: blue;
+  color: white;
+}
+
+/*Denne er for scrolling og beholde høyreboksen konstant.
+https://stackoverflow.com/questions/11399537/how-do-you-make-a-div-follow-as-you-scroll*/
+
+.follow_scroll .nav-tabs-custom {
+    position: fixed;
+    top: 60px;
+    margin-right: 10px;
+    /*width: 815px;*/
+    display:none;
+}
+
+.ost .nav-tabs-custom {
+    position: fixed;
+    margin-right: 10px;
+    bottom: 0;
+    overflow: scroll;
+    display:none;
+}
+
+/*De tre neste er for locked header og sidebar.
+https://stackoverflow.com/questions/41240878/r-shiny-fixed-sidebar-and-main-header-in-a-shiny-dashboard*/
+
+.sidebar {
+  color: #FFF;
+  position: fixed;
+  width: 220px;
+  white-space: nowrap;
+  overflow: visible;
+}
+
+.dropdownsettings {
+  color: blue;
+  width: 100%;
+  font-size: 40px;
+}
+
+.main-header {
+  position: fixed;
+  width:100%;
+}
+
+.content {
+  padding-top: 60px;
+}
+
+/*Fordi det viste seg at jeg hoppet ca. en linje for langt i dokumentvisning fra dok_vis.
+Jeg har hacka litt fra denne. Må kanskje justeres, men dette er nok prinsippet.
+https://stackoverflow.com/a/20358308/8399819*/
+span.posisjons_korrigering{
+  /*display: block;*/
+  position: relative;
+  top: -20px;
+  visibility: hidden;
+  }
+
+.plotsize_field,
+.subset_field,
+.more_terms_field,
+.additional_search_terms {
+  display: none;
+}
+
+#bokmerke {
+  width: 100%;
+  background-color: white;
+  color: blue;
+}
+
+.btn-group {
+  margin-bottom: 0em;
+}
+
+hr {
+  margin-bottom: 0em;
+  margin-top: 1em;
+}
+  
