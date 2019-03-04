@@ -65,12 +65,12 @@ run_corpus_explorer <- function(corpus_object,
          call. = FALSE)
   }
 
-  shiny::shinyOptions("optional_info" = optional_info)
-  shiny::shinyOptions("regex_engine" = regex_engine)
-  shiny::shinyOptions("use_matrix" = use_matrix)
+  shiny::shinyOptions("corpusexplorationr_optional_info" = optional_info)
+  shiny::shinyOptions("corpusexplorationr_regex_engine" = regex_engine)
+  shiny::shinyOptions("corpusexplorationr_use_matrix" = use_matrix)
 
   data <- as.character(substitute(corpus_object))
-  shiny::shinyOptions("data" = data)
+  shiny::shinyOptions("corpusexplorationr_data" = data)
 
   message("Running with 99 lines of mood")
 

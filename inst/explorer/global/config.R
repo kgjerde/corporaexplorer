@@ -6,7 +6,7 @@ if (!is.null(getOption("shiny.testmode"))) {
     loaded_data <- test_data
   }
 } else {
-  loaded_data <- eval(as.name(getShinyOption("data")))
+  loaded_data <- eval(as.name(getShinyOption("corpusexplorationr_data")))
 }
 
 
@@ -35,18 +35,18 @@ if (is.null(loaded_data$name)) {
 # From function arguments -------------------------------------------------
 
 if (NO_MATRIX == FALSE) {
-    NO_MATRIX <- !shiny::getShinyOption("use_matrix")
+    NO_MATRIX <- !shiny::getShinyOption("corpusexplorationr_use_matrix")
 }
 
-OPTIONAL_INFO_TO_CONSOLE <- shiny::getShinyOption("optional_info")
+OPTIONAL_INFO_TO_CONSOLE <- shiny::getShinyOption("corpusexplorationr_optional_info")
 
 # Initialising
 USE_ONLY_STRINGR <- FALSE
 USE_ONLY_RE2R <- FALSE
 
-if (shiny::getShinyOption("regex_engine") == "stringr") {
+if (shiny::getShinyOption("corpusexplorationr_regex_engine") == "stringr") {
     USE_ONLY_STRINGR <- TRUE
-} else if (shiny::getShinyOption("regex_engine") == "re2r") {
+} else if (shiny::getShinyOption("corpusexplorationr_regex_engine") == "re2r") {
     USE_ONLY_RE2R <- TRUE
 }
 

@@ -36,7 +36,7 @@ run_download_tool <- function(data, ...) {
   }
 
   data <- as.character(substitute(data))
-  shiny::shinyOptions("download_data" = data)
+  shiny::shinyOptions("corpusexplorationr_download_data" = data)
 
   shiny::runApp(app, display.mode = "normal", ...)
 }

@@ -6,7 +6,7 @@ if (!is.null(getOption("shiny.testmode"))) {
     abc <- test_data
   }
 } else {
-  abc <- eval(as.name(shiny::getShinyOption("download_data")))
+  abc <- eval(as.name(shiny::getShinyOption("corpusexplorationr_download_data")))
 }
 
 if (class(abc) == "corpusexplorationobject") {
