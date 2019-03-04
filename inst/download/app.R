@@ -88,7 +88,11 @@ source("./server/server_download_zip.R", local = TRUE)
 
 # HTML --------------------------------------------------------------------
 source("./server/server_download_html.R", local = TRUE)
+
+# Cleaning up the session -------------------------------------------------
+shiny::onSessionEnded(function() shiny::shinyOptions("corpusexplorationr_download_data" = NULL))
 }
+
 # Run app -----------------------------------------------------------------
 
 shiny::shinyApp(ui, server)

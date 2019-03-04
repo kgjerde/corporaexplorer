@@ -91,8 +91,14 @@ source("./server/5_event_document_visualisation_click.R", local = TRUE)
 # 6. Event: hovering in corpus map ----------------------------------------
 source("./server/6_event_hover_corpus_map.R", local = TRUE)
 
-  shiny::onSessionEnded(function() shiny::shinyOptions(ost = NULL))
+# 7. Cleaning up the session ----------------------------------------------
+shiny::onSessionEnded(function() {
+  shiny::shinyOptions("corpusexplorationr_use_matrix" = NULL)
+  shiny::shinyOptions("corpusexplorationr_regex_engine" = NULL)
+  shiny::shinyOptions("corpusexplorationr_data" = NULL)
+  shiny::shinyOptions("corpusexplorationr_optional_info" = NULL)
+})
 }
 
-# Run the application
+# 8. Run app --------------------------------------------------------------
 shiny::shinyApp(ui, server)
