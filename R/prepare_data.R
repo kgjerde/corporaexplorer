@@ -22,23 +22,23 @@ transform_regular <- function(df, columns_to_include = NULL, normalise = TRUE) {
     new_df <-
       dplyr::select(df, Date, Text, columns_to_include) # Velg kolonner her.
   }
-  
+
   if (normalise == TRUE) {
   ## På grunn av non-breaking-spaces:
     new_df$Text <- gsub("\u00A0", " ", new_df$Text, fixed = TRUE)
     ## And "soft hyphens"
     new_df$Text <- gsub('\u00ad', "", new_df$Text, fixed = TRUE)
   }
-  
+
   new_df$Year <- lubridate::year(new_df$Date)
-  
+
   new_df$wc <- stringi::stri_count_words(new_df$Text) %>%
     scales::rescale(to = c(1, 10))
-  
+
   new_df$id <- seq_len(nrow(new_df))
-  
+
   new_df$Text_case <- new_df$Text
-  
+
   new_df$Text <-
     stringr::str_to_lower(new_df$Text) # for søke-purposes
   message("1/3 Document data frame done.")
@@ -68,57 +68,57 @@ is_last_in_month <- function(date) {
 #' @keywords internal
 transform_365 <- function(new_df) {
   # @ new_df er en tibble klargjjort gjennom transform_regular()
-  
-  
+
+
   katt <- new_df %>%
     dplyr::group_by(Date) %>%
     dplyr::summarise(Text = paste(Text_case, collapse = "\n\n--\n\n"))
-  
+
   min_date <- min(katt$Date)
-  
+
   katt$Year <- lubridate::year(katt$Date)
-  
+
   katt <-
     padr::pad(katt, interval = "day", start_val = as.Date(paste0(min(katt$Year), "-01-01")))
-  
+
   katt$empty <- is.na(katt$Text)
   # katt$empty[katt$empty == TRUE] <- "black"
   katt$empty[katt$empty == FALSE] <- NA
-  
+
   katt$Text <- NULL
-  
+
   katt$wc <- 1
-  
+
   katt$Year <- lubridate::year(katt$Date)
-  
+
   katt$Weekday_n <- lubridate::wday(katt$Date, week_start = 1)
-  
+
   katt$Month_n <- lubridate::month(katt$Date)
-  
+
   katt$Week_n <- lubridate::isoweek(katt$Date)
-  
+
   katt$Yearday_n <- lubridate::yday(katt$Date)
-  
+
   katt$No. <- 1:nrow(katt)
-  
+
   kost <-
     dplyr::arrange(katt, Year, Weekday_n, Yearday_n, Month_n)
   kost$ID <- 1:nrow(kost)
-  
+
   kost$mnd_vert <-
     kost$Month_n != dplyr::lead(kost$Month_n, default = FALSE)
-  
+
   kost$mnd_hor <- is_last_in_month(kost$Date)
-  
+
   kost$ID[kost$Date < min_date] <- 0
-  
+
   kost2 <- kost %>%
     dplyr::group_by(Year) %>%
     dplyr::slice(1) %>%
     dplyr::mutate(Diff = Yearday_n - Weekday_n) %>%
     dplyr::filter(Diff > 0) %>%
     dplyr::mutate(Diff = 7 - Diff)
-  
+
   tilleggs_tib <- tibble::tibble()
   for (row in seq_len(nrow(kost2))) {
     temp_tib <- tibble::tibble(
@@ -137,12 +137,12 @@ transform_365 <- function(new_df) {
     )
     tilleggs_tib <- rbind(tilleggs_tib, temp_tib)
   }
-  
+
   tilleggs_tib <- dplyr::select(tilleggs_tib, colnames(kost))
-  
+
   kost <- rbind(kost, tilleggs_tib) %>%
     dplyr::arrange(Year, Weekday_n, Yearday_n, Month_n)
-  
+
   kost$id <- seq_len(nrow(kost))
   message("2/3 Calendar data frame done.")
   return(kost)
@@ -151,8 +151,8 @@ transform_365 <- function(new_df) {
 # 3. Text-vektor til matrix for faster search -----------------------------
 
 #' Create document term matrix for fast search of single words
-#' 
-#' The characters removed 
+#'
+#' The characters removed
 #'
 #' @param df A "data_dok" tibble
 #' @param matrix_without_punctuation Should punctuation and digits be stripped
@@ -180,7 +180,7 @@ transform_365 <- function(new_df) {
 #' @keywords internal
 matrix_via_r <- function(df, matrix_without_punctuation = TRUE) {
   df <- dplyr::select(df, Text, id)
-  
+
   if (matrix_without_punctuation == TRUE) {
     df$Text <- df$Text %>%
       # To satisfy R CMD check:
@@ -191,44 +191,44 @@ matrix_via_r <- function(df, matrix_without_punctuation = TRUE) {
       stringr::str_replace_all("\\.", " ") %>%
       stringr::str_replace_all("\\d", "")
   }
-  
-  df$Text <- df$Text %>%  
+
+  df$Text <- df$Text %>%
     stringr::str_replace_all("\\s", " ") %>%
     stringr::str_replace_all(" {2,}", " ") %>%
     stringr::str_trim()
-  
+
   message("3/3 Document term matrix: text processed.")
-  
+
   data.table::setDT(df)
   df <-
     df[, list(word = unlist(stringi::stri_split_fixed(Text, pattern = " "))), by =
          id][,
              list(count = .N), by = c('id', 'word')][order(id, word), ]
-  
+
   message("3/3 Document term matrix: tokenising completed.")
-  
+
   ord <- unique(df$word) %>% sort
-  
+
   message("3/3 Document term matrix: word list created.")
-  
+
   df$word <-
     plyr::mapvalues(df$word, ord, seq_along(ord)) %>% as.integer
-  
+
   df <- dplyr::select(df, id, word, count)
-  
+
   colnames(df) <- c("i", "j", "x")
-  
+
   df <- data.table::as.data.table(df)
-  
+
   ## Setter indeks/key på data.table for virkelig lynraskt søk!
   #
   data.table::setkey(df, j)
   data.table::setindex(df, i)
-  
+
   message("3/3 Document term matrix done.")
-  
+
   return(list(df, ord))
-  
+
 }
 
 
@@ -303,13 +303,13 @@ prepare_data <- function(dataset,
                          use_matrix = TRUE,
                          normalise = TRUE,
                          matrix_without_punctuation = TRUE) {
-  
+
   abc <- transform_regular(dataset,
                            columns_to_include,
                            normalise)
-  
+
   abc_365 <- transform_365(abc)
-  
+
   if (use_matrix == TRUE) {
     matrix_list_dok <- matrix_via_r(abc, matrix_without_punctuation)
     matrix_dok <- get_matrix(matrix_list_dok)
@@ -319,22 +319,22 @@ prepare_data <- function(dataset,
     matrix_dok <- FALSE
     ordvektor_dok <- FALSE
   }
-  
+
   # 5. Lagring og innlasting av de fire filene som trengs ------------------------------------
-  
+
   loaded_data <- list()
-  
+
   loaded_data$original_data$data_dok <- abc
   loaded_data$original_data$data_365 <- abc_365
-  
+
   loaded_data$original_matrix$data_dok <- matrix_dok
   loaded_data$ordvektorer$data_dok <- ordvektor_dok
   loaded_data$ordvektorer$without_punctuation <- matrix_without_punctuation
-  
+
   loaded_data$name <- corpus_name
   loaded_data$columns_for_info <-
     columns_doc_info[columns_doc_info %in% colnames(abc)]
-  
+
   if (any(!columns_doc_info %in% colnames(abc))) {
     missing_columns <-
       columns_doc_info[!columns_doc_info %in% colnames(abc)]
@@ -343,16 +343,8 @@ prepare_data <- function(dataset,
                       missing_columns[i]))
     }
   }
-  
+
   class(loaded_data) <- "corpusexplorationobject"
   message("Done.")
   return(loaded_data)
-}
-
-
-if (!interactive()) {
-  # Running function with arguments from command line -------------------------
-  args <- commandArgs(trailingOnly = TRUE)
-  new_data <- prepare_data(readRDS(args[1]))
-  saveRDS(new_data, args[2], compress = FALSE)
 }
