@@ -72,7 +72,9 @@ run_corpus_explorer <- function(corpus_object,
   data <- as.character(substitute(corpus_object))
   shiny::shinyOptions("corpusexplorationr_data" = data)
 
-  message("Running with 99 lines of mood")
+  message(sprintf("Exploring %s document%s",
+                  nrow(corpus_object$original_data$data_dok),
+                  if (nrow(corpus_object$original_data$data_dok) != 0) "s" else ""))
 
   shiny::runApp(app, display.mode = "normal", ...)
 }
