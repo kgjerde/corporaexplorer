@@ -20,28 +20,28 @@ ui <- function(request) {
   shinydashboard::dashboardPage(
     title = 'Corpus exploration',
 
-    # Header ------------------------------------------------------------------
+    # Header --------------------------------------------------------------
     source("./ui/ui_header.R", local = TRUE)$value,
 
-    # Sidebar -----------------------------------------------------------------
+    # Sidebar -------------------------------------------------------------
     source("./ui/ui_sidebar.R", local = TRUE)$value,
 
-    # Body --------------------------------------------------------------------
+    # Body ----------------------------------------------------------------
 
     shinydashboard::dashboardBody(
-      # CSS and JS files --------------------------------------------------------
+      # CSS and JS files --------------------------------------------------
       source("./ui/css_js_import.R", local = TRUE)$value,
 
-      # Fluid row ---------------------------------------------------------------
+      # Fluid row ---------------------------------------------------------
 
       shiny::fluidRow(
-               # Corpus map/corpus info box ----------------------------------------------
+               # Corpus map/corpus info box -------------------------------
                source("./ui/ui_corpus_box.R", local = TRUE)$value,
 
-               # A day in the corpus box (for data_365) ----------------------------------
+               # A day in the corpus box (for data_365) -------------------
                source("./ui/ui_day_in_corpus_box.R", local = TRUE)$value,
 
-               # Document box ------------------------------------------------------------
+               # Document box ---------------------------------------------
                source("./ui/ui_document_box.R", local = TRUE)$value
 
                # Fluid row ends
@@ -65,7 +65,7 @@ server <- function(input, output, session) {
 # Session variables -------------------------------------------------------
 source("./server/session_variables.R", local = TRUE)
 
-# Server scope function files ----------------------------------------------------------
+# Session scope function files --------------------------------------------
 source("./server/functions_collect_input_terms.R", local = TRUE)
 source("./server/functions_checking_input_terms.R", local = TRUE)
 source("./server/functions_ui_management.R", local = TRUE)
@@ -91,7 +91,7 @@ source("./server/5_event_document_visualisation_click.R", local = TRUE)
 # 6. Event: hovering in corpus map ----------------------------------------
 source("./server/6_event_hover_corpus_map.R", local = TRUE)
 
-# 7. Cleaning up the session ----------------------------------------------
+# Cleaning up the session -------------------------------------------------
 shiny::onSessionEnded(function() {
   shiny::shinyOptions("corpusexplorationr_use_matrix" = NULL)
   shiny::shinyOptions("corpusexplorationr_regex_engine" = NULL)
@@ -100,5 +100,5 @@ shiny::onSessionEnded(function() {
 })
 }
 
-# 8. Run app --------------------------------------------------------------
+# Run app -----------------------------------------------------------------
 shiny::shinyApp(ui, server)
