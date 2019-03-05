@@ -47,6 +47,12 @@ run_corpus_explorer <- function(corpus_object,
          call. = FALSE)
   }
 
+  if (class(corpus_object) != "corpusexplorationobject") {
+    stop("'data' is not a corpusexplorationobject",
+         call. = FALSE)
+  }
+
+
   if (!is.logical(optional_info)) {
     stop(sprintf("Invalid '%s' argument.", "optional_info"),
          call. = FALSE)

@@ -3,9 +3,8 @@
 #' Launch Shiny app for downloading documents from text collection.
 #' Interrupt R to stop the application (usually by pressing Ctrl+C or Esc).
 #'
-#' @param data Either a \code{corpusexploration} object created by
-#'   \code{\link[corpusexplorationr]{prepare_data}} or a data frame containing
-#'   \code{Date} and \code{Text} columns.
+#' @param corpus_object A \code{corpusexploration} object created by
+#'   \code{\link[corpusexplorationr]{prepare_data}}.
 #' @param max_html_docs The maximum number of documents allowed in one HTML report.
 #' @param ... Other arguments passed to \code{\link[shiny]{runApp}} in the Shiny
 #'   package.
@@ -30,14 +29,19 @@
 #' # Or:
 #' run_download_tool(test_df)
 #' }
-run_download_tool <- function(data, max_html_docs = 400, ...) {
+run_download_tool <- function(corpus_object, max_html_docs = 400, ...) {
   app <- system.file("download", "app.R", package = "corpusexplorationr")
   if (app == "") {
     stop("Could not find directory. Try re-installing `corpusexplorationr`.", call. = FALSE)
   }
 
-  data <- as.character(substitute(data))
-  shiny::shinyOptions("corpusexplorationr_download_data" = data)
+  if (class(corpus_object) != "corpusexplorationobject") {
+    stop("'corpus_object' is not a corpusexplorationobject",
+         call. = FALSE)
+  }
+
+  corpus_object <- as.character(substitute(corpus_object))
+  shiny::shinyOptions("corpusexplorationr_download_data" = corpus_object)
 
   if (!is.numeric(max_html_docs)) {
     stop(sprintf("Invalid '%s' argument.", "max_html_docs"),
