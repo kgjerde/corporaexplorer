@@ -15,7 +15,7 @@ if (class(abc) == "corpusexplorationobject") {
 }
 
 # Loading constants -------------------------------------------------------
-source("./global/constants.R", local = TRUE)
+source("./global/config.R", local = TRUE)
 
 # **UI** ------------------------------------------------------------------
 
