@@ -90,7 +90,10 @@ source("./server/server_download_zip.R", local = TRUE)
 source("./server/server_download_html.R", local = TRUE)
 
 # Cleaning up the session -------------------------------------------------
-shiny::onSessionEnded(function() shiny::shinyOptions("corpusexplorationr_download_data" = NULL))
+shiny::onSessionEnded(function() {
+  shiny::shinyOptions("corpusexplorationr_download_data" = NULL)
+  shiny::shinyOptions("corpusexplorationr_download_max_html" = NULL)
+})
 }
 
 # Run app -----------------------------------------------------------------
