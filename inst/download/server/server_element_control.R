@@ -1,8 +1,8 @@
 observe({
-    if (nrow(sv$subset) > 400) {
+    if (nrow(sv$subset) > MAX_DOCS_FOR_HTML) {
         shinyjs::disable("download_html")
     }
-    
+
 })
 
 
@@ -17,7 +17,7 @@ observe({
 
 observe({
     output$download_button_text_html <- renderText({
-        if (nrow(sv$subset) <= 400) {
+        if (nrow(sv$subset) <=  MAX_DOCS_FOR_HTML) {
             title <- paste("Download",
                            nrow(sv$subset),
                            "documents")
@@ -25,10 +25,10 @@ observe({
                 title <- paste(title, "with highlighted text")
             }
         } else {
-            title <- "Too many documents (max 400)"
+            title <- sprintf("Too many documents (max %s)", MAX_DOCS_FOR_HTML)
         }
-        
+
         title
-        
+
     })
 })

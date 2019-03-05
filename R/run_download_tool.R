@@ -6,6 +6,7 @@
 #' @param data Either a \code{corpusexploration} object created by
 #'   \code{\link[corpusexplorationr]{prepare_data}} or a data frame containing
 #'   \code{Date} and \code{Text} columns.
+#' @param max_html_docs The maximum number of documents allowed in one HTML report.
 #' @param ... Other arguments passed to \code{\link[shiny]{runApp}} in the Shiny
 #'   package.
 #' @export
@@ -29,7 +30,7 @@
 #' # Or:
 #' run_download_tool(test_df)
 #' }
-run_download_tool <- function(data, ...) {
+run_download_tool <- function(data, max_html_docs = 400, ...) {
   app <- system.file("download", "app.R", package = "corpusexplorationr")
   if (app == "") {
     stop("Could not find directory. Try re-installing `corpusexplorationr`.", call. = FALSE)
@@ -37,6 +38,13 @@ run_download_tool <- function(data, ...) {
 
   data <- as.character(substitute(data))
   shiny::shinyOptions("corpusexplorationr_download_data" = data)
+
+  if (!is.numeric(max_html_docs)) {
+    stop(sprintf("Invalid '%s' argument.", "max_html_docs"),
+         call. = FALSE)
+  }
+
+  shiny::shinyOptions("corpusexplorationr_download_max_html" = max_html_docs)
 
   shiny::runApp(app, display.mode = "normal", ...)
 }

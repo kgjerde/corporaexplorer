@@ -23,7 +23,7 @@ if (nrow(sv$subset) > 0) {
     shinyjs::enable("download_txt")
     shinyjs::enable("download_zip")
 
-if (nrow(sv$subset) <= 400) {
+if (nrow(sv$subset) <= MAX_DOCS_FOR_HTML) {
     shinyjs::enable("download_html")
 }
 }
