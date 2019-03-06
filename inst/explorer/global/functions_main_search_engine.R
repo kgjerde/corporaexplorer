@@ -164,11 +164,12 @@ count_matrix <- function(pattern, matriks, df, ordvektor) {
 }
 
 #' Main data frame (text) search function
-#' 
+#'
 #' @return Df with column with search_term count for each document.
 count_df <- function(pattern, df, case_sensitive, custom_column) {
     if (can_use_re2(pattern)) {
         regex_count <- re2r::re2_count
+        re2_ok <- TRUE
         # print("re2")
     } else {
         regex_count <- stringr::str_count
@@ -183,16 +184,23 @@ count_df <- function(pattern, df, case_sensitive, custom_column) {
     } else if (case_sensitive == TRUE) {
         text_column <- df$Text_case
     }
-    
-    # TODO! Hacky, mulig multippel konverting av kolonne
-    # hvis flere søkeord
+
     if (!is.na(custom_column)) {
-    if (case_sensitive == FALSE) {
-        text_column <- 
-            stringr::str_to_lower(unlist(df[custom_column], use.names = FALSE))
-    } else if (case_sensitive == TRUE) {
-        text_column <- unlist(df[custom_column], use.names = FALSE)
-    }
+        if (re2_ok == TRUE) {
+            treff_count_matrix <-
+                tibble::tibble(re2r::re2_count(
+                    df[[custom_column]],
+                    re2r::re2(pattern, case_sensitive = case_sensitive)
+                ))
+            return(treff_count_matrix)
+        } else if (re2_ok == FALSE) {
+            treff_count_matrix <-
+                tibble::tibble(stringr::str_count(
+                    df[[custom_column]],
+                    stringr::regex(pattern, ignore_case = !case_sensitive)
+                ))
+            return(treff_count_matrix)
+        }
     }
 
     treff_count_matrix <-
