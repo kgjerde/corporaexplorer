@@ -184,7 +184,7 @@ https://stackoverflow.com/questions/41240878/r-shiny-fixed-sidebar-and-main-head
 
 .sidebar {
   color: #FFF;
-  position: fixed;
+  /*position: fixed;*/
   width: 275px;
   white-space: nowrap;
   overflow: visible;
