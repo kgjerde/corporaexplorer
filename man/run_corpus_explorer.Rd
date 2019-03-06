@@ -4,20 +4,29 @@
 \alias{run_corpus_explorer}
 \title{Launching Shiny app for exploration of text collection}
 \usage{
-run_corpus_explorer(corpus_object, optional_info = FALSE,
-  regex_engine = c("default", "stringr", "re2r"), use_matrix = TRUE,
-  ...)
+run_corpus_explorer(corpus_object, use_matrix = TRUE,
+  regex_engine = c("default", "stringr", "re2r"),
+  optional_info = FALSE, ...)
 }
 \arguments{
 \item{corpus_object}{A corpusexploration object created by
 \code{\link[corpusexplorationr]{prepare_data}}.}
 
-\item{optional_info}{YEE}
+\item{use_matrix}{Logical. If the corpusexplorationobject contains a document
+term matrix, should it be used for searches? (See
+\code{\link[corpusexplorationr]{prepare_data}}.)}
 
-\item{regex_engine}{YEE}
+\item{regex_engine}{Specify regular expression engine to be used: \itemize{
+\item `default`: use the \code{re2r} package
+(\url{https://github.com/qinwf/re2r}) for simple searches and the
+\code{stringr} package (\url{https://github.com/tidyverse/stringr} for
+complex regexes (i.e. when special regex characters are used). \item
+`stringr`: use \code{stringr} for all searches. \item `re2r`: use
+\code{re2r} for all searches.}}
 
-\item{use_matrix}{If the corpusexplorationobject contains a document term
-matrix, should it be used?}
+\item{optional_info}{Logical. If \code{TRUE}, information about search method
+(regex engine and whether the search was conducted in the document term
+matrix or in the full text documents).}
 
 \item{...}{Other arguments passed to \code{\link[shiny]{runApp}} in the Shiny
 package.}

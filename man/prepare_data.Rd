@@ -29,7 +29,7 @@ present in dataset, it will be ignored.}
 
 \item{use_matrix}{Logical. Should the function create a document term matrix
 for fast searching? If \code{TRUE}, data preparation will run longer and demand
-more memory. If \code{FALSE}, the returning object will be more light-weight, but
+more memory. If \code{FALSE}, the returning corpusexplorationobject will be more light-weight, but
 searching will be slower.}
 
 \item{normalise}{Should non-breaking spaces (U+00A0) and soft hyphens

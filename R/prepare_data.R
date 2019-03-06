@@ -268,7 +268,7 @@ get_term_vector <- function(returned_list) {
 #' @param corpus_name Optional character string with name of corpus.
 #' @param use_matrix Logical. Should the function create a document term matrix
 #'   for fast searching? If \code{TRUE}, data preparation will run longer and demand
-#'   more memory. If \code{FALSE}, the returning object will be more light-weight, but
+#'   more memory. If \code{FALSE}, the returning corpusexplorationobject will be more light-weight, but
 #'   searching will be slower.
 #' @inheritParams transform_regular
 #' @inheritParams matrix_via_r
