@@ -80,7 +80,7 @@ run_corpus_explorer <- function(corpus_object,
 
   message(sprintf("Exploring %s document%s",
                   nrow(corpus_object$original_data$data_dok),
-                  if (nrow(corpus_object$original_data$data_dok) != 0) "s" else ""))
+                  if (nrow(corpus_object$original_data$data_dok) != 1) "s" else ""))
 
   shiny::runApp(app, display.mode = "normal", ...)
 }
