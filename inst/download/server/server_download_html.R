@@ -8,13 +8,14 @@ output$download_html <- shiny::downloadHandler(
         tempReport <-
             file.path(tempdir(), "report-render.Rmd")
         file.copy("rmd/report-render.Rmd", tempReport, overwrite = TRUE)
-        
+
         # Set up parameters to pass to Rmd document
         params <- list(dataset = sv$subset,
                        #subset_terms = collect_subset_terms(),
                        terms_highlight = search_arguments$highlight_terms,
-                       case_sensitive = search_arguments$case_sensitive)
-        
+                       case_sensitive = search_arguments$case_sensitive,
+                       INFO_COLUMNS = INFO_COLUMNS)
+
         # Knit the document, passing in the `params` list, and eval it in a
         # child of the global environment (this isolates the code in the document
         # from the code in this app).
@@ -34,7 +35,7 @@ output$download_html <- shiny::downloadHandler(
     }
 )
 
-# 
+#
 # output$download_html <- shiny::downloadHandler(
 #     # For PDF output, change this to "report.pdf"
 #     filename = "report.html",
@@ -45,17 +46,17 @@ output$download_html <- shiny::downloadHandler(
 #         tempReport <-
 #             file.path(tempdir(), "report-render.Rmd")
 #         file.copy("rmd/report-render.Rmd", tempReport, overwrite = TRUE)
-#         
+#
 #         # Set up parameters to pass to Rmd document
 #         params <- list(dataset = sv$subset,
 #                        #subset_terms = collect_subset_terms(),
 #                        terms_highlight = collect_highlight_terms(),
 #                        case_sensitive = search_arguments$case_sensitive)
-#         
+#
 #         # Knit the document, passing in the `params` list, and eval it in a
 #         # child of the global environment (this isolates the code in the document
 #         # from the code in this app).
-#         
+#
 #         progress <-
 #             ipc::AsyncProgress$new(message = "Preparing html document.")
 #         future::future(evaluator = future::plan(future_plan), {

@@ -4,6 +4,7 @@ params:
   dataset: NA
   terms_highlight: NA
   case_sensitive: NA
+  INFO_COLUMNS: NA
 output:
   html_document:
       theme: journal
@@ -20,6 +21,8 @@ output:
 ```{r include=FALSE}
 my_colours <-
     rep(c("red", "blue", "green", "purple", "orange", "gray"), 10)
+
+INFO_COLUMNS <- params$INFO_COLUMNS
 ```
 
 
@@ -41,31 +44,129 @@ case_sensitive <- params$case_sensitive
 ```
 
 
-```{r include=FALSE}
-for (i in seq_along(terms_highlight)) {
-  utvalg$Text <-
-    stringr::str_replace_all(
-      utvalg$Text,
-      stringr::regex(
-        paste0("(", terms_highlight[i], ")"),
-        ignore_case = !case_sensitive
-      ),
-      sprintf('<span style="color:%s">\\1</span>',
-              my_colours[i])
-    ) %>%
-    stringr::str_replace_all("\n", "<br>")
+```{r Highlighting terms, include=FALSE}
+if (!identical(terms_highlight, "")) {
+  for (i in seq_along(terms_highlight)) {
+    utvalg$Text <-
+      stringr::str_replace_all(
+        utvalg$Text,
+        stringr::regex(
+          paste0("(", terms_highlight[i], ")"),
+          ignore_case = !case_sensitive
+        ),
+        sprintf('<span style="color:%s">\\1</span>',
+                my_colours[i])
+      )
+  }
 }
+
+utvalg$Text <- stringr::str_replace_all(utvalg$Text, "\n", "<br>")
+
+if ("Title" %in% INFO_COLUMNS) {
+    utvalg$Text <- paste0(paste0("<b>",
+                                 "Title: ",
+                                 utvalg$Title,
+                                 "</b>"),
+                            "<br><br>",
+                            utvalg$Text)
+}
+
+```
+
+```{r Hit count, include=FALSE}
+
+hit_count_text <- NULL
+
+if (!identical(terms_highlight, "")) {
+  for (i in seq_along(terms_highlight)) {
+    hit_count_text <- paste(
+      sep = "<br>",
+      hit_count_text,
+      sprintf(
+        "'%s' is found _corpusexplorationr_%s times in the document
+                                    (%s search)",
+        sprintf(
+          '<span style="color:%s">%s</span>',
+          my_colours[i],
+          terms_highlight[i]
+        ),
+        stringr::str_count(utvalg$Text,
+                               stringr::regex(terms_highlight[i],
+                                              ignore_case = !case_sensitive)),
+        if (case_sensitive == TRUE)
+          "case sensitive"
+        else
+          "case insensitive"
+      )
+    )
+  }
+  hit_count_text <- paste0("<br>", hit_count_text)#, "<hr>")
+  # Removing spaceholder, fixing singular/plural TODO still dirty hack
+  hit_count_text <- stringr::str_replace_all(hit_count_text, "is found _corpusexplorationr_1 times",
+                                             "is found 1 time")
+  hit_count_text <- stringr::str_replace_all(hit_count_text, "is found _corpusexplorationr_(\\d+) times",
+                                             "is found \\1 times")
+}
+
+```
+
+
+```{r Info tab, include=FALSE}
+
+doc_info_text <- paste(sep = "<br>",
+                       paste0(
+                           tags$b("Date: "),
+                           format(utvalg$Date,
+                                  "%A %d %B %Y")
+                       ))
+
+if ("Title" %in% INFO_COLUMNS) {
+    doc_info_text <- paste(sep = "<br>",
+                           doc_info_text,
+                           paste0(tags$b("Title: "),
+                                  utvalg$Title))
+}
+
+if ("URL" %in% INFO_COLUMNS) {
+    doc_info_text <- paste(
+        sep = "<br>",
+        doc_info_text,
+        paste0(
+            tags$b("URL: "),
+            "<a href='",
+            utvalg$URL,
+            "'target='_blank'>",
+            utvalg$URL,
+            "</a>"
+        )
+    )
+}
+
+other_columns <-
+    INFO_COLUMNS[!INFO_COLUMNS %in% c("Date", "Title", "URL")]
+
+for (i in seq_along(other_columns)) {
+    doc_info_text <- paste(doc_info_text,
+                           sep = "<br>",
+                           paste0(
+                               tags$b(other_columns[i]),
+                               tags$b(": "),
+                               utvalg[[other_columns[i]]]
+                           ))
+}
+
+doc_info_text <- paste(doc_info_text,
+                       sep = "<br>",
+                       paste0(
+                           tags$b("Word count: "),
+                           stringi::stri_count_words(utvalg$Text)
+                       ))
+
+info_tab <-     paste0("\n## Info\n\n", doc_info_text, hit_count_text)
 ```
 
 
 ```{r include=FALSE}
-utvalg_url <-     paste0("\n## Info\n\n",
-                        "URL: <a href='",
-                         utvalg$URL,
-                         "' target='_blank'>",
-                         utvalg$URL,
-                         "</a>")
-
 utvalg_title <- paste0(
     "# (",
     seq_len(nrow(utvalg)),
@@ -76,11 +177,12 @@ utvalg_title <- paste0(
     ' {.tabset .tabset-fade}'
 )
 
+
 utvalg_tekst <- paste(utvalg_title,
 paste0("\n\n## Text\n",
                       utvalg$Text),
                       #"\n___\n",
-                      utvalg_url,
+                      info_tab,
                       "\n___\n",
                       sep = "\n"
 )
