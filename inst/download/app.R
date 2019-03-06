@@ -64,10 +64,6 @@ source("server/function_subset.R", local = TRUE)
 source("server/function_corpus_info.R", local = TRUE)
 source("server/function_subset_arguments.R", local = TRUE)
 
-
-# dropdowMenu, conditional ------------------------------------------------
-source("./server/function_server_warning.R", local = TRUE)
-
 # Session variables -------------------------------------------------------
 source("./server/session_variabler.R", local = TRUE)
 
