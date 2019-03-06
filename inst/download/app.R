@@ -1,21 +1,7 @@
 
-# Data set-up -------------------------------------------------------------
-if (!is.null(getOption("shiny.testmode"))) {
-  if (getOption("shiny.testmode") == TRUE) {
-    library(corpusexplorationr)
-    abc <- test_data
-  }
-} else {
-  abc <- eval(as.name(shiny::getShinyOption("corpusexplorationr_download_data")))
-}
-
-if (class(abc) == "corpusexplorationobject") {
-  abc <- abc$original_data$data_dok
-  abc$Text <- abc$Text_case
-}
-
-# Loading constants -------------------------------------------------------
+# Setting up data and config ----------------------------------------------
 source("./global/config.R", local = TRUE)
+
 
 # **UI** ------------------------------------------------------------------
 
