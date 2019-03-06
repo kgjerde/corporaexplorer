@@ -20,7 +20,7 @@ create_df_for_info <- function(session_variables,
       )
     }
   }
-  
+
   if (highlight_terms_exist(search_arguments) == FALSE) {
     return(list(start_df = start_df))
   }
@@ -221,7 +221,6 @@ corpus_info_plot <- function(start_df_list, search_arguments) {
     terms <- start_df_list$terms
     years <- start_df_list$years
 
-# browser()
     df <- cbind(start_df, Year = years)
 
     df <- tidyr::gather(df, "Term", value = "Count", -Year)
@@ -231,6 +230,11 @@ corpus_info_plot <- function(start_df_list, search_arguments) {
       dplyr::summarise(Count = as.integer(sum(Count)))
 
     fig_tib$Term <- factor(fig_tib$Term, levels = full_terms)
+
+    # In case of "missing years"
+    fig_tib <-
+      padr::pad_int(dplyr::ungroup(fig_tib), by = "Year", group = "Term") %>%
+      padr::fill_by_value(Count, value = 0)
 
     info_plot <- ggplot2::ggplot(data = fig_tib)
     if (length(unique(fig_tib$Year)) == 1) {
