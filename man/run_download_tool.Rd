@@ -4,12 +4,13 @@
 \alias{run_download_tool}
 \title{Launching Shiny app for downloading documents from text collection}
 \usage{
-run_download_tool(data, ...)
+run_download_tool(corpus_object, max_html_docs = 400, ...)
 }
 \arguments{
-\item{data}{Either a \code{corpusexploration} object created by
-\code{\link[corpusexplorationr]{prepare_data}} or a data frame containing
-\code{Date} and \code{Text} columns.}
+\item{corpus_object}{A \code{corpusexploration} object created by
+\code{\link[corpusexplorationr]{prepare_data}}.}
+
+\item{max_html_docs}{The maximum number of documents allowed in one HTML report.}
 
 \item{...}{Other arguments passed to \code{\link[shiny]{runApp}} in the Shiny
 package.}
