@@ -1,3 +1,7 @@
+.download_html {
+  width: 100%;
+}
+
 .shiny-notification {
     height: 100px;
     width: 400px;
@@ -175,24 +179,6 @@ input:-webkit-autofill:active {
 }
 */
 
-/*Denne er for scrolling og beholde høyreboksen konstant.
-https://stackoverflow.com/questions/11399537/how-do-you-make-a-div-follow-as-you-scroll*/
-
-.follow_scroll .nav-tabs-custom {
-    position: fixed;
-    top: 60px;
-    margin-right: 10px;
-    /*width: 815px;*/
-}
-
-.ost .nav-tabs-custom {
-    position: fixed;
-    margin-right: 10px;
-    bottom: 0;
-    overflow: scroll;
-}
-
-
 /*De tre neste er for locked header og sidebar.
 https://stackoverflow.com/questions/41240878/r-shiny-fixed-sidebar-and-main-header-in-a-shiny-dashboard*/
 
@@ -202,15 +188,6 @@ https://stackoverflow.com/questions/41240878/r-shiny-fixed-sidebar-and-main-head
   width: 275px;
   white-space: nowrap;
   overflow: visible;
-}
-
-.main-header {
-  position: fixed;
-  width:100%;
-}
-
-.content {
-  padding-top: 60px;
 }
 
 /*Fordi det viste seg at jeg hoppet ca. en linje for langt i dokumentvisning fra dok_vis.
@@ -251,4 +228,4 @@ hr {
   margin-bottom: 0em;
   margin-top: 1em;
 }
-  
+
