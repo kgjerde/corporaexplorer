@@ -1,7 +1,7 @@
 #' Collecting search terms from user input
 #'
 #' @return Character vector.
-collect_highlight_terms <- function() {
+collect_highlight_terms_1 <- function() {
     terms <- c(
         shiny::isolate(input$search_text),
         shiny::isolate(input$area_2),
@@ -18,12 +18,39 @@ collect_highlight_terms <- function() {
     if(length(terms) == 0){
         terms <- ""
     }
-    
+
     if (search_arguments$case_sensitive == FALSE) {
         terms <- stringr::str_to_lower(terms)
     }
-    
+
     return(terms)
+}
+
+#' Collecting highlight terms from user input
+#'
+#' @return Character vector.
+collect_highlight_terms <- function() {
+    if (is.null(isolate(input$more_terms_button))) {
+        # avgjørende at is.null-varianten kommer først i if-statementet!
+        terms_highlight <- collect_highlight_terms_1()
+    }   else if (isolate(input$more_terms_button == 'Yes')) {
+        terms_highlight <- isolate(input$area) %>%
+            stringr::str_trim() %>%
+            stringr::str_replace_all("(\\s){2,}", "\\1") %>%
+            stringr::str_split("\n") %>%
+            unlist %>%
+            .[length(.) > 0] %>%
+            unique
+
+        terms_highlight <-
+            c(collect_highlight_terms_1(), terms_highlight[terms_highlight != ""]) #%>%
+           # unique  # TODO blr ikke unique-s hvis hører til ulike
+                    # custom_columns
+    }
+    terms_highlight <-
+        terms_highlight[terms_highlight != ""]
+
+    return(terms_highlight)
 }
 
 #' Collecting treshold values for search terms
@@ -53,18 +80,18 @@ clean_terms <- function(terms) {
 }
 
 #' Check if vector contains any "argument" ("--")
-#' 
+#'
 #' Purpose: make user aware that highlight terms cannot contain arguments.
-#' 
+#'
 #' @return Logical
 contains_argument <- function(chr_vector) {
     return(any(stringr::str_detect(chr_vector, "--")))
 }
 
 #' Check if vector contains any invalid treshold argument ("--\\d+")
-#' 
+#'
 #' Purpose: make user aware that highlight terms cannot contain arguments.
-#' 
+#'
 #' @param chr_vector Unparsed subset_terms input
 #' @return Logical
 contains_only_valid_tresholds <- function(chr_vector) {
@@ -84,6 +111,29 @@ check_valid_column_names <- function(chr_vector, df) {
     chr_vector <- chr_vector %>%
         .[!is.na(.)]
     return(all(chr_vector %in% colnames(df)))
+}
+
+#' Checking if valid regex search
+#'
+#' @param patterns
+#'
+#' @return Logical
+check_regexes <- function(patterns) {
+    patterns[is.null(patterns)] <-
+        "OK"  # To deal with subset_terms == NULL TODO dirty hack
+    # if (USE_ONLY_RE2R == TRUE) {
+    #     tryCatch(
+    #         is.integer(re2r::re2_count("esel", patterns)),
+    #         error = function(e)
+    #             FALSE
+    #     )
+    # } else if (USE_ONLY_RE2R == FALSE) {
+        tryCatch(
+            is.integer(stringr::str_count("esel", patterns)),
+            error = function(e)
+                FALSE
+        )
+    # }
 }
 
 #' Collecting subset/filter terms from user input

@@ -4,11 +4,11 @@ shiny::observeEvent(input$trykk, {
     # Make sure it closes when we exit this reactive, even if there's an error
     on.exit(progress$close())
     progress$set(message = "Processing", value = 0)
-    
+
     shinyjs::disable("download_txt")
     shinyjs::disable("download_zip")
     shinyjs::disable("download_html")
-    
+
     if (input$year_or_date == "Year range") {
         date_1 <- paste0(input$date_slider[1], "-01-01") %>%
             as.Date
@@ -18,15 +18,15 @@ shiny::observeEvent(input$trykk, {
         date_1 <- input$date_calendar[1]
         date_2 <- input$date_calendar[2]
     }
-    
+
     sv$subset <- subset_date(abc,
                              date_1 = date_1,
                              date_2 = date_2)
-    
+
     search_arguments$case_sensitive <- input$case_sensitivity
-    
+
     search_arguments$highlight_terms <- collect_highlight_terms()
-    
+
     if (!is.null(input$filter_text)) {
         search_arguments$subset_terms <- collect_subset_terms()
         search_arguments$subset_tresholds <-
@@ -36,7 +36,7 @@ shiny::observeEvent(input$trykk, {
         search_arguments$subset_terms <-
             clean_terms(search_arguments$subset_terms)
     }
-    
+
     # Update date inputs, making sure they remain within corpus date range
     if (input$year_or_date == "Year range") {
       updateDateRangeInput(
@@ -64,11 +64,13 @@ shiny::observeEvent(input$trykk, {
         )
       )
     }
-    
+
     if (!identical(input$filter_text, "")) {
         if (check_valid_column_names(search_arguments$subset_custom_column,
                                      sv$subset) &
-            contains_only_valid_tresholds(collect_subset_terms()) &
+            contains_only_valid_tresholds(isolate(collect_subset_terms())) &
+                check_regexes(c(search_arguments$highlight_terms,
+                               search_arguments$subset_terms)) &
             contains_argument(search_arguments$highlight_terms) == FALSE) {
             sv$subset <-  subset_terms(
                 sv$subset,
@@ -78,7 +80,7 @@ shiny::observeEvent(input$trykk, {
             )
         }
     }
-    
+
     output$info <- shiny::renderText({
         # Create a Progress object
         progress <- shiny::Progress$new()
@@ -86,8 +88,7 @@ shiny::observeEvent(input$trykk, {
         on.exit(progress$close())
         progress$set(message = "Processing", value = 0)
         source("./server/check_search_arguments.R", local = TRUE)
-        
+
         shiny::isolate(corpus_info_text())
     })
-    
 })

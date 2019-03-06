@@ -1,4 +1,11 @@
 
+shiny::validate(shiny::need(
+    check_regexes(c(search_arguments$highlight_terms,
+                               search_arguments$subset_terms))
+    ,
+    paste("\nInvalid regular expression. Please modify your search.")
+))
+
 shiny::validate(need(
     check_valid_column_names(search_arguments$subset_custom_column, sv$subset)
     ,
