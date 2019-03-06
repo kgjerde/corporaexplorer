@@ -97,7 +97,7 @@ collect_custom_column <- function(chr_vector) {
 #'
 #' Note the use of Vectorize()
 #'
-#' @param pattern 
+#' @param pattern
 #'
 #' @return Pattern in lower case except the special characters,
 #' which are still in upper case.
@@ -113,6 +113,8 @@ to_lower_except_special_characters <- Vectorize(function(pattern) {
             }
         }
         pattern <- paste(pattern, collapse = "")
+    } else {  # I.e. without special characters in pattern
+        pattern <- stringr::str_to_lower(pattern)
     }
     return(pattern)
 }, USE.NAMES = FALSE)
@@ -127,7 +129,7 @@ clean_terms <- function(terms) {
         return(terms)
     }
     terms <- stringr::str_replace(terms, "--.*$", "")
-    
+
     if (search_arguments$case_sensitive == FALSE) {
         terms <- to_lower_except_special_characters(terms)
     }
