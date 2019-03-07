@@ -1,4 +1,4 @@
-context("explorer app")
+context("extractor app")
 # This file is for testing the applications in the inst/ directory.
 
 library(shinytest)
