@@ -75,11 +75,14 @@ transform_365 <- function(new_df) {
     dplyr::summarise(Text = paste(Text_case, collapse = "\n\n--\n\n"))
 
   min_date <- min(katt$Date)
+  max_date <- max(katt$Date)
 
   katt$Year <- lubridate::year(katt$Date)
 
   katt <-
-    padr::pad(katt, interval = "day", start_val = as.Date(paste0(min(katt$Year), "-01-01")))
+    padr::pad(katt, interval = "day",
+              start_val = as.Date(paste0(min(katt$Year), "-01-01")),
+              end_val = as.Date(paste0(max(katt$Year), "-12-31")))
 
   katt$empty <- is.na(katt$Text)
   # katt$empty[katt$empty == TRUE] <- "black"
@@ -110,7 +113,7 @@ transform_365 <- function(new_df) {
 
   kost$mnd_hor <- is_last_in_month(kost$Date)
 
-  kost$ID[kost$Date < min_date] <- 0
+  kost$ID[kost$Date < min_date | kost$Date > max_date] <- 0
 
   kost2 <- kost %>%
     dplyr::group_by(Year) %>%
@@ -119,29 +122,32 @@ transform_365 <- function(new_df) {
     dplyr::filter(Diff > 0) %>%
     dplyr::mutate(Diff = 7 - Diff)
 
-  tilleggs_tib <- tibble::tibble()
-  for (row in seq_len(nrow(kost2))) {
-    temp_tib <- tibble::tibble(
-      No. = 0,
-      Date = as.Date("1900-01-01"),
-      Year = kost2$Year[row],
-      Month_n = 1,
-      Week_n = 1,
-      Weekday_n = seq_len(kost2$Diff[row]),
-      Yearday_n = sort(-seq_len(kost2$Diff[row]), decreasing = FALSE),
-      ID = 0,
-      empty = TRUE,
-      wc = 1,
-      mnd_vert = FALSE,
-      mnd_hor = FALSE
-    )
-    tilleggs_tib <- rbind(tilleggs_tib, temp_tib)
+  if (nrow(kost2) != 0) {
+    tilleggs_tib <- tibble::tibble()
+    for (row in seq_len(nrow(kost2))) {
+      temp_tib <- tibble::tibble(
+        No. = 0,
+        Date = as.Date("8000-01-01"),
+        Year = kost2$Year[row],
+        Month_n = 1,
+        Week_n = 1,
+        Weekday_n = seq_len(kost2$Diff[row]),
+        Yearday_n = sort(-seq_len(kost2$Diff[row]), decreasing = FALSE),
+        ID = 0,
+        empty = TRUE,
+        wc = 1,
+        mnd_vert = FALSE,
+        mnd_hor = FALSE
+      )
+      tilleggs_tib <- rbind(tilleggs_tib, temp_tib)
+    }
+
+    tilleggs_tib <- dplyr::select(tilleggs_tib, colnames(kost))
+
+    kost <- rbind(kost, tilleggs_tib)
   }
 
-  tilleggs_tib <- dplyr::select(tilleggs_tib, colnames(kost))
-
-  kost <- rbind(kost, tilleggs_tib) %>%
-    dplyr::arrange(Year, Weekday_n, Yearday_n, Month_n)
+  kost <- dplyr::arrange(kost, Year, Weekday_n, Yearday_n, Month_n)
 
   kost$id <- seq_len(nrow(kost))
   message("2/3 Calendar data frame done.")
