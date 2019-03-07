@@ -3,21 +3,12 @@
 \docType{data}
 \name{test_data}
 \alias{test_data}
-\title{Prices of 50,000 round cut diamonds.}
-\format{A data frame with 53940 rows and 10 variables:
-\describe{
-  \item{price}{price, in US dollars}
-  \item{carat}{weight of the diamond, in carats}
-  ...
-}}
-\source{
-\url{http://www.diamondse.info/}
-}
+\title{A tiny test dataset to test basic functionality}
+\format{A corpusexplorationobject.}
 \usage{
-test_data
+\code{run_corpus_explorer(test_data)}
 }
 \description{
-A dataset containing the prices and other attributes of almost 54,000
-diamonds.
+Created by \code{corpusexplorationr:::create_test_data()}.
 }
 \keyword{datasets}
