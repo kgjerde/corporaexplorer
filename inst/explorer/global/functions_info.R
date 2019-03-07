@@ -232,9 +232,11 @@ corpus_info_plot <- function(start_df_list, search_arguments) {
     fig_tib$Term <- factor(fig_tib$Term, levels = full_terms)
 
     # In case of "missing years"
+    if (length(unique(fig_tib$Year)) > 1) {
     fig_tib <-
       padr::pad_int(dplyr::ungroup(fig_tib), by = "Year", group = "Term") %>%
       padr::fill_by_value(Count, value = 0)
+    }
 
     info_plot <- ggplot2::ggplot(data = fig_tib)
     if (length(unique(fig_tib$Year)) == 1) {
