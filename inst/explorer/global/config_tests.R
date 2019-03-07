@@ -1,7 +1,10 @@
+
+# Important for shinytest to work -----------------------------------------
+library(corpusexplorationr)
+
 # Data set-up -------------------------------------------------------------
 
-loaded_data <- eval(as.name(getShinyOption("corpusexplorationr_data")))
-
+loaded_data <- corpusexplorationr::test_data
 
 # Constants ---------------------------------------------------------------
 
@@ -27,23 +30,10 @@ if (is.null(loaded_data$name)) {
 
 # From function arguments -------------------------------------------------
 
-if (NO_MATRIX == FALSE) {
-    NO_MATRIX <- !shiny::getShinyOption("corpusexplorationr_use_matrix")
-}
+NO_MATRIX <- FALSE
 
-OPTIONAL_INFO_TO_CONSOLE <- shiny::getShinyOption("corpusexplorationr_optional_info")
+OPTIONAL_INFO_TO_CONSOLE <- FALSE
 
-# Initialising
 USE_ONLY_STRINGR <- FALSE
 USE_ONLY_RE2R <- FALSE
 
-if (shiny::getShinyOption("corpusexplorationr_regex_engine") == "stringr") {
-    USE_ONLY_STRINGR <- TRUE
-} else if (shiny::getShinyOption("corpusexplorationr_regex_engine") == "re2r") {
-    USE_ONLY_RE2R <- TRUE
-}
-
-# Safety precaution:
-if (USE_ONLY_STRINGR == TRUE & USE_ONLY_RE2R == TRUE) {
-    USE_ONLY_RE2R <- FALSE
-}

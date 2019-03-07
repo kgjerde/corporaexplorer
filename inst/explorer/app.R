@@ -1,6 +1,12 @@
 
 # Setting up data and config ----------------------------------------------
-source("./global/config.R", local = TRUE)
+if (!is.null(getOption("shiny.testmode"))) {
+  if (getOption("shiny.testmode") == TRUE) {
+    source("./global/config_tests.R", local = TRUE)
+  }
+} else {
+  source("./global/config.R", local = TRUE)
+}
 
 # Function files ----------------------------------------------------------
 source("./global/function_display_document.R", local = TRUE)
