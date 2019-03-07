@@ -311,6 +311,57 @@ prepare_data <- function(dataset,
     )
   }
 
+  # Argument checking
+
+  if (!all(is.logical(c(
+    corpus_name,
+    use_matrix,
+    normalise,
+    matrix_without_punctuation
+  )))) {
+    stop(
+      "Hmm. Make sure all arguments that are supposed to be boolean is either TRUE or FALSE.",
+      call. = FALSE
+    )
+  }
+
+  if (!is.data.frame(dataset)) {
+    stop(
+      "Hmm. Make sure that 'dataset' is a data frame.",
+      call. = FALSE
+    )
+  }
+
+  if (!is.null(columns_to_include)) {
+    if (!all(columns_to_include %in% colnames(dataset))) {
+      stop("Hmm. 'columns to include': Make sure to only specify column names present in 'dataset'.",
+           call. = FALSE)
+    }
+  }
+
+  if (!all(c("Date", "Text") %in% colnames(dataset))) {
+    stop("Hmm. Make sure that 'dataset' contains 'Date' and 'Text' columns.",
+         call. = FALSE)
+  }
+
+  if (lubridate::is.Date(dataset$Date) == FALSE) {
+    stop("Hmm. Make sure that 'dataset$Date' is of class 'Date'.",
+         call. = FALSE)
+  }
+
+  if (anyNA(dataset$Date)) {
+    stop("Hmm. Make sure that 'dataset$Date' does not contain any NA values.",
+         call. = FALSE)
+  }
+
+  if (nrow(dataset) < 2) {
+    stop("Hmm. Make sure that 'dataset' contains at least two documents!",
+         call. = FALSE)
+  }
+
+
+  # The function proper
+
   abc <- transform_regular(dataset,
                            columns_to_include,
                            normalise)
