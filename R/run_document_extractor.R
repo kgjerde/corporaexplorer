@@ -40,13 +40,20 @@ run_document_extractor <- function(corpus_object, max_html_docs = 400, ...) {
          call. = FALSE)
   }
 
-  corpus_object <- as.character(substitute(corpus_object))
-  shiny::shinyOptions("corpusexplorationr_download_data" = corpus_object)
+  if ("package:corpusexplorationr" %in% search() == FALSE) {
+    stop(
+      "Load 'corpusexplorationr' by running 'library(corpusexplorationr)', then run 'run_document_extractor()'.",
+      call. = FALSE
+    )
+  }
 
   if (!is.numeric(max_html_docs)) {
     stop(sprintf("Invalid '%s' argument.", "max_html_docs"),
          call. = FALSE)
   }
+
+  corpus_object <- as.character(substitute(corpus_object))
+  shiny::shinyOptions("corpusexplorationr_download_data" = corpus_object)
 
   shiny::shinyOptions("corpusexplorationr_download_max_html" = max_html_docs)
 

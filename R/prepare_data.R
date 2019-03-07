@@ -304,6 +304,13 @@ prepare_data <- function(dataset,
                          normalise = TRUE,
                          matrix_without_punctuation = TRUE) {
 
+  if ("package:corpusexplorationr" %in% search() == FALSE) {
+    stop(
+      "Load 'corpusexplorationr' by running 'library(corpusexplorationr)', then run 'prepare_data()'.",
+      call. = FALSE
+    )
+  }
+
   abc <- transform_regular(dataset,
                            columns_to_include,
                            normalise)

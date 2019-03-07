@@ -56,6 +56,13 @@ run_corpus_explorer <- function(corpus_object,
          call. = FALSE)
   }
 
+  if ("package:corpusexplorationr" %in% search() == FALSE) {
+    stop(
+      "Load 'corpusexplorationr' by running 'library(corpusexplorationr)', then run 'run_corpus_explorer()'.",
+      call. = FALSE
+    )
+  }
+
   if (class(corpus_object) != "corpusexplorationobject") {
     stop("'data' is not a corpusexplorationobject",
          call. = FALSE)
