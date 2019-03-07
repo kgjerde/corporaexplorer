@@ -1,1 +1,3 @@
 library(testthat)
+library(corpusexplorationr)
+
