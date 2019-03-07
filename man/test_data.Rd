@@ -6,7 +6,7 @@
 \title{A tiny test dataset to test basic functionality}
 \format{A corpusexplorationobject.}
 \usage{
-\code{run_corpus_explorer(test_data)}
+test_data
 }
 \description{
 Created by \code{corpusexplorationr:::create_test_data()}.
