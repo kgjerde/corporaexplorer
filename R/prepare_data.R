@@ -288,7 +288,6 @@ prepare_data <- function(dataset,
   # Argument checking
 
   if (!all(is.logical(c(
-    corpus_name,
     use_matrix,
     normalise,
     matrix_without_punctuation
