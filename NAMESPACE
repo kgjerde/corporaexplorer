@@ -3,7 +3,7 @@
 export("%>%")
 export(prepare_data)
 export(run_corpus_explorer)
-export(run_download_tool)
+export(run_document_extractor)
 import(data.table, except = ":=")
 import(rlang)
 importFrom(magrittr,"%>%")

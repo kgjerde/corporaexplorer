@@ -24,12 +24,12 @@
 #' # Running exploration app:
 #' run_corpus_exploration(corpus)
 #'
-#' # Running download app:
-#' run_download_tool(corpus)
+#' # Running app to extract documents:
+#' run_document_extractor(corpus)
 #' # Or:
-#' run_download_tool(test_df)
+#' run_document_extractor(test_df)
 #' }
-run_download_tool <- function(corpus_object, max_html_docs = 400, ...) {
+run_document_extractor <- function(corpus_object, max_html_docs = 400, ...) {
   app <- system.file("download", "app.R", package = "corpusexplorationr")
   if (app == "") {
     stop("Could not find directory. Try re-installing `corpusexplorationr`.", call. = FALSE)

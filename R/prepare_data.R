@@ -274,7 +274,7 @@ get_term_vector <- function(returned_list) {
 #' @inheritParams matrix_via_r
 #' @return A \code{corpusexploration} object to be passed as argument to
 #'   \code{\link[corpusexplorationr]{run_corpus_explorer}} and
-#'   \code{\link[corpusexplorationr]{run_download_tool}}.
+#'   \code{\link[corpusexplorationr]{run_document_extractor}}.
 #' @export
 #' @examples
 #' # Constructing test data frame:
@@ -291,10 +291,10 @@ get_term_vector <- function(returned_list) {
 #' # Running exploration app:
 #' run_corpus_exploration(corpus)
 #'
-#' # Running download app:
-#' run_download_tool(corpus)
+#' # Running app to extract documents:
+#' run_document_extractor(corpus)
 #' # Or:
-#' run_download_tool(test_df)
+#' run_document_extractor(test_df)
 #' }
 prepare_data <- function(dataset,
                          columns_to_include = NULL,

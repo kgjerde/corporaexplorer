@@ -38,10 +38,10 @@
 #' # Running exploration app:
 #' run_corpus_exploration(corpus)
 #'
-#' # Running download app:
-#' run_download_tool(corpus)
+#' # Running app to extract documents:
+#' run_document_extractor(corpus)
 #' # Or:
-#' run_download_tool(test_df)
+#' run_document_extractor(test_df)
 #' }
 run_corpus_explorer <- function(corpus_object,
                                 use_matrix = TRUE,
