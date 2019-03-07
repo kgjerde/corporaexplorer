@@ -70,88 +70,56 @@ transform_365 <- function(new_df) {
   # @ new_df er en tibble klargjjort gjennom transform_regular()
 
 
-  katt <- new_df %>%
+  df_365 <- new_df %>%
     dplyr::group_by(Date) %>%
     dplyr::summarise(Text = paste(Text_case, collapse = "\n\n--\n\n"))
 
-  min_date <- min(katt$Date)
-  max_date <- max(katt$Date)
+  min_date <- min(df_365$Date)
+  max_date <- max(df_365$Date)
 
-  katt$Year <- lubridate::year(katt$Date)
+  df_365$Year <- lubridate::year(df_365$Date)
 
-  katt <-
-    padr::pad(katt, interval = "day",
-              start_val = as.Date(paste0(min(katt$Year), "-01-01")),
-              end_val = as.Date(paste0(max(katt$Year), "-12-31")))
+  df_365 <-
+    padr::pad(df_365, interval = "day",
+              start_val = as.Date(paste0(min(df_365$Year), "-01-01")),
+              end_val = as.Date(paste0(max(df_365$Year), "-12-31")))
 
-  katt$empty <- is.na(katt$Text)
-  # katt$empty[katt$empty == TRUE] <- "black"
-  katt$empty[katt$empty == FALSE] <- NA
+  df_365$empty <- is.na(df_365$Text)
+  # df_365$empty[df_365$empty == TRUE] <- "black"
+  df_365$empty[df_365$empty == FALSE] <- NA
 
-  katt$Text <- NULL
+  df_365$Text <- NULL
 
-  katt$wc <- 1
+  df_365$wc <- 1
 
-  katt$Year <- lubridate::year(katt$Date)
+  df_365$Year <- lubridate::year(df_365$Date)
 
-  katt$Weekday_n <- lubridate::wday(katt$Date, week_start = 1)
+  df_365$Weekday_n <- lubridate::wday(df_365$Date, week_start = 1)
 
-  katt$Month_n <- lubridate::month(katt$Date)
+  df_365$Month_n <- lubridate::month(df_365$Date)
 
-  katt$Week_n <- lubridate::isoweek(katt$Date)
+  df_365$Week_n <- lubridate::isoweek(df_365$Date)
 
-  katt$Yearday_n <- lubridate::yday(katt$Date)
+  df_365$Yearday_n <- lubridate::yday(df_365$Date)
 
-  katt$No. <- 1:nrow(katt)
+  df_365$No. <- 1:nrow(df_365)
 
-  kost <-
-    dplyr::arrange(katt, Year, Weekday_n, Yearday_n, Month_n)
-  kost$ID <- 1:nrow(kost)
+  df_365 <-
+    dplyr::arrange(df_365, Year, Weekday_n, Yearday_n, Month_n)
+  df_365$ID <- 1:nrow(df_365)
 
-  kost$mnd_vert <-
-    kost$Month_n != dplyr::lead(kost$Month_n, default = FALSE)
+  df_365$mnd_vert <-
+    df_365$Month_n != dplyr::lead(df_365$Month_n, default = FALSE)
 
-  kost$mnd_hor <- is_last_in_month(kost$Date)
+  df_365$mnd_hor <- is_last_in_month(df_365$Date)
 
-  kost$ID[kost$Date < min_date | kost$Date > max_date] <- 0
+  df_365$ID[df_365$Date < min_date | df_365$Date > max_date] <- 0
 
-  kost2 <- kost %>%
-    dplyr::group_by(Year) %>%
-    dplyr::slice(1) %>%
-    dplyr::mutate(Diff = Yearday_n - Weekday_n) %>%
-    dplyr::filter(Diff > 0) %>%
-    dplyr::mutate(Diff = 7 - Diff)
+  df_365 <- dplyr::arrange(df_365, Year, Weekday_n, Yearday_n, Month_n)
 
-  if (nrow(kost2) != 0) {
-    tilleggs_tib <- tibble::tibble()
-    for (row in seq_len(nrow(kost2))) {
-      temp_tib <- tibble::tibble(
-        No. = 0,
-        Date = as.Date("8000-01-01"),
-        Year = kost2$Year[row],
-        Month_n = 1,
-        Week_n = 1,
-        Weekday_n = seq_len(kost2$Diff[row]),
-        Yearday_n = sort(-seq_len(kost2$Diff[row]), decreasing = FALSE),
-        ID = 0,
-        empty = TRUE,
-        wc = 1,
-        mnd_vert = FALSE,
-        mnd_hor = FALSE
-      )
-      tilleggs_tib <- rbind(tilleggs_tib, temp_tib)
-    }
-
-    tilleggs_tib <- dplyr::select(tilleggs_tib, colnames(kost))
-
-    kost <- rbind(kost, tilleggs_tib)
-  }
-
-  kost <- dplyr::arrange(kost, Year, Weekday_n, Yearday_n, Month_n)
-
-  kost$id <- seq_len(nrow(kost))
+  df_365$id <- seq_len(nrow(df_365))
   message("2/3 Calendar data frame done.")
-  return(kost)
+  return(df_365)
 }
 
 # 3. Text-vektor til matrix for faster search -----------------------------
@@ -357,6 +325,11 @@ prepare_data <- function(dataset,
 
   if (anyNA(dataset$Date)) {
     stop("Hmm. Make sure that 'dataset$Date' does not contain any NA values.",
+         call. = FALSE)
+  }
+
+  if (anyNA(dataset$Text)) {
+    stop("Hmm. Make sure that 'dataset$Text' does not contain any NA values.",
          call. = FALSE)
   }
 
