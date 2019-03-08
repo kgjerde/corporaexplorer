@@ -67,14 +67,15 @@ Prepare data for corpus exploration
 \examples{
 # Constructing test data frame:
 dates <- as.Date(paste(2011:2020, 1:10, 21:30, sep = "-"))
-texts <- paste0("This is a document about ", month.name[1:10], ". ",
-   "This is not a document about ", rev(month.name[1:10]), ".")
+texts <- paste0(
+  "This is a document about ", month.name[1:10], ". ",
+  "This is not a document about ", rev(month.name[1:10]), "."
+)
 titles <- paste("Text", 1:10)
-test_df <- data.frame(Date = dates, Text = texts, Title = titles)
+test_df <- tibble::tibble(Date = dates, Text = texts, Title = titles)
 
 # Converting to corpusexploration object:
 corpus <- prepare_data(test_df, corpus_name = "Test corpus")
-
 \dontrun{
 # Running exploration app:
 run_corpus_exploration(corpus)

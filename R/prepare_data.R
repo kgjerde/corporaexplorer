@@ -266,7 +266,7 @@ get_term_vector <- function(returned_list) {
 #'   "This is not a document about ", rev(month.name[1:10]), "."
 #' )
 #' titles <- paste("Text", 1:10)
-#' test_df <- data.frame(Date = dates, Text = texts, Title = titles)
+#' test_df <- tibble::tibble(Date = dates, Text = texts, Title = titles)
 #'
 #' # Converting to corpusexploration object:
 #' corpus <- prepare_data(test_df, corpus_name = "Test corpus")
