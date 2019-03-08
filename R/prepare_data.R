@@ -1,4 +1,4 @@
-# 1. “Regular” df: 1 doc = 1 row ------------------------------------------
+# 1. "Regular" df: 1 doc = 1 row ------------------------------------------
 
 #' Adjusts data frame to corpusexploration format
 #'
