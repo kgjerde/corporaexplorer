@@ -332,11 +332,15 @@ prepare_data <- function(dataset,
          call. = FALSE)
   }
 
+  if (!is.character(dataset$Text)) {
+    stop("Hmm. Make sure that 'dataset$Text' is a character vector.",
+         call. = FALSE)
+  }
+
   if (nrow(dataset) < 2) {
     stop("Hmm. Make sure that 'dataset' contains at least two documents!",
          call. = FALSE)
   }
-
 
   # The function proper
 
