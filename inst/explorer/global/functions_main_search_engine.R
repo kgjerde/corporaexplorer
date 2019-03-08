@@ -167,9 +167,11 @@ count_matrix <- function(pattern, matriks, df, ordvektor) {
 #'
 #' @return Df with column with search_term count for each document.
 count_df <- function(pattern, df, case_sensitive, custom_column) {
-    if (can_use_re2(pattern)) {
+
+    re2_ok <- can_use_re2(pattern)
+
+    if (re2_ok == TRUE) {
         regex_count <- re2r::re2_count
-        re2_ok <- TRUE
         # print("re2")
     } else {
         regex_count <- stringr::str_count
