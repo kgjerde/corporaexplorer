@@ -11,12 +11,12 @@ if (!is.null(getOption("shiny.testmode"))) {
 ui <- function(request) {
   shinydashboard::dashboardPage(
     skin = "purple",
-    title = "Document download tool",
+    title = "Document extraction tool",
 
 
     # Header ------------------------------------------------------------------
     shinydashboard::dashboardHeader(
-      title = 'Document download\ntool',
+      title = 'Document extraction\ntool',
       titleWidth = 275,
       shinydashboard::dropdownMenuOutput("dropdownmenu")
     ),
