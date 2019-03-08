@@ -1,4 +1,4 @@
-# 1. “Regukar” df: 1 doc = 1 row ------------------------------------------
+# 1. “Regular” df: 1 doc = 1 row ------------------------------------------
 
 #' Adjusts data frame to corpusexploration format
 #'
@@ -47,7 +47,7 @@ transform_regular <- function(df, columns_to_include = NULL, normalise = TRUE) {
 
 
 
-# 2. 365: 1 dag = 1 rute --------------------------------------------------
+# 2. 365: 1 day = 1 tile --------------------------------------------------
 
 #' Check if date is the last in the month
 #'
@@ -124,7 +124,7 @@ transform_365 <- function(new_df) {
   return(df_365)
 }
 
-# 3. Text-vektor til matrix for faster search -----------------------------
+# 3. Chr vector to til 'matrix'/data.table for faster search --------------
 
 #' Create document term matrix for fast search of single words
 #'
@@ -235,7 +235,7 @@ get_term_vector <- function(returned_list) {
 }
 
 
-# 4. Eksempel på fullverdig prosedyre ----------------------------------------
+# 4. Main function --------------------------------------------------------
 
 #' Prepare data for corpus exploration
 #'
@@ -267,13 +267,13 @@ get_term_vector <- function(returned_list) {
 #' )
 #' titles <- paste("Text", 1:10)
 #' test_df <- data.frame(Date = dates, Text = texts, Title = titles)
-#' 
+#'
 #' # Converting to corpusexploration object:
 #' corpus <- prepare_data(test_df, corpus_name = "Test corpus")
 #' \dontrun{
 #' # Running exploration app:
 #' run_corpus_exploration(corpus)
-#' 
+#'
 #' # Running app to extract documents:
 #' run_document_extractor(corpus)
 #' # Or:
@@ -377,7 +377,7 @@ prepare_data <- function(dataset,
     ordvektor_dok <- FALSE
   }
 
-  # 5. Lagring og innlasting av de fire filene som trengs ------------------------------------
+  # 5. Putting the 'corpusexplorationobject' together ---------------------
 
   loaded_data <- list()
 
