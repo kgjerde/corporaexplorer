@@ -37,6 +37,10 @@ utvalg <- params$dataset
 
 ```{r include=FALSE}
 terms_highlight <- params$terms_highlight
+
+terms_highlight[is.na(terms_highlight)] <- ""
+terms_highlight[length(terms_highlight) == 0] <- ""
+
 ```
 
 ```{r include=FALSE}

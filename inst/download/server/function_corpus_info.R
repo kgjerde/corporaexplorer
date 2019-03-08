@@ -3,7 +3,7 @@ corpus_info_text <- function() {
 
     tekst <- sprintf("The corpus contains %i documents.",
                      nrow(abc))
-    
+
     if (nrow(sv$subset) != nrow(abc)) {
         tekst <- paste(sep = "<br>",
                        tekst,
@@ -12,18 +12,18 @@ corpus_info_text <- function() {
                            nrow(sv$subset)
                        ))
     }
-    
-    if (!identical(terms_highlight, "")) {
+
+    if (highlight_terms_exist()) {
         tekst <- paste0(tekst, "<br>")
-        
+
         for (i in seq_along(terms_highlight)) {
             term <- terms_highlight[i]
-            
+
             term_count <- stringr::str_count(sv$subset$Text, stringr::regex(term,
                                                                      ignore_case = !search_arguments$case_sensitive))
             treff <- sum(term_count)
             docs <- length(term_count[term_count > 0])
-            
+
             tekst <- paste(
                 sep = "<br>",
                 tekst,
