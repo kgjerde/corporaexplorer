@@ -21,7 +21,7 @@ observe({
             title <- paste("Download",
                            nrow(sv$subset),
                            "documents")
-            if (!identical(search_arguments$highlight_terms, "")) {
+            if (highlight_terms_exist()) {
                 title <- paste(title, "with highlighted text")
             }
         } else {

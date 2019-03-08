@@ -155,4 +155,14 @@ collect_subset_terms <- function() {
         return(terms_subset)
 }
 
-
+#' Check that there are terms to highlight
+#'
+#' @return Logical
+highlight_terms_exist <- function() {
+    if (length(search_arguments$highlight_terms) > 0) {
+        if (!is.na(search_arguments$highlight_terms)) {
+            return(TRUE)
+        }
+    }
+    return(FALSE)
+}
