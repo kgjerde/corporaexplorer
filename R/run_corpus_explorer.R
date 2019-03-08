@@ -26,18 +26,19 @@
 #' @examples
 #' # Constructing test data frame:
 #' dates <- as.Date(paste(2011:2020, 1:10, 21:30, sep = "-"))
-#' texts <- paste0("This is a document about ", month.name[1:10], ". ",
-#'    "This is not a document about ", rev(month.name[1:10]), ".")
+#' texts <- paste0(
+#'   "This is a document about ", month.name[1:10], ". ",
+#'   "This is not a document about ", rev(month.name[1:10]), "."
+#' )
 #' titles <- paste("Text", 1:10)
 #' test_df <- data.frame(Date = dates, Text = texts, Title = titles)
-#'
+#' 
 #' # Converting to corpusexploration object:
 #' corpus <- prepare_data(test_df, corpus_name = "Test corpus")
-#'
 #' \dontrun{
 #' # Running exploration app:
 #' run_corpus_exploration(corpus)
-#'
+#' 
 #' # Running app to extract documents:
 #' run_document_extractor(corpus)
 #' # Or:
@@ -45,15 +46,18 @@
 #' }
 run_corpus_explorer <- function(corpus_object,
                                 use_matrix = TRUE,
-                                regex_engine = c("default",
-                                                 "stringr",
-                                                 "re2r"),
+                                regex_engine = c(
+                                  "default",
+                                  "stringr",
+                                  "re2r"
+                                ),
                                 optional_info = FALSE,
                                 ...) {
   app <- system.file("explorer", "app.R", package = "corpusexplorationr")
   if (app == "") {
     stop("Could not find directory. Try re-installing `corpusexplorationr`.",
-         call. = FALSE)
+      call. = FALSE
+    )
   }
 
   if ("package:corpusexplorationr" %in% search() == FALSE) {
@@ -65,26 +69,33 @@ run_corpus_explorer <- function(corpus_object,
 
   if (class(corpus_object) != "corpusexplorationobject") {
     stop("'data' is not a corpusexplorationobject",
-         call. = FALSE)
+      call. = FALSE
+    )
   }
 
 
   if (!is.logical(optional_info)) {
     stop(sprintf("Invalid '%s' argument.", "optional_info"),
-         call. = FALSE)
+      call. = FALSE
+    )
   }
 
-  if (identical(regex_engine, c("default",
-                            "stringr",
-                            "re2r"))) {
+  if (identical(regex_engine, c(
+    "default",
+    "stringr",
+    "re2r"
+  ))) {
     regex_engine <- "default"
   }
 
-  if (!(regex_engine %in% c("default",
-                            "stringr",
-                            "re2r"))) {
+  if (!(regex_engine %in% c(
+    "default",
+    "stringr",
+    "re2r"
+  ))) {
     stop(sprintf("Invalid '%s' argument.", "regex_engine"),
-         call. = FALSE)
+      call. = FALSE
+    )
   }
 
   shiny::shinyOptions("corpusexplorationr_optional_info" = optional_info)
@@ -94,9 +105,11 @@ run_corpus_explorer <- function(corpus_object,
   data <- as.character(substitute(corpus_object))
   shiny::shinyOptions("corpusexplorationr_data" = data)
 
-  message(sprintf("Exploring %s document%s",
-                  nrow(corpus_object$original_data$data_dok),
-                  if (nrow(corpus_object$original_data$data_dok) != 1) "s" else ""))
+  message(sprintf(
+    "Exploring %s document%s",
+    nrow(corpus_object$original_data$data_dok),
+    if (nrow(corpus_object$original_data$data_dok) != 1) "s" else ""
+  ))
 
   shiny::runApp(app, display.mode = "normal", ...)
 }

@@ -12,18 +12,19 @@
 #' @examples
 #' # Constructing test data frame:
 #' dates <- as.Date(paste(2011:2020, 1:10, 21:30, sep = "-"))
-#' texts <- paste0("This is a document about ", month.name[1:10], ". ",
-#'    "This is not a document about ", rev(month.name[1:10]), ".")
+#' texts <- paste0(
+#'   "This is a document about ", month.name[1:10], ". ",
+#'   "This is not a document about ", rev(month.name[1:10]), "."
+#' )
 #' titles <- paste("Text", 1:10)
 #' test_df <- data.frame(Date = dates, Text = texts, Title = titles)
-#'
+#' 
 #' # Converting to corpusexploration object:
 #' corpus <- prepare_data(test_df, corpus_name = "Test corpus")
-#'
 #' \dontrun{
 #' # Running exploration app:
 #' run_corpus_exploration(corpus)
-#'
+#' 
 #' # Running app to extract documents:
 #' run_document_extractor(corpus)
 #' # Or:
@@ -37,7 +38,8 @@ run_document_extractor <- function(corpus_object, max_html_docs = 400, ...) {
 
   if (class(corpus_object) != "corpusexplorationobject") {
     stop("'corpus_object' is not a corpusexplorationobject",
-         call. = FALSE)
+      call. = FALSE
+    )
   }
 
   if ("package:corpusexplorationr" %in% search() == FALSE) {
@@ -49,7 +51,8 @@ run_document_extractor <- function(corpus_object, max_html_docs = 400, ...) {
 
   if (!is.numeric(max_html_docs)) {
     stop(sprintf("Invalid '%s' argument.", "max_html_docs"),
-         call. = FALSE)
+      call. = FALSE
+    )
   }
 
   corpus_object <- as.character(substitute(corpus_object))

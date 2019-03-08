@@ -24,10 +24,10 @@ transform_regular <- function(df, columns_to_include = NULL, normalise = TRUE) {
   }
 
   if (normalise == TRUE) {
-  ## På grunn av non-breaking-spaces:
+    ## På grunn av non-breaking-spaces:
     new_df$Text <- gsub("\u00A0", " ", new_df$Text, fixed = TRUE)
     ## And "soft hyphens"
-    new_df$Text <- gsub('\u00ad', "", new_df$Text, fixed = TRUE)
+    new_df$Text <- gsub("­", "", new_df$Text, fixed = TRUE)
   }
 
   new_df$Year <- lubridate::year(new_df$Date)
@@ -80,9 +80,11 @@ transform_365 <- function(new_df) {
   df_365$Year <- lubridate::year(df_365$Date)
 
   df_365 <-
-    padr::pad(df_365, interval = "day",
-              start_val = as.Date(paste0(min(df_365$Year), "-01-01")),
-              end_val = as.Date(paste0(max(df_365$Year), "-12-31")))
+    padr::pad(df_365,
+      interval = "day",
+      start_val = as.Date(paste0(min(df_365$Year), "-01-01")),
+      end_val = as.Date(paste0(max(df_365$Year), "-12-31"))
+    )
 
   df_365$empty <- is.na(df_365$Text)
   # df_365$empty[df_365$empty == TRUE] <- "black"
@@ -160,8 +162,10 @@ matrix_via_r <- function(df, matrix_without_punctuation = TRUE) {
       # To satisfy R CMD check:
       # I have run stringi::stri_escape_unicode("[\\Q!"#$%&\'()*+,/:;<=>?@[]^_`{|}~«»…\\E]")
       # to see which non-ascii characters had to be replaced
-      stringr::str_replace_all('[\\Q!"#$%&\'()*+,/:;<=>?@[]^_`{|}~\u00ab\u00bb\u2026\\E]',
-                               '') %>%
+      stringr::str_replace_all(
+        '[\\Q!"#$%&\'()*+,/:;<=>?@[]^_`{|}~\u00ab\u00bb\u2026\\E]',
+        ""
+      ) %>%
       stringr::str_replace_all("\\.", " ") %>%
       stringr::str_replace_all("\\d", "")
   }
@@ -175,18 +179,23 @@ matrix_via_r <- function(df, matrix_without_punctuation = TRUE) {
 
   data.table::setDT(df)
   df <-
-    df[, list(word = unlist(stringi::stri_split_fixed(Text, pattern = " "))), by =
-         id][,
-             list(count = .N), by = c('id', 'word')][order(id, word), ]
+    df[, list(word = unlist(stringi::stri_split_fixed(Text, pattern = " "))),
+      by =
+        id
+    ][,
+      list(count = .N),
+      by = c("id", "word")
+    ][order(id, word), ]
 
   message("3/3 Document term matrix: tokenising completed.")
 
-  ord <- unique(df$word) %>% sort
+  ord <- unique(df$word) %>% sort()
 
   message("3/3 Document term matrix: word list created.")
 
   df$word <-
-    plyr::mapvalues(df$word, ord, seq_along(ord)) %>% as.integer
+    plyr::mapvalues(df$word, ord, seq_along(ord)) %>%
+    as.integer()
 
   df <- dplyr::select(df, id, word, count)
 
@@ -202,7 +211,6 @@ matrix_via_r <- function(df, matrix_without_punctuation = TRUE) {
   message("3/3 Document term matrix done.")
 
   return(list(df, ord))
-
 }
 
 
@@ -253,18 +261,19 @@ get_term_vector <- function(returned_list) {
 #' @examples
 #' # Constructing test data frame:
 #' dates <- as.Date(paste(2011:2020, 1:10, 21:30, sep = "-"))
-#' texts <- paste0("This is a document about ", month.name[1:10], ". ",
-#'    "This is not a document about ", rev(month.name[1:10]), ".")
+#' texts <- paste0(
+#'   "This is a document about ", month.name[1:10], ". ",
+#'   "This is not a document about ", rev(month.name[1:10]), "."
+#' )
 #' titles <- paste("Text", 1:10)
 #' test_df <- data.frame(Date = dates, Text = texts, Title = titles)
-#'
+#' 
 #' # Converting to corpusexploration object:
 #' corpus <- prepare_data(test_df, corpus_name = "Test corpus")
-#'
 #' \dontrun{
 #' # Running exploration app:
 #' run_corpus_exploration(corpus)
-#'
+#' 
 #' # Running app to extract documents:
 #' run_document_extractor(corpus)
 #' # Or:
@@ -277,7 +286,6 @@ prepare_data <- function(dataset,
                          use_matrix = TRUE,
                          normalise = TRUE,
                          matrix_without_punctuation = TRUE) {
-
   if ("package:corpusexplorationr" %in% search() == FALSE) {
     stop(
       "Load 'corpusexplorationr' by running 'library(corpusexplorationr)', then run 'prepare_data()'.",
@@ -308,45 +316,54 @@ prepare_data <- function(dataset,
   if (!is.null(columns_to_include)) {
     if (!all(columns_to_include %in% colnames(dataset))) {
       stop("Hmm. 'columns to include': Make sure to only specify column names present in 'dataset'.",
-           call. = FALSE)
+        call. = FALSE
+      )
     }
   }
 
   if (!all(c("Date", "Text") %in% colnames(dataset))) {
     stop("Hmm. Make sure that 'dataset' contains 'Date' and 'Text' columns.",
-         call. = FALSE)
+      call. = FALSE
+    )
   }
 
   if (lubridate::is.Date(dataset$Date) == FALSE) {
     stop("Hmm. Make sure that 'dataset$Date' is of class 'Date'.",
-         call. = FALSE)
+      call. = FALSE
+    )
   }
 
   if (anyNA(dataset$Date)) {
     stop("Hmm. Make sure that 'dataset$Date' does not contain any NA values.",
-         call. = FALSE)
+      call. = FALSE
+    )
   }
 
   if (anyNA(dataset$Text)) {
     stop("Hmm. Make sure that 'dataset$Text' does not contain any NA values.",
-         call. = FALSE)
+      call. = FALSE
+    )
   }
 
   if (!is.character(dataset$Text)) {
     stop("Hmm. Make sure that 'dataset$Text' is a character vector.",
-         call. = FALSE)
+      call. = FALSE
+    )
   }
 
   if (nrow(dataset) < 2) {
     stop("Hmm. Make sure that 'dataset' contains at least two documents!",
-         call. = FALSE)
+      call. = FALSE
+    )
   }
 
   # The function proper
 
-  abc <- transform_regular(dataset,
-                           columns_to_include,
-                           normalise)
+  abc <- transform_regular(
+    dataset,
+    columns_to_include,
+    normalise
+  )
 
   abc_365 <- transform_365(abc)
 
@@ -379,8 +396,10 @@ prepare_data <- function(dataset,
     missing_columns <-
       columns_doc_info[!columns_doc_info %in% colnames(abc)]
     for (i in seq_along(missing_columns)) {
-      message(sprintf("Column %s does not exist and is ignored.",
-                      missing_columns[i]))
+      message(sprintf(
+        "Column %s does not exist and is ignored.",
+        missing_columns[i]
+      ))
     }
   }
 
