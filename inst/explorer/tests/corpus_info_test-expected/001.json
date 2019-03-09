@@ -33,7 +33,7 @@
   "output": {
     "hover_info": null,
     "korpuskart": {
-      "src": "[image data sha1: b00568d1b42dcb1902d88417d407b7ee8d9e0540]",
+      "src": "[image data sha1: 3aa3b642d2bb59f390f01dbf528f49beda3a7e3c]",
       "width": 331,
       "height": 675,
       "coordmap": {
@@ -51,7 +51,7 @@
             },
             "domain": {
               "left": 0.3,
-              "right": 81.2,
+              "right": 79.9,
               "bottom": 1110,
               "top": 1005.8
             },

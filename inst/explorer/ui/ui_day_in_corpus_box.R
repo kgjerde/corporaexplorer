@@ -4,7 +4,7 @@ shiny::div(shinydashboard::tabBox(
     shiny::tabPanel(
         title = shiny::textOutput('title'),
         #"Dokumentvisning",
-        
+
         shiny::plotOutput(
             "dag_kart",
             click = "dag_klikk",
@@ -14,4 +14,4 @@ shiny::div(shinydashboard::tabBox(
         )
     )
 ),
-class = "follow_scroll")
+class = "class_day_corpus")

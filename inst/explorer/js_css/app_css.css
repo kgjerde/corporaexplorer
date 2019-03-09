@@ -150,7 +150,7 @@ input:-webkit-autofill:active {
 /*Denne er for scrolling og beholde høyreboksen konstant.
 https://stackoverflow.com/questions/11399537/how-do-you-make-a-div-follow-as-you-scroll*/
 
-.follow_scroll .nav-tabs-custom {
+.class_day_corpus .nav-tabs-custom {
     position: fixed;
     top: 60px;
     margin-right: 10px;
@@ -158,7 +158,7 @@ https://stackoverflow.com/questions/11399537/how-do-you-make-a-div-follow-as-you
     display:none;
 }
 
-.ost .nav-tabs-custom {
+.class_doc_box .nav-tabs-custom {
     position: fixed;
     margin-right: 10px;
     bottom: 0;
@@ -223,4 +223,4 @@ hr {
   margin-bottom: 0em;
   margin-top: 1em;
 }
-  
+

@@ -1,7 +1,7 @@
 shiny::observeEvent(input$dag_klikk, {
     # Auto-scrolling to the top when new document clicked
     shinyjs::runjs(sprintf("$('.boxed_doc').scrollTo('#%s');", 1))
-    shinyjs::runjs("$('.ost .nav-tabs-custom').scrollTo('0%');")
+    shinyjs::runjs("$('.class_doc_box .nav-tabs-custom').scrollTo('0%');")
     
     min_rad <-
         finn_min_rad(input$dag_klikk, session_variables$plotinfo_dag)

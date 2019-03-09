@@ -30,8 +30,8 @@ search_arguments <- shiny::reactiveValues(
 plot_mode <- shiny::reactiveValues(mode = "data_365")
 
 ui_elements <- shiny::reactiveValues(
-    day_corpus_box = ".follow_scroll .nav-tabs-custom",
+    day_corpus_box = ".class_day_corpus .nav-tabs-custom",
     show_day_corpus_box = FALSE,
-    document_box = ".ost .nav-tabs-custom",
+    document_box = ".class_doc_box .nav-tabs-custom",
     show_document_box = FALSE
 )

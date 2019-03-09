@@ -1,11 +1,11 @@
 $(document).ready(function() {
-  $(".follow_scroll .nav-tabs-custom").css({
+  $(".class_day_corpus .nav-tabs-custom").css({
     'width': ($(".nav-tabs-custom").width() + 'px')
   });
 });
 
 $(document).ready(function() {
-  $(".ost .nav-tabs-custom").css({
+  $(".class_doc_box .nav-tabs-custom").css({
     'width': ($(".nav-tabs-custom").width() + 'px')
   });
 });
