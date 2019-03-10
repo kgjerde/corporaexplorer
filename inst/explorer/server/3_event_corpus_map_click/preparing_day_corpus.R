@@ -2,11 +2,7 @@
 data_day <-
   session_variables$data_dok[which(session_variables$data_dok$Date == session_variables[[plot_mode$mode]]$Date[min_rad]),]
 
-if (!("Title" %in% colnames(data_day))) {
-  data_day$Title <- ""
-  data_day$Title_2 <-
-    paste(seq_len(nrow(data_day)), data_day$Title)
-} else {
+if ("Title" %in% colnames(data_day)) {
   data_day$Title_2 <-
     paste(seq_len(nrow(data_day)), data_day$Title)
 

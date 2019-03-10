@@ -1,4 +1,10 @@
 output$doc_list_tekst <- shiny::renderText({
+
+    if (!("Title" %in% colnames(data_day))) {
+        data_day$Title_2 <- seq_len(nrow(data_day))
+    }
+
+
     c(
         "<b> Date: </b>",
         as.character(format(session_variables[[plot_mode$mode]]$Date[min_rad],
