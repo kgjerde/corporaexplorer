@@ -3,8 +3,6 @@ shiny::observeEvent(input$plot_click, {
 min_rad <-
         finn_min_rad(input$plot_click, session_variables$plot_build_info)
 
-# Automatic scrolling of documents back to the top ------------------------
-source("./server/3_event_corpus_map_click/js_auto_scrolling_to_top.R", local = TRUE)
 
 
 # Data 365 ----------------------------------------------------------------
@@ -24,6 +22,10 @@ source("./server/3_event_corpus_map_click/title_list.R", local = TRUE)
 
 # Corpus day map ----------------------------------------------------------
 source("./server/3_event_corpus_map_click/rendering_day_corpus_map.R", local = TRUE)
+
+                # Automatic scrolling of documents back to the top ------------------------
+source("./server/3_event_corpus_map_click/js_auto_scrolling_to_top.R", local = TRUE)
+
 
             }
         }

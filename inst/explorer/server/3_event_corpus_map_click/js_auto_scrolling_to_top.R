@@ -3,31 +3,16 @@ shinyjs::runjs(sprintf("$('.boxed_doc').scrollTo('#%s');", 1))
 
 if (plot_mode$mode == "data_365") {
 
-    kanin <-
-        5 +
-        (30 *
-             ((length(
-                 which(
-                     session_variables$data_dok$Date ==
-                         session_variables[[plot_mode$mode]]$Date[min_rad]
-                 )
-             )
-             %/% 15.5) + 1))
+    div_height <- session_variables$day_plot_height
+
+    if (div_height > 200) div_height <- 200  # corresponds to max-height in css for #dag_kart
 
     shinyjs::runjs(sprintf(
-    "$('.class_doc_box .nav-tabs-custom').css({
-        'top' : $('.class_day_corpus .nav-tabs-custom').outerHeight(true) +
-        $('.class_day_corpus .nav-tabs-custom').position.top() +
-    });"
+        "$('.class_doc_box .nav-tabs-custom').css({
+            'top' : %f + 140 + 'px'
+        });",
+        div_height
     ))
-
-
-    # shinyjs::runjs(sprintf(
-    #     "$('.class_doc_box .nav-tabs-custom').css({
-    #         'top' : %f + 140 + 'px'
-    #     });",
-    #     kanin
-    # ))
 
 } else if (plot_mode$mode == "data_dok") {
     shinyjs::runjs("$('.class_doc_box .nav-tabs-custom').css({

@@ -18,9 +18,10 @@
                     )
 
 
-            aa <<- session_variables$plotinfo_dag <-
+          session_variables$plotinfo_dag <-
                 ggplot2::ggplot_build(esel)$data[[2]]
 
+          session_variables$day_plot_height <- (length(unique(session_variables$plotinfo_dag$ymax)) * 20) + 15
 
             output$dag_kart <- shiny::renderPlot({
 
@@ -31,28 +32,9 @@
 
 height =
     function(x) {
-rader <- length(unique(session_variables$plotinfo_dag$ymax))
-    # 0 +
-    #     (50 *
-    #          ((nrow(data_day)
-    #           %/% 15.5) + 1)) # 15.5 fordi width 15 i dokvis_2.r. konstant først fordi
-    # dato og høyeste tall over selve graf. hackete hack
-(15) + (rader * 30)
-
-
+session_variables$day_plot_height
 })
-            if (nrow(data_day) > 50) {
-    shinyjs::runjs(sprintf(
-    "
-    var tall1 = $('.class_day_corpus .nav-tabs-custom').outerHeight(true)
-    var tall2 = $('.class_day_corpus .nav-tabs-custom').position.top()
 
-
-    $('.class_doc_box .nav-tabs-custom').css({
-        'top' : tall2
-    });"
-    ))
-            }
 
 
 
