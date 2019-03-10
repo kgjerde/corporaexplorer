@@ -1,4 +1,3 @@
-output$dag_kart <- shiny::renderPlot({
     if (length(min_rad) > 0) {
         if (nrow(data_day) > 0) {
 
@@ -18,19 +17,29 @@ output$dag_kart <- shiny::renderPlot({
                         modus = "day"
                     )
 
-            
-            session_variables$plotinfo_dag <-
+
+            aa <<- session_variables$plotinfo_dag <-
                 ggplot2::ggplot_build(esel)$data[[2]]
-            
+
+
+            output$dag_kart <- shiny::renderPlot({
+
+
             esel
-        }
-    }
+
 },
 
-height = function(x) {
-    5 +
-        (30 *
-             ((nrow(data_day)
-              %/% 15.5) + 1)) # 15.5 fordi width 15 i dokvis_2.r. konstant først fordi
+height =
+    function(x) {
+rader <- length(unique(session_variables$plotinfo_dag$ymax))
+    # 0 +
+    #     (50 *
+    #          ((nrow(data_day)
+    #           %/% 15.5) + 1)) # 15.5 fordi width 15 i dokvis_2.r. konstant først fordi
     # dato og høyeste tall over selve graf. hackete hack
+(15) + (rader * 30)
+
+
 })
+        }
+    }

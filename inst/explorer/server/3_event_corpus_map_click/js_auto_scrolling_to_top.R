@@ -13,18 +13,25 @@ if (plot_mode$mode == "data_365") {
                  )
              )
              %/% 15.5) + 1))
-    
-    
+
     shinyjs::runjs(sprintf(
-        "$('.class_doc_box .nav-tabs-custom').css({
-            'top' : %f + 140 + 'px'
-        });",
-        kanin
+    "$('.class_doc_box .nav-tabs-custom').css({
+        'top' : $('.class_day_corpus .nav-tabs-custom').outerHeight(true) +
+        $('.class_day_corpus .nav-tabs-custom').position.top() +
+    });"
     ))
-    
+
+
+    # shinyjs::runjs(sprintf(
+    #     "$('.class_doc_box .nav-tabs-custom').css({
+    #         'top' : %f + 140 + 'px'
+    #     });",
+    #     kanin
+    # ))
+
 } else if (plot_mode$mode == "data_dok") {
     shinyjs::runjs("$('.class_doc_box .nav-tabs-custom').css({
             'top' : 60 + 'px',
         });")
-    
+
 }
