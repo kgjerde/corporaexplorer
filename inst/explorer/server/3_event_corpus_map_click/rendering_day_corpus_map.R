@@ -41,5 +41,21 @@ rader <- length(unique(session_variables$plotinfo_dag$ymax))
 
 
 })
+            if (nrow(data_day) > 50) {
+    shinyjs::runjs(sprintf(
+    "
+    var tall1 = $('.class_day_corpus .nav-tabs-custom').outerHeight(true)
+    var tall2 = $('.class_day_corpus .nav-tabs-custom').position.top()
+
+
+    $('.class_doc_box .nav-tabs-custom').css({
+        'top' : tall2
+    });"
+    ))
+            }
+
+
+
+
         }
     }

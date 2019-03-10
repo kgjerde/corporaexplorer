@@ -156,8 +156,6 @@ https://stackoverflow.com/questions/11399537/how-do-you-make-a-div-follow-as-you
     margin-right: 10px;
     /*width: 815px;*/
     display:none;
-    max-height: 250px;
-    overflow: scroll;
 }
 
 .class_doc_box .nav-tabs-custom {
@@ -168,12 +166,12 @@ https://stackoverflow.com/questions/11399537/how-do-you-make-a-div-follow-as-you
     display:none;
 }
 
-/*
+
 #dag_kart {
   max-height: 100px;
   overflow: scroll;
 }
-*/
+
 
 /*De tre neste er for locked header og sidebar.
 https://stackoverflow.com/questions/41240878/r-shiny-fixed-sidebar-and-main-header-in-a-shiny-dashboard*/
