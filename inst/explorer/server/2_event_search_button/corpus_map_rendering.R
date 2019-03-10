@@ -17,7 +17,7 @@ source("./server/2_event_search_button/check_search_arguments.R", local = TRUE)
         value_for_slider <-
             ceiling((length(
                 unique(session_variables$plot_build_info$ymax)
-            ) * 10) + 15)
+            ) * 11) + 15)
     } else if (plot_mode$mode == "data_dok") {
         value_for_slider <-
             ceiling((length(

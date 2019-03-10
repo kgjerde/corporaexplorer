@@ -122,10 +122,10 @@ shinydashboard::dashboardSidebar(
         shiny::sliderInput(
             inputId = "PLOTSIZE",
             label = NULL,
-            min = 200,
+            min = 100,
             ticks = FALSE,
             step = 100,
-            max = 2000,
+            max = length(unique(loaded_data$original_data$data_365[["Year"]])) * 100,
             value = ceiling(length(unique(loaded_data$original_data$data_365[["Year"]])) * 7 * 10 + 15))
         ), class = "plotsize_field"
     ),
