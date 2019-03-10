@@ -32,7 +32,7 @@ transform_regular <- function(df, columns_to_include = NULL, normalise = TRUE) {
 
   new_df$Year <- lubridate::year(new_df$Date)
 
-  new_df$wc <- stringi::stri_count_words(new_df$Text) %>%
+  new_df$wc <- nchar(new_df$Text) %>%
     scales::rescale(to = c(1, 10))
 
   new_df$id <- seq_len(nrow(new_df))
