@@ -126,7 +126,7 @@ shinydashboard::dashboardSidebar(
             ticks = FALSE,
             step = 100,
             max = 2000,
-            value = ceiling(length(unique(loaded_data$original_data$data_365[["Year"]])) * 67.5))
+            value = ceiling(length(unique(loaded_data$original_data$data_365[["Year"]])) * 7 * 10 + 15))
         ), class = "plotsize_field"
     ),
     
