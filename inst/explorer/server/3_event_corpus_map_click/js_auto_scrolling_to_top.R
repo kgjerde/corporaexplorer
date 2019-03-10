@@ -1,9 +1,9 @@
-# Autoscrolling til toppen når nytt dokument trykkes
+# Auto scroll to top when new tile clicked --------------------------------
 shinyjs::runjs(sprintf("$('.boxed_doc').scrollTo('#%s');", 1))
-shinyjs::runjs(sprintf("$('.KARR').scrollTo('#%s');", 1))
+shinyjs::runjs(sprintf("$('#dag_kart').scrollTo('%s');", 0))
 
 
-
+# Positioning of UI elements depending on height of other -----------------
 if (plot_mode$mode == "data_365") {
 
     div_height <- session_variables$day_plot_height
