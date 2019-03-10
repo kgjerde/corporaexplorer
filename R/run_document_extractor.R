@@ -27,8 +27,6 @@
 #' 
 #' # Running app to extract documents:
 #' run_document_extractor(corpus)
-#' # Or:
-#' run_document_extractor(test_df)
 #' }
 run_document_extractor <- function(corpus_object, max_html_docs = 400, ...) {
   app <- system.file("download", "app.R", package = "corpusexplorationr")

@@ -53,7 +53,5 @@ run_corpus_exploration(corpus)
 
 # Running app to extract documents:
 run_document_extractor(corpus)
-# Or:
-run_document_extractor(test_df)
 }
 }

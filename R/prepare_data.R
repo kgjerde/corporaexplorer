@@ -276,8 +276,6 @@ get_term_vector <- function(returned_list) {
 #'
 #' # Running app to extract documents:
 #' run_document_extractor(corpus)
-#' # Or:
-#' run_document_extractor(test_df)
 #' }
 prepare_data <- function(dataset,
                          columns_to_include = NULL,

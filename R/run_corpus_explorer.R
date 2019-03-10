@@ -41,8 +41,6 @@
 #' 
 #' # Running app to extract documents:
 #' run_document_extractor(corpus)
-#' # Or:
-#' run_document_extractor(test_df)
 #' }
 run_corpus_explorer <- function(corpus_object,
                                 use_matrix = TRUE,
