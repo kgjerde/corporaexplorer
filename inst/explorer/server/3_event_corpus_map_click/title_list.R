@@ -14,7 +14,7 @@ output$doc_list_tekst <- shiny::renderText({
         nrow(data_day)
         ,
         rep("<br>", 2),
-        paste(highlight_document(data_day$Title_2,
+        paste(highlight_document(paste(data_day$Title_2, collapse = "<br>"),  # So it is passed as length 1
                                  unique(search_arguments$terms_highlight),
                                  MY_COLOURS,
                                  search_arguments$case_sensitive,
