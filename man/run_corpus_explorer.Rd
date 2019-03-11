@@ -6,7 +6,7 @@
 \usage{
 run_corpus_explorer(corpus_object, use_matrix = TRUE,
   regex_engine = c("default", "stringr", "re2r"),
-  optional_info = FALSE, allow_unreasonable_patterns = FALSE, ...)
+  optional_info = FALSE, ...)
 }
 \arguments{
 \item{corpus_object}{A corpusexploration object created by
@@ -27,11 +27,6 @@ complex regexes (i.e. when special regex characters are used). \item
 \item{optional_info}{Logical. If \code{TRUE}, information about search method
 (regex engine and whether the search was conducted in the document term
 matrix or in the full text documents).}
-
-\item{allow_unreasonable_patterns}{Logical. If \code{FALSE}, the app will
-not allow patterns that will result in an enormous amount of hits or will
-lead to a very slow search. (Examples of such patterns will include
-'\code{.}' and '\code{\\b}'.)}
 
 \item{...}{Other arguments passed to \code{\link[shiny]{runApp}} in the Shiny
 package.}

@@ -4,8 +4,7 @@
   if (check_valid_column_names(search_arguments$subset_custom_column,
                                session_variables$data_dok) &
           check_regexes(
-                               search_arguments$subset_terms) &
-      all(check_safe_search(search_arguments$subset_terms))) {
+                               search_arguments$subset_terms)) {
 
 # Filtrering ved år
 session_variables[[plot_mode$mode]] <-
