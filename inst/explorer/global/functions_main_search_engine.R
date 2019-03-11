@@ -142,11 +142,9 @@ count_matrix <- function(pattern, matriks, df, ordvektor) {
         regex_detect <- stringr::str_detect
                 # print("str")
     }
-    
-    regex_or_fixed <- stringr::regex
-    
+
     ord_indekser <- which(regex_detect(ordvektor,
-                                       regex_or_fixed(pattern)))
+                                           pattern))
     ## Lager data.table med bare dokumentene som inneholder ordene og total count
     #
     treff_count_matrix <- matriks[j %in% ord_indekser] %>%
