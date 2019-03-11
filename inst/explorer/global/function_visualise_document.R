@@ -13,7 +13,7 @@ visualiser_dok <-
            .pattern,
            case_sensitive,
            my_colours = MY_COLOURS,
-           tiles = 50) {
+           tiles = DOCUMENT_TILES) {
     if (case_sensitive == FALSE) {
       .text <- .text$Text
     } else if (case_sensitive == TRUE) {

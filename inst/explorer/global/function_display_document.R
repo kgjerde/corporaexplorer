@@ -9,7 +9,7 @@ display_document <-
   function(document,
            search_arguments,
            my_colours = MY_COLOURS,
-           chunks = 50) {
+           chunks = DOCUMENT_TILES) {
     vis_tekst <-
       insert_doc_navigation_links(document, chunks)
 
