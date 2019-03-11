@@ -42,8 +42,9 @@ visualiser_dok <-
       }
       
       names(word_loc) <-
-        paste(.pattern, sum_treff[seq_along(.pattern)], sep = " | ")
-      
+        stringr::str_trunc(.pattern, 25) %>%
+        paste(sum_treff[seq_along(.pattern)], sep = " | ")
+
       word_location <-
         locate_all_function(.text,
                                 .pattern) %>%
