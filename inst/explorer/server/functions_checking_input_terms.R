@@ -62,14 +62,36 @@ check_all_input <- function() {
     if (!is.null(input$subset_corpus)) {
         all_terms <- c(all_terms, collect_subset_terms())
     }
-    
+
     kolonner <- collect_custom_column(all_terms)
     return(
         all(
             check_valid_column_names(kolonner, session_variables$data_dok),
             check_valid_tresholds(all_terms),
             check_regexes(clean_terms(all_terms)),
-            check_search_term_length(all_terms)
+            check_search_term_length(all_terms),
+            all(check_safe_search(all_terms))
         )
     )
 }
+
+
+#' Check is patterns potentially can return extremely many hits
+#'
+#' @param patterns Character vector
+check_safe_search <- Vectorize(function(pattern) {
+    if (SAFE_SEARCH == TRUE) {
+        test_text <-
+            "This is a very short ASCII text.\nА это краткий не-ascii текст."
+        len <- nchar(test_text)
+        ratio <- 0.1
+        if (can_use_re2(pattern)) {
+            return(re2r::re2_count(test_text, pattern) / len < ratio)
+        } else {
+            return(str_count(test_text, pattern) / len < ratio)
+        }
+    } else {
+        return(TRUE)
+    }
+}, USE.NAMES = FALSE)
+
