@@ -64,15 +64,16 @@ check_all_input <- function() {
     }
 
     kolonner <- collect_custom_column(all_terms)
-    return(
+    return_value <-
         all(
             check_valid_column_names(kolonner, session_variables$data_dok),
             check_valid_tresholds(all_terms),
             check_regexes(clean_terms(all_terms)),
-            check_search_term_length(all_terms),
-            all(check_safe_search(all_terms))
-        )
-    )
+            check_search_term_length(all_terms))
+    if (return_value == TRUE) {
+        return_value <- check_safe_search(all_terms)
+    }
+    return(return_value)
 }
 
 
@@ -80,6 +81,7 @@ check_all_input <- function() {
 #'
 #' @param patterns Character vector
 check_safe_search <- Vectorize(function(pattern) {
+
     if (SAFE_SEARCH == TRUE) {
         test_text <-
             "This is a very short ASCII text.\nА это краткий не-ascii текст."
