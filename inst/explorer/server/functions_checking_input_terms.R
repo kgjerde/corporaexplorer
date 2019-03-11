@@ -62,7 +62,7 @@ check_all_input <- function() {
     if (!is.null(input$subset_corpus)) {
         all_terms <- c(all_terms, collect_subset_terms())
     }
-
+    if (length(all_terms) > 0) {
     kolonner <- collect_custom_column(all_terms)
     return_value <-
         all(
@@ -74,6 +74,9 @@ check_all_input <- function() {
         return_value <- check_safe_search(all_terms)
     }
     return(return_value)
+    } else {
+        return(TRUE)
+    }
 }
 
 
