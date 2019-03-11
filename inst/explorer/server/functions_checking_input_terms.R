@@ -88,7 +88,7 @@ check_safe_search <- Vectorize(function(pattern) {
         if (can_use_re2(pattern)) {
             return(re2r::re2_count(test_text, pattern) / len < ratio)
         } else {
-            return(str_count(test_text, pattern) / len < ratio)
+            return(stringr::str_count(test_text, pattern) / len < ratio)
         }
     } else {
         return(TRUE)
