@@ -33,6 +33,8 @@ if (NO_MATRIX == FALSE) {
 
 OPTIONAL_INFO_TO_CONSOLE <- shiny::getShinyOption("corpusexplorationr_optional_info")
 
+SAFE_SEARCH <- !shiny::getShinyOption("corpusexplorationr_allow_unreasonable_patterns")
+
 # Initialising
 USE_ONLY_STRINGR <- FALSE
 USE_ONLY_RE2R <- FALSE

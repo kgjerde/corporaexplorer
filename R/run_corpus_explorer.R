@@ -18,6 +18,10 @@
 #' @param optional_info Logical. If \code{TRUE}, information about search method
 #'   (regex engine and whether the search was conducted in the document term
 #'   matrix or in the full text documents).
+#' @param allow_unreasonable_patterns Logical. If \code{FALSE}, the app will
+#'   not allow patterns that will result in an enormous amount of hits or will
+#'   lead to a very slow search. (Examples of such patterns will include
+#'   '\code{.}' and '\code{\\b}'.)
 #' @param ... Other arguments passed to \code{\link[shiny]{runApp}} in the Shiny
 #'   package.
 #' @export
@@ -32,13 +36,13 @@
 #' )
 #' titles <- paste("Text", 1:10)
 #' test_df <- tibble::tibble(Date = dates, Text = texts, Title = titles)
-#' 
+#'
 #' # Converting to corpusexploration object:
 #' corpus <- prepare_data(test_df, corpus_name = "Test corpus")
 #' \dontrun{
 #' # Running exploration app:
 #' run_corpus_exploration(corpus)
-#' 
+#'
 #' # Running app to extract documents:
 #' run_document_extractor(corpus)
 #' }
@@ -50,6 +54,7 @@ run_corpus_explorer <- function(corpus_object,
                                   "re2r"
                                 ),
                                 optional_info = FALSE,
+                                allow_unreasonable_patterns = FALSE,
                                 ...) {
   app <- system.file("explorer", "app.R", package = "corpusexplorationr")
   if (app == "") {
@@ -78,6 +83,12 @@ run_corpus_explorer <- function(corpus_object,
     )
   }
 
+  if (!is.logical(allow_unreasonable_patterns)) {
+    stop(sprintf("Invalid '%s' argument.", "allow_unreasonable_patterns"),
+      call. = FALSE
+    )
+  }
+
   if (identical(regex_engine, c(
     "default",
     "stringr",
@@ -99,6 +110,7 @@ run_corpus_explorer <- function(corpus_object,
   shiny::shinyOptions("corpusexplorationr_optional_info" = optional_info)
   shiny::shinyOptions("corpusexplorationr_regex_engine" = regex_engine)
   shiny::shinyOptions("corpusexplorationr_use_matrix" = use_matrix)
+  shiny::shinyOptions("corpusexplorationr_allow_unreasonable_patterns" = allow_unreasonable_patterns)
 
   data <- as.character(substitute(corpus_object))
   shiny::shinyOptions("corpusexplorationr_data" = data)

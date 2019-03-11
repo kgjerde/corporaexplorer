@@ -103,6 +103,7 @@ shiny::onSessionEnded(function() {
   shiny::shinyOptions("corpusexplorationr_regex_engine" = NULL)
   shiny::shinyOptions("corpusexplorationr_data" = NULL)
   shiny::shinyOptions("corpusexplorationr_optional_info" = NULL)
+  shiny::shinyOptions("corpusexplorationr_allow_unreasonable_patterns" = NULL)
 })
 }
 

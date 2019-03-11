@@ -1,4 +1,13 @@
 shiny::validate(shiny::need(
+    all(check_safe_search(c(search_arguments$terms_highlight,
+                               search_arguments$subset_terms)))
+    ,
+    paste("\nThe search patterns will result in an enormous amount of hits or the search will run for a very long time, potentially infinitely.
+
+If this is something you want, set 'allow_unreasonable_patterns' in 'run_corpus_explorer()' to 'TRUE'.")
+))
+
+shiny::validate(shiny::need(
     check_search_term_length(c(search_arguments$terms_highlight,
                                search_arguments$subset_terms))
     ,
