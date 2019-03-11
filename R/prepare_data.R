@@ -284,12 +284,6 @@ prepare_data <- function(dataset,
                          use_matrix = TRUE,
                          normalise = TRUE,
                          matrix_without_punctuation = TRUE) {
-  if ("package:corpusexplorationr" %in% search() == FALSE) {
-    stop(
-      "Load 'corpusexplorationr' by running 'library(corpusexplorationr)', then run 'prepare_data()'.",
-      call. = FALSE
-    )
-  }
 
   # Argument checking
 
@@ -345,12 +339,6 @@ prepare_data <- function(dataset,
 
   if (!is.character(dataset$Text)) {
     stop("Hmm. Make sure that 'dataset$Text' is a character vector.",
-      call. = FALSE
-    )
-  }
-
-  if (nrow(dataset) < 2) {
-    stop("Hmm. Make sure that 'dataset' contains at least two documents!",
       call. = FALSE
     )
   }
