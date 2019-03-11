@@ -71,7 +71,7 @@ check_all_input <- function() {
             check_regexes(clean_terms(all_terms)),
             check_search_term_length(all_terms))
     if (return_value == TRUE) {
-        return_value <- check_safe_search(all_terms)
+        return_value <- all(check_safe_search(all_terms))
     }
     return(return_value)
     } else {
