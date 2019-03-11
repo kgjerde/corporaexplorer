@@ -32,8 +32,8 @@ source("./server/2_event_search_button/check_search_arguments.R", local = TRUE)
         "PLOTSIZE",
         label = NULL,
         value = value_for_slider,
-        min = NULL,
-        max = NULL,
+        min = value_for_slider / 3,
+        max = value_for_slider * 3,
         step = NULL
     )
 
