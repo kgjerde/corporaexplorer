@@ -7,6 +7,8 @@
 
 [![License: GPL
 v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Travis build
+status](https://travis-ci.org/kgjerde/corpusexplorationr.svg?branch=master)](https://travis-ci.org/kgjerde/corpusexplorationr)
 <!-- badges: end -->
 
 **corpusexplorationr** is an R package for dynamic exploration of text
@@ -20,16 +22,18 @@ activity.
 
 Example use cases include:
 
-  - Datasets that can be freely shared. someone interested in the
+  - **Datasets that can be freely shared**. someone interested in the
     development of, say, Russian government discourse on, say, democracy
     over the last twenty years. Usually available with CC license or
     similar. Much better than the websites. Often, making such text
     collections available is in itself a service to the scholarly
     community.
-  - Datasets that cannot be freely shared. E.g. exploring neewspaper
-    articles etc. retrieved from a database.
-  - Personal text collection. any collection of texts that are
+  - **Datasets that cannot be freely shared**. E.g. exploring a
+    collection of newspaper articles etc. retrieved from a database.
+  - **Personal text collections**: any collection of texts that are
     meaningful to explore with a time aspect.
+  - **Customised corpora**, e.g. text collections with sentences instead
+    of documents as base unit.
 
 While collecting and preparing the text collections to be explored
 requires some R programming knowledge, using the Shiny app(s) for
@@ -233,7 +237,7 @@ The **Corpus info** tab presents some very basic summary statistics of
 the search results. (Look at e.g.
 [`tidytext`](https://github.com/juliasilge/tidytext) and
 [`quanteda`](https://github.com/quanteda/quanteda) for excellent R
-packages for *quantitative* text analyses. Using such packages together
+packages for *quantitative* text analysis. Using such packages together
 with **corpusexplorationr** is highly recommended in order to combine
 qualitative and quantitative insights.)
 

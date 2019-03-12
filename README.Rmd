@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Travis build status](https://travis-ci.org/kgjerde/corpusexplorationr.svg?branch=master)](https://travis-ci.org/kgjerde/corpusexplorationr)
 <!-- badges: end -->
 
 
@@ -30,10 +31,11 @@ rely on close reading of textual documents as part of their academic activity.
 
 Example use cases include:
 
-* Datasets that can be freely shared. someone interested in the development of, say, Russian
-government discourse on, say, democracy over the last twenty years. Usually available with CC license or similar. Much better than the websites. Often, making such text collections available is in itself a service to the scholarly community.
-* Datasets that cannot be freely shared. E.g. exploring neewspaper articles etc. retrieved from a database.
-* Personal text collection. any collection of texts that are meaningful to explore with a time aspect.
+* **Datasets that can be freely shared**, e.g. collections of government statements and transcripts scraped from the US State Department or the Russian President's website. Such documents are usually equipped with a Creative Commons license or similar, and making such text collections available in a form better suited for both qualitative and quantitative analysis is in itself a service to the scholarly community.
+* **Datasets that cannot be freely shared**. E.g. exploring  a collection of
+newspaper articles etc. retrieved from a database.
+* **Personal text collections**: any collection of texts that are meaningful to explore with a time aspect.
+* **Customised corpora**, e.g. text collections with sentences instead of documents as base unit.
 
 While collecting and preparing the text collections to be explored requires
 some R programming knowledge, using the Shiny app(s) for exploring and
@@ -42,6 +44,7 @@ someone with no programming knowledge -- when first set up by a collaborator.
 
 Thus, the ambition is that package should be useful for anyone with a rudimentary knowledge of R --
 or who knows anyone with this knowledge.
+
 
 **corpusexplorationr** contains three functions:
 
@@ -179,7 +182,7 @@ knitr::include_graphics("man/figures/wall_1.png")
 The **Corpus info** tab presents some very basic summary statistics of the search results.
 (Look at e.g. [`tidytext`](https://github.com/juliasilge/tidytext) and
 [`quanteda`](https://github.com/quanteda/quanteda)
-for excellent R packages for *quantitative* text analyses. Using such packages
+for excellent R packages for *quantitative* text analysis. Using such packages
 together with **corpusexplorationr** is highly recommended in order to combine qualitative
 and quantitative insights.)
 
