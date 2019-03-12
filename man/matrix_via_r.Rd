@@ -20,7 +20,7 @@ matrix_via_r(df, matrix_without_punctuation = TRUE)
     \item The only "risk" with this strategy is that the corpus exploration
     app in some cases can produce false positives. E.g. searching for the
     term "donkey" will also find the term "don\%key".
-This should not be a problem for the *vast* opportunity of use cases, but if
+This should not be a problem for the vast opportunity of use cases, but if
 one so desires, there are three different solutions: set this paramater to
 \code{FALSE}, create a corpusexplorationobject without a matrix by setting
 the \code{use_matrix} parameter to \code{FALSE}, or run
