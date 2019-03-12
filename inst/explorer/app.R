@@ -108,4 +108,8 @@ shiny::onSessionEnded(function() {
 }
 
 # Run app -----------------------------------------------------------------
-shiny::shinyApp(ui, server)
+if (isTRUE(shiny::getShinyOption("corpusexplorationr_SERVER"))) {
+  return(shiny::shinyApp(ui, server))
+} else {
+  shiny::shinyApp(ui, server)
+}
