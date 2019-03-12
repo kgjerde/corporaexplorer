@@ -24,10 +24,15 @@ transform_regular <- function(df, columns_to_include = NULL, normalise = TRUE) {
   }
 
   if (normalise == TRUE) {
-    ## På grunn av non-breaking-spaces:
-    new_df$Text <- gsub("\u00A0", " ", new_df$Text, fixed = TRUE)
-    ## And "soft hyphens"
-    new_df$Text <- gsub("\u00ad", "", new_df$Text, fixed = TRUE)
+    for (i in seq_along(new_df)) {
+      # Only for character columns
+      if (is.character(new_df[[i]])) {
+        ## På grunn av non-breaking-spaces:
+        new_df[[i]] <- gsub("\u00A0", " ", new_df[[i]], fixed = TRUE)
+        ## And "soft hyphens"
+        new_df[[i]] <- gsub("\u00ad", "", new_df[[i]], fixed = TRUE)
+      }
+    }
   }
 
   new_df$Year <- lubridate::year(new_df$Date)
