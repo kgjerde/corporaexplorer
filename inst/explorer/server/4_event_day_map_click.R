@@ -11,7 +11,7 @@ if (length(min_rad) > 0) {
 source("server/4_event_day_map_click/UI_element_control_data.R", local = TRUE)
 
 # Document info tab -------------------------------------------------------
-source("server/4_event_day_map_click/document_info_tab.R", local = TRUE)
+source("server/4_event_day_map_click/document_info_tab_data_365.R", local = TRUE)
 
 # Document text (and visualisation) tab -----------------------------------
 source("server/4_event_day_map_click/document_text_vis_tab.R", local = TRUE)

@@ -41,7 +41,7 @@ source("./server/3_event_corpus_map_click/UI_element_control_data_dok.R", local 
 source("./server/3_event_corpus_map_click/display_document_text.R", local = TRUE)
 
 # Document info tab -------------------------------------------------------
-source("./server/3_event_corpus_map_click/document_info_tab.R", local = TRUE)
+source("./server/3_event_corpus_map_click/document_info_tab_data_dok.R", local = TRUE)
 
 # Document visualisation --------------------------------------------------
 source("./server/3_event_corpus_map_click/document_visualisation.R", local = TRUE)

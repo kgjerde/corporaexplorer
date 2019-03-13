@@ -10,6 +10,7 @@ if (!is.null(getOption("shiny.testmode"))) {
 
 # Function files ----------------------------------------------------------
 source("./global/function_display_document.R", local = TRUE)
+source("./global/function_display_document_info.R", local = TRUE)
 source("./global/function_filter_corpus.R", local = TRUE)
 source("./global/function_find_row_in_df.R", local = TRUE)
 source("./global/function_insert_doc_links.R", local = TRUE)
