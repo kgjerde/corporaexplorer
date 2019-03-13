@@ -65,12 +65,6 @@ source("./server/server_info_on_startup.R", local = TRUE)
 # Event: search button ----------------------------------------------------
 source("./server/server_event_search_button.R", local = TRUE)
 
-# Txt ---------------------------------------------------------------------
-# source("./server/server_download_txt.R", local = TRUE)
-
-# Zip ---------------------------------------------------------------------
-# source("./server/server_download_zip.R", local = TRUE)
-
 # HTML --------------------------------------------------------------------
 source("./server/server_download_html.R", local = TRUE)
 
