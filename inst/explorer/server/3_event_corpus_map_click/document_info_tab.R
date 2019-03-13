@@ -28,7 +28,14 @@ output$doc_info <- shiny::renderText({
             )
         )
     }
-    
+
+    doc_info_text <- paste(doc_info_text,
+                           sep = "<br>",
+                           paste0(
+                               tags$b("Word count: "),
+                               stringi::stri_count_words(session_variables$data_dok$Text[min_rad])
+                           ))
+
     other_columns <- INFO_COLUMNS[!INFO_COLUMNS %in% c("Date", "Title", "URL")]
     
     for (i in seq_along(other_columns)) {
@@ -40,13 +47,6 @@ output$doc_info <- shiny::renderText({
                                    session_variables$data_dok[[other_columns[i]]][min_rad]
                                ))
     }
-    
-    doc_info_text <- paste(doc_info_text,
-                           sep = "<br>",
-                           paste0(
-                               tags$b("Word count: "),
-                               stringi::stri_count_words(session_variables$data_dok$Text[min_rad])
-                           ))
-    
+
     doc_info_text
 })
