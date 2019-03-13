@@ -42,7 +42,7 @@ output$doc_info <- shiny::renderText({
                                paste0(
                                    tags$b(other_columns[i]),
                                    tags$b(": "),
-                                   session_variables$data_dok[[other_columns[i]]][min_rad]
+                                   session_variables$data_day[[other_columns[i]]][min_rad]
                                ))
     }
     
