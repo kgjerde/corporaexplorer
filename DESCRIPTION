@@ -38,8 +38,10 @@ Imports:
 	tibble,
 	tidyr,
 	zoo
+Other: Auto-scrolling is enabled by the `jquery.scrollTo` plugin,
+    see https://github.com/flesler/jquery.scrollTo.
 License: GPL-3
-Date/Publication: 2018
+Date/Publication: 2019
 LazyData: true
 RoxygenNote: 6.1.1
 Encoding: UTF-8
