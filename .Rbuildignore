@@ -3,4 +3,4 @@
 ^README\.Rmd$
 ^corpusexplorationr\.Rproj$
 ^\.Rproj\.user$
-man/figures
+\.png$
