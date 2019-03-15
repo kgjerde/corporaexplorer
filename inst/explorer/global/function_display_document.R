@@ -46,6 +46,9 @@ highlight_document <-
     }
 
     doclength <- nchar(text)
+
+    if (doclength > 0) {
+
     warning_text <- character(0)
     max_ratio <- 0.02
 
@@ -107,6 +110,6 @@ highlight_document <-
                              "--------------------<br><br>")
       text <- paste0(warning_text, text)
     }
-
+    }
     return(text)
   }
