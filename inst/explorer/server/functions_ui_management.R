@@ -1,7 +1,7 @@
 # Convenience functions ---------------------------------------------------
 
 #' Change class of UI element
-#' 
+#'
 #' Used to show or hide element.
 change_ui_class <- function(class_name, property, value) {
     shinyjs::runjs(sprintf(
@@ -25,6 +25,16 @@ hide_ui <- function(element_name_as_defined_in_ui_elements) {
     change_ui_class(ui_elements[[element_name_as_defined_in_ui_elements]],
                     property = "display",
                     value = "none")
+}
+
+
+#' Toggle ui element clickability function pair
+make_clickable_ui <- function(class_name) {
+    change_ui_class(class_name, "pointer-events", "auto")
+}
+
+make_unclickable_ui <- function(class_name) {
+    change_ui_class(class_name, "pointer-events", "none")
 }
 
 
