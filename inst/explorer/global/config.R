@@ -14,6 +14,8 @@ PUNCTUATION_REGEX <- '[\\Q.!"#$%&\'()*+,/:;<=>?@[]^_`{|}~\u00ab\u00bb\u2026\\E]|
 
 DOCUMENT_TILES <- 50
 
+EMPTY_DAY_PLOT_HEIGHT <- 20
+
 # From corpusexplorationobject --------------------------------------------
 
 INFO_COLUMNS <- loaded_data$columns_for_info

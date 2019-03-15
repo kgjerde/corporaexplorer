@@ -7,7 +7,8 @@ session_variables <- shiny::reactiveValues(
     doc_tab_open = FALSE,
     doc_list_open = FALSE,
     created_info = FALSE,
-    stop_info_tab = TRUE
+    stop_info_tab = TRUE,
+    day_plot_height = EMPTY_DAY_PLOT_HEIGHT
 )
 
 search_arguments <- shiny::reactiveValues(
