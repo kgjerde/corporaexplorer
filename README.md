@@ -3,8 +3,6 @@
 
 # corporaexplorer
 
-TODO Make sure screen shots are good illustrations.
-
 <!-- badges: start -->
 
 [![License: GPL
