@@ -9,12 +9,12 @@ run_corpus_explorer(corpus_object, use_matrix = TRUE,
   optional_info = FALSE, allow_unreasonable_patterns = FALSE, ...)
 }
 \arguments{
-\item{corpus_object}{A corpusexploration object created by
-\code{\link[corpusexplorationr]{prepare_data}}.}
+\item{corpus_object}{A corpusexplorer object created by
+\code{\link[corporaexplorer]{prepare_data}}.}
 
-\item{use_matrix}{Logical. If the corpusexplorationobject contains a document
+\item{use_matrix}{Logical. If the corporaexplorerobject contains a document
 term matrix, should it be used for searches? (See
-\code{\link[corpusexplorationr]{prepare_data}}.)}
+\code{\link[corporaexplorer]{prepare_data}}.)}
 
 \item{regex_engine}{Specify regular expression engine to be used: \itemize{
 \item `default`: use the \code{re2r} package
@@ -50,7 +50,7 @@ texts <- paste0(
 titles <- paste("Text", 1:10)
 test_df <- tibble::tibble(Date = dates, Text = texts, Title = titles)
 
-# Converting to corpusexploration object:
+# Converting to corpusexplorer object:
 corpus <- prepare_data(test_df, corpus_name = "Test corpus")
 \dontrun{
 # Running exploration app:

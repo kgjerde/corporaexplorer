@@ -1,4 +1,4 @@
-library(corpusexplorationr)
+library(corporaexplorer)
 library(shinytest)
 
 context("Explorer: Date test")

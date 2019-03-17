@@ -1,16 +1,16 @@
 
 # Important for shinytest to work -----------------------------------------
-library(corpusexplorationr)
+library(corporaexplorer)
 
 # Data set-up -------------------------------------------------------------
 
-loaded_data <- corpusexplorationr::test_data
+loaded_data <- corporaexplorer::test_data
 
 # Constants ---------------------------------------------------------------
 
 source("./global/constants.R", local = TRUE)
 
-# From corpusexplorationobject --------------------------------------------
+# From corporaexplorerobject --------------------------------------------
 
 INFO_COLUMNS <- loaded_data$columns_for_info
 NO_MATRIX <- identical(loaded_data$ordvektorer$data_dok, FALSE)

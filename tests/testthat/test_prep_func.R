@@ -1,7 +1,7 @@
 context("Prepare data")
 
 library(testthat)
-library(corpusexplorationr)
+library(corporaexplorer)
 
 test_that("prepare_data() works", {
 
@@ -9,5 +9,5 @@ test_that("prepare_data() works", {
   test_obj <- create_test_data()
 
   # Checks for equality -----------------------------------------------------
-  expect_equal(test_obj, corpusexplorationr::test_data)
+  expect_equal(test_obj, corporaexplorer::test_data)
 })

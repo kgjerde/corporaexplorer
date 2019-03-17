@@ -7,7 +7,7 @@
 create_test_data()
 }
 \value{
-A corpusexplorationobject used for testing
+A corporaexplorerobject used for testing
 }
 \description{
 Create test_data

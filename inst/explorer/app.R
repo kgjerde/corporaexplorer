@@ -100,11 +100,11 @@ source("./server/6_event_hover_corpus_map.R", local = TRUE)
 
 # Cleaning up the session -------------------------------------------------
 shiny::onSessionEnded(function() {
-  shiny::shinyOptions("corpusexplorationr_use_matrix" = NULL)
-  shiny::shinyOptions("corpusexplorationr_regex_engine" = NULL)
-  shiny::shinyOptions("corpusexplorationr_data" = NULL)
-  shiny::shinyOptions("corpusexplorationr_optional_info" = NULL)
-  shiny::shinyOptions("corpusexplorationr_allow_unreasonable_patterns" = NULL)
+  shiny::shinyOptions("corporaexplorer_use_matrix" = NULL)
+  shiny::shinyOptions("corporaexplorer_regex_engine" = NULL)
+  shiny::shinyOptions("corporaexplorer_data" = NULL)
+  shiny::shinyOptions("corporaexplorer_optional_info" = NULL)
+  shiny::shinyOptions("corporaexplorer_allow_unreasonable_patterns" = NULL)
 })
 }
 

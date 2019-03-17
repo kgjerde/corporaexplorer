@@ -1,4 +1,4 @@
-library(corpusexplorationr)
+library(corporaexplorer)
 library(shinytest)
 
 context("Extractor: Basic search works")

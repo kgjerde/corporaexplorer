@@ -4,11 +4,11 @@
 \name{test_data}
 \alias{test_data}
 \title{A tiny test dataset to test basic functionality}
-\format{A corpusexplorationobject.}
+\format{A corporaexplorerobject.}
 \usage{
 test_data
 }
 \description{
-Created by \code{corpusexplorationr:::create_test_data()}.
+Created by \code{corporaexplorer:::create_test_data()}.
 }
 \keyword{datasets}

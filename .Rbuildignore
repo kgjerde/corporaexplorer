@@ -2,6 +2,6 @@
 ^\.travis\.yml$
 ^LICENSE\.md$
 ^README\.Rmd$
-^corpusexplorationr\.Rproj$
+^corporaexplorer\.Rproj$
 ^\.Rproj\.user$
 \.png$

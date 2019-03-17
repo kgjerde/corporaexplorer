@@ -1,14 +1,14 @@
-Package: corpusexplorationr
+Package: corporaexplorer
 Type: Package
 Title: A Shiny App for Exploration of Text Collections
-Version: 0.0.0.9000
+Version: 0.4.0.9000
 Authors@R: person("Kristian Lundby", "Gjerde", email = "kristian.gjerde@gmail.com",
   role = c("aut", "cre"))
 Description: An R package for dynamic exploration of text collections. The
     package contains 1) a helper function to convert a data
-    frame to a 'corpusexplorationobject', 2) a Shiny app for fast and flexible
-    exploration of a 'corpusexplorationobject', and 3) a Shiny app for simple
-    retrieval/extraction of documents from a 'corpusexplorationobject' in a
+    frame to a 'corporaexplorerobject', 2) a Shiny app for fast and flexible
+    exploration of a 'corporaexplorerobject', and 3) a Shiny app for simple
+    retrieval/extraction of documents from a 'corporaexplorerobject' in a
     reading-friendly format. The intended primary audience
     is qualitatively oriented researchers who rely on close reading of textual
     documents as part of their academic activity.
@@ -46,5 +46,5 @@ LazyData: true
 RoxygenNote: 6.1.1
 Encoding: UTF-8
 Suggests: shinytest, testthat
-URL: https://github.com/kgjerde/corpusexplorationr
-BugReports: https://github.com/kgjerde/corpusexplorationr/issues
+URL: https://github.com/kgjerde/corporaexplorer
+BugReports: https://github.com/kgjerde/corporaexplorer/issues

@@ -29,7 +29,7 @@ present in dataset, it will be ignored.}
 
 \item{use_matrix}{Logical. Should the function create a document term matrix
 for fast searching? If \code{TRUE}, data preparation will run longer and demand
-more memory. If \code{FALSE}, the returning corpusexplorationobject will be more light-weight, but
+more memory. If \code{FALSE}, the returning corporaexplorerobject will be more light-weight, but
 searching will be slower.}
 
 \item{normalise}{Should non-breaking spaces (U+00A0) and soft hyphens
@@ -39,7 +39,7 @@ searching will be slower.}
   from the text before constructing the document term matrix? If \code{TRUE},
   the default:
 \itemize{
-    \item The corpusexploration object will be lighter and most searches in
+    \item The corpusexplorer object will be lighter and most searches in
     the corpus exploration app will be faster.
     \item Searches including punctuation and digits will be carried out in
     the full text documents.
@@ -48,18 +48,18 @@ searching will be slower.}
     term "donkey" will also find the term "don\%key".
 This should not be a problem for the vast opportunity of use cases, but if
 one so desires, there are three different solutions: set this paramater to
-\code{FALSE}, create a corpusexplorationobject without a matrix by setting
+\code{FALSE}, create a corporaexplorerobject without a matrix by setting
 the \code{use_matrix} parameter to \code{FALSE}, or run
-\code{\link[corpusexplorationr]{run_corpus_explorer}} with the
+\code{\link[corporaexplorer]{run_corpus_explorer}} with the
 \code{use_matrix} parameter set to \code{FALSE}.
 }
- If \code{FALSE}, the corpusexploration object will be larger, and most
+ If \code{FALSE}, the corpusexplorer object will be larger, and most
  simple searches will be slower.}
 }
 \value{
-A \code{corpusexploration} object to be passed as argument to
-  \code{\link[corpusexplorationr]{run_corpus_explorer}} and
-  \code{\link[corpusexplorationr]{run_document_extractor}}.
+A \code{corpusexplorer} object to be passed as argument to
+  \code{\link[corporaexplorer]{run_corpus_explorer}} and
+  \code{\link[corporaexplorer]{run_document_extractor}}.
 }
 \description{
 Prepare data for corpus exploration
@@ -74,7 +74,7 @@ texts <- paste0(
 titles <- paste("Text", 1:10)
 test_df <- tibble::tibble(Date = dates, Text = texts, Title = titles)
 
-# Converting to corpusexploration object:
+# Converting to corpusexplorer object:
 corpus <- prepare_data(test_df, corpus_name = "Test corpus")
 \dontrun{
 # Running exploration app:

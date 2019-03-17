@@ -87,7 +87,7 @@ if (!identical(terms_highlight, "")) {
       sep = "<br>",
       hit_count_text,
       sprintf(
-        "'%s' is found _corpusexplorationr_%s times in the document
+        "'%s' is found _corporaexplorer_%s times in the document
                                     (%s search)",
         sprintf(
           '<span style="color:%s">%s</span>',
@@ -106,9 +106,9 @@ if (!identical(terms_highlight, "")) {
   }
   hit_count_text <- paste0("<br>", hit_count_text)#, "<hr>")
   # Removing spaceholder, fixing singular/plural TODO still dirty hack
-  hit_count_text <- stringr::str_replace_all(hit_count_text, "is found _corpusexplorationr_1 times",
+  hit_count_text <- stringr::str_replace_all(hit_count_text, "is found _corporaexplorer_1 times",
                                              "is found 1 time")
-  hit_count_text <- stringr::str_replace_all(hit_count_text, "is found _corpusexplorationr_(\\d+) times",
+  hit_count_text <- stringr::str_replace_all(hit_count_text, "is found _corporaexplorer_(\\d+) times",
                                              "is found \\1 times")
 }
 

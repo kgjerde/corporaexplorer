@@ -10,6 +10,6 @@ test_that("extractor app works", {
   # Use compareImages=FALSE because the expected image screenshots were created
   # on a Mac, and they will differ from screenshots taken on the CI platform,
   # which runs on Linux.
-  appdir <- system.file(package = "corpusexplorationr", "download")
+  appdir <- system.file(package = "corporaexplorer", "download")
   expect_pass(testApp(appdir, compareImages = FALSE))
 })

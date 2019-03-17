@@ -3,11 +3,11 @@
 #' Launch Shiny app for exploration of text collection. Interrupt R to stop the
 #' application (usually by pressing Ctrl+C or Esc).
 #'
-#' @param corpus_object A corpusexploration object created by
-#'   \code{\link[corpusexplorationr]{prepare_data}}.
-#' @param use_matrix Logical. If the corpusexplorationobject contains a document
+#' @param corpus_object A corpusexplorer object created by
+#'   \code{\link[corporaexplorer]{prepare_data}}.
+#' @param use_matrix Logical. If the corporaexplorerobject contains a document
 #'   term matrix, should it be used for searches? (See
-#'   \code{\link[corpusexplorationr]{prepare_data}}.)
+#'   \code{\link[corporaexplorer]{prepare_data}}.)
 #' @param regex_engine Specify regular expression engine to be used: \itemize{
 #'   \item `default`: use the \code{re2r} package
 #'   (\url{https://github.com/qinwf/re2r}) for simple searches and the
@@ -37,7 +37,7 @@
 #' titles <- paste("Text", 1:10)
 #' test_df <- tibble::tibble(Date = dates, Text = texts, Title = titles)
 #'
-#' # Converting to corpusexploration object:
+#' # Converting to corpusexplorer object:
 #' corpus <- prepare_data(test_df, corpus_name = "Test corpus")
 #' \dontrun{
 #' # Running exploration app:
@@ -56,22 +56,22 @@ run_corpus_explorer <- function(corpus_object,
                                 optional_info = FALSE,
                                 allow_unreasonable_patterns = FALSE,
                                 ...) {
-  app <- system.file("explorer", "app.R", package = "corpusexplorationr")
+  app <- system.file("explorer", "app.R", package = "corporaexplorer")
   if (app == "") {
-    stop("Could not find directory. Try re-installing `corpusexplorationr`.",
+    stop("Could not find directory. Try re-installing `corporaexplorer`.",
       call. = FALSE
     )
   }
 
-  if ("package:corpusexplorationr" %in% search() == FALSE) {
+  if ("package:corporaexplorer" %in% search() == FALSE) {
     stop(
-      "Load 'corpusexplorationr' by running 'library(corpusexplorationr)', then run 'run_corpus_explorer()'.",
+      "Load 'corporaexplorer' by running 'library(corporaexplorer)', then run 'run_corpus_explorer()'.",
       call. = FALSE
     )
   }
 
-  if (class(corpus_object) != "corpusexplorationobject") {
-    stop("'data' is not a corpusexplorationobject",
+  if (class(corpus_object) != "corporaexplorerobject") {
+    stop("'data' is not a corporaexplorerobject",
       call. = FALSE
     )
   }
@@ -107,13 +107,13 @@ run_corpus_explorer <- function(corpus_object,
     )
   }
 
-  shiny::shinyOptions("corpusexplorationr_optional_info" = optional_info)
-  shiny::shinyOptions("corpusexplorationr_regex_engine" = regex_engine)
-  shiny::shinyOptions("corpusexplorationr_use_matrix" = use_matrix)
-  shiny::shinyOptions("corpusexplorationr_allow_unreasonable_patterns" = allow_unreasonable_patterns)
+  shiny::shinyOptions("corporaexplorer_optional_info" = optional_info)
+  shiny::shinyOptions("corporaexplorer_regex_engine" = regex_engine)
+  shiny::shinyOptions("corporaexplorer_use_matrix" = use_matrix)
+  shiny::shinyOptions("corporaexplorer_allow_unreasonable_patterns" = allow_unreasonable_patterns)
 
   data <- as.character(substitute(corpus_object))
-  shiny::shinyOptions("corpusexplorationr_data" = data)
+  shiny::shinyOptions("corporaexplorer_data" = data)
 
   message(sprintf(
     "Exploring %s document%s",

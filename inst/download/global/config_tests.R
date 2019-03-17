@@ -1,6 +1,6 @@
 
 # Import for shinytest to work: -------------------------------------------
-library(corpusexplorationr)
+library(corporaexplorer)
 
 # Setting up data and constants -------------------------------------------
 

@@ -1,4 +1,4 @@
 library(testthat)
-library(corpusexplorationr)
+library(corporaexplorer)
 
-test_check("corpusexplorationr")
+test_check("corporaexplorer")

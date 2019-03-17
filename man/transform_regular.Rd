@@ -2,7 +2,7 @@
 % Please edit documentation in R/prepare_data.R
 \name{transform_regular}
 \alias{transform_regular}
-\title{Adjusts data frame to corpusexploration format}
+\title{Adjusts data frame to corpusexplorer format}
 \usage{
 transform_regular(df, columns_to_include = NULL, normalise = TRUE)
 }
@@ -23,6 +23,6 @@ included.}
 A tibble ("data_dok")
 }
 \description{
-Adjusts data frame to corpusexploration format
+Adjusts data frame to corpusexplorer format
 }
 \keyword{internal}

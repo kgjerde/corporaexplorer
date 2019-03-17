@@ -1,35 +1,36 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# corpusexplorationr
+# corporaexplorer
+
+TODO Make sure screen shots are good illustrations.
 
 <!-- badges: start -->
 
 [![License: GPL
 v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Travis build
-status](https://travis-ci.org/kgjerde/corpusexplorationr.svg?branch=master)](https://travis-ci.org/kgjerde/corpusexplorationr)
+status](https://travis-ci.org/kgjerde/corporaexplorer.svg?branch=master)](https://travis-ci.org/kgjerde/corporaexplorer)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/kgjerde/corporaexplorer?branch=master&svg=true)](https://ci.appveyor.com/project/kgjerde/corporaexplorer)
 <!-- badges: end -->
 
-**corpusexplorationr** is an R package for dynamic exploration of text
-collections.
-
-<!-- <sup>[1](#myfootnote1)</sup> -->
+**corporaexplorer** is an R package for dynamic exploration of
+corpora/text collections through a `Shiny` app graphical user interface.
 
 The intended primary audience is qualitatively oriented researchers who
 rely on close reading of textual documents as part of their academic
 activity.
 
-Example use cases include:
+Example corpora and use cases include:.
 
-  - **Datasets that can be freely shared**. someone interested in the
-    development of, say, Russian government discourse on, say, democracy
-    over the last twenty years. Usually available with CC license or
-    similar. Much better than the websites. Often, making such text
-    collections available is in itself a service to the scholarly
-    community.
-  - **Datasets that cannot be freely shared**. E.g. exploring a
-    collection of newspaper articles etc. retrieved from a database.
+  - **Text collections that can be freely shared**, e.g. collections of
+    government statements and transcripts scraped from the US State
+    Department or the Russian President’s website. Such documents are
+    usually equipped with a Creative Commons license or similar. Example
+    use case: a close reading of official Russian discourse on NATO.
+  - **Text collections that cannot be freely shared**, e.g. a collection
+    of newspaper articles etc. retrieved from a database.
   - **Personal text collections**: any collection of texts that are
     meaningful to explore with a time aspect.
   - **Customised corpora**, e.g. text collections with sentences instead
@@ -41,52 +42,61 @@ exploring and extracting documents from the corpus should be rather
 intuitive also for someone with no programming knowledge – when first
 set up by a collaborator.
 
-Thus, the ambition is that package should be useful for anyone with a
-rudimentary knowledge of R – or who knows anyone with this knowledge.
-
-**corpusexplorationr** contains three functions:
-
-1.  `prepare_data()` converts a data frame to a corpusexploration
-    object.
-2.  `run_corpus_explorer()` runs the package’s core feature, a Shiny app
-    for fast and flexible exploration of a corpusexploration object.
-3.  `run_document_extractor()` runs a Shiny app for simple
-    retrieval/extraction of documents from a corpusexploration object in
-    a reading-friendly format.
+Thus, the ambition is that the package should be useful for anyone with
+a rudimentary knowledge of R – or who knows anyone with this knowledge.
 
 ## Installation
 
-To install **corpusexplorationr**, run the following from an R console:
+To install **corporaexplorer**, run the following from an R console:
 
 ``` r
 install.packages("devtools")
-devtools::install_github("kgjerde/corpusexplorationr")
+devtools::install_github("kgjerde/corporaexplorer")
 ```
+
+## Functions
+
+**corporaexplorer** contains three functions:
+
+1.  `prepare_data()` converts a data frame to a ‘corporaexplorerobject’.
+2.  `run_corpus_explorer()` runs the package’s core feature, a Shiny app
+    for fast and flexible exploration of a ‘corporaexplorerobject’.
+3.  `run_document_extractor()` runs a Shiny app for simple
+    retrieval/extraction of documents from a ‘corporaexplorerobject’ in
+    a reading-friendly format.
+
+## Example corpora
+
+The package includes a tiny ‘corporaexplorerobject’:
+`corporaexplorer::test_data`, which consists of 10 tiny documents and
+can be used for testing the basic functionality of the package.
+
+A more typical TODO
 
 ## 1\. Prepare data for the Shiny apps
 
 The `prepare_data()` function takes a data frame with, as a minimum, a
-`Date` and a `Text` column as input and returns a corpusexploration
-object that can be explored in the package’s two Shiny apps. The default
+`Date` and a `Text` column as input and returns a corpusexplorer object
+that can be explored in the package’s two Shiny apps. The default
 arguments should work fine for most use cases.
 
-After installing **corpusexplorationr**, run the following in the R
-console to see full documentation for the `prepare_data()` function.
+After installing **corporaexplorer**, run the following in the R console
+to see full documentation for the `prepare_data()` function.
 
 ``` r
-library(corpusexplorationr)
+library(corporaexplorer)
 ?prepare_data
 ```
 
 ## 2\. The corpus exploration app
 
 Start the app by running the `run_corpus_explorer()` function with a
-corpusexploration object created by `prepare_data()` as argument. Run
-the following in the R console to see documentation for the
+corpusexplorer object created by `prepare_data()` as argument. Run the
+following in the R console to see documentation for the
 `run_corpus_explorer()` function.
 
 ``` r
-library(corpusexplorationr)
+library(corporaexplorer)
 ?run_corpus_explorer
 ```
 
@@ -158,7 +168,7 @@ match a literal “.”, and `\d` match any digit.)
 
 #### Note: Additional search arguments
 
-**corpusexplorationr** offers two optional arguments that can be used
+**corporaexplorer** offers two optional arguments that can be used
 separately or together by adding them to the end of a search pattern
 (with no space between):
 
@@ -235,10 +245,10 @@ document:
 
 The **Corpus info** tab presents some very basic summary statistics of
 the search results. (Look at e.g.
-[`tidytext`](https://github.com/juliasilge/tidytext) and
-[`quanteda`](https://github.com/quanteda/quanteda) for excellent R
+[`quanteda`](https://github.com/quanteda/quanteda) and
+[`tidytext`](https://github.com/juliasilge/tidytext) for excellent R
 packages for *quantitative* text analysis. Using such packages together
-with **corpusexplorationr** is highly recommended in order to combine
+with **corporaexplorer** is highly recommended in order to combine
 qualitative and quantitative insights.)
 
 Clicking on a tile in the corpus map opens the **document view** to the
@@ -262,7 +272,7 @@ tile chart consisting of n tiles where each tile represents a 1/n part
 of the document, and where the colour in a tile indicates whether and
 how many times the search term is found in that part of the document.
 Clicking on a tile scrolls the document to the corresponding part of the
-document.
+document.<sup>[1](#myfootnote1)</sup>
 
 <img src="man/figures/wall.png" width="80%" />
 
@@ -281,16 +291,20 @@ setups:
 2.  use `stringr` for all searches.
 3.  use `re2r`for all searches.
 
-`re2r` is very fast but allows for less advanced regular expressions
-than `stringr` and is more limited when in handling non-ASCII text. With
-the `default` option, the `re2r` engine is run when no special regex
-characters are used; otherwise the `stringr` engine and syntax is used.
-This option should fit most use cases.
+`re2r` is very fast but has a more limited feature set than `stringr`,
+especially n handling non-ASCII text, including word boundary detection.
+With the `default` option, the `re2r` engine is run when no special
+regex characters are used; otherwise `stringr` is used. This option
+should fit most use cases.
 
 Please consult the documentation for
 [`re2r`](https://github.com/qinwf/re2r) and
 [`stringr`](https://github.com/tidyverse/stringr) for full information
 about syntax flavours.
+
+By default, searches for patterns consisting of a single word and
+without special characters will be carried out in a document term
+matrix. Other searches are carried out in full text.
 
 Advanced users can set the `optional_info` parameter in
 `run_corpus_exploration()` to `TRUE`: this will print to console the
@@ -306,12 +320,12 @@ format suitable for close reading.
 <img src="man/figures/download_tool.png" width="80%" />
 
 Start the app by running the `run_document_extractor()` function with a
-corpusexploration object created by `prepare_data()` as argument. Run
-the following in the R console to see documentation for the
+corpusexplorer object created by `prepare_data()` as argument. Run the
+following in the R console to see documentation for the
 `run_document_extractor()` function.
 
 ``` r
-library(corpusexplorationr)
+library(corporaexplorer)
 ?run_document_extractor
 ```
 
@@ -338,9 +352,11 @@ one report (can be changed in the `max_html_docs` parameter in
 ### 3b. Advanced detail: Regular expression engines
 
 Speed is considered to be of less importance in this app, and all
-searches are carried out as full text searches with `stringr`.
+searches are carried out as full text searches with `stringr`. Again,
+note that a single backslash is used as escape character. For example
+will `\.` match a literal “.”, and `\d` match any digit.
 
-Again, note that a single backslash is used as escape character. For
-example will `\.` match a literal “.”, and `\d` match any digit.
+<hr>
 
-<!-- <a name="myfootnote1">1</a>: Footnote content goes here -->
+<a name="myfootnote1">*1</a>. Using the
+[`jquery.scrollTo`](https://github.com/flesler/jquery.scrollTo) plugin.*

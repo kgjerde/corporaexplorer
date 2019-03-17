@@ -1,6 +1,6 @@
 #' Create test_data
 #'
-#' @return A corpusexplorationobject used for testing
+#' @return A corporaexplorerobject used for testing
 #' @keywords internal
 create_test_data <- function() {
   dates <- as.Date(paste(2011:2020, 1:10, 21:30, sep = "-"))

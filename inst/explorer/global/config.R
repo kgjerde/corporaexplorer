@@ -1,13 +1,13 @@
 # Data set-up -------------------------------------------------------------
 
-loaded_data <- eval(as.name(getShinyOption("corpusexplorationr_data")))
+loaded_data <- eval(as.name(getShinyOption("corporaexplorer_data")))
 
 
 # Constants ---------------------------------------------------------------
 
 source("./global/constants.R", local = TRUE)
 
-# From corpusexplorationobject --------------------------------------------
+# From corporaexplorerobject --------------------------------------------
 
 INFO_COLUMNS <- loaded_data$columns_for_info
 NO_MATRIX <- identical(loaded_data$ordvektorer$data_dok, FALSE)
@@ -22,20 +22,20 @@ if (is.null(loaded_data$name)) {
 # From function arguments -------------------------------------------------
 
 if (NO_MATRIX == FALSE) {
-    NO_MATRIX <- !shiny::getShinyOption("corpusexplorationr_use_matrix")
+    NO_MATRIX <- !shiny::getShinyOption("corporaexplorer_use_matrix")
 }
 
-OPTIONAL_INFO_TO_CONSOLE <- shiny::getShinyOption("corpusexplorationr_optional_info")
+OPTIONAL_INFO_TO_CONSOLE <- shiny::getShinyOption("corporaexplorer_optional_info")
 
-SAFE_SEARCH <- !shiny::getShinyOption("corpusexplorationr_allow_unreasonable_patterns")
+SAFE_SEARCH <- !shiny::getShinyOption("corporaexplorer_allow_unreasonable_patterns")
 
 # Initialising
 USE_ONLY_STRINGR <- FALSE
 USE_ONLY_RE2R <- FALSE
 
-if (shiny::getShinyOption("corpusexplorationr_regex_engine") == "stringr") {
+if (shiny::getShinyOption("corporaexplorer_regex_engine") == "stringr") {
     USE_ONLY_STRINGR <- TRUE
-} else if (shiny::getShinyOption("corpusexplorationr_regex_engine") == "re2r") {
+} else if (shiny::getShinyOption("corporaexplorer_regex_engine") == "re2r") {
     USE_ONLY_RE2R <- TRUE
 }
 
