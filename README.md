@@ -71,8 +71,8 @@ can be used for testing the basic functionality of the package.
 
 A more typical corpus can be downloaded for testing
 [here](https://ndownloader.figshare.com/files/14626970) – this is a
-document collection scraped from the Russian governmental website
-kremlin.ru (more info
+‘corporaexplorerobject’ based on a document collection scraped from
+the Russian governmental website kremlin.ru (more info
 [here](https://figshare.com/s/820c105c12755d853801)). The equivalent
 material in Russian can be downloaded
 [here](https://figshare.com/s/be0d2cfa195e43160fcb).<sup>[2](#myfootnote2)</sup>
