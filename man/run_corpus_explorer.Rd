@@ -9,7 +9,7 @@ run_corpus_explorer(corpus_object, use_matrix = TRUE,
   optional_info = FALSE, allow_unreasonable_patterns = FALSE, ...)
 }
 \arguments{
-\item{corpus_object}{A corpusexplorer object created by
+\item{corpus_object}{A corporaexplorer object created by
 \code{\link[corporaexplorer]{prepare_data}}.}
 
 \item{use_matrix}{Logical. If the corporaexplorerobject contains a document
@@ -50,7 +50,7 @@ texts <- paste0(
 titles <- paste("Text", 1:10)
 test_df <- tibble::tibble(Date = dates, Text = texts, Title = titles)
 
-# Converting to corpusexplorer object:
+# Converting to corporaexplorer object:
 corpus <- prepare_data(test_df, corpus_name = "Test corpus")
 \dontrun{
 # Running exploration app:

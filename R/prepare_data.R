@@ -1,6 +1,6 @@
 # 1. "Regular" df: 1 doc = 1 row ------------------------------------------
 
-#' Adjusts data frame to corpusexplorer format
+#' Adjusts data frame to corporaexplorer format
 #'
 #' @param df Data frame with Date column (Date), Text column (character), and
 #'   optionally Title (character), URL (character), and Type (character)
@@ -140,7 +140,7 @@ transform_365 <- function(new_df) {
 #'   from the text before constructing the document term matrix? If \code{TRUE},
 #'   the default:
 #' \itemize{
-#'     \item The corpusexplorer object will be lighter and most searches in
+#'     \item The corporaexplorer object will be lighter and most searches in
 #'     the corpus exploration app will be faster.
 #'     \item Searches including punctuation and digits will be carried out in
 #'     the full text documents.
@@ -154,7 +154,7 @@ transform_365 <- function(new_df) {
 #' \code{\link[corporaexplorer]{run_corpus_explorer}} with the
 #' \code{use_matrix} parameter set to \code{FALSE}.
 #' }
-#'  If \code{FALSE}, the corpusexplorer object will be larger, and most
+#'  If \code{FALSE}, the corporaexplorer object will be larger, and most
 #'  simple searches will be slower.
 #' @return List: 1) Document term matrix (data.table), 2) word vector (character
 #'   vector).
@@ -259,7 +259,7 @@ get_term_vector <- function(returned_list) {
 #'   searching will be slower.
 #' @inheritParams transform_regular
 #' @inheritParams matrix_via_r
-#' @return A \code{corpusexplorer} object to be passed as argument to
+#' @return A \code{corporaexplorer} object to be passed as argument to
 #'   \code{\link[corporaexplorer]{run_corpus_explorer}} and
 #'   \code{\link[corporaexplorer]{run_document_extractor}}.
 #' @export
@@ -273,7 +273,7 @@ get_term_vector <- function(returned_list) {
 #' titles <- paste("Text", 1:10)
 #' test_df <- tibble::tibble(Date = dates, Text = texts, Title = titles)
 #'
-#' # Converting to corpusexplorer object:
+#' # Converting to corporaexplorer object:
 #' corpus <- prepare_data(test_df, corpus_name = "Test corpus")
 #' \dontrun{
 #' # Running exploration app:

@@ -13,7 +13,7 @@ matrix_via_r(df, matrix_without_punctuation = TRUE)
   from the text before constructing the document term matrix? If \code{TRUE},
   the default:
 \itemize{
-    \item The corpusexplorer object will be lighter and most searches in
+    \item The corporaexplorer object will be lighter and most searches in
     the corpus exploration app will be faster.
     \item Searches including punctuation and digits will be carried out in
     the full text documents.
@@ -27,7 +27,7 @@ the \code{use_matrix} parameter to \code{FALSE}, or run
 \code{\link[corporaexplorer]{run_corpus_explorer}} with the
 \code{use_matrix} parameter set to \code{FALSE}.
 }
- If \code{FALSE}, the corpusexplorer object will be larger, and most
+ If \code{FALSE}, the corporaexplorer object will be larger, and most
  simple searches will be slower.}
 }
 \value{

@@ -3,7 +3,7 @@
 #' Launch Shiny app for downloading documents from text collection.
 #' Interrupt R to stop the application (usually by pressing Ctrl+C or Esc).
 #'
-#' @param corpus_object A \code{corpusexplorer} object created by
+#' @param corpus_object A \code{corporaexplorer} object created by
 #'   \code{\link[corporaexplorer]{prepare_data}}.
 #' @param max_html_docs The maximum number of documents allowed in one HTML report.
 #' @param ... Other arguments passed to \code{\link[shiny]{runApp}} in the Shiny
@@ -19,7 +19,7 @@
 #' titles <- paste("Text", 1:10)
 #' test_df <- tibble::tibble(Date = dates, Text = texts, Title = titles)
 #' 
-#' # Converting to corpusexplorer object:
+#' # Converting to corporaexplorer object:
 #' corpus <- prepare_data(test_df, corpus_name = "Test corpus")
 #' \dontrun{
 #' # Running exploration app:

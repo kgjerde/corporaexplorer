@@ -74,7 +74,7 @@ A more typical TODO
 ## 1\. Prepare data for the Shiny apps
 
 The `prepare_data()` function takes a data frame with, as a minimum, a
-`Date` and a `Text` column as input and returns a corpusexplorer object
+`Date` and a `Text` column as input and returns a corporaexplorer object
 that can be explored in the package’s two Shiny apps. The default
 arguments should work fine for most use cases.
 
@@ -89,7 +89,7 @@ library(corporaexplorer)
 ## 2\. The corpus exploration app
 
 Start the app by running the `run_corpus_explorer()` function with a
-corpusexplorer object created by `prepare_data()` as argument. Run the
+corporaexplorer object created by `prepare_data()` as argument. Run the
 following in the R console to see documentation for the
 `run_corpus_explorer()` function.
 
@@ -318,7 +318,7 @@ format suitable for close reading.
 <img src="man/figures/download_tool.png" width="80%" />
 
 Start the app by running the `run_document_extractor()` function with a
-corpusexplorer object created by `prepare_data()` as argument. Run the
+corporaexplorer object created by `prepare_data()` as argument. Run the
 following in the R console to see documentation for the
 `run_document_extractor()` function.
 

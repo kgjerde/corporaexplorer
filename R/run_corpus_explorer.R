@@ -3,7 +3,7 @@
 #' Launch Shiny app for exploration of text collection. Interrupt R to stop the
 #' application (usually by pressing Ctrl+C or Esc).
 #'
-#' @param corpus_object A corpusexplorer object created by
+#' @param corpus_object A corporaexplorer object created by
 #'   \code{\link[corporaexplorer]{prepare_data}}.
 #' @param use_matrix Logical. If the corporaexplorerobject contains a document
 #'   term matrix, should it be used for searches? (See
@@ -37,7 +37,7 @@
 #' titles <- paste("Text", 1:10)
 #' test_df <- tibble::tibble(Date = dates, Text = texts, Title = titles)
 #'
-#' # Converting to corpusexplorer object:
+#' # Converting to corporaexplorer object:
 #' corpus <- prepare_data(test_df, corpus_name = "Test corpus")
 #' \dontrun{
 #' # Running exploration app:
