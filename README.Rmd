@@ -69,7 +69,9 @@ documents from a 'corporaexplorerobject' in a reading-friendly format.
 
 The package includes a tiny 'corporaexplorerobject': `corporaexplorer::test_data`, which consists of 10 tiny documents and can be used for testing the basic functionality of the package.
 
-A more typical TODO
+A more typical corpus can be downloaded for testing [here](https://ndownloader.figshare.com/files/14626970)
+-- this is a document collection scraped from the Russian governmental website kremlin.ru (more info [here](https://figshare.com/s/820c105c12755d853801)).
+The equivalent material in Russian can be downloaded [here](https://figshare.com/s/be0d2cfa195e43160fcb).<sup>[2](#myfootnote2)</sup>
 
 
 ## 1. Prepare data for the Shiny apps
@@ -275,4 +277,5 @@ are carried out as full text searches with `stringr`. Again, note that a single 
 
 <hr>
 
-<a name="myfootnote1">*1</a>. Using the [`jquery.scrollTo`](https://github.com/flesler/jquery.scrollTo) plugin.*
+<a name="myfootnote1">*1</a>. Using the [`jquery.scrollTo`](https://github.com/flesler/jquery.scrollTo) plugin.*  
+<a name="myfootnote2">*2</a>. All this material is licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).*
