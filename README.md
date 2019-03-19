@@ -52,20 +52,9 @@ install.packages("devtools")
 devtools::install_github("kgjerde/corporaexplorer")
 ```
 
-## Functions
-
-**corporaexplorer** contains three functions:
-
-1.  `prepare_data()` converts a data frame to a ‘corporaexplorerobject’.
-2.  `run_corpus_explorer()` runs the package’s core feature, a Shiny app
-    for fast and flexible exploration of a ‘corporaexplorerobject’.
-3.  `run_document_extractor()` runs a Shiny app for simple
-    retrieval/extraction of documents from a ‘corporaexplorerobject’ in
-    a reading-friendly format.
-
 ## Example corpora
 
-The package includes a tiny ‘corporaexplorerobject’:
+The package includes a tiny ‘corporaexplorerobject’ (see below):
 `corporaexplorer::test_data`, which consists of 10 tiny documents and
 can be used for testing the basic functionality of the package.
 
@@ -76,6 +65,17 @@ the Russian governmental website kremlin.ru (more info
 [here](https://figshare.com/s/820c105c12755d853801)). The equivalent
 material in Russian can be downloaded
 [here](https://figshare.com/s/be0d2cfa195e43160fcb).<sup>[2](#myfootnote2)</sup>
+
+## Functions
+
+**corporaexplorer** contains three functions:
+
+1.  `prepare_data()` converts a data frame to a ‘corporaexplorerobject’.
+2.  `run_corpus_explorer()` runs the package’s core feature, a Shiny app
+    for fast and flexible exploration of a ‘corporaexplorerobject’.
+3.  `run_document_extractor()` runs a Shiny app for simple
+    retrieval/extraction of documents from a ‘corporaexplorerobject’ in
+    a reading-friendly format.
 
 ## 1\. Prepare data for the Shiny apps
 
@@ -285,8 +285,7 @@ leads straight to the highlighted document.
 
 ### 2d. Advanced detail: Regular expression engines
 
-`run_corpus_exploration()` lets you choose among three regex engine
-setups:
+`run_corpus_explorer()` lets you choose among three regex engine setups:
 
 1.  `default`: use the [`re2r`](https://github.com/qinwf/re2r) package
     for simple searches and the
@@ -311,7 +310,7 @@ without special characters will be carried out in a document term
 matrix. Other searches are carried out in full text.
 
 Advanced users can set the `optional_info` parameter in
-`run_corpus_exploration()` to `TRUE`: this will print to console the
+`run_corpus_explorer()` to `TRUE`: this will print to console the
 following information for each input term: which regex engine was used,
 and whether the search was carried out in the document term matrix or in
 the full text documents.

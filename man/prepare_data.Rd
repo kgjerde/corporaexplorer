@@ -78,7 +78,7 @@ test_df <- tibble::tibble(Date = dates, Text = texts, Title = titles)
 corpus <- prepare_data(test_df, corpus_name = "Test corpus")
 \dontrun{
 # Running exploration app:
-run_corpus_exploration(corpus)
+run_corpus_explorer(corpus)
 
 # Running app to extract documents:
 run_document_extractor(corpus)
