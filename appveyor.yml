@@ -15,6 +15,12 @@ cache:
 
 # Adapt as necessary starting from here
 
+environment:
+  global:
+    # Reduce build time by only using binary packages
+    #USE_RTOOLS: true
+    PKGTYPE: win.binary
+
 build_script:
   - travis-tool.sh install_deps
 
