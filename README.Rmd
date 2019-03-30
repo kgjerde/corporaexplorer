@@ -25,10 +25,17 @@ knitr::opts_chunk$set(
 **corporaexplorer** is an R package for dynamic exploration of corpora/text
 collections through a `Shiny` app  graphical user interface.
 
-The intended primary audience is qualitatively oriented researchers who
-rely on close reading of textual documents as part of their academic activity.
+**corporaexplorer**'s intended primary audience is qualitatively oriented researchers who
+rely on close reading of textual documents as part of their academic activity, and for whom a typical workflow often includes analysing a set of texts downloaded from a website based on keyword search in the website's internal search engine.
 
-Example corpora and use cases include:.
+**corporaexplorer** aims to enhance such workflows in several ways.
+The package makes it easier to interact with larger text collections than what is usually feasible,
+and it facilitates creativity by allowing for more open-ended explorations of the text collections.
+Further, it can make selection and extraction of texts for further scrutiny faster than a 'traditional workflow' allows,
+and it facilitates transparency and rigidity by making it easier to account for or reproduce the process of selecting texts for close reading.
+Above all, the package is aimed at flexibility: it does not enforce any given workflow, but can play a small or larger role in many different research designs.
+
+Example corpora and use cases include:
 
 * **Text collections that can be freely shared**, e.g. collections of government statements and transcripts scraped from the US State Department or the Russian President's website. Such documents are usually equipped with a Creative Commons license or similar. Example use case: a close reading of official Russian discourse on NATO.
 * **Text collections that cannot be freely shared**, e.g. a collection of
