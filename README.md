@@ -134,12 +134,12 @@ users.
 
   - **Number of terms to chart**: How many terms (phrases/patterns)
     should be charted in the corpus map? Current maximum is two.
-  - **Term(s) to chart**: The corpus map plot will highlight
-    days/documents where these terms are present. The terms will also be
-    highlighted in all documents.
-  - **Add terms for text highlighting**: Terms included here (one on
-    each line) will be highlighted in all documents. An arbitrary number
-    of terms can be added.
+  - **Term(s) to chart**: Using colour fillings, the corpus map plot
+    will indicate days/documents where these terms are present. The
+    terms will also be highlighted in all documents.
+  - **Additional terms for text highlighting**: Terms included here (one
+    on each line) will be highlighted in all documents. An arbitrary
+    number of terms can be added.
   - **Filter corpus?** Input terms here (one on each line) will filter
     the corpus so that it includes only documents where all these terms
     are present. Unlike terms entered in the two fields above, these
@@ -193,8 +193,8 @@ separately or together by adding them to the end of a search pattern
 (with no space between):
 
 1.  The “treshold argument” has the syntax `--treshold` and determines
-    the minimum number of search hits a document should contain in order
-    to be highlighted in the corpus
+    the minimum number of search hits a day/document should contain in
+    order to be coloured in the corpus
 map:
 
 <!-- end list -->
@@ -227,13 +227,14 @@ Russia--Title--2
 These arguments have the following consequences:
 
   - *If used in the “Term(s) to chart” fields*: The corpus map plot will
-    highlight documents that satisfy the search arguments. Likewise, the
-    summary statistics displayed in the “Corpus info” tab will be based
-    on the documents matching the search arguments. In the document
-    themselves, all pattern matches will be highlighted. For example, a
-    search for `Russia--Title` will highlight only documents with the
-    pattern Russia in the Title column, but the pattern Russia will be
-    highlighted in all documents.
+    use colour fillings to indicate days/documents that satisfy the
+    search arguments. Likewise, the summary statistics displayed in the
+    “Corpus info” tab will be based on the documents matching the
+    search arguments. In the documents themselves, all pattern matches
+    will be highlighted. For example, a search for `Russia--Title` will
+    in the corpus map plot colour only documents with the pattern Russia
+    in the Title column, but the pattern Russia will be highlighted in
+    all documents.
   - *If used in the “Add terms for highlighting” field*: The pattern
     will be highlighted in all documents. The summary statistics
     displayed in the “Corpus info” tab will be based on the documents
@@ -244,11 +245,11 @@ These arguments have the following consequences:
 ### 2b. Corpus map
 
 The result of the search is an interactive heat map, a **corpus map**,
-where the colour fill indicates how many times the search term is found
+where the filling indicates how many times the search term is found
 (legend above the plot).
 
 In the **calendar view** (the default), each tile represents a day, and
-the colour fill indicates how many time the search term is found in the
+the filling indicates how many time the search term is found in the
 documents that day:
 
 <img src="man/figures/first_search.png" width="80%" />
@@ -256,7 +257,7 @@ documents that day:
 <br>
 
 In the **document wall view**, each tile represents one document, and
-the colour fill indicates how many time the search term is found in this
+the filling indicates how many times the search term is found in this
 document:
 
 <img src="man/figures/wall_1.png" width="80%" />
@@ -297,7 +298,7 @@ document.<sup>[1](#myfootnote1)</sup>
 <img src="man/figures/wall.png" width="80%" />
 
 **When in document wall view**: Clicking on a tile in the corpus map
-leads straight to the highlighted document.
+leads straight to the relevant document.
 
 ### 2d. Advanced detail: Regular expression engines
 

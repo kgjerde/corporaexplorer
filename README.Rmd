@@ -116,8 +116,8 @@ that are relevant for advanced users.
 <img align="left" src="man/figures/sidebar.png" width="170" height="450" style="margin-right: 25px"/>
 
 * **Number of terms to chart**: How many terms (phrases/patterns) should be charted in the corpus map? Current maximum is two.
-* **Term(s) to chart**: The corpus map plot will highlight days/documents where these terms are present. The terms will also be highlighted in all documents.
-* **Add terms for text highlighting**: Terms included here (one on each line) will be highlighted in all documents. An arbitrary number of terms can be added.
+* **Term(s) to chart**: Using colour fillings, the corpus map plot will indicate days/documents where these terms are present. The terms will also be highlighted in all documents.
+* **Additional terms for text highlighting**: Terms included here (one on each line) will be highlighted in all documents. An arbitrary number of terms can be added.
 * **Filter corpus?** Input terms here (one on each line) will filter the corpus so that it includes only documents where all these terms are present. Unlike terms entered in the two fields above, these terms will not be included in the summary statistics in the "Corpus info" tab. An arbitrary number of terms can be used.
 * **Case sensitive search**: Check this box to distinguish between lower and upper case in the search. Unchecked, `war` will find both "war" and "War"; if checked, `war` will only find "war".
 * **"Year range" or "date range"**: Filters the corpus (the first and last date included) by time span.
@@ -154,7 +154,7 @@ is used as escape character. For example will `\.` match a literal ".", and `\d`
 **corporaexplorer** offers two optional arguments that can be used separately or together by adding them to the end of a search pattern (with no space between):
 
 1. The "treshold argument" has the syntax `--treshold` and determines the minimum
-number of search hits a document should contain in order to be highlighted in the corpus map:
+number of search hits a day/document should contain in order to be coloured in the corpus map:
 ``` r
 Russia--10  # Will find documents that includes the pattern "Russia" at least 10 times.
 ```
@@ -174,15 +174,15 @@ Russia--Title--2
 
 These arguments have the following consequences:
 
-* *If used in the "Term(s) to chart" fields*: The corpus map plot will highlight documents that satisfy the search arguments. Likewise, the summary statistics displayed in the "Corpus info" tab will be based on the documents matching the search arguments. In the document themselves, all pattern matches will be highlighted. For example, a search for `Russia--Title` will highlight only documents with the pattern Russia in the Title column, but the pattern Russia will be highlighted in all documents.
+* *If used in the "Term(s) to chart" fields*: The corpus map plot will use colour fillings to indicate days/documents that satisfy the search arguments. Likewise, the summary statistics displayed in the "Corpus info" tab will be based on the documents matching the search arguments. In the documents themselves, all pattern matches will be highlighted. For example, a search for `Russia--Title` will in the corpus map plot colour only documents with the pattern Russia in the Title column, but the pattern Russia will be highlighted in all documents.
 * *If used in the "Add terms for highlighting" field*: The pattern will be highlighted in all documents. The summary statistics displayed in the "Corpus info" tab will be based on the documents matching the search arguments.
 * *If used in the "Filter corpus" field*: The corpus will be filtered to include only documents that match the search arguments.
 
 ### 2b. Corpus map
 
-The result of the search is an interactive heat map, a **corpus map**, where the colour fill indicates how many times the search term is found (legend above the plot).
+The result of the search is an interactive heat map, a **corpus map**, where the filling indicates how many times the search term is found (legend above the plot).
 
-In the **calendar view** (the default), each tile represents a day, and the colour fill indicates how many time the search term is found in the documents that day:
+In the **calendar view** (the default), each tile represents a day, and the filling indicates how many time the search term is found in the documents that day:
 
 ```{r, out.width = "80%", echo = FALSE}
 knitr::include_graphics("man/figures/first_search.png")
@@ -190,8 +190,7 @@ knitr::include_graphics("man/figures/first_search.png")
 
 <br>
 
-In the **document wall view**, each tile represents one document, and the colour
-fill indicates how many time the search term is found in this document:
+In the **document wall view**, each tile represents one document, and the filling indicates how many times the search term is found in this document:
 
 ```{r, out.width = "80%", echo = FALSE}
 knitr::include_graphics("man/figures/wall_1.png")
@@ -226,7 +225,7 @@ knitr::include_graphics("man/figures/wall.png")
 ```
 
 
-**When in document wall view**: Clicking on a tile in the corpus map leads straight to the highlighted document.
+**When in document wall view**: Clicking on a tile in the corpus map leads straight to the relevant document.
 
 ### 2d. Advanced detail: Regular expression engines
 
