@@ -122,9 +122,45 @@ transform_365 <- function(new_df) {
 
   df_365$ID[df_365$Date < min_date | df_365$Date > max_date] <- 0
 
-  df_365 <- dplyr::arrange(df_365, Year, Weekday_n, Yearday_n, Month_n)
+  df_365_month_dividers <- df_365 %>%
+    dplyr::group_by(Year) %>%
+    dplyr::slice(1) %>%
+    dplyr::mutate(Diff = Yearday_n - Weekday_n) %>%
+    dplyr::filter(Diff > 0) %>%
+    dplyr::mutate(Diff = 7 - Diff)
+
+  if (nrow(df_365_month_dividers) != 0) {
+    df_365_month_dividers_for_df <- tibble::tibble()
+    for (row in seq_len(nrow(df_365_month_dividers))) {
+      temp_tib <- tibble::tibble(
+        No. = 0,
+        Date = as.Date("8000-01-01"),
+        Year = df_365_month_dividers$Year[row],
+        Month_n = 1,
+        Week_n = 1,
+        Weekday_n = seq_len(df_365_month_dividers$Diff[row]),
+        Yearday_n = sort(-seq_len(df_365_month_dividers$Diff[row]), decreasing = FALSE),
+        ID = 0,
+        empty = TRUE,
+        wc = 1,
+        mnd_vert = FALSE,
+        mnd_hor = FALSE
+      )
+      df_365_month_dividers_for_df <-
+        rbind(df_365_month_dividers_for_df, temp_tib)
+    }
+
+    df_365_month_dividers_for_df <-
+      dplyr::select(df_365_month_dividers_for_df, colnames(df_365))
+
+    df_365 <- rbind(df_365, df_365_month_dividers_for_df)
+  }
+
+  df_365 <-
+    dplyr::arrange(df_365, Year, Weekday_n, Yearday_n, Month_n)
 
   df_365$id <- seq_len(nrow(df_365))
+
   message("2/3 Calendar data frame done.")
   return(df_365)
 }
