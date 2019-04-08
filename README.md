@@ -375,6 +375,19 @@ searches are carried out as full text searches with `stringr`. Again,
 note that a single backslash is used as escape character. For example
 will `\.` match a literal “.”, and `\d` match any digit.
 
+## Contributing
+
+Contributions in the form of feedback, code, and bug reports are most
+welcome. How to contribute:
+
+  - Issues and bug reports: [File a GitHub
+    issue](https://github.com/kgjerde/corporaexplorer/issues).
+  - Contact [the maintainer](mailto:klg@nupi.no) by email.
+  - Fork the source code, modify, and issue a [pull
+    request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/)
+    through the [project GitHub
+    page](https://github.com/kgjerde/corporaexplorer).
+
 <hr>
 
 <a name="myfootnote1">*1</a>. Using the
