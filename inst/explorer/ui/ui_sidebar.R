@@ -6,8 +6,8 @@ shinydashboard::dashboardSidebar(
         justified = TRUE,
         size = "xs"
     ),
-    
-    shiny::tags$div(shiny::textInput("search_text", label = "Term(s) to chart"),
+
+    shiny::tags$div(shiny::textInput("search_text", label = "Term(s) to chart and highlight"),
              style = "margin-top: -1em;"),
     
     shiny::div(
@@ -26,7 +26,7 @@ shinydashboard::dashboardSidebar(
     shinyWidgets::checkboxGroupButtons(
         inputId = "more_terms_button",
         label = NULL,
-        choices = list("Add terms for text highlighting?" = "Yes"),
+        choices = list("Additional terms for text highlighting" = "Yes"),
         justified = TRUE,
         size = "sm"
     ),

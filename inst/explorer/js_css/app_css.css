@@ -231,3 +231,6 @@ hr {
   margin-top: 1em;
 }
 
+#more_terms_button .btn-default {
+  font-size: 11px;
+}
