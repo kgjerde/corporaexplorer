@@ -379,7 +379,7 @@ will `\.` match a literal “.”, and `\d` match any digit.
 ## Contributing
 
 Contributions in the form of feedback, code, and bug reports are most
-welcome. How to contribute:
+welcome. Ways to contribute:
 
   - Issues and bug reports: [File a GitHub
     issue](https://github.com/kgjerde/corporaexplorer/issues).

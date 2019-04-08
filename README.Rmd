@@ -287,7 +287,7 @@ are carried out as full text searches with `stringr`. Again, note that a single 
 
 ## Contributing
 
-Contributions in the form of feedback, code, and bug reports are most welcome.  How to contribute:
+Contributions in the form of feedback, code, and bug reports are most welcome.  Ways to contribute:
 
 *  Issues and bug reports: [File a GitHub issue](https://github.com/kgjerde/corporaexplorer/issues).
 *  Contact [the maintainer](mailto:klg@nupi.no) by email.
