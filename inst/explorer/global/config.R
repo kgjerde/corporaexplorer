@@ -2,6 +2,7 @@
 
 loaded_data <- eval(as.name(getShinyOption("corporaexplorer_data")))
 
+source("./global/backwards_compatibility.R", local = TRUE)
 
 # Constants ---------------------------------------------------------------
 
