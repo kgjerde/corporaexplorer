@@ -438,3 +438,24 @@ prepare_data <- function(dataset,
   message("Done.")
   return(loaded_data)
 }
+
+#' Print corporaexplorerobject
+#'
+#' @param obj A corporaexplorerobject
+#'
+#' @return Console-friendly output
+#' @keywords internal
+print.corporaexplorerobject <- function(obj) {
+cat("corporaexplorerobject\n")
+if (!is.null(obj$corpus_name)) {
+    cat("Corpus name:", obj$corpus_name, "\n")
+}
+
+cat("Documents:", nrow(obj$original_data$data_dok), "\n")
+
+if (!is.null(obj[["original_matrix"]][["data_dok"]])) {
+    cat("Contains matrix with",
+        length(obj[["ordvektorer"]][["data_dok"]]),
+        "unique tokens\n")
+}
+}
