@@ -180,7 +180,7 @@ corpus_is_filtered <-
              original_data_dok) {
     return(search_arguments$subset_search |
       nrow(session_variables$data_dok) != nrow(original_data_dok) |
-      sum(session_variables$data_365$ID) != sum(loaded_data$original_data$data_365$ID))
+      sum(session_variables$data_365$Invisible_fake_date) != sum(loaded_data$original_data$data_365$Invisible_fake_date))
   }
 
 text_about_filtered_corpus <-

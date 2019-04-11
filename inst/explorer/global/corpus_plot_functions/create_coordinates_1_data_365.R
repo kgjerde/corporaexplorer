@@ -7,7 +7,7 @@
 #'   for each day.
 create_coordinates_1_data_365 <- function(.data) {
     # Fordi rutene er størrelse 1
-    x_max <- cumsum(.data$wc)
+    x_max <- cumsum(.data$Tile_length)
     x_min <- x_max - 1
     # (Foreløpig er dette bare til én lang rad - se group_by nedenfor)
     
@@ -44,8 +44,8 @@ create_coordinates_1_data_365 <- function(.data) {
         dplyr::mutate(x_min2 = x_min - min(x_min),
                x_max2 = x_max - min(x_min)) %>%
         dplyr::ungroup()
-    
-    test1 <- dplyr::select(test1,-x_min,-x_max, empty) %>%
+
+    test1 <- dplyr::select(test1,-x_min,-x_max, Day_without_docs) %>%
         dplyr::rename(x_min = x_min2,
                x_max = x_max2)
 return(test1)

@@ -6,14 +6,18 @@ utils::globalVariables(
     "Diff",
     "Month_n",
     "Text",
-    "Text_case",
+    "Text_original_case",
     "Weekday_n",
     "Year",
     "Yearday_n",
     "count",
     "i",
     "j",
-    "id",
-    "word"
+    "ID",
+    "word",
+    ".",
+    "Day_without_docs",
+    "Invisible_fake_date",
+    "Tile_length"
   )
 )

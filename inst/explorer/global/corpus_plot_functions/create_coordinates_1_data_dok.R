@@ -9,11 +9,11 @@
 create_coordinates_1_data_dok <- function(.data, linjer, width = NULL) {
 
 if(is.null(width)){
-width <- sqrt(sum(.data$wc) /  linjer)  # TODO: width-algoritmer
+width <- sqrt(sum(.data$Tile_length) /  linjer)  # TODO: width-algoritmer
 }
 
 # .data$x_min <- NA
-.data$x_max <- cumsum(.data$wc)
+.data$x_max <- cumsum(.data$Tile_length)
 
 # Betydelig speed-up
 .data$x_min <- dplyr::lag(.data$x_max, default = 0)
@@ -44,7 +44,7 @@ merke <- merke[-length(merke)]
 y_min <- integer(nrow(.data))
 y_min[y_min == 0] <- NA
 y_min[merke] <- seq_along(merke)
-y_min <- zoo::na.locf(y_min, fromLast = TRUE)
+y_min <- zoo::na.locf(y_min, fromLast = TRUE, na.rm = FALSE)
 
 y_min <-
     c(y_min, rep(max(y_min) + 1, nrow(.data) - length(y_min)))

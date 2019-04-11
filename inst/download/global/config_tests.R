@@ -8,7 +8,7 @@ abc <- test_data
 
 INFO_COLUMNS <- abc$columns_for_info
 abc <- abc$original_data$data_dok
-abc$Text <- abc$Text_case
+abc$Text <- abc$Text_original_case
 
 my_colours <-
   rep(c("red", "blue", "green", "purple", "orange", "gray"), 10)

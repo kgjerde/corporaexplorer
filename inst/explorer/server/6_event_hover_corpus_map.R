@@ -42,7 +42,7 @@ output$hover_info <- shiny::renderUI({
 # Tooltip text ------------------------------------------------------------
     if (plot_mode$mode == "data_365") {
         if (length(min_rad) > 0) {
-            if (session_variables[[plot_mode$mode]]$ID[min_rad] != 0) {
+            if (session_variables[[plot_mode$mode]]$Invisible_fake_date[min_rad] == FALSE) {
                 if (length(min_rad) != 0) {
                     shiny::wellPanel(style = style,
                               shiny::p(shiny::HTML(

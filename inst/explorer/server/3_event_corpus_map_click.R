@@ -8,7 +8,7 @@ min_rad <-
 # Data 365 ----------------------------------------------------------------
     if (plot_mode$mode == "data_365") {
         if (length(min_rad) > 0) {
-            if (session_variables[[plot_mode$mode]]$ID[min_rad] != 0) {
+            if (session_variables[[plot_mode$mode]]$Invisible_fake_date[min_rad] == FALSE) {
 
 
 # UI element control ------------------------------------------------------

@@ -37,15 +37,30 @@ transform_regular <- function(df, columns_to_include = NULL, normalise = TRUE) {
 
   new_df$Year <- lubridate::year(new_df$Date)
 
-  new_df$wc <- nchar(new_df$Text) %>%
     scales::rescale(to = c(1, 10))
+  new_df$Tile_length <- nchar(new_df$Text) %>%
 
-  new_df$id <- seq_len(nrow(new_df))
+  new_df$ID <- seq_len(nrow(new_df))
 
-  new_df$Text_case <- new_df$Text
+  new_df$Text_original_case <- new_df$Text
 
   new_df$Text <-
     stringr::str_to_lower(new_df$Text) # for søke-purposes
+
+  new_df <- dplyr::select(new_df,
+                ID,
+                Date,
+                Text,
+                Text_original_case,
+                Tile_length,
+                Year,
+                sort(colnames(new_df)[!colnames(new_df) %in% c("ID",
+                                                               "Date",
+                                                               "Text",
+                                                               "Text_original_case",
+                                                               "Tile_length",
+                                                               "Year")]))
+
   message("1/3 Document data frame done.")
   return(new_df)
 }
@@ -53,17 +68,6 @@ transform_regular <- function(df, columns_to_include = NULL, normalise = TRUE) {
 
 
 # 2. 365: 1 day = 1 tile --------------------------------------------------
-
-#' Check if date is the last in the month
-#'
-#' @param date Date.
-#'
-#' @return Logical.
-#' @keywords internal
-is_last_in_month <- function(date) {
-  check <- as.Date(date) + 1
-  lubridate::month(check) != lubridate::month(date)
-}
 
 #' Convert "data_dok" tibble to "data_365" tibble
 #'
@@ -77,7 +81,7 @@ transform_365 <- function(new_df) {
 
   df_365 <- new_df %>%
     dplyr::group_by(Date) %>%
-    dplyr::summarise(Text = paste(Text_case, collapse = "\n\n--\n\n"))
+    dplyr::summarise(Text = paste(Text_original_case, collapse = "\n\n--\n\n"))
 
   min_date <- min(df_365$Date)
   max_date <- max(df_365$Date)
@@ -91,13 +95,13 @@ transform_365 <- function(new_df) {
       end_val = as.Date(paste0(max(df_365$Year), "-12-31"))
     )
 
-  df_365$empty <- is.na(df_365$Text)
-  # df_365$empty[df_365$empty == TRUE] <- "black"
-  df_365$empty[df_365$empty == FALSE] <- NA
+  df_365$Day_without_docs <- is.na(df_365$Text)
+  # df_365$Day_without_docs[df_365$Day_without_docs == TRUE] <- "black"
+  df_365$Day_without_docs[df_365$Day_without_docs == FALSE] <- NA
 
   df_365$Text <- NULL
 
-  df_365$wc <- 1
+  df_365$Tile_length <- 1
 
   df_365$Year <- lubridate::year(df_365$Date)
 
@@ -105,22 +109,14 @@ transform_365 <- function(new_df) {
 
   df_365$Month_n <- lubridate::month(df_365$Date)
 
-  df_365$Week_n <- lubridate::isoweek(df_365$Date)
-
   df_365$Yearday_n <- lubridate::yday(df_365$Date)
-
-  df_365$No. <- 1:nrow(df_365)
 
   df_365 <-
     dplyr::arrange(df_365, Year, Weekday_n, Yearday_n, Month_n)
-  df_365$ID <- 1:nrow(df_365)
 
-  df_365$mnd_vert <-
-    df_365$Month_n != dplyr::lead(df_365$Month_n, default = FALSE)
+  df_365$Invisible_fake_date <- FALSE
 
-  df_365$mnd_hor <- is_last_in_month(df_365$Date)
-
-  df_365$ID[df_365$Date < min_date | df_365$Date > max_date] <- 0
+  df_365$Invisible_fake_date[df_365$Date < min_date | df_365$Date > max_date] <- TRUE
 
   df_365_month_dividers <- df_365 %>%
     dplyr::group_by(Year) %>%
@@ -133,18 +129,14 @@ transform_365 <- function(new_df) {
     df_365_month_dividers_for_df <- tibble::tibble()
     for (row in seq_len(nrow(df_365_month_dividers))) {
       temp_tib <- tibble::tibble(
-        No. = 0,
         Date = as.Date("8000-01-01"),
         Year = df_365_month_dividers$Year[row],
         Month_n = 1,
-        Week_n = 1,
         Weekday_n = seq_len(df_365_month_dividers$Diff[row]),
         Yearday_n = sort(-seq_len(df_365_month_dividers$Diff[row]), decreasing = FALSE),
-        ID = 0,
-        empty = TRUE,
-        wc = 1,
-        mnd_vert = FALSE,
-        mnd_hor = FALSE
+        Invisible_fake_date = TRUE,
+        Day_without_docs = TRUE,
+        Tile_length = 1
       )
       df_365_month_dividers_for_df <-
         rbind(df_365_month_dividers_for_df, temp_tib)
@@ -159,7 +151,19 @@ transform_365 <- function(new_df) {
   df_365 <-
     dplyr::arrange(df_365, Year, Weekday_n, Yearday_n, Month_n)
 
-  df_365$id <- seq_len(nrow(df_365))
+  df_365$ID <- seq_len(nrow(df_365))
+  df_365$Month_n <- NULL
+  df_365$Yearday_n <- NULL
+
+  df_365 <- dplyr::select(df_365,
+                          ID,
+                          Date,
+                          Year,
+                          Weekday_n,
+                          Day_without_docs,
+                          Invisible_fake_date,
+                          Tile_length
+                          )
 
   message("2/3 Calendar data frame done.")
   return(df_365)
@@ -196,7 +200,7 @@ transform_365 <- function(new_df) {
 #'   vector).
 #' @keywords internal
 matrix_via_r <- function(df, matrix_without_punctuation = TRUE) {
-  df <- dplyr::select(df, Text, id)
+  df <- dplyr::select(df, Text, ID)
 
   if (matrix_without_punctuation == TRUE) {
     df$Text <- df$Text %>%
@@ -222,11 +226,11 @@ matrix_via_r <- function(df, matrix_without_punctuation = TRUE) {
   df <-
     df[, list(word = unlist(stringi::stri_split_fixed(Text, pattern = " "))),
       by =
-        id
+        ID
     ][,
       list(count = .N),
-      by = c("id", "word")
-    ][order(id, word), ]
+      by = c("ID", "word")
+    ][order(ID, word), ]
 
   message("3/3 Document term matrix: tokenising completed.")
 
@@ -238,7 +242,7 @@ matrix_via_r <- function(df, matrix_without_punctuation = TRUE) {
     plyr::mapvalues(df$word, ord, seq_along(ord)) %>%
     as.integer()
 
-  df <- dplyr::select(df, id, word, count)
+  df <- dplyr::select(df, ID, word, count)
 
   colnames(df) <- c("i", "j", "x")
 

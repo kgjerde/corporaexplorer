@@ -1,6 +1,6 @@
 #' Document visualisation
 #'
-#' @param .text A data frame with 1 row including Text and Text_case columns
+#' @param .text A data frame with 1 row including Text and Text_original_case columns
 #' @param .pattern Character vector of arbitrary length of terms to chart in
 #'     the plot
 #' @param my_colours Vector of colours to highlight terms in the plot
@@ -17,7 +17,7 @@ visualiser_dok <-
     if (case_sensitive == FALSE) {
       .text <- .text$Text
     } else if (case_sensitive == TRUE) {
-      .text <- .text$Text_case
+      .text <- .text$Text_original_case
     }
     
     if (USE_ONLY_RE2R == TRUE) {

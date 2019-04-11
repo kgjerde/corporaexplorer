@@ -1,7 +1,7 @@
 # Document text -----------------------------------------------------------
 output$doc_tekst <- shiny::renderText({
     display_document(
-        shiny::isolate(session_variables$data_day$Text_case[min_rad]),
+        shiny::isolate(session_variables$data_day$Text_original_case[min_rad]),
                      search_arguments)
 })
 

@@ -9,7 +9,7 @@ if ("Title" %in% colnames(data_day)) {
   if (search_arguments$case_sensitive == FALSE) {
     text_column <- data_day$Text
   } else if (search_arguments$case_sensitive == TRUE) {
-    text_column <- data_day$Text_case
+    text_column <- data_day$Text_original_case
   }
 
   if (USE_ONLY_RE2R == TRUE) {

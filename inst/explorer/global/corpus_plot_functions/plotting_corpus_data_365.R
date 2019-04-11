@@ -18,7 +18,7 @@ plotting_corpus_data_365 <- function(test1, x_breaks, y_text, til_legend, linjer
         ) +
         ggplot2::scale_x_continuous(
             breaks = x_breaks,
-            labels = month.abb[sort(unique(test1$Month_n))],
+            labels = month.abb[sort(unique(lubridate::month(test1$Date)))],
             position = "top",
             expand = c(0.0, 0.0)
         ) +
@@ -47,7 +47,7 @@ plotting_corpus_data_365 <- function(test1, x_breaks, y_text, til_legend, linjer
     rect_tib_vertikal$y_mid = (rect_tib_vertikal$y + rect_tib_vertikal$yend) /
         2
 
-    rect_tib_vertikal$empty <- test1$empty[test1$df == 1]
+    rect_tib_vertikal$Day_without_docs <- test1$Day_without_docs[test1$df == 1]
 
     a <-
         a + ggplot2::scale_fill_identity(
@@ -91,7 +91,7 @@ plotting_corpus_data_365 <- function(test1, x_breaks, y_text, til_legend, linjer
     # # Og her er for å indikere dager uten dokumenter:
     a <-
         a + ggplot2::geom_rect(
-            data = rect_tib_vertikal[rect_tib_vertikal$empty == TRUE,],
+            data = rect_tib_vertikal[rect_tib_vertikal$Day_without_docs == TRUE,],
             ggplot2::aes(
                 xmin = x,
                 ymin = y,
@@ -107,7 +107,7 @@ plotting_corpus_data_365 <- function(test1, x_breaks, y_text, til_legend, linjer
     # Og her skjuler vi ikke-eksisterende dager og dager utenfor datasettet
     a <-
         a + ggplot2::geom_rect(
-            data = test1[test1$ID == 0,],
+            data = test1[test1$Invisible_fake_date == TRUE,],
             ggplot2::aes(
                 xmin = x_min,
                 xmax = x_max,

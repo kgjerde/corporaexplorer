@@ -24,8 +24,8 @@ filtrere_korpus_tid <-
               (search_arguments$time_range[2] + 1):last_day_in_year(search_arguments$time_range[2])
         )
         # Rendering "empty"
-        .tibble$empty[ikke_i_subset_indekser] <- TRUE
-        .tibble$ID[ikke_i_subset_indekser] <- 0
+        .tibble$Day_without_docs[ikke_i_subset_indekser] <- TRUE
+        .tibble$Invisible_fake_date[ikke_i_subset_indekser] <- FALSE
         # And then filtering.
         
         filtrert_tibble <-
@@ -65,7 +65,7 @@ filtrere_korpus_pattern <- function(df,
   if (search_arguments$case_sensitive == FALSE) {
     text_column <- "Text"
   } else if (search_arguments$case_sensitive == TRUE) {
-    text_column <- "Text_case"
+    text_column <- "Text_original_case"
   }
   new_df <- df
   for (i in seq_along(search_arguments$subset_terms)) {
@@ -89,8 +89,8 @@ filtrere_korpus_pattern <- function(df,
        }
     } else if (modus == "data_365") {
       ikke_i_subset_indekser <- which(treff[, 1] == 0)
-      new_df$empty[ikke_i_subset_indekser] <- TRUE
-      new_df$id[ikke_i_subset_indekser] <- 0
+      new_df$Day_without_docs[ikke_i_subset_indekser] <- TRUE
+      new_df$ID[ikke_i_subset_indekser] <- 0
     }
     
     if (nrow(new_df) == 0) {  # For å ikke sette igang subseeting av tom df
