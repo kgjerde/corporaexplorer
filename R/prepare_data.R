@@ -37,8 +37,8 @@ transform_regular <- function(df, columns_to_include = NULL, normalise = TRUE) {
 
   new_df$Year <- lubridate::year(new_df$Date)
 
-    scales::rescale(to = c(1, 10))
   new_df$Tile_length <- nchar(new_df$Text) %>%
+    scales::rescale(to = c(1, 10), from = c(0, max(.)))
 
   new_df$ID <- seq_len(nrow(new_df))
 
