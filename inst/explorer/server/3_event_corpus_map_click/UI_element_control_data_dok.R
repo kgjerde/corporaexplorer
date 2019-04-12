@@ -64,7 +64,7 @@ show_ui("document_box")
 
 # Setter boks-tittel
 output$document_box_title <- shiny::renderText({
-    paste0("Document – ",
+    paste0("Document \u2013 ",
            as.character(format(
                session_variables[[plot_mode$mode]]$Date[min_rad],
                "%A %d %B %Y"

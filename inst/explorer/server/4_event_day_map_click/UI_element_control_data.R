@@ -56,7 +56,7 @@ if (session_variables$doc_tab_open == FALSE) {
 output$document_box_title <- shiny::renderText({
     paste0("Document ",
            min_rad,
-           " – ",
+           " \u2013 ",
            "Text")
 })
 
@@ -64,7 +64,7 @@ output$document_box_title <- shiny::renderText({
 output$document_box_title_info <- shiny::renderText({
     paste0("Document ",
            min_rad,
-           " – ",
+           " \u2013 ",
            "Information")
 }
 )

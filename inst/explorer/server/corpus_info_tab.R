@@ -60,7 +60,7 @@ shiny::observe({
           )
         }
       }
-    }, na = "–", digits = 2, width = "100%")
+    }, na = "\u2013", digits = 2, width = "100%")
 
     output$info_plot_title <- shiny::renderText({
       if (session_variables$stop_info_tab == FALSE) {
@@ -72,12 +72,12 @@ shiny::observe({
           )) {
             paste(
               "<hr>",
-              "<h4>Search results chart (based on filtered corpus) – hits per year</h4>"
+              "<h4>Search results chart (based on filtered corpus) \u2013 hits per year</h4>"
             )
           } else {
             paste(
               "<hr>",
-              "<h4>Search results chart – hits per year</h4>"
+              "<h4>Search results chart \u2013 hits per year</h4>"
             )
           }
         }
