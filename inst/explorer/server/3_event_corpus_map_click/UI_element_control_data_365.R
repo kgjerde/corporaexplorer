@@ -5,10 +5,10 @@ if (session_variables$doc_tab_open == TRUE) {
     shiny::removeTab('dokumentboks',
               target = "document_box_title_info",
               session = shiny::getDefaultReactiveDomain())
-    
-    
+
+
     session_variables$doc_tab_open <- FALSE
-    
+
 }
 
 if (session_variables$doc_list_open == FALSE) {
@@ -24,14 +24,14 @@ if (session_variables$doc_list_open == FALSE) {
                     class = "boxed_doc"
                 )
             ),
-        
+
         select = TRUE,
         menuName = NULL,
         session = shiny::getDefaultReactiveDomain()
     )
-    
+
     session_variables$doc_list_open <- TRUE
-    
+
 } else if (session_variables$doc_list_open == TRUE) {
     shiny::updateTabsetPanel(session,
                       inputId = "dokumentboks",
@@ -51,8 +51,7 @@ output$document_list_title <- shiny::renderText({
 
 # Setter boks-tittel
 output$title <- shiny::renderText({
-    as.character(format(session_variables[[plot_mode$mode]]$Date[min_rad],
-                        "%A %d %B %Y"))
+    format_date(session_variables[[plot_mode$mode]]$Date[min_rad])
 })
 
 # Setter boks-tittel

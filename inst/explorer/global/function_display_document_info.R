@@ -9,8 +9,7 @@ display_document_info <- function(df, min_rad, info_columns = INFO_COLUMNS) {
     doc_info_text <- paste(sep = "<br>",
                            paste0(
                                tags$b("Date: "),
-                               format(df$Date[min_rad],
-                                      "%A %d %B %Y")
+                               format_date(df$Date[min_rad])
                            ))
 
     if ("Title" %in% info_columns) {

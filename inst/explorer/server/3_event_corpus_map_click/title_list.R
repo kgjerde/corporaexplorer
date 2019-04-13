@@ -7,8 +7,7 @@ output$doc_list_tekst <- shiny::renderText({
 
     c(
         "<b> Date: </b>",
-        as.character(format(session_variables[[plot_mode$mode]]$Date[min_rad],
-                        "%A %d %B %Y")), # TODO: fortsett duplisering: regner ut ukedag flere steder.
+        format_date(session_variables[[plot_mode$mode]]$Date[min_rad]), # TODO: fortsett duplisering: regner ut ukedag flere steder.
         "<br/>",
         "<b> Documents this day: </b>",
         nrow(data_day)

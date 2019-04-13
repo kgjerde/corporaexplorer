@@ -8,14 +8,14 @@ output$hover_info <- shiny::renderUI({
 
 # Tooltip position calculation --------------------------------------------
     hover <- input$plot_hover
-    
+
     # calculate point position INSIDE the image as percent of total dimensions
     # from left (horizontal) and from top (vertical)
     left_pct <-
         (hover$x - hover$domain$left) / (hover$domain$right - hover$domain$left)
     top_pct <-
         (hover$domain$top - hover$y) / (hover$domain$top - hover$domain$bottom)
-    
+
     # calculate distance from left and bottom side of the picture in pixels
     left_px <-
         hover$range$left/hover$img_css_ratio$x + left_pct * (hover$range$right/hover$img_css_ratio$x - hover$range$left/hover$img_css_ratio$x)
@@ -48,8 +48,7 @@ output$hover_info <- shiny::renderUI({
                               shiny::p(shiny::HTML(
                                   paste0(
                                       "<b> Date: </b>",
-                                      format(session_variables[[plot_mode$mode]]$Date[min_rad],
-                                             "%A %d %B %Y"),
+                                      format_date(session_variables[[plot_mode$mode]]$Date[min_rad]),
                                       "<br/>",
                                       "<b> Documents this day: </b>",
                                       length(
@@ -69,10 +68,9 @@ output$hover_info <- shiny::renderUI({
                       shiny::p(shiny::HTML(
                           paste0(
                               "<b> Date: </b>",
-                              format(session_variables[[plot_mode$mode]]$Date[min_rad],
-                                     "%A %d %B %Y"),
+                              format_date(session_variables[[plot_mode$mode]]$Date[min_rad]),
                               "<br/>"
-                              
+
                           )
                       )))
         }
