@@ -66,6 +66,6 @@ show_ui("document_box")
 output$document_box_title <- shiny::renderText({
     paste0("Document \u2013 ",
            format_date(
-               session_variables[[plot_mode$mode]]$Date[min_rad]),
+               session_variables[[plot_mode$mode]]$Date[min_rad])
            )
 })
