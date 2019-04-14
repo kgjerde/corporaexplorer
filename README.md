@@ -65,6 +65,35 @@ install.packages("devtools")
 devtools::install_github("kgjerde/corporaexplorer")
 ```
 
+## A note on platforms and encoding
+
+`corporaexplorer` works on Mac OS, Windows and
+Linux,<sup>[1](#myfootnote1)</sup> and there are some important
+differences in how R handles text on the different platforms. If you are
+working with plain English text, there will most likely be no issues
+with encoding on any platform. Unfortunately, working with
+**non-[ASCII](https://en.wikipedia.org/wiki/ASCII)** encoded text in R
+(e.g. non-English characters), *can* be complicated – in particular on
+Windows.
+
+**On Mac OS or Linux**, problems with encoding will likely not arise at
+all. If problems do arise, they can typically be solved by making the R
+‘locale’ unicode-friendly (e.g. ´Sys.setlocale(“LC\_ALL”,
+“en\_US.UTF-8”)´). NB\! This assumes that the text is UTF-8 encoded,
+so if changing the locale in this way does not help, make sure that the
+text is encoded as UTF-8 characters. Alternatively, if you can ascertain
+the character encoding, set the locale correspondingly.
+
+**On Windows**, things can be much more complicated. The most important
+thing is to check carefully that the texts appear as expected in
+`corporaexplorer`’s apps, and that the searches function as expected. If
+there are problems, a good place to start is a blog post with the
+telling title [‘Escaping from character encoding hell in R on
+Windows’](https://dss.iq.harvard.edu/blog/escaping-character-encoding-hell-r-windows).
+
+For (a lot) more information about encoding, see [this informative
+article](http://kunststube.net/encoding/) by David C. Zentgraf.
+
 ## Example corpora
 
 The package includes a tiny ‘corporaexplorerobject’ (see below):
@@ -294,7 +323,7 @@ tile chart consisting of n tiles where each tile represents a 1/n part
 of the document, and where the colour in a tile indicates whether and
 how many times the search term is found in that part of the document.
 Clicking on a tile scrolls the document to the corresponding part of the
-document.<sup>[1](#myfootnote1)</sup>
+document.<sup>[3](#myfootnote3)</sup>
 
 <img src="man/figures/wall.png" width="80%" />
 
@@ -392,8 +421,9 @@ welcome. Ways to contribute:
 
 <hr>
 
-<a name="myfootnote1">*1</a>. Using the
-[`jquery.scrollTo`](https://github.com/flesler/jquery.scrollTo)
-plugin.*  
+<a name="myfootnote1">*1</a>. That said, the package is developed on Mac
+OS, and the Shiny apps’ user interface is a bit clunkier on Windows.*  
 <a name="myfootnote2">*2</a>. All this material is licensed under
-Creative Commons Attribution 4.0 International (CC BY 4.0).*
+Creative Commons Attribution 4.0 International (CC BY 4.0).*  
+<a name="myfootnote3">*3</a>. Using the
+[`jquery.scrollTo`](https://github.com/flesler/jquery.scrollTo) plugin.*
