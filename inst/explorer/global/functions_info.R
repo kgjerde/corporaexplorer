@@ -11,7 +11,7 @@ create_df_for_info <- function(session_variables,
         "data_dok"
       )
 
-    if (!is.null(search_arguments$subset_terms) &
+    if (search_arguments$subset_search == TRUE &
         nrow(start_df) != 0) {
       start_df <- filtrere_korpus_pattern(
         start_df,

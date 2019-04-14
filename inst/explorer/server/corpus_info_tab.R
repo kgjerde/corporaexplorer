@@ -5,12 +5,12 @@ shiny::observe({
     session_variables$created_info == FALSE) {
 
     if (search_arguments$all_ok) {
-      
+
       start_df_list <- create_df_for_info(session_variables,
                                           search_arguments,
                                           plot_mode$mode)
     }
-    
+
     # Info til infofane
     output$corpus_info <- shiny::renderText({
       source("./server/2_event_search_button/check_search_arguments.R",
