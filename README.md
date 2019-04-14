@@ -67,12 +67,12 @@ devtools::install_github("kgjerde/corporaexplorer")
 
 ## A note on platforms and encoding
 
-`corporaexplorer` works on Mac OS, Windows and
+**corporaexplorer** works on Mac OS, Windows and
 Linux,<sup>[1](#myfootnote1)</sup> and there are some important
 differences in how R handles text on the different platforms. If you are
 working with plain English text, there will most likely be no issues
 with encoding on any platform. Unfortunately, working with
-**non-[ASCII](https://en.wikipedia.org/wiki/ASCII)** encoded text in R
+non-[ASCII](https://en.wikipedia.org/wiki/ASCII) encoded text in R
 (e.g. non-English characters), *can* be complicated – in particular on
 Windows.
 
