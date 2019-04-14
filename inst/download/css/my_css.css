@@ -47,11 +47,20 @@
 }
 */
 
-#area, #filter_text {
+#area {
   padding-left:10px;
   padding-top: 10px;
   padding-right:10px;
   margin-top:-2em;
+  margin_bottom: -1em;
+  resize: vertical;
+  background-color: white;
+}
+
+#filter_text {
+  padding-left:10px;
+  padding-top: 10px;
+  padding-right:10px;
   margin_bottom: -1em;
   resize: vertical;
   background-color: white;

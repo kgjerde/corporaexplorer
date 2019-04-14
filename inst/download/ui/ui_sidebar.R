@@ -36,20 +36,11 @@ shinydashboard::dashboardSidebar(
     ),
     
     hr(),
-    
-    shinyWidgets::checkboxGroupButtons(
-        inputId = "subset_corpus",
-        label = NULL,
-        choices = list("Filter corpus?" = "Yes"),
-        justified = TRUE,
-        size = "sm"
-    ),
-    shiny::conditionalPanel(
-        condition = "input.subset_corpus != 'Yes'",
-        textAreaInput("filter_text", label = NULL, placeholder = "Terms separated by newline")
-        # textInput("filter_text", label = NULL, placeholder = "Term to subset corpus")
-    ),
-    
+
+        textAreaInput("filter_text",
+                      label = "Filter corpus?",
+                      placeholder = "Terms separated by newline"),
+
     hr(),
     
     shinyWidgets::prettyCheckbox(
