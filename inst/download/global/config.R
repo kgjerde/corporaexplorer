@@ -3,6 +3,8 @@
 
 abc <- eval(as.name(shiny::getShinyOption("corporaexplorer_download_data")))
 
+source("./global/backwards_compatibility.R", local = TRUE)
+
 if (class(abc) == "corporaexplorerobject") {
   INFO_COLUMNS <- abc$columns_for_info
   abc <- abc$original_data$data_dok
