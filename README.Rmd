@@ -75,7 +75,8 @@ Unfortunately, working with
 
 **On Mac OS or Linux**, problems with encoding will likely not arise at all.
 If problems do arise, they can typically be solved by
-making the R 'locale' unicode-friendly (e.g. ´Sys.setlocale("LC_ALL", "en_US.UTF-8")´). NB! This assumes that the text is UTF-8 encoded,
+making the R 'locale' unicode-friendly (e.g. `Sys.setlocale("LC_ALL", "en_US.UTF-8")`).
+NB! This assumes that the text is UTF-8 encoded,
 so if changing the locale in this way does not help,
 make sure that the text is encoded as UTF-8 characters.
 Alternatively, if you can ascertain the character encoding, set the locale correspondingly.
