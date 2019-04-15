@@ -152,8 +152,6 @@ transform_365 <- function(new_df) {
     dplyr::arrange(df_365, Year, Weekday_n, Yearday_n, Month_n)
 
   df_365$ID <- seq_len(nrow(df_365))
-  df_365$Month_n <- NULL
-  df_365$Yearday_n <- NULL
 
   df_365 <- dplyr::select(df_365,
                           ID,
