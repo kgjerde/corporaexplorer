@@ -7,7 +7,7 @@
 transform_365(new_df)
 }
 \arguments{
-\item{new_df}{A "data_dok" tibble}
+\item{new_df}{A "data_dok" tibble produced by \code{transform_regular}}
 }
 \value{
 A "data_365" tibble.

@@ -71,17 +71,15 @@ transform_regular <- function(df, columns_to_include = NULL, normalise = TRUE) {
 
 #' Convert "data_dok" tibble to "data_365" tibble
 #'
-#' @param new_df A "data_dok" tibble
+#' @param new_df A "data_dok" tibble produced by \code{transform_regular}
 #'
 #' @return A "data_365" tibble.
 #' @keywords internal
 transform_365 <- function(new_df) {
-  # @ new_df er en tibble klargjjort gjennom transform_regular()
 
-
-  df_365 <- new_df %>%
-    dplyr::group_by(Date) %>%
-    dplyr::summarise(Text = paste(Text_original_case, collapse = "\n\n--\n\n"))
+  df_365 <- new_df['Date'] %>%
+    dplyr::distinct() %>%
+    dplyr::mutate(Text = "Date with document in original df")
 
   min_date <- min(df_365$Date)
   max_date <- max(df_365$Date)
@@ -96,10 +94,8 @@ transform_365 <- function(new_df) {
     )
 
   df_365$Day_without_docs <- is.na(df_365$Text)
-  # df_365$Day_without_docs[df_365$Day_without_docs == TRUE] <- "black"
-  df_365$Day_without_docs[df_365$Day_without_docs == FALSE] <- NA
 
-  df_365$Text <- NULL
+  df_365$Day_without_docs[df_365$Day_without_docs == FALSE] <- NA
 
   df_365$Tile_length <- 1
 
