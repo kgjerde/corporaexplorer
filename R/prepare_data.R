@@ -95,6 +95,8 @@ transform_365 <- function(new_df) {
 
   df_365$Day_without_docs <- is.na(df_365$Text)
 
+  df_365$Text <- NULL
+
   df_365$Day_without_docs[df_365$Day_without_docs == FALSE] <- NA
 
   df_365$Tile_length <- 1
