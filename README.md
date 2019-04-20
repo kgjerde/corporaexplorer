@@ -27,7 +27,7 @@ package makes it easier to interact with larger text collections than
 what is usually feasible, and it facilitates creativity by allowing for
 more open-ended explorations of the text collections. Further, it can
 make selection and extraction of texts for further scrutiny faster than
-a ‘traditional workflow’ allows, and it facilitates transparency and
+a “traditional workflow” allows, and it facilitates transparency and
 rigidity by making it easier to account for or reproduce the process of
 selecting texts for close reading. Above all, the package is aimed at
 flexibility: it does not enforce any given workflow, but can play a
@@ -61,8 +61,8 @@ a rudimentary knowledge of R – or who knows anyone with this knowledge.
 To install **corporaexplorer**, run the following from an R console:
 
 ``` r
-install.packages('devtools')
-devtools::install_github('kgjerde/corporaexplorer')
+install.packages("devtools")
+devtools::install_github("kgjerde/corporaexplorer")
 ```
 
 ## A note on platforms and encoding
@@ -78,8 +78,8 @@ Windows.
 
 **On Mac OS or Linux**, problems with encoding will likely not arise at
 all. If problems do arise, they can typically be solved by making the R
-‘locale’ unicode-friendly (e.g. `Sys.setlocale('LC_ALL',
-'en_US.UTF-8')`). NB\! This assumes that the text is UTF-8 encoded, so
+“locale” unicode-friendly (e.g. `Sys.setlocale("LC_ALL",
+"en_US.UTF-8")`). NB\! This assumes that the text is UTF-8 encoded, so
 if changing the locale in this way does not help, make sure that the
 text is encoded as UTF-8 characters. Alternatively, if you can ascertain
 the character encoding, set the locale correspondingly.
@@ -88,21 +88,21 @@ the character encoding, set the locale correspondingly.
 thing is to check carefully that the texts appear as expected in
 `corporaexplorer`’s apps, and that the searches function as expected. If
 there are problems, a good place to start is a blog post with the
-telling title [‘Escaping from character encoding hell in R on
-Windows’](https://dss.iq.harvard.edu/blog/escaping-character-encoding-hell-r-windows).
+telling title [“Escaping from character encoding hell in R on
+Windows”](https://dss.iq.harvard.edu/blog/escaping-character-encoding-hell-r-windows).
 
 For (a lot) more information about encoding, see [this informative
 article](http://kunststube.net/encoding/) by David C. Zentgraf.
 
 ## Example corpora
 
-The package includes a tiny ‘corporaexplorerobject’ (see below):
+The package includes a tiny “corporaexplorerobject” (see below):
 `corporaexplorer::test_data`, which consists of 10 tiny documents and
 can be used for testing the basic functionality of the package.
 
 A more typical corpus can be downloaded for testing
 [here](https://ndownloader.figshare.com/files/14626970?private_link=820c105c12755d853801)
-– this is a ‘corporaexplorerobject’ based on a document collection
+– this is a “corporaexplorerobject” based on a document collection
 scraped from the Russian governmental website kremlin.ru (7751
 documents, more info
 [here](https://figshare.com/s/820c105c12755d853801)). The equivalent
@@ -116,11 +116,11 @@ the same website is available
 
 **corporaexplorer** contains three functions:
 
-1.  `prepare_data()` converts a data frame to a ‘corporaexplorerobject’.
+1.  `prepare_data()` converts a data frame to a “corporaexplorerobject”.
 2.  `run_corpus_explorer()` runs the package’s core feature, a Shiny app
-    for fast and flexible exploration of a ‘corporaexplorerobject’.
+    for fast and flexible exploration of a “corporaexplorerobject”.
 3.  `run_document_extractor()` runs a Shiny app for simple
-    retrieval/extraction of documents from a ‘corporaexplorerobject’ in
+    retrieval/extraction of documents from a “corporaexplorerobject” in
     a reading-friendly format.
 
 ## 1\. Prepare data for the Shiny apps
@@ -160,7 +160,7 @@ users.
 
 ### 2a. Sidebar input
 
-<img align='left' src='man/figures/sidebar.png' width='170' height='450' style='margin-right: 25px'/>
+<img align="left" src="man/figures/sidebar.png" width="170" height="450" style="margin-right: 25px"/>
 
   - **Number of terms to chart**: How many terms (phrases/patterns)
     should be charted in the corpus map? Current maximum is two.
@@ -173,19 +173,19 @@ users.
   - **Filter corpus?** Input terms here (one on each line) will filter
     the corpus so that it includes only documents where all these terms
     are present. Unlike terms entered in the two fields above, these
-    terms will not be included in the summary statistics in the ‘Corpus
-    info’ tab. An arbitrary number of terms can be used.
+    terms will not be included in the summary statistics in the “Corpus
+    info” tab. An arbitrary number of terms can be used.
   - **Case sensitive search**: Check this box to distinguish between
     lower and upper case in the search. Unchecked, `war` will find both
-    ‘war’ and ‘War’; if checked, `war` will only find ‘war’.
-  - **‘Year range’ or ‘date range’**: Filters the corpus (the first and
+    “war” and “War”; if checked, `war` will only find “war”.
+  - **“Year range” or “date range”**: Filters the corpus (the first and
     last date included) by time span.
-  - **Plot mode (‘calendar’ or ‘document wall’)**: Should the resulting
+  - **Plot mode (“calendar” or “document wall”)**: Should the resulting
     corpus map treat one day or one document as its base unit?
   - **Adjust plot size**: Change plot height. This is the only sidebar
     input that has effect without clicking the search button.
   - **Search button**: Only when search button is clicked will input
-    from the sidebar (with the exception of the ‘Adjust plot size’
+    from the sidebar (with the exception of the “Adjust plot size”
     input) be handled by the app.
 
 #### Note: Text input – regular expressions
@@ -197,15 +197,15 @@ complexity cost. That said, for simple searches that do not include
 punctuation, all one needs to know is basically this:
 
   - `\b` in a search means the beginning or the end of a word.
-  - `.` in a search means ‘any single character’.
+  - `.` in a search means “any single character”.
 
 Thus, (in a case insensitive search):
 
 ``` r
-arctic  # will match both 'Arctic' and 'Antarctic'
-\barctic  # will match only 'Arctic'.
+arctic  # will match both "Arctic" and "Antarctic"
+\barctic  # will match only "Arctic".
 
-civili.ation  # will match both 'civilisation' and 'civilization'
+civili.ation  # will match both "civilisation" and "civilization"
 ```
 
 For more about regex syntax and the regex flavours available, see the
@@ -214,7 +214,7 @@ section about regex engines
 
 (N.B. As seen in the example, a single backslash (not a double backslash
 as in the R console) is used as escape character. For example will `\.`
-match a literal ‘.’, and `\d` match any digit.)
+match a literal “.”, and `\d` match any digit.)
 
 #### Note: Additional search arguments
 
@@ -222,7 +222,7 @@ match a literal ‘.’, and `\d` match any digit.)
 separately or together by adding them to the end of a search pattern
 (with no space between):
 
-1.  The ‘treshold argument’ has the syntax `--treshold` and determines
+1.  The “treshold argument” has the syntax `--treshold` and determines
     the minimum number of search hits a day/document should contain in
     order to be coloured in the corpus
 map:
@@ -230,17 +230,17 @@ map:
 <!-- end list -->
 
 ``` r
-Russia--10  # Will find documents that includes the pattern 'Russia' at least 10 times.
+Russia--10  # Will find documents that includes the pattern "Russia" at least 10 times.
 ```
 
-2.  The ‘column argument’ has the syntax `--column_name` and allows for
+2.  The “column argument” has the syntax `--column_name` and allows for
     searches in other columns than the default full text
 column:
 
 <!-- end list -->
 
 ``` r
-Russia--Title  # Will find documents that has the pattern 'Russia' in its 'Title' column.
+Russia--Title  # Will find documents that has the pattern "Russia" in its "Title" column.
 ```
 
 3.  The two arguments can be combined in any order:
@@ -250,26 +250,26 @@ Russia--Title  # Will find documents that has the pattern 'Russia' in its 'Title
 ``` r
 Russia--2--Title
 Russia--Title--2
-# Will both find documents that includes the pattern 'Russia' at least 2 times
+# Will both find documents that includes the pattern "Russia" at least 2 times
 # in the Title column.
 ```
 
 These arguments have the following consequences:
 
-  - *If used in the ‘Term(s) to chart’ fields*: The corpus map plot will
+  - *If used in the “Term(s) to chart” fields*: The corpus map plot will
     use colour fillings to indicate days/documents that satisfy the
     search arguments. Likewise, the summary statistics displayed in the
-    ‘Corpus info’ tab will be based on the documents matching the
+    “Corpus info” tab will be based on the documents matching the
     search arguments. In the documents themselves, all pattern matches
     will be highlighted. For example, a search for `Russia--Title` will
     in the corpus map plot colour only documents with the pattern Russia
     in the Title column, but the pattern Russia will be highlighted in
     all documents.
-  - *If used in the ‘Add terms for highlighting’ field*: The pattern
+  - *If used in the “Add terms for highlighting” field*: The pattern
     will be highlighted in all documents. The summary statistics
-    displayed in the ‘Corpus info’ tab will be based on the documents
+    displayed in the “Corpus info” tab will be based on the documents
     matching the search arguments.
-  - *If used in the ‘Filter corpus’ field*: The corpus will be filtered
+  - *If used in the “Filter corpus” field*: The corpus will be filtered
     to include only documents that match the search arguments.
 
 ### 2b. Corpus map
@@ -317,7 +317,7 @@ day.
 
 <br>
 
-Clicking on a ‘document tile’ produces two things. First, the full text
+Clicking on a “document tile” produces two things. First, the full text
 of the document with search terms highlighted. Second, above the text a
 tile chart consisting of n tiles where each tile represents a 1/n part
 of the document, and where the colour in a tile indicates whether and
@@ -387,12 +387,12 @@ library(corporaexplorer)
   - **Filter corpus?**: Input terms here (one on each line) will filter
     the corpus so that it includes only documents where all these terms
     are present. Unlike terms entered in the two fields above, these
-    terms will not be included in the summary statistics in the ‘Corpus
-    info’ tab. An arbitrary number of terms can be used.
+    terms will not be included in the summary statistics in the “Corpus
+    info” tab. An arbitrary number of terms can be used.
   - **Case sensitive search**: Check this box to distinguish between
     lower and upper case in the search. Unchecked, `war` will find both
-    ‘war’ and ‘War’; if checked, `war` will only find ‘war’.
-  - **‘Year range’ or ‘date range’**: Filters the corpus (the first and
+    “war” and “War”; if checked, `war` will only find “war”.
+  - **“Year range” or “date range”**: Filters the corpus (the first and
     last date included).
 
 By default, there is an upper limit of 400 documents to be included in
@@ -404,7 +404,7 @@ one report (can be changed in the `max_html_docs` parameter in
 Speed is considered to be of less importance in this app, and all
 searches are carried out as full text searches with `stringr`. Again,
 note that a single backslash is used as escape character. For example
-will `\.` match a literal ‘.’, and `\d` match any digit.
+will `\.` match a literal “.”, and `\d` match any digit.
 
 ## Contributing
 
@@ -421,9 +421,9 @@ welcome. Ways to contribute:
 
 <hr>
 
-<a name='footnote1'>*1</a>. That said, the package is developed on Mac
+<a name="footnote1">*1</a>. That said, the package is developed on Mac
 OS, and the Shiny apps’ user interface is a bit clunkier on Windows.*  
-<a name='footnote2'>*2</a>. All this material is licensed under Creative
+<a name="footnote2">*2</a>. All this material is licensed under Creative
 Commons Attribution 4.0 International (CC BY 4.0).*  
-<a name='footnote3'>*3</a>. Using the
+<a name="footnote3">*3</a>. Using the
 [`jquery.scrollTo`](https://github.com/flesler/jquery.scrollTo) plugin.*
