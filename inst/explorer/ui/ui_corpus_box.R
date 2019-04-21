@@ -33,8 +33,38 @@ shinydashboard::tabBox(
         shiny::htmlOutput("search_results"),
         shiny::div(style = 'overflow-x: scroll', shiny::tableOutput('TABLE')),
         shiny::htmlOutput("info_plot_title"),
-        shiny::plotOutput("corpus_info_plot", width = "100%", height = "250px")
+        shiny::plotOutput("corpus_info_plot", width = "100%", height = "250px"),
+        shiny::br(),
+
+# Edit plot legend keys UI ------------------------------------------------
+
+        shinyWidgets::checkboxGroupButtons(
+            inputId = "edit_info_plot_legend_keys",
+            label = NULL,
+            choices = list("Edit plot legend?" = "Yes"),
+            justified = TRUE,
+            size = "xs"
+        ),
+
+        shiny::conditionalPanel(
+            condition = "input.edit_info_plot_legend_keys == 'Yes'",
+            shiny::br(),
+
+            shiny::flowLayout(
+                shiny::uiOutput("column_info_names_ui"),
+                shiny::div(
+                    "Edit to change the legend key associated with a colour in the plot.",
+                    class = "text_in_box"
+                )
+            ),
+
+            shinyWidgets::actionBttn(
+                "update_info_plot_legend_keys",
+                label = "Update legend",
+                size = "xs",
+                style = "simple",
+                block = FALSE
+            )
+        )
     )
-    
-    
 )

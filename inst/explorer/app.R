@@ -77,6 +77,7 @@ source("./server/session_variables.R", local = TRUE)
 source("./server/functions_collect_input_terms.R", local = TRUE)
 source("./server/functions_checking_input_terms.R", local = TRUE)
 source("./server/functions_ui_management.R", local = TRUE)
+source("./server/function_collect_edited_info_plot_legend_keys.R", local = TRUE)
 
 # Corpus info tab ---------------------------------------------------------
 source("./server/corpus_info_tab.R", local = TRUE)

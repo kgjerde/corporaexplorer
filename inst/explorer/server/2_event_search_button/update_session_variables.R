@@ -13,6 +13,8 @@ session_variables$doc_tab_open <- FALSE
 # Og info_tab validation flag
 session_variables$stop_info_tab <- TRUE
 
+# And corpus info plot
+session_variables$corpus_info_plot <- NULL
 
 # Collect search arguments from sidebar -----------------------------------
 

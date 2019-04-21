@@ -215,10 +215,10 @@ pastebr <- function(...) {
 #' @return A ggplot2 plot object.
 corpus_info_plot <- function(start_df_list, search_arguments) {
   if (length(search_arguments$terms_highlight) > 0) {
-    start_df <- start_df_list$start_df
-    full_terms <- start_df_list$full_terms
 
-    terms <- start_df_list$terms
+    start_df <- start_df_list$start_df
+    full_terms <- colnames(start_df)
+
     years <- start_df_list$years
 
     df <- cbind(start_df, Year = years)

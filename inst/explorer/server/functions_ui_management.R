@@ -51,3 +51,9 @@ shiny::observeEvent(input$more_terms_button, {
 shiny::observeEvent(input$antall_linjer, {
     change_ui_class(".additional_search_terms", property = "display", "inline")
 })
+
+
+# Corpus info tab: edit plot legend keys UI -------------------------------
+observe({
+  shinyjs::hide("edit_info_plot_legend_keys")
+})

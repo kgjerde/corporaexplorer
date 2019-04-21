@@ -234,3 +234,22 @@ hr {
 #more_terms_button .btn-default {
   font-size: 11px;
 }
+
+#update_info_plot_legend_keys {
+  /*margin-left:1em;
+  margin-right:1em;*/
+  background-color: lightGray;
+  color: black;
+  margin-top: 1em;
+}
+
+.text_in_box {
+  width: 300px;
+  /*border: 1px solid black;*/
+  padding: 3px;
+  margin-top: -17px;
+  margin-right: -20px;
+  margin-bottom: -20px;
+  margin-left: -50px;
+  font-size: 13px;
+}
