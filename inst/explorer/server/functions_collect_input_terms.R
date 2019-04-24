@@ -35,13 +35,11 @@ collect_highlight_terms <- function() {
             stringr::str_replace_all("(\\s){2,}", "\\1") %>%
             stringr::str_split("\n") %>%
             unlist %>%
-            .[length(.) > 0] %>%
-            unique
+            .[length(.) > 0]
 
         terms_highlight <-
-            c(collect_search_terms(), terms_highlight[terms_highlight != ""]) #%>%
-           # unique  # TODO blr ikke unique-s hvis hører til ulike
-                    # custom_columns
+            c(collect_search_terms(), terms_highlight[terms_highlight != ""])
+
     }
     terms_highlight <-
         terms_highlight[terms_highlight != ""]
@@ -119,6 +117,20 @@ to_lower_except_special_characters <- Vectorize(function(pattern) {
     return(pattern)
 }, USE.NAMES = FALSE)
 
+#' Convert terms to lower case if case insensitive search
+#'
+#' Except special regex characters
+#'
+#' @param terms Character vector
+#'
+#' @return Character vector
+to_lower_if_case_insensitive_search <- function(terms) {
+    if (search_arguments$case_sensitive == FALSE) {
+        terms <- to_lower_except_special_characters(terms)
+    }
+    return(terms)
+}
+
 #' Removing "arguments" from search term
 #'
 #' @param terms Character vector.
@@ -130,8 +142,5 @@ clean_terms <- function(terms) {
     }
     terms <- stringr::str_replace(terms, "--.*$", "")
 
-    if (search_arguments$case_sensitive == FALSE) {
-        terms <- to_lower_except_special_characters(terms)
-    }
     return(terms)
 }
