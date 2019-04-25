@@ -77,7 +77,7 @@ filtrere_korpus_pattern <- function(df,
         ordvektor = loaded_data$ordvektorer$data_dok,
         subset_search = TRUE,
         search_arguments$case_sensitive,
-        search_arguments$subset_tresholds[i],
+        search_arguments$subset_thresholds[i],
         doc_df = session_variables$data_dok,
         modus = modus,
         custom_column = search_arguments$subset_custom_column[i]

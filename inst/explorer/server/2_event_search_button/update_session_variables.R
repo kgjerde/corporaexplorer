@@ -36,7 +36,7 @@ search_arguments$case_sensitive <- input$case_sensitivity
 # Filtering corpus --------------------------------------------------------
 if (!is.null(input$subset_corpus)) {
     search_arguments$subset_terms <- collect_subset_terms()
-    search_arguments$subset_tresholds <- collect_treshold_values(search_arguments$subset_terms)
+    search_arguments$subset_thresholds <- collect_threshold_values(search_arguments$subset_terms)
     search_arguments$subset_custom_column <- collect_custom_column(search_arguments$subset_terms)
     search_arguments$subset_terms <-
         to_lower_if_case_insensitive_search(search_arguments$subset_terms) %>%
@@ -65,7 +65,7 @@ search_arguments$terms_highlight <-
     clean_terms()
 
 # Search arguments for all terms (search terms and highlight terms) -------
-search_arguments$tresholds <- collect_treshold_values(raw_highlight_terms) %>%
+search_arguments$thresholds <- collect_threshold_values(raw_highlight_terms) %>%
     .[highlight_terms_not_duplicated]
 search_arguments$custom_column <- collect_custom_column(raw_highlight_terms) %>%
     .[highlight_terms_not_duplicated]

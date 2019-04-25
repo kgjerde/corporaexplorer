@@ -19,7 +19,7 @@ shiny::validate(need(
 ))
 
 shiny::validate(need(
-    contains_only_valid_tresholds(isolate(collect_subset_terms()))
+    contains_only_valid_thresholds(isolate(collect_subset_terms()))
     ,
     paste(
         'Treshold argument invalid. Make sure it contains only numbers, e.g. "--4".'

@@ -5,7 +5,7 @@ sv <- reactiveValues(filelist = NULL,
 search_arguments <- reactiveValues(
     subset_terms = NA,
     case_sensitive = FALSE,
-    subset_tresholds = NA,
+    subset_thresholds = NA,
     subset_custom_column = NA,
     highlight_terms = NA
 )

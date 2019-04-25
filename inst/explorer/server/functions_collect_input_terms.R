@@ -66,17 +66,17 @@ collect_subset_terms <- function() {
     }
 }
 
-#' Collecting treshold values for search terms
+#' Collecting threshold values for search terms
 #'
 #' If user input is "search_term--\d".
 #'
 #' @return Numeric vector with same length as search_terms vector. NA if no
-#'   treshold.
-collect_treshold_values <- function(chr_vector) {
-    tresholds <- stringr::str_extract(chr_vector, "--\\d+($|--)") %>%
+#'   threshold.
+collect_threshold_values <- function(chr_vector) {
+    thresholds <- stringr::str_extract(chr_vector, "--\\d+($|--)") %>%
         stringr::str_replace_all("[^\\d]", "") %>%
         as.numeric()
-    return(tresholds)
+    return(thresholds)
 }
 
 #' Collecting custom column in which to search for search terms
@@ -84,7 +84,7 @@ collect_treshold_values <- function(chr_vector) {
 #' If user input is "search_term--\D".
 #'
 #' @return Numeric vector with same length as search_terms vector. NA if no
-#'   treshold.
+#'   threshold.
 collect_custom_column <- function(chr_vector) {
     column <- stringr::str_extract(chr_vector, "--[^\\d].*($|--)") %>%
     stringr::str_replace_all("(--\\d+|--)", "")

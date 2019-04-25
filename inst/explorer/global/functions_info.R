@@ -27,7 +27,7 @@ create_df_for_info <- function(session_variables,
 
   cust_col <- search_arguments$custom_column
   length(cust_col) <- length(search_arguments$terms_highlight)
-  tresh <- search_arguments$tresholds
+  tresh <- search_arguments$thresholds
   length(tresh) <- length(search_arguments$terms_highlight)
 
   reconstruct_full_terms <- function(term, optional1, optional2) {
@@ -45,7 +45,7 @@ create_df_for_info <- function(session_variables,
   full_terms <- reconstruct_full_terms(
     search_arguments$terms_highlight,
     search_arguments$custom_column,
-    search_arguments$tresholds
+    search_arguments$thresholds
   )
 
   # Checking distinctness

@@ -184,7 +184,7 @@ transform_365 <- function(new_df) {
 #'     app in some cases can produce false positives. E.g. searching for the
 #'     term "donkey" will also find the term "don\%key".
 #' This should not be a problem for the vast opportunity of use cases, but if
-#' one so desires, there are three different solutions: set this paramater to
+#' one so desires, there are three different solutions: set this parameter to
 #' \code{FALSE}, create a corporaexplorerobject without a matrix by setting
 #' the \code{use_matrix} parameter to \code{FALSE}, or run
 #' \code{\link[corporaexplorer]{run_corpus_explorer}} with the

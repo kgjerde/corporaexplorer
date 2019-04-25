@@ -186,7 +186,7 @@ is used as escape character. For example will `\.` match a literal ".", and `\d`
 
 **corporaexplorer** offers two optional arguments that can be used separately or together by adding them to the end of a search pattern (with no space between):
 
-1. The "treshold argument" has the syntax `--treshold` and determines the minimum
+1. The "threshold argument" has the syntax `--threshold` and determines the minimum
 number of search hits a day/document should contain in order to be coloured in the corpus map:
 ``` r
 Russia--10  # Will find documents that includes the pattern "Russia" at least 10 times.

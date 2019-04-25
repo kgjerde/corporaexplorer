@@ -1,8 +1,8 @@
-#' Check if vector contains any invalid treshold argument ("--\\d+")
+#' Check if vector contains any invalid threshold argument ("--\\d+")
 #' 
 #' @param chr_vector Unparsed terms input
 #' @return Logical
-check_valid_tresholds <- function(chr_vector) {
+check_valid_thresholds <- function(chr_vector) {
     chr_vector <- stringr::str_extract(chr_vector, "--\\d.*($|--)")
     chr_vector <- chr_vector[!is.na(chr_vector)]
     return(all(stringr::str_detect(chr_vector, "--\\d+($|--)")))
@@ -52,7 +52,7 @@ check_search_term_length <- function(terms, character_limit = CHARACTER_LIMIT) {
     return(!any(nchar(terms) > character_limit, na.rm = TRUE))
 }
 
-#' Check if coustom columns, treshold, regex, and length are all OK
+#' Check if coustom columns, threshold, regex, and length are all OK
 #'
 #' No params yet.
 #'
@@ -67,7 +67,7 @@ check_all_input <- function() {
     return_value <-
         all(
             check_valid_column_names(kolonner, session_variables$data_dok),
-            check_valid_tresholds(all_terms),
+            check_valid_thresholds(all_terms),
             check_regexes(clean_terms(all_terms)),
             check_search_term_length(all_terms))
     if (return_value == TRUE) {

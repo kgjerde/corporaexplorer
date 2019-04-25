@@ -29,8 +29,8 @@ shiny::observeEvent(input$trykk, {
 
     if (!is.null(input$filter_text)) {
         search_arguments$subset_terms <- collect_subset_terms()
-        search_arguments$subset_tresholds <-
-            collect_treshold_values(search_arguments$subset_terms)
+        search_arguments$subset_thresholds <-
+            collect_threshold_values(search_arguments$subset_terms)
         search_arguments$subset_custom_column <-
             collect_custom_column(search_arguments$subset_terms)
         search_arguments$subset_terms <-
@@ -68,14 +68,14 @@ shiny::observeEvent(input$trykk, {
     if (!identical(input$filter_text, "")) {
         if (check_valid_column_names(search_arguments$subset_custom_column,
                                      sv$subset) &
-            contains_only_valid_tresholds(isolate(collect_subset_terms())) &
+            contains_only_valid_thresholds(isolate(collect_subset_terms())) &
                 check_regexes(c(search_arguments$highlight_terms,
                                search_arguments$subset_terms)) &
             contains_argument(search_arguments$highlight_terms) == FALSE) {
             sv$subset <-  subset_terms(
                 sv$subset,
                 terms = search_arguments$subset_terms,
-                treshold = search_arguments$subset_tresholds,
+                threshold = search_arguments$subset_thresholds,
                 custom_column = search_arguments$subset_custom_column
             )
         }

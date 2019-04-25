@@ -35,7 +35,7 @@ count_search_terms_hits <-
                     ordvektor,
                     search_arguments$subset_search,
                     search_arguments$case_sensitive,
-                    search_arguments$tresholds[i],
+                    search_arguments$thresholds[i],
                     doc_df,
                     modus,
                     search_arguments$custom_column[i]

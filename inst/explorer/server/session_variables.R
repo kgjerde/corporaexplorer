@@ -15,10 +15,10 @@ session_variables <- shiny::reactiveValues(
 search_arguments <- shiny::reactiveValues(
     subset_search = FALSE,
     subset_terms = NULL,
-    subset_tresholds = NA,
+    subset_thresholds = NA,
     subset_custom_column = NA,
     search_terms = "",
-    tresholds = NA,
+    thresholds = NA,
     custom_column = NA,
     terms_highlight = character(0),
     case_sensitive = FALSE,

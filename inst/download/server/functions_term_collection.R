@@ -53,21 +53,21 @@ collect_highlight_terms <- function() {
     return(terms_highlight)
 }
 
-#' Collecting treshold values for search terms
+#' Collecting threshold values for search terms
 #'
 #' If user input is "search_term--\d".
 #'
 #' @return Numeric vector with same length as search_terms vector. NA if no
-#'   treshold.
-collect_treshold_values <- function() {
-    tresholds <- stringr::str_extract(search_arguments$search_terms, "--\\d*$") %>%
+#'   threshold.
+collect_threshold_values <- function() {
+    thresholds <- stringr::str_extract(search_arguments$search_terms, "--\\d*$") %>%
         stringr::str_replace("--", "") %>%
         as.numeric()
-    return(tresholds)
+    return(thresholds)
 }
 
 
-#' Removing "treshold argument" from search term
+#' Removing "threshold argument" from search term
 #'
 #' @param terms Character vector.
 #'
@@ -88,13 +88,13 @@ contains_argument <- function(chr_vector) {
     return(any(stringr::str_detect(chr_vector, "--")))
 }
 
-#' Check if vector contains any invalid treshold argument ("--\\d+")
+#' Check if vector contains any invalid threshold argument ("--\\d+")
 #'
 #' Purpose: make user aware that highlight terms cannot contain arguments.
 #'
 #' @param chr_vector Unparsed subset_terms input
 #' @return Logical
-contains_only_valid_tresholds <- function(chr_vector) {
+contains_only_valid_thresholds <- function(chr_vector) {
     chr_vector <- stringr::str_extract(chr_vector, "--\\d.*($|--)")
     chr_vector <- chr_vector[!is.na(chr_vector)]
     return(all(stringr::str_detect(chr_vector, "[^\\d-]") == FALSE))

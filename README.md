@@ -222,7 +222,7 @@ match a literal “.”, and `\d` match any digit.)
 separately or together by adding them to the end of a search pattern
 (with no space between):
 
-1.  The “treshold argument” has the syntax `--treshold` and determines
+1.  The “threshold argument” has the syntax `--threshold` and determines
     the minimum number of search hits a day/document should contain in
     order to be coloured in the corpus
 map:

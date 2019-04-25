@@ -28,7 +28,7 @@ subset_date <- function(.tibble, date_1, date_2) {
 #     return(.tibble)
 # }
 
-subset_terms <- function(.tibble, terms, treshold, custom_column) {
+subset_terms <- function(.tibble, terms, threshold, custom_column) {
     if (!is.null(terms)) {
         for (i in seq_along(terms)) {
             if (!is.na(custom_column[i])) {
@@ -38,8 +38,8 @@ subset_terms <- function(.tibble, terms, treshold, custom_column) {
                 text_column <- rlang::sym("Text")
             }
             
-            if (is.na(treshold[i])) {
-                treshold[i] <- 1
+            if (is.na(threshold[i])) {
+                threshold[i] <- 1
             }
             
             .tibble <- .tibble %>%
@@ -51,7 +51,7 @@ subset_terms <- function(.tibble, terms, treshold, custom_column) {
                                           ignore_case = !search_arguments$case_sensitive
                                       )
                                   )) %>%
-                dplyr::filter(hitcount >= treshold[i])
+                dplyr::filter(hitcount >= threshold[i])
         }
     }
     return(.tibble)

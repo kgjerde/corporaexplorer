@@ -23,7 +23,7 @@ If this is something you want, set 'allow_unreasonable_patterns' in 'run_corpus_
     ))
 
     shiny::validate(shiny::need(
-        check_valid_tresholds(isolate(search_arguments$raw_terms_highlight))
+        check_valid_thresholds(isolate(search_arguments$raw_terms_highlight))
         ,
         paste(
             '\nTreshold argument invalid. Make sure it contains only numbers, e.g. "--4".'
@@ -33,7 +33,7 @@ If this is something you want, set 'allow_unreasonable_patterns' in 'run_corpus_
     if (!is.null(isolate(input$subset_corpus))) {
         if (isolate(input$subset_corpus == 'Yes')) {
             shiny::validate(shiny::need(
-                check_valid_tresholds(isolate(search_arguments$raw_terms_subset))
+                check_valid_thresholds(isolate(search_arguments$raw_terms_subset))
                 ,
                 paste(
                     '\nTreshold argument invalid. Make sure it contains only numbers, e.g. "--4".'

@@ -25,9 +25,9 @@ min_padding <- function(frekvensmatrix, original_tibble){
         dplyr::arrange(i)
 }
 
-#' Filtering column with search_term_count for treshold
+#' Filtering column with search_term_count for threshold
 #'
-#' Applied only when treshold in search.
+#' Applied only when threshold in search.
 #'
 #' @return Filtered df
 filter_by_count_argument <- function(df, pattern, count_argument) {
@@ -218,7 +218,7 @@ count_df <- function(pattern, df, case_sensitive, custom_column) {
 #' @param ordvektor As in visualiser_korpus().
 #' @param subset_search search_arguments$subset_search.
 #' @param case_sensitive search_arguments$case_sensitive.
-#' @param tresholds search_arguments$tresholds.
+#' @param thresholds search_arguments$thresholds.
 #' @param doc_df As in visualiser_korpus().
 #' @param modus As in visualiser_korpus().
 #'
@@ -230,7 +230,7 @@ count_hits_for_each_search_term <-
              ordvektor,
              subset_search,
              case_sensitive,
-             tresholds,
+             thresholds,
              doc_df,
              modus,
              custom_column) {
@@ -250,9 +250,9 @@ count_hits_for_each_search_term <-
         
         colnames(df_count) <- pattern
         
-        if (!is.na(tresholds)) {
+        if (!is.na(thresholds)) {
             df_count <-
-                filter_by_count_argument(df_count, pattern, tresholds)
+                filter_by_count_argument(df_count, pattern, thresholds)
         }
         # print(system.time({
         if (modus == "data_365") {
