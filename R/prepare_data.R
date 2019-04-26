@@ -275,12 +275,26 @@ get_term_vector <- function(returned_list) {
   return(returned_list[[2]])
 }
 
-
 # 4. Main function --------------------------------------------------------
+
+# https://github.com/tidyverse/dplyr/blob/master/R/tbl-cube.r for tips on documentation
+
+# Generic -----------------------------------------------------------------
 
 #' Prepare data for corpus exploration
 #'
-#' @param dataset A data frame with Date column (class Date), Text column (class
+#' @param ... Ignored.
+#' @export
+prepare_data <- function(dataset, ...) {
+   UseMethod("prepare_data")
+ }
+
+# Method for data.frame ---------------------------------------------------
+
+#' @export
+#' @rdname prepare_data
+#' @param dataset Object to be converted to a corporaexplorerobject.
+#'   Currently converts a data frame with Date column (class Date), Text column (class
 #'   character), and optionally other columns, e.g. Title (class character) and URL
 #'   (character).
 #' @param columns_doc_info Character vector. The columns from df to display in
@@ -298,7 +312,6 @@ get_term_vector <- function(returned_list) {
 #' @return A \code{corporaexplorer} object to be passed as argument to
 #'   \code{\link[corporaexplorer]{run_corpus_explorer}} and
 #'   \code{\link[corporaexplorer]{run_document_extractor}}.
-#' @export
 #' @examples
 #' # Constructing test data frame:
 #' dates <- as.Date(paste(2011:2020, 1:10, 21:30, sep = "-"))
@@ -318,13 +331,14 @@ get_term_vector <- function(returned_list) {
 #' # Running app to extract documents:
 #' run_document_extractor(corpus)
 #' }
-prepare_data <- function(dataset,
+prepare_data.data.frame <- function(dataset,
                          columns_to_include = NULL,
                          columns_doc_info = c("Date", "Title", "URL"),
                          corpus_name = NULL,
                          use_matrix = TRUE,
                          normalise = TRUE,
-                         matrix_without_punctuation = TRUE) {
+                         matrix_without_punctuation = TRUE,
+                         ...) {
 
   # Argument checking
 

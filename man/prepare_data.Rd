@@ -2,17 +2,23 @@
 % Please edit documentation in R/prepare_data.R
 \name{prepare_data}
 \alias{prepare_data}
+\alias{prepare_data.data.frame}
 \title{Prepare data for corpus exploration}
 \usage{
-prepare_data(dataset, columns_to_include = NULL,
+prepare_data(dataset, ...)
+
+\method{prepare_data}{data.frame}(dataset, columns_to_include = NULL,
   columns_doc_info = c("Date", "Title", "URL"), corpus_name = NULL,
   use_matrix = TRUE, normalise = TRUE,
-  matrix_without_punctuation = TRUE)
+  matrix_without_punctuation = TRUE, ...)
 }
 \arguments{
-\item{dataset}{A data frame with Date column (class Date), Text column (class
+\item{dataset}{Object to be converted to a corporaexplorerobject.
+Currently converts a data frame with Date column (class Date), Text column (class
 character), and optionally other columns, e.g. Title (class character) and URL
 (character).}
+
+\item{...}{Ignored.}
 
 \item{columns_to_include}{Character vector. The columns from df to be
 included in corpus object, in addition to the required Date and Text. E.g.
