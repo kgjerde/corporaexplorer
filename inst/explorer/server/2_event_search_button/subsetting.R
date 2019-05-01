@@ -6,12 +6,17 @@
 
 
 # Filtrering ved år
+
+if (DATE_BASED_CORPUS == TRUE) {
+
 session_variables[[plot_mode$mode]] <-
   filtrere_korpus_tid(
     .tibble = session_variables[[plot_mode$mode]],
     search_arguments = search_arguments,
     plot_mode$mode
   )
+
+}
 
 # Filtrering ved filter-pattern hvis et slikt finnes
 

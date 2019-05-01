@@ -22,12 +22,13 @@ session_variables$corpus_info_plot <- NULL
 plot_mode$mode <- input$modus
 
 # Time --------------------------------------------------------------------
-search_arguments$time_filtering_mode <- input$years_or_dates
-
-if (search_arguments$time_filtering_mode == "Year range") {
-    search_arguments$time_range <- input$date_slider[1]:input$date_slider[2]
-} else if (search_arguments$time_filtering_mode == "Date range") {
-    search_arguments$time_range <- c(input$date_calendar[1], input$date_calendar[2])
+if (DATE_BASED_CORPUS == TRUE) {
+    search_arguments$time_filtering_mode <- input$years_or_dates
+    if (search_arguments$time_filtering_mode == "Year range") {
+        search_arguments$time_range <- input$date_slider[1]:input$date_slider[2]
+    } else if (search_arguments$time_filtering_mode == "Date range") {
+        search_arguments$time_range <- c(input$date_calendar[1], input$date_calendar[2])
+    }
 }
 
 # Case sensitive? ---------------------------------------------------------

@@ -62,10 +62,18 @@ if (session_variables$doc_tab_open == FALSE) {
 
 show_ui("document_box")
 
-# Setter boks-tittel
+# Setter box title -- depending on whether DATE_BASED_CORPUS or not
 output$document_box_title <- shiny::renderText({
-    paste0("Document \u2013 ",
-           format_date(
-               session_variables[[plot_mode$mode]]$Date[min_rad])
-           )
+
+    if (DATE_BASED_CORPUS == TRUE) {
+        paste0("Document \u2013 ",
+               format_date(
+                   session_variables[[plot_mode$mode]]$Date[min_rad])
+               )
+    } else {
+        paste0(session_variables[[plot_mode$mode]]$Year[min_rad],
+               " \u2013 ",
+               session_variables[[plot_mode$mode]]$Seq[min_rad])
+        # "PLACEHOLDER!"
+    }
 })

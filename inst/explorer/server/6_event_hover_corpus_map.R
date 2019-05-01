@@ -64,6 +64,9 @@ output$hover_info <- shiny::renderUI({
         }
     } else if (plot_mode$mode == "data_dok") {
         if (length(min_rad) > 0) {
+
+            if (DATE_BASED_CORPUS) {
+
             shiny::wellPanel(style = style,
                       shiny::p(shiny::HTML(
                           paste0(
@@ -73,6 +76,7 @@ output$hover_info <- shiny::renderUI({
 
                           )
                       )))
-        }
+            }
+            }
     }
 })

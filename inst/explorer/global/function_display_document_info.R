@@ -6,11 +6,17 @@
 #'
 #' @return Character string
 display_document_info <- function(df, min_rad, info_columns = INFO_COLUMNS) {
-    doc_info_text <- paste(sep = "<br>",
-                           paste0(
-                               tags$b("Date: "),
-                               format_date(df$Date[min_rad])
-                           ))
+    doc_info_text <- ""
+
+    if (DATE_BASED_CORPUS == TRUE) {
+
+        doc_info_text <- paste(sep = "<br>",
+              doc_info_text,
+                paste0(
+                tags$b("Date: "),
+                format_date(df$Date[min_rad])
+                               ))
+    }
 
     if ("Title" %in% info_columns) {
         doc_info_text <- paste(sep = "<br>",
@@ -56,5 +62,6 @@ display_document_info <- function(df, min_rad, info_columns = INFO_COLUMNS) {
         )
     }
 
-    doc_info_text
+    # Trimming beginning of string
+    return(stringr::str_replace(doc_info_text, "^<br>*", ""))
 }
