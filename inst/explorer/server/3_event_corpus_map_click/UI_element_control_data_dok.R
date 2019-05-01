@@ -70,10 +70,14 @@ output$document_box_title <- shiny::renderText({
                format_date(
                    session_variables[[plot_mode$mode]]$Date[min_rad])
                )
-    } else {
-        paste0(session_variables[[plot_mode$mode]]$Year[min_rad],
-               " \u2013 ",
-               session_variables[[plot_mode$mode]]$Seq[min_rad])
-        # "PLACEHOLDER!"
+    } else if (DATE_BASED_CORPUS == FALSE) {
+        box_title <- ""
+        if (ONLY_ONE_GROUP_IN_NON_DATE_BASED_CORPUS == FALSE) {
+            box_title <- paste0(box_title,
+                                session_variables[[plot_mode$mode]]$Year[min_rad],
+                                " \u2013 ")
+        }
+        box_title <- paste0(box_title,
+                            session_variables[[plot_mode$mode]]$Seq[min_rad])
     }
 })
