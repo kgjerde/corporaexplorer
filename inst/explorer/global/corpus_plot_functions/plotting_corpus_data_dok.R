@@ -43,13 +43,19 @@ a <-
                   fill = Term_color
                 ))#, fill = "red")
 
+if (ONLY_ONE_GROUP_IN_NON_DATE_BASED_CORPUS == TRUE) {
+  y_text <- NULL
+}
+
 a <- a +
   #coord_fixed(ratio = 1/linjer, expand = FALSE) +
   ggplot2::scale_y_reverse(
     breaks = y_text$breaks,
     labels = y_text$labels,
     expand = c(0, 0)
-  ) +
+  )
+
+a <- a +
   ggplot2::scale_x_continuous(expand = c(0, 0)) +
   ggplot2::labs(x = NULL, y = NULL) +
   ggplot2::theme(axis.ticks.y = ggplot2::element_blank()) +
