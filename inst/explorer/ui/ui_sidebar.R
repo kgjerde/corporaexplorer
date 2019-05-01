@@ -92,9 +92,12 @@ shinydashboard::dashboardSidebar(
             label = NULL,
             min = 100,
             ticks = FALSE,
-            step = 100,
-            max = length(unique(loaded_data$original_data$data_365[["Year"]])) * 100,
-            value = ceiling(length(unique(loaded_data$original_data$data_365[["Year"]])) * 7 * 11 + 15))
+            step = 200,
+            max = plot_size(loaded_data$original_data$data_dok,
+                            DATE_BASED_CORPUS) * 2,
+            value = plot_size(loaded_data$original_data$data_dok,
+                              DATE_BASED_CORPUS)
+            )
         ), class = "plotsize_field"
     ),
     

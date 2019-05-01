@@ -13,17 +13,8 @@ source("./server/2_event_search_button/check_search_arguments.R", local = TRUE)
     session_variables$plot_build_info <-
         ggplot2::ggplot_build(plot_fase_1)$data[[2]]
 
-    if (plot_mode$mode == "data_365") {
-        value_for_slider <-
-            ceiling((length(
-                unique(session_variables$plot_build_info$ymax)
-            ) * 11) + 15)
-    } else if (plot_mode$mode == "data_dok") {
-        value_for_slider <-
-            ceiling((length(
-                unique(session_variables$plot_build_info$ymax)
-            ) * 12) + 15)
-    }
+        value_for_slider <- plot_size(session_variables[[plot_mode$mode]],
+                                      plot_mode$mode == "data_365")
 
     # TODO Problem med omigjen-rendering ikke endelig løst
     # av commit 2b6ca83

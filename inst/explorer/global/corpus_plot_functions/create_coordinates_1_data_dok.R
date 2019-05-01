@@ -8,9 +8,11 @@
 #'   for each document.
 create_coordinates_1_data_dok <- function(.data, linjer, width = NULL) {
 
-if(is.null(width)){
-width <- sqrt(sum(.data$Tile_length) /  linjer)  # TODO: width-algoritmer
+if(is.null(max_width_for_row)){
+max_width_for_row <- sqrt(sum(.data$Tile_length) /  linjer)  # TODO: width-algoritmer
 }
+
+max_width_for_row <- MAX_WIDTH_FOR_ROW
 
 # .data$x_min <- NA
 .data$x_max <- cumsum(.data$Tile_length)
