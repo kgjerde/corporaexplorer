@@ -29,7 +29,7 @@ search_arguments <- shiny::reactiveValues(
     all_ok = TRUE
 )
 
-plot_mode <- shiny::reactiveValues(mode = "data_365")
+plot_mode <- shiny::reactiveValues(mode = if (DATE_BASED_CORPUS == FALSE) "data_dok" else "data_365")
 
 ui_elements <- shiny::reactiveValues(
     day_corpus_box = ".class_day_corpus .nav-tabs-custom",

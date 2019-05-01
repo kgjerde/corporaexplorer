@@ -71,7 +71,7 @@ shinydashboard::dashboardSidebar(
         label = "Plot mode",
         size = "sm",
         choices = list("Calendar" = "data_365", "Document wall" = "data_dok"),
-        selected = "data_365",
+        selected = if (DATE_BASED_CORPUS == FALSE) "data_dok" else "data_365",
         justified = TRUE
     ),
 
