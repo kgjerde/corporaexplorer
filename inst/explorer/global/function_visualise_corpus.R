@@ -95,9 +95,11 @@ visualiser_korpus <-
                                                month_distance,
                                                year_distance)
     } else if (modus == "data_dok") {
-      .data$Odd <- .data$Year %% 2 == 0
-      .data$Odd[.data$Odd == FALSE] <- 'ghostwhite'
-      .data$Odd[.data$Odd == TRUE] <- 'gray89'
+      #AVSTAND MELLOM ÅR
+      year_distance <- 1
+      .data$Year_numeric <- as.numeric(factor(.data$Year, levels = unique(.data$Year)))
+      .data$y_min <- .data$y_min + (year_distance * .data$Year_numeric - min(.data$Year_numeric))
+      .data$y_max <- .data$y_max + (year_distance * .data$Year_numeric - min(.data$Year_numeric))
     } else if (modus == "day"){
       .data <- create_distance_coordinates_day(.data,
                                                 linjer,

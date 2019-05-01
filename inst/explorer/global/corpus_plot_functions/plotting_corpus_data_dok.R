@@ -96,96 +96,31 @@ a <-
   )
 
 
+# dividing_lines_btwn_groups ------------------------------
 
-##### SKILLELINJER MELLOM ÅR
+coordinates_for_dividing_lines_btwn_groups <-
+  which(!seq_len(max(test1$y_min)) %in% test1$y_min)
 
-  year_divide <- rect_tib_vertikal %>%
-    dplyr::group_by(Year) %>%
-    dplyr::arrange(yend) %>%
-    dplyr::slice(1)
+if (length(coordinates_for_dividing_lines_btwn_groups) > 0) {
+  coordinates_for_dividing_lines_btwn_groups <-
+    coordinates_for_dividing_lines_btwn_groups + 0.5
 
+  difference_min_max_x <- max(test1$x_max) - min(test1$x_min)
 
-x_ <- integer()
-xend_ <- integer()
-y_ <- integer()
-yend_ <- integer()
-x_2 <- integer()
-xend_2 <- integer()
-y_2 <- integer()
-yend_2 <- integer()
-Year_ <- integer()
-Month_ <- integer()
-for (i in seq_len(nrow(year_divide))) {
-  x_[i]       <- 0
-  xend_[i]    <- year_divide$x[i]
-  y_[i]       <- year_divide$yend[i]
-  yend_[i]    <- year_divide$yend[i]
-  x_2[i]      <- year_divide$x[i]
-  xend_2[i]   <-
-    max(test1$x_max[test1$y_max == year_divide$yend[i]])
-  y_2[i]      <- year_divide$y[i]
-  yend_2[i]   <- year_divide$y[i]
-  Year_[i]     <- year_divide$Year[i]
-  Month_[i]    <- year_divide$Month[i]
+  a <-
+    a + ggplot2::annotate(
+      "segment",
+      linetype = "solid",
+      colour = "lightgray",
+      size = 0.3,
+      x = min(test1$x_min) - (difference_min_max_x / 35),
+      xend = max(test1$x_max) + (difference_min_max_x / 125),
+      y = coordinates_for_dividing_lines_btwn_groups,
+      yend = coordinates_for_dividing_lines_btwn_groups
+    )
 }
-
-year_divide <-
-  tibble::tibble(
-    x = c(x_, x_2),
-    xend =  c(xend_, xend_2),
-    y = c(y_, y_2),
-    yend = c(yend_, yend_2),
-    Year = c(Year_, Year_),
-    Month = c(Month_, Month_)
-  )
-
-# oskar <<- year_divide
-
-
-a <-
-  a + ggplot2::annotate(
-    "segment",
-    x = year_divide$x,
-    xend = year_divide$xend,
-    y = year_divide$y,
-    yend = year_divide$yend
-  )
-
-#### SISTE VERTIKALE SKILLELINJER ####
-
-  unike_aar <- unique(year_divide$Year)
-  
-  x <- integer()
-  y <- integer()
-  yend <- integer()
-  
-  for (i in seq_along(unike_aar)) {
-    if (max(year_divide$yend[year_divide$Year == unike_aar[i]]) != min(year_divide$yend[year_divide$Year == unike_aar[i]])) {
-      x[i] <-     max(year_divide$x[year_divide$Year == unike_aar[i]])
-      y[i] <-
-        min(year_divide$y[year_divide$Year == unike_aar[i]])
-      yend[i] <-
-        max(year_divide$yend[year_divide$Year == unike_aar[i]])
-    }
-  }
-
-
-oppoverpiler <- tibble::tibble(x, y, yend)
-
-
-
-a <-
-  a + ggplot2::annotate(
-    "segment",
-    x = oppoverpiler$x,
-    xend = oppoverpiler$x,
-    y = oppoverpiler$y,
-    yend = oppoverpiler$yend
-  )
-
 #####
-
-a <- a + ggplot2::scale_alpha_identity(na.value = test1$Odd)
+# a <- a + ggplot2::scale_alpha_identity(na.value = test1$Odd)
 
 
 
