@@ -6,7 +6,7 @@
 #'
 #' @return Full data_dok df or day df with additional columns determining plot coordinates
 #'   for each document.
-create_coordinates_1_data_dok <- function(.data, linjer, width = NULL) {
+create_coordinates_1_data_dok <- function(.data, linjer, max_width_for_row = NULL) {
 
 if(is.null(max_width_for_row)){
 max_width_for_row <- sqrt(sum(.data$Tile_length) /  linjer)  # TODO: width-algoritmer
@@ -20,32 +20,34 @@ max_width_for_row <- MAX_WIDTH_FOR_ROW
 # Betydelig speed-up
 .data$x_min <- dplyr::lag(.data$x_max, default = 0)
 
-if(nrow(.data) > width){
-merke <- 0
-bredde <- width
-bredde_start <- width
-i <- 1
-# for(i in 1:ceiling(max(.data$x_max) / .width)){
-while (max(merke) < nrow(.data)) {
-    merke[i] <- which(.data$x_max > bredde)[1] - 1
-    # For å unngå deadlocked equlibrium, hvor merke[i] forblir det samme = evig loop
-    # MEn dette er dirty. TODO.
-    if (!is.na(merke[i])) {
-    if (length(merke) > 1) {if (merke[i] == merke[i - 1]) {merke[i] <- merke[i] + 1}}
-    }
-    bredde <- .data$x_max[merke[i]] + bredde_start
-    if (is.na(merke[i])) {
-        # Fordi ellers feiler denne når inne i funksjon pga. at siste element er NA
-        break
-    } else{
-        i <- i + 1
+# New algorithm for wall view plot.
+# New row when:
+# * max_width_for_row is exceeded
+# * or when year/category changes
+# :
+
+Tile_length <- .data$Tile_length
+Year <- .data$Year
+last_tile_in_row <- integer(0)
+current_width <- Tile_length[1]
+
+if (nrow(.data) > 1) {
+    for (i in 2:nrow(.data)) {
+        if ((current_width + Tile_length[i]) > max_width_for_row |
+            Year[i] != Year[i - 1]) {
+            current_width <- Tile_length[i]
+            last_tile_in_row <- c(last_tile_in_row, i - 1)
+        } else {
+            current_width <- current_width + Tile_length[i]
+        }
     }
 }
-merke <- merke[-length(merke)]
 
 y_min <- integer(nrow(.data))
 y_min[y_min == 0] <- NA
-y_min[merke] <- seq_along(merke)
+if (nrow(.data) > 1) {
+    y_min[last_tile_in_row] <- seq_along(last_tile_in_row)
+}
 y_min <- zoo::na.locf(y_min, fromLast = TRUE, na.rm = FALSE)
 
 y_min <-
@@ -53,11 +55,6 @@ y_min <-
 
 y_max <- y_min #*-1  # *-1 fordi reversed scale
 y_min <- y_max - 1   # + 1 i stedet for -1 fordi reversed scale
-
-} else if (nrow(.data) <= width) {
-    y_min <- 0
-    y_max <- 1
-}
 
 .data$y_min <- y_min
 .data$y_max <- y_max
@@ -73,7 +70,6 @@ test1 <- .data %>%
 test1 <- dplyr::select(test1, -x_min, -x_max) %>%
     dplyr::rename(x_min = x_min2,
            x_max = x_max2)
-
 return(test1)
 }
 
