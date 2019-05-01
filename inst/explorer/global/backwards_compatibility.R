@@ -29,3 +29,7 @@ if ("mnd_vert" %in% colnames(loaded_data$original_data$data_365)) {
         dplyr::select(loaded_data$original_data$data_365,
                       -No., -Week_n, -mnd_vert, -mnd_hor, -Month_n, -Yearday_n)
 }
+
+if (is.null(loaded_data$date_based_corpus)) {
+    loaded_data$date_based_corpus <- TRUE
+}
