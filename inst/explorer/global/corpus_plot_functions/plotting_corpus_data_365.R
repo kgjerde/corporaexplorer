@@ -29,7 +29,8 @@ plotting_corpus_data_365 <- function(test1, x_breaks, y_text, til_legend, linjer
             panel.grid.major = ggplot2::element_blank(),
             panel.grid.minor = ggplot2::element_blank(),
             legend.position = "top",
-            legend.title = ggplot2::element_blank()
+            legend.title = ggplot2::element_blank(),
+            axis.text = ggplot2::element_text(size=10)
         ) +
         ggplot2::guides(fill = ggplot2::guide_legend(ncol = 8, byrow = TRUE))
     

@@ -61,7 +61,9 @@ a <- a +
     axis.text.x = ggplot2::element_blank(),
     axis.ticks.x = ggplot2::element_blank(),
     legend.position = "top",
-    legend.title = ggplot2::element_blank()
+    legend.title = ggplot2::element_blank(),
+    axis.text = ggplot2::element_text(size=11,
+                                      face = "bold")
   ) +
   ggplot2::guides(fill = ggplot2::guide_legend(ncol = 8, byrow = TRUE))
 
