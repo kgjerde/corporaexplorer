@@ -70,6 +70,10 @@ ui <- function(request) {
 
 server <- function(input, output, session) {
 
+# Conditional sidebar UI elements -----------------------------------------
+source("./ui/render_ui_sidebar_date_filtering.R", local = TRUE)
+source("./ui/hide_ui_sidebar_plot_mode.R", local = TRUE)
+
 # Session variables -------------------------------------------------------
 source("./server/session_variables.R", local = TRUE)
 

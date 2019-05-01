@@ -51,9 +51,8 @@ shinydashboard::dashboardSidebar(
     conditionalPanel(
         condition = "input.subset_corpus == 'Yes'",
         textAreaInput("filter_text", label = NULL, placeholder = "Terms separated by newline")
-        # textInput("filter_text", label = NULL, placeholder = "Term to subset corpus")
     ), class = "subset_field"),
-    
+
     shiny::hr(),
 
     shinyWidgets::prettyCheckbox(inputId = "case_sensitivity",
@@ -61,55 +60,23 @@ shinydashboard::dashboardSidebar(
                    value = FALSE,
                    width = "100%",
                    icon = icon("check")),
-    
+
     shiny::hr(),
-        
-    shinyWidgets::radioGroupButtons(
-        inputId = "years_or_dates",
-        label = NULL,
-        choices = c("Year range", "Date range"),
-        justified = TRUE,
-        size = "sm"
-    ),
-    
-    shiny::conditionalPanel(
-        condition = "input.years_or_dates == 'Year range'",
-        sliderInput(
-            "date_slider",
-            label = NULL,
-            min = min(loaded_data$original_data$data_dok$Year),
-            max = max(loaded_data$original_data$data_dok$Year),
-            value = c(min, max),
-            sep = ""
-        )
-    ),
-    
-    shiny::conditionalPanel(
-        condition = "input.years_or_dates == 'Date range'",
-        shiny::dateRangeInput(
-            "date_calendar",
-            label = NULL,
-            weekstart = 1,
-            start = min(loaded_data$original_data$data_dok$Date),
-            end = max(loaded_data$original_data$data_dok$Date),
-            min = min(loaded_data$original_data$data_dok$Date),
-            max = max(loaded_data$original_data$data_dok$Date)
-        )
-        
-    ),
-    
-    hr(),
-    
+
+    # Conditionally rendered time filtering UI in server
+    shiny::uiOutput('time_filtering_ui'),
+
     shinyWidgets::radioGroupButtons(
         inputId = "modus",
         label = "Plot mode",
         size = "sm",
         choices = list("Calendar" = "data_365", "Document wall" = "data_dok"),
+        selected = "data_365",
         justified = TRUE
     ),
-    
-    shiny::hr(),
-    
+
+    shiny::hr(class = "conditional_hr"),
+
     shinyWidgets::checkboxGroupButtons(
         inputId = "adjust_plotsize",
         label = NULL,
