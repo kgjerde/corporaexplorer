@@ -74,7 +74,6 @@ rect_tib_vertikal <- tibble::tibble(
   yend = test1[test1$df == 1,]$y_max + linjer - 1,
   # + 2 fordi tre rader i hver dokument FIX
   Year = test1$Year[test1$df == 1],
-  Month = test1$Month[test1$df == 1]
 )
 
 rect_tib_vertikal$x_mid = (rect_tib_vertikal$x + rect_tib_vertikal$xend) /
