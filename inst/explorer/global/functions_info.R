@@ -221,6 +221,10 @@ corpus_info_plot <- function(start_df_list, search_arguments) {
 
     years <- start_df_list$years
 
+    if (!is.numeric(years)) {
+      years <- as.numeric(factor(years, levels = unique(years)))
+    }
+
     df <- cbind(start_df, Year = years)
 
     df <- tidyr::gather(df, "Term", value = "Count", -Year)
