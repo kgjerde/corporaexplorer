@@ -203,7 +203,7 @@ Thus, (in a case insensitive search):
 
 ``` r
 arctic  # will match both "Arctic" and "Antarctic"
-\barctic  # will match only "Arctic".
+\barctic  # will match only "Arctic"
 
 civili.ation  # will match both "civilisation" and "civilization"
 ```
