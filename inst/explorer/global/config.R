@@ -10,6 +10,13 @@ source("./global/constants.R", local = TRUE)
 
 # From corporaexplorerobject --------------------------------------------
 
+DATE_BASED_CORPUS <- loaded_data$date_based_corpus
+contains_grouping_variable <-
+    !is.null(loaded_data$original_data$grouping_variable)
+# To decide if to display x-axis label in plot:
+ONLY_ONE_GROUP_IN_NON_DATE_BASED_CORPUS <-
+    contains_grouping_variable == FALSE & DATE_BASED_CORPUS == FALSE
+
 INFO_COLUMNS <- loaded_data$columns_for_info
 NO_MATRIX <- identical(loaded_data$ordvektorer$data_dok, FALSE)
 MATRIX_WITHOUT_PUNCTUATION <- loaded_data$ordvektorer$without_punctuation
