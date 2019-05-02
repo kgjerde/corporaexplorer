@@ -7,7 +7,7 @@ if (search_arguments$all_ok == FALSE) {
     ))
 
     shiny::validate(shiny::need(
-        check_regexes(c(search_arguments$terms_highlight,
+        check_regexes(c(unlist(search_arguments$terms_highlight),  # TODO dirty hack because empty search_arguments$terms_highlight) is list() and messes up the concatenation
                                    search_arguments$subset_terms))
         ,
         paste("\nInvalid regular expression. Please modify your search.")
