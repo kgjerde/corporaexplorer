@@ -61,7 +61,6 @@ create_df_for_info <- function(session_variables,
   }
 
   Years <- start_df$Year
-  Dates <- start_df$Date
 
   start_df <- count_search_terms_hits(
     start_df,
@@ -81,8 +80,7 @@ create_df_for_info <- function(session_variables,
     tresh = tresh,
     cust_col = cust_col,
     terms = terms,
-    years = Years,
-    dates = Dates
+    years = Years
   ))
 }
 
@@ -167,9 +165,8 @@ show_corpus_info_text <- function(search_arguments,
 
 text_about_original_corpus <- function(original_data_dok) {
   tekst <- sprintf(
-    "<h4>General information</h4>The corpus contains %i document(s) belonging to %i different day(s).<br>",
-    nrow(original_data_dok),
-    length(unique(original_data_dok[["Date"]]))
+    "<h4>General information</h4>The corpus contains %i document(s).<br>",
+    nrow(original_data_dok)
   )
   return(tekst)
 }
@@ -187,17 +184,12 @@ text_about_filtered_corpus <-
   function(session_variables,
              start_df_list) {
     start_df <- start_df_list$start_df
-    if (is.null(start_df$Date)) {
-      start_df$Date <- start_df_list$dates
-    }
 
     documents <- nrow(start_df)
-    days <- length(unique(start_df$Date))
 
     sprintf(
-      "The filtered corpus contains %i document(s) belonging to %i different day(s).",
-      documents,
-      days
+      "The filtered corpus contains %i document(s).",
+      documents
     )
   }
 
@@ -243,7 +235,7 @@ corpus_info_plot <- function(start_df_list, search_arguments) {
     }
 
     info_plot <- ggplot2::ggplot(data = fig_tib)
-    if (length(unique(fig_tib$Year)) == 1) {
+    if (length(unique(fig_tib$Year)) == 1 | DATE_BASED_CORPUS == FALSE) {
       info_plot <-
         info_plot + ggplot2::geom_col(ggplot2::aes(x = Year, y = Count, fill = Term), position = "dodge") +
         ggplot2::scale_fill_manual(values = MY_COLOURS)
@@ -251,16 +243,34 @@ corpus_info_plot <- function(start_df_list, search_arguments) {
       info_plot <-
         info_plot + ggplot2::geom_line(ggplot2::aes(x = Year, y = Count, color = Term)) + ggplot2::scale_color_manual(values = MY_COLOURS)
     }
+
+    # TODO Does this need to be differentiated? If not, delete.
+    break_and_label_seq <- if (length(unique(fig_tib$Year)) < 8) {
+      1
+    } else {
+      1
+    }
+# TODO: fine-tune axis labels
     info_plot <- info_plot + ggplot2::theme_classic() +
-      ggplot2::scale_x_continuous(breaks = seq(
-        from = min(fig_tib$Year),
-        to = max(fig_tib$Year),
-        by = if (length(unique(fig_tib$Year)) < 8) {
-          1
-        } else {
-          2
+      ggplot2::scale_x_continuous(
+        expand = c(0.01, 0),
+        breaks = seq(
+          from = min(fig_tib$Year),
+          to = max(fig_tib$Year),
+          by = break_and_label_seq
+          ),
+        labels = if (DATE_BASED_CORPUS == TRUE) {
+          seq(min(fig_tib$Year),
+              max(fig_tib$Year),
+              by = break_and_label_seq)
+        } else if (DATE_BASED_CORPUS == FALSE) {
+          {stringr::str_sub(unique(start_df_list$years), 1, -1)[
+            seq(min(fig_tib$Year),
+              max(fig_tib$Year),
+              by = break_and_label_seq)
+            ]}
         }
-      )) +
+      ) +
       ggplot2::scale_y_continuous(breaks = pretty(fig_tib$Count,
         n = 6,
         min.n = 1
@@ -269,8 +279,13 @@ corpus_info_plot <- function(start_df_list, search_arguments) {
       ggplot2::theme(
         legend.title = ggplot2::element_blank(),
         legend.position = "top",
-        legend.text = ggplot2::element_text(size=12)
-      )
+        legend.text = ggplot2::element_text(size=7)
+      ) +
+      ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90,
+                                                         vjust = 0.5,
+                                                         hjust= 1,
+                                                         size = 7),
+                     axis.text.y = ggplot2::element_text(size = 7))
     info_plot
   } else {
     NULL

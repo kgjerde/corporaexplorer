@@ -33,8 +33,6 @@ shiny::observe({
     output$search_results <- shiny::renderText({
       if (session_variables$stop_info_tab == FALSE) {
         if (highlight_terms_exist(search_arguments)) {
-          shinyjs::showElement("edit_info_plot_legend_keys")
-
           if (corpus_is_filtered(
             search_arguments,
             session_variables,
@@ -68,26 +66,34 @@ shiny::observe({
       }
     }, na = "\u2013", digits = 2, width = "100%")
 
+
+# Condition: not one-group, non-date corpus -------------------------------
+
+  if (ONLY_ONE_GROUP_IN_NON_DATE_BASED_CORPUS == FALSE) {
+
 # Plot title --------------------------------------------------------------
 
     output$info_plot_title <- shiny::renderText({
       if (session_variables$stop_info_tab == FALSE) {
         if (highlight_terms_exist(search_arguments)) {
-          if (corpus_is_filtered(
-            search_arguments,
-            session_variables,
-            loaded_data$original_data$data_dok
-          )) {
-            paste(
+          shinyjs::showElement("edit_info_plot_legend_keys")
+          if (corpus_is_filtered(search_arguments,
+                                 session_variables,
+                                 loaded_data$original_data$data_dok)) {
+            plot_title <- paste(
               "<hr>",
               "<h4>Search results chart (based on filtered corpus) \u2013 hits per year</h4>"
             )
           } else {
-            paste(
-              "<hr>",
-              "<h4>Search results chart \u2013 hits per year</h4>"
-            )
+            plot_title <- paste("<hr>",
+                                "<h4>Search results chart \u2013 hits per year</h4>")
           }
+          if (DATE_BASED_CORPUS == FALSE) {
+            plot_title <- stringr::str_replace(plot_title,
+                                               "year",
+                                               "group")
+          }
+          plot_title
         }
       }
     })
@@ -143,6 +149,7 @@ shiny::observe({
 
     session_variables$created_info <- TRUE
   }
+  }
 })
 
 # Event: update button ----------------------------------------------------
@@ -171,3 +178,4 @@ shiny::observeEvent(input$update_info_plot_legend_keys, {
     session_variables$corpus_info_plot
   })
 })
+
