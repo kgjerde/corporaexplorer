@@ -26,11 +26,11 @@ plot_size_data_365 <- function(df, max_width_for_row, x_factor) {
 
 plot_size_data_dok <- function(df, max_width_for_row, x_factor) {
     size <- dplyr::group_by(df, Year) %>%
-        dplyr::summarise(rader = ceiling(dplyr::n() / max_width_for_row)) %>%
+        dplyr::summarise(rader = ceiling(sum(Tile_length) / max_width_for_row)) %>%
         dplyr::summarise(total = sum(rader)) %>%
         unlist(use.names = FALSE)
     if (DATE_BASED_CORPUS == FALSE) {
-        x_factor <- x_factor * 1.5
+        x_factor <- x_factor * 2
     }
     size <- size * x_factor
     if (size > (30 * nrow(df))) {
