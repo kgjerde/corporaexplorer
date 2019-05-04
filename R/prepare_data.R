@@ -444,6 +444,9 @@ prepare_data.data.frame <- function(dataset,
     }
   }
 
+  # Package version with which object is created
+  loaded_data$version <- utils::packageVersion("corporaexplorer")
+
   class(loaded_data) <- "corporaexplorerobject"
   message("Done.")
   return(loaded_data)
