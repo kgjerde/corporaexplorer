@@ -47,6 +47,9 @@ ui <- function(request) {
 
 server <- function(input, output, session) {
 
+# Conditional sidebar UI elements -----------------------------------------
+source("./ui/render_ui_sidebar_date_filtering.R", local = TRUE)
+
 # Loading functions -------------------------------------------------------
 source("server/functions_term_collection.R", local = TRUE)
 source("server/function_subset.R", local = TRUE)

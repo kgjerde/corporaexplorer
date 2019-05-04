@@ -9,19 +9,23 @@ shiny::observeEvent(input$trykk, {
     shinyjs::disable("download_zip")
     shinyjs::disable("download_html")
 
-    if (input$year_or_date == "Year range") {
-        date_1 <- paste0(input$date_slider[1], "-01-01") %>%
-            as.Date
-        date_2 <- paste0(input$date_slider[2], "-12-31") %>%
-            as.Date
-    } else if (input$year_or_date == "Date range") {
-        date_1 <- input$date_calendar[1]
-        date_2 <- input$date_calendar[2]
-    }
+    if (DATE_BASED_CORPUS == TRUE) {
+      if (input$years_or_dates == "Year range") {
+          date_1 <- paste0(input$date_slider[1], "-01-01") %>%
+              as.Date
+          date_2 <- paste0(input$date_slider[2], "-12-31") %>%
+              as.Date
+      } else if (input$years_or_dates == "Date range") {
+          date_1 <- input$date_calendar[1]
+          date_2 <- input$date_calendar[2]
+      }
 
-    sv$subset <- subset_date(abc,
-                             date_1 = date_1,
-                             date_2 = date_2)
+      sv$subset <- subset_date(abc,
+                               date_1 = date_1,
+                               date_2 = date_2)
+    } else if (DATE_BASED_CORPUS == FALSE) {
+      sv$subset <- abc
+    }
 
     search_arguments$case_sensitive <- input$case_sensitivity
 
@@ -37,32 +41,34 @@ shiny::observeEvent(input$trykk, {
             clean_terms(search_arguments$subset_terms)
     }
 
-    # Update date inputs, making sure they remain within corpus date range
-    if (input$year_or_date == "Year range") {
-      updateDateRangeInput(
-        session,
-        "date_calendar",
-        start = if (as.Date(paste0(input$date_slider[1], "-01-01")) >
-          min(abc$Date)) {
-          as.Date(paste0(input$date_slider[1], "-01-01"))
-        } else {
-          min(abc$Date)
-        },
-        end = if (as.Date(paste0(input$date_slider[2], "-12-31")) <
-          max(abc$Date)) {
-          as.Date(paste0(input$date_slider[2], "-12-31"))
-        } else {
-          max(abc$Date)
-        }
-      )
-    } else if (input$year_or_date == "Date range") {
-      updateSliderInput(session,
-        "date_slider",
-        value = c(
-          lubridate::year(input$date_calendar[1]),
-          lubridate::year(input$date_calendar[2])
+    if (DATE_BASED_CORPUS == TRUE) {
+      # Update date inputs, making sure they remain within corpus date range
+      if (input$years_or_dates == "Year range") {
+        updateDateRangeInput(
+          session,
+          "date_calendar",
+          start = if (as.Date(paste0(input$date_slider[1], "-01-01")) >
+            min(abc$Date)) {
+            as.Date(paste0(input$date_slider[1], "-01-01"))
+          } else {
+            min(abc$Date)
+          },
+          end = if (as.Date(paste0(input$date_slider[2], "-12-31")) <
+            max(abc$Date)) {
+            as.Date(paste0(input$date_slider[2], "-12-31"))
+          } else {
+            max(abc$Date)
+          }
         )
-      )
+      } else if (input$years_or_dates == "Date range") {
+        updateSliderInput(session,
+          "date_slider",
+          value = c(
+            lubridate::year(input$date_calendar[1]),
+            lubridate::year(input$date_calendar[2])
+          )
+        )
+      }
     }
 
     if (!identical(input$filter_text, "")) {

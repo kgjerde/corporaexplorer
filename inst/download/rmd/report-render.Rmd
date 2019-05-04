@@ -5,6 +5,8 @@ params:
   terms_highlight: NA
   case_sensitive: NA
   INFO_COLUMNS: NA
+  DATE_BASED_CORPUS: NA
+  GROUPING_VARIABLE: NA
 output:
   html_document:
       theme: journal
@@ -23,6 +25,8 @@ my_colours <-
     rep(c("red", "blue", "green", "purple", "orange", "gray"), 10)
 
 INFO_COLUMNS <- params$INFO_COLUMNS
+DATE_BASED_CORPUS <- params$DATE_BASED_CORPUS
+GROUPING_VARIABLE <- params$GROUPING_VARIABLE
 ```
 
 
@@ -117,12 +121,17 @@ if (!identical(terms_highlight, "")) {
 
 ```{r Info tab, include=FALSE}
 
-doc_info_text <- paste(sep = "<br>",
-                       paste0(
+doc_info_text <- ""
+  
+  
+  if (DATE_BASED_CORPUS == TRUE) {
+  doc_info_text <-paste(sep = "<br>",
+                       paste0(doc_info_text,
                            tags$b("Date: "),
                            format(utvalg$Date,
                                   "%A %d %B %Y")
                        ))
+  }
 
 if ("Title" %in% INFO_COLUMNS) {
     doc_info_text <- paste(sep = "<br>",
@@ -166,22 +175,44 @@ doc_info_text <- paste(doc_info_text,
                            stringi::stri_count_words(utvalg$Text)
                        ))
 
+doc_info_text <- stringr::str_replace(doc_info_text, "^<br>", "")
+
 info_tab <-     paste0("\n## Info\n\n", doc_info_text, hit_count_text)
 ```
 
 
 ```{r include=FALSE}
-utvalg_title <- paste0(
-    "# (",
-    seq_len(nrow(utvalg)),
-    ") ",
-    format(utvalg$Date, "%d %B %Y"),
-    "--",
-    utvalg$Title,
-    ' {.tabset .tabset-fade}'
-)
+if (DATE_BASED_CORPUS == TRUE) {
+  utvalg_title <- paste0(
+      "# (",
+      seq_len(nrow(utvalg)),
+      ") ",
+      format(utvalg$Date, "%d %B %Y"),
+      "--",
+      utvalg$Title,
+      ' {.tabset .tabset-fade}'
+  )
+} else if (DATE_BASED_CORPUS == FALSE) {
+  utvalg_title <- paste0(
+      "# (",
+      seq_len(nrow(utvalg)),
+      ") "
+  )
+  if (!is.na(GROUPING_VARIABLE)) {
+    utvalg_title <- paste0(
+      utvalg_title,
+      utvalg[[GROUPING_VARIABLE]],
+      "--"
+    )
+  }
+  utvalg_title <- paste0(utvalg_title,
+                         utvalg$Seq,
+                         ' {.tabset .tabset-fade}')
+}
+```
 
 
+```{r include=FALSE}
 utvalg_tekst <- paste(utvalg_title,
 paste0("\n\n## Text\n",
                       utvalg$Text),

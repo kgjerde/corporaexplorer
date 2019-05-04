@@ -7,10 +7,10 @@ shinydashboard::dashboardSidebar(
         justified = TRUE,
         size = "xs"
     ),
-    
+
     tags$div(textInput("search_text", label = "Term(s) to highlight"),
              style = "margin-top: -1em;"),
-    
+
     shiny::conditionalPanel(condition = "input.antall_linjer > 1",
                      textInput("area_2", label = NULL)),
     shiny::conditionalPanel(condition = "input.antall_linjer > 2",
@@ -21,7 +21,7 @@ shinydashboard::dashboardSidebar(
                      textInput("area_5", label = NULL)),
     shiny::conditionalPanel(condition = "input.antall_linjer > 5",
                      textInput("area_6", label = NULL)),
-    
+
     shinyWidgets::checkboxGroupButtons(
         inputId = "more_terms_button",
         label = NULL,
@@ -29,12 +29,12 @@ shinydashboard::dashboardSidebar(
         justified = TRUE,
         size = "sm"
     ),
-    
+
     shiny::conditionalPanel(
         condition = "input.more_terms_button == 'Yes'",
         textAreaInput("area", label = NULL, placeholder = "Terms separated by newline")
     ),
-    
+
     hr(),
 
         textAreaInput("filter_text",
@@ -42,7 +42,7 @@ shinydashboard::dashboardSidebar(
                       placeholder = "Terms separated by newline"),
 
     hr(),
-    
+
     shinyWidgets::prettyCheckbox(
         inputId = "case_sensitivity",
         label = "Case sensitive search",
@@ -50,46 +50,11 @@ shinydashboard::dashboardSidebar(
         width = "100%",
         icon = icon("check")
     ),
-    
-    shiny::hr(), 
-    
-    
-    shinyWidgets::radioGroupButtons(
-        inputId = "year_or_date",
-        label = NULL,
-        choices = c("Year range", "Date range"),
-        justified = TRUE,
-        size = "sm"
-    ),
-    
-    shiny::conditionalPanel(
-        condition = "input.year_or_date == 'Year range'",
-        sliderInput(
-            "date_slider",
-            label = NULL,
-            min = min(abc$Year),
-            max = max(abc$Year),
-            value = c(min, max),
-            sep = ""
-        )
-    ),
-    
-    shiny::conditionalPanel(
-        condition = "input.year_or_date == 'Date range'",
-        shiny::dateRangeInput(
-            "date_calendar",
-            label = NULL,
-            weekstart = 1,
-            start = min(abc$Date),
-            end = max(abc$Date),
-            min = min(abc$Date),
-            max = max(abc$Date)
-        )
-        
-    ),
-    
-    hr(),
-    
+
+    shiny::hr(),
+
+    shiny::uiOutput('time_filtering_ui'),
+
     shinyWidgets::actionBttn(
         "trykk",
         label = "Search",

@@ -14,7 +14,9 @@ output$download_html <- shiny::downloadHandler(
                        #subset_terms = collect_subset_terms(),
                        terms_highlight = search_arguments$highlight_terms,
                        case_sensitive = search_arguments$case_sensitive,
-                       INFO_COLUMNS = INFO_COLUMNS)
+                       INFO_COLUMNS = INFO_COLUMNS,
+                       DATE_BASED_CORPUS = DATE_BASED_CORPUS,
+                       GROUPING_VARIABLE = GROUPING_VARIABLE)
 
         # Knit the document, passing in the `params` list, and eval it in a
         # child of the global environment (this isolates the code in the document
