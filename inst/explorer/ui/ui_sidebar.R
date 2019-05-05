@@ -10,7 +10,7 @@ shinydashboard::dashboardSidebar(
 
     shiny::tags$div(shiny::textInput("search_text", label = "Term(s) to chart and highlight"),
              style = "margin-top: -1em;"),
-    
+
     shiny::div(
     shiny::conditionalPanel(condition = "input.antall_linjer > 1",
                      shiny::textInput("area_2", label = NULL)),
@@ -23,7 +23,7 @@ shinydashboard::dashboardSidebar(
     shiny::conditionalPanel(condition = "input.antall_linjer > 5",
                      shiny::textInput("area_6", label = NULL)),
     class = "additional_search_terms"),
-    
+
     shinyWidgets::checkboxGroupButtons(
         inputId = "more_terms_button",
         label = NULL,
@@ -31,7 +31,7 @@ shinydashboard::dashboardSidebar(
         justified = TRUE,
         size = "sm"
     ),
-    
+
     shiny::div(
     shiny::conditionalPanel(
         condition = "input.more_terms_button == 'Yes'",
@@ -84,7 +84,7 @@ shinydashboard::dashboardSidebar(
         justified = TRUE,
         size = "sm"
     ),
-    
+
      shiny::div(shiny::conditionalPanel(
            condition = "input.adjust_plotsize == 'Yes'",
         shiny::sliderInput(
@@ -92,7 +92,7 @@ shinydashboard::dashboardSidebar(
             label = NULL,
             min = 100,
             ticks = FALSE,
-            step = 200,
+            step = 100,
             max = plot_size(loaded_data$original_data$data_dok,
                             DATE_BASED_CORPUS) * 2,
             value = plot_size(loaded_data$original_data$data_dok,
@@ -100,9 +100,9 @@ shinydashboard::dashboardSidebar(
             )
         ), class = "plotsize_field"
     ),
-    
+
     shiny::hr(),
-    
+
     shinyWidgets::actionBttn(
         "trykk",
         label = "Search",
