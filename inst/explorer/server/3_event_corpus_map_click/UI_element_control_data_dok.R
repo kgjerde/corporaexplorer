@@ -26,7 +26,7 @@ if (session_variables$doc_tab_open == FALSE) {
                 shiny::htmlOutput(
                     outputId = "doc_tekst",
                     container = shiny::tags$div,
-                    class = "boxed_doc"
+                    class = "boxed_doc_data_dok"
                 )
             ),
 
@@ -45,7 +45,7 @@ if (session_variables$doc_tab_open == FALSE) {
                 shiny::htmlOutput(
                     outputId = "doc_info",
                     container = shiny::tags$div,
-                    class = "boxed_doc"
+                    class = "boxed_doc_data_dok"
                 )
 
             )

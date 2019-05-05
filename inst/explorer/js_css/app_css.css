@@ -2,7 +2,7 @@
   font-size: 18px;
 }
 
-.boxed_doc {
+.boxed_doc_data_365 {
   border: 1px solid LightGray;
   border-radius: 1px;
   padding: 10px;
@@ -11,6 +11,19 @@
   height: calc(100vh - 300px);
   overflow: scroll;
   font-size: 14px;
+  font-family: "Verdana", sans-serif;
+}
+
+.boxed_doc_data_dok {
+  border: 1px solid LightGray;
+  border-radius: 1px;
+  padding: 10px;
+  /*max-height: 300px;*/
+  /*height: 400px;*/
+  height: calc(100vh - 200px);
+  overflow: scroll;
+  font-size: 14px;
+  font-family: "Verdana", sans-serif;
 }
 
 .boxed_docinfo {

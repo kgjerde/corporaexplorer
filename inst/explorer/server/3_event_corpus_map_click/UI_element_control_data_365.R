@@ -21,7 +21,7 @@ if (session_variables$doc_list_open == FALSE) {
                 htmlOutput(
                     outputId = "doc_list_tekst",
                     container = tags$div,
-                    class = "boxed_doc"
+                    class = "boxed_doc_data_365"
                 )
             ),
 
