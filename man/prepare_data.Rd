@@ -7,23 +7,28 @@
 \usage{
 prepare_data(dataset, ...)
 
-\method{prepare_data}{data.frame}(dataset, columns_to_include = NULL,
-  columns_doc_info = c("Date", "Title", "URL"), corpus_name = NULL,
-  use_matrix = TRUE, normalise = TRUE,
+\method{prepare_data}{data.frame}(dataset, date_based_corpus = TRUE,
+  grouping_variable = NULL, columns_doc_info = c("Date", "Title",
+  "URL"), corpus_name = NULL, use_matrix = TRUE, normalise = TRUE,
   matrix_without_punctuation = TRUE, ...)
 }
 \arguments{
 \item{dataset}{Object to be converted to a corporaexplorerobject.
-Currently converts a data frame with Date column (class Date), Text column (class
-character), and optionally other columns, e.g. Title (class character) and URL
-(character).}
+Converts a data frame with a column "Text" (class
+character), and optionally other columns, e.g. "Title" (class character) and "URL" (character).
+If \code{date_based_corpus} is \code{TRUE} (the default),
+\code{dataset} must contain a column "Date" (of class Date).}
 
 \item{...}{Ignored.}
 
-\item{columns_to_include}{Character vector. The columns from df to be
-included in corpus object, in addition to the required Date and Text. E.g.
-\code{c("Title", "URL")}. If NULL, the default, all columns will be
-included.}
+\item{date_based_corpus}{Logical. Set to \code{FALSE} if the corpus
+is not to be organised according to document dates.}
+
+\item{grouping_variable}{Character string.
+If \code{date_based_corpus} is \code{TRUE}, this argument is ignored.
+If \code{date_based_corpus} is \code{FALSE}, this argument can be used
+to group the documents, e.g. if \code{dataset} consists of chapters belonging to
+different books. See example below.}
 
 \item{columns_doc_info}{Character vector. The columns from df to display in
 the "document information" tab in the corpus exploration app. By default
@@ -31,7 +36,7 @@ the "document information" tab in the corpus exploration app. By default
 displayed, if included. If columns_doc_info includes a column which is not
 present in dataset, it will be ignored.}
 
-\item{corpus_name}{Optional character string with name of corpus.}
+\item{corpus_name}{Character string with name of corpus.}
 
 \item{use_matrix}{Logical. Should the function create a document term matrix
 for fast searching? If \code{TRUE}, data preparation will run longer and demand
@@ -70,6 +75,21 @@ A \code{corporaexplorer} object to be passed as argument to
 \description{
 Prepare data for corpus exploration
 }
+\details{
+Each row in \code{dataset} is treated as a base differentiating unit in the corpus,
+  typically chapters in books, or a single document in document collections.
+
+  The following column names are reserved and cannot be used in \code{dataset}:
+  "ID",
+  "Text_original_case",
+  "Tile_length",
+  "Year",
+  "Seq",
+  "Weekday_n",
+  "Day_without_docs",
+  "Invisible_fake_date",
+  "Tile_length".
+}
 \examples{
 # Constructing test data frame:
 dates <- as.Date(paste(2011:2020, 1:10, 21:30, sep = "-"))
@@ -82,6 +102,7 @@ test_df <- tibble::tibble(Date = dates, Text = texts, Title = titles)
 
 # Converting to corporaexplorer object:
 corpus <- prepare_data(test_df, corpus_name = "Test corpus")
+
 \dontrun{
 # Running exploration app:
 run_corpus_explorer(corpus)

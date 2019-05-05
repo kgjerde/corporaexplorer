@@ -5,64 +5,53 @@
 #' @param df Data frame with Date column (Date), Text column (character), and
 #'   optionally Title (character), URL (character), and Type (character)
 #'   columns.
-#' @param columns_to_include Character vector. The columns from df to be
-#'   included in corpus object, in addition to the required Date and Text. E.g.
-#'   \code{c("Title", "URL")}. If NULL, the default, all columns will be
-#'   included.
 #' @param normalise Should non-breaking spaces (U+00A0) and soft hyphens
 #'   (U+00ad) be normalised?
 #' @return A tibble ("data_dok")
 #' @keywords internal
-transform_regular <- function(df, columns_to_include = NULL, normalise = TRUE) {
+transform_regular <- function(df, normalise = TRUE) {
   message("Starting.")
 
-  if (is.null(columns_to_include)) {
-    new_df <- df
-  } else {
-    new_df <-
-      dplyr::select(df, Date, Text, columns_to_include) # Velg kolonner her.
-  }
-
   if (normalise == TRUE) {
-    for (i in seq_along(new_df)) {
+    for (i in seq_along(df)) {
       # Only for character columns
-      if (is.character(new_df[[i]])) {
+      if (is.character(df[[i]])) {
         ## På grunn av non-breaking-spaces:
-        new_df[[i]] <- gsub("\u00A0", " ", new_df[[i]], fixed = TRUE)
+        df[[i]] <- gsub("\u00A0", " ", df[[i]], fixed = TRUE)
         ## And "soft hyphens"
-        new_df[[i]] <- gsub("\u00ad", "", new_df[[i]], fixed = TRUE)
+        df[[i]] <- gsub("\u00ad", "", df[[i]], fixed = TRUE)
       }
     }
   }
 
-  new_df$Year <- lubridate::year(new_df$Date)
+  df$Year <- lubridate::year(df$Date)
 
-  new_df$Tile_length <- nchar(new_df$Text) %>%
+  df$Tile_length <- nchar(df$Text) %>%
     scales::rescale(to = c(1, 10), from = c(0, max(.)))
 
-  new_df$ID <- seq_len(nrow(new_df))
+  df$ID <- seq_len(nrow(df))
 
-  new_df$Text_original_case <- new_df$Text
+  df$Text_original_case <- df$Text
 
-  new_df$Text <-
-    stringr::str_to_lower(new_df$Text) # for søke-purposes
+  df$Text <-
+    stringr::str_to_lower(df$Text) # for søke-purposes
 
-  new_df <- dplyr::select(new_df,
+  df <- dplyr::select(df,
                 ID,
                 Date,
                 Text,
                 Text_original_case,
                 Tile_length,
                 Year,
-                sort(colnames(new_df)[!colnames(new_df) %in% c("ID",
+                sort(colnames(df)[!colnames(df) %in% c("ID",
                                                                "Date",
                                                                "Text",
                                                                "Text_original_case",
                                                                "Tile_length",
                                                                "Year")]))
 
-  message("1/3 Document data frame done.")
-  return(new_df)
+  message("Document data frame done.")
+  return(df)
 }
 
 
@@ -161,7 +150,7 @@ transform_365 <- function(new_df) {
                           Tile_length
                           )
 
-  message("2/3 Calendar data frame done.")
+  message("Calendar data frame done.")
   return(df_365)
 }
 
@@ -216,7 +205,7 @@ matrix_via_r <- function(df, matrix_without_punctuation = TRUE) {
     stringr::str_replace_all(" {2,}", " ") %>%
     stringr::str_trim()
 
-  message("3/3 Document term matrix: text processed.")
+  message("Document term matrix: text processed.")
 
   data.table::setDT(df)
   df <-
@@ -228,11 +217,11 @@ matrix_via_r <- function(df, matrix_without_punctuation = TRUE) {
       by = c("ID", "word")
     ][order(ID, word), ]
 
-  message("3/3 Document term matrix: tokenising completed.")
+  message("Document term matrix: tokenising completed.")
 
   ord <- unique(df$word) %>% sort()
 
-  message("3/3 Document term matrix: word list created.")
+  message("Document term matrix: word list created.")
 
   df$word <-
     plyr::mapvalues(df$word, ord, seq_along(ord)) %>%
@@ -249,7 +238,7 @@ matrix_via_r <- function(df, matrix_without_punctuation = TRUE) {
   data.table::setkey(df, j)
   data.table::setindex(df, i)
 
-  message("3/3 Document term matrix done.")
+  message("Document term matrix done.")
 
   return(list(df, ord))
 }
@@ -294,21 +283,42 @@ prepare_data <- function(dataset, ...) {
 #' @export
 #' @rdname prepare_data
 #' @param dataset Object to be converted to a corporaexplorerobject.
-#'   Currently converts a data frame with Date column (class Date), Text column (class
-#'   character), and optionally other columns, e.g. Title (class character) and URL
-#'   (character).
+#'   Converts a data frame with a column "Text" (class
+#'   character), and optionally other columns, e.g. "Title" (class character) and "URL" (character).
+#'   If \code{date_based_corpus} is \code{TRUE} (the default),
+#'   \code{dataset} must contain a column "Date" (of class Date).
+#' @param date_based_corpus Logical. Set to \code{FALSE} if the corpus
+#'   is not to be organised according to document dates.
+#' @param grouping_variable Character string.
+#'   If \code{date_based_corpus} is \code{TRUE}, this argument is ignored.
+#'   If \code{date_based_corpus} is \code{FALSE}, this argument can be used
+#'   to group the documents, e.g. if \code{dataset} consists of chapters belonging to
+#'   different books. See example below.
 #' @param columns_doc_info Character vector. The columns from df to display in
 #'   the "document information" tab in the corpus exploration app. By default
 #'   \code{Date}, \code{Title} and \code{URL} will be
 #'   displayed, if included. If columns_doc_info includes a column which is not
 #'   present in dataset, it will be ignored.
-#' @param corpus_name Optional character string with name of corpus.
+#' @param corpus_name Character string with name of corpus.
 #' @param use_matrix Logical. Should the function create a document term matrix
 #'   for fast searching? If \code{TRUE}, data preparation will run longer and demand
 #'   more memory. If \code{FALSE}, the returning corporaexplorerobject will be more light-weight, but
 #'   searching will be slower.
 #' @inheritParams transform_regular
 #' @inheritParams matrix_via_r
+#' @details Each row in \code{dataset} is treated as a base differentiating unit in the corpus,
+#'   typically chapters in books, or a single document in document collections.
+#'
+#'   The following column names are reserved and cannot be used in \code{dataset}:
+#'   "ID",
+#'   "Text_original_case",
+#'   "Tile_length",
+#'   "Year",
+#'   "Seq",
+#'   "Weekday_n",
+#'   "Day_without_docs",
+#'   "Invisible_fake_date",
+#'   "Tile_length".
 #' @return A \code{corporaexplorer} object to be passed as argument to
 #'   \code{\link[corporaexplorer]{run_corpus_explorer}} and
 #'   \code{\link[corporaexplorer]{run_document_extractor}}.
@@ -324,6 +334,7 @@ prepare_data <- function(dataset, ...) {
 #'
 #' # Converting to corporaexplorer object:
 #' corpus <- prepare_data(test_df, corpus_name = "Test corpus")
+#'
 #' \dontrun{
 #' # Running exploration app:
 #' run_corpus_explorer(corpus)
@@ -332,7 +343,8 @@ prepare_data <- function(dataset, ...) {
 #' run_document_extractor(corpus)
 #' }
 prepare_data.data.frame <- function(dataset,
-                         columns_to_include = NULL,
+                         date_based_corpus = TRUE,
+                         grouping_variable = NULL,
                          columns_doc_info = c("Date", "Title", "URL"),
                          corpus_name = NULL,
                          use_matrix = TRUE,
@@ -340,9 +352,11 @@ prepare_data.data.frame <- function(dataset,
                          matrix_without_punctuation = TRUE,
                          ...) {
 
-  # Argument checking
+
+# Argument checking general -----------------------------------------------
 
   if (!all(is.logical(c(
+    date_based_corpus,
     use_matrix,
     normalise,
     matrix_without_punctuation
@@ -360,28 +374,8 @@ prepare_data.data.frame <- function(dataset,
     )
   }
 
-  if (!is.null(columns_to_include)) {
-    if (!all(columns_to_include %in% colnames(dataset))) {
-      stop("Hmm. 'columns to include': Make sure to only specify column names present in 'dataset'.",
-        call. = FALSE
-      )
-    }
-  }
-
-  if (!all(c("Date", "Text") %in% colnames(dataset))) {
-    stop("Hmm. Make sure that 'dataset' contains 'Date' and 'Text' columns.",
-      call. = FALSE
-    )
-  }
-
-  if (lubridate::is.Date(dataset$Date) == FALSE) {
-    stop("Hmm. Make sure that 'dataset$Date' is of class 'Date'.",
-      call. = FALSE
-    )
-  }
-
-  if (anyNA(dataset$Date)) {
-    stop("Hmm. Make sure that 'dataset$Date' does not contain any NA values.",
+  if ("Text" %in% colnames(dataset) == FALSE) {
+    stop("Hmm. Make sure that 'dataset' contains a 'Text' column.",
       call. = FALSE
     )
   }
@@ -398,15 +392,85 @@ prepare_data.data.frame <- function(dataset,
     )
   }
 
-  # The function proper
+  if (nrow(dataset) == 0) {
+    stop("Hmm. corporaexplorer cannot explore an empty corpus. ",
+         "Please check 'dataset'.",
+      call. = FALSE
+    )
+  }
+
+  RESERVED_NAMES <- c("ID",
+                      "Text_original_case",
+                      "Tile_length",
+                      "Year",
+                      "Seq",
+                      "Weekday_n",
+                      "Day_without_docs",
+                      "Invisible_fake_date",
+                      "Tile_length"
+                      )
+
+  if (any(RESERVED_NAMES %in% colnames(dataset))) {
+    stop(
+      paste(
+        sep = "\n",
+        "'dataset' contains reserved column names.",
+        "Reserved column names are:",
+        paste(RESERVED_NAMES, collapse = "\n")
+      ),
+      call. = FALSE
+    )
+  }
+
+# Argument checking date_based_corpus -------------------------------------
+
+  if (date_based_corpus == TRUE) {
+
+    if ("Date" %in% colnames(dataset) == FALSE) {
+      stop("Hmm. Make sure that 'dataset' contains a 'Date' column.",
+        call. = FALSE)
+    }
+
+    if (lubridate::is.Date(dataset$Date) == FALSE) {
+      stop("Hmm. Make sure that 'dataset$Date' is of class 'Date'.",
+           call. = FALSE)
+    }
+
+    if (anyNA(dataset$Date)) {
+      stop("Hmm. Make sure that 'dataset$Date' does not contain any NA values.",
+           call. = FALSE)
+    }
+  }
+
+# Argument checking non_date_based_corpus ---------------------------------
+
+  if (date_based_corpus == FALSE) {
+    if ("Date" %in% colnames(dataset) == TRUE) {
+      stop("If 'date_based_corpus' == FALSE, 'dataset' is not allowed to contain a 'Date' column.",
+        call. = FALSE)
+    }
+  }
+
+# Pre-preparing non_date_based_corpus -------------------------------------
+
+  if (date_based_corpus == FALSE) {
+    # 'Date' placeholder
+    dataset$Date <- as.Date("1882-09-05")
+
+  }
+
+# The main function proper ------------------------------------------------
 
   abc <- transform_regular(
     dataset,
-    columns_to_include,
     normalise
   )
 
-  abc_365 <- transform_365(abc)
+  if (date_based_corpus == TRUE) {
+    abc_365 <- transform_365(abc)
+  } else {
+    message("Corpus is not date based. Calendar data frame skipped.")
+  }
 
   if (use_matrix == TRUE) {
     matrix_list_dok <- matrix_via_r(abc, matrix_without_punctuation)
@@ -418,12 +482,32 @@ prepare_data.data.frame <- function(dataset,
     ordvektor_dok <- FALSE
   }
 
+
+# Post-preparing non_date_based_corpus ------------------------------------
+
+  if (date_based_corpus == FALSE) {
+    abc$Date <- NULL
+
+    if (!is.null(grouping_variable)) {
+      abc$Year <- dataset[[grouping_variable]]
+    } else {
+      abc$Year <- " "
+    }
+
+    abc <- abc %>%
+      dplyr::group_by(Year) %>%
+      dplyr::mutate(Seq = 1:dplyr::n())
+
+  }
+
   # 5. Putting the 'corporaexplorerobject' together ---------------------
 
   loaded_data <- list()
 
   loaded_data$original_data$data_dok <- abc
-  loaded_data$original_data$data_365 <- abc_365
+  if (date_based_corpus == TRUE) {
+    loaded_data$original_data$data_365 <- abc_365
+  }
 
   loaded_data$original_matrix$data_dok <- matrix_dok
   loaded_data$ordvektorer$data_dok <- ordvektor_dok
@@ -433,16 +517,9 @@ prepare_data.data.frame <- function(dataset,
   loaded_data$columns_for_info <-
     columns_doc_info[columns_doc_info %in% colnames(abc)]
 
-  if (any(!columns_doc_info %in% colnames(abc))) {
-    missing_columns <-
-      columns_doc_info[!columns_doc_info %in% colnames(abc)]
-    for (i in seq_along(missing_columns)) {
-      message(sprintf(
-        "Column %s does not exist and is ignored.",
-        missing_columns[i]
-      ))
-    }
-  }
+  # For config constants
+  loaded_data$date_based_corpus <- date_based_corpus
+  loaded_data$original_data$grouping_variable <- grouping_variable
 
   # Package version with which object is created
   loaded_data$version <- utils::packageVersion("corporaexplorer")
@@ -476,6 +553,7 @@ prepare_data.character <- function(dataset, ...) {
   data <- tibble::tibble(Text = dataset)
   prepare_data.data.frame(data, F, ...)
 }
+
 #' Print corporaexplorerobject
 #'
 #' @param obj A corporaexplorerobject

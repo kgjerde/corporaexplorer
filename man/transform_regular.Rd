@@ -4,17 +4,12 @@
 \alias{transform_regular}
 \title{Adjusts data frame to corporaexplorer format}
 \usage{
-transform_regular(df, columns_to_include = NULL, normalise = TRUE)
+transform_regular(df, normalise = TRUE)
 }
 \arguments{
 \item{df}{Data frame with Date column (Date), Text column (character), and
 optionally Title (character), URL (character), and Type (character)
 columns.}
-
-\item{columns_to_include}{Character vector. The columns from df to be
-included in corpus object, in addition to the required Date and Text. E.g.
-\code{c("Title", "URL")}. If NULL, the default, all columns will be
-included.}
 
 \item{normalise}{Should non-breaking spaces (U+00A0) and soft hyphens
 (U+00ad) be normalised?}
