@@ -452,6 +452,30 @@ prepare_data.data.frame <- function(dataset,
   return(loaded_data)
 }
 
+# Method for character  ---------------------------------------------------
+
+#' Quickly explore character vector
+#'
+#' Quick convertion of character vector to simple corporaexplorerobject
+#'   with no metadata.
+#'
+#' @param dataset A non-empty character vector.
+#' @param ... Other arguments to be passed to \code{prepare_data}.
+#'
+#' @return A corporaexplorerobject.
+#' @export
+#'
+#' @examples
+#' alphabet_corpus <- prepare_data(LETTERS)
+#'
+#' \dontrun{
+#' # Running exploration app:
+#' run_corpus_explorer(alphabet_corpus)
+#' }
+prepare_data.character <- function(dataset, ...) {
+  data <- tibble::tibble(Text = dataset)
+  prepare_data.data.frame(data, F, ...)
+}
 #' Print corporaexplorerobject
 #'
 #' @param obj A corporaexplorerobject
