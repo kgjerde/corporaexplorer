@@ -104,7 +104,7 @@ run_corpus_explorer(KJB)
 ```
 
 
-**Example: appearances of Moses in the New Testament:**
+**Example: mentions of Moses in the New Testament:**
 ```{r, out.width = "80%", echo = FALSE}
 knitr::include_graphics("../man/figures/KJB_moses_new_doc.png")
 ```

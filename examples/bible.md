@@ -103,7 +103,7 @@ KJB <- prepare_data(dataset = bible_df,
 run_corpus_explorer(KJB)
 ```
 
-**Example: appearances of Moses in the New Testament:**
+**Example: mentions of Moses in the New Testament:**
 <img src="../man/figures/KJB_moses_new_doc.png" width="80%" />
 
 **Example: finding “pearl” in chapters in the Bible that also include
