@@ -91,7 +91,7 @@ the same website is available
 ### B. Text collections that are not organised by date
 
 There are far more corpora that lack dates than that have
-them,<sup>[2](#footnote2)</sup> and it is simple to create a
+them,<sup>[2](#footnote2)</sup> and it is easy to create a
 “corporaexplorerobject” from a corpus with a different structure, for
 example a collection of books, each organised in chapters – or just from
 a sequence of texts.
