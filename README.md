@@ -18,9 +18,36 @@ corpora/text collections through a `Shiny` app graphical user interface.
 
 **corporaexplorer**’s intended primary audience is qualitatively
 oriented researchers who rely on close reading of textual documents as
-part of their academic activity, and for whom a typical workflow often
-includes analysing a set of texts downloaded from a website based on
-keyword search in the website’s internal search engine.
+part of their academic activity, but should also be a useful supplement
+for those doing quantitative textual research and wishing to visit the
+texts under study. Finally, by offering a convenient way to explore any
+character vector, it can also be useful for a wide range of other R
+users.
+
+While collecting and preparing the text collections to be explored
+requires some R programming knowledge, using the Shiny app(s) for
+exploring and extracting documents from the corpus should be rather
+intuitive also for someone with no programming knowledge – when first
+set up by a collaborator. Thus, the ambition is that the package should
+be useful for anyone with a rudimentary knowledge of R – or who knows
+anyone with this knowledge.
+
+## Installation
+
+To install **corporaexplorer**, run the following from an R console:
+
+``` r
+install.packages("devtools")
+devtools::install_github("kgjerde/corporaexplorer")
+```
+
+## Example use cases and example corpora
+
+### A. Date-based corpora
+
+For many qualitatively oriented researchers, a typical workflow includes
+analysing a set of texts downloaded from a website based on keyword
+search in the website’s internal search engine.
 
 **corporaexplorer** aims to enhance such workflows in several ways. The
 package makes it easier to interact with larger text collections than
@@ -44,57 +71,6 @@ Example corpora and use cases include:
     of newspaper articles etc. retrieved from a database.
   - **Personal text collections**: any collection of texts that are
     meaningful to explore with a time aspect.
-  - **Customised corpora**, e.g. text collections with sentences instead
-    of documents as base unit.
-
-While collecting and preparing the text collections to be explored
-requires some R programming knowledge, using the Shiny app(s) for
-exploring and extracting documents from the corpus should be rather
-intuitive also for someone with no programming knowledge – when first
-set up by a collaborator.
-
-Thus, the ambition is that the package should be useful for anyone with
-a rudimentary knowledge of R – or who knows anyone with this knowledge.
-
-## Installation
-
-To install **corporaexplorer**, run the following from an R console:
-
-``` r
-install.packages("devtools")
-devtools::install_github("kgjerde/corporaexplorer")
-```
-
-## A note on platforms and encoding
-
-**corporaexplorer** works on Mac OS, Windows and
-Linux,<sup>[1](#footnote1)</sup> and there are some important
-differences in how R handles text on the different platforms. If you are
-working with plain English text, there will most likely be no issues
-with encoding on any platform. Unfortunately, working with
-non-[ASCII](https://en.wikipedia.org/wiki/ASCII) encoded text in R
-(e.g. non-English characters), *can* be complicated – in particular on
-Windows.
-
-**On Mac OS or Linux**, problems with encoding will likely not arise at
-all. If problems do arise, they can typically be solved by making the R
-“locale” unicode-friendly (e.g. `Sys.setlocale("LC_ALL",
-"en_US.UTF-8")`). NB\! This assumes that the text is UTF-8 encoded, so
-if changing the locale in this way does not help, make sure that the
-text is encoded as UTF-8 characters. Alternatively, if you can ascertain
-the character encoding, set the locale correspondingly.
-
-**On Windows**, things can be much more complicated. The most important
-thing is to check carefully that the texts appear as expected in
-`corporaexplorer`’s apps, and that the searches function as expected. If
-there are problems, a good place to start is a blog post with the
-telling title [“Escaping from character encoding hell in R on
-Windows”](https://dss.iq.harvard.edu/blog/escaping-character-encoding-hell-r-windows).
-
-For (a lot) more information about encoding, see [this informative
-article](http://kunststube.net/encoding/) by David C. Zentgraf.
-
-## Example corpora
 
 The package includes a tiny “corporaexplorerobject” (see below):
 `corporaexplorer::test_data`, which consists of 10 tiny documents and
@@ -112,9 +88,20 @@ bigger (but less carefully prepared) test corpus (26,654 documents) from
 the same website is available
 [here](https://figshare.com/s/fcd93f6f93bb23be3bb1).<sup>[2](#footnote2)</sup>
 
+### B. Text collections that are not organised by dates
+
+There are far more corpora that lack dates than that have them, and it
+is simple to create a “corporaexplorerobject” organised around for
+example chapters in books or a different structure – or just as a
+sequence of texts.
+
+See [here](examples/bible.md) for an example of how **corporaexplorer**
+can be used to explore the Bible, and [here](examples/jane_austen.md)
+for a starter on how to explore Jane Austen’s novels.
+
 ## Functions
 
-**corporaexplorer** contains three functions:
+**corporaexplorer** contains three main functions:
 
 1.  `prepare_data()` converts a data frame to a “corporaexplorerobject”.
 2.  `run_corpus_explorer()` runs the package’s core feature, a Shiny app
@@ -125,10 +112,28 @@ the same website is available
 
 ## 1\. Prepare data for the Shiny apps
 
-The `prepare_data()` function takes a data frame with, as a minimum, a
-`Date` and a `Text` column as input and returns a corporaexplorer object
-that can be explored in the package’s two Shiny apps. The default
-arguments should work fine for most use cases.
+The `prepare_data()` function returns a “corporaexplorerobject” that can
+be explored in the package’s two Shiny apps.
+
+The two most important arguments are:
+
+  - `dataset`: a data frame with, as a minimum, a `Text` column. If
+    `date_based_corpus` is `TRUE` (the default), dataset must also
+    contain a column “Date” (of class Date).
+  - `date_based_corpus`. Default is `TRUE`. Set to `FALSE` if the corpus
+    is not to be organised according to document dates.
+  - `grouping_variable`. If date\_based\_corpus is TRUE, this argument
+    is ignored. If date\_based\_corpus is FALSE, this argument can be
+    used to group the documents, e.g. if `dataset` consists of chapters
+    belonging to different books, and the book indicated in a ‘Book’
+    column, set this argument to `"Book"`.
+
+The rest of the arguments can be used to fine-tune the presentation of
+the corpora in the **corporaexplorer** apps.
+
+`prepare_data` can also be run with a character vector as only argument.
+In this case the function will return a simple “corporaexplorerobject”
+with no metadata.
 
 After installing **corporaexplorer**, run the following in the R console
 to see full documentation for the `prepare_data()` function.
@@ -141,8 +146,8 @@ library(corporaexplorer)
 ## 2\. The corpus exploration app
 
 Start the app by running the `run_corpus_explorer()` function with a
-corporaexplorer object created by `prepare_data()` as argument. Run the
-following in the R console to see documentation for the
+“corporaexplorerobject” created by `prepare_data()` as argument. Run
+the following in the R console to see documentation for the
 `run_corpus_explorer()` function.
 
 ``` r
@@ -155,8 +160,8 @@ The default arguments are recommended for most use cases.
 While it should be possible to use the app without reading any further,
 the rest of this section includes user interface instructions as well as
 some details about the app’s inner workings that are relevant for
-advanced
-users.
+advanced users. A date-based corpus is used as
+example.
 
 ### 2a. Sidebar input
 
@@ -179,9 +184,10 @@ users.
     lower and upper case in the search. Unchecked, `war` will find both
     “war” and “War”; if checked, `war` will only find “war”.
   - **“Year range” or “date range”**: Filters the corpus (the first and
-    last date included) by time span.
+    last date included) by time span. (Only for date-based corpora.)
   - **Plot mode (“calendar” or “document wall”)**: Should the resulting
-    corpus map treat one day or one document as its base unit?
+    corpus map treat one day or one document as its base unit? (Only for
+    date-based corpora.)
   - **Adjust plot size**: Change plot height. This is the only sidebar
     input that has effect without clicking the search button.
   - **Search button**: Only when search button is clicked will input
@@ -278,9 +284,9 @@ The result of the search is an interactive heat map, a **corpus map**,
 where the filling indicates how many times the search term is found
 (legend above the plot).
 
-In the **calendar view** (the default), each tile represents a day, and
-the filling indicates how many time the search term is found in the
-documents that day:
+In the **calendar view** (only for date-based corpora), each tile
+represents a day, and the filling indicates how many time the search
+term is found in the documents that day:
 
 <img src="man/figures/first_search.png" width="80%" />
 
@@ -370,8 +376,8 @@ format suitable for close reading.
 <img src="man/figures/download_tool.png" width="80%" />
 
 Start the app by running the `run_document_extractor()` function with a
-corporaexplorer object created by `prepare_data()` as argument. Run the
-following in the R console to see documentation for the
+“corporaexplorerobject” created by `prepare_data()` as argument. Run
+the following in the R console to see documentation for the
 `run_document_extractor()` function.
 
 ``` r
@@ -405,6 +411,35 @@ Speed is considered to be of less importance in this app, and all
 searches are carried out as full text searches with `stringr`. Again,
 note that a single backslash is used as escape character. For example
 will `\.` match a literal “.”, and `\d` match any digit.
+
+## A note on platforms and encoding
+
+**corporaexplorer** works on Mac OS, Windows and
+Linux,<sup>[1](#footnote1)</sup> and there are some important
+differences in how R handles text on the different platforms. If you are
+working with plain English text, there will most likely be no issues
+with encoding on any platform. Unfortunately, working with
+non-[ASCII](https://en.wikipedia.org/wiki/ASCII) encoded text in R
+(e.g. non-English characters), *can* be complicated – in particular on
+Windows.
+
+**On Mac OS or Linux**, problems with encoding will likely not arise at
+all. If problems do arise, they can typically be solved by making the R
+“locale” unicode-friendly (e.g. `Sys.setlocale("LC_ALL",
+"en_US.UTF-8")`). NB\! This assumes that the text is UTF-8 encoded, so
+if changing the locale in this way does not help, make sure that the
+text is encoded as UTF-8 characters. Alternatively, if you can ascertain
+the character encoding, set the locale correspondingly.
+
+**On Windows**, things can be much more complicated. The most important
+thing is to check carefully that the texts appear as expected in
+`corporaexplorer`’s apps, and that the searches function as expected. If
+there are problems, a good place to start is a blog post with the
+telling title [“Escaping from character encoding hell in R on
+Windows”](https://dss.iq.harvard.edu/blog/escaping-character-encoding-hell-r-windows).
+
+For (a lot) more information about encoding, see [this informative
+article](http://kunststube.net/encoding/) by David C. Zentgraf.
 
 ## Contributing
 
