@@ -26,7 +26,8 @@ knitr::opts_chunk$set(
 collections through a `Shiny` app  graphical user interface.
 
 **corporaexplorer**'s intended primary audience is qualitatively oriented researchers who
-rely on close reading of textual documents as part of their academic activity, but should also be a useful supplement for those doing quantitative textual research and wishing to visit the texts under study.
+rely on close reading of textual documents as part of their academic activity,
+but the package should also be a useful supplement for those doing quantitative textual research and wishing to visit the texts under study.
 Finally, by offering a convenient way to explore any character vector, it can also be useful for a wide range of other R users.
 
 While collecting and preparing the text collections to be explored requires
@@ -76,7 +77,7 @@ The equivalent material in Russian (10,221 documents) can be downloaded [here](h
 A third, somewhat bigger (but less carefully prepared) test corpus (26,654 documents) from the same website is available [here](https://figshare.com/s/fcd93f6f93bb23be3bb1).<sup>[1](#footnote1)</sup>
 
 
-### B. Text collections that are not organised by dates
+### B. Text collections that are not organised by date
 
 There are far more corpora that lack dates than that have them,<sup>[2](#footnote2)</sup>
 and it is simple to create a "corporaexplorerobject"
@@ -107,7 +108,7 @@ The three most important arguments are:
 
 * `dataset`: a data frame with, as a minimum, a `Text` column. If `date_based_corpus` is `TRUE` (the default), dataset must also contain a column "Date" (of class Date).
 * `date_based_corpus`. Default is `TRUE`. Set to `FALSE` if the corpus is not to be organised according to document dates.
-* `grouping_variable`. If date_based_corpus is TRUE, this argument is ignored. If date_based_corpus is FALSE, this argument can be used to group the documents, e.g. if `dataset` consists of chapters belonging to different books, and the book indicated in a 'Book' column,
+* `grouping_variable`. If date_based_corpus is TRUE, this argument is ignored. If date_based_corpus is FALSE, this argument can be used to group the documents, e.g. if `dataset` consists of chapters belonging to different books, and the book indicated in a "Book" column,
 set this argument to `"Book"`.
 
 The rest of the arguments can be used to fine-tune the presentation of the corpora in

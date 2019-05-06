@@ -18,11 +18,11 @@ corpora/text collections through a `Shiny` app graphical user interface.
 
 **corporaexplorer**’s intended primary audience is qualitatively
 oriented researchers who rely on close reading of textual documents as
-part of their academic activity, but should also be a useful supplement
-for those doing quantitative textual research and wishing to visit the
-texts under study. Finally, by offering a convenient way to explore any
-character vector, it can also be useful for a wide range of other R
-users.
+part of their academic activity, but the package should also be a useful
+supplement for those doing quantitative textual research and wishing to
+visit the texts under study. Finally, by offering a convenient way to
+explore any character vector, it can also be useful for a wide range of
+other R users.
 
 While collecting and preparing the text collections to be explored
 requires some R programming knowledge, using the Shiny app(s) for
@@ -88,7 +88,7 @@ bigger (but less carefully prepared) test corpus (26,654 documents) from
 the same website is available
 [here](https://figshare.com/s/fcd93f6f93bb23be3bb1).<sup>[1](#footnote1)</sup>
 
-### B. Text collections that are not organised by dates
+### B. Text collections that are not organised by date
 
 There are far more corpora that lack dates than that have
 them,<sup>[2](#footnote2)</sup> and it is simple to create a
@@ -126,7 +126,7 @@ The three most important arguments are:
   - `grouping_variable`. If date\_based\_corpus is TRUE, this argument
     is ignored. If date\_based\_corpus is FALSE, this argument can be
     used to group the documents, e.g. if `dataset` consists of chapters
-    belonging to different books, and the book indicated in a ‘Book’
+    belonging to different books, and the book indicated in a “Book”
     column, set this argument to `"Book"`.
 
 The rest of the arguments can be used to fine-tune the presentation of
