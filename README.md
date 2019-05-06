@@ -116,7 +116,7 @@ for a starter on how to explore Jane Austen’s novels.
 The `prepare_data()` function returns a “corporaexplorerobject” that can
 be explored in the package’s two Shiny apps.
 
-The two most important arguments are:
+The three most important arguments are:
 
   - `dataset`: a data frame with, as a minimum, a `Text` column. If
     `date_based_corpus` is `TRUE` (the default), dataset must also
