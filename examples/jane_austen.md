@@ -55,7 +55,7 @@ books <- tidyr::unnest(books, Text)
 # As this is a corpus which is not organised by date,
   # we set `date_based_corpus` to `FALSE`.
 # Because we want to organise our exploration around the books in the Bible,
-  # we pass `"Book"` to the `grouping_variable` argument.
+  # we pass `"book"` to the `grouping_variable` argument.
 jane_austen <- prepare_data(dataset = books,
                     date_based_corpus = FALSE,
                     grouping_variable = "book")
