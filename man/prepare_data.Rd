@@ -15,7 +15,7 @@ prepare_data(dataset, ...)
 \arguments{
 \item{dataset}{Object to be converted to a corporaexplorerobject.
 Converts a data frame with a column "Text" (class
-character), and optionally other columns, e.g. "Title" (class character) and "URL" (character).
+character), and optionally other columns.
 If \code{date_based_corpus} is \code{TRUE} (the default),
 \code{dataset} must contain a column "Date" (of class Date).}
 
@@ -27,13 +27,13 @@ is not to be organised according to document dates.}
 \item{grouping_variable}{Character string.
 If \code{date_based_corpus} is \code{TRUE}, this argument is ignored.
 If \code{date_based_corpus} is \code{FALSE}, this argument can be used
-to group the documents, e.g. if \code{dataset} consists of chapters belonging to
-different books. See example below.}
+to group the documents, e.g. if \code{dataset} is organised by chapters
+belonging to different books.}
 
 \item{columns_doc_info}{Character vector. The columns from df to display in
 the "document information" tab in the corpus exploration app. By default
-\code{Date}, \code{Title} and \code{URL} will be
-displayed, if included. If columns_doc_info includes a column which is not
+"Date", "Title" and "URL" will be
+displayed, if included. If \code{columns_doc_info} includes a column which is not
 present in dataset, it will be ignored.}
 
 \item{corpus_name}{Character string with name of corpus.}
