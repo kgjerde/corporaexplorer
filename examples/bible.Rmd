@@ -33,7 +33,8 @@ bible <- readLines("https://www.gutenberg.org/cache/epub/10/pg10.txt")
 # Collapsing into one string.
 bible <- paste(bible, collapse = "\n")
 
-# Identifying the beginning and end of the Bible / stripping PJ metadata.
+# Identifying the beginning and end of the Bible / stripping PJ metadata
+ # (technique borrowed from https://quanteda.io/articles/pkgdown/replication/digital-humanities.html).
 start_v <- stri_locate_first_fixed(bible, "The First Book of Moses:  Called Genesis")[1]
 end_v <- stri_locate_last_fixed(bible, "Amen.")[1]
 bible <- stri_sub(bible, start_v, end_v)
