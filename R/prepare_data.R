@@ -445,10 +445,19 @@ prepare_data.data.frame <- function(dataset,
 # Argument checking non_date_based_corpus ---------------------------------
 
   if (date_based_corpus == FALSE) {
+
     if ("Date" %in% colnames(dataset) == TRUE) {
       stop("If 'date_based_corpus' == FALSE, 'dataset' is not allowed to contain a 'Date' column.",
         call. = FALSE)
     }
+
+    if (!is.null(grouping_variable)) {
+      if (grouping_variable %in% colnames(dataset) == FALSE) {
+        stop("'grouping_variable' has to be a column in 'dataset'.",
+          call. = FALSE)
+      }
+    }
+
   }
 
 # Pre-preparing non_date_based_corpus -------------------------------------
