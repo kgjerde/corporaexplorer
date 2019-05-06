@@ -92,8 +92,9 @@ the same website is available
 
 There are far more corpora that lack dates than that have
 them,<sup>[2](#footnote2)</sup> and it is simple to create a
-“corporaexplorerobject” organised around for example chapters in books
-or a different structure – or just as a sequence of texts.
+“corporaexplorerobject” from a corpus with a different structure, for
+example a collection of books, each organised in chapters – or just from
+a sequence of texts.
 
 See [here](examples/bible.md) for an example of how **corporaexplorer**
 can be used to explore the Bible, and [here](examples/jane_austen.md)
@@ -464,4 +465,4 @@ out.*
 [`jquery.scrollTo`](https://github.com/flesler/jquery.scrollTo)
 plugin.*  
 <a name="footnote4">*4</a>. That said, the package is developed on Mac
-OS, and the Shiny apps’ user interface is a bit clunkier on Windows.*
+OS, and the Shiny apps’ user interface is rather clunkier on Windows.*
