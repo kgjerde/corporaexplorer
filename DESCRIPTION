@@ -38,13 +38,14 @@ Imports:
 	tibble,
 	tidyr,
 	zoo
+Suggests: shinytest, testthat
 Other: Auto-scrolling is enabled by the `jquery.scrollTo` plugin,
     see https://github.com/flesler/jquery.scrollTo.
+    For shinytest to work, PhantomJS (http://phantomjs.org/) is required.
 License: GPL-3
 Date/Publication: 2019
 LazyData: true
 RoxygenNote: 6.1.1
 Encoding: UTF-8
-Suggests: shinytest, testthat
 URL: https://github.com/kgjerde/corporaexplorer
 BugReports: https://github.com/kgjerde/corporaexplorer/issues
