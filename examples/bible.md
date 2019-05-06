@@ -35,12 +35,12 @@ start_v <- stri_locate_first_fixed(bible, "The First Book of Moses:  Called Gene
 end_v <- stri_locate_last_fixed(bible, "Amen.")[1]
 bible <- stri_sub(bible, start_v, end_v)
 
-# In the file, every book in the bible is divided by five newlines,
+# In the file, every book in the bible is preceded by five newlines,
   # which we use to split our string into a vector where each element is a book.
 books <- stri_split_regex(bible, "\n{5}") %>%
     unlist %>%
     .[-40]  # Removing the heading "The New Testament of the King James Bible",
-              # which also was separated by five newlines.
+              # which also was preceded by five newlines.
 
 # Because of the structure of the text in the file:
   # Replacing double or more newlines with two newlines, and a single newline with space.
