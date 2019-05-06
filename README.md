@@ -86,14 +86,14 @@ material in Russian (10,221 documents) can be downloaded
 [here](https://figshare.com/s/be0d2cfa195e43160fcb). A third, somewhat
 bigger (but less carefully prepared) test corpus (26,654 documents) from
 the same website is available
-[here](https://figshare.com/s/fcd93f6f93bb23be3bb1).<sup>[2](#footnote2)</sup>
+[here](https://figshare.com/s/fcd93f6f93bb23be3bb1).<sup>[1](#footnote1)</sup>
 
 ### B. Text collections that are not organised by dates
 
-There are far more corpora that lack dates than that have them, and it
-is simple to create a “corporaexplorerobject” organised around for
-example chapters in books or a different structure – or just as a
-sequence of texts.
+There are far more corpora that lack dates than that have
+them,<sup>[2](#footnote2)</sup> and it is simple to create a
+“corporaexplorerobject” organised around for example chapters in books
+or a different structure – or just as a sequence of texts.
 
 See [here](examples/bible.md) for an example of how **corporaexplorer**
 can be used to explore the Bible, and [here](examples/jane_austen.md)
@@ -415,7 +415,7 @@ will `\.` match a literal “.”, and `\d` match any digit.
 ## A note on platforms and encoding
 
 **corporaexplorer** works on Mac OS, Windows and
-Linux,<sup>[1](#footnote1)</sup> and there are some important
+Linux,<sup>[4](#footnote4)</sup> and there are some important
 differences in how R handles text on the different platforms. If you are
 working with plain English text, there will most likely be no issues
 with encoding on any platform. Unfortunately, working with
@@ -456,9 +456,12 @@ welcome. Ways to contribute:
 
 <hr>
 
-<a name="footnote1">*1</a>. That said, the package is developed on Mac
-OS, and the Shiny apps’ user interface is a bit clunkier on Windows.*  
-<a name="footnote2">*2</a>. All this material is licensed under Creative
+<a name="footnote1">*1</a>. All this material is licensed under Creative
 Commons Attribution 4.0 International (CC BY 4.0).*  
+<a name="footnote2">*2</a>. Thanks to Kenneth Benoit for pointing this
+out.*  
 <a name="footnote3">*3</a>. Using the
-[`jquery.scrollTo`](https://github.com/flesler/jquery.scrollTo) plugin.*
+[`jquery.scrollTo`](https://github.com/flesler/jquery.scrollTo)
+plugin.*  
+<a name="footnote4">*4</a>. That said, the package is developed on Mac
+OS, and the Shiny apps’ user interface is a bit clunkier on Windows.*
