@@ -71,13 +71,6 @@ output$document_box_title <- shiny::renderText({
                    session_variables[[plot_mode$mode]]$Date[min_rad])
                )
     } else if (DATE_BASED_CORPUS == FALSE) {
-        box_title <- ""
-        if (ONLY_ONE_GROUP_IN_NON_DATE_BASED_CORPUS == FALSE) {
-            box_title <- paste0(box_title,
-                                session_variables[[plot_mode$mode]]$Year[min_rad],
-                                " \u2013 ")
-        }
-        box_title <- paste0(box_title,
-                            session_variables[[plot_mode$mode]]$Seq[min_rad])
+        doc_title_non_date_based_corpora(min_rad)
     }
 })

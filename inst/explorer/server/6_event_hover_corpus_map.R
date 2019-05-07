@@ -77,6 +77,12 @@ output$hover_info <- shiny::renderUI({
                           )
                       )))
             }
+            } else if (DATE_BASED_CORPUS == FALSE) {
+                shiny::wellPanel(style = style,
+                                 shiny::p(shiny::HTML(
+                                     doc_title_non_date_based_corpora(min_rad)
+                                 )))
             }
+        }
     }
 })

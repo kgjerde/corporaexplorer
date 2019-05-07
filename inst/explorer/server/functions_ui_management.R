@@ -38,6 +38,21 @@ make_unclickable_ui <- function(class_name) {
 }
 
 
+# Document title for non-date-based corpora: UI ---------------------------
+#' For box title and hover info
+#'
+doc_title_non_date_based_corpora <- function(min_rad) {
+  title <- ""
+  if (ONLY_ONE_GROUP_IN_NON_DATE_BASED_CORPUS == FALSE) {
+    title <- paste0(title,
+                        session_variables[[plot_mode$mode]]$Year[min_rad],
+                        " \u2013 ")
+  }
+  title <- paste0(title,
+                      session_variables[[plot_mode$mode]]$Seq[min_rad])
+  return(title)
+}
+
 # Avoiding flashing sidebar elements on load (w/css) ----------------------
 shiny::observeEvent(input$adjust_plotsize, {
     change_ui_class(".plotsize_field", property = "display", "inline")
