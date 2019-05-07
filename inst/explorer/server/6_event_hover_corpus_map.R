@@ -26,6 +26,10 @@ output$hover_info <- shiny::renderUI({
         top_px <- session$clientData$output_korpuskart_height - 200
     } # TODO: må gjøres bedre. Foreløpig hack for å unngå problemer når tooltip under bunn av vindu
 
+    if (top_px < 0){
+        top_px <- 0
+    } # TODO: må gjøres bedre. Foreløpig hack for å unngå problemer når tooltip over topp av vindu
+
 # Tooltip style and defining position -------------------------------------
     style <-
         paste0(
