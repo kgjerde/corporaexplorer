@@ -55,6 +55,7 @@
   margin_bottom: -1em;
   resize: vertical;
   background-color: white;
+  min-height: 40px;
 }
 
 #filter_text {
@@ -64,6 +65,7 @@
   margin_bottom: -1em;
   resize: vertical;
   background-color: white;
+  min-height: 40px;
 }
 
 /*

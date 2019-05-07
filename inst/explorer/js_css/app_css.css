@@ -53,6 +53,7 @@
   margin_bottom: -1em;
   resize: vertical;
   background-color: white;
+  min-height: 40px;
 }
 
 /*https://stackoverflow.com/a/32506173/8399819*/
