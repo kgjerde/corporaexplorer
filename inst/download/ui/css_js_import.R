@@ -1,3 +1,3 @@
 tags$head(
-    includeCSS("css/my_css.css")
+    includeCSS("css/download_css.css")
 )
