@@ -8,14 +8,25 @@ plot_size <-
     function(df,
              calendar_mode,
              max_width_for_row = MAX_WIDTH_FOR_ROW,
-             x_factor = X_FACTOR
+             x_factor = X_FACTOR,
+             number_of_search_terms = 0
              ) {
         if (calendar_mode == TRUE) {
             size <- plot_size_data_365(df, max_width_for_row, x_factor)
+            if (number_of_search_terms > 1) {
+                size <- size * (number_of_search_terms / 1.7)  # Divisor somewhat arbitrarily chosen through trying
+            }
         } else if (calendar_mode == FALSE) {
             size <- plot_size_data_dok(df, max_width_for_row, x_factor)
+            if (number_of_search_terms > 1) {
+                if (DATE_BASED_CORPUS == FALSE) {
+                    size <- size * (number_of_search_terms / 1.2)
+                } else if (DATE_BASED_CORPUS == TRUE) {
+                    size <- size * (number_of_search_terms / 1.5)
+                    }  # Divisors somewhat arbitrarily chosen through trying
+            }
         }
-        return(size)
+        return(ceiling(size))
     }
 
 plot_size_data_365 <- function(df, max_width_for_row, x_factor) {

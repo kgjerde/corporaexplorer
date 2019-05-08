@@ -21,7 +21,8 @@ source("./server/2_event_search_button/check_search_arguments.R", local = TRUE)
         ggplot2::ggplot_build(plot_fase_1)$data[[index_of_main_grid_rects]]
 
         value_for_slider <- plot_size(session_variables[[plot_mode$mode]],
-                                      plot_mode$mode == "data_365")
+                                      calendar_mode = plot_mode$mode == "data_365",
+                                      number_of_search_terms = length(search_arguments$search_terms))
 
     # TODO Problem med omigjen-rendering ikke endelig løst
     # av commit 2b6ca83
