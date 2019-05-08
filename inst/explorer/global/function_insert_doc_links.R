@@ -31,7 +31,7 @@ insert_doc_navigation_links <- function(tekst, antall_deler) {
     }
     ny <- paste0(
         sprintf(
-            "<span id=\'%s\'></span>",
+            "<span class =\'___\' id=\'%s\'></span>",
             seq_len(antall_deler)
         ),
         ny_2
