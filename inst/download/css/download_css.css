@@ -11,36 +11,6 @@
     font-size: 22px;
 }
 
-.boxed_doc {
-  border: 1px solid LightGray;
-  border-radius: 1px;
-  padding: 10px;
-  /*max-height: 300px;*/
-  /*height: 400px;*/
-  height: calc(100vh - 300px);
-  overflow: scroll;
-  font-size: 14px;
-}
-
-.boxed_docinfo {
-  border: 1px solid LightGray;
-  border-radius: 5px;
-  padding: 10px;
-  max-height: 50px;
-  overflow: scroll;
-  font-size: 10px;
-}
-
-
-.boxed_docinfo_2 {
-  border: 1px solid LightGray;
-  border-radius: 5px;
-  padding: 8px;
-  max-height: 70px;
-  overflow: scroll;
-  font-size: 10px;
-}
-
 /*
 #antall_linjer .button.btn.radiobtn.btn-default {
   height: 30%;
@@ -97,58 +67,10 @@ input:-webkit-autofill:active {
   color: white;
 }
 
-#area_2 {
-  padding-left:10px;
-  padding-top: 10px;
-  padding-right:10px;
-  padding-bottom:10px;
-  margin-top:-1em;
-  margin-bottom:-1em;
-  resize: none;
-  background-color: blue;
-  height:25px;
-  color: white;
-}
-
-#area_3 {
-  padding-left:10px;
-  padding-top: 10px;
-  padding-right:10px;
-  padding-bottom:10px;
-  margin-top:-1em;
-  margin-bottom:-1em;
-  resize: none;
-  background-color: green;
-  height:25px;
-  color: white;
-}
-
-#area_4 {
-  padding-left:10px;
-  padding-top: 10px;
-  padding-right:10px;
-  padding-bottom:10px;
-  margin-top:-1em;
-  margin-bottom:-1em;
-  resize: none;
-  background-color: purple;
-  height:25px;
-  color: white;
-}
-
-#area_5 {
-  padding-left:10px;
-  padding-top: 10px;
-  padding-right:10px;
-  padding-bottom:10px;
-  margin-top:-1em;
-  margin-bottom:-1em;
-  resize: none;
-  background-color: orange;
-  height:25px;
-  color: white;
-}
-
+#area_2,
+#area_3,
+#area_4,
+#area_5,
 #area_6 {
   padding-left:10px;
   padding-top: 10px;
@@ -157,9 +79,29 @@ input:-webkit-autofill:active {
   margin-top:-1em;
   margin-bottom:-1em;
   resize: none;
-  background-color: gray;
   height:25px;
   color: white;
+}
+
+
+#area_2 {
+  background-color: blue;
+}
+
+#area_3 {
+  background-color: green;
+}
+
+#area_4 {
+  background-color: purple;
+}
+
+#area_5 {
+  background-color: orange;
+}
+
+#area_6 {
+  background-color: gray;
 }
 
 #trykk {
@@ -171,25 +113,6 @@ input:-webkit-autofill:active {
   margin-top: 1em;
 }
 
-#graf_trykk {
-  /*margin-left:1em;
-  margin-right:1em;*/
-  width: 100%;
-  background-color: blue;
-  color: white;
-}
-
-/*
-.box { margin-bottom: 0; } /*https://stackoverflow.com/questions/45176332/shiny-dashboard-margin-between-boxes*/
-
-/*
-[class*="col-lg-"],[class*="col-md-"],
-[class*="col-sm-"],[class*="col-xs-"]{
-  padding-right:1em !important;
-  padding-left:1em !important;
-}
-*/
-
 /*De tre neste er for locked header og sidebar.
 https://stackoverflow.com/questions/41240878/r-shiny-fixed-sidebar-and-main-header-in-a-shiny-dashboard*/
 
@@ -199,36 +122,6 @@ https://stackoverflow.com/questions/41240878/r-shiny-fixed-sidebar-and-main-head
   width: 275px;
   white-space: nowrap;
   overflow: visible;
-}
-
-/*Fordi det viste seg at jeg hoppet ca. en linje for langt i dokumentvisning fra dok_vis.
-Jeg har hacka litt fra denne. Må kanskje justeres, men dette er nok prinsippet.
-https://stackoverflow.com/a/20358308/8399819*/
-span.posisjons_korrigering{
-  /*display: block;*/
-  position: relative;
-  top: -20px;
-  visibility: hidden;
-  }
-
-#PLOTSIZE {
-  padding-left:10px;
-  padding-top: 10px;
-  padding-right:10px;
-  padding-bottom:10px;
-  margin-top:-2em;
-  margin-bottom: 0em;
-  resize: none;
-  background-color: white;
-  /*font-size:10px;*/
-  height:25px;
-  color: black;
-}
-
-#bokmerke {
-  width: 100%;
-  background-color: white;
-  color: blue;
 }
 
 .btn-group {
