@@ -90,8 +90,7 @@ the same website is available
 
 ### B. Text collections that are not organised by date
 
-There are far more corpora that lack dates than that have
-them,<sup>[2](#footnote2)</sup> and it is easy to create a
+Not all corpora are organised by date, and it is easy to create a
 “corporaexplorerobject” from a corpus with a different structure, for
 example a collection of books, each organised in chapters – or just from
 a sequence of texts.
@@ -330,7 +329,7 @@ tile chart consisting of n tiles where each tile represents a 1/n part
 of the document, and where the colour in a tile indicates whether and
 how many times the search term is found in that part of the document.
 Clicking on a tile scrolls the document to the corresponding part of the
-document.<sup>[3](#footnote3)</sup>
+document.<sup>[2](#footnote2)</sup>
 
 <img src="man/figures/wall.png" width="80%" />
 
@@ -416,7 +415,7 @@ will `\.` match a literal “.”, and `\d` match any digit.
 ## A note on platforms and encoding
 
 **corporaexplorer** works on Mac OS, Windows and
-Linux,<sup>[4](#footnote4)</sup> and there are some important
+Linux,<sup>[3](#footnote3)</sup> and there are some important
 differences in how R handles text on the different platforms. If you are
 working with plain English text, there will most likely be no issues
 with encoding on any platform. Unfortunately, working with
@@ -459,10 +458,8 @@ welcome. Ways to contribute:
 
 <a name="footnote1">*1</a>. All this material is licensed under Creative
 Commons Attribution 4.0 International (CC BY 4.0).*  
-<a name="footnote2">*2</a>. Thanks to Kenneth Benoit for pointing this
-out.*  
-<a name="footnote3">*3</a>. Using the
+<a name="footnote2">*2</a>. Using the
 [`jquery.scrollTo`](https://github.com/flesler/jquery.scrollTo)
 plugin.*  
-<a name="footnote4">*4</a>. That said, the package is developed on Mac
+<a name="footnote3">*3</a>. That said, the package is developed on Mac
 OS, and the Shiny apps’ user interface is rather clunkier on Windows.*
