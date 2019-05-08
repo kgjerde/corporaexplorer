@@ -1,10 +1,10 @@
 #' Main function for ggplot2 corpus map creation: document brick wall view
 #'
 #' @param test1 Data frame with columns XXXX
-#' @param x_breaks 
-#' @param y_text 
-#' @param til_legend 
-#' @param linjer 
+#' @param x_breaks
+#' @param y_text
+#' @param til_legend
+#' @param linjer
 #'
 #' @return A ggplot2 plot object
 plotting_corpus_data_dok <-
@@ -33,6 +33,7 @@ a <-
     na.value = "white"
   )
 
+# Fill for first search_term (or for no search_term)
 a <-
   a + ggplot2::geom_rect(data = test1[test1$df == 1,],
                 ggplot2::aes(
@@ -87,22 +88,6 @@ rect_tib_vertikal$x_mid = (rect_tib_vertikal$x + rect_tib_vertikal$xend) /
 rect_tib_vertikal$y_mid = (rect_tib_vertikal$y + rect_tib_vertikal$yend) /
   2
 
-
-a <-
-  a + ggplot2::geom_rect(
-    data = rect_tib_vertikal,
-    ggplot2::aes(
-      xmin = x,
-      ymin = y,
-      xmax = xend,
-      ymax = yend
-    ),
-    color = "black",
-    fill = NA,
-    size = 0.1
-  )
-
-
 # dividing_lines_btwn_groups ------------------------------
 
 coordinates_for_dividing_lines_btwn_groups <-
@@ -129,8 +114,6 @@ if (length(coordinates_for_dividing_lines_btwn_groups) > 0) {
 #####
 # a <- a + ggplot2::scale_alpha_identity(na.value = test1$Odd)
 
-
-
 if (linjer > 1) {
   #LINJE 2
   a <-
@@ -144,71 +127,20 @@ if (linjer > 1) {
                   ))#, fill = "blue")#, color = "black", size = 0.1)
 }
 
-if (linjer > 2) {
-  # LINJE 3
-  a <-
-    a + ggplot2::geom_rect(
-      data = test1[test1$df == 3,],
-      ggplot2::aes(
-        xmin = x_min,
-        xmax = x_max,
-        ymin = y_min,
-        ymax = y_max,
-        alpha = Term_3
-      ),
-      fill = "green"
-    )
-}
-
-if (linjer > 3) {
-  # LINJE 4
-  a <-
-    a + ggplot2::geom_rect(
-      data = test1[test1$df == 4,],
-      ggplot2::aes(
-        xmin = x_min,
-        xmax = x_max,
-        ymin = y_min,
-        ymax = y_max,
-        alpha = Term_4
-      ),
-      fill = "purple"
-    )
-}
-
-if (linjer > 4) {
-  # LINJE 5
-  a <-
-    a + ggplot2::geom_rect(
-      data = test1[test1$df == 5,],
-      ggplot2::aes(
-        xmin = x_min,
-        xmax = x_max,
-        ymin = y_min,
-        ymax = y_max,
-        alpha = Term_5
-      ),
-      fill = "orange"
-    )
-}
-
-if (linjer > 5) {
-  # LINJE 6
-  a <-
-    a + ggplot2::geom_rect(
-      data = test1[test1$df == 6,],
-      ggplot2::aes(
-        xmin = x_min,
-        xmax = x_max,
-        ymin = y_min,
-        ymax = y_max,
-        alpha = Term_5
-      ),
-      fill = "gray"
-    )
-}
-
-
+# Selve rutenettet
+a <-
+  a + ggplot2::geom_rect(
+    data = rect_tib_vertikal,
+    ggplot2::aes(
+      xmin = x,
+      ymin = y,
+      xmax = xend,
+      ymax = yend
+    ),
+    color = "black",
+    fill = NA,
+    size = 0.1
+  )
 
 return(a)
 }

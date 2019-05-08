@@ -10,8 +10,15 @@ source("./server/2_event_search_button/check_search_arguments.R", local = TRUE)
             modus = plot_mode$mode
         )
 
+    # Identifying the coordinates for the rectangles around date/document
+        # Depends on plot mode and # of search terms.
+    index_of_main_grid_rects <- dplyr::case_when(
+        plot_mode$mode == "data_365" ~ as.integer(length(ggplot2::ggplot_build(plot_fase_1)$data) - 2),
+        plot_mode$mode == "data_dok" ~ as.integer(length(ggplot2::ggplot_build(plot_fase_1)$data))
+    )
+
     session_variables$plot_build_info <-
-        ggplot2::ggplot_build(plot_fase_1)$data[[2]]
+        ggplot2::ggplot_build(plot_fase_1)$data[[index_of_main_grid_rects]]
 
         value_for_slider <- plot_size(session_variables[[plot_mode$mode]],
                                       plot_mode$mode == "data_365")
