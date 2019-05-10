@@ -41,6 +41,11 @@ install.packages("devtools")
 devtools::install_github("kgjerde/corporaexplorer")
 ```
 
+*Note to developers: The package’s internal test suite uses the
+[`shinytest`](https://github.com/rstudio/shinytest) package, which
+requires that [`PhantomJS`](http://phantomjs.org/) is installed. This
+can be done through the `shinytest::installDependencies()` function.*
+
 ## Example use cases and example corpora
 
 ### A. Date-based corpora
