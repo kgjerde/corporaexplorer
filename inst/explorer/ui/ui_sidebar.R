@@ -90,9 +90,9 @@ shinydashboard::dashboardSidebar(
         shiny::sliderInput(
             inputId = "PLOTSIZE",
             label = NULL,
-            min = 100,
+            min = 150,
             ticks = FALSE,
-            step = 100,
+            step = 50,
             max = plot_size(loaded_data$original_data$data_dok,
                             DATE_BASED_CORPUS) * 2,
             value = plot_size(loaded_data$original_data$data_dok,
