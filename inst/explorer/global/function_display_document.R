@@ -23,6 +23,7 @@ display_document <-
         search_arguments$case_sensitive
       )
 
+    vis_tekst <- stringr::str_replace_all(vis_tekst, "\n", "<br>")
     return(vis_tekst)
   }
 
