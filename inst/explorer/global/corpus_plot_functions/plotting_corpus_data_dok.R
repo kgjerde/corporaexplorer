@@ -90,13 +90,18 @@ rect_tib_vertikal$y_mid = (rect_tib_vertikal$y + rect_tib_vertikal$yend) /
 
 # dividing_lines_btwn_groups ------------------------------
 
-coordinates_for_dividing_lines_btwn_groups <-
-  which(!seq_len(max(test1$y_min)) %in% test1$y_min)
+# Check if there are more than one group
+if (length(unique(test1$Year)) > 1) {
 
-if (length(coordinates_for_dividing_lines_btwn_groups) > 0) {
+  # Find the y coordinate between the groups
   coordinates_for_dividing_lines_btwn_groups <-
-    coordinates_for_dividing_lines_btwn_groups + 0.5
+    which(test1$Year_numeric != dplyr::lag(test1$Year_numeric))
 
+  coordinates_for_dividing_lines_btwn_groups <-
+    (test1$y_min[coordinates_for_dividing_lines_btwn_groups] +
+       test1$y_max[coordinates_for_dividing_lines_btwn_groups - 1]) / 2
+
+  # Make line(s) extend a bit to the right and left
   difference_min_max_x <- max(test1$x_max) - min(test1$x_min)
 
   a <-

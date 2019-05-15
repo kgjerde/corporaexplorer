@@ -9,6 +9,7 @@ source("./global/corpus_plot_functions/create_distance_coordinates_365.R",local 
 source("./global/corpus_plot_functions/plotting_corpus_data_365.R",local = TRUE)
 
 source("./global/corpus_plot_functions/create_coordinates_1_data_dok.R",local = TRUE)
+source("./global/corpus_plot_functions/create_distance_coordinates_dok.R",local = TRUE)
 source("./global/corpus_plot_functions/plotting_corpus_data_dok.R",local = TRUE)
 
 source("./global/corpus_plot_functions/create_distance_coordinates_day.R",local = TRUE)
@@ -95,11 +96,8 @@ visualiser_korpus <-
                                                month_distance,
                                                year_distance)
     } else if (modus == "data_dok") {
-      #AVSTAND MELLOM ÅR
-      year_distance <- 1
-      .data$Year_numeric <- as.numeric(factor(.data$Year, levels = unique(.data$Year)))
-      .data$y_min <- .data$y_min + (year_distance * .data$Year_numeric - min(.data$Year_numeric))
-      .data$y_max <- .data$y_max + (year_distance * .data$Year_numeric - min(.data$Year_numeric))
+      .data <- create_distance_coordinates_dok(.data,
+                                                linjer)
     } else if (modus == "day"){
       .data <- create_distance_coordinates_day(.data,
                                                 linjer,
