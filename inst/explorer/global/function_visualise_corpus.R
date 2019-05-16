@@ -20,7 +20,7 @@ source("./global/corpus_plot_functions/plotting_corpus_day.R",local = TRUE)
 #' The main function for creation of corpus maps in three different formats:
 #' calendar view, document brick wall view, and 'a day in the corpus' view (when
 #' a is clicked in calendar view).
-#' @param .data A data frame corresponding to the plot mode (data_365 or
+#' @param df A data frame corresponding to the plot mode (data_365 or
 #'   data_dok).
 #' @param .width Max width of x axis in plot.
 #' @param matriksen Corpus matrix.
@@ -34,7 +34,7 @@ source("./global/corpus_plot_functions/plotting_corpus_day.R",local = TRUE)
 #'
 #' @return A ggplot2 plot object.
 visualiser_korpus <-
-  function(.data,
+  function(df,
            .width = "auto",
            matriksen = loaded_data$original_matrix$data_dok,
            ordvektor = loaded_data$ordvektorer$data_dok,
@@ -48,20 +48,20 @@ visualiser_korpus <-
 # 1. Check if search contains search terms --------------------------------
 
     if (identical(search_arguments$search_terms, "")) {
-      .data$Term_1 <- NA
+      df$Term_1 <- NA
 
     } else{
 
 # 2. Count search term hits and assign factors for labelling --------------
 
-      .data <-
-        count_search_terms_hits(.data,
+      df <-
+        count_search_terms_hits(df,
                                 search_arguments,
                                 matriksen,
                                 ordvektor,
                                 doc_df,
                                 modus) %>%
-        create_factors_for_labelling(., .data,
+        create_factors_for_labelling(., df,
                                      search_terms = search_arguments$search_terms,
                                      number_of_factors)
     }
@@ -70,60 +70,60 @@ visualiser_korpus <-
 
     if (modus == "data_365") {
      # width = 53 # fordi uker
-      .data$Month <- lubridate::month(.data$Date)
-      .data$label_id <- seq_len(nrow(.data))
-      .data <- create_coordinates_1_data_365(.data)
+      df$Month <- lubridate::month(df$Date)
+      df$label_id <- seq_len(nrow(df))
+      df <- create_coordinates_1_data_365(df)
     } else if (modus == "data_dok") {
 
-      .data <- create_coordinates_1_data_dok(.data, linjer)
+      df <- create_coordinates_1_data_dok(df, linjer)
     } else if (modus == "day") {
 
-      .data <- create_coordinates_1_data_dok(.data, linjer, max_width_for_row = 15)
+      df <- create_coordinates_1_data_dok(df, linjer, max_width_for_row = 15)
     }
 
 # 4. Create plot coordinates, step 2 (if search terms > 1) ----------------
 
-    .data <-
-      create_coordinates_several_search_terms(.data, linjer)
-    .data <- dplyr::select(.data, -dplyr::starts_with("Term_"))
+    df <-
+      create_coordinates_several_search_terms(df, linjer)
+    df <- dplyr::select(df, -dplyr::starts_with("Term_"))
 
 # 5. Create plot coordinates, step 3 (distance between days etc.) ---------
 
     if (modus == "data_365") {
-      .data <- create_distance_coordinates_365(.data,
+      df <- create_distance_coordinates_365(df,
                                                linjer,
                                                day_distance,
                                                month_distance,
                                                year_distance)
     } else if (modus == "data_dok") {
-      .data <- create_distance_coordinates_dok(.data,
+      df <- create_distance_coordinates_dok(df,
                                                 linjer)
     } else if (modus == "day"){
-      .data <- create_distance_coordinates_day(.data,
+      df <- create_distance_coordinates_day(df,
                                                 linjer,
                                                 day_distance)
     }
 
 # 6. Label x and y axes ---------------------------------------------------
-    y_text <- label_y_axis(.data)
+    y_text <- label_y_axis(df)
 
     if (modus == "data_365") {
-      x_breaks <- label_x_axis_365(.data)
+      x_breaks <- label_x_axis_365(df)
     }
 
 # 7. Assign colours to plot labels/factors (up to 2 terms) ----------------
 
-    temp_variable_for_unpacking <- colours_to_plot_and_legend(.data, linjer, number_of_factors)
-    .data <- temp_variable_for_unpacking[[1]]  # colours_to_plot_and_legend(.data, linjer, number_of_factors)[[1]]
-    til_legend <- temp_variable_for_unpacking[[2]] # colours_to_plot_and_legend(.data, linjer, number_of_factors)[[2]]
+    temp_variable_for_unpacking <- colours_to_plot_and_legend(df, linjer, number_of_factors)
+    df <- temp_variable_for_unpacking[[1]]  # colours_to_plot_and_legend(df, linjer, number_of_factors)[[1]]
+    til_legend <- temp_variable_for_unpacking[[2]] # colours_to_plot_and_legend(df, linjer, number_of_factors)[[2]]
 
 # 8. ggplotting -----------------------------------------------------------
 
     if (modus == "data_365") {
-      plotting_corpus_data_365(.data, x_breaks, y_text, til_legend, linjer)
+      plotting_corpus_data_365(df, x_breaks, y_text, til_legend, linjer)
     } else if (modus == "data_dok") {
-      plotting_corpus_data_dok(.data, y_text, til_legend, linjer)
+      plotting_corpus_data_dok(df, y_text, til_legend, linjer)
     } else if (modus == "day") {
-      plotting_corpus_day(.data, linjer)
+      plotting_corpus_day(df, linjer)
     }
   }

@@ -1,7 +1,7 @@
 #' Wrapper/loop function for label_gruppering()
 create_factors_for_labelling <-
     function(count_oversikt,
-             .data,
+             df,
              search_terms,
              number_of_factors) {
         # Samennslåing og faktor-ordning (til fargeinndeling og label)
@@ -9,13 +9,13 @@ create_factors_for_labelling <-
         # Fancy dplyr for assigning strings as column names
         for (i in seq_along(search_terms)) {
             kolonnenavn <- paste0("Term_", i)
-            .data <-
+            df <-
                 dplyr::bind_cols(
-                    .data,
+                    df,
                     !!kolonnenavn := label_gruppering(count_oversikt, kolonnenavn, i, number_of_factors)
                 )
         }
-        return(.data)
+        return(df)
     }
 
 #' Grouping counts into categories and assignign labels

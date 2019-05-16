@@ -214,7 +214,7 @@ count_df <- function(pattern, df, case_sensitive, custom_column) {
 #'
 #' @param pattern Character vector of length 1.
 #' @param matriks As in visualiser_korpus().
-#' @param df As .data in visualiser_korpus().
+#' @param df As df in visualiser_korpus().
 #' @param ordvektor As in visualiser_korpus().
 #' @param subset_search search_arguments$subset_search.
 #' @param case_sensitive search_arguments$case_sensitive.

@@ -6,7 +6,7 @@ output$korpuskarttittel <- shiny::renderText({
 output$korpuskart <- shiny::renderPlot({
     start_plot <-
         visualiser_korpus(
-            .data = session_variables[[plot_mode$mode]],
+            df = session_variables[[plot_mode$mode]],
             .width = "auto",
             matriksen = loaded_data$original_matrix[[plot_mode$mode]],
             ordvektor = NULL,
