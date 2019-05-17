@@ -1,5 +1,8 @@
 ---
 title: 'corporaexplorer: an R package for dynamic exploration of text collections'
+output:
+  pdf_document:
+    latex_engine: xelatex
 tags:
 - qualitative research
 - mixed methods
