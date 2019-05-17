@@ -1,12 +1,12 @@
 ---
 title: 'corporaexplorer: an R package for dynamic exploration of text collections'
 tags:
-  - qualitative research
-  - mixed methods
-  - text analysis
-  - corpora
-  - R
-  - Shiny
+- qualitative research
+- mixed methods
+- text analysis
+- corpora
+- R
+- Shiny
 authors:
   - name: Kristian Lundby Gjerde
     orcid: 0000-0001-8291-6837
@@ -41,7 +41,7 @@ The API and GUI of ``corporaexplorer``, as well as the inner workings of the pac
 
 While collecting and preparing the text collections to be explored requires some familiarity with R programming, using the Shiny apps for exploring and extracting documents from the corpus should be fairly intuitive also for those with no programming knowledge, once the apps have been set up by a collaborator. Thus, the aim is for the package to be useful for anyone with a rudimentary knowledge of R -- or with collaborators who have such knowledge.
 
-![**Figure 1:** Illustration screenshots. To the left: part of interactive corpus heat-map displaying occurences of Moses and Abraham ('\\bmoses' and '\\babraham') in the *King James Bible*. In the middle: part of interactive corpus calendar heat-map displaying occurences of 'orthodox' ('\\bправослав') in a collection of transcripts from the Russian president's website. To the right: document view with interactive document map and highlighted pattern matches.](man/figures/paper_illustration.png)
+![Illustration screenshots. To the left: part of interactive corpus heat-map displaying occurences of Moses and Abraham ('\\bmoses' and '\\babraham') in the *King James Bible*. In the middle: part of interactive corpus calendar heat-map displaying occurences of 'orthodox' ('\\bправослав') in a collection of transcripts from the Russian president's website. To the right: document view with interactive document map and highlighted pattern matches.](man/figures/paper_illustration.png)
 
 
 
