@@ -43,6 +43,8 @@ While collecting and preparing the text collections to be explored requires some
 
 ![**Figure 1:** Illustration screenshots. To the left: part of interactive corpus heat-map displaying occurences of Moses and Abraham ('\\bmoses' and '\\babraham') in the *King James Bible*. In the middle: part of interactive corpus calendar heat-map displaying occurences of 'orthodox' ('\\bправослав') in a collection of transcripts from the Russian president's website. To the right: document view with interactive document map and highlighted pattern matches.](man/figures/paper_illustration.png)
 
+
+
 # Main dependencies
 
 ``corporaexplorer`` is an R [@R] package.
