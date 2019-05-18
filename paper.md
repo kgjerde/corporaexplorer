@@ -1,5 +1,12 @@
 ---
-title: 'corporaexplorer: an R package for dynamic exploration of text collections'
+title: 'corporaexplorer: An R package for dynamic exploration of text collections'
+authors:
+- affiliation: 1
+  name: Kristian Lundby Gjerde
+  orcid: 0000-0001-8291-6837
+date: "17 May 2019"
+output: pdf_document
+bibliography: joss_bib.bib
 tags:
 - qualitative research
 - mixed methods
@@ -7,15 +14,9 @@ tags:
 - corpora
 - R
 - Shiny
-authors:
-  - name: Kristian Lundby Gjerde
-    orcid: 0000-0001-8291-6837
-    affiliation: 1
 affiliations:
- - name: Research Fellow, Norwegian Institute of International Affairs (NUPI)
-   index: 1
-date: 17 May 2019
-bibliography: joss_bib.bib
+- index: 1
+  name: Research Fellow, Norwegian Institute of International Affairs (NUPI)
 ---
 
 # Background
@@ -41,7 +42,7 @@ The API and GUI of ``corporaexplorer``, as well as the inner workings of the pac
 
 While collecting and preparing the text collections to be explored requires some familiarity with R programming, using the Shiny apps for exploring and extracting documents from the corpus should be fairly intuitive also for those with no programming knowledge, once the apps have been set up by a collaborator. Thus, the aim is for the package to be useful for anyone with a rudimentary knowledge of R -- or with collaborators who have such knowledge.
 
-![Illustration screenshots. To the left: part of interactive corpus heat-map displaying occurences of Moses and Abraham ('\\bmoses' and '\\babraham') in the *King James Bible*. In the middle: part of interactive corpus calendar heat-map displaying occurences of 'orthodox' ('\\bправослав') in a collection of transcripts from the Russian president's website. To the right: document view with interactive document map and highlighted pattern matches.](man/figures/paper_illustration.png)
+![Illustration screenshots. To the left: part of interactive corpus heat-map displaying occurences of Moses and Abraham ('\\bmoses' and '\\babraham') in the *King James Bible*. In the middle: part of interactive corpus calendar heat-map displaying occurences of 'orthodox' (['\\bправослав']{.class lang="ru-RU"}) in a collection of transcripts from the Russian president's website. To the right: document view with interactive document map and highlighted pattern matches.](man/figures/paper_illustration.png)
 
 
 
