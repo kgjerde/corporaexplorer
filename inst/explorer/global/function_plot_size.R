@@ -41,9 +41,11 @@ plot_size_data_dok <- function(df, max_width_for_row, x_factor) {
         dplyr::summarise(total = sum(rader)) %>%
         unlist(use.names = FALSE)
     if (DATE_BASED_CORPUS == FALSE) {
-        x_factor <- x_factor * 2
+        x_factor <- x_factor * 1
     }
     size <- size * x_factor
+    # Because more groups = more vertical space use
+    size <- size + (10 * length(unique(df$Year)))
     if (size > (30 * nrow(df))) {
         size <- 30 * nrow(df)
     }
