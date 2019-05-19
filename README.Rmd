@@ -218,7 +218,7 @@ These arguments have the following consequences:
 
 The result of the search is an interactive heat map, a **corpus map**, where the filling indicates how many times the search term is found (legend above the plot).
 
-In the **calendar view** (only for date-based corpora), each tile represents a day, and the filling indicates how many time the search term is found in the documents that day:
+In the **calendar view** (only for date-based corpora), each tile represents a day, and the filling indicates how many times the search term is found in the documents that day:
 
 ```{r, out.width = "80%", echo = FALSE}
 knitr::include_graphics("man/figures/first_search.png")

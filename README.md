@@ -290,7 +290,7 @@ where the filling indicates how many times the search term is found
 (legend above the plot).
 
 In the **calendar view** (only for date-based corpora), each tile
-represents a day, and the filling indicates how many time the search
+represents a day, and the filling indicates how many times the search
 term is found in the documents that day:
 
 <img src="man/figures/first_search.png" width="80%" />
