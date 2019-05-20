@@ -56,6 +56,6 @@ For other data operations, functions from various ``tidyverse`` [@tidyverse] pac
 Other R packages utilised can be found in ``corporaexplorer``'s DESCRIPTION file.
 
 # Acknowledgements
-``corporaexplorer`` has been developed with support from the Research Council of Norway funded research project 'Evaluating Power Political Repertoires (EPOS),' project no. 250419.
+``corporaexplorer`` has been developed with support from the research project ‘Evaluating Power Political Repertoires (EPOS)’ (project no. 250419), funded by the Research Council of Norway.
 
 # References
