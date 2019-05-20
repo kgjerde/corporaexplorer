@@ -1,10 +1,3 @@
-# Auto scroll to top when new tile clicked --------------------------------
-shinyjs::runjs(sprintf("$('.boxed_doc_%s').scrollTo('#%s');",
-                       plot_mode$mode,
-                       1))
-shinyjs::runjs(sprintf("$('#dag_kart').scrollTo('%s');", 0))
-
-
 # Positioning of UI elements depending on height of other -----------------
 if (plot_mode$mode == "data_365") {
 
@@ -24,5 +17,4 @@ if (plot_mode$mode == "data_365") {
     shinyjs::runjs("$('.class_doc_box .nav-tabs-custom').css({
             'top' : 60 + 'px',
         });")
-
 }

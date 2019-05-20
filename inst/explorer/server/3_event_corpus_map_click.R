@@ -23,9 +23,8 @@ source("./server/3_event_corpus_map_click/title_list.R", local = TRUE)
 # Corpus day map ----------------------------------------------------------
 source("./server/3_event_corpus_map_click/rendering_day_corpus_map.R", local = TRUE)
 
-
-
-
+# Auto-scroll document and day corpus map to top
+source("./server/3_event_corpus_map_click/js_auto_scroll.R", local = TRUE)
             }
         }
 
@@ -46,6 +45,8 @@ source("./server/3_event_corpus_map_click/document_info_tab_data_dok.R", local =
 # Document visualisation --------------------------------------------------
 source("./server/3_event_corpus_map_click/document_visualisation.R", local = TRUE)
 
+# Auto-scroll document to top
+source("./server/3_event_corpus_map_click/js_auto_scroll.R", local = TRUE)
 
         }
     }
@@ -53,7 +54,7 @@ source("./server/3_event_corpus_map_click/document_visualisation.R", local = TRU
 
 # Automatic scrolling of documents back to the top ------------------------
 #  and JS positioning of UI elements --------------------------------------
-source("./server/3_event_corpus_map_click/js_auto_scroll_and_ui_positioning.R", local = TRUE)
+source("./server/3_event_corpus_map_click/ui_positioning.R", local = TRUE)
 
 })
 
