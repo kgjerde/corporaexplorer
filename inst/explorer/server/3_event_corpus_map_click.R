@@ -1,9 +1,8 @@
 shiny::observeEvent(input$plot_click, {
 
+# Identifying which row in df the click position refers to, if any --------
 min_rad <-
         finn_min_rad(input$plot_click, session_variables$plot_build_info)
-
-
 
 # Data 365 ----------------------------------------------------------------
     if (plot_mode$mode == "data_365") {
@@ -51,12 +50,7 @@ source("./server/3_event_corpus_map_click/js_auto_scroll.R", local = TRUE)
         }
     }
 
-
-# Automatic scrolling of documents back to the top ------------------------
-#  and JS positioning of UI elements --------------------------------------
+# JS positioning of UI elements --------------------------------------
 source("./server/3_event_corpus_map_click/ui_positioning.R", local = TRUE)
 
 })
-
-
-
