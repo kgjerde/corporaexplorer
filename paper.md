@@ -20,7 +20,7 @@ bibliography: joss_bib.bib
 
 # Background
 
-Computer technology has profoundly changed the possibilities for doing research with text as data. Terms such as ‘computational social science’ (see @comp) and ‘digital humanities’ (see @digitalhumanities) are now firmly established, indicating how new methods have transformed entire fields of scholarly enquiry, enabling researchers to do things unimaginable even a few years ago. For good reasons -- computers excel in quantitative tasks -- these advances have been predominantly quantitatively oriented, geared towards ‘big data’ of various sizes. However, developments in software and hardware have also opened up vast fields of immensely helpful -- and often untapped -- possibilities for many scholars engaged in various forms of *qualitative* text analysis.
+Computer technology has profoundly changed the possibilities for doing research with text as data. Terms such as ‘computational social science’ [see @comp] and ‘digital humanities’ [see @digitalhumanities] are now firmly established, indicating how new methods have transformed entire fields of scholarly enquiry, enabling researchers to do things unimaginable even a few years ago. For good reasons -- computers excel in quantitative tasks -- these advances have been predominantly quantitatively oriented, geared towards ‘big data’ of various sizes. However, developments in software and hardware have also opened up vast fields of immensely helpful -- and often untapped -- possibilities for many scholars engaged in various forms of *qualitative* text analysis.
 
 # The ``corporaexplorer`` R package  
 
