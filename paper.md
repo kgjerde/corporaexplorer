@@ -28,13 +28,13 @@ Computer technology has profoundly changed the possibilities for doing research 
 
 The intended primary audience are qualitatively oriented researchers in the social sciences and humanities who rely on close reading of textual documents as part of their academic activity. However, the package should also be useful for those doing quantitative textual research and wishing to have convenient access to the texts under study. The chief aim of ``corporaexplorer`` is to facilitate more powerful, transparent, and efficient workflows. While a typical use case would be an open-ended exploration of text collections in order to identify and extract texts for further scrutiny, the package is above all aimed at flexibility: it does not enforce any given workflow, but may play a small or larger role in many different research designs.
 
-The intention is also to encourage mixed methods in text analysis, by using  ``corporaexplorer`` in combination with the excellent R packages that are available for quantitative text analysis [for a highly useful review, see @welbers], and to encourage (licences permitting) the sharing of text collections. 
+The intention is also to encourage mixed methods in text analysis, by using  ``corporaex-plorer`` in combination with the excellent R packages that are available for quantitative text analysis [for a highly useful review, see @welbers], and to encourage (licences permitting) the sharing of text collections. 
 
 The ``corporaexplorer`` concept is simple, yet has the potential to enhance research work with text collections in a powerful way. Main elements in the interactive apps:
 
 * **Input**: The ability to filter the corpus and/or highlight documents, based on search patterns (in main text or metadata, including date range).
 * **Corpus visualisation**: An interactive heat-map of the corpus, based on the search input (calendar heat-map or heat-map where each tile represents one document, optionally grouped by metadata properties).
-* **Document visualisation and display**: Easy navigation to and within full- text documents with highlighted text.
+* **Document visualisation and display**: Easy navigation to and within full-text documents with pattern matches highlighted.
 * **Document retrieval**: Extraction of subsets of the corpus in a format suitable for close reading.
 
 The API and GUI of ``corporaexplorer``, as well as the inner workings of the package, are documented more thoroughly in the README file included with the package.
