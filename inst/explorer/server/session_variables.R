@@ -17,15 +17,15 @@ search_arguments <- shiny::reactiveValues(
     subset_terms = NULL,
     subset_thresholds = NA,
     subset_custom_column = NA,
+    raw_subset_terms = character(0), # TODO unsatisfcactory
     search_terms = "",
     thresholds = NA,
     custom_column = NA,
     terms_highlight = character(0),
+    raw_highlight_terms = character(0), # TODO unsatisfcactory
     case_sensitive = FALSE,
     time_filtering_mode = "Year range",
     time_range = NA,
-    raw_terms_highlight = character(0), # TODO unsatisfcactory
-    raw_terms_subset = character(0), # TODO unsatisfcactory
     all_ok = TRUE
 )
 

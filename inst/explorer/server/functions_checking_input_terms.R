@@ -1,5 +1,5 @@
 #' Check if vector contains any invalid threshold argument ("--\\d+")
-#' 
+#'
 #' @param chr_vector Unparsed terms input
 #' @return Logical
 check_valid_thresholds <- function(chr_vector) {
@@ -9,7 +9,7 @@ check_valid_thresholds <- function(chr_vector) {
 }
 
 #' Check if vector contains any invalid column argument (not in df)
-#' 
+#'
 #' @param chr_vector terms input
 #' @param df data frame with columns to check
 #' @return Logical (TRUE if all is OK)
@@ -21,7 +21,7 @@ check_valid_column_names <- function(chr_vector, df) {
 
 #' Checking if valid regex search
 #'
-#' @param patterns 
+#' @param patterns
 #'
 #' @return Logical
 check_regexes <- function(patterns) {
@@ -44,8 +44,8 @@ check_regexes <- function(patterns) {
 
 #' Check if any one term exceeds set length limit
 #'
-#' @param terms 
-#' @param character_limit 
+#' @param terms
+#' @param character_limit
 #'
 #' @return Logical (TRUE if all is OK)
 check_search_term_length <- function(terms, character_limit = CHARACTER_LIMIT) {
@@ -58,9 +58,9 @@ check_search_term_length <- function(terms, character_limit = CHARACTER_LIMIT) {
 #'
 #' @return Logical
 check_all_input <- function() {
-    all_terms <- c(collect_highlight_terms())
+    all_terms <- search_arguments$raw_highlight_terms
     if (!is.null(input$subset_corpus)) {
-        all_terms <- c(all_terms, collect_subset_terms())
+        all_terms <- c(all_terms, search_arguments$raw_subset_terms)
     }
     if (length(all_terms) > 0) {
     kolonner <- collect_custom_column(all_terms)

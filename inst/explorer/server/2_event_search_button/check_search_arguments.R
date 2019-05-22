@@ -8,7 +8,7 @@ if (search_arguments$all_ok == FALSE) {
 
     shiny::validate(shiny::need(
         check_regexes(c(unlist(search_arguments$terms_highlight),  # TODO dirty hack because empty search_arguments$terms_highlight) is list() and messes up the concatenation
-                                   search_arguments$subset_terms))
+                                   unlist(search_arguments$subset_terms)))
         ,
         paste("\nInvalid regular expression. Please modify your search.")
     ))
@@ -23,7 +23,7 @@ If this is something you want, set 'allow_unreasonable_patterns' in 'run_corpus_
     ))
 
     shiny::validate(shiny::need(
-        check_valid_thresholds(isolate(search_arguments$raw_terms_highlight))
+        check_valid_thresholds(isolate(search_arguments$raw_highlight_terms))
         ,
         paste(
             '\nTreshold argument invalid. Make sure it contains only numbers, e.g. "--4".'
@@ -33,7 +33,7 @@ If this is something you want, set 'allow_unreasonable_patterns' in 'run_corpus_
     if (!is.null(isolate(input$subset_corpus))) {
         if (isolate(input$subset_corpus == 'Yes')) {
             shiny::validate(shiny::need(
-                check_valid_thresholds(isolate(search_arguments$raw_terms_subset))
+                check_valid_thresholds(isolate(search_arguments$raw_subset_terms))
                 ,
                 paste(
                     '\nTreshold argument invalid. Make sure it contains only numbers, e.g. "--4".'
@@ -63,7 +63,7 @@ shiny::validate(shiny::need(
 ))
 
 shiny::validate(shiny::need(
-    length(search_arguments$search_terms) <= 2
+    length(search_arguments$search_terms) <= 6
     ,
     paste(
         "\nWorks currently with maximum two search terms. To highlight more terms in the documents, use the 'Add terms for text highlighting' option."
