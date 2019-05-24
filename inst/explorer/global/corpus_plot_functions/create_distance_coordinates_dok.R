@@ -14,19 +14,19 @@ create_distance_coordinates_dok <- function(test1,
                                         year_distance = 1
                                         ){
     # IF SEVERAL SEARCH TERMS
-    # TODO This will work only for 2 search terms.
-    if (linjer == 2) {
+
+    if (linjer > 1) {
         # DISTANCE BETWEEN DOCS VERTICALLY
-        # TODO This part will work only for 2 search terms.
-        test1$group_row <- dplyr::case_when(test1$rad %% 2 == 0 ~ test1$rad - 1,
-                                            test1$rad %% 2 != 0 ~ test1$rad)
-        test1$y_min <-
-            test1$y_min + (row_distance * test1$group_row - 1)
+        # Making sure that all tiles "belonging"
+        # to one document "move" together
+        test1$group_row <- test1$rad - test1$df
+
+         test1$y_min <-
+            test1$y_min + (row_distance * test1$group_row)
         test1$y_max <-
-            test1$y_max + (row_distance * test1$group_row - 1)
+            test1$y_max + (row_distance * test1$group_row)
 
         ## DISTANCE BETWEEN TILES/DOCS HORIZONTALLY
-        # TODO: this part should work for any number of search terms
         test1 <- test1 %>%
             dplyr::group_by(rad) %>%
             dplyr::mutate(position_in_row = (1:dplyr::n()) - 1) %>%
