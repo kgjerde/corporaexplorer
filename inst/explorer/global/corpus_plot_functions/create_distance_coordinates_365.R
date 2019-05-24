@@ -13,9 +13,9 @@ create_distance_coordinates_365 <- function(test1,
                                         month_distance,
                                         year_distance
                                         ){
-        
+
 ## AVSTAND MELLOM DAGER HORISONTALT
-day_distance <- 0.3 * linjer
+day_distance <- 0.3
 test1$x_min <- test1$x_min + (day_distance * test1$x_max)
 test1$x_max <- test1$x_max + (day_distance * test1$x_max)
 
@@ -35,7 +35,7 @@ test1$x_min <- test1$x_min + (month_distance * test1$Month -1)
 test1$x_max <- test1$x_max + (month_distance * test1$Month -1)
 
 #AVSTAND MELLOM ÅR
-year_distance<- 1.5
+year_distance<- 1.5 * linjer
 test1$y_min <- test1$y_min + (year_distance * test1$Year - min(test1$Year))
 test1$y_max <- test1$y_max + (year_distance * test1$Year - min(test1$Year))
 
