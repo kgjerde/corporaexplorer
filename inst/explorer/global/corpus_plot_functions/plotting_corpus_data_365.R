@@ -3,11 +3,11 @@
 #' @param test1 Data frame with columns XXXX
 #' @param x_breaks
 #' @param y_text
-#' @param til_legend
+#' @param legend_df
 #' @param linjer
 #'
 #' @return A ggplot2 plot object
-plotting_corpus_data_365 <- function(test1, x_breaks, y_text, til_legend, linjer) {
+plotting_corpus_data_365 <- function(test1, x_breaks, y_text, legend_df, linjer) {
     a <- ggplot2::ggplot()
 
     a <- a +
@@ -52,12 +52,13 @@ plotting_corpus_data_365 <- function(test1, x_breaks, y_text, til_legend, linjer
 
     a <-
         a + ggplot2::scale_fill_identity(
-            labels = til_legend$original,
+            labels = legend_df$legend_label,
             #navn_vektor,
-            breaks = til_legend$fargekoder,
+            breaks = legend_df$colour_code,
             #names(navn_vektor),
             guide = "legend",
-            na.value = "white"
+            na.value = "white",
+            drop=FALSE  # To include my dummy levels
         )
     # }
 

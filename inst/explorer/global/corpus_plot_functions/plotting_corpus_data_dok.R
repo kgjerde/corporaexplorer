@@ -3,14 +3,14 @@
 #' @param test1 Data frame with columns XXXX
 #' @param x_breaks
 #' @param y_text
-#' @param til_legend
+#' @param legend_df
 #' @param linjer
 #'
 #' @return A ggplot2 plot object
 plotting_corpus_data_dok <-
   function(test1,
            y_text,
-           til_legend,
+           legend_df,
            linjer) {
 
 
@@ -21,16 +21,15 @@ a <- ggplot2::ggplot()
 farger <-
   c(rev(RColorBrewer::brewer.pal(9, name = "Reds")[2:9]), rev(RColorBrewer::brewer.pal(9, "Blues")[2:9]))
 
-
-
 a <-
   a + ggplot2::scale_fill_identity(
-    labels = til_legend$original,
+    labels = legend_df$legend_label,
     #navn_vektor,
-    breaks = til_legend$fargekoder,
+    breaks = legend_df$colour_code,
     #names(navn_vektor),
     guide = "legend",
-    na.value = "white"
+    na.value = "white",
+    drop=FALSE  # To include my dummy levels
   )
 
 # Fill for first search_term (or for no search_term)

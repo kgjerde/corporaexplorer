@@ -113,16 +113,16 @@ visualiser_korpus <-
 
 # 7. Assign colours to plot labels/factors (up to 2 terms) ----------------
 
-    temp_variable_for_unpacking <- colours_to_plot_and_legend(df, linjer, number_of_factors)
-    df <- temp_variable_for_unpacking[[1]]  # colours_to_plot_and_legend(df, linjer, number_of_factors)[[1]]
-    til_legend <- temp_variable_for_unpacking[[2]] # colours_to_plot_and_legend(df, linjer, number_of_factors)[[2]]
+    temp_variable_for_unpacking <- colours_to_plot_and_legend(df, linjer, number_of_factors, !identical(search_arguments$search_terms, ""))
+    df <- temp_variable_for_unpacking[[1]]
+    legend_df <- temp_variable_for_unpacking[[2]]
 
 # 8. ggplotting -----------------------------------------------------------
 
     if (modus == "data_365") {
-      plotting_corpus_data_365(df, x_breaks, y_text, til_legend, linjer)
+      plotting_corpus_data_365(df, x_breaks, y_text, legend_df, linjer)
     } else if (modus == "data_dok") {
-      plotting_corpus_data_dok(df, y_text, til_legend, linjer)
+      plotting_corpus_data_dok(df, y_text, legend_df, linjer)
     } else if (modus == "day") {
       plotting_corpus_day(df, linjer)
     }
