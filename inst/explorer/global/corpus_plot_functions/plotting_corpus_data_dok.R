@@ -14,7 +14,6 @@ plotting_corpus_data_dok <-
            linjer) {
 
 
-
 a <- ggplot2::ggplot()
 
 
@@ -32,16 +31,19 @@ a <-
     drop=FALSE  # To include my dummy levels
   )
 
-# Fill for first search_term (or for no search_term)
-a <-
-  a + ggplot2::geom_rect(data = test1[test1$df == 1,],
-                ggplot2::aes(
-                  xmin = x_min,
-                  xmax = x_max,
-                  ymin = y_min,
-                  ymax = y_max,
-                  fill = Term_color
-                ))#, fill = "red")
+# Fill, one for each search_term (or for no search_term)
+
+for (i in seq_len(linjer)) {
+  a <-
+    a + ggplot2::geom_rect(data = test1[test1$df == i,],
+                  ggplot2::aes(
+                    xmin = x_min,
+                    xmax = x_max,
+                    ymin = y_min,
+                    ymax = y_max,
+                    fill = Term_color
+                  ))
+}
 
 if (ONLY_ONE_GROUP_IN_NON_DATE_BASED_CORPUS == TRUE) {
   y_text <- NULL
@@ -115,21 +117,7 @@ if (length(unique(test1$Year)) > 1) {
       yend = coordinates_for_dividing_lines_btwn_groups
     )
 }
-#####
-# a <- a + ggplot2::scale_alpha_identity(na.value = test1$Odd)
 
-if (linjer > 1) {
-  #LINJE 2
-  a <-
-    a + ggplot2::geom_rect(data = test1[test1$df == 2,],
-                  ggplot2::aes(
-                    xmin = x_min,
-                    xmax = x_max,
-                    ymin = y_min,
-                    ymax = y_max,
-                    fill = Term_color
-                  ))#, fill = "blue")#, color = "black", size = 0.1)
-}
 
 # Selve rutenettet
 a <-

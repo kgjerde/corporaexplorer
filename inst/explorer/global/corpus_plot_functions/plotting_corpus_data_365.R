@@ -60,34 +60,20 @@ plotting_corpus_data_365 <- function(test1, x_breaks, y_text, legend_df, linjer)
             na.value = "white",
             drop=FALSE  # To include my dummy levels
         )
-    # }
 
-    # Dette er fyll basert på søk
-    a <-
-        a + ggplot2::geom_rect(data = test1[test1$df == 1,],
-                      ggplot2::aes(
-                          xmin = x_min,
-                          xmax = x_max,
-                          ymin = y_min,
-                          ymax = y_max,
-                          fill = Term_color
-                      ))
 
-    if (linjer > 1) {
-        #LINJE 2
-        a <-
-            a + ggplot2::geom_rect(
-                data = test1[test1$df == 2,],
-                ggplot2::aes(
+# Fill, one for each search_term (or for no search_term)
+for (i in seq_len(linjer)) {
+  a <-
+    a + ggplot2::geom_rect(data = test1[test1$df == i,],
+                  ggplot2::aes(
                     xmin = x_min,
                     xmax = x_max,
                     ymin = y_min,
                     ymax = y_max,
                     fill = Term_color
-                )
-            )
-
-    }
+                  ))
+}
 
     #    Dette er selve rutenettet
     a <- a + ggplot2::geom_rect(
@@ -136,7 +122,6 @@ plotting_corpus_data_365 <- function(test1, x_breaks, y_text, legend_df, linjer)
         )
 
     a <- a + ggplot2::scale_alpha_identity()
-
 
      return(a)
 }
