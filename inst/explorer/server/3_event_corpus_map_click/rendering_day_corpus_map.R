@@ -18,7 +18,7 @@ if (length(min_rad) > 0) {
       )
 
     session_variables$plotinfo_dag <-
-      ggplot2::ggplot_build(esel)$data[[2]]
+      ggplot2::ggplot_build(esel)$data[[as.integer(length(ggplot2::ggplot_build(esel)$data) - 1)]]
 
     session_variables$day_plot_height <- (length(unique(session_variables$plotinfo_dag$ymax)) * 20) + 15
 
