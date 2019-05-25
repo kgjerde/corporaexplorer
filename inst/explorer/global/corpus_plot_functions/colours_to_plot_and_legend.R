@@ -164,7 +164,6 @@ discrepancy_in_legend_keys <- function(legend_df,
 }
 
 need_to_add_dummy_colours <- function(legend_key_discrepancy,
-                                      linjer,
                                       search_terms_exist) {
   return(search_terms_exist == TRUE & legend_key_discrepancy != 0)
 }
@@ -184,7 +183,6 @@ add_dummy_colours_to_legend_df <-
     need_for_dummies <-
       need_to_add_dummy_colours(
         legend_key_discrepancy,
-        linjer,
         search_terms_exist
       )
 
