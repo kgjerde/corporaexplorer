@@ -25,9 +25,9 @@ filtrere_korpus_tid <-
         )
         # Rendering "empty"
         .tibble$Day_without_docs[ikke_i_subset_indekser] <- TRUE
-        .tibble$Invisible_fake_date[ikke_i_subset_indekser] <- FALSE
+        .tibble$Invisible_fake_date[ikke_i_subset_indekser] <- TRUE
         # And then filtering.
-        
+
         filtrert_tibble <-
           .tibble[.tibble$Year %in% lubridate::year(search_arguments$time_range[1]):lubridate::year(search_arguments$time_range[2]), ]
       } else if (plot_mode == "data_dok") {
@@ -48,7 +48,7 @@ last_day_in_year <- function(date) {
 }
 
 #' Subset/filter corpus by patterns
-#' 
+#'
 #' This has to be refactored. Ugly use with additonal conditionals below.
 #'
 #' @param df Corpus data frame in correspondence with @param modus.
@@ -61,7 +61,7 @@ filtrere_korpus_pattern <- function(df,
                                     search_arguments,
                                     modus,
                                     session_variables) {
-  
+
   if (search_arguments$case_sensitive == FALSE) {
     text_column <- "Text"
   } else if (search_arguments$case_sensitive == TRUE) {
@@ -82,7 +82,7 @@ filtrere_korpus_pattern <- function(df,
         modus = modus,
         custom_column = search_arguments$subset_custom_column[i]
       )
-    
+
     if (modus == "data_dok") {
        if (nrow(new_df) != 0) {
       new_df <- new_df[treff[, 1] > 0,]
@@ -92,7 +92,7 @@ filtrere_korpus_pattern <- function(df,
       new_df$Day_without_docs[ikke_i_subset_indekser] <- TRUE
       new_df$ID[ikke_i_subset_indekser] <- 0
     }
-    
+
     if (nrow(new_df) == 0) {  # For å ikke sette igang subseeting av tom df
       return(new_df)
     }
