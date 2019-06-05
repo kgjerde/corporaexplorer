@@ -24,7 +24,7 @@ Computer technology has profoundly changed the possibilities for doing research 
 
 # The ``corporaexplorer`` R package  
 
-``corporaexplorer`` is an R package that uses the ``Shiny`` GUI (graphical user interface) framework for dynamic exploration of text collections. The package is designed for use with a wide range of text collections; one example could be a collection of tens of thousands of documents scraped from a governmental website; another example could be the collected works of a novelist; a third example could be the chapters of a single book.
+``corporaexplorer`` is an R package that uses the Shiny GUI (graphical user interface) framework for dynamic exploration of text collections. The package is designed for use with a wide range of text collections; one example could be a collection of tens of thousands of documents scraped from a governmental website; another example could be the collected works of a novelist; a third example could be the chapters of a single book.
 
 The intended primary audience are qualitatively oriented researchers in the social sciences and humanities who rely on close reading of textual documents as part of their academic activity. However, the package should also be useful for those doing quantitative textual research and wishing to have convenient access to the texts under study. The chief aim of ``corporaexplorer`` is to facilitate more powerful, transparent, and efficient workflows. While a typical use case would be an open-ended exploration of text collections in order to identify and extract texts for further scrutiny, the package is above all aimed at flexibility: it does not enforce any given workflow, but may play a small or larger role in many different research designs.
 
@@ -58,7 +58,7 @@ view with interactive document map and highlighted pattern matches.}
 # Main dependencies
 
 ``corporaexplorer`` is an R [@R] package.
-The interactive apps are built with the ``Shiny`` [@shiny] framework.
+The interactive apps are built with the ``shiny`` [@shiny] framework.
 The plots are built with ``ggplot2`` [@ggplot2].
 For searches and string operations, ``stringi`` [@stringi]/``stringr`` [@stringr] and ``re2r`` [@re2r] are used (details can be found in the package documentation).
 ``data.table`` [@data.table] is used for fast search operations in the document term matrix.
