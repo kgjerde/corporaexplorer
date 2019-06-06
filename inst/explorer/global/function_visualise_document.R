@@ -82,8 +82,8 @@ visualiser_dok <-
       dok_tib <- dok_tib %>%
         dplyr::select(-Position) %>%
         dplyr::group_by(dekadille) %>%
-        dplyr::summarise_all(list( ~ sum))
       
+        dplyr::summarise_all(sum)
       # Plotting
       dok_tib_2 <- dplyr::group_by(dok_tib, dekadille) %>%
         tidyr::gather(ord, N,-dekadille)
