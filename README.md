@@ -11,6 +11,7 @@ v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/li
 status](https://travis-ci.org/kgjerde/corporaexplorer.svg?branch=master)](https://travis-ci.org/kgjerde/corporaexplorer)
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/kgjerde/corporaexplorer?branch=master&svg=true)](https://ci.appveyor.com/project/kgjerde/corporaexplorer)
+[![DOI](http://joss.theoj.org/papers/10.21105/joss.01342/status.svg)](https://doi.org/10.21105/joss.01342)
 <!-- badges: end -->
 
 **corporaexplorer** is an R package for dynamic exploration of
@@ -165,8 +166,7 @@ The default arguments are recommended for most use cases.
 While it should be possible to use the app without reading any further,
 the rest of this section includes user interface instructions as well as
 some details about the app’s inner workings that are relevant for
-advanced users. A date-based corpus is used as
-example.
+advanced users. A date-based corpus is used as example.
 
 ### 2a. Sidebar input
 
@@ -235,8 +235,7 @@ separately or together by adding them to the end of a search pattern
 
 1.  The “threshold argument” has the syntax `--threshold` and determines
     the minimum number of search hits a day/document should contain in
-    order to be coloured in the corpus
-map:
+    order to be coloured in the corpus map:
 
 <!-- end list -->
 
@@ -245,8 +244,7 @@ Russia--10  # Will find documents that includes the pattern "Russia" at least 10
 ```
 
 2.  The “column argument” has the syntax `--column_name` and allows for
-    searches in other columns than the default full text
-column:
+    searches in other columns than the default full text column:
 
 <!-- end list -->
 
@@ -306,8 +304,8 @@ document:
 <br>
 
 The **Corpus info** tab presents some very basic summary statistics of
-the search results. (Look at e.g.
-[`quanteda`](https://github.com/quanteda/quanteda) and
+the search results. (Look at
+e.g. [`quanteda`](https://github.com/quanteda/quanteda) and
 [`tidytext`](https://github.com/juliasilge/tidytext) for excellent R
 packages for *quantitative* text analysis. Using such packages together
 with **corporaexplorer** is highly recommended in order to combine
@@ -430,7 +428,7 @@ Windows.
 
 **On Mac OS or Linux**, problems with encoding will likely not arise at
 all. If problems do arise, they can typically be solved by making the R
-“locale” unicode-friendly (e.g. `Sys.setlocale("LC_ALL",
+“locale” unicode-friendly (e.g. `Sys.setlocale("LC_ALL",
 "en_US.UTF-8")`). NB\! This assumes that the text is UTF-8 encoded, so
 if changing the locale in this way does not help, make sure that the
 text is encoded as UTF-8 characters. Alternatively, if you can ascertain
