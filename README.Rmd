@@ -356,6 +356,13 @@ For (a lot) more information about encoding, see
 by David C. Zentgraf.
 
 
+## How to cite
+
+Gjerde, Kristian Lundby. 2019. "corporaexplorer: An R package for dynamic exploration of text collections." _Journal of Open Source Software_ 4 (38): 1342. [https://doi.org/10.21105/joss.01342](https://doi.org/10.21105/joss.01342).
+
+For a BibTeX entry, use the output from `citation(package = "corporaexplorer")`.
+
+
 ## Contributing
 
 Contributions in the form of feedback, bug reports and code are most welcome. Ways to contribute:

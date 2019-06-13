@@ -444,6 +444,15 @@ Windows”](https://dss.iq.harvard.edu/blog/escaping-character-encoding-hell-r-w
 For (a lot) more information about encoding, see [this informative
 article](http://kunststube.net/encoding/) by David C. Zentgraf.
 
+## How to cite
+
+Gjerde, Kristian Lundby. 2019. “corporaexplorer: An R package for
+dynamic exploration of text collections.” *Journal of Open Source
+Software* 4 (38): 1342. <https://doi.org/10.21105/joss.01342>.
+
+For a BibTeX entry, use the output from `citation(package =
+"corporaexplorer")`.
+
 ## Contributing
 
 Contributions in the form of feedback, bug reports and code are most
