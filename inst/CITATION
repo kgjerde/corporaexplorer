@@ -1,0 +1,19 @@
+citHeader("To cite corporaexplorer in publications use:")
+
+citEntry(entry = "Article",
+  title        = "{corporaexplorer}: An R package for dynamic exploration of text collections",
+  author       = personList(as.person("Kristian Lundby Gjerde")),
+  journal      = "Journal of Open Source Software",
+  year         = "2019",
+  volume       = "4",
+  number       = "38",
+  pages        = "1342",
+  doi          = "10.21105/joss.01342",
+  url          = "https://github.com/kgjerde/corporaexplorer",
+
+  textVersion  =
+  paste("Gjerde, Kristian Lundby (2019).",
+        "\"corporaexplorer: An R package for dynamic exploration of text collections.\"",
+        "Journal of Open Source Software, 4(38), 1342.",
+        "URL https://doi.org/10.21105/joss.01342.")
+)
