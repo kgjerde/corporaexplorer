@@ -5,6 +5,5 @@
 ^corporaexplorer\.Rproj$
 ^\.Rproj\.user$
 \.png$
-joss_bib.bib$
-paper.md$
 examples$
+^paper$
