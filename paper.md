@@ -28,7 +28,7 @@ Computer technology has profoundly changed the possibilities for doing research 
 
 The intended primary audience are qualitatively oriented researchers in the social sciences and humanities who rely on close reading of textual documents as part of their academic activity. However, the package should also be useful for those doing quantitative textual research and wishing to have convenient access to the texts under study. The chief aim of ``corporaexplorer`` is to facilitate more powerful, transparent, and efficient workflows. While a typical use case would be an open-ended exploration of text collections in order to identify and extract texts for further scrutiny, the package is above all aimed at flexibility: it does not enforce any given workflow, but may play a small or larger role in many different research designs.
 
-The intention is also to encourage mixed methods in text analysis, by using  ``corporaex-plorer`` in combination with the excellent R packages that are available for quantitative text analysis [for a highly useful review, see @welbers], and to encourage (licences permitting) the sharing of text collections. 
+The intention is also to encourage mixed methods in text analysis, by using  ``corporaex``- ``plorer`` in combination with the excellent R packages that are available for quantitative text analysis [for a highly useful review, see @welbers], and to encourage (licences permitting) the sharing of text collections. 
 
 The ``corporaexplorer`` concept is simple, yet has the potential to enhance research work with text collections in a powerful way. Main elements in the interactive apps:
 
