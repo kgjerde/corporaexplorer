@@ -44,7 +44,7 @@ While collecting and preparing the text collections to be explored requires some
 \bigskip
 \begin{figure}[!tbh]
 \centering
-\includegraphics{man/figures/paper_illustration.png}
+\includegraphics{paper_illustration.png}
 \caption{Illustration screenshots. To the left: part of interactive
 corpus heat-map displaying occurences of Moses and Abraham in the
 \emph{King James Bible}. In the middle: part of interactive corpus
