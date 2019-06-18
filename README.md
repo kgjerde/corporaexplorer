@@ -173,7 +173,7 @@ advanced users. A date-based corpus is used as example.
 <img align="left" src="man/figures/sidebar.png" width="170" height="450" style="margin-right: 25px"/>
 
   - **Number of terms to chart**: How many terms (phrases/patterns)
-    should be charted in the corpus map? Current maximum is two.
+    should be charted in the corpus map? Current maximum is five.
   - **Term(s) to chart**: Using colour fillings, the corpus map plot
     will indicate days/documents where these terms are present. The
     terms will also be highlighted in all documents.
