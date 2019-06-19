@@ -26,17 +26,10 @@ knitr::opts_chunk$set(
 **corporaexplorer** is an R package for dynamic exploration of corpora/text
 collections through a `Shiny` app  graphical user interface.
 
-**corporaexplorer**'s intended primary audience is qualitatively oriented researchers who
+**corporaexplorer**'s intended primary audience are qualitatively oriented researchers who
 rely on close reading of textual documents as part of their academic activity,
 but the package should also be a useful supplement for those doing quantitative textual research and wishing to visit the texts under study.
 Finally, by offering a convenient way to explore any character vector, it can also be useful for a wide range of other R users.
-
-While collecting and preparing the text collections to be explored requires
-some R programming knowledge, using the Shiny app(s) for exploring and
-extracting documents from the corpus should be rather intuitive also for
-someone with no programming knowledge -- when first set up by a collaborator.
-Thus, the ambition is that the package should be useful for anyone with a rudimentary knowledge of R --
-or who knows anyone with this knowledge.
 
 
 ## Installation
