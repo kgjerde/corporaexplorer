@@ -226,7 +226,7 @@ tile chart consisting of n tiles where each tile represents a 1/n part
 of the document, and where the colour in a tile indicates whether and
 how many times the search term is found in that part of the document.
 Clicking on a tile scrolls the document to the corresponding part of the
-document.<sup>[2](#footnote2)</sup>
+document.<sup>[1](#footnote1)</sup>
 
 <img src="man/figures/wall.png" width="80%" />
 
@@ -308,3 +308,8 @@ Speed is considered to be of less importance in this app, and all
 searches are carried out as full text searches with `stringr`. Again,
 note that a single backslash is used as escape character. For example
 will `\.` match a literal “.”, and `\d` match any digit.
+
+<hr>
+
+<a name="footnote1">*1</a>. Using the
+[`jquery.scrollTo`](https://github.com/flesler/jquery.scrollTo) plugin.*

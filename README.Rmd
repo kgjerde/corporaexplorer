@@ -44,6 +44,10 @@ install.packages("devtools")
 devtools::install_github("kgjerde/corporaexplorer")
 ```
 
+**corporaexplorer** works on Mac OS, Windows and Linux.
+(The Shiny apps' user interface is rather clunkier on Windows than on the other platforms,
+but the apps are fully functional.)
+
 *Note to developers:
 The package's internal test suite uses the [`shinytest`](https://github.com/rstudio/shinytest) package,
 which requires that [`PhantomJS`](http://phantomjs.org/) is installed.
@@ -108,7 +112,7 @@ For a BibTeX entry, use the output from `citation(package = "corporaexplorer")`.
 
 ## A note on platforms and encoding
 
-**corporaexplorer** works on Mac OS, Windows and Linux,<sup>[3](#footnote3)</sup>
+**corporaexplorer** works on Mac OS, Windows and Linux,
 and there are some important differences in how R handles text
 on the different platforms.
 If you are working with plain English text,
@@ -149,5 +153,3 @@ Contributions in the form of feedback, bug reports and code are most welcome. Wa
 <hr>
 
 <a name="footnote1">*1</a>. All this material is licensed under Creative Commons Attribution 4.0 International (CC BY 4.0).*  
-<a name="footnote2">*2</a>. Using the [`jquery.scrollTo`](https://github.com/flesler/jquery.scrollTo) plugin.*  
-<a name="footnote3">*3</a>. That said, the package is developed on Mac OS, and the Shiny apps' user interface is rather clunkier on Windows.*
