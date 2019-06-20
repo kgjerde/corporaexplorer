@@ -7,3 +7,5 @@
 \.png$
 examples$
 ^paper$
+^usage\.Rmd$
+^usage\.md$
