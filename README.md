@@ -14,8 +14,13 @@ status](https://ci.appveyor.com/api/projects/status/github/kgjerde/corporaexplor
 [![DOI](http://joss.theoj.org/papers/10.21105/joss.01342/status.svg)](https://doi.org/10.21105/joss.01342)
 <!-- badges: end -->
 
-**corporaexplorer** is an R package for dynamic exploration of
-corpora/text collections through a `Shiny` app graphical user interface.
+**corporaexplorer** is an R package that uses the `Shiny` graphical user
+interface framework for dynamic exploration of text collections. The
+package is designed for use with a wide range of text collections; one
+example could be a collection of tens of thousands of documents scraped
+from a governmental website; another example could be the collected
+works of a novelist; a third example could be the chapters of a single
+book.
 
 **corporaexplorer**’s intended primary audience are qualitatively
 oriented researchers who rely on close reading of textual documents as
@@ -24,6 +29,14 @@ supplement for those doing quantitative textual research and wishing to
 visit the texts under study. Finally, by offering a convenient way to
 explore any character vector, it can also be useful for a wide range of
 other R users.
+
+While collecting and preparing the text collections to be explored
+requires some familiarity with R programming, using the Shiny apps for
+exploring and extracting documents from the corpus should be fairly
+intuitive also for those with no programming knowledge, once the apps
+have been set up by a collaborator. Thus, the aim is for the package to
+be useful for anyone with a rudimentary knowledge of R – or with
+collaborators who have such knowledge.
 
 ## Installation
 
