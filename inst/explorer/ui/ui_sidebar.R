@@ -2,9 +2,8 @@ shinydashboard::dashboardSidebar(
     shinyWidgets::radioGroupButtons(
         inputId = "antall_linjer",
         label = "No. of terms to chart",
-        choices = 1:2,
+        choices = 1:5,
         justified = TRUE,
-        width = '160px',
         size = "xs"
     ),
 
