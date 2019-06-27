@@ -24,6 +24,8 @@ transform_regular <- function(df, normalise = TRUE) {
     }
   }
 
+  df <- dplyr::arrange(df, Date)
+
   df$Year <- lubridate::year(df$Date)
 
   df$Tile_length <- nchar(df$Text) %>%
