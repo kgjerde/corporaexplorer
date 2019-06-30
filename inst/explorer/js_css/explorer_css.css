@@ -152,7 +152,9 @@ https://stackoverflow.com/questions/41240878/r-shiny-fixed-sidebar-and-main-head
   position: fixed;
   width: 220px;
   white-space: nowrap;
-  overflow: visible;
+  overflow-y: auto;
+  top: 50px;
+  bottom: 0;
 }
 
 .dropdownsettings {
