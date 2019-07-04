@@ -71,9 +71,9 @@ scraped from the Russian governmental website kremlin.ru (7751
 documents, more info
 [here](https://figshare.com/s/820c105c12755d853801)). The equivalent
 material in Russian (10,221 documents) can be downloaded
-[here](https://figshare.com/s/be0d2cfa195e43160fcb). A third, somewhat
-bigger (but less carefully prepared) test corpus (26,654 documents) from
-the same website is available
+[here](https://figshare.com/articles/Kremlin_transcripts_1999_February_2019_Russian/7855853).
+A third, somewhat bigger (but less carefully prepared) test corpus
+(26,654 documents) from the same website is available
 [here](https://figshare.com/s/fcd93f6f93bb23be3bb1).<sup>[1](#footnote1)</sup>
 
 (The package of course works equally well with **text collections that
