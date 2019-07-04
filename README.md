@@ -57,6 +57,18 @@ are fully functional.)
 requires that [`PhantomJS`](http://phantomjs.org/) is installed. This
 can be done through the `shinytest::installDependencies()` function.*
 
+## How to cite
+
+Please cite the following paper if you use **corporaexplorer** in your
+research.
+
+> Gjerde, Kristian Lundby. 2019. “corporaexplorer: An R package for
+> dynamic exploration of text collections.” *Journal of Open Source
+> Software* 4 (38): 1342. <https://doi.org/10.21105/joss.01342>.
+
+For a BibTeX entry, use the output from `citation(package =
+"corporaexplorer")`.
+
 ## Example corpora
 
 #### A. Date-based corpora
@@ -124,18 +136,6 @@ elements in the interactive apps:
     a reading-friendly format.
 
 See the [Usage](usage.md) document for more details.
-
-## How to cite
-
-Please cite the following paper if you use **corporaexplorer** in your
-research.
-
-Gjerde, Kristian Lundby. 2019. “corporaexplorer: An R package for
-dynamic exploration of text collections.” *Journal of Open Source
-Software* 4 (38): 1342. <https://doi.org/10.21105/joss.01342>.
-
-For a BibTeX entry, use the output from `citation(package =
-"corporaexplorer")`.
 
 ## A note on platforms and encoding
 
