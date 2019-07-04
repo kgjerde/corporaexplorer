@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# corporaexplorer
+# corporaexplorer: An R package for dynamic exploration of text collections
 
 <!-- badges: start -->
 
@@ -48,16 +48,16 @@ install.packages("devtools")
 devtools::install_github("kgjerde/corporaexplorer")
 ```
 
-**corporaexplorer** works on Mac OS, Windows and Linux. (The Shiny apps’
-user interface is rather clunkier on Windows than on the other
-platforms, but the apps are fully functional.)
+**corporaexplorer** works on Mac OS, Windows and Linux. (The Shiny apps
+look much clunkier on Windows than on the other platforms, but the apps
+are fully functional.)
 
 *Note to developers: The package’s internal test suite uses the
 [`shinytest`](https://github.com/rstudio/shinytest) package, which
 requires that [`PhantomJS`](http://phantomjs.org/) is installed. This
 can be done through the `shinytest::installDependencies()` function.*
 
-## Example corpora:
+## Example corpora
 
 #### A. Date-based corpora
 
@@ -126,6 +126,9 @@ elements in the interactive apps:
 See the [Usage](usage.md) document for more details.
 
 ## How to cite
+
+Please cite the following paper if you use **corporaexplorer** in your
+research.
 
 Gjerde, Kristian Lundby. 2019. “corporaexplorer: An R package for
 dynamic exploration of text collections.” *Journal of Open Source
