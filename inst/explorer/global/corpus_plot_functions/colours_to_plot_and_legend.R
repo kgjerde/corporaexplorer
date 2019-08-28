@@ -46,7 +46,7 @@ define_indices_in_colour_palette <-
   function(number_of_factors) {
     if (number_of_factors == 8) {
       fargeutvalg_vektor <- list(
-        9,
+        3,
         c(5, 9),
         c(3, 6, 9),
         c(3, 5, 7, 9),
