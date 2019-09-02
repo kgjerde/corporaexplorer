@@ -22,17 +22,18 @@ knitr::opts_chunk$set(
 [![DOI](http://joss.theoj.org/papers/10.21105/joss.01342/status.svg)](https://doi.org/10.21105/joss.01342)
 <!-- badges: end -->
 
-<div style="margin-left:50%; font-size:95%">
-**"I really like the application and its simplicity. It looks great and is very functional. ... a nice addition to text analysis tools."**  
-*--[Kenneth Benoit](https://github.com/kbenoit), creator of [quanteda](https://quanteda.io/), professor of computational social science at [LSE](https://www.lse.ac.uk/Methodology/People/Academic-Staff/Kenneth-Benoit/Kenneth-Benoit)*
-</div>
+<br>
 
-<div style="margin-left:50%; font-size:95%">
-**"I really enjoyed interacting with corporaexplorer.**
-**This is exciting work that opens up doors for non-technical users."**   
-*--[Tyler Rinker](https://github.com/trinker), creator of [sentimentr](https://github.com/trinker/sentimentr) and [qdap](https://github.com/trinker/qdap)*
-</div>
+> **"I really like the application and its simplicity. It looks great and is very functional. ... a nice addition to text analysis tools."**  
+> *--[Kenneth Benoit](https://github.com/kbenoit), creator of [quanteda](https://quanteda.io/), professor of computational social science at [LSE](https://www.lse.ac.uk/Methodology/People/Academic-Staff/Kenneth-Benoit/Kenneth-Benoit)*
 
+> **"I really enjoyed interacting with corporaexplorer.**
+> **This is exciting work that opens up doors for non-technical users."**   
+> *--[Tyler Rinker](https://github.com/trinker), creator of [sentimentr](https://github.com/trinker/sentimentr) and [qdap](https://github.com/trinker/qdap)*
+
+<hr>
+
+## What is corporaexplorer?
 
 **corporaexplorer** is an R package that uses the `Shiny` graphical user interface framework for dynamic exploration of text collections.
 
