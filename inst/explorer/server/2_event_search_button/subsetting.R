@@ -45,6 +45,17 @@ if (!is.null(input$subset_corpus)) {
                               search_arguments,
                               "data_dok",
                               session_variables)
+
+  # Telling the data_365 tibble which dates contain
+    # at least one document with all the subset terms:
+    non_empty_dates <- unique(session_variables$data_dok$Date)
+
+    session_variables$data_365$Day_without_docs[session_variables$data_365$Date %in% non_empty_dates == FALSE] <-
+      TRUE
+
+    session_variables$data_365$ID[session_variables$data_365$Date %in% non_empty_dates == FALSE] <-
+      0
+
   }
 }
     }

@@ -84,13 +84,10 @@ filtrere_korpus_pattern <- function(df,
       )
 
     if (modus == "data_dok") {
+      # Subsetting the tibble
        if (nrow(new_df) != 0) {
       new_df <- new_df[treff[, 1] > 0,]
        }
-    } else if (modus == "data_365") {
-      ikke_i_subset_indekser <- which(treff[, 1] == 0)
-      new_df$Day_without_docs[ikke_i_subset_indekser] <- TRUE
-      new_df$ID[ikke_i_subset_indekser] <- 0
     }
 
     if (nrow(new_df) == 0) {  # For å ikke sette igang subseeting av tom df
