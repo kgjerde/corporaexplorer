@@ -5,7 +5,7 @@
     if (all(check_safe_search(search_arguments$subset_terms))) {
 
 
-# Filtrering ved år
+# Filtering by years/dates ------------------------------------------------
 
 if (DATE_BASED_CORPUS == TRUE) {
 
@@ -18,7 +18,7 @@ session_variables[[plot_mode$mode]] <-
 
 }
 
-# Filtrering ved filter-pattern hvis et slikt finnes
+# Filtering by filter pattern if present ----------------------------------
 
 if (!is.null(input$subset_corpus)) {
   search_arguments$subset_search <- TRUE
@@ -29,8 +29,8 @@ if (!is.null(input$subset_corpus)) {
                             plot_mode$mode,
                             session_variables)
 
+# Ekstra filtrering av data_dok ved subsetting i data_365: ----------------
 
-  # Ekstra filtrering av data_dok ved subsetting i data_365:
   if (plot_mode$mode == "data_365" &
       !is.null(input$subset_corpus)) {
     session_variables$data_dok <-
@@ -58,5 +58,6 @@ if (!is.null(input$subset_corpus)) {
 
   }
 }
+
     }
   }
