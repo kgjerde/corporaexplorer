@@ -39,7 +39,7 @@
 #'
 #' # Converting to corporaexplorer object:
 #' corpus <- prepare_data(test_df, corpus_name = "Test corpus")
-#' \dontrun{
+#' if(interactive()){
 #' # Running exploration app:
 #' run_corpus_explorer(corpus)
 #'

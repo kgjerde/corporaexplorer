@@ -21,7 +21,7 @@ Quick convertion of character vector to simple corporaexplorerobject
 \examples{
 alphabet_corpus <- prepare_data(LETTERS)
 
-\dontrun{
+if(interactive()){
 # Running exploration app:
 run_corpus_explorer(alphabet_corpus)
 }

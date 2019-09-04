@@ -337,7 +337,7 @@ prepare_data <- function(dataset, ...) {
 #' # Converting to corporaexplorer object:
 #' corpus <- prepare_data(test_df, corpus_name = "Test corpus")
 #'
-#' \dontrun{
+#' if(interactive()){
 #' # Running exploration app:
 #' run_corpus_explorer(corpus)
 #'
@@ -556,7 +556,7 @@ prepare_data.data.frame <- function(dataset,
 #' @examples
 #' alphabet_corpus <- prepare_data(LETTERS)
 #'
-#' \dontrun{
+#' if(interactive()){
 #' # Running exploration app:
 #' run_corpus_explorer(alphabet_corpus)
 #' }

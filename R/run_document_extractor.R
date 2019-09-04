@@ -18,13 +18,13 @@
 #' )
 #' titles <- paste("Text", 1:10)
 #' test_df <- tibble::tibble(Date = dates, Text = texts, Title = titles)
-#' 
+#'
 #' # Converting to corporaexplorer object:
 #' corpus <- prepare_data(test_df, corpus_name = "Test corpus")
-#' \dontrun{
+#' if(interactive()){
 #' # Running exploration app:
 #' run_corpus_explorer(corpus)
-#' 
+#'
 #' # Running app to extract documents:
 #' run_document_extractor(corpus)
 #' }

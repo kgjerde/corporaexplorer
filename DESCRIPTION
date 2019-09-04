@@ -1,17 +1,18 @@
 Package: corporaexplorer
 Type: Package
-Title: A Shiny App for Exploration of Text Collections
+Title: A 'Shiny' App for Exploration of Text Collections
 Version: 0.6.0.9000
 Authors@R: person("Kristian Lundby", "Gjerde", email = "kristian.gjerde@gmail.com",
   role = c("aut", "cre"))
 Description: An R package for dynamic exploration of text collections. The
     package contains 1) a helper function to convert a data
     frame to a 'corporaexplorerobject', 2) a Shiny app for fast and flexible
-    exploration of a 'corporaexplorerobject', and 3) a Shiny app for simple
+    exploration of a 'corporaexplorerobject', and 3) a 'Shiny' app for simple
     retrieval/extraction of documents from a 'corporaexplorerobject' in a
     reading-friendly format. The intended primary audience
     is qualitatively oriented researchers who rely on close reading of textual
-    documents as part of their academic activity.
+    documents as part of their academic activity. Auto-scrolling is enabled by the `jquery.scrollTo` plugin,
+    see https://github.com/flesler/jquery.scrollTo. For 'shinytest' to work, 'PhantomJS' (http://phantomjs.org/) is required.
 Depends:
 	R (>= 3.0.0)
 Imports:
@@ -39,10 +40,7 @@ Imports:
 	tidyr,
 	zoo
 Suggests: shinytest, testthat
-Other: Auto-scrolling is enabled by the `jquery.scrollTo` plugin,
-    see https://github.com/flesler/jquery.scrollTo.
-    For shinytest to work, PhantomJS (http://phantomjs.org/) is required.
-License: GPL-3 + file LICENSE
+License: GPL-3
 Date/Publication: 2019
 LazyData: true
 RoxygenNote: 6.1.1

@@ -1,6 +1,6 @@
 ^appveyor\.yml$
 ^\.travis\.yml$
-^LICENSE\.md$
+^LICENSE$
 ^README\.Rmd$
 ^corporaexplorer\.Rproj$
 ^\.Rproj\.user$
