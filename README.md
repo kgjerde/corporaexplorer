@@ -125,8 +125,11 @@ Not all corpora are organised by date, and it is easy to create a
 example a collection of books, each organised in chapters – or just from
 a sequence of texts.
 
-See [here](examples/bible.md) for an example of how **corporaexplorer**
-can be used to explore the Bible, and [here](examples/jane_austen.md)
+See
+[here](https://github.com/kgjerde/corporaexplorer/blob/master/examples/bible.md)
+for an example of how **corporaexplorer** can be used to explore the
+Bible, and
+[here](https://github.com/kgjerde/corporaexplorer/blob/master/examples/jane_austen.md)
 for a starter on how to explore Jane Austen’s novels.
 
 ## Usage
@@ -156,7 +159,9 @@ elements in the interactive apps:
     retrieval/extraction of documents from a “corporaexplorerobject” in
     a reading-friendly format.
 
-See the [Usage](usage.md) document for more details.
+See the
+[Usage](https://github.com/kgjerde/corporaexplorer/blob/master/usage.md)
+document for more details.
 
 ## A note on platforms and encoding
 
