@@ -1,6 +1,7 @@
 ^appveyor\.yml$
 ^\.travis\.yml$
 ^README\.Rmd$
+^LICENSE$
 ^corporaexplorer\.Rproj$
 ^\.Rproj\.user$
 \.png$
