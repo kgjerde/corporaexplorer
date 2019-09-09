@@ -62,7 +62,15 @@ collaborators who have such knowledge.
 
 ## Installation
 
-To install **corporaexplorer**, run the following from an R console:
+To install the released version from CRAN, simply run the following from
+an R console:
+
+``` r
+install.packages("corporaexplorer")
+```
+
+Alternatively, to install the development version from GitHub, run the
+following from an R console:
 
 ``` r
 install.packages("devtools")
