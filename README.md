@@ -16,8 +16,6 @@ status](https://ci.appveyor.com/api/projects/status/github/kgjerde/corporaexplor
 [![DOI](http://joss.theoj.org/papers/10.21105/joss.01342/status.svg)](https://doi.org/10.21105/joss.01342)
 <!-- badges: end -->
 
-<br>
-
 > **“I really like the application and its simplicity. It looks great
 > and is very functional. … a nice addition to text analysis tools.”**  
 > *–[Kenneth Benoit](https://github.com/kbenoit), creator of
@@ -32,6 +30,12 @@ status](https://ci.appveyor.com/api/projects/status/github/kgjerde/corporaexplor
 > [qdap](https://github.com/trinker/qdap)*
 
 <hr>
+
+<br>
+
+<img src="man/figures/readme_illustration.png" title="plotting example" alt="plotting example" width="100%" />
+
+*<sub>Illustration</sub> <sub>screenshots</sub>*
 
 ## What is corporaexplorer?
 

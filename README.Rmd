@@ -23,7 +23,6 @@ knitr::opts_chunk$set(
 [![DOI](http://joss.theoj.org/papers/10.21105/joss.01342/status.svg)](https://doi.org/10.21105/joss.01342)
 <!-- badges: end -->
 
-<br>
 
 > **"I really like the application and its simplicity. It looks great and is very functional. ... a nice addition to text analysis tools."**  
 > *--[Kenneth Benoit](https://github.com/kbenoit), creator of [quanteda](https://quanteda.io/), professor of computational social science at [LSE](https://www.lse.ac.uk/Methodology/People/Academic-Staff/Kenneth-Benoit/Kenneth-Benoit)*
@@ -33,6 +32,14 @@ knitr::opts_chunk$set(
 > *--[Tyler Rinker](https://github.com/trinker), creator of [sentimentr](https://github.com/trinker/sentimentr) and [qdap](https://github.com/trinker/qdap)*
 
 <hr>
+<br>
+
+```{r, out.width = "100%", echo = FALSE, fig.cap="plotting example"}
+knitr::include_graphics("man/figures/readme_illustration.png")
+```
+
+*~Illustration~ ~screenshots~*
+
 
 ## What is corporaexplorer?
 
