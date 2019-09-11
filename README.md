@@ -35,7 +35,7 @@ status](https://ci.appveyor.com/api/projects/status/github/kgjerde/corporaexplor
 
 <img src="man/figures/readme_illustration.png" title="plotting example" alt="plotting example" width="100%" />
 
-*<sub>Illustration</sub> <sub>screenshots</sub>*
+*<sup>Illustration</sup> <sup>screenshots</sup>*
 
 ## What is corporaexplorer?
 
