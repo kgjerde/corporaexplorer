@@ -92,6 +92,26 @@ Please cite the following paper if you use **corporaexplorer** in your research.
 For a BibTeX entry, use the output from `citation(package = "corporaexplorer")`.
 
 
+## Usage
+
+The **corporaexplorer** concept is simple, yet has the potential to enhance research work with text collections in a powerful way. Main elements in the interactive apps:
+
+* **Input**: The ability to filter the corpus and/or highlight documents, based on search patterns (in main text or metadata, including date range).
+* **Corpus visualisation**: An interactive heat-map of the corpus, based on the search input (calendar heat-map or heat-map where each tile represents one document, optionally grouped by metadata properties).
+* **Document visualisation and display**: Easy navigation to and within full-text documents with pattern matches highlighted.
+* **Document retrieval**: Extraction of subsets of the corpus in a format suitable for close reading.
+
+**corporaexplorer** contains three main functions:
+
+1. `prepare_data()` converts a data frame to a "corporaexplorerobject".
+2. `run_corpus_explorer()` runs the package's core feature, a Shiny app for fast and flexible
+exploration of a "corporaexplorerobject".
+3. `run_document_extractor()` runs a Shiny app for simple retrieval/extraction of
+documents from a "corporaexplorerobject" in a reading-friendly format.
+
+See the [Usage](https://github.com/kgjerde/corporaexplorer/blob/master/usage.md) document for more details.
+
+
 ## Example corpora
 
 #### A. Date-based corpora
@@ -121,24 +141,6 @@ See [here](https://github.com/kgjerde/corporaexplorer/blob/master/examples/bible
 and [here](https://github.com/kgjerde/corporaexplorer/blob/master/examples/jane_austen.md) for a starter on how to explore Jane Austen's novels.
 
 
-## Usage
-
-The **corporaexplorer** concept is simple, yet has the potential to enhance research work with text collections in a powerful way. Main elements in the interactive apps:
-
-* **Input**: The ability to filter the corpus and/or highlight documents, based on search patterns (in main text or metadata, including date range).
-* **Corpus visualisation**: An interactive heat-map of the corpus, based on the search input (calendar heat-map or heat-map where each tile represents one document, optionally grouped by metadata properties).
-* **Document visualisation and display**: Easy navigation to and within full-text documents with pattern matches highlighted.
-* **Document retrieval**: Extraction of subsets of the corpus in a format suitable for close reading.
-
-**corporaexplorer** contains three main functions:
-
-1. `prepare_data()` converts a data frame to a "corporaexplorerobject".
-2. `run_corpus_explorer()` runs the package's core feature, a Shiny app for fast and flexible
-exploration of a "corporaexplorerobject".
-3. `run_document_extractor()` runs a Shiny app for simple retrieval/extraction of
-documents from a "corporaexplorerobject" in a reading-friendly format.
-
-See the [Usage](https://github.com/kgjerde/corporaexplorer/blob/master/usage.md) document for more details.
 
 
 ## A note on platforms and encoding
