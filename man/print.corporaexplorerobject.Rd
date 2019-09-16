@@ -4,10 +4,10 @@
 \alias{print.corporaexplorerobject}
 \title{Print corporaexplorerobject}
 \usage{
-\method{print}{corporaexplorerobject}(obj)
+\method{print}{corporaexplorerobject}(x, ...)
 }
 \arguments{
-\item{obj}{A corporaexplorerobject}
+\item{x}{A corporaexplorerobject}
 }
 \value{
 Console-friendly output

@@ -2,6 +2,7 @@
 
 S3method(prepare_data,character)
 S3method(prepare_data,data.frame)
+S3method(print,corporaexplorerobject)
 export("%>%")
 export(prepare_data)
 export(run_corpus_explorer)
