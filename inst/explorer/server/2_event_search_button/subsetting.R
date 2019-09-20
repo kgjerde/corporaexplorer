@@ -1,7 +1,11 @@
 
   if (check_valid_column_names(search_arguments$subset_custom_column,
                                session_variables$data_dok) &
-      check_regexes(search_arguments$subset_terms)) {
+      # TODO dirty hack because open but empty filter corpus field in app is list(),
+      # which fails the regex check
+      # (but NULL, i.e. `unlist(list())` passes the regex check)
+      # (same dirty hack as other TODO):
+      check_regexes(unlist(search_arguments$subset_terms))) {
     if (all(check_safe_search(search_arguments$subset_terms))) {
 
 
