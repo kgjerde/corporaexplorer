@@ -115,7 +115,7 @@ civili.ation  # will match both "civilisation" and "civilization"
 
 For more about regex syntax and the regex flavours available, see the
 section about regex engines
-[below](#advanced-detail-regular-expression-engines).
+[below](#2d-advanced-detail-regular-expression-engines).
 
 (N.B. As seen in the example, a single backslash (not a double backslash
 as in the R console) is used as escape character. For example will `\.`
