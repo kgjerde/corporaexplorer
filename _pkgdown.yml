@@ -3,7 +3,7 @@ destination: docs
 navbar:
   components:
     articles:
-      text: Articles
+      text: How to use
       menu:
       - text: 'How to use corporaxplorer'
         href: articles/usage.html
