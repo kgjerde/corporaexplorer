@@ -1,0 +1,19 @@
+destination: docs
+
+navbar:
+  components:
+    articles:
+      text: Articles
+      menu:
+      - text: 'How to use corporaxplorer'
+        href: articles/usage.html
+      - text: '---'
+      - text: 'Examples'
+      - text: 'The Bible'
+        href: articles/bible.html
+      - text: "Jane Austen's novels"
+        href: articles/jane_austen.html
+
+template:
+  params:
+    noindex: true

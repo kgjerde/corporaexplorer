@@ -9,3 +9,8 @@ examples$
 ^paper$
 ^usage\.Rmd$
 ^usage\.md$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^vignettes$
+^index\.md$
