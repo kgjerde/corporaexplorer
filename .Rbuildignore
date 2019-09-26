@@ -5,10 +5,7 @@
 ^corporaexplorer\.Rproj$
 ^\.Rproj\.user$
 \.png$
-examples$
 ^paper$
-^usage\.Rmd$
-^usage\.md$
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
