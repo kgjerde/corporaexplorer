@@ -104,78 +104,8 @@ For a BibTeX entry, use the output from `citation(package =
 
 ## Usage
 
-The **corporaexplorer** concept is simple, yet has the potential to
-enhance research work with text collections in a powerful way. Main
-elements in the interactive apps:
-
-  - **Input**: The ability to filter the corpus and/or highlight
-    documents, based on search patterns (in main text or metadata,
-    including date range).
-  - **Corpus visualisation**: An interactive heat-map of the corpus,
-    based on the search input (calendar heat-map or heat-map where each
-    tile represents one document, optionally grouped by metadata
-    properties).
-  - **Document visualisation and display**: Easy navigation to and
-    within full-text documents with pattern matches highlighted.
-  - **Document retrieval**: Extraction of subsets of the corpus in a
-    format suitable for close reading.
-
-**corporaexplorer** contains three main functions:
-
-1.  `prepare_data()` converts a data frame to a “corporaexplorerobject”.
-2.  `run_corpus_explorer()` runs the package’s core feature, a Shiny app
-    for fast and flexible exploration of a “corporaexplorerobject”.
-3.  `run_document_extractor()` runs a Shiny app for simple
-    retrieval/extraction of documents from a “corporaexplorerobject” in
-    a reading-friendly format.
-
-See the
-[Usage](https://github.com/kgjerde/corporaexplorer/blob/master/usage.md)
-document for more details.
-
-## Example corpora
-
-#### A. Date-based corpora
-
-**Many text collections can be freely shared**, e.g. documents from
-governmental websites (such documents are usually equipped with a
-Creative Commons license or similar). An example corpus can be
-downloaded for testing
-[here](https://ndownloader.figshare.com/files/14626970?private_link=820c105c12755d853801)
-– this is a “corporaexplorerobject” based on a document collection
-scraped from the Russian governmental website kremlin.ru (7751
-documents, more info
-[here](https://figshare.com/s/820c105c12755d853801)). The equivalent
-material in Russian (10,221 documents) can be downloaded
-[here](https://figshare.com/articles/Kremlin_transcripts_1999_February_2019_Russian/7855853)
-(but see the note on character encoding
-[below](#a-note-on-platforms-and-encoding)). A third, somewhat bigger
-(but less carefully prepared) test corpus (26,654 documents) from the
-same website is available
-[here](https://figshare.com/s/fcd93f6f93bb23be3bb1).<sup>[1](#footnote1)</sup>
-
-(The package of course works equally well with **text collections that
-cannot be freely shared**, e.g. a collection of newspaper articles etc.
-retrieved from a database, and indeed with any **personal collection of
-texts** that are meaningful to explore with a time aspect.)
-
-The package also includes a tiny “corporaexplorerobject” (see below):
-`corporaexplorer::test_data`, which consists of 10 tiny documents and
-can be used for testing the basic functionality of the package.
-
-#### B. Text collections that are not organised by date
-
-Not all corpora are organised by date, and it is easy to create a
-“corporaexplorerobject” from a corpus with a different structure, for
-example a collection of books, each organised in chapters – or just from
-a sequence of texts.
-
-See
-[here](https://github.com/kgjerde/corporaexplorer/blob/master/examples/bible.md)
-for an example of how **corporaexplorer** can be used to explore the
-Bible, and
-[here](https://github.com/kgjerde/corporaexplorer/blob/master/examples/jane_austen.md)
-for a starter on how to explore Jane Austen’s novels.
+For usage instructions and example corpora, see the [package web
+page](https://kgjerde.github.io/corporaexplorer).
 
 ## A note on platforms and encoding
 
