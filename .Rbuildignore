@@ -13,4 +13,5 @@ examples$
 ^docs$
 ^pkgdown$
 ^vignettes$
+^index\.Rmd$
 ^index\.md$
