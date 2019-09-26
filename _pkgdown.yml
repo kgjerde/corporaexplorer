@@ -16,5 +16,4 @@ navbar:
 
 template:
   params:
-    noindex: true
     ganalytics: UA-130957512-2
