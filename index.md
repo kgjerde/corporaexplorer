@@ -129,9 +129,7 @@ elements in the interactive apps:
     retrieval/extraction of documents from a “corporaexplorerobject” in
     a reading-friendly format.
 
-See the
-[Usage](articles/usage.html)
-document for more details.
+See the [Usage](articles/usage.html) document for more details.
 
 ## Example corpora
 
@@ -170,12 +168,10 @@ Not all corpora are organised by date, and it is easy to create a
 example a collection of books, each organised in chapters – or just from
 a sequence of texts.
 
-See
-[here](articles/bible.html)
-for an example of how **corporaexplorer** can be used to explore the
-Bible, and
-[here](rticles/jane_austen.html)
-for a starter on how to explore Jane Austen’s novels.
+See [here](articles/bible.html) for an example of how
+**corporaexplorer** can be used to explore the Bible, and
+[here](articles/jane_austen.html) for a starter on how to explore Jane
+Austen’s novels.
 
 ## A note on platforms and encoding
 
