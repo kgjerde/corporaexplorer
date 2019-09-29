@@ -12,8 +12,6 @@ DOCUMENT_TILES <- 50
 
 EMPTY_DAY_PLOT_HEIGHT <- 20
 
-MAX_DOCS_IN_WALL_VIEW <- 12000
-
 # Constants for plot size and plot design ---------------------------------
 
 MAX_WIDTH_FOR_ROW <- 75  # Must be > 0

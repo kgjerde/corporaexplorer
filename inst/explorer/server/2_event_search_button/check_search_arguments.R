@@ -74,5 +74,7 @@ shiny::validate(shiny::need(
     (nrow(session_variables[[plot_mode$mode]]) > MAX_DOCS_IN_WALL_VIEW
      & plot_mode$mode == "data_dok") == FALSE
     ,
-    paste("\nCorpus map too large. Filter corpus or switch to calendar view.")
+    paste("\nCorpus map too large. Filter corpus or switch to calendar view.\n\n",
+          "Alternatively, specify 'MAX_DOCS_IN_WALL_VIEW'",
+          "in the call to 'run_corpus_explorer()'.")
 ))

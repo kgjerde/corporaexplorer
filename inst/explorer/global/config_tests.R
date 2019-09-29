@@ -39,3 +39,6 @@ USE_ONLY_RE2R <- FALSE
 
 SAFE_SEARCH <- TRUE
 
+# UI options from function arguments --------------------------------------
+
+MAX_DOCS_IN_WALL_VIEW <- 12000

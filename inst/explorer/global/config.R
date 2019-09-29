@@ -51,3 +51,13 @@ if (shiny::getShinyOption("corporaexplorer_regex_engine") == "stringr") {
 if (USE_ONLY_STRINGR == TRUE & USE_ONLY_RE2R == TRUE) {
     USE_ONLY_RE2R <- FALSE
 }
+
+# UI options from function arguments --------------------------------------
+
+ui_options <- shiny::getShinyOption("ui_options")
+
+if (!is.null(ui_options$MAX_DOCS_IN_WALL_VIEW)) {
+    MAX_DOCS_IN_WALL_VIEW <- ui_options$MAX_DOCS_IN_WALL_VIEW
+} else {
+    MAX_DOCS_IN_WALL_VIEW <- 12000
+}

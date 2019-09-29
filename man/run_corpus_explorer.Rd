@@ -6,7 +6,8 @@
 \usage{
 run_corpus_explorer(corpus_object, use_matrix = TRUE,
   regex_engine = c("default", "stringr", "re2r"),
-  optional_info = FALSE, allow_unreasonable_patterns = FALSE, ...)
+  optional_info = FALSE, allow_unreasonable_patterns = FALSE,
+  ui_options = list(), ...)
 }
 \arguments{
 \item{corpus_object}{A corporaexplorer object created by
@@ -33,6 +34,13 @@ not allow patterns that will result in an enormous amount of hits or will
 lead to a very slow search. (Examples of such patterns will include
 '\code{.}' and '\code{\\b}'.)}
 
+\item{ui_options}{List. Specify custom app settings. Currently available:
+\itemize{
+    \item \code{MAX_DOCS_IN_WALL_VIEW} specifies the maximum number of
+    documents to be rendered in the 'document wall' view.
+    Default value is 12000.
+    }}
+
 \item{...}{Other arguments passed to \code{\link[shiny]{runApp}} in the Shiny
 package.}
 }
@@ -50,11 +58,13 @@ texts <- paste0(
 titles <- paste("Text", 1:10)
 test_df <- tibble::tibble(Date = dates, Text = texts, Title = titles)
 
-# Converting to corporaexplorer object:
+# Converting to corporaexplorerobject:
 corpus <- prepare_data(test_df, corpus_name = "Test corpus")
+
 if(interactive()){
 # Running exploration app:
-run_corpus_explorer(corpus)
+run_corpus_explorer(corpus,
+                    ui_options = list(MAX_DOCS_IN_WALL_VIEW = 12001))
 
 # Running app to extract documents:
 run_document_extractor(corpus)
