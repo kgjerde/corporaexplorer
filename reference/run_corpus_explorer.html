@@ -153,7 +153,8 @@ application (usually by pressing Ctrl+C or Esc).</p>
 
     <pre class="usage"><span class='fu'>run_corpus_explorer</span>(<span class='no'>corpus_object</span>, <span class='kw'>use_matrix</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>regex_engine</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"default"</span>, <span class='st'>"stringr"</span>, <span class='st'>"re2r"</span>),
-  <span class='kw'>optional_info</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>allow_unreasonable_patterns</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+  <span class='kw'>optional_info</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>allow_unreasonable_patterns</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>ui_options</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -195,6 +196,14 @@ lead to a very slow search. (Examples of such patterns will include
 '<code>.</code>' and '<code>\b</code>'.)</p></td>
     </tr>
     <tr>
+      <th>ui_options</th>
+      <td><p>List. Specify custom app settings. Currently available:</p><ul>
+<li><p><code>MAX_DOCS_IN_WALL_VIEW</code> specifies the maximum number of
+    documents to be rendered in the 'document wall' view.
+    Default value is 12000.</p></li>
+</ul></td>
+    </tr>
+    <tr>
       <th>...</th>
       <td><p>Other arguments passed to <code><a href='https://rdrr.io/pkg/shiny/man/runApp.html'>runApp</a></code> in the Shiny
 package.</p></td>
@@ -212,10 +221,12 @@ package.</p></td>
 <span class='no'>titles</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='st'>"Text"</span>, <span class='fl'>1</span>:<span class='fl'>10</span>)
 <span class='no'>test_df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span>(<span class='kw'>Date</span> <span class='kw'>=</span> <span class='no'>dates</span>, <span class='kw'>Text</span> <span class='kw'>=</span> <span class='no'>texts</span>, <span class='kw'>Title</span> <span class='kw'>=</span> <span class='no'>titles</span>)
 
-<span class='co'># Converting to corporaexplorer object:</span>
-<span class='no'>corpus</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='prepare_data.html'>prepare_data</a></span>(<span class='no'>test_df</span>, <span class='kw'>corpus_name</span> <span class='kw'>=</span> <span class='st'>"Test corpus"</span>)</div><div class='output co'>#&gt; <span class='message'>Starting.</span></div><div class='output co'>#&gt; <span class='message'>Document data frame done.</span></div><div class='output co'>#&gt; <span class='message'>Calendar data frame done.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix: text processed.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix: tokenising completed.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix: word list created.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix done.</span></div><div class='output co'>#&gt; <span class='message'>Done.</span></div><div class='input'><span class='kw'>if</span>(<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()){
+<span class='co'># Converting to corporaexplorerobject:</span>
+<span class='no'>corpus</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='prepare_data.html'>prepare_data</a></span>(<span class='no'>test_df</span>, <span class='kw'>corpus_name</span> <span class='kw'>=</span> <span class='st'>"Test corpus"</span>)</div><div class='output co'>#&gt; <span class='message'>Starting.</span></div><div class='output co'>#&gt; <span class='message'>Document data frame done.</span></div><div class='output co'>#&gt; <span class='message'>Calendar data frame done.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix: text processed.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix: tokenising completed.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix: word list created.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix done.</span></div><div class='output co'>#&gt; <span class='message'>Done.</span></div><div class='input'>
+<span class='kw'>if</span>(<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()){
 <span class='co'># Running exploration app:</span>
-<span class='fu'>run_corpus_explorer</span>(<span class='no'>corpus</span>)
+<span class='fu'>run_corpus_explorer</span>(<span class='no'>corpus</span>,
+                    <span class='kw'>ui_options</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>MAX_DOCS_IN_WALL_VIEW</span> <span class='kw'>=</span> <span class='fl'>12001</span>))
 
 <span class='co'># Running app to extract documents:</span>
 <span class='fu'><a href='run_document_extractor.html'>run_document_extractor</a></span>(<span class='no'>corpus</span>)
