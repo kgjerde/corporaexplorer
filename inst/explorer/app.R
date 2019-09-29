@@ -40,6 +40,7 @@ ui <- function(request) {
     shinydashboard::dashboardBody(
       # CSS and JS files --------------------------------------------------
       source("./ui/css_js_import.R", local = TRUE)$value,
+      source("./ui/css_from_arguments.R", local = TRUE)$value,
 
       # Fluid row ---------------------------------------------------------
 
@@ -112,6 +113,7 @@ shiny::onSessionEnded(function() {
   shiny::shinyOptions("corporaexplorer_data" = NULL)
   shiny::shinyOptions("corporaexplorer_optional_info" = NULL)
   shiny::shinyOptions("corporaexplorer_allow_unreasonable_patterns" = NULL)
+  shiny::shinyOptions("corporaexplorer_ui_options" = NULL)
 })
 }
 

@@ -41,4 +41,6 @@ SAFE_SEARCH <- TRUE
 
 # UI options from function arguments --------------------------------------
 
+ui_options <- NULL  # To avoid errors when later checking for !is.null css elements
+
 MAX_DOCS_IN_WALL_VIEW <- 12000

@@ -36,9 +36,12 @@ lead to a very slow search. (Examples of such patterns will include
 
 \item{ui_options}{List. Specify custom app settings. Currently available:
 \itemize{
-    \item \code{MAX_DOCS_IN_WALL_VIEW} specifies the maximum number of
-    documents to be rendered in the 'document wall' view.
+    \item \code{MAX_DOCS_IN_WALL_VIEW}. Integer specifying the maximum number
+    of documents to be rendered in the 'document wall' view.
     Default value is 12000.
+    \item \code{font_size}. Character string specifying font size in
+    document viww,
+    e.g. \code{"10px"}
     }}
 
 \item{...}{Other arguments passed to \code{\link[shiny]{runApp}} in the Shiny

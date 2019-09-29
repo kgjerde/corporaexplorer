@@ -54,7 +54,7 @@ if (USE_ONLY_STRINGR == TRUE & USE_ONLY_RE2R == TRUE) {
 
 # UI options from function arguments --------------------------------------
 
-ui_options <- shiny::getShinyOption("ui_options")
+ui_options <- shiny::getShinyOption("corporaexplorer_ui_options")
 
 if (!is.null(ui_options$MAX_DOCS_IN_WALL_VIEW)) {
     MAX_DOCS_IN_WALL_VIEW <- ui_options$MAX_DOCS_IN_WALL_VIEW

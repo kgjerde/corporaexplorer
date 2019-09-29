@@ -24,9 +24,12 @@
 #'   '\code{.}' and '\code{\\b}'.)
 #' @param ui_options List. Specify custom app settings. Currently available:
 #' \itemize{
-#'     \item \code{MAX_DOCS_IN_WALL_VIEW} specifies the maximum number of
-#'     documents to be rendered in the 'document wall' view.
+#'     \item \code{MAX_DOCS_IN_WALL_VIEW}. Integer specifying the maximum number
+#'     of documents to be rendered in the 'document wall' view.
 #'     Default value is 12000.
+#'     \item \code{font_size}. Character string specifying font size in
+#'     document viww,
+#'     e.g. \code{"10px"}
 #'     }
 #' @param ... Other arguments passed to \code{\link[shiny]{runApp}} in the Shiny
 #'   package.
@@ -120,8 +123,7 @@ run_corpus_explorer <- function(corpus_object,
   shiny::shinyOptions("corporaexplorer_regex_engine" = regex_engine)
   shiny::shinyOptions("corporaexplorer_use_matrix" = use_matrix)
   shiny::shinyOptions("corporaexplorer_allow_unreasonable_patterns" = allow_unreasonable_patterns)
-
-  shiny::shinyOptions("ui_options" = ui_options)
+  shiny::shinyOptions("corporaexplorer_ui_options" = ui_options)
 
 
   data <- as.character(substitute(corpus_object))
