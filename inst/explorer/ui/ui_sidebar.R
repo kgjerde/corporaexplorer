@@ -4,23 +4,30 @@ shinydashboard::dashboardSidebar(
         label = "No. of terms to chart",
         choices = 1:5,
         justified = TRUE,
-        size = "xs"
+        size = "xs",
+        selected = input_arguments_derived$number_of_search_terms
     ),
 
-    shiny::tags$div(shiny::textInput("search_text", label = "Term(s) to chart and highlight"),
+    shiny::tags$div(shiny::textInput("search_text", label = "Term(s) to chart and highlight",
+                                     value = input_arguments$search_terms[1]),
              style = "margin-top: -1em;"),
 
     shiny::div(
     shiny::conditionalPanel(condition = "input.antall_linjer > 1",
-                     shiny::textInput("area_2", label = NULL)),
+                     shiny::textInput("area_2", label = NULL,
+                                      value = input_arguments$search_terms[2])),
     shiny::conditionalPanel(condition = "input.antall_linjer > 2",
-                     shiny::textInput("area_3", label = NULL)),
+                     shiny::textInput("area_3", label = NULL,
+                                      value = input_arguments$search_terms[3])),
     shiny::conditionalPanel(condition = "input.antall_linjer > 3",
-                     shiny::textInput("area_4", label = NULL)),
+                     shiny::textInput("area_4", label = NULL,
+                                      value = input_arguments$search_terms[4])),
     shiny::conditionalPanel(condition = "input.antall_linjer > 4",
-                     shiny::textInput("area_5", label = NULL)),
+                     shiny::textInput("area_5", label = NULL,
+                                      value = input_arguments$search_terms[5])),
     shiny::conditionalPanel(condition = "input.antall_linjer > 5",
-                     shiny::textInput("area_6", label = NULL)),
+                     shiny::textInput("area_6", label = NULL,
+                                      value = input_arguments$search_terms[6])),
     class = "additional_search_terms"),
 
     shinyWidgets::checkboxGroupButtons(
@@ -28,13 +35,15 @@ shinydashboard::dashboardSidebar(
         label = NULL,
         choices = list("Additional terms for text highlighting" = "Yes"),
         justified = TRUE,
-        size = "sm"
+        size = "sm",
+        selected = input_arguments_derived$more_terms_button
     ),
 
     shiny::div(
     shiny::conditionalPanel(
         condition = "input.more_terms_button == 'Yes'",
-        shiny::textAreaInput("area", label = NULL, placeholder = "Terms separated by newline")
+        shiny::textAreaInput("area", label = NULL, placeholder = "Terms separated by newline",
+                             value = input_arguments_derived$highlight_terms)
     ), class = "more_terms_field"),
 
     shiny::hr(),
@@ -44,19 +53,21 @@ shinydashboard::dashboardSidebar(
         label = NULL,
         choices = list("Filter corpus?" = "Yes"),
         justified = TRUE,
-        size = "sm"
+        size = "sm",
+        selected = input_arguments_derived$filter_corpus_button
     ),
     div(
     conditionalPanel(
         condition = "input.subset_corpus == 'Yes'",
-        textAreaInput("filter_text", label = NULL, placeholder = "Terms separated by newline")
+        textAreaInput("filter_text", label = NULL, placeholder = "Terms separated by newline",
+                      value = input_arguments_derived$filter_terms)
     ), class = "subset_field"),
 
     shiny::hr(),
 
     shinyWidgets::prettyCheckbox(inputId = "case_sensitivity",
                    label = "Case sensitive search (slower)",
-                   value = FALSE,
+                   value = input_arguments$case_sensitivity,
                    width = "100%",
                    icon = icon("check")),
 

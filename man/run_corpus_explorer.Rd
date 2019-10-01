@@ -7,7 +7,7 @@
 run_corpus_explorer(corpus_object, use_matrix = TRUE,
   regex_engine = c("default", "stringr", "re2r"),
   optional_info = FALSE, allow_unreasonable_patterns = FALSE,
-  ui_options = list(), ...)
+  ui_options = list(), search_input = list(), ...)
 }
 \arguments{
 \item{corpus_object}{A corporaexplorer object created by
@@ -34,7 +34,8 @@ not allow patterns that will result in an enormous amount of hits or will
 lead to a very slow search. (Examples of such patterns will include
 '\code{.}' and '\code{\\b}'.)}
 
-\item{ui_options}{List. Specify custom app settings. Currently available:
+\item{ui_options}{List. Specify custom app settings (see example below).
+  Currently available:
 \itemize{
     \item \code{MAX_DOCS_IN_WALL_VIEW}. Integer specifying the maximum number
     of documents to be rendered in the 'document wall' view.
@@ -42,6 +43,18 @@ lead to a very slow search. (Examples of such patterns will include
     \item \code{font_size}. Character string specifying font size in
     document viww,
     e.g. \code{"10px"}
+    }}
+
+\item{search_input}{List. Gives the opportunity to pre-populate
+  the following sidebar fields (see example below):
+\itemize{
+    \item \code{search_terms}: The 'Term(s) to chart and highlight' field.
+    Character vector with maximum length 6.
+    \item \code{highlight_terms}: The 'Additional terms for text highlighting' field.
+    Character vector.
+    \item \code{filter_terms}: The 'Filter corpus?' field. Character vector.
+    \item \code{case_sensitivity}: Should the 'Case sensitive search' box
+    be checked? Logical.
     }}
 
 \item{...}{Other arguments passed to \code{\link[shiny]{runApp}} in the Shiny
@@ -66,8 +79,10 @@ corpus <- prepare_data(test_df, corpus_name = "Test corpus")
 
 if(interactive()){
 # Running exploration app:
+run_corpus_explorer(corpus)
 run_corpus_explorer(corpus,
-                    ui_options = list(MAX_DOCS_IN_WALL_VIEW = 12001))
+                    ui_options = list(MAX_DOCS_IN_WALL_VIEW = 12001),
+                    search_input = list(search_terms = c("Tottenham", "Spurs")))
 
 # Running app to extract documents:
 run_document_extractor(corpus)

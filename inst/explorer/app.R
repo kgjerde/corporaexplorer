@@ -2,10 +2,10 @@
 # Setting up data and config ----------------------------------------------
 if (!is.null(getOption("shiny.testmode"))) {
   if (getOption("shiny.testmode") == TRUE) {
-    source("./global/config_tests.R", local = TRUE)
+    source("./config/config_tests.R", local = TRUE)
   }
 } else {
-  source("./global/config.R", local = TRUE)
+  source("./config/config.R", local = TRUE)
 }
 
 # Function files ----------------------------------------------------------
@@ -114,6 +114,7 @@ shiny::onSessionEnded(function() {
   shiny::shinyOptions("corporaexplorer_optional_info" = NULL)
   shiny::shinyOptions("corporaexplorer_allow_unreasonable_patterns" = NULL)
   shiny::shinyOptions("corporaexplorer_ui_options" = NULL)
+  shiny::shinyOptions("corporaexplorer_input_arguments" = NULL)
 })
 }
 

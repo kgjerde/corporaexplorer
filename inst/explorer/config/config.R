@@ -2,11 +2,11 @@
 
 loaded_data <- eval(as.name(getShinyOption("corporaexplorer_data")))
 
-source("./global/backwards_compatibility.R", local = TRUE)
+source("./config/backwards_compatibility.R", local = TRUE)
 
 # Constants ---------------------------------------------------------------
 
-source("./global/constants.R", local = TRUE)
+source("./config/constants.R", local = TRUE)
 
 # From corporaexplorerobject --------------------------------------------
 
@@ -61,3 +61,8 @@ if (!is.null(ui_options$MAX_DOCS_IN_WALL_VIEW)) {
 } else {
     MAX_DOCS_IN_WALL_VIEW <- 12000
 }
+
+
+# Pre-filled sidebar input from function argument -------------------------
+
+source("./config/sidebar_input_values_from_function_call.R", local = TRUE)

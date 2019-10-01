@@ -22,7 +22,8 @@
 #'   not allow patterns that will result in an enormous amount of hits or will
 #'   lead to a very slow search. (Examples of such patterns will include
 #'   '\code{.}' and '\code{\\b}'.)
-#' @param ui_options List. Specify custom app settings. Currently available:
+#' @param ui_options List. Specify custom app settings (see example below).
+#'   Currently available:
 #' \itemize{
 #'     \item \code{MAX_DOCS_IN_WALL_VIEW}. Integer specifying the maximum number
 #'     of documents to be rendered in the 'document wall' view.
@@ -30,6 +31,17 @@
 #'     \item \code{font_size}. Character string specifying font size in
 #'     document viww,
 #'     e.g. \code{"10px"}
+#'     }
+#' @param search_input List. Gives the opportunity to pre-populate
+#'   the following sidebar fields (see example below):
+#' \itemize{
+#'     \item \code{search_terms}: The 'Term(s) to chart and highlight' field.
+#'     Character vector with maximum length 6.
+#'     \item \code{highlight_terms}: The 'Additional terms for text highlighting' field.
+#'     Character vector.
+#'     \item \code{filter_terms}: The 'Filter corpus?' field. Character vector.
+#'     \item \code{case_sensitivity}: Should the 'Case sensitive search' box
+#'     be checked? Logical.
 #'     }
 #' @param ... Other arguments passed to \code{\link[shiny]{runApp}} in the Shiny
 #'   package.
@@ -51,8 +63,10 @@
 #'
 #' if(interactive()){
 #' # Running exploration app:
+#' run_corpus_explorer(corpus)
 #' run_corpus_explorer(corpus,
-#'                     ui_options = list(MAX_DOCS_IN_WALL_VIEW = 12001))
+#'                     ui_options = list(MAX_DOCS_IN_WALL_VIEW = 12001),
+#'                     search_input = list(search_terms = c("Tottenham", "Spurs")))
 #'
 #' # Running app to extract documents:
 #' run_document_extractor(corpus)
@@ -67,6 +81,7 @@ run_corpus_explorer <- function(corpus_object,
                                 optional_info = FALSE,
                                 allow_unreasonable_patterns = FALSE,
                                 ui_options = list(),
+                                search_input = list(),
                                 ...) {
   app <- system.file("explorer", "app.R", package = "corporaexplorer")
   if (app == "") {
@@ -124,6 +139,7 @@ run_corpus_explorer <- function(corpus_object,
   shiny::shinyOptions("corporaexplorer_use_matrix" = use_matrix)
   shiny::shinyOptions("corporaexplorer_allow_unreasonable_patterns" = allow_unreasonable_patterns)
   shiny::shinyOptions("corporaexplorer_ui_options" = ui_options)
+  shiny::shinyOptions("corporaexplorer_input_arguments" = search_input)
 
 
   data <- as.character(substitute(corpus_object))
