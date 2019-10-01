@@ -3,6 +3,7 @@
 ## API changes
 
 * Add `ui_options` argument to run_corpus_explorer().
+* Add `search_input` argument to run_corpus_explorer().
 
 ## Bug fixes
 
