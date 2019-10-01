@@ -49,7 +49,7 @@ lead to a very slow search. (Examples of such patterns will include
   the following sidebar fields (see example below):
 \itemize{
     \item \code{search_terms}: The 'Term(s) to chart and highlight' field.
-    Character vector with maximum length 6.
+    Character vector with maximum length 5.
     \item \code{highlight_terms}: The 'Additional terms for text highlighting' field.
     Character vector.
     \item \code{filter_terms}: The 'Filter corpus?' field. Character vector.
