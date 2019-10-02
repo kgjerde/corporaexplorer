@@ -1,6 +1,6 @@
 # Default sidebar input values
 input_arguments <- list(
-    search_terms = rep("", 6),
+    search_terms = NA,  # TODO this works, but I would like something more intuitive
     highlight_terms = "",
     filter_terms = "",
     case_sensitivity = FALSE
@@ -15,7 +15,7 @@ input_arguments[names(arguments)] <- arguments
 
 # Determine input values that need to be derived from those given in function call
 input_arguments_derived <- list(
-    number_of_search_terms = if (identical(input_arguments$search_terms, rep("", 6)))
+    number_of_search_terms = if (is.null(arguments$search_terms))
         1
     else
         length(input_arguments$search_terms),
