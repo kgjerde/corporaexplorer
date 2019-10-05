@@ -2,7 +2,7 @@
 % Please edit documentation in R/run_document_extractor.R
 \name{run_document_extractor}
 \alias{run_document_extractor}
-\title{Launching Shiny app for downloading documents from text collection}
+\title{Launch Shiny app for downloading documents from text collection}
 \usage{
 run_document_extractor(corpus_object, max_html_docs = 400, ...)
 }

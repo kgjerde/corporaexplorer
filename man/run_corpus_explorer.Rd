@@ -2,7 +2,7 @@
 % Please edit documentation in R/run_corpus_explorer.R
 \name{run_corpus_explorer}
 \alias{run_corpus_explorer}
-\title{Launching Shiny app for exploration of text collection}
+\title{Launch Shiny app for exploration of text collection}
 \usage{
 run_corpus_explorer(corpus_object, use_matrix = TRUE,
   regex_engine = c("default", "stringr", "re2r"),

@@ -1,4 +1,4 @@
-#' Launching Shiny app for downloading documents from text collection
+#' Launch Shiny app for downloading documents from text collection
 #'
 #' Launch Shiny app for downloading documents from text collection.
 #' Interrupt R to stop the application (usually by pressing Ctrl+C or Esc).
