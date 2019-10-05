@@ -1,6 +1,6 @@
 # Set corpus map tab title
 output$korpuskarttittel <- shiny::renderText({
-    "Calendar view"
+    corpus_map_title(plot_mode$mode)
 })
 
 output$korpuskart <- shiny::renderPlot({

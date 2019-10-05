@@ -72,3 +72,14 @@ shiny::observeEvent(input$antall_linjer, {
 observe({
   shinyjs::hide("edit_info_plot_legend_keys")
 })
+
+
+# Display plot mode in corpus map tab title -------------------------------
+
+corpus_map_title <- function(plot_mode) {
+    if (plot_mode == "data_365") {
+        "Calendar view"
+    } else if (plot_mode == "data_dok") {
+        "Document wall view"
+    }
+}

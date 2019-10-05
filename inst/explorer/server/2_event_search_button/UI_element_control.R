@@ -62,9 +62,5 @@ shiny::removeTab('dokumentboks', target = "document_box_title",
 
 # Setter tab-tittel på korpuskart
 output$korpuskarttittel <- shiny::renderText({
-    if (plot_mode$mode == "data_365") {
-        "Calendar view"
-    } else if (plot_mode$mode == "data_dok") {
-        "Document wall view"
-    }
+  corpus_map_title(plot_mode$mode)
 })
