@@ -2,7 +2,7 @@
 % Please edit documentation in R/run_document_extractor.R
 \name{run_document_extractor}
 \alias{run_document_extractor}
-\title{Launch Shiny app for downloading documents from text collection}
+\title{Launch Shiny app for retrieval of documents from text collection}
 \usage{
 run_document_extractor(corpus_object, max_html_docs = 400, ...)
 }
@@ -16,7 +16,8 @@ run_document_extractor(corpus_object, max_html_docs = 400, ...)
 package.}
 }
 \description{
-Launch Shiny app for downloading documents from text collection.
+Shiny app for simple retrieval/extraction of
+documents from a "corporaexplorerobject" in a reading-friendly format.
 Interrupt R to stop the application (usually by pressing Ctrl+C or Esc).
 }
 \examples{

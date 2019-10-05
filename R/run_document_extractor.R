@@ -1,6 +1,7 @@
-#' Launch Shiny app for downloading documents from text collection
+#' Launch Shiny app for retrieval of documents from text collection
 #'
-#' Launch Shiny app for downloading documents from text collection.
+#' Shiny app for simple retrieval/extraction of
+#' documents from a "corporaexplorerobject" in a reading-friendly format.
 #' Interrupt R to stop the application (usually by pressing Ctrl+C or Esc).
 #'
 #' @param corpus_object A \code{corporaexplorer} object created by
