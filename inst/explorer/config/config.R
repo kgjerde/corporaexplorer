@@ -24,7 +24,7 @@ MATRIX_WITHOUT_PUNCTUATION <- loaded_data$ordvektorer$without_punctuation
 if (is.null(loaded_data$name)) {
     CORPUS_TITLE <- "Corpus map"
 } else {
-    CORPUS_TITLE <- paste("Corpus map", "\u2013", loaded_data$name)
+    CORPUS_TITLE <- loaded_data$name
 }
 
 # From function arguments -------------------------------------------------
