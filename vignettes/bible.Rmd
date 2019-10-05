@@ -97,9 +97,12 @@ bible_df <- tidyr::unnest(bible_df, Text)
   # we set `date_based_corpus` to `FALSE`.
 # Because we want to organise our exploration around the books in the Bible,
   # we pass `"Book"` to the `grouping_variable` argument.
+# We specify which metadata columns we want to be displayed in the
+  # "Document information" tab, using the `columns_doc_info` argument.
 KJB <- prepare_data(dataset = bible_df,
                     date_based_corpus = FALSE,
-                    grouping_variable = "Book")
+                    grouping_variable = "Book",
+                    columns_doc_info = c("Testament", "Book"))
 ```
 
 ##### Run corpus explorer
