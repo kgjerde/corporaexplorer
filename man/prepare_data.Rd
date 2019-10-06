@@ -30,7 +30,7 @@ If \code{date_based_corpus} is \code{FALSE}, this argument can be used
 to group the documents, e.g. if \code{dataset} is organised by chapters
 belonging to different books.}
 
-\item{columns_doc_info}{Character vector. The columns from df to display in
+\item{columns_doc_info}{Character vector. The columns from \code{dataset} to display in
 the "document information" tab in the corpus exploration app. By default
 "Date", "Title" and "URL" will be
 displayed, if included. If \code{columns_doc_info} includes a column which is not
