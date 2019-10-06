@@ -9,3 +9,8 @@
 
 * Print method for corporaexplorerobject now works properly
 * Open but empty "Filter corpus" field no longer disables time filtering
+
+
+## Other
+
+* Documentation moved to https://kgjerde.github.io/corporaexplorer
