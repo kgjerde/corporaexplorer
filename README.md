@@ -33,7 +33,7 @@ status](https://ci.appveyor.com/api/projects/status/github/kgjerde/corporaexplor
 
 <br>
 
-<img src="man/figures/readme_illustration.png" title="plotting example" alt="plotting example" width="100%" />
+<img src="https://github.com/kgjerde/corporaexplorer/raw/master/man/figures/readme_illustration.png" title="plotting example" alt="plotting example" width="100%" />
 
 *<sup>Illustration</sup> <sup>screenshots</sup>*
 

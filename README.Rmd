@@ -35,7 +35,7 @@ knitr::opts_chunk$set(
 <br>
 
 ```{r, out.width = "100%", echo = FALSE, fig.cap="plotting example"}
-knitr::include_graphics("man/figures/readme_illustration.png")
+knitr::include_graphics("https://github.com/kgjerde/corporaexplorer/raw/master/man/figures/readme_illustration.png")
 ```
 
 *^Illustration^ ^screenshots^*
