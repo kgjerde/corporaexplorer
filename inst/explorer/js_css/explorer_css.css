@@ -20,30 +20,11 @@
   height: calc(100vh - 200px);
 }
 
-.boxed_docinfo {
-  border: 1px solid LightGray;
-  border-radius: 5px;
-  padding: 10px;
-  max-height: 50px;
-  overflow: scroll;
-  font-size: 10px;
-}
-
-.boxed_docinfo_2 {
-  border: 1px solid LightGray;
-  border-radius: 5px;
-  padding: 8px;
-  max-height: 70px;
-  overflow: scroll;
-  font-size: 10px;
-}
-
 #area, #filter_text {
   padding-left:10px;
   padding-top: 10px;
   padding-right:10px;
   margin-top:-2em;
-  margin_bottom: -1em;
   resize: vertical;
   background-color: white;
   min-height: 40px;

@@ -5,7 +5,7 @@ shinydashboard::tabBox(
     shiny::tabPanel(
         title = shiny::textOutput('korpuskarttittel'),
         value = "korpuskart_tab",
-        
+
         shiny::div(
             style = "position:relative",
             shiny::plotOutput(
@@ -20,13 +20,13 @@ shinydashboard::tabBox(
                 height = "auto",
                 width = "100%"
             ) %>% shinycssloaders::withSpinner(type = 6)
-            
-            
+
+
             ,
             shiny::uiOutput("hover_info")
-        )#, container = shiny::tags$div, class = "boxed_docinfo_2"))
+        )
     ),
-    
+
     shiny::tabPanel(
         title = "Corpus info",
         shiny::htmlOutput("corpus_info"),
