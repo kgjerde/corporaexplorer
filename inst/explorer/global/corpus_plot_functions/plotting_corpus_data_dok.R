@@ -84,9 +84,9 @@ rect_tib_vertikal <- tibble::tibble(
   Year = test1$Year[test1$df == 1],
 )
 
-rect_tib_vertikal$x_mid = (rect_tib_vertikal$x + rect_tib_vertikal$xend) /
+rect_tib_vertikal$x_mid <- (rect_tib_vertikal$x + rect_tib_vertikal$xend) /
   2
-rect_tib_vertikal$y_mid = (rect_tib_vertikal$y + rect_tib_vertikal$yend) /
+rect_tib_vertikal$y_mid <- (rect_tib_vertikal$y + rect_tib_vertikal$yend) /
   2
 
 # dividing_lines_btwn_groups ------------------------------

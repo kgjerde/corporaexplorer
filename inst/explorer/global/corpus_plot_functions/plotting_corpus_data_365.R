@@ -43,9 +43,9 @@ plotting_corpus_data_365 <- function(test1, x_breaks, y_text, legend_df, linjer)
         Month = test1$Month[test1$df == 1]
     )
 
-    rect_tib_vertikal$x_mid = (rect_tib_vertikal$x + rect_tib_vertikal$xend) /
+    rect_tib_vertikal$x_mid <- (rect_tib_vertikal$x + rect_tib_vertikal$xend) /
         2
-    rect_tib_vertikal$y_mid = (rect_tib_vertikal$y + rect_tib_vertikal$yend) /
+    rect_tib_vertikal$y_mid <- (rect_tib_vertikal$y + rect_tib_vertikal$yend) /
         2
 
     rect_tib_vertikal$Day_without_docs <- test1$Day_without_docs[test1$df == 1]

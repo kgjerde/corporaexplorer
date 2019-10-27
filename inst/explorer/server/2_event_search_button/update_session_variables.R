@@ -44,11 +44,11 @@ if (!is.null(input$subset_corpus)) {
         clean_terms()
 } else {
     # "Resetting" variables if no filtering:
-    search_arguments$subset_search = FALSE
-    search_arguments$subset_terms = NULL
-    search_arguments$subset_thresholds = NA
-    search_arguments$subset_custom_column = NA
-    search_arguments$raw_subset_terms = character(0)
+    search_arguments$subset_search <- FALSE
+    search_arguments$subset_terms <- NULL
+    search_arguments$subset_thresholds <- NA
+    search_arguments$subset_custom_column <- NA
+    search_arguments$raw_subset_terms <- character(0)
 }
 
 # Search terms ------------------------------------------------------------

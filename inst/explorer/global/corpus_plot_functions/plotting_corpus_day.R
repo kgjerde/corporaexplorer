@@ -49,8 +49,8 @@ for (i in seq_len(linjer)) {
                                yend = test1[test1$df == 1, ]$y_max + linjer - 1,  # + 2 fordi tre rader i hver dokument FIX
                                Year = test1$Year[test1$df == 1])
 
-    rect_tib_vertikal$x_mid = (rect_tib_vertikal$x + rect_tib_vertikal$xend)/2
-    rect_tib_vertikal$y_mid = (rect_tib_vertikal$y + rect_tib_vertikal$yend)/2
+    rect_tib_vertikal$x_mid <- (rect_tib_vertikal$x + rect_tib_vertikal$xend)/2
+    rect_tib_vertikal$y_mid <- (rect_tib_vertikal$y + rect_tib_vertikal$yend)/2
 
     a <- a + ggplot2::geom_rect(data = rect_tib_vertikal, ggplot2::aes(xmin = x, ymin = y, xmax = xend, ymax = yend),
                        color = "black",
