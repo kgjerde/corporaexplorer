@@ -31,6 +31,20 @@ stars](https://img.shields.io/github/stars/kgjerde/corporaexplorer?style=flat)](
 > [sentimentr](https://github.com/trinker/sentimentr) and
 > [qdap](https://github.com/trinker/qdap)*
 
+<!-- HTML here, in order to add custom font colour in Github Pages-->
+
+<blockquote>
+
+<p style="color:green">
+
+<strong>– Featured in RStudio’s “R Views” blog’s
+<a href="https://rviews.rstudio.com/2019/10/29/sept-2019-top-40-new-r-packages/"><strong><i>“Top
+40 New R Packages”</i></strong></a> for September 2019</strong>
+
+</p>
+
+</blockquote>
+
 <hr>
 
 <br>
