@@ -1,3 +1,8 @@
+# corporaexplorer 0.6.3.9000
+
+* Updated LICENSE file with license infor for jQuery.scrollTo
+* Minor app CSS twitches
+
 # corporaexplorer 0.6.3
 
 ## API changes
