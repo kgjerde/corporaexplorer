@@ -37,7 +37,7 @@ Imports:
 	tidyr,
 	zoo
 Suggests: shinytest, testthat
-License: GPL-3
+License: GPL-3 | file LICENSE
 Date/Publication: 2019
 LazyData: true
 RoxygenNote: 6.1.1
