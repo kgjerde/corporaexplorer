@@ -161,8 +161,3 @@ welcome. Ways to contribute:
     request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/)
     through the [project GitHub
     page](https://github.com/kgjerde/corporaexplorer).
-
-<hr>
-
-<a name="footnote1">*1</a>. All this material is licensed under Creative
-Commons Attribution 4.0 International (CC BY 4.0).*
