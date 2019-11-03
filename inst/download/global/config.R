@@ -1,7 +1,7 @@
 
 # Setting up data and constants -------------------------------------------
 
-abc <- eval(as.name(shiny::getShinyOption("corporaexplorer_download_data")))
+abc <- shiny::getShinyOption("corporaexplorer_download_data")
 
 source("./global/backwards_compatibility.R", local = TRUE)
 

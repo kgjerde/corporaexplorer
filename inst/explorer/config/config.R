@@ -1,6 +1,6 @@
 # Data set-up -------------------------------------------------------------
 
-loaded_data <- eval(as.name(getShinyOption("corporaexplorer_data")))
+loaded_data <- getShinyOption("corporaexplorer_data")
 
 source("./config/backwards_compatibility.R", local = TRUE)
 

@@ -141,9 +141,7 @@ run_corpus_explorer <- function(corpus_object,
   shiny::shinyOptions("corporaexplorer_ui_options" = ui_options)
   shiny::shinyOptions("corporaexplorer_input_arguments" = search_input)
 
-
-  data <- as.character(substitute(corpus_object))
-  shiny::shinyOptions("corporaexplorer_data" = data)
+  shiny::shinyOptions("corporaexplorer_data" = corpus_object)
 
   message(sprintf(
     "Exploring %s document%s",
