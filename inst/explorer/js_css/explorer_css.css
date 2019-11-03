@@ -106,7 +106,6 @@ https://stackoverflow.com/questions/11399537/how-do-you-make-a-div-follow-as-you
     position: fixed;
     top: 60px;
     margin-right: 10px;
-    /*width: 815px;*/
     display:none;
 }
 
@@ -116,6 +115,34 @@ https://stackoverflow.com/questions/11399537/how-do-you-make-a-div-follow-as-you
     bottom: 0;
     overflow: scroll;
     display:none;
+}
+
+/*
+To enable day and doc boxes to move under corpus map if resizing or
+on small screen + avoid "double navbar" on small screen by removing
+logo element
+*/
+
+@media (max-width:768px){
+  .class_doc_box .nav-tabs-custom,
+  .class_day_corpus .nav-tabs-custom,
+  .class_doc_box {
+    position:static;
+  }
+}
+
+@media (max-width:768px){
+  .skin-blue .main-header .logo {
+  display:none;
+  }
+}
+
+/*
+To keep tab box "nav bars" white also when boxes moved under corpus map
+due to resizing
+*/
+.nav-tabs {
+  background-color: white;
 }
 
 
