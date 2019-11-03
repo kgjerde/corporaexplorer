@@ -151,5 +151,5 @@ run_corpus_explorer <- function(corpus_object,
     if (nrow(corpus_object$original_data$data_dok) != 1) "s" else ""
   ))
 
-  shiny::runApp(app, display.mode = "normal", ...)
+  shiny::shinyAppFile(app, options = list(display.mode = "normal", ...))
 }
