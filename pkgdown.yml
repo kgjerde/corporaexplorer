@@ -3,6 +3,7 @@ pkgdown: 1.4.1
 pkgdown_sha: ~
 articles:
   bible: bible.html
+  deployment: deployment.html
   jane_austen: jane_austen.html
   usage: usage.html
 
