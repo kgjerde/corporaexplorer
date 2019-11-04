@@ -1,7 +1,9 @@
 # corporaexplorer 0.6.3.9000
 
-* Updated LICENSE file with license infor for jQuery.scrollTo
-* Minor app CSS twitches
+* Greatly simplified deployment to Shiny Server and shinyapps.io etc. (#19). See [article](https://kgjerde.github.io/corporaexplorer/articles/deployment.html) on the package website.
+* Improved app experience on small screens (avoiding cluttering of ui elements).
+* Updated LICENSE file with license for jQuery.scrollTo.
+* Minor app CSS twitches.
 
 # corporaexplorer 0.6.3
 
