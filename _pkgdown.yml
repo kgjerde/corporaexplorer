@@ -13,6 +13,10 @@ navbar:
         href: articles/bible.html
       - text: "Jane Austen's novels"
         href: articles/jane_austen.html
+      - text: '---'
+      - text: 'Deployment'
+      - text: 'Use with Shiny Server and shinyapps.io'
+        href: articles/deployment.html
 
 template:
   params:
