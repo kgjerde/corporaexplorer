@@ -92,6 +92,10 @@ bible_df <- tidyr::unnest(bible_df, Text)
 ## corporaexplorer
 
 ##### Creating corporaexplorerobject of the King James Bible
+
+When we first have a data frame with text,
+creating a "corporaexplorerobject" for exploration is very simple:
+
 ```{r message=FALSE}
 # As this is a corpus which is not organised by date,
   # we set `date_based_corpus` to `FALSE`.
