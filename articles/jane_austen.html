@@ -143,25 +143,30 @@
 <a class="sourceLine" id="cb3-11" data-line-number="11"><span class="st">    </span><span class="co"># Replace double space with two newlines (to restore structure of the text):</span></a>
 <a class="sourceLine" id="cb3-12" data-line-number="12"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">Text =</span> stringr<span class="op">::</span><span class="kw"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span>(Text, <span class="st">"  "</span>, <span class="st">"</span><span class="ch">\n\n</span><span class="st">"</span>)) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb3-13" data-line-number="13"><span class="st">    </span><span class="co"># Split each book into a character vector (one element is one chapter):</span></a>
-<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">Text =</span> stringi<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/stringi/man/stri_split.html">stri_split_regex</a></span>(Text, <span class="st">"NEW_CHAPTER"</span>))</a>
-<a class="sourceLine" id="cb3-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co"># The result is a data frame with one row for each book.</span></a>
-<a class="sourceLine" id="cb3-17" data-line-number="17">    <span class="co"># The "Text" column is a list of character vectors</span></a>
-<a class="sourceLine" id="cb3-18" data-line-number="18">    <span class="co"># The "book" column is the name of the book</span></a>
-<a class="sourceLine" id="cb3-19" data-line-number="19"></a>
-<a class="sourceLine" id="cb3-20" data-line-number="20"><span class="co"># From one row per book to one row per chapter</span></a>
-<a class="sourceLine" id="cb3-21" data-line-number="21">books &lt;-<span class="st"> </span>tidyr<span class="op">::</span><span class="kw"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span>(books, Text)</a></code></pre></div>
+<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">Text =</span> stringi<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/stringi/man/stri_split.html">stri_split_regex</a></span>(Text, <span class="st">"NEW_CHAPTER"</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="st">    </span><span class="co"># Remove first element (book title), so the books start with Chapter 1</span></a>
+<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">Text =</span> <span class="kw"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span>(Text, <span class="cf">function</span>(x) x[<span class="op">-</span><span class="dv">1</span>]))</a>
+<a class="sourceLine" id="cb3-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="co"># The result is a data frame with one row for each book.</span></a>
+<a class="sourceLine" id="cb3-19" data-line-number="19">    <span class="co"># The "Text" column is a list of character vectors</span></a>
+<a class="sourceLine" id="cb3-20" data-line-number="20">    <span class="co"># The "book" column is the name of the book</span></a>
+<a class="sourceLine" id="cb3-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb3-22" data-line-number="22"><span class="co"># From one row per book to one row per chapter</span></a>
+<a class="sourceLine" id="cb3-23" data-line-number="23">books &lt;-<span class="st"> </span>tidyr<span class="op">::</span><span class="kw"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span>(books, Text)</a></code></pre></div>
 </div>
 <div id="creating-corporaexplorerobject-of-the-jane-austen-books" class="section level5">
 <h5 class="hasAnchor">
 <a href="#creating-corporaexplorerobject-of-the-jane-austen-books" class="anchor"></a>Creating corporaexplorerobject of the Jane Austen books</h5>
+<p>When we first have a data frame with text, creating a “corporaexplorerobject” for exploration is very simple:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># As this is a corpus which is not organised by date,</span></a>
 <a class="sourceLine" id="cb4-2" data-line-number="2">  <span class="co"># we set `date_based_corpus` to `FALSE`.</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co"># Because we want to organise our exploration around Jane Austen's books,</span></a>
 <a class="sourceLine" id="cb4-4" data-line-number="4">  <span class="co"># we pass `"book"` to the `grouping_variable` argument.</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">jane_austen &lt;-<span class="st"> </span><span class="kw"><a href="../reference/prepare_data.html">prepare_data</a></span>(<span class="dt">dataset =</span> books,</a>
-<a class="sourceLine" id="cb4-6" data-line-number="6">                    <span class="dt">date_based_corpus =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb4-7" data-line-number="7">                    <span class="dt">grouping_variable =</span> <span class="st">"book"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb4-5" data-line-number="5">jane_austen &lt;-<span class="st"> </span><span class="kw"><a href="../reference/prepare_data.html">prepare_data</a></span>(</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">    <span class="dt">dataset =</span> books,</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">    <span class="dt">date_based_corpus =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">    <span class="dt">grouping_variable =</span> <span class="st">"book"</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9">)</a></code></pre></div>
 </div>
 <div id="run-corpus-explorer" class="section level5">
 <h5 class="hasAnchor">
