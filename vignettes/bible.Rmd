@@ -91,7 +91,7 @@ bible_df <- tidyr::unnest(bible_df, Text)
 
 ## corporaexplorer
 
-When we first have a data frame with text,
+When we first have a data frame with text and metadata,
 creating a "corporaexplorerobject" for exploration is very simple:
 
 ```{r message=FALSE}

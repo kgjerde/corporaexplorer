@@ -58,7 +58,7 @@ books <- tidyr::unnest(books, Text)
 
 ##### Creating corporaexplorerobject of the Jane Austen books
 
-When we first have a data frame with text,
+When we first have a data frame with text and metadata (in this case just book title),
 creating a "corporaexplorerobject" for exploration is very simple:
 
 ```{r message=FALSE}
