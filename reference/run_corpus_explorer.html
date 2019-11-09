@@ -159,7 +159,8 @@ application (usually by pressing Ctrl+C or Esc).</p>
     <pre class="usage"><span class='fu'>run_corpus_explorer</span>(<span class='no'>corpus_object</span>, <span class='kw'>use_matrix</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>regex_engine</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"default"</span>, <span class='st'>"stringr"</span>, <span class='st'>"re2r"</span>),
   <span class='kw'>optional_info</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>allow_unreasonable_patterns</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>ui_options</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='kw'>search_input</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='no'>...</span>)</pre>
+  <span class='kw'>ui_options</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='kw'>search_input</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='kw'>plot_options</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
+  <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -204,9 +205,6 @@ lead to a very slow search. (Examples of such patterns will include
       <th>ui_options</th>
       <td><p>List. Specify custom app settings (see example below).
   Currently available:</p><ul>
-<li><p><code>MAX_DOCS_IN_WALL_VIEW</code>. Integer specifying the maximum number
-    of documents to be rendered in the 'document wall' view.
-    Default value is 12000.</p></li>
 <li><p><code>font_size</code>. Character string specifying font size in
     document viww,
     e.g. <code>"10px"</code></p></li>
@@ -223,6 +221,25 @@ lead to a very slow search. (Examples of such patterns will include
 <li><p><code>filter_terms</code>: The 'Filter corpus?' field. Character vector.</p></li>
 <li><p><code>case_sensitivity</code>: Should the 'Case sensitive search' box
     be checked? Logical.</p></li>
+</ul></td>
+    </tr>
+    <tr>
+      <th>plot_options</th>
+      <td><p>List. Specify custom plot settings (see example below).
+  Currently available:</p><ul>
+<li><p><code>max_docs_in_wall_view</code>. Integer specifying the maximum number
+     of documents to be rendered in the 'document wall' view.
+     Default value is 12000.</p></li>
+<li><p><code>plot_size_factor</code>. Numeric. Tweaks the corpus map plot's
+     height. Value &gt; 1 increases height, value &lt; 1 decreases height.
+     Ignored if value &lt;= 0.</p></li>
+<li><p><code>documents_per_row_factor</code>. Numeric. Tweaks the number of
+     documents included in each row in 'document wall' view. Value &gt; 1
+      increases number of documents, value &lt; 1 decreases number of
+      documents. Ignored if value &lt;= 0.</p></li>
+<li><p><code>document_tiles</code>. Integer specifying the number of tiles
+      used in the tile chart representing occurences of terms in document.
+      Ignored if value &lt; 1 or if value &gt; 50.</p></li>
 </ul></td>
     </tr>
     <tr>
