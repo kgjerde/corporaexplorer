@@ -115,6 +115,7 @@ shiny::onSessionEnded(function() {
   shiny::shinyOptions("corporaexplorer_allow_unreasonable_patterns" = NULL)
   shiny::shinyOptions("corporaexplorer_ui_options" = NULL)
   shiny::shinyOptions("corporaexplorer_input_arguments" = NULL)
+  shiny::shinyOptions("corporaexplorer_plot_options" = NULL)
 })
 }
 

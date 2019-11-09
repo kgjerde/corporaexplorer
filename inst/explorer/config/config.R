@@ -56,12 +56,44 @@ if (USE_ONLY_STRINGR == TRUE & USE_ONLY_RE2R == TRUE) {
 
 ui_options <- shiny::getShinyOption("corporaexplorer_ui_options")
 
-if (!is.null(ui_options$MAX_DOCS_IN_WALL_VIEW)) {
-    MAX_DOCS_IN_WALL_VIEW <- ui_options$MAX_DOCS_IN_WALL_VIEW
+## At the momemnt only css arguments here.
+
+# Plot options from function arguments ------------------------------------
+
+plot_options <- shiny::getShinyOption("corporaexplorer_plot_options")
+
+PLOT_SIZE_FACTOR <- 10
+if (!is.null(plot_options$plot_size_factor)) {
+    if (is.numeric(plot_options$plot_size_factor)) {
+        if (plot_options$plot_size_factor > 0) {
+            PLOT_SIZE_FACTOR <- 10 * plot_options$plot_size_factor
+        }
+    }
+}
+
+MAX_WIDTH_FOR_ROW <- 75
+if (!is.null(plot_options$documents_per_row_factor)) {
+    if (is.numeric(plot_options$documents_per_row_factor)) {
+        if (plot_options$documents_per_row_factor > 0) {
+            MAX_WIDTH_FOR_ROW <- 75 * plot_options$documents_per_row_factor
+        }
+    }
+}
+
+DOCUMENT_TILES <- 50
+if (!is.null(plot_options$document_tiles)) {
+    if (is.numeric(plot_options$document_tiles)) {
+        if (plot_options$document_tiles %in% 1:50) {
+            DOCUMENT_TILES <- as.integer(plot_options$document_tiles)
+        }
+    }
+}
+
+if (!is.null(plot_options$max_docs_in_wall_view)) {
+    MAX_DOCS_IN_WALL_VIEW <- plot_options$max_docs_in_wall_view
 } else {
     MAX_DOCS_IN_WALL_VIEW <- 12000
 }
-
 
 # Pre-filled sidebar input from function argument -------------------------
 

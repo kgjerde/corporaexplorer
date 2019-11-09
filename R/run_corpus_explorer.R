@@ -25,9 +25,6 @@
 #' @param ui_options List. Specify custom app settings (see example below).
 #'   Currently available:
 #' \itemize{
-#'     \item \code{MAX_DOCS_IN_WALL_VIEW}. Integer specifying the maximum number
-#'     of documents to be rendered in the 'document wall' view.
-#'     Default value is 12000.
 #'     \item \code{font_size}. Character string specifying font size in
 #'     document viww,
 #'     e.g. \code{"10px"}
@@ -43,6 +40,23 @@
 #'     \item \code{case_sensitivity}: Should the 'Case sensitive search' box
 #'     be checked? Logical.
 #'     }
+#' @param plot_options List. Specify custom plot settings (see example below).
+#'   Currently available:
+#' \itemize{
+#'     \item \code{max_docs_in_wall_view}. Integer specifying the maximum number
+#'      of documents to be rendered in the 'document wall' view.
+#'      Default value is 12000.
+#'     \item \code{plot_size_factor}. Numeric. Tweaks the corpus map plot's
+#'      height. Value > 1 increases height, value < 1 decreases height.
+#'      Ignored if value <= 0.
+#'     \item \code{documents_per_row_factor}. Numeric. Tweaks the number of
+#'      documents included in each row in 'document wall' view. Value > 1
+#'       increases number of documents, value < 1 decreases number of
+#'       documents. Ignored if value <= 0.
+#'     \item \code{document_tiles}. Integer specifying the number of tiles
+#'       used in the tile chart representing occurences of terms in document.
+#'       Ignored if value < 1 or if value > 50.
+#'       }
 #' @param ... Other arguments passed to \code{\link[shiny]{runApp}} in the Shiny
 #'   package.
 #' @export
@@ -82,6 +96,7 @@ run_corpus_explorer <- function(corpus_object,
                                 allow_unreasonable_patterns = FALSE,
                                 ui_options = list(),
                                 search_input = list(),
+                                plot_options = list(),
                                 ...) {
   app <- system.file("explorer", "app.R", package = "corporaexplorer")
   if (app == "") {
@@ -134,12 +149,20 @@ run_corpus_explorer <- function(corpus_object,
     )
   }
 
+  if (!is.null(ui_options$MAX_DOCS_IN_WALL_VIEW)) {
+    warning("The `MAX_DOCS_IN_WALL_VIEW` option is now part of the `plot_options` argument, but with lower case. E.g. `plot_options = list(max_docs_in_wall_view = 15000)`. This warning message will be removed in future releases.",
+      call. = FALSE,
+      immediate. = TRUE
+    )
+  }
+
   shiny::shinyOptions("corporaexplorer_optional_info" = optional_info)
   shiny::shinyOptions("corporaexplorer_regex_engine" = regex_engine)
   shiny::shinyOptions("corporaexplorer_use_matrix" = use_matrix)
   shiny::shinyOptions("corporaexplorer_allow_unreasonable_patterns" = allow_unreasonable_patterns)
   shiny::shinyOptions("corporaexplorer_ui_options" = ui_options)
   shiny::shinyOptions("corporaexplorer_input_arguments" = search_input)
+  shiny::shinyOptions("corporaexplorer_plot_options" = plot_options)
 
   shiny::shinyOptions("corporaexplorer_data" = corpus_object)
 

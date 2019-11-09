@@ -7,7 +7,8 @@
 run_corpus_explorer(corpus_object, use_matrix = TRUE,
   regex_engine = c("default", "stringr", "re2r"),
   optional_info = FALSE, allow_unreasonable_patterns = FALSE,
-  ui_options = list(), search_input = list(), ...)
+  ui_options = list(), search_input = list(), plot_options = list(),
+  ...)
 }
 \arguments{
 \item{corpus_object}{A corporaexplorer object created by
@@ -37,9 +38,6 @@ lead to a very slow search. (Examples of such patterns will include
 \item{ui_options}{List. Specify custom app settings (see example below).
   Currently available:
 \itemize{
-    \item \code{MAX_DOCS_IN_WALL_VIEW}. Integer specifying the maximum number
-    of documents to be rendered in the 'document wall' view.
-    Default value is 12000.
     \item \code{font_size}. Character string specifying font size in
     document viww,
     e.g. \code{"10px"}
@@ -56,6 +54,24 @@ lead to a very slow search. (Examples of such patterns will include
     \item \code{case_sensitivity}: Should the 'Case sensitive search' box
     be checked? Logical.
     }}
+
+\item{plot_options}{List. Specify custom plot settings (see example below).
+  Currently available:
+\itemize{
+    \item \code{max_docs_in_wall_view}. Integer specifying the maximum number
+     of documents to be rendered in the 'document wall' view.
+     Default value is 12000.
+    \item \code{plot_size_factor}. Numeric. Tweaks the corpus map plot's
+     height. Value > 1 increases height, value < 1 decreases height.
+     Ignored if value <= 0.
+    \item \code{documents_per_row_factor}. Numeric. Tweaks the number of
+     documents included in each row in 'document wall' view. Value > 1
+      increases number of documents, value < 1 decreases number of
+      documents. Ignored if value <= 0.
+    \item \code{document_tiles}. Integer specifying the number of tiles
+      used in the tile chart representing occurences of terms in document.
+      Ignored if value < 1 or if value > 50.
+      }}
 
 \item{...}{Other arguments passed to \code{\link[shiny]{runApp}} in the Shiny
 package.}

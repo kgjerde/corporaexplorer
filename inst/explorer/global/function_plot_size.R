@@ -8,7 +8,7 @@ plot_size <-
     function(df,
              calendar_mode,
              max_width_for_row = MAX_WIDTH_FOR_ROW,
-             x_factor = X_FACTOR,
+             x_factor = PLOT_SIZE_FACTOR,
              number_of_search_terms = 0
              ) {
         if (calendar_mode == TRUE) {
