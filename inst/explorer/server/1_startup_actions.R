@@ -4,6 +4,9 @@ output$korpuskarttittel <- shiny::renderText({
 })
 
 output$korpuskart <- shiny::renderPlot({
+
+    validate_max_docs_in_wall()
+
     start_plot <-
         visualiser_korpus(
             df = session_variables[[plot_mode$mode]],
