@@ -94,11 +94,13 @@ test_df <- tibble::tibble(Date = dates, Text = texts, Title = titles)
 corpus <- prepare_data(test_df, corpus_name = "Test corpus")
 
 if(interactive()){
+
 # Running exploration app:
 run_corpus_explorer(corpus)
 run_corpus_explorer(corpus,
-                    ui_options = list(MAX_DOCS_IN_WALL_VIEW = 12001),
-                    search_input = list(search_terms = c("Tottenham", "Spurs")))
+                    ui_options = list(font_size = "10px"),
+                    search_input = list(search_terms = c("Tottenham", "Spurs")),
+                    plot_options = list(MAX_DOCS_IN_WALL_VIEW = 12001))
 
 # Running app to extract documents:
 run_document_extractor(corpus)
