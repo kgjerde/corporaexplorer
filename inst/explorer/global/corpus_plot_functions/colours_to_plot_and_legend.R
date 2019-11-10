@@ -101,12 +101,14 @@ number_of_labels_for_each_term <- function(legend_df, linjer) {
 }
 
 
-define_colours <- function(main_colours = c("Reds", "Blues", "Greens", "Purples", "Oranges", "Greys"),
+define_colours <- function(main_colours = MAIN_COLOURS,
                            legend_df,
                            linjer,
                            number_of_factors) {
 
   # TODO: this 'main_colours' value means max 6 search terms
+
+  main_colours <- convert_colours_to_brewerpal_colours(main_colours)
 
   factor_length <- number_of_labels_for_each_term(legend_df, linjer)
 
@@ -124,6 +126,13 @@ define_colours <- function(main_colours = c("Reds", "Blues", "Greens", "Purples"
   return(colour_schemes)
 }
 
+convert_colours_to_brewerpal_colours <- function(colours) {
+  brewerpal_colours <- plyr::mapvalues(x = colours,
+                                       from = c("red", "blue", "green", "purple", "orange", "gray"),
+                                       to = c("Reds", "Blues", "Greens", "Purples", "Oranges", "Greys"),
+                                       warn_missing = FALSE)
+  return(brewerpal_colours)
+}
 
 update_legend_df_w_colours <- function(legend_df,
                                        colour_schemes) {

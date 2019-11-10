@@ -45,6 +45,12 @@ ui_options <- NULL  # To avoid errors when later checking for !is.null css eleme
 
 MAX_DOCS_IN_WALL_VIEW <- 12000
 
+
+# Plot options from function arguments ------------------------------------
+
+MAIN_COLOURS <- c("red", "blue", "green", "purple", "orange", "gray")
+MY_COLOURS <- rep(MAIN_COLOURS, 10)
+
 # Pre-filled sidebar input from function argument -------------------------
 
 source("./config/sidebar_input_values_from_function_call.R", local = TRUE)

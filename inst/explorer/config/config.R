@@ -7,6 +7,7 @@ source("./config/backwards_compatibility.R", local = TRUE)
 # Constants ---------------------------------------------------------------
 
 source("./config/constants.R", local = TRUE)
+source("./config/config_convenience_functions.R", local = TRUE)
 
 # From corporaexplorerobject --------------------------------------------
 
@@ -94,6 +95,13 @@ if (!is.null(plot_options$max_docs_in_wall_view)) {
 } else {
     MAX_DOCS_IN_WALL_VIEW <- 12000
 }
+
+MAIN_COLOURS <- c("red", "blue", "green", "purple", "orange", "gray")
+if (!is.null(plot_options$colours)) {
+    MAIN_COLOURS <- create_colours_from_input(plot_options$colours,
+                                              MAIN_COLOURS)
+}
+MY_COLOURS <- rep(MAIN_COLOURS, 10)
 
 # Pre-filled sidebar input from function argument -------------------------
 

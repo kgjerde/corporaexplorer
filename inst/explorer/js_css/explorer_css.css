@@ -47,10 +47,10 @@ input:-webkit-autofill:active {
   margin-bottom:-1em;
   margin-top: 0em;
   resize: none;
-  background-color: red;
   /*font-size:10px;*/
   height:25px;
   color: white;
+  display: none;
 }
 
 #search_text_2,
@@ -67,27 +67,6 @@ input:-webkit-autofill:active {
   resize: none;
   height:25px;
   color: white;
-}
-
-
-#search_text_2 {
-  background-color: blue;
-}
-
-#search_text_3 {
-  background-color: green;
-}
-
-#search_text_4 {
-  background-color: purple;
-}
-
-#search_text_5 {
-  background-color: orange;
-}
-
-#search_text_6 {
-  background-color: gray;
 }
 
 #search_button {
