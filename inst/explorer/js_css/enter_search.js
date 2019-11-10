@@ -1,5 +1,5 @@
 $(document).keyup(function(event) {
-    if ($("#search_text").is(":focus") && (event.keyCode == 13)) {
-        $("#trykk").click();
+    if ($("#search_text_1").is(":focus") && (event.keyCode == 13)) {
+        $("#search_button").click();
     }
 });

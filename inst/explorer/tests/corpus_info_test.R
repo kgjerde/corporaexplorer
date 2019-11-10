@@ -7,9 +7,9 @@ test_that("Corpus info works", {
     app <- shinytest::ShinyDriver$new("..")
     app$snapshotInit("corpus_info_test")
     app$snapshot()
-    app$setInputs(search_text = "document")
+    app$setInputs(search_text_1 = "document")
     app$setInputs(case_sensitivity = TRUE)
-    app$setInputs(trykk = "click")
+    app$setInputs(search_button = "click")
     app$setInputs(corpus_box = "Corpus info")
 
     # Check that corpus_info text is OK

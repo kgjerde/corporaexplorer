@@ -1,4 +1,4 @@
-shiny::observeEvent(input$trykk, {
+shiny::observeEvent(input$search_button, {
 
 # Updating session variables ----------------------------------------------
 source("./server/2_event_search_button/update_session_variables.R", local = TRUE)
@@ -16,5 +16,5 @@ source("./server/2_event_search_button/corpus_map_rendering.R", local = TRUE)
 if (OPTIONAL_INFO_TO_CONSOLE == TRUE) {
     source("./server/optional_info_to_console.R", local = TRUE)
 }
-    
+
 })

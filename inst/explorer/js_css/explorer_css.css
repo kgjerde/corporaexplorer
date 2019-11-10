@@ -20,7 +20,7 @@
   height: calc(100vh - 200px);
 }
 
-#area, #filter_text {
+#highlight_terms_area, #filter_text_area {
   padding-left:10px;
   padding-top: 10px;
   padding-right:10px;
@@ -39,7 +39,7 @@ input:-webkit-autofill:active {
     -webkit-transition: color 9999s ease-out, background-color 9999s ease-out;
 }
 
-#search_text {
+#search_text_1 {
   padding-left:10px;
   padding-top: 10px;
   padding-right:10px;
@@ -53,11 +53,11 @@ input:-webkit-autofill:active {
   color: white;
 }
 
-#area_2,
-#area_3,
-#area_4,
-#area_5,
-#area_6 {
+#search_text_2,
+#search_text_3,
+#search_text_4,
+#search_text_5,
+#search_text_6 {
   padding-left:10px;
   padding-top: 10px;
   padding-right:10px;
@@ -70,27 +70,27 @@ input:-webkit-autofill:active {
 }
 
 
-#area_2 {
+#search_text_2 {
   background-color: blue;
 }
 
-#area_3 {
+#search_text_3 {
   background-color: green;
 }
 
-#area_4 {
+#search_text_4 {
   background-color: purple;
 }
 
-#area_5 {
+#search_text_5 {
   background-color: orange;
 }
 
-#area_6 {
+#search_text_6 {
   background-color: gray;
 }
 
-#trykk {
+#search_button {
   /*margin-left:1em;
   margin-right:1em;*/
   width: 87%;

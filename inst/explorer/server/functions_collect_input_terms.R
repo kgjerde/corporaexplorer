@@ -3,12 +3,12 @@
 #' @return Character vector.
 collect_search_terms <- function() {
     terms <- c(
-        shiny::isolate(input$search_text),
-        shiny::isolate(input$area_2),
-        shiny::isolate(input$area_3),
-        shiny::isolate(input$area_4),
-        shiny::isolate(input$area_5),
-        shiny::isolate(input$area_6)
+        shiny::isolate(input$search_text_1),
+        shiny::isolate(input$search_text_2),
+        shiny::isolate(input$search_text_3),
+        shiny::isolate(input$search_text_4),
+        shiny::isolate(input$search_text_5),
+        shiny::isolate(input$search_text_6)
     )[seq_len(shiny::isolate(input$antall_linjer))] %>%
         stringr::str_trim() %>%
         stringr::str_replace_all("(\\s){2,}", "\\1") %>%
@@ -30,7 +30,7 @@ collect_highlight_terms <- function() {
         # avgjørende at is.null-varianten kommer først i if-statementet!
         terms_highlight <- collect_search_terms()
     }   else if (isolate(input$more_terms_button == 'Yes')) {
-        terms_highlight <- isolate(input$area) %>%
+        terms_highlight <- isolate(input$highlight_terms_area) %>%
             stringr::str_trim() %>%
             stringr::str_replace_all("(\\s){2,}", "\\1") %>%
             stringr::str_split("\n") %>%
@@ -52,7 +52,7 @@ collect_highlight_terms <- function() {
 #' @return Character vector.
 collect_subset_terms <- function() {
     if (input$subset_corpus == 'Yes') {
-        terms_subset <- input$filter_text %>%
+        terms_subset <- input$filter_text_area %>%
             stringr::str_trim() %>%
             stringr::str_replace_all("(\\s){2,}", "\\1") %>%
             stringr::str_split("\n") %>%
