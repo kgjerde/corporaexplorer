@@ -72,18 +72,18 @@ ui <- function(request) {
 
 server <- function(input, output, session) {
 
-# Conditional sidebar UI elements -----------------------------------------
-source("./ui/render_ui_sidebar_date_filtering.R", local = TRUE)
-source("./ui/hide_ui_sidebar_plot_mode.R", local = TRUE)
-
-# Session variables -------------------------------------------------------
-source("./server/session_variables.R", local = TRUE)
-
 # Session scope function files --------------------------------------------
 source("./server/functions_collect_input_terms.R", local = TRUE)
 source("./server/functions_checking_input.R", local = TRUE)
 source("./server/functions_ui_management.R", local = TRUE)
 source("./server/function_collect_edited_info_plot_legend_keys.R", local = TRUE)
+
+# Conditional and customised sidebar UI elements --------------------------
+source("./ui/render_ui_sidebar_date_filtering.R", local = TRUE)
+source("./ui/hide_ui_sidebar_plot_mode.R", local = TRUE)
+
+# Session variables -------------------------------------------------------
+source("./server/session_variables.R", local = TRUE)
 
 # Corpus info tab ---------------------------------------------------------
 source("./server/corpus_info_tab.R", local = TRUE)
