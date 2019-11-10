@@ -2,7 +2,7 @@ shinydashboard::dashboardSidebar(
     shinyWidgets::radioGroupButtons(
         inputId = "antall_linjer",
         label = "No. of terms to chart",
-        choices = 1:5,
+        choices = 1:6,
         justified = TRUE,
         size = "xs",
         selected = input_arguments_derived$number_of_search_terms
