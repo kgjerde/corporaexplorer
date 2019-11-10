@@ -71,7 +71,17 @@ lead to a very slow search. (Examples of such patterns will include
     \item \code{document_tiles}. Integer specifying the number of tiles
       used in the tile chart representing occurences of terms in document.
       Ignored if value < 1 or if value > 50.
-      }}
+    \item \code{colours}. Character vector of length 1 to 6. Specify the
+     order of the colours used to represent search (and highlight) terms
+     in plots and documents. The default order and available colours are
+     defined by the character vector
+     \code{c("red", "blue", "green", "purple", "orange", "gray")}.
+     Passing e.g. \code{plot_options = list(colours = c("gray", "green"))}
+     will change that order to
+     \code{c("gray", "green", "red", "blue", "purple", "orange")}.
+     Arguments with duplicated colours or with colours not present in the
+     default character vector will be ignored.
+     }}
 
 \item{...}{Other arguments passed to \code{\link[shiny]{runApp}} in the Shiny
 package.}
@@ -100,7 +110,8 @@ run_corpus_explorer(corpus)
 run_corpus_explorer(corpus,
                     ui_options = list(font_size = "10px"),
                     search_input = list(search_terms = c("Tottenham", "Spurs")),
-                    plot_options = list(MAX_DOCS_IN_WALL_VIEW = 12001))
+                    plot_options = list(MAX_DOCS_IN_WALL_VIEW = 12001,
+                                        colours = c("gray", "green")))
 
 # Running app to extract documents:
 run_document_extractor(corpus)
