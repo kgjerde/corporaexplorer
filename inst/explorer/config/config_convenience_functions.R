@@ -15,9 +15,5 @@ create_colours_from_input <-
         if (any(duplicated(input_colours))) {
             return(standard_colours)
         }
-        if (length(input_colours) == length(standard_colours)) {
-            return(input_colours)
-        } else {
-            return(c(input_colours, standard_colours[!standard_colours %in% input_colours]))
-        }
+        return(c(input_colours, standard_colours[!standard_colours %in% input_colours]))
     }
