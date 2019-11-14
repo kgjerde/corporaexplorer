@@ -2,7 +2,16 @@
 
 ## API changes
 
-* Added `plot_options` argument to `run_corpus_explorer()`, and moved the `max_docs_in_wall_view` setting there.
+* Added `search_options` argument to `run_corpus_explorer()`, and moved the
+arguments
+`use_matrix`,
+`regex_engine`,
+`optional_info`,
+`allow_unreasonable_patterns`
+there.
+* Added `plot_options` argument (with several possibilities to
+customise plot colours etc.) to `run_corpus_explorer()`,
+and moved the `max_docs_in_wall_view` setting there.
 
 ## Other
 
