@@ -7,10 +7,17 @@
 \usage{
 prepare_data(dataset, ...)
 
-\method{prepare_data}{data.frame}(dataset, date_based_corpus = TRUE,
-  grouping_variable = NULL, columns_doc_info = c("Date", "Title",
-  "URL"), corpus_name = NULL, use_matrix = TRUE, normalise = TRUE,
-  matrix_without_punctuation = TRUE, ...)
+\method{prepare_data}{data.frame}(
+  dataset,
+  date_based_corpus = TRUE,
+  grouping_variable = NULL,
+  columns_doc_info = c("Date", "Title", "URL"),
+  corpus_name = NULL,
+  use_matrix = TRUE,
+  normalise = TRUE,
+  matrix_without_punctuation = TRUE,
+  ...
+)
 }
 \arguments{
 \item{dataset}{Object to be converted to a corporaexplorerobject.

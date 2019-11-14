@@ -4,9 +4,14 @@
 \alias{run_corpus_explorer}
 \title{Launch Shiny app for exploration of text collection}
 \usage{
-run_corpus_explorer(corpus_object, search_options = list(),
-  ui_options = list(), search_input = list(), plot_options = list(),
-  ...)
+run_corpus_explorer(
+  corpus_object,
+  search_options = list(),
+  ui_options = list(),
+  search_input = list(),
+  plot_options = list(),
+  ...
+)
 }
 \arguments{
 \item{corpus_object}{A corporaexplorerobject created by
