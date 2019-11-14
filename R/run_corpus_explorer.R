@@ -3,30 +3,37 @@
 #' Launch Shiny app for exploration of text collection. Interrupt R to stop the
 #' application (usually by pressing Ctrl+C or Esc).
 #'
-#' @param corpus_object A corporaexplorer object created by
+#' @param corpus_object A corporaexplorerobject created by
 #'   \code{\link[corporaexplorer]{prepare_data}}.
-#' @param use_matrix Logical. If the corporaexplorerobject contains a document
-#'   term matrix, should it be used for searches? (See
-#'   \code{\link[corporaexplorer]{prepare_data}}.)
-#' @param regex_engine Specify regular expression engine to be used: \itemize{
-#'   \item `default`: use the \code{re2r} package
-#'   (\url{https://github.com/qinwf/re2r}) for simple searches and the
-#'   \code{stringr} package (\url{https://github.com/tidyverse/stringr} for
-#'   complex regexes (i.e. when special regex characters are used). \item
-#'   `stringr`: use \code{stringr} for all searches. \item `re2r`: use
-#'   \code{re2r} for all searches.}
-#' @param optional_info Logical. If \code{TRUE}, information about search method
-#'   (regex engine and whether the search was conducted in the document term
-#'   matrix or in the full text documents).
-#' @param allow_unreasonable_patterns Logical. If \code{FALSE}, the app will
-#'   not allow patterns that will result in an enormous amount of hits or will
-#'   lead to a very slow search. (Examples of such patterns will include
-#'   '\code{.}' and '\code{\\b}'.)
+#' @param search_options List. Specify how search operations in the app are
+#'   carried out. Available options:
+#' \itemize{
+#'     \item \code{use_matrix} Logical. If the corporaexplorerobject contains a document
+#'     term matrix, should it be used for searches? (See
+#'     \code{\link[corporaexplorer]{prepare_data}}.) Defaults to \code{TRUE}.
+#'     \item \code{regex_engine} Character. Specify regular expression engine to be used
+#'     (defaults to \code{"default"}). Available options:
+#'     \itemize{
+#'         \item "default": use the \code{re2r} package
+#'         (\url{https://github.com/qinwf/re2r}) for simple searches and the
+#'         \code{stringr} package (\url{https://github.com/tidyverse/stringr} for
+#'         complex regexes (i.e. when special regex characters are used).
+#'         \item "stringr": use \code{stringr} for all searches.
+#'         \item "re2r": use \code{re2r} for all searches.
+#'     }
+#'     \item \code{optional_info} Logical. If \code{TRUE}, information about search method
+#'     (regex engine and whether the search was conducted in the document term
+#'     matrix or in the full text documents).
+#'     \item \code{allow_unreasonable_patterns} Logical. If \code{FALSE}, the default, the app will
+#'     not allow patterns that will result in an enormous amount of hits or will
+#'     lead to a very slow search. (Examples of such patterns will include
+#'     '\code{.}' and '\code{\\b}'.)
+#' }
 #' @param ui_options List. Specify custom app settings (see example below).
 #'   Currently available:
 #' \itemize{
 #'     \item \code{font_size}. Character string specifying font size in
-#'     document viww,
+#'     document view,
 #'     e.g. \code{"10px"}
 #'     }
 #' @param search_input List. Gives the opportunity to pre-populate
@@ -90,6 +97,7 @@
 #' # Running exploration app:
 #' run_corpus_explorer(corpus)
 #' run_corpus_explorer(corpus,
+#'                     search_options = list(optional_info = TRUE),
 #'                     ui_options = list(font_size = "10px"),
 #'                     search_input = list(search_terms = c("Tottenham", "Spurs")),
 #'                     plot_options = list(MAX_DOCS_IN_WALL_VIEW = 12001,
@@ -99,14 +107,7 @@
 #' run_document_extractor(corpus)
 #' }
 run_corpus_explorer <- function(corpus_object,
-                                use_matrix = TRUE,
-                                regex_engine = c(
-                                  "default",
-                                  "stringr",
-                                  "re2r"
-                                ),
-                                optional_info = FALSE,
-                                allow_unreasonable_patterns = FALSE,
+                                search_options = list(),
                                 ui_options = list(),
                                 search_input = list(),
                                 plot_options = list(),
@@ -125,42 +126,14 @@ run_corpus_explorer <- function(corpus_object,
     )
   }
 
-  if (class(corpus_object) != "corporaexplorerobject") {
+  if ("corporaexplorerobject" %in% class(corpus_object) == FALSE) {
     stop("'data' is not a corporaexplorerobject",
       call. = FALSE
     )
   }
 
 
-  if (!is.logical(optional_info)) {
-    stop(sprintf("Invalid '%s' argument.", "optional_info"),
-      call. = FALSE
-    )
-  }
-
-  if (!is.logical(allow_unreasonable_patterns)) {
-    stop(sprintf("Invalid '%s' argument.", "allow_unreasonable_patterns"),
-      call. = FALSE
-    )
-  }
-
-  if (identical(regex_engine, c(
-    "default",
-    "stringr",
-    "re2r"
-  ))) {
-    regex_engine <- "default"
-  }
-
-  if (!(regex_engine %in% c(
-    "default",
-    "stringr",
-    "re2r"
-  ))) {
-    stop(sprintf("Invalid '%s' argument.", "regex_engine"),
-      call. = FALSE
-    )
-  }
+# Deprecated arguments ----------------------------------------------------
 
   if (!is.null(ui_options$MAX_DOCS_IN_WALL_VIEW)) {
     warning("The `MAX_DOCS_IN_WALL_VIEW` option is now part of the `plot_options` argument, but with lower case. E.g. `plot_options = list(max_docs_in_wall_view = 15000)`. This warning message will be removed in future releases.",
@@ -169,10 +142,28 @@ run_corpus_explorer <- function(corpus_object,
     )
   }
 
-  shiny::shinyOptions("corporaexplorer_optional_info" = optional_info)
-  shiny::shinyOptions("corporaexplorer_regex_engine" = regex_engine)
-  shiny::shinyOptions("corporaexplorer_use_matrix" = use_matrix)
-  shiny::shinyOptions("corporaexplorer_allow_unreasonable_patterns" = allow_unreasonable_patterns)
+  deprecated_arguments <- c("use_matrix",
+                            "regex_engine",
+                            "optional_info",
+                            "allow_unreasonable_patterns")
+
+  for (name in deprecated_arguments) {
+    if (name %in% names(list(...))) {
+      warning(
+        sprintf(
+          "Argument `%s` is deprecated. Use argument `search_options` instead.",
+          name
+        ),
+        call. = FALSE,
+        immediate. = TRUE
+      )
+    }
+  }
+
+
+# Pass data ---------------------------------------------------------------
+
+  shiny::shinyOptions("corporaexplorer_search_options" = search_options)
   shiny::shinyOptions("corporaexplorer_ui_options" = ui_options)
   shiny::shinyOptions("corporaexplorer_input_arguments" = search_input)
   shiny::shinyOptions("corporaexplorer_plot_options" = plot_options)

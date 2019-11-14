@@ -28,24 +28,43 @@ if (is.null(loaded_data$name)) {
     CORPUS_TITLE <- loaded_data$name
 }
 
-# From function arguments -------------------------------------------------
+# Search options from function arguments ----------------------------------
+
+search_options <- shiny::getShinyOption("corporaexplorer_search_options")
+
 
 if (NO_MATRIX == FALSE) {
-    NO_MATRIX <- !shiny::getShinyOption("corporaexplorer_use_matrix")
+    if (!is.null(search_options$use_matrix)) {
+        if (is.logical(search_options$use_matrix)) {
+            NO_MATRIX <- !search_options$use_matrix
+        }
+    }
 }
 
-OPTIONAL_INFO_TO_CONSOLE <- shiny::getShinyOption("corporaexplorer_optional_info")
+OPTIONAL_INFO_TO_CONSOLE <- FALSE
+if (!is.null(search_options$optional_info)) {
+    if (is.logical(search_options$optional_info)) {
+        OPTIONAL_INFO_TO_CONSOLE <- search_options$optional_info
+    }
+}
 
-SAFE_SEARCH <- !shiny::getShinyOption("corporaexplorer_allow_unreasonable_patterns")
+SAFE_SEARCH <- TRUE
+if (!is.null(search_options$allow_unreasonable_patterns)) {
+    if (is.logical(search_options$allow_unreasonable_patterns)) {
+        SAFE_SEARCH <- !search_options$allow_unreasonable_patterns
+    }
+}
 
 # Initialising
 USE_ONLY_STRINGR <- FALSE
 USE_ONLY_RE2R <- FALSE
 
-if (shiny::getShinyOption("corporaexplorer_regex_engine") == "stringr") {
-    USE_ONLY_STRINGR <- TRUE
-} else if (shiny::getShinyOption("corporaexplorer_regex_engine") == "re2r") {
-    USE_ONLY_RE2R <- TRUE
+if (!is.null(search_options$regex_engine)) {
+    if (search_options$regex_engine == "stringr") {
+        USE_ONLY_STRINGR <- TRUE
+    } else if (search_options$regex_engine == "re2r") {
+        USE_ONLY_RE2R <- TRUE
+    }
 }
 
 # Safety precaution:
@@ -57,7 +76,7 @@ if (USE_ONLY_STRINGR == TRUE & USE_ONLY_RE2R == TRUE) {
 
 ui_options <- shiny::getShinyOption("corporaexplorer_ui_options")
 
-## At the momemnt only css arguments here.
+## At the moment only css arguments here.
 
 # Plot options from function arguments ------------------------------------
 
