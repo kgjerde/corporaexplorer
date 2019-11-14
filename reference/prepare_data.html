@@ -157,10 +157,17 @@
     <pre class="usage"><span class='fu'>prepare_data</span>(<span class='no'>dataset</span>, <span class='no'>...</span>)
 
 <span class='co'># S3 method for data.frame</span>
-<span class='fu'>prepare_data</span>(<span class='no'>dataset</span>, <span class='kw'>date_based_corpus</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>grouping_variable</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>columns_doc_info</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Date"</span>, <span class='st'>"Title"</span>,
-  <span class='st'>"URL"</span>), <span class='kw'>corpus_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>use_matrix</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>normalise</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>matrix_without_punctuation</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>prepare_data</span>(
+  <span class='no'>dataset</span>,
+  <span class='kw'>date_based_corpus</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>grouping_variable</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>columns_doc_info</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Date"</span>, <span class='st'>"Title"</span>, <span class='st'>"URL"</span>),
+  <span class='kw'>corpus_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>use_matrix</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>normalise</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>matrix_without_punctuation</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='no'>...</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

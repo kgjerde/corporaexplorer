@@ -156,57 +156,54 @@ application (usually by pressing Ctrl+C or Esc)." />
 application (usually by pressing Ctrl+C or Esc).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>run_corpus_explorer</span>(<span class='no'>corpus_object</span>, <span class='kw'>use_matrix</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>regex_engine</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"default"</span>, <span class='st'>"stringr"</span>, <span class='st'>"re2r"</span>),
-  <span class='kw'>optional_info</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>allow_unreasonable_patterns</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>ui_options</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='kw'>search_input</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(), <span class='kw'>plot_options</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
-  <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>run_corpus_explorer</span>(
+  <span class='no'>corpus_object</span>,
+  <span class='kw'>search_options</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
+  <span class='kw'>ui_options</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
+  <span class='kw'>search_input</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
+  <span class='kw'>plot_options</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
+  <span class='no'>...</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>corpus_object</th>
-      <td><p>A corporaexplorer object created by
+      <td><p>A corporaexplorerobject created by
 <code><a href='prepare_data.html'>prepare_data</a></code>.</p></td>
     </tr>
     <tr>
-      <th>use_matrix</th>
-      <td><p>Logical. If the corporaexplorerobject contains a document
-term matrix, should it be used for searches? (See
-<code><a href='prepare_data.html'>prepare_data</a></code>.)</p></td>
-    </tr>
-    <tr>
-      <th>regex_engine</th>
-      <td><p>Specify regular expression engine to be used:</p><ul>
-<li><p>`default`: use the <code>re2r</code> package
-(<a href='https://github.com/qinwf/re2r'>https://github.com/qinwf/re2r</a>) for simple searches and the
-<code>stringr</code> package (<a href='https://github.com/tidyverse/stringr'>https://github.com/tidyverse/stringr</a> for
-complex regexes (i.e. when special regex characters are used).</p></li>
-<li><p>`stringr`: use <code>stringr</code> for all searches.</p></li>
-<li><p>`re2r`: use
-<code>re2r</code> for all searches.</p></li>
+      <th>search_options</th>
+      <td><p>List. Specify how search operations in the app are
+  carried out. Available options:</p><ul>
+<li><p><code>use_matrix</code> Logical. If the corporaexplorerobject contains a document
+    term matrix, should it be used for searches? (See
+    <code><a href='prepare_data.html'>prepare_data</a></code>.) Defaults to <code>TRUE</code>.</p></li>
+<li><p><code>regex_engine</code> Character. Specify regular expression engine to be used
+    (defaults to <code>"default"</code>). Available options:</p><ul>
+<li><p>"default": use the <code>re2r</code> package
+        (<a href='https://github.com/qinwf/re2r'>https://github.com/qinwf/re2r</a>) for simple searches and the
+        <code>stringr</code> package (<a href='https://github.com/tidyverse/stringr'>https://github.com/tidyverse/stringr</a> for
+        complex regexes (i.e. when special regex characters are used).</p></li>
+<li><p>"stringr": use <code>stringr</code> for all searches.</p></li>
+<li><p>"re2r": use <code>re2r</code> for all searches.</p></li>
+</ul></li>
+<li><p><code>optional_info</code> Logical. If <code>TRUE</code>, information about search method
+    (regex engine and whether the search was conducted in the document term
+    matrix or in the full text documents).</p></li>
+<li><p><code>allow_unreasonable_patterns</code> Logical. If <code>FALSE</code>, the default, the app will
+    not allow patterns that will result in an enormous amount of hits or will
+    lead to a very slow search. (Examples of such patterns will include
+    '<code>.</code>' and '<code>\b</code>'.)</p></li>
 </ul></td>
-    </tr>
-    <tr>
-      <th>optional_info</th>
-      <td><p>Logical. If <code>TRUE</code>, information about search method
-(regex engine and whether the search was conducted in the document term
-matrix or in the full text documents).</p></td>
-    </tr>
-    <tr>
-      <th>allow_unreasonable_patterns</th>
-      <td><p>Logical. If <code>FALSE</code>, the app will
-not allow patterns that will result in an enormous amount of hits or will
-lead to a very slow search. (Examples of such patterns will include
-'<code>.</code>' and '<code>\b</code>'.)</p></td>
     </tr>
     <tr>
       <th>ui_options</th>
       <td><p>List. Specify custom app settings (see example below).
   Currently available:</p><ul>
 <li><p><code>font_size</code>. Character string specifying font size in
-    document viww,
+    document view,
     e.g. <code>"10px"</code></p></li>
 </ul></td>
     </tr>
@@ -277,6 +274,7 @@ package.</p></td>
 <span class='co'># Running exploration app:</span>
 <span class='fu'>run_corpus_explorer</span>(<span class='no'>corpus</span>)
 <span class='fu'>run_corpus_explorer</span>(<span class='no'>corpus</span>,
+                    <span class='kw'>search_options</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>optional_info</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>),
                     <span class='kw'>ui_options</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>font_size</span> <span class='kw'>=</span> <span class='st'>"10px"</span>),
                     <span class='kw'>search_input</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>search_terms</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Tottenham"</span>, <span class='st'>"Spurs"</span>)),
                     <span class='kw'>plot_options</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>MAX_DOCS_IN_WALL_VIEW</span> <span class='kw'>=</span> <span class='fl'>12001</span>,
