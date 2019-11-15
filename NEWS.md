@@ -1,6 +1,6 @@
 # corporaexplorer 0.6.3.9000
 
-## API changes
+## Breaking API changes
 
 * Added `search_options` argument to `run_corpus_explorer()`, and moved the
 arguments
