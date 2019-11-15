@@ -112,8 +112,7 @@
 
     
     
-<p><em>NB! For now, this works only in the development version (v0.6.3.9000) available on <a href="https://www.github.com/kgjerde/corporaexplorer">GitHub</a>, but will be included in the next CRAN release.</em></p>
-<p>To deploy a <strong>corporaexplorer</strong> app with your own data (corporaexplorerobject) to a <em><a href="https://rstudio.com/products/shiny/shiny-server/">Shiny Server</a></em> or <em><a href="https://www.shinyapps.io/">shinyapps.io</a></em> is incredibly simple – it merely takes a folder with two files and three lines of code.</p>
+<p>To deploy a <strong>corporaexplorer</strong> app with your own data (corporaexplorerobject) to a <em><a href="https://rstudio.com/products/shiny/shiny-server/">Shiny Server</a></em> or <em><a href="https://www.shinyapps.io/">shinyapps.io</a></em> is incredibly simple – all it takes is a folder with two files and three lines of code.</p>
 <p>Example folder structure of the folder “my_app”:</p>
 <pre><code>my_app  
   |  
@@ -125,7 +124,7 @@
 <a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw"><a href="../reference/run_corpus_explorer.html">run_corpus_explorer</a></span>(corpus)</a></code></pre></div>
 <p>The folder “my_app” is now ready to be hosted on a <em>Shiny Server</em> or be uploaded to <em>shinyapps.io</em>.</p>
 <hr>
-<p><em>Tip: if you want the data to load faster (at the cost of occupying more disk space), save the corporaexplorerobject created by <code><a href="../reference/prepare_data.html">prepare_data()</a></code>uncompressed by setting <code>compress = FALSE</code> in <code>saveRDS</code>.</em></p>
+<p><em>Tip 1: use the settings in the</em> <code>plot_options</code> <em>argument in</em> <code><a href="../reference/run_corpus_explorer.html">run_corpus_explorer()</a></code> <em>to fine-tune the appearance of the plots in the app.</em><br><em>Tip 2: if you want the data to load faster (at the cost of occupying more disk space), save the corporaexplorerobject created by</em> <code><a href="../reference/prepare_data.html">prepare_data()</a></code> <em>uncompressed by setting</em> <code>compress = FALSE</code> <em>in</em> <code><a href="https://rdrr.io/r/base/readRDS.html">saveRDS()</a></code>.</p>
 <p><em>Example (assuming you start with a data frame called df):</em></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(corporaexplorer)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2">corpus &lt;-<span class="st"> </span><span class="kw"><a href="../reference/prepare_data.html">prepare_data</a></span>(df)</a>
