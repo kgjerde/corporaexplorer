@@ -12,5 +12,3 @@
 ^index\.Rmd$
 ^index\.md$
 ^environment$
-^renv$
-^renv\.lock$
