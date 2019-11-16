@@ -38,7 +38,7 @@ visualiser_korpus <-
            .width = "auto",
            matriksen = loaded_data$original_matrix$data_dok,
            ordvektor = loaded_data$ordvektorer$data_dok,
-           number_of_factors = 8,
+           number_of_factors = NUMBER_OF_FACTORS,
            doc_df,
            search_arguments,
            modus) {

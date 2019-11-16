@@ -13,7 +13,7 @@ output$korpuskart <- shiny::renderPlot({
             .width = "auto",
             matriksen = loaded_data$original_matrix[[plot_mode$mode]],
             ordvektor = NULL,
-            number_of_factors = 8,
+            number_of_factors = NUMBER_OF_FACTORS,
             search_arguments = search_arguments,
             modus = plot_mode$mode
         )

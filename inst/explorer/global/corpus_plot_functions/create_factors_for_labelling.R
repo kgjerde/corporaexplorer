@@ -30,7 +30,7 @@ create_factors_for_labelling <-
 #'
 #' @return Vector with factor/category for a search term. E.g. c("<NA>",
 #'   "1-1-2").
-label_gruppering <- function(df, column_name, prefix, number_of_factors = 8) {
+label_gruppering <- function(df, column_name, prefix, number_of_factors = NUMBER_OF_FACTORS) {
   df[column_name][df[column_name] == 0] <- NA
 
   if (length(unique(df[column_name][!is.na(df[column_name])])) > 1) {

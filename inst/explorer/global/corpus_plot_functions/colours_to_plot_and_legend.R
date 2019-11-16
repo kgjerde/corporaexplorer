@@ -10,7 +10,7 @@
 #' @return List of length 2: 1) df with column Term_colour for colour of each document/day, 2) df for legend.
 colours_to_plot_and_legend <- function(main_df,
                                        linjer,
-                                       number_of_factors = 8,
+                                       number_of_factors = NUMBER_OF_FACTORS,
                                        search_terms_exist) {
   legend_df <- create_legend_df_step_1(main_df)
 
@@ -40,11 +40,11 @@ colours_to_plot_and_legend <- function(main_df,
 
 # Supporting functions ----------------------------------------------------
 
-# Jeg ønsker spredning av fargene og å unngå de lyseste om mulig.
-# Derfor ulike fargeutvalg avhengig av hvor mange faktorer.
+# Achieve "distance" between colours and avoid the very lightest ones
+# Therefore different colour selections depending on number of factors
+# Return chr length equalling length(number_of_factors)
 define_indices_in_colour_palette <-
   function(number_of_factors) {
-    if (number_of_factors == 8) {
       fargeutvalg_vektor <- list(
         3,
         c(5, 9),
@@ -55,15 +55,7 @@ define_indices_in_colour_palette <-
         3:9,
         2:9
       )
-    } else if (number_of_factors == 4) {
-      fargeutvalg_vektor <- list(
-        4,
-        c(4, 6),
-        4:6,
-        3:6
-      )
-    }
-    return(fargeutvalg_vektor)
+    return(fargeutvalg_vektor[seq_len(number_of_factors)])
   }
 
 

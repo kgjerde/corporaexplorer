@@ -32,7 +32,7 @@ plotting_corpus_data_365 <- function(test1, x_breaks, y_text, legend_df, linjer)
             legend.title = ggplot2::element_blank(),
             axis.text = ggplot2::element_text(size=10)
         ) +
-        ggplot2::guides(fill = ggplot2::guide_legend(ncol = 8, byrow = TRUE))
+        ggplot2::guides(fill = ggplot2::guide_legend(ncol = NUMBER_OF_FACTORS, byrow = TRUE))
 
     rect_tib_vertikal <- tibble::tibble(
         x = test1[test1$df == 1,]$x_min,

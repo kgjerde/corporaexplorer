@@ -73,7 +73,7 @@ a <- a +
     axis.text = ggplot2::element_text(size=11,
                                       face = "bold")
   ) +
-  ggplot2::guides(fill = ggplot2::guide_legend(ncol = 8, byrow = TRUE))
+  ggplot2::guides(fill = ggplot2::guide_legend(ncol = NUMBER_OF_FACTORS, byrow = TRUE))
 
 rect_tib_vertikal <- tibble::tibble(
   x = test1[test1$df == 1,]$x_min,
