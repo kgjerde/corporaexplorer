@@ -35,7 +35,7 @@ The folder "my_app" is now ready to be hosted on a *Shiny Server* or be uploaded
 <hr>
 
 *Tip 1: use the settings in the* `plot_options` *argument in* `run_corpus_explorer()` *to fine-tune the appearance of the plots in the app.*  
-*Tip 2: if you want the data to load faster (at the cost of occupying more disk space), save the corporaexplorerobject created by* `prepare_data()` *uncompressed by setting* `compress = FALSE` *in* `saveRDS()`.
+*Tip 2: to make the data load faster (at the cost of occupying more disk space), save the corporaexplorerobject created by* `prepare_data()` *uncompressed by setting* `compress = FALSE` *in* `saveRDS()`.
 
 *Example (assuming you start with a data frame called df):*
 
