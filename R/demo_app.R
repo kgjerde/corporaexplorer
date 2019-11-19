@@ -43,7 +43,7 @@ run_demo_app <- function(...) {
     }
 
     if (is.null(plot_options_$plot_size_factor)) {
-        plot_options_$plot_size_factor <- 2.2
+        plot_options_$plot_size_factor <- 1.3
     }
 
     jane_austen <- create_demo_app()

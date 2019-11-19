@@ -82,11 +82,11 @@ ui_options <- shiny::getShinyOption("corporaexplorer_ui_options")
 
 plot_options <- shiny::getShinyOption("corporaexplorer_plot_options")
 
-PLOT_SIZE_FACTOR <- 10
+PLOT_SIZE_FACTOR <- 15
 if (!is.null(plot_options$plot_size_factor)) {
     if (is.numeric(plot_options$plot_size_factor)) {
         if (plot_options$plot_size_factor > 0) {
-            PLOT_SIZE_FACTOR <- 10 * plot_options$plot_size_factor
+            PLOT_SIZE_FACTOR <- PLOT_SIZE_FACTOR * plot_options$plot_size_factor
         }
     }
 }
