@@ -131,7 +131,7 @@
 <h5 class="hasAnchor">
 <a href="#pre-processing-the-text-a-bit-quick-and-dirty" class="anchor"></a>Pre-processing the text (a bit quick and dirty)</h5>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># Regular expression to identify where new chapters begin</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">chapter_regex &lt;-<span class="st"> "((Chapter|CHAPTER) (</span><span class="ch">\\</span><span class="st">d+|[IXVL])+)"</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">chapter_regex &lt;-<span class="st"> "((Chapter|CHAPTER|VOLUME) (</span><span class="ch">\\</span><span class="st">d+|[IXVL])+)"</span></a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co"># Pre-processing</span></a>
 <a class="sourceLine" id="cb3-5" data-line-number="5">books &lt;-<span class="st"> </span>books <span class="op">%&gt;%</span></a>
