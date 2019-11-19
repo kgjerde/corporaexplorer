@@ -562,7 +562,7 @@ prepare_data.data.frame <- function(dataset,
 #' }
 prepare_data.character <- function(dataset, ...) {
   data <- tibble::tibble(Text = dataset)
-  prepare_data.data.frame(data, F, ...)
+  prepare_data.data.frame(data, FALSE, ...)
 }
 
 #' Print corporaexplorerobject
