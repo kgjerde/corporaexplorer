@@ -18,6 +18,9 @@ utils::globalVariables(
     ".",
     "Day_without_docs",
     "Invisible_fake_date",
-    "Tile_length"
+    "Tile_length",
+    # "book" and "text" belong to the demo app function
+    "book",
+    "text"
   )
 )

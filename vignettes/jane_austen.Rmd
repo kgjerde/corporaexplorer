@@ -32,7 +32,7 @@ books <- austen_books()
 ##### Pre-processing the text (a bit quick and dirty)
 ```{r}
 # Regular expression to identify where new chapters begin
-chapter_regex <- "((Chapter|CHAPTER) (\\d+|[IXVL])+)"
+chapter_regex <- "((Chapter|CHAPTER|VOLUME) (\\d+|[IXVL])+)"
 
 # Pre-processing
 books <- books %>%
