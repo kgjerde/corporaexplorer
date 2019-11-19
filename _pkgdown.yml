@@ -1,5 +1,21 @@
 destination: docs
 
+reference:
+  - title: "Prepare data"
+    contents:
+      - prepare_data
+      - prepare_data.character
+  - title: "Explore data"
+    contents:
+      - run_corpus_explorer
+      - run_document_extractor
+  - title: "Demo app"
+    contents:
+      - run_demo_app
+  - title: "Other"
+    contents:
+      - test_data
+
 navbar:
   components:
     articles:
