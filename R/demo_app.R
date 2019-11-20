@@ -38,10 +38,6 @@ run_demo_app <- function(...) {
     search_input_ <- user_options$search_input
     ui_options_ <- user_options$ui_options
 
-    if (is.null(plot_options_$colours)) {
-        plot_options_$colours <- "green"
-    }
-
     if (is.null(plot_options_$plot_size_factor)) {
         plot_options_$plot_size_factor <- 1.3
     }
