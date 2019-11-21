@@ -99,7 +99,7 @@ show_corpus_info_table <- function(search_arguments,
       Hits = as.integer(sum(value)),
       Documents = sum(value > 0)
     ) %>%
-    dplyr::mutate(Treshold = plyr::mapvalues(
+    dplyr::mutate(Threshold = plyr::mapvalues(
       Term,
       full_terms,
       tresh
@@ -114,7 +114,7 @@ show_corpus_info_table <- function(search_arguments,
 
   df <- dplyr::select(df,
     Term,
-    "Treshold?" = Treshold,
+    "Threshold?" = Threshold,
     "Custom column?" = Column,
     "Total hits" = Hits,
     "Found in no. of documents" = Documents,
@@ -122,8 +122,8 @@ show_corpus_info_table <- function(search_arguments,
     "Found in % of documents"
   )
 
-  if (all(is.na(df[["Treshold?"]]))) {
-    df[["Treshold?"]] <- NULL
+  if (all(is.na(df[["Threshold?"]]))) {
+    df[["Threshold?"]] <- NULL
   }
 
   if (all(is.na(df[["Custom column?"]]))) {
