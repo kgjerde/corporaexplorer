@@ -100,7 +100,7 @@ shinydashboard::dashboardSidebar(
         shiny::sliderInput(
             inputId = "PLOTSIZE",
             label = NULL,
-            min = 50,
+            min = 100,
             ticks = FALSE,
             step = 50,
             max = plot_size(loaded_data$original_data$data_dok,
