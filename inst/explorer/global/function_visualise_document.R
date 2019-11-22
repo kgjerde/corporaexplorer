@@ -14,20 +14,26 @@ visualiser_dok <-
            case_sensitive,
            my_colours = MY_COLOURS,
            tiles = DOCUMENT_TILES) {
+# browser()
+    # No document map for extremely short documents
+    if (nchar(.text$Text_original_case) < (tiles * 2)) {
+      return(NULL)
+    }
+
     if (case_sensitive == FALSE) {
       .text <- .text$Text
     } else if (case_sensitive == TRUE) {
       .text <- .text$Text_original_case
     }
-    
+
     if (USE_ONLY_RE2R == TRUE) {
       locate_all_function <- re2r::re2_locate_all
     } else if (USE_ONLY_RE2R == FALSE) {
       locate_all_function <- stringr::str_locate_all
     }
-    
+
     # Tar et vilkårlig antall .pattern-elementer
-    
+
     if (length(.pattern) == 0) {
       return(NULL)
     } else {
@@ -40,7 +46,7 @@ visualiser_dok <-
                                   .pattern[i]) %>% .[[1]] %>% .[, 1]
         sum_treff[[i]] <- length(word_loc[[i]])
       }
-      
+
       names(word_loc) <-
         stringr::str_trunc(.pattern, 25) %>%
         paste(sum_treff[seq_along(.pattern)], sep = " | ")
@@ -50,21 +56,21 @@ visualiser_dok <-
                                 .pattern) %>%
         .[[1]] %>%
         .[, 1]
-      
+
       lengde <- seq_len(nchar(.text))
-      
+
       ost <- list()
       for (i in seq_along(.pattern)) {
         ost[[i]] <- as.integer(lengde %in% word_loc[[i]])
       }
       names(ost) <- names(word_loc)
-      
+
       dok_tib <- tibble::tibble(Position = lengde)
       for (i in seq_along(.pattern)) {
         dok_tib <- cbind(dok_tib, ost[[i]])
       }
       colnames(dok_tib) <- c("Position", names(ost))
-      
+
       dok_tib$dekadille <- with(
         dok_tib,
         cut(
@@ -78,30 +84,30 @@ visualiser_dok <-
           labels = 1:tiles
         )
       )
-      
+
       dok_tib <- dok_tib %>%
         dplyr::select(-Position) %>%
         dplyr::group_by(dekadille) %>%
-      
+
         dplyr::summarise_all(sum)
       # Plotting
       dok_tib_2 <- dplyr::group_by(dok_tib, dekadille) %>%
         tidyr::gather(ord, N,-dekadille)
-      
+
       dok_tib_2$dekadille <- as.integer(dok_tib_2$dekadille)
-      
+
       dok_tib_2 <-
         dok_tib_2[nrow(dok_tib_2):1,] # snur på hodet for å få "riktig" rekkefølge...
-      
+
       dok_tib_2$ord <-
         factor(
           dok_tib_2$ord,
           levels = unique(dok_tib_2$ord),
           labels = unique(dok_tib_2$ord)
         )
-      
+
       dok_tib_2$N[dok_tib_2$N == 0] <- NA
-      
+
       g <-
         ggplot2::ggplot(dok_tib_2,
                         ggplot2::aes(
@@ -131,7 +137,7 @@ visualiser_dok <-
           rev(c("red", my_colours[1:length(.pattern)]))
         })) +
         ggplot2::theme(legend.position = "none")
-      
+
       g
     }
   }
