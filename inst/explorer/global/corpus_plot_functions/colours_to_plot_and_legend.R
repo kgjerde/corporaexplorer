@@ -6,18 +6,21 @@
 #' @param linjer Number of search terms.
 #' @param number_of_factors Number of factors for each search term.
 #' @param search_terms_exist The answer to !identical(search_arguments$search_terms, "")
+#' @param mode plot mode
 #'
 #' @return List of length 2: 1) df with column Term_colour for colour of each document/day, 2) df for legend.
 colours_to_plot_and_legend <- function(main_df,
                                        linjer,
                                        number_of_factors = NUMBER_OF_FACTORS,
-                                       search_terms_exist) {
+                                       search_terms_exist,
+                                       plot_mode) {
   legend_df <- create_legend_df_step_1(main_df)
 
   colour_schemes <- define_colours(
     legend_df = legend_df,
     linjer = linjer,
-    number_of_factors = number_of_factors
+    number_of_factors = number_of_factors,
+    plot_mode = plot_mode
   )
 
   legend_df <-
@@ -55,6 +58,16 @@ define_indices_in_colour_palette <-
         3:9,
         2:9
       )
+    return(fargeutvalg_vektor[seq_len(number_of_factors)])
+  }
+
+# Lighter colours for day_corpus
+define_indices_in_colour_palette_day <-
+  function(number_of_factors) {
+    fargeutvalg_vektor <- list(4,
+                               c(4, 6),
+                               4:6,
+                               3:6)
     return(fargeutvalg_vektor[seq_len(number_of_factors)])
   }
 
@@ -96,7 +109,8 @@ number_of_labels_for_each_term <- function(legend_df, linjer) {
 define_colours <- function(main_colours = MAIN_COLOURS,
                            legend_df,
                            linjer,
-                           number_of_factors) {
+                           number_of_factors,
+                           plot_mode) {
 
   # TODO: this 'main_colours' value means max 6 search terms
 
@@ -104,8 +118,13 @@ define_colours <- function(main_colours = MAIN_COLOURS,
 
   factor_length <- number_of_labels_for_each_term(legend_df, linjer)
 
-  colour_index <-
-    define_indices_in_colour_palette(number_of_factors)
+  if (plot_mode == "day") {
+    colour_index <-
+      define_indices_in_colour_palette_day(number_of_factors)
+  } else {
+    colour_index <-
+      define_indices_in_colour_palette(number_of_factors)
+  }
 
   colour_schemes <- list()
   length(colour_schemes) <- linjer

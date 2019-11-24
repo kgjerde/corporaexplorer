@@ -113,7 +113,12 @@ visualiser_korpus <-
 
 # 7. Assign colours to plot labels/factors (up to 2 terms) ----------------
 
-    temp_variable_for_unpacking <- colours_to_plot_and_legend(df, linjer, number_of_factors, !identical(search_arguments$search_terms, ""))
+    temp_variable_for_unpacking <-
+      colours_to_plot_and_legend(df,
+                                 linjer,
+                                 number_of_factors,
+                                 !identical(search_arguments$search_terms, ""),
+                                 plot_mode = modus)
     df <- temp_variable_for_unpacking[[1]]
     legend_df <- temp_variable_for_unpacking[[2]]
 
