@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • corporaexplorer</title>
+<title>Directly explore data frame or character vector — quickly_explore • corporaexplorer</title>
 
 
 <!-- jquery -->
@@ -37,7 +37,13 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Directly explore data frame or character vector — quickly_explore" />
+<meta property="og:description" content="Directly explore data frame or character vector
+  without first creating a corporaexplorerobject using
+  prepare_data().
+  Functionally equivalent to
+  run_corpus_explorer(prepare_data(dataset))" />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -66,7 +72,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -141,105 +147,69 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Directly explore data frame or character vector</h1>
+    <small class="dont-index">Source: <a href='https://github.com/kgjerde/corporaexplorer/blob/master/R/quickly_explore.R'><code>R/quickly_explore.R</code></a></small>
+    <div class="hidden name"><code>quickly_explore.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Directly explore data frame or character vector
+  without first creating a corporaexplorerobject using
+  <code><a href='prepare_data.html'>prepare_data()</a></code>.
+  Functionally equivalent to
+  <code><a href='run_corpus_explorer.html'>run_corpus_explorer(prepare_data(dataset))</a></code></p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>quickly_explore</span>(
+  <span class='no'>dataset</span>,
+  <span class='kw'>arguments_to_prepare_data</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
+  <span class='kw'>arguments_to_run_corpus_explorer</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>()
+)</pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-prepare-data" class="hasAnchor"><a href="#section-prepare-data" class="anchor"></a>Prepare data</h2>
-          <p class="section-desc"><p>Convert data frame or character vector to a ‘corporaexplorerobject’ for subsequent exploration.</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="prepare_data.html">prepare_data()</a></code> </p>
-        </td>
-        <td><p>Prepare data for corpus exploration</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="prepare_data.character.html">prepare_data(<i>&lt;character&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Method for preparing character vector for exploration</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-explore-data" class="hasAnchor"><a href="#section-explore-data" class="anchor"></a>Explore data</h2>
-          <p class="section-desc"><p>Explore a ‘corporaexplorerobject’ (or, with quickly_explore(), a data frame or character vector directly).</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="run_corpus_explorer.html">run_corpus_explorer()</a></code> </p>
-        </td>
-        <td><p>Launch Shiny app for exploration of text collection</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="quickly_explore.html">quickly_explore()</a></code> </p>
-        </td>
-        <td><p>Directly explore data frame or character vector</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="run_document_extractor.html">run_document_extractor()</a></code> </p>
-        </td>
-        <td><p>Launch Shiny app for retrieval of documents from text collection</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-demo-app" class="hasAnchor"><a href="#section-demo-app" class="anchor"></a>Demo app</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="run_demo_app.html">run_demo_app()</a></code> <code><a href="run_demo_app.html">create_demo_app()</a></code> </p>
-        </td>
-        <td><p>Demo app: Jane Austen's novels</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-other" class="hasAnchor"><a href="#section-other" class="anchor"></a>Other</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="test_data.html">test_data</a></code> </p>
-        </td>
-        <td><p>A tiny test dataset to test basic functionality</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>dataset</th>
+      <td><p>Data frame or character vector as specified in <code><a href='prepare_data.html'>prepare_data()</a></code></p></td>
+    </tr>
+    <tr>
+      <th>arguments_to_prepare_data</th>
+      <td><p>List. Further arguments to be passed to
+<code><a href='prepare_data.html'>prepare_data()</a></code></p></td>
+    </tr>
+    <tr>
+      <th>arguments_to_run_corpus_explorer</th>
+      <td><p>List. Further arguments to be passed to
+<code><a href='run_corpus_explorer.html'>run_corpus_explorer()</a></code></p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Launches a Shiny app.</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) {
+
+<span class='fu'>quickly_explore</span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='no'>LETTERS</span>), <span class='fl'>10</span>))
+
+<span class='fu'>quickly_explore</span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='no'>LETTERS</span>), <span class='fl'>10</span>),
+  <span class='kw'>arguments_to_run_corpus_explorer</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>search_input</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>search_terms</span> <span class='kw'>=</span> <span class='st'>"Z"</span>))
+)
+
+}</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-prepare-data">Prepare data</a></li>
-      <li><a href="#section-explore-data">Explore data</a></li>
-      <li><a href="#section-demo-app">Demo app</a></li>
-      <li><a href="#section-other">Other</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
+
   </div>
 </div>
 
