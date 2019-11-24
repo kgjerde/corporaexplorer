@@ -2,7 +2,7 @@
 % Please edit documentation in R/prepare_data.R
 \name{prepare_data.character}
 \alias{prepare_data.character}
-\title{Quickly explore character vector}
+\title{Method for preparing character vector for exploration}
 \usage{
 \method{prepare_data}{character}(dataset, ...)
 }

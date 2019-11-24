@@ -334,7 +334,7 @@ prepare_data <- function(dataset, ...) {
 #' titles <- paste("Text", 1:10)
 #' test_df <- tibble::tibble(Date = dates, Text = texts, Title = titles)
 #'
-#' # Converting to corporaexplorer object:
+#' # Converting to corporaexplorerobject:
 #' corpus <- prepare_data(test_df, corpus_name = "Test corpus")
 #'
 #' if(interactive()){
@@ -542,7 +542,7 @@ prepare_data.data.frame <- function(dataset,
 
 # Method for character  ---------------------------------------------------
 
-#' Quickly explore character vector
+#' Method for preparing character vector for exploration
 #'
 #' Quick convertion of character vector to simple corporaexplorerobject
 #'   with no metadata.

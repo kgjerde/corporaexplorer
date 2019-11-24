@@ -107,7 +107,7 @@ texts <- paste0(
 titles <- paste("Text", 1:10)
 test_df <- tibble::tibble(Date = dates, Text = texts, Title = titles)
 
-# Converting to corporaexplorer object:
+# Converting to corporaexplorerobject:
 corpus <- prepare_data(test_df, corpus_name = "Test corpus")
 
 if(interactive()){
