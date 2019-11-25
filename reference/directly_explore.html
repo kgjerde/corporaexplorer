@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Demo app: Jane Austen's novels — run_demo_app • corporaexplorer</title>
+<title>Directly explore data frame or character vector — directly_explore • corporaexplorer</title>
 
 
 <!-- jquery -->
@@ -37,11 +37,13 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Demo app: Jane Austen's novels — run_demo_app" />
-<meta property="og:description" content="run_demo_app() is a convenience function to directly
-  run the demo app without first creating
-  a corporaexplorerobject.
-  Equals run_corpus_explorer(create_demo_app).
+<meta property="og:title" content="Directly explore data frame or character vector — directly_explore" />
+<meta property="og:description" content="Function to directly explore data frame or character vector
+  without first creating a corporaexplorerobject using
+  prepare_data(), instead creating one on the fly as the app
+  launches.
+  Functionally equivalent to
+  run_corpus_explorer(prepare_data(dataset, use_matrix = FALSE)).
   Interrupt R to stop the
   application (usually by pressing Ctrl+C or Esc)." />
 <meta name="twitter:card" content="summary" />
@@ -150,57 +152,67 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Demo app: Jane Austen's novels</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kgjerde/corporaexplorer/blob/master/R/demo_app.R'><code>R/demo_app.R</code></a></small>
-    <div class="hidden name"><code>run_demo_app.Rd</code></div>
+    <h1>Directly explore data frame or character vector</h1>
+    <small class="dont-index">Source: <a href='https://github.com/kgjerde/corporaexplorer/blob/master/R/directly_explore.R'><code>R/directly_explore.R</code></a></small>
+    <div class="hidden name"><code>directly_explore.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>run_demo_app()</code> is a convenience function to directly
-  run the demo app without first creating
-  a corporaexplorerobject.
-  Equals <code><a href='run_corpus_explorer.html'>run_corpus_explorer(create_demo_app)</a></code>.
+    <p>Function to directly explore data frame or character vector
+  without first creating a corporaexplorerobject using
+  <code><a href='prepare_data.html'>prepare_data()</a></code>, instead creating one on the fly as the app
+  launches.
+  Functionally equivalent to
+  <code><a href='run_corpus_explorer.html'>run_corpus_explorer(prepare_data(dataset, use_matrix = FALSE))</a></code>.
   Interrupt R to stop the
   application (usually by pressing Ctrl+C or Esc).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>run_demo_app</span>(<span class='no'>...</span>)
-
-<span class='fu'>create_demo_app</span>()</pre>
+    <pre class="usage"><span class='fu'>directly_explore</span>(
+  <span class='no'>dataset</span>,
+  <span class='kw'>arguments_to_prepare_data</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>use_matrix</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>),
+  <span class='kw'>arguments_to_run_corpus_explorer</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>()
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>...</th>
-      <td><p>Arguments passed to <code><a href='run_corpus_explorer.html'>run_corpus_explorer()</a></code></p></td>
+      <th>dataset</th>
+      <td><p>Data frame or character vector as specified in <code><a href='prepare_data.html'>prepare_data()</a></code></p></td>
+    </tr>
+    <tr>
+      <th>arguments_to_prepare_data</th>
+      <td><p>List. Arguments to be passed to
+<code><a href='prepare_data.html'>prepare_data()</a></code> in order to overrule this function's
+default argument values.</p></td>
+    </tr>
+    <tr>
+      <th>arguments_to_run_corpus_explorer</th>
+      <td><p>List. Arguments to be passed to
+<code><a href='run_corpus_explorer.html'>run_corpus_explorer()</a></code> in order to overrule this function's
+default argument values.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>run_demo_app()</code> launches a Shiny app. <code>create_demo_app()</code> returns
-  a corporaexplorerobject.</p>
+    <p>Launches a Shiny app.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The demo app's data are Jane Austen's six novels, retrieved
-  through the "janeaustenr" package
-  (<a href='https://github.com/juliasilge/janeaustenr'>https://github.com/juliasilge/janeaustenr</a>) --
-  which must be installed for these functions to work --
-  and converted to a corporaexplorerobject as shown at
-  <a href='https://kgjerde.github.io/corporaexplorer/articles/jane_austen.html'>https://kgjerde.github.io/corporaexplorer/articles/jane_austen.html</a>.</p>
+    <p>By default, no document term matrix will be generated,
+  meaning that the data will be prepared for exploration faster than
+  by using the default settings in <code><a href='prepare_data.html'>prepare_data()</a></code>,
+  but also that searches in the app are likely to be slower.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Create corporaexplorerobject for demo app:</span>
-<span class='no'>jane_austen</span> <span class='kw'>&lt;-</span> <span class='fu'>create_demo_app</span>()</div><div class='output co'>#&gt; <span class='message'>Starting.</span></div><div class='output co'>#&gt; <span class='message'>Document data frame done.</span></div><div class='output co'>#&gt; <span class='message'>Corpus is not date based. Calendar data frame skipped.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix: text processed.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix: tokenising completed.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix: word list created.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix done.</span></div><div class='output co'>#&gt; <span class='message'>Done.</span></div><div class='input'>
-<span class='kw'>if</span>(<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()){
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) {
 
-<span class='co'>## Run the corporaexplorerobject:</span>
-<span class='fu'><a href='run_corpus_explorer.html'>run_corpus_explorer</a></span>(<span class='no'>jane_austen</span>)
+<span class='fu'>directly_explore</span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='no'>LETTERS</span>), <span class='fl'>10</span>))
 
-<span class='co'>## Or create and run the demo app in one step:</span>
-
-<span class='fu'>run_demo_app</span>()
+<span class='fu'>directly_explore</span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span>(<span class='no'>LETTERS</span>), <span class='fl'>10</span>),
+  <span class='kw'>arguments_to_run_corpus_explorer</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>search_input</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>search_terms</span> <span class='kw'>=</span> <span class='st'>"Z"</span>))
+)
 
 }</div></pre>
   </div>
