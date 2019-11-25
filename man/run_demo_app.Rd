@@ -21,12 +21,14 @@ create_demo_app()
   run the demo app without first creating
   a corporaexplorerobject.
   Equals \code{run_corpus_explorer(create_demo_app)}.
+  Interrupt R to stop the
+  application (usually by pressing Ctrl+C or Esc).
 }
 \details{
 The demo app's data are Jane Austen's six novels, retrieved
   through the "janeaustenr" package
   (\url{https://github.com/juliasilge/janeaustenr}) --
-  which must be installed for these functions to run --
+  which must be installed for these functions to work --
   and converted to a corporaexplorerobject as shown at
   \url{https://kgjerde.github.io/corporaexplorer/articles/jane_austen.html}.
 }
