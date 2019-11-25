@@ -38,7 +38,8 @@
   
 
 <meta property="og:title" content="Prepare data for corpus exploration — prepare_data" />
-<meta property="og:description" content="Prepare data for corpus exploration" />
+<meta property="og:description" content="Quick convertion of character vector to simple corporaexplorerobject
+  with no metadata." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -151,7 +152,8 @@
     </div>
 
     <div class="ref-description">
-    <p>Prepare data for corpus exploration</p>
+    <p>Quick convertion of character vector to simple corporaexplorerobject
+  with no metadata.</p>
     </div>
 
     <pre class="usage"><span class='fu'>prepare_data</span>(<span class='no'>dataset</span>, <span class='no'>...</span>)
@@ -167,6 +169,16 @@
   <span class='kw'>normalise</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>matrix_without_punctuation</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='no'>...</span>
+)
+
+<span class='co'># S3 method for character</span>
+<span class='fu'>prepare_data</span>(
+  <span class='no'>dataset</span>,
+  <span class='kw'>corpus_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>use_matrix</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>normalise</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>matrix_without_punctuation</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='no'>...</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -174,15 +186,17 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>dataset</th>
-      <td><p>Object to be converted to a corporaexplorerobject.
-Converts a data frame with a column "Text" (class
-character), and optionally other columns.
-If <code>date_based_corpus</code> is <code>TRUE</code> (the default),
-<code>dataset</code> must contain a column "Date" (of class Date).</p></td>
+      <td><p>Object to convert to corporaexplorerobject:</p><ul>
+<li><p>A data frame with a column "Text" (class
+  character), and optionally other columns.
+  If <code>date_based_corpus</code> is <code>TRUE</code> (the default),
+  <code>dataset</code> must contain a column "Date" (of class Date).</p></li>
+<li><p>Or a non-empty character vector.</p></li>
+</ul></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Ignored.</p></td>
+      <td><p>Other arguments to be passed to <code>prepare_data</code>.</p></td>
     </tr>
     <tr>
       <th>date_based_corpus</th>
@@ -251,9 +265,9 @@ the <code>use_matrix</code> parameter to <code>FALSE</code>, or run
   <code><a href='run_document_extractor.html'>run_document_extractor</a></code>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Each row in <code>dataset</code> is treated as a base differentiating unit in the corpus,
-  typically chapters in books, or a single document in document collections.</p>
-<p>The following column names are reserved and cannot be used in <code>dataset</code>:
+    <p>For data.frame: Each row in <code>dataset</code> is treated as a base differentiating unit in the corpus,
+  typically chapters in books, or a single document in document collections.
+  The following column names are reserved and cannot be used in <code>dataset</code>:
   "ID",
   "Text_original_case",
   "Tile_length",
@@ -263,9 +277,12 @@ the <code>use_matrix</code> parameter to <code>FALSE</code>, or run
   "Day_without_docs",
   "Invisible_fake_date",
   "Tile_length".</p>
+<p>A character vector will be converted to a simple corporaexplorerobject
+  with no metadata.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Constructing test data frame:</span>
+    <pre class="examples"><div class='input'><span class='co'>## From data.frame</span>
+<span class='co'># Constructing test data frame:</span>
 <span class='no'>dates</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='fl'>2011</span>:<span class='fl'>2020</span>, <span class='fl'>1</span>:<span class='fl'>10</span>, <span class='fl'>21</span>:<span class='fl'>30</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"-"</span>))
 <span class='no'>texts</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span>(
   <span class='st'>"This is a document about "</span>, <span class='no'>month.name</span>[<span class='fl'>1</span>:<span class='fl'>10</span>], <span class='st'>". "</span>,
@@ -282,6 +299,13 @@ the <code>use_matrix</code> parameter to <code>FALSE</code>, or run
 
 <span class='co'># Running app to extract documents:</span>
 <span class='fu'><a href='run_document_extractor.html'>run_document_extractor</a></span>(<span class='no'>corpus</span>)
+}
+
+<span class='co'>## From character vector</span>
+<span class='no'>alphabet_corpus</span> <span class='kw'>&lt;-</span> <span class='fu'>prepare_data</span>(<span class='no'>LETTERS</span>)</div><div class='output co'>#&gt; <span class='message'>Starting.</span></div><div class='output co'>#&gt; <span class='message'>Document data frame done.</span></div><div class='output co'>#&gt; <span class='message'>Corpus is not date based. Calendar data frame skipped.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix: text processed.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix: tokenising completed.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix: word list created.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix done.</span></div><div class='output co'>#&gt; <span class='message'>Done.</span></div><div class='input'>
+<span class='kw'>if</span>(<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()){
+<span class='co'># Running exploration app:</span>
+<span class='fu'><a href='run_corpus_explorer.html'>run_corpus_explorer</a></span>(<span class='no'>alphabet_corpus</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
