@@ -1,8 +1,9 @@
 #' Directly explore data frame or character vector
 #'
-#' Directly explore data frame or character vector
+#' Function to directly explore data frame or character vector
 #'   without first creating a corporaexplorerobject using
-#'   \code{prepare_data()}.
+#'   \code{prepare_data()}, instead creating one on the fly as the app
+#'   launches.
 #'   Functionally equivalent to
 #'   \code{run_corpus_explorer(prepare_data(dataset, use_matrix = FALSE))}.
 #'   Interrupt R to stop the
@@ -27,14 +28,14 @@
 #' @examples
 #' if (interactive()) {
 #'
-#' quickly_explore(rep(sample(LETTERS), 10))
+#' directly_explore(rep(sample(LETTERS), 10))
 #'
-#' quickly_explore(rep(sample(LETTERS), 10),
+#' directly_explore(rep(sample(LETTERS), 10),
 #'   arguments_to_run_corpus_explorer = list(search_input = list(search_terms = "Z"))
 #' )
 #'
 #' }
-quickly_explore <- function(dataset,
+directly_explore <- function(dataset,
          arguments_to_prepare_data = list(use_matrix = FALSE),
          arguments_to_run_corpus_explorer = list()) {
     # Step 1

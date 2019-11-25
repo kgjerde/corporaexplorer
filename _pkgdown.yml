@@ -6,10 +6,10 @@ reference:
     contents:
       - prepare_data
   - title: "Explore data"
-    desc: "Explore a 'corporaexplorerobject' (or, with quickly_explore(), a data frame or character vector directly)."
+    desc: "Explore a 'corporaexplorerobject' (or, with directly_explore(), a data frame or character vector directly)."
     contents:
       - run_corpus_explorer
-      - quickly_explore
+      - directly_explore
       - run_document_extractor
   - title: "Demo app"
     contents:
