@@ -5,24 +5,10 @@
 #' @param df Data frame with Date column (Date), Text column (character), and
 #'   optionally Title (character), URL (character), and Type (character)
 #'   columns.
-#' @param normalise Should non-breaking spaces (U+00A0) and soft hyphens
-#'   (U+00ad) be normalised?
 #' @return A tibble ("data_dok")
 #' @keywords internal
-transform_regular <- function(df, normalise = TRUE) {
+transform_regular <- function(df) {
   message("Starting.")
-
-  if (normalise == TRUE) {
-    for (i in seq_along(df)) {
-      # Only for character columns
-      if (is.character(df[[i]])) {
-        ## På grunn av non-breaking-spaces:
-        df[[i]] <- gsub("\u00A0", " ", df[[i]], fixed = TRUE)
-        ## And "soft hyphens"
-        df[[i]] <- gsub("\u00ad", "", df[[i]], fixed = TRUE)
-      }
-    }
-  }
 
   df <- dplyr::arrange(df, Date)
 
@@ -353,7 +339,6 @@ prepare_data.data.frame <- function(dataset,
                          columns_doc_info = c("Date", "Title", "URL"),
                          corpus_name = NULL,
                          use_matrix = TRUE,
-                         normalise = TRUE,
                          matrix_without_punctuation = TRUE,
                          ...) {
 
@@ -363,7 +348,6 @@ prepare_data.data.frame <- function(dataset,
   if (!all(is.logical(c(
     date_based_corpus,
     use_matrix,
-    normalise,
     matrix_without_punctuation
   )))) {
     stop(
@@ -475,10 +459,7 @@ prepare_data.data.frame <- function(dataset,
 
 # The main function proper ------------------------------------------------
 
-  abc <- transform_regular(
-    dataset,
-    normalise
-  )
+  abc <- transform_regular(dataset)
 
   if (date_based_corpus == TRUE) {
     abc_365 <- transform_365(abc)
@@ -577,7 +558,6 @@ prepare_data.character <-
   function(dataset,
            corpus_name = NULL,
            use_matrix = TRUE,
-           normalise = TRUE,
            matrix_without_punctuation = TRUE,
            ...) {
     data <- tibble::tibble(Text = dataset)
@@ -586,7 +566,6 @@ prepare_data.character <-
       FALSE,
       corpus_name = corpus_name,
       use_matrix = use_matrix,
-      normalise = normalise,
       matrix_without_punctuation = matrix_without_punctuation,
       ...
     )

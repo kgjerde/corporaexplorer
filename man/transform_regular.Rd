@@ -4,15 +4,12 @@
 \alias{transform_regular}
 \title{Adjusts data frame to corporaexplorer format}
 \usage{
-transform_regular(df, normalise = TRUE)
+transform_regular(df)
 }
 \arguments{
 \item{df}{Data frame with Date column (Date), Text column (character), and
 optionally Title (character), URL (character), and Type (character)
 columns.}
-
-\item{normalise}{Should non-breaking spaces (U+00A0) and soft hyphens
-(U+00ad) be normalised?}
 }
 \value{
 A tibble ("data_dok")

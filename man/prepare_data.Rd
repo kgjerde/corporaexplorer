@@ -15,7 +15,6 @@ prepare_data(dataset, ...)
   columns_doc_info = c("Date", "Title", "URL"),
   corpus_name = NULL,
   use_matrix = TRUE,
-  normalise = TRUE,
   matrix_without_punctuation = TRUE,
   ...
 )
@@ -24,7 +23,6 @@ prepare_data(dataset, ...)
   dataset,
   corpus_name = NULL,
   use_matrix = TRUE,
-  normalise = TRUE,
   matrix_without_punctuation = TRUE,
   ...
 )
@@ -62,9 +60,6 @@ present in dataset, it will be ignored.}
 for fast searching? If \code{TRUE}, data preparation will run longer and demand
 more memory. If \code{FALSE}, the returning corporaexplorerobject will be more light-weight, but
 searching will be slower.}
-
-\item{normalise}{Should non-breaking spaces (U+00A0) and soft hyphens
-(U+00ad) be normalised?}
 
 \item{matrix_without_punctuation}{Should punctuation and digits be stripped
   from the text before constructing the document term matrix? If \code{TRUE},
