@@ -6,18 +6,20 @@
 \usage{
 quickly_explore(
   dataset,
-  arguments_to_prepare_data = list(),
+  arguments_to_prepare_data = list(use_matrix = FALSE),
   arguments_to_run_corpus_explorer = list()
 )
 }
 \arguments{
 \item{dataset}{Data frame or character vector as specified in \code{prepare_data()}}
 
-\item{arguments_to_prepare_data}{List. Further arguments to be passed to
-\code{prepare_data()}}
+\item{arguments_to_prepare_data}{List. Arguments to be passed to
+\code{prepare_data()} in order to overrule this function's
+default argument values.}
 
-\item{arguments_to_run_corpus_explorer}{List. Further arguments to be passed to
-\code{run_corpus_explorer()}}
+\item{arguments_to_run_corpus_explorer}{List. Arguments to be passed to
+\code{run_corpus_explorer()} in order to overrule this function's
+default argument values.}
 }
 \value{
 Launches a Shiny app.
@@ -27,7 +29,15 @@ Directly explore data frame or character vector
   without first creating a corporaexplorerobject using
   \code{prepare_data()}.
   Functionally equivalent to
-  \code{run_corpus_explorer(prepare_data(dataset))}
+  \code{run_corpus_explorer(prepare_data(dataset, use_matrix = FALSE))}.
+  Interrupt R to stop the
+  application (usually by pressing Ctrl+C or Esc).
+}
+\details{
+By default, no document term matrix will be generated,
+  meaning that the data will be prepared for exploration faster than
+  by using the default settings in \code{prepare_data()},
+  but also that searches in the app are likely to be slower.
 }
 \examples{
 if (interactive()) {
