@@ -274,6 +274,9 @@ get_term_vector <- function(returned_list) {
 
 #' Prepare data for corpus exploration
 #'
+#' Convert data frame or character vector to a ‘corporaexplorerobject’
+#'   for subsequent exploration.
+#'
 #' @param ... Ignored.
 #' @return A \code{corporaexplorer} object to be passed as argument to
 #'   \code{\link[corporaexplorer]{run_corpus_explorer}} and
@@ -543,9 +546,6 @@ prepare_data.data.frame <- function(dataset,
 # Method for character  ---------------------------------------------------
 
 #' Method for preparing character vector for exploration
-#'
-#' Quick convertion of character vector to simple corporaexplorerobject
-#'   with no metadata.
 #'
 #' @rdname prepare_data
 #' @param dataset Object to convert to corporaexplorerobject:

@@ -93,8 +93,8 @@ A \code{corporaexplorer} object to be passed as argument to
   \code{\link[corporaexplorer]{run_document_extractor}}.
 }
 \description{
-Quick convertion of character vector to simple corporaexplorerobject
-  with no metadata.
+Convert data frame or character vector to a ‘corporaexplorerobject’
+  for subsequent exploration.
 }
 \details{
 For data.frame: Each row in \code{dataset} is treated as a base differentiating unit in the corpus,
