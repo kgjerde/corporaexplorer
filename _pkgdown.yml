@@ -5,7 +5,6 @@ reference:
     desc : "Convert data frame or character vector to a 'corporaexplorerobject' for subsequent exploration."
     contents:
       - prepare_data
-      - prepare_data.character
   - title: "Explore data"
     desc: "Explore a 'corporaexplorerobject' (or, with quickly_explore(), a data frame or character vector directly)."
     contents:
