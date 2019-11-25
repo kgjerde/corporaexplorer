@@ -3,6 +3,7 @@
 \name{prepare_data}
 \alias{prepare_data}
 \alias{prepare_data.data.frame}
+\alias{prepare_data.character}
 \title{Prepare data for corpus exploration}
 \usage{
 prepare_data(dataset, ...)
@@ -18,15 +19,27 @@ prepare_data(dataset, ...)
   matrix_without_punctuation = TRUE,
   ...
 )
+
+\method{prepare_data}{character}(
+  dataset,
+  corpus_name = NULL,
+  use_matrix = TRUE,
+  normalise = TRUE,
+  matrix_without_punctuation = TRUE,
+  ...
+)
 }
 \arguments{
-\item{dataset}{Object to be converted to a corporaexplorerobject.
-Converts a data frame with a column "Text" (class
-character), and optionally other columns.
-If \code{date_based_corpus} is \code{TRUE} (the default),
-\code{dataset} must contain a column "Date" (of class Date).}
+\item{dataset}{Object to convert to corporaexplorerobject:
+  \itemize{
+  \item A data frame with a column "Text" (class
+  character), and optionally other columns.
+  If \code{date_based_corpus} is \code{TRUE} (the default),
+  \code{dataset} must contain a column "Date" (of class Date).
+  \item Or a non-empty character vector.
+}}
 
-\item{...}{Ignored.}
+\item{...}{Other arguments to be passed to \code{prepare_data}.}
 
 \item{date_based_corpus}{Logical. Set to \code{FALSE} if the corpus
 is not to be organised according to document dates.}
@@ -80,12 +93,12 @@ A \code{corporaexplorer} object to be passed as argument to
   \code{\link[corporaexplorer]{run_document_extractor}}.
 }
 \description{
-Prepare data for corpus exploration
+Quick convertion of character vector to simple corporaexplorerobject
+  with no metadata.
 }
 \details{
-Each row in \code{dataset} is treated as a base differentiating unit in the corpus,
+For data.frame: Each row in \code{dataset} is treated as a base differentiating unit in the corpus,
   typically chapters in books, or a single document in document collections.
-
   The following column names are reserved and cannot be used in \code{dataset}:
   "ID",
   "Text_original_case",
@@ -96,8 +109,12 @@ Each row in \code{dataset} is treated as a base differentiating unit in the corp
   "Day_without_docs",
   "Invisible_fake_date",
   "Tile_length".
+
+A character vector will be converted to a simple corporaexplorerobject
+  with no metadata.
 }
 \examples{
+## From data.frame
 # Constructing test data frame:
 dates <- as.Date(paste(2011:2020, 1:10, 21:30, sep = "-"))
 texts <- paste0(
@@ -116,5 +133,13 @@ run_corpus_explorer(corpus)
 
 # Running app to extract documents:
 run_document_extractor(corpus)
+}
+
+## From character vector
+alphabet_corpus <- prepare_data(LETTERS)
+
+if(interactive()){
+# Running exploration app:
+run_corpus_explorer(alphabet_corpus)
 }
 }

@@ -275,6 +275,9 @@ get_term_vector <- function(returned_list) {
 #' Prepare data for corpus exploration
 #'
 #' @param ... Ignored.
+#' @return A \code{corporaexplorer} object to be passed as argument to
+#'   \code{\link[corporaexplorer]{run_corpus_explorer}} and
+#'   \code{\link[corporaexplorer]{run_document_extractor}}.
 #' @export
 prepare_data <- function(dataset, ...) {
    UseMethod("prepare_data")
@@ -308,9 +311,8 @@ prepare_data <- function(dataset, ...) {
 #'   searching will be slower.
 #' @inheritParams transform_regular
 #' @inheritParams matrix_via_r
-#' @details Each row in \code{dataset} is treated as a base differentiating unit in the corpus,
+#' @details For data.frame: Each row in \code{dataset} is treated as a base differentiating unit in the corpus,
 #'   typically chapters in books, or a single document in document collections.
-#'
 #'   The following column names are reserved and cannot be used in \code{dataset}:
 #'   "ID",
 #'   "Text_original_case",
@@ -321,10 +323,8 @@ prepare_data <- function(dataset, ...) {
 #'   "Day_without_docs",
 #'   "Invisible_fake_date",
 #'   "Tile_length".
-#' @return A \code{corporaexplorer} object to be passed as argument to
-#'   \code{\link[corporaexplorer]{run_corpus_explorer}} and
-#'   \code{\link[corporaexplorer]{run_document_extractor}}.
 #' @examples
+#' ## From data.frame
 #' # Constructing test data frame:
 #' dates <- as.Date(paste(2011:2020, 1:10, 21:30, sep = "-"))
 #' texts <- paste0(
@@ -547,23 +547,50 @@ prepare_data.data.frame <- function(dataset,
 #' Quick convertion of character vector to simple corporaexplorerobject
 #'   with no metadata.
 #'
-#' @param dataset A non-empty character vector.
+#' @rdname prepare_data
+#' @param dataset Object to convert to corporaexplorerobject:
+#'   \itemize{
+#'   \item A data frame with a column "Text" (class
+#'   character), and optionally other columns.
+#'   If \code{date_based_corpus} is \code{TRUE} (the default),
+#'   \code{dataset} must contain a column "Date" (of class Date).
+#'   \item Or a non-empty character vector.
+#' }
 #' @param ... Other arguments to be passed to \code{prepare_data}.
-#'
-#' @return A corporaexplorerobject.
+#' @inheritParams prepare_data.data.frame
 #' @export
 #'
+#' @details
+#' A character vector will be converted to a simple corporaexplorerobject
+#'   with no metadata.
+#'
 #' @examples
+#'
+#' ## From character vector
 #' alphabet_corpus <- prepare_data(LETTERS)
 #'
 #' if(interactive()){
 #' # Running exploration app:
 #' run_corpus_explorer(alphabet_corpus)
 #' }
-prepare_data.character <- function(dataset, ...) {
-  data <- tibble::tibble(Text = dataset)
-  prepare_data.data.frame(data, FALSE, ...)
-}
+prepare_data.character <-
+  function(dataset,
+           corpus_name = NULL,
+           use_matrix = TRUE,
+           normalise = TRUE,
+           matrix_without_punctuation = TRUE,
+           ...) {
+    data <- tibble::tibble(Text = dataset)
+    prepare_data.data.frame(
+      data,
+      FALSE,
+      corpus_name = corpus_name,
+      use_matrix = use_matrix,
+      normalise = normalise,
+      matrix_without_punctuation = matrix_without_punctuation,
+      ...
+    )
+  }
 
 #' Print corporaexplorerobject
 #'
