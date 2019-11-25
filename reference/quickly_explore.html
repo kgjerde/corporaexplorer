@@ -42,7 +42,9 @@
   without first creating a corporaexplorerobject using
   prepare_data().
   Functionally equivalent to
-  run_corpus_explorer(prepare_data(dataset))" />
+  run_corpus_explorer(prepare_data(dataset, use_matrix = FALSE)).
+  Interrupt R to stop the
+  application (usually by pressing Ctrl+C or Esc)." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -159,12 +161,14 @@
   without first creating a corporaexplorerobject using
   <code><a href='prepare_data.html'>prepare_data()</a></code>.
   Functionally equivalent to
-  <code><a href='run_corpus_explorer.html'>run_corpus_explorer(prepare_data(dataset))</a></code></p>
+  <code><a href='run_corpus_explorer.html'>run_corpus_explorer(prepare_data(dataset, use_matrix = FALSE))</a></code>.
+  Interrupt R to stop the
+  application (usually by pressing Ctrl+C or Esc).</p>
     </div>
 
     <pre class="usage"><span class='fu'>quickly_explore</span>(
   <span class='no'>dataset</span>,
-  <span class='kw'>arguments_to_prepare_data</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
+  <span class='kw'>arguments_to_prepare_data</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>use_matrix</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>),
   <span class='kw'>arguments_to_run_corpus_explorer</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>()
 )</pre>
 
@@ -177,19 +181,27 @@
     </tr>
     <tr>
       <th>arguments_to_prepare_data</th>
-      <td><p>List. Further arguments to be passed to
-<code><a href='prepare_data.html'>prepare_data()</a></code></p></td>
+      <td><p>List. Arguments to be passed to
+<code><a href='prepare_data.html'>prepare_data()</a></code> in order to overrule this function's
+default argument values.</p></td>
     </tr>
     <tr>
       <th>arguments_to_run_corpus_explorer</th>
-      <td><p>List. Further arguments to be passed to
-<code><a href='run_corpus_explorer.html'>run_corpus_explorer()</a></code></p></td>
+      <td><p>List. Arguments to be passed to
+<code><a href='run_corpus_explorer.html'>run_corpus_explorer()</a></code> in order to overrule this function's
+default argument values.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Launches a Shiny app.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>By default, no document term matrix will be generated,
+  meaning that the data will be prepared for exploration faster than
+  by using the default settings in <code><a href='prepare_data.html'>prepare_data()</a></code>,
+  but also that searches in the app are likely to be slower.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) {
@@ -207,6 +219,7 @@
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 

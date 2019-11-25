@@ -166,7 +166,6 @@
   <span class='kw'>columns_doc_info</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Date"</span>, <span class='st'>"Title"</span>, <span class='st'>"URL"</span>),
   <span class='kw'>corpus_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>use_matrix</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>normalise</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>matrix_without_punctuation</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='no'>...</span>
 )
@@ -176,7 +175,6 @@
   <span class='no'>dataset</span>,
   <span class='kw'>corpus_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>use_matrix</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>normalise</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>matrix_without_punctuation</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='no'>...</span>
 )</pre>
@@ -229,11 +227,6 @@ present in dataset, it will be ignored.</p></td>
 for fast searching? If <code>TRUE</code>, data preparation will run longer and demand
 more memory. If <code>FALSE</code>, the returning corporaexplorerobject will be more light-weight, but
 searching will be slower.</p></td>
-    </tr>
-    <tr>
-      <th>normalise</th>
-      <td><p>Should non-breaking spaces (U+00A0) and soft hyphens
-(U+00ad) be normalised?</p></td>
     </tr>
     <tr>
       <th>matrix_without_punctuation</th>
