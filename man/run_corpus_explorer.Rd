@@ -72,7 +72,7 @@ run_corpus_explorer(
      height. Value > 1 increases height, value < 1 decreases height.
      Ignored if value <= 0.
     \item \code{documents_per_row_factor}. Numeric. Tweaks the number of
-     documents included in each row in 'document wall' view. Value > 1
+      documents included in each row in 'document wall' view. Value > 1
       increases number of documents, value < 1 decreases number of
       documents. Ignored if value <= 0.
     \item \code{document_tiles}. Integer specifying the number of tiles
@@ -88,6 +88,12 @@ run_corpus_explorer(
      \code{c("gray", "green", "red", "blue", "purple", "orange")}.
      Arguments with duplicated colours or with colours not present in the
      default character vector will be ignored.
+    \item \code{tile_length}. Either \code{"scaled"} or \code{"uniform"}.
+      With \code{"scaled"}, the default, the length of the
+      tiles in document wall view and day corpus view
+      will vary according to length of document
+      (see the \code{tile_length_range} argument in \code{prepare_data()}).
+      If \code{"uniform"}, all tiles will be of equal length.
      }}
 
 \item{...}{Other arguments passed to \code{\link[shiny]{runApp}} in the Shiny

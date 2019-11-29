@@ -122,6 +122,12 @@ if (!is.null(plot_options$colours)) {
 }
 MY_COLOURS <- rep(MAIN_COLOURS, 10)
 
+if (!is.null(plot_options$tile_length)) {
+    if (plot_options$tile_length == "uniform") {
+        loaded_data$original_data$data_dok$Tile_length <- 1
+    }
+}
+
 # Pre-filled sidebar input from function argument -------------------------
 
 source("./config/sidebar_input_values_from_function_call.R", local = TRUE)
