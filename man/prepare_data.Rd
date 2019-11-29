@@ -12,6 +12,7 @@ prepare_data(dataset, ...)
   dataset,
   date_based_corpus = TRUE,
   grouping_variable = NULL,
+  within_group_identifier = "Seq",
   columns_doc_info = c("Date", "Title", "URL"),
   corpus_name = NULL,
   use_matrix = TRUE,
@@ -47,6 +48,12 @@ If \code{date_based_corpus} is \code{TRUE}, this argument is ignored.
 If \code{date_based_corpus} is \code{FALSE}, this argument can be used
 to group the documents, e.g. if \code{dataset} is organised by chapters
 belonging to different books.}
+
+\item{within_group_identifier}{Character string indicating column name in \code{dataset}.
+\code{"Seq"}, the default, means the rows in each group are assigned
+a numeric sequence 1:n where n is the number of rows in the group.
+Used in document tab title in non-date based corpora.
+If \code{date_based_corpus} is \code{TRUE}, this argument is ignored.}
 
 \item{columns_doc_info}{Character vector. The columns from \code{dataset} to display in
 the "document information" tab in the corpus exploration app. By default
