@@ -39,9 +39,9 @@ directly_explore <- function(dataset,
          arguments_to_prepare_data = list(use_matrix = FALSE),
          arguments_to_run_corpus_explorer = list()) {
     # Step 1
-    arguments_to_prepare_data <- c(list(dataset), arguments_to_prepare_data)
+    arguments_to_prepare_data <- c(quote(dataset), arguments_to_prepare_data)
     corpus <- do.call(prepare_data, arguments_to_prepare_data)
     # Step 2
-    arguments_to_run_corpus_explorer <- c(list(corpus), arguments_to_run_corpus_explorer)
+    arguments_to_run_corpus_explorer <- c(quote(corpus), arguments_to_run_corpus_explorer)
     do.call(run_corpus_explorer, arguments_to_run_corpus_explorer)
 }
