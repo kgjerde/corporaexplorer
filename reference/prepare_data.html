@@ -110,10 +110,13 @@
     <li class="divider"></li>
     <li class="dropdown-header">Examples</li>
     <li>
-      <a href="../articles/bible.html">The Bible</a>
+      <a href="../articles/jane_austen.html">Demo app: Jane Austen's novels</a>
     </li>
     <li>
-      <a href="../articles/jane_austen.html">Jane Austen's novels</a>
+      <a href="../articles/sotu.html">Demo app: State of the Union addresses</a>
+    </li>
+    <li>
+      <a href="../articles/bible.html">The Bible</a>
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">Deployment</li>
@@ -163,10 +166,12 @@
   <span class='no'>dataset</span>,
   <span class='kw'>date_based_corpus</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>grouping_variable</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>within_group_identifier</span> <span class='kw'>=</span> <span class='st'>"Seq"</span>,
   <span class='kw'>columns_doc_info</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"Date"</span>, <span class='st'>"Title"</span>, <span class='st'>"URL"</span>),
   <span class='kw'>corpus_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>use_matrix</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>matrix_without_punctuation</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>tile_length_range</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>10</span>),
   <span class='no'>...</span>
 )
 
@@ -210,6 +215,14 @@ to group the documents, e.g. if <code>dataset</code> is organised by chapters
 belonging to different books.</p></td>
     </tr>
     <tr>
+      <th>within_group_identifier</th>
+      <td><p>Character string indicating column name in <code>dataset</code>.
+<code>"Seq"</code>, the default, means the rows in each group are assigned
+a numeric sequence 1:n where n is the number of rows in the group.
+Used in document tab title in non-date based corpora.
+If <code>date_based_corpus</code> is <code>TRUE</code>, this argument is ignored.</p></td>
+    </tr>
+    <tr>
       <th>columns_doc_info</th>
       <td><p>Character vector. The columns from <code>dataset</code> to display in
 the "document information" tab in the corpus exploration app. By default
@@ -248,6 +261,16 @@ the <code>use_matrix</code> parameter to <code>FALSE</code>, or run
 <code>use_matrix</code> parameter set to <code>FALSE</code>.</p></li>
 </ul><p>If <code>FALSE</code>, the corporaexplorer object will be larger, and most
  simple searches will be slower.</p></td>
+    </tr>
+    <tr>
+      <th>tile_length_range</th>
+      <td><p>Numeric vector of length two.
+Fine-tune the tile lengths in document wall
+and day corpus view. Tile length is calculated by
+<code><a href='https://scales.r-lib.org//reference/rescale.html'>scales::rescale(nchar(dataset$Text),
+to = tile_length_range,
+from = c(0, max(.)))</a></code>
+Default is <code><a href='https://rdrr.io/r/base/c.html'>c(1, 10)</a></code>.</p></td>
     </tr>
     </table>
 

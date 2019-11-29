@@ -110,10 +110,13 @@ application (usually by pressing Ctrl+C or Esc)." />
     <li class="divider"></li>
     <li class="dropdown-header">Examples</li>
     <li>
-      <a href="../articles/bible.html">The Bible</a>
+      <a href="../articles/jane_austen.html">Demo app: Jane Austen's novels</a>
     </li>
     <li>
-      <a href="../articles/jane_austen.html">Jane Austen's novels</a>
+      <a href="../articles/sotu.html">Demo app: State of the Union addresses</a>
+    </li>
+    <li>
+      <a href="../articles/bible.html">The Bible</a>
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">Deployment</li>
@@ -231,7 +234,7 @@ application (usually by pressing Ctrl+C or Esc).</p>
      height. Value &gt; 1 increases height, value &lt; 1 decreases height.
      Ignored if value &lt;= 0.</p></li>
 <li><p><code>documents_per_row_factor</code>. Numeric. Tweaks the number of
-     documents included in each row in 'document wall' view. Value &gt; 1
+      documents included in each row in 'document wall' view. Value &gt; 1
       increases number of documents, value &lt; 1 decreases number of
       documents. Ignored if value &lt;= 0.</p></li>
 <li><p><code>document_tiles</code>. Integer specifying the number of tiles
@@ -247,6 +250,12 @@ application (usually by pressing Ctrl+C or Esc).</p>
      <code><a href='https://rdrr.io/r/base/c.html'>c("gray", "green", "red", "blue", "purple", "orange")</a></code>.
      Arguments with duplicated colours or with colours not present in the
      default character vector will be ignored.</p></li>
+<li><p><code>tile_length</code>. Either <code>"scaled"</code> or <code>"uniform"</code>.
+      With <code>"scaled"</code>, the default, the length of the
+      tiles in document wall view and day corpus view
+      will vary according to length of document
+      (see the <code>tile_length_range</code> argument in <code><a href='prepare_data.html'>prepare_data()</a></code>).
+      If <code>"uniform"</code>, all tiles will be of equal length.</p></li>
 </ul></td>
     </tr>
     <tr>

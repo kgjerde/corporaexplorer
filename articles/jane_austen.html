@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jane Austen's novels • corporaexplorer</title>
+<title>Demo app: Jane Austen's novels • corporaexplorer</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
-<meta property="og:title" content="Jane Austen's novels">
+<meta property="og:title" content="Demo app: Jane Austen's novels">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -66,10 +66,13 @@
     <li class="divider">
     <li class="dropdown-header">Examples</li>
     <li>
-      <a href="../articles/bible.html">The Bible</a>
+      <a href="../articles/jane_austen.html">Demo app: Jane Austen's novels</a>
     </li>
     <li>
-      <a href="../articles/jane_austen.html">Jane Austen's novels</a>
+      <a href="../articles/sotu.html">Demo app: State of the Union addresses</a>
+    </li>
+    <li>
+      <a href="../articles/bible.html">The Bible</a>
     </li>
     <li class="divider">
     <li class="dropdown-header">Deployment</li>
@@ -102,7 +105,7 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Jane Austen’s novels</h1>
+      <h1>Demo app: Jane Austen’s novels</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/kgjerde/corporaexplorer/blob/master/vignettes/jane_austen.Rmd"><code>vignettes/jane_austen.Rmd</code></a></small>
@@ -112,66 +115,70 @@
 
     
     
-<p><strong>corporaexplorer</strong> can be used to explore not only chronological text collections with document <em>date</em> as main organising principle, but any collection of texts. The example used here are Jane Austen’s six novels, accessed through the <a href="https://github.com/juliasilge/janeaustenr"><strong>janeaustenr</strong></a> package.</p>
+<p><strong>corporaexplorer</strong> can be used to explore not only chronological text collections with document <em>date</em> as main organising principle, but any collection of texts. The example used here: Jane Austen’s six novels, accessed through the <a href="https://github.com/juliasilge/janeaustenr"><strong>janeaustenr</strong></a> package.</p>
+<p>To run the Jane Austen demo app, run the following in the R console:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(corporaexplorer)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="../reference/demo_jane_austen.html">run_janeausten_app</a></span>()</a></code></pre></div>
+<p>This app is created with the code below.</p>
 <div id="loading-packages" class="section level5">
 <h5 class="hasAnchor">
 <a href="#loading-packages" class="anchor"></a>Loading packages</h5>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(janeaustenr)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(stringr)</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tidyr)</a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(corporaexplorer)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(janeaustenr)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(stringr)</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tidyr)</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(corporaexplorer)</a></code></pre></div>
 </div>
 <div id="loading-the-jane-austen-books-from-the-janeaustenr-package" class="section level5">
 <h5 class="hasAnchor">
 <a href="#loading-the-jane-austen-books-from-the-janeaustenr-package" class="anchor"></a>Loading the Jane Austen books from the <strong>janeaustenr</strong> package</h5>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">books &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/janeaustenr/man/austen_books.html">austen_books</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">books &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/janeaustenr/man/austen_books.html">austen_books</a></span>()</a></code></pre></div>
 </div>
 <div id="pre-processing-the-text-a-bit-quick-and-dirty" class="section level5">
 <h5 class="hasAnchor">
 <a href="#pre-processing-the-text-a-bit-quick-and-dirty" class="anchor"></a>Pre-processing the text (a bit quick and dirty)</h5>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># Regular expression to identify where new chapters begin</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">chapter_regex &lt;-<span class="st"> "((Chapter|CHAPTER|VOLUME) (</span><span class="ch">\\</span><span class="st">d+|[IXVL])+)"</span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co"># Pre-processing</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">books &lt;-<span class="st"> </span>books <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(book) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="st">    </span><span class="co"># Each book into one long string:</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span>(<span class="dt">Text =</span> <span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(text, <span class="dt">collapse =</span> <span class="st">" "</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="st">    </span><span class="co"># Insert placeholder at beginning of each chapter</span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">Text =</span> <span class="kw"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span>(Text, chapter_regex, <span class="st">"NEW_CHAPTER</span><span class="ch">\\</span><span class="st">1"</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="st">    </span><span class="co"># Replace double space with two newlines (to restore structure of the text):</span></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">Text =</span> stringr<span class="op">::</span><span class="kw"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span>(Text, <span class="st">"  "</span>, <span class="st">"</span><span class="ch">\n\n</span><span class="st">"</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="st">    </span><span class="co"># Split each book into a character vector (one element is one chapter):</span></a>
-<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">Text =</span> stringi<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/stringi/man/stri_split.html">stri_split_regex</a></span>(Text, <span class="st">"NEW_CHAPTER"</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="st">    </span><span class="co"># Remove first element (book title), so the books start with Chapter 1</span></a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">Text =</span> <span class="kw"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span>(Text, <span class="cf">function</span>(x) x[<span class="op">-</span><span class="dv">1</span>]))</a>
-<a class="sourceLine" id="cb3-17" data-line-number="17"></a>
-<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="co"># The result is a data frame with one row for each book.</span></a>
-<a class="sourceLine" id="cb3-19" data-line-number="19">    <span class="co"># The "Text" column is a list of character vectors</span></a>
-<a class="sourceLine" id="cb3-20" data-line-number="20">    <span class="co"># The "book" column is the name of the book</span></a>
-<a class="sourceLine" id="cb3-21" data-line-number="21"></a>
-<a class="sourceLine" id="cb3-22" data-line-number="22"><span class="co"># From one row per book to one row per chapter</span></a>
-<a class="sourceLine" id="cb3-23" data-line-number="23">books &lt;-<span class="st"> </span>tidyr<span class="op">::</span><span class="kw"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span>(books, Text)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># Regular expression to identify where new chapters begin</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">chapter_regex &lt;-<span class="st"> "((Chapter|CHAPTER|VOLUME) (</span><span class="ch">\\</span><span class="st">d+|[IXVL])+)"</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co"># Pre-processing</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">books &lt;-<span class="st"> </span>books <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(book) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="st">    </span><span class="co"># Each book into one long string:</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span>(<span class="dt">Text =</span> <span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(text, <span class="dt">collapse =</span> <span class="st">" "</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="st">    </span><span class="co"># Insert placeholder at beginning of each chapter</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">Text =</span> <span class="kw"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span>(Text, chapter_regex, <span class="st">"NEW_CHAPTER</span><span class="ch">\\</span><span class="st">1"</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="st">    </span><span class="co"># Replace double space with two newlines (to restore structure of the text):</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">Text =</span> stringr<span class="op">::</span><span class="kw"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span>(Text, <span class="st">"  "</span>, <span class="st">"</span><span class="ch">\n\n</span><span class="st">"</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="st">    </span><span class="co"># Split each book into a character vector (one element is one chapter):</span></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">Text =</span> stringi<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/stringi/man/stri_split.html">stri_split_regex</a></span>(Text, <span class="st">"NEW_CHAPTER"</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="st">    </span><span class="co"># Remove first element (book title), so the books start with Chapter 1</span></a>
+<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="st">    </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">Text =</span> <span class="kw"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span>(Text, <span class="cf">function</span>(x) x[<span class="op">-</span><span class="dv">1</span>]))</a>
+<a class="sourceLine" id="cb4-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb4-18" data-line-number="18"><span class="co"># The result is a data frame with one row for each book.</span></a>
+<a class="sourceLine" id="cb4-19" data-line-number="19">    <span class="co"># The "Text" column is a list of character vectors</span></a>
+<a class="sourceLine" id="cb4-20" data-line-number="20">    <span class="co"># The "book" column is the name of the book</span></a>
+<a class="sourceLine" id="cb4-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb4-22" data-line-number="22"><span class="co"># From one row per book to one row per chapter</span></a>
+<a class="sourceLine" id="cb4-23" data-line-number="23">books &lt;-<span class="st"> </span>tidyr<span class="op">::</span><span class="kw"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span>(books, Text)</a></code></pre></div>
 </div>
 <div id="creating-corporaexplorerobject-of-the-jane-austen-books" class="section level5">
 <h5 class="hasAnchor">
 <a href="#creating-corporaexplorerobject-of-the-jane-austen-books" class="anchor"></a>Creating corporaexplorerobject of the Jane Austen books</h5>
 <p>When we first have a data frame with text and metadata (in this case just book title), creating a “corporaexplorerobject” for exploration is very simple:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># As this is a corpus which is not organised by date,</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">  <span class="co"># we set `date_based_corpus` to `FALSE`.</span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co"># Because we want to organise our exploration around Jane Austen's books,</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">  <span class="co"># we pass `"book"` to the `grouping_variable` argument.</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">jane_austen &lt;-<span class="st"> </span><span class="kw"><a href="../reference/prepare_data.html">prepare_data</a></span>(</a>
-<a class="sourceLine" id="cb4-6" data-line-number="6">    <span class="dt">dataset =</span> books,</a>
-<a class="sourceLine" id="cb4-7" data-line-number="7">    <span class="dt">date_based_corpus =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb4-8" data-line-number="8">    <span class="dt">grouping_variable =</span> <span class="st">"book"</span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9">)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># As this is a corpus which is not organised by date,</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">  <span class="co"># we set `date_based_corpus` to `FALSE`.</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co"># Because we want to organise our exploration around Jane Austen's books,</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">  <span class="co"># we pass `"book"` to the `grouping_variable` argument.</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">jane_austen &lt;-<span class="st"> </span><span class="kw"><a href="../reference/prepare_data.html">prepare_data</a></span>(</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">    <span class="dt">dataset =</span> books,</a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">    <span class="dt">date_based_corpus =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">    <span class="dt">grouping_variable =</span> <span class="st">"book"</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">)</a></code></pre></div>
 </div>
 <div id="run-corpus-explorer" class="section level5">
 <h5 class="hasAnchor">
 <a href="#run-corpus-explorer" class="anchor"></a>Run corpus explorer</h5>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="../reference/run_corpus_explorer.html">run_corpus_explorer</a></span>(jane_austen)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="../reference/run_corpus_explorer.html">run_corpus_explorer</a></span>(jane_austen)</a></code></pre></div>
 <p><strong>Example: “death” in Jane Austen’s books:</strong></p>
 <p><img src="../man/figures/austen_death.png" width="80%"></p>
 </div>

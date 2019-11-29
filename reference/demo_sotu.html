@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create document term matrix for fast search of single words — matrix_via_r • corporaexplorer</title>
+<title>Demo apps: State of the Union addresses — demo_sotu • corporaexplorer</title>
 
 
 <!-- jquery -->
@@ -37,8 +37,12 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Create document term matrix for fast search of single words — matrix_via_r" />
-<meta property="og:description" content="The characters removed" />
+<meta property="og:title" content="Demo apps: State of the Union addresses — demo_sotu" />
+<meta property="og:description" content="Two demo apps exploring the United States Presidential State of the Union addresses.
+  The data are provided by the
+  sotu
+  package, and includes all adresses through 2016.
+  Interrupt R to stop the application (usually by pressing Ctrl+C or Esc)." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -148,51 +152,43 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create document term matrix for fast search of single words</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kgjerde/corporaexplorer/blob/master/R/prepare_data.R'><code>R/prepare_data.R</code></a></small>
-    <div class="hidden name"><code>matrix_via_r.Rd</code></div>
+    <h1>Demo apps: State of the Union addresses</h1>
+    <small class="dont-index">Source: <a href='https://github.com/kgjerde/corporaexplorer/blob/master/R/demo_sotu.R'><code>R/demo_sotu.R</code></a></small>
+    <div class="hidden name"><code>demo_sotu.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>The characters removed</p>
+    <p>Two demo apps exploring the United States Presidential State of the Union addresses.
+  The data are provided by the
+  <a href='https://cran.r-project.org/web/packages/sotu/index.html'>sotu</a>
+  package, and includes all adresses through 2016.
+  Interrupt R to stop the application (usually by pressing Ctrl+C or Esc).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>matrix_via_r</span>(<span class='no'>df</span>, <span class='kw'>matrix_without_punctuation</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>run_sotu_app</span>(<span class='no'>...</span>)
+
+<span class='fu'>create_sotu_app</span>()
+
+<span class='fu'>run_sotu_decade_app</span>(<span class='no'>...</span>)
+
+<span class='fu'>create_sotu_decade_app</span>()</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>df</th>
-      <td><p>A "data_dok" tibble</p></td>
-    </tr>
-    <tr>
-      <th>matrix_without_punctuation</th>
-      <td><p>Should punctuation and digits be stripped
-  from the text before constructing the document term matrix? If <code>TRUE</code>,
-  the default:</p><ul>
-<li><p>The corporaexplorer object will be lighter and most searches in
-    the corpus exploration app will be faster.</p></li>
-<li><p>Searches including punctuation and digits will be carried out in
-    the full text documents.</p></li>
-<li><p>The only "risk" with this strategy is that the corpus exploration
-    app in some cases can produce false positives. E.g. searching for the
-    term "donkey" will also find the term "don%key".
-This should not be a problem for the vast opportunity of use cases, but if
-one so desires, there are three different solutions: set this parameter to
-<code>FALSE</code>, create a corporaexplorerobject without a matrix by setting
-the <code>use_matrix</code> parameter to <code>FALSE</code>, or run
-<code><a href='run_corpus_explorer.html'>run_corpus_explorer</a></code> with the
-<code>use_matrix</code> parameter set to <code>FALSE</code>.</p></li>
-</ul><p>If <code>FALSE</code>, the corporaexplorer object will be larger, and most
- simple searches will be slower.</p></td>
+      <th>...</th>
+      <td><p>Arguments passed to run_corpus_explorer()</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>List: 1) Document term matrix (data.table), 2) word vector (character
-  vector).</p>
+    <p>The <code>run_sotu_*</code> functions launch a Shiny app.
+  The <code>create_sotu_*</code> functions return a <code>corporaexplorerobject</code>.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>For details, see TODO</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -200,6 +196,7 @@ the <code>use_matrix</code> parameter to <code>FALSE</code>, or run
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
     </ul>
 
   </div>

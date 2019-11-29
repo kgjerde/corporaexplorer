@@ -109,10 +109,13 @@
     <li class="divider"></li>
     <li class="dropdown-header">Examples</li>
     <li>
-      <a href="../articles/bible.html">The Bible</a>
+      <a href="../articles/jane_austen.html">Demo app: Jane Austen's novels</a>
     </li>
     <li>
-      <a href="../articles/jane_austen.html">Jane Austen's novels</a>
+      <a href="../articles/sotu.html">Demo app: State of the Union addresses</a>
+    </li>
+    <li>
+      <a href="../articles/bible.html">The Bible</a>
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">Deployment</li>
@@ -154,7 +157,7 @@
     <p>Adjusts data frame to corporaexplorer format</p>
     </div>
 
-    <pre class="usage"><span class='fu'>transform_regular</span>(<span class='no'>df</span>)</pre>
+    <pre class="usage"><span class='fu'>transform_regular</span>(<span class='no'>df</span>, <span class='kw'>tile_length_range</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>10</span>))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -164,6 +167,16 @@
       <td><p>Data frame with Date column (Date), Text column (character), and
 optionally Title (character), URL (character), and Type (character)
 columns.</p></td>
+    </tr>
+    <tr>
+      <th>tile_length_range</th>
+      <td><p>Numeric vector of length two.
+Fine-tune the tile lengths in document wall
+and day corpus view. Tile length is calculated by
+<code><a href='https://scales.r-lib.org//reference/rescale.html'>scales::rescale(nchar(dataset$Text),
+to = tile_length_range,
+from = c(0, max(.)))</a></code>
+Default is <code><a href='https://rdrr.io/r/base/c.html'>c(1, 10)</a></code>.</p></td>
     </tr>
     </table>
 

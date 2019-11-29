@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create document term matrix for fast search of single words — matrix_via_r • corporaexplorer</title>
+<title>Create a data frame with State of the Union texts and metadata — create_sotu_df • corporaexplorer</title>
 
 
 <!-- jquery -->
@@ -37,8 +37,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Create document term matrix for fast search of single words — matrix_via_r" />
-<meta property="og:description" content="The characters removed" />
+<meta property="og:title" content="Create a data frame with State of the Union texts and metadata — create_sotu_df" />
+<meta property="og:description" content="From the &quot;sotu&quot; package." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -148,57 +148,26 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create document term matrix for fast search of single words</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kgjerde/corporaexplorer/blob/master/R/prepare_data.R'><code>R/prepare_data.R</code></a></small>
-    <div class="hidden name"><code>matrix_via_r.Rd</code></div>
+    <h1>Create a data frame with State of the Union texts and metadata</h1>
+    <small class="dont-index">Source: <a href='https://github.com/kgjerde/corporaexplorer/blob/master/R/demo_sotu.R'><code>R/demo_sotu.R</code></a></small>
+    <div class="hidden name"><code>demo_state_of_the_union.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>The characters removed</p>
+    <p>From the "sotu" package.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>matrix_via_r</span>(<span class='no'>df</span>, <span class='kw'>matrix_without_punctuation</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>create_sotu_df</span>()</pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>df</th>
-      <td><p>A "data_dok" tibble</p></td>
-    </tr>
-    <tr>
-      <th>matrix_without_punctuation</th>
-      <td><p>Should punctuation and digits be stripped
-  from the text before constructing the document term matrix? If <code>TRUE</code>,
-  the default:</p><ul>
-<li><p>The corporaexplorer object will be lighter and most searches in
-    the corpus exploration app will be faster.</p></li>
-<li><p>Searches including punctuation and digits will be carried out in
-    the full text documents.</p></li>
-<li><p>The only "risk" with this strategy is that the corpus exploration
-    app in some cases can produce false positives. E.g. searching for the
-    term "donkey" will also find the term "don%key".
-This should not be a problem for the vast opportunity of use cases, but if
-one so desires, there are three different solutions: set this parameter to
-<code>FALSE</code>, create a corporaexplorerobject without a matrix by setting
-the <code>use_matrix</code> parameter to <code>FALSE</code>, or run
-<code><a href='run_corpus_explorer.html'>run_corpus_explorer</a></code> with the
-<code>use_matrix</code> parameter set to <code>FALSE</code>.</p></li>
-</ul><p>If <code>FALSE</code>, the corporaexplorer object will be larger, and most
- simple searches will be slower.</p></td>
-    </tr>
-    </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>List: 1) Document term matrix (data.table), 2) word vector (character
-  vector).</p>
+    <p>data frame</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
     </ul>
 
