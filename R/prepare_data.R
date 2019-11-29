@@ -5,9 +5,16 @@
 #' @param df Data frame with Date column (Date), Text column (character), and
 #'   optionally Title (character), URL (character), and Type (character)
 #'   columns.
+#' @param tile_length_range Numeric vector of length two.
+#'   Fine-tune the tile lengths in document wall
+#'   and day corpus view. Tile length is calculated by
+#'   \code{scales::rescale(nchar(dataset$Text),
+#'   to = tile_length_range,
+#'   from = c(0, max(.)))}
+#'   Default is \code{c(1, 10)}.
 #' @return A tibble ("data_dok")
 #' @keywords internal
-transform_regular <- function(df) {
+transform_regular <- function(df, tile_length_range = c(1, 10)) {
   message("Starting.")
 
   df <- dplyr::arrange(df, Date)
@@ -15,7 +22,7 @@ transform_regular <- function(df) {
   df$Year <- lubridate::year(df$Date)
 
   df$Tile_length <- nchar(df$Text) %>%
-    scales::rescale(to = c(1, 10), from = c(0, max(.)))
+    scales::rescale(to = tile_length_range, from = c(0, max(.)))
 
   df$ID <- seq_len(nrow(df))
 
@@ -346,8 +353,8 @@ prepare_data.data.frame <- function(dataset,
                          corpus_name = NULL,
                          use_matrix = TRUE,
                          matrix_without_punctuation = TRUE,
+                         tile_length_range = c(1, 10),
                          ...) {
-
 
 # Argument checking general -----------------------------------------------
 
@@ -417,6 +424,13 @@ prepare_data.data.frame <- function(dataset,
     )
   }
 
+  if (is.numeric(tile_length_range) == FALSE |
+      length(tile_length_range) != 2) {
+    stop("Hmm. Make sure that 'tile_length_range' is a numeric vector of length 2.",
+      call. = FALSE
+    )
+  }
+
 # Argument checking date_based_corpus -------------------------------------
 
   if (date_based_corpus == TRUE) {
@@ -465,7 +479,7 @@ prepare_data.data.frame <- function(dataset,
 
 # The main function proper ------------------------------------------------
 
-  abc <- transform_regular(dataset)
+  abc <- transform_regular(dataset, tile_length_range)
 
   if (date_based_corpus == TRUE) {
     abc_365 <- transform_365(abc)

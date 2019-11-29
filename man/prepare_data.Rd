@@ -17,6 +17,7 @@ prepare_data(dataset, ...)
   corpus_name = NULL,
   use_matrix = TRUE,
   matrix_without_punctuation = TRUE,
+  tile_length_range = c(1, 10),
   ...
 )
 
@@ -88,6 +89,14 @@ the \code{use_matrix} parameter to \code{FALSE}, or run
 }
  If \code{FALSE}, the corporaexplorer object will be larger, and most
  simple searches will be slower.}
+
+\item{tile_length_range}{Numeric vector of length two.
+Fine-tune the tile lengths in document wall
+and day corpus view. Tile length is calculated by
+\code{scales::rescale(nchar(dataset$Text),
+to = tile_length_range,
+from = c(0, max(.)))}
+Default is \code{c(1, 10)}.}
 }
 \value{
 A \code{corporaexplorer} object to be passed as argument to
