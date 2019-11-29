@@ -1,0 +1,185 @@
+---
+title: "Demo app: State of the Union addresses"
+output: 
+  github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+To run the State of the Union demo app,
+run the following in the R console:
+
+```{r eval=FALSE, include=TRUE}
+library(corporaexplorer)
+run_sotu_app()
+```
+
+To run an alternative State of the Union app,
+organised by decade rather than by president,
+run the following in the R console:
+
+```{r eval=FALSE, include=TRUE}
+library(corporaexplorer)
+run_sotu_decade_app()
+```
+
+These two apps are created with the code below.
+The State of the Union texts and metadata are accessed through the
+[**sotu**](https://cran.r-project.org/web/packages/sotu/index.html) package.
+
+## Step 1: Preprocessing before "corporaexplorer"
+
+**Loading packages**
+
+```{r message=FALSE}
+library(sotu)
+library(stringr)
+library(corporaexplorer)
+```
+
+**Creating data frame**
+
+```{r}
+## Merge data from 'sotu' package into one df
+df <- sotu::sotu_meta
+df$Text <- sotu::sotu_text %>%
+    stringr::str_trim()
+
+## Avoid clutter in corpus plot
+# A. Distinguish between non-consecutive terms
+df$president[97:100] <- "Grover Cleveland 1"
+df$president[105:108] <- "Grover Cleveland 2"
+
+# B. Get correct order of rows in data frame
+    # in the cases where incumbent holds a final sotu before leaving office,
+    # resulting in two sotus in one year
+presidents <- unique(df$president)
+df$president <- factor(df$president, levels = presidents)
+df <- df[order(df$president),]
+df$president <- as.character(df$president)
+
+## Add decade variable for variation of app
+df$decade <- stringr::str_sub(df$year, 1, 3) %>%
+    paste0("0s")
+
+# And add variable for informative document tab title in that app variation
+df$for_tab_title <- paste(df$president, df$year)
+```
+
+## Step 2: Creating app with "corporaexplorer"
+
+### App 1: State of the Union addresses grouped by president
+
+**Create 'corporaexplorerobject'**
+
+```{r message=FALSE}
+corpus <- prepare_data(
+    df,                                # the data frame created above
+    date_based_corpus = FALSE,         # dates are not the organising principle in the corpus
+    grouping_variable = "president",   # group the sotu addresses by president
+
+# The remaining arguments are not strictly necessary, but we use them to fine-tune
+      # how the corpus will be presented in the app
+
+    within_group_identifier = "year",  # The tab header in document view will then be e.g. 
+                                         # "Theodore Roosevelt – 1901"
+    columns_doc_info =                 # metadata to be included in a "Document info" tab,
+        colnames(df)[1:5],               # in this case the first five columns in the data frame
+    tile_length_range = c(2, 10),      # fine-tuning the length of the tiles representing
+                                         # the length of the addrsses
+    use_matrix = FALSE                 # we don't create a document term matrix, as the corpus
+                                         # is very small and searches will be fast anyway
+)
+```
+
+**Run app**
+
+```{r eval=FALSE, include=TRUE}
+run_corpus_explorer(corpus)
+```
+
+<hr>
+
+### App 2: State of the Union addresses grouped by decade
+
+By just changing two arguments (or even one), we create an app with a quite different
+organisation of the texts.
+
+```{r message=FALSE}
+corpus <- prepare_data(
+    df,
+    date_based_corpus = FALSE,
+    grouping_variable = "decade",                # change grouping variable
+    within_group_identifier = "for_tab_title",   # adjust tab header in document view
+    columns_doc_info =
+        colnames(df)[1:5],
+    tile_length_range = c(2, 10),
+    use_matrix = FALSE
+)
+```
+
+```{r eval=FALSE, include=TRUE}
+run_corpus_explorer(corpus)
+```
+
+
+## Examples of app adjustments
+
+See the documentation for `run_corpus_explorer()` for all runtime options.
+
+**Example 1: Tile length**
+By default, the length of the tiles representing documents in the app
+have varying lengths, depending on document length.
+For all tiles to of the same length:
+
+```{r eval=FALSE, include=TRUE}
+run_corpus_explorer(corpus,
+                    plot_options = list(
+                        tile_length = "uniform"
+                    ))
+```
+
+**Example 2: Plot colours**
+To change the use of colours in the corpus map,
+use e.g.:
+
+```{r eval=FALSE, include=TRUE}
+run_corpus_explorer(corpus,
+                    plot_options = list(
+                        colours = "green"
+                    ))
+```
+
+
+## Examples of app usage
+
+Some `run_corpus_explorer()` calls with
+pre-filled sidebar input:
+
+```{r eval=FALSE, include=TRUE}
+run_corpus_explorer(corpus,
+                    search_input = list(
+                        search_terms = c("socialis",
+                                         "communis",
+                                         "soviet")
+                    ))
+```
+
+```{r eval=FALSE, include=TRUE}
+run_corpus_explorer(corpus,
+                    search_input = list(
+                        filter_terms = "speech--sotu_type"
+                    ))
+```
+
+```{r eval=FALSE, include=TRUE}
+run_corpus_explorer(corpus,
+                    search_input = list(
+                        search_terms = c("democracy",
+                                         "freedom",
+                                         "democratic--party"),
+                        filter_terms = "speech--sotu_type"
+                    ))
+```
