@@ -7,7 +7,8 @@
 #'   Interrupt R to stop the application (usually by pressing Ctrl+C or Esc).
 #'
 #' @name demo_sotu
-#' @details For details, see TODO
+#' @details For details, see
+#'   \url{https://kgjerde.github.io/corporaexplorer/articles/sotu.html}.
 #' @return The \code{run_sotu_*} functions launch a Shiny app.
 #'   The \code{create_sotu_*} functions return a \code{corporaexplorerobject}.
 NULL

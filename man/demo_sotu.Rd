@@ -31,5 +31,6 @@ Two demo apps exploring the United States Presidential State of the Union addres
   Interrupt R to stop the application (usually by pressing Ctrl+C or Esc).
 }
 \details{
-For details, see TODO
+For details, see
+  \url{https://kgjerde.github.io/corporaexplorer/articles/sotu.html}.
 }
