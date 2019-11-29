@@ -11,9 +11,10 @@ reference:
       - run_corpus_explorer
       - directly_explore
       - run_document_extractor
-  - title: "Demo app"
+  - title: "Demo apps"
     contents:
-      - run_demo_app
+      - run_janeausten_app
+      - run_sotu_app
   - title: "Other"
     contents:
       - test_data
@@ -27,10 +28,12 @@ navbar:
         href: articles/usage.html
       - text: '---'
       - text: 'Examples'
+      - text: "Demo app: Jane Austen's novels"
+        href: articles/jane_austen.html
+      - text: "Demo app: State of the Union addresses"
+        href: articles/sotu.html
       - text: 'The Bible'
         href: articles/bible.html
-      - text: "Jane Austen's novels"
-        href: articles/jane_austen.html
       - text: '---'
       - text: 'Deployment'
       - text: 'Use with Shiny Server and shinyapps.io'
