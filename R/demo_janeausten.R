@@ -1,9 +1,13 @@
 #' Demo app: Jane Austen's novels
+#' @name demo_jane_austen
+NULL
+
+#' Demo app: Jane Austen's novels
 #'
-#' \code{run_demo_app()} is a convenience function to directly
+#' \code{run_janeausten_app()} is a convenience function to directly
 #'   run the demo app without first creating
 #'   a corporaexplorerobject.
-#'   Equals \code{run_corpus_explorer(create_demo_app)}.
+#'   Equals \code{run_corpus_explorer(create_janeausten_app())}.
 #'   Interrupt R to stop the
 #'   application (usually by pressing Ctrl+C or Esc).
 #'
@@ -14,12 +18,13 @@
 #'   which must be installed for these functions to work --
 #'   and converted to a corporaexplorerobject as shown at
 #'   \url{https://kgjerde.github.io/corporaexplorer/articles/jane_austen.html}.
-#' @return \code{run_demo_app()} launches a Shiny app. \code{create_demo_app()} returns
+#' @rdname demo_jane_austen
+#' @return \code{run_janeausten_app()} launches a Shiny app. \code{create_janeausten_app()} returns
 #'   a corporaexplorerobject.
 #' @export
 #' @examples
 #' ## Create corporaexplorerobject for demo app:
-#' jane_austen <- create_demo_app()
+#' jane_austen <- create_janeausten_app()
 #'
 #' if(interactive()){
 #'
@@ -28,10 +33,10 @@
 #'
 #' ## Or create and run the demo app in one step:
 #'
-#' run_demo_app()
+#' run_janeausten_app()
 #'
 #' }
-run_demo_app <- function(...) {
+run_janeausten_app <- function(...) {
 
     user_options <- list(...)
 
@@ -44,7 +49,7 @@ run_demo_app <- function(...) {
         plot_options_$plot_size_factor <- 1.3
     }
 
-    jane_austen <- create_demo_app()
+    jane_austen <- create_janeausten_app()
     run_corpus_explorer(jane_austen,
                         search_options = search_options_,
                         plot_options = plot_options_,
@@ -55,8 +60,8 @@ run_demo_app <- function(...) {
 #' Create demo app
 #'
 #' @export
-#' @rdname run_demo_app
-create_demo_app <- function() {
+#' @rdname demo_jane_austen
+create_janeausten_app <- function() {
 
   if (!requireNamespace("janeaustenr", quietly = TRUE)) {
     stop('The demo app uses data from the "janeaustenr" package. Please install it by running: install.packages("janeaustenr")',

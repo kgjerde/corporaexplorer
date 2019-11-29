@@ -1,5 +1,5 @@
 ---
-title: "Jane Austen's novels"
+title: "Demo app: Jane Austen's novels"
 output: 
   github_document
 ---
@@ -11,9 +11,20 @@ knitr::opts_chunk$set(echo = TRUE)
 **corporaexplorer** can be used to explore
 not only chronological text collections with document *date* as main organising principle,
 but any collection of texts.
-The example used here are Jane Austen's six novels,
+The example used here: Jane Austen's six novels,
 accessed through the
 [**janeaustenr**](https://github.com/juliasilge/janeaustenr) package.
+
+To run the Jane Austen demo app,
+run the following in the R console:
+
+```{r eval=FALSE, include=TRUE}
+library(corporaexplorer)
+run_janeausten_app()
+```
+
+This app is created with the code below.
+
 
 ##### Loading packages
 ```{r message=FALSE}
