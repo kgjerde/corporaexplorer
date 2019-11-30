@@ -69,7 +69,7 @@ that are relevant for advanced users. A date-based corpus is used as example.
 
 <img align="left" src="../man/figures/sidebar.png" width="170" height="450" style="margin-right: 25px"/>
 
-* **Number of terms to chart**: How many terms (phrases/patterns) should be charted in the corpus map? Current maximum is five.
+* **Number of terms to chart**: How many terms (phrases/patterns) should be charted in the corpus map? Current maximum is six.
 * **Term(s) to chart**: Using colour fillings, the corpus map plot will indicate days/documents where these terms are present. The terms will also be highlighted in all documents.
 * **Additional terms for text highlighting**: Terms included here (one on each line) will be highlighted in all documents. An arbitrary number of terms can be added.
 * **Filter corpus?** Input terms here (one on each line) will filter the corpus so that it includes only documents where all these terms are present. Unlike terms entered in the two fields above, these terms will not be included in the summary statistics in the "Corpus info" tab. An arbitrary number of terms can be used.
@@ -172,7 +172,7 @@ knitr::include_graphics("../man/figures/day_corpus.png")
 
 <br>
 
-Clicking on a "document tile" produces two things. First, the full text of the document with search terms highlighted. Second, above the text a tile chart consisting of n tiles where each tile represents a 1/n part of the document, and where the colour in a tile indicates whether and how many times the search term is found in that part of the document. Clicking on a tile scrolls the document to the corresponding part of the document.<sup>[1](#footnote1)</sup>
+Clicking on a "document tile" produces two things. First, the full text of the document with search terms highlighted. Second, above the text a tile chart consisting of n tiles where each tile represents a 1/n part of the document, and where the colour in a tile indicates whether and how many times the search term is found in that part of the document. Clicking on a tile scrolls the document to the corresponding part of the document.
 
 ```{r out.width="80%", echo=FALSE}
 knitr::include_graphics("../man/figures/wall.png")
@@ -241,6 +241,3 @@ Speed is considered to be of less importance in this app, and all searches
 are carried out as full text searches with `stringr`. Again, note that a single backslash is used as escape character. For example will `\.` match a literal ".", and `\d` match any digit.
 
 <hr>
-
-
-<a name="footnote1">*1</a>. Using the [`jquery.scrollTo`](https://github.com/flesler/jquery.scrollTo) plugin.*
