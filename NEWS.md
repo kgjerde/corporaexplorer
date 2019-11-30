@@ -1,3 +1,20 @@
+# corporaexplorer 0.7.0.9000
+
+## Breaking API changes
+
+* Removed `normalise` argument from `prepare_data()`
+* Added `within_group_identifier` and `tile_length_range` arguments in `prepare_data()` (leading to new order of arguments)
+
+## New functions
+
+* Included demo apps: Jane Austen's novels and State of the Union adresses,
+with data from the `janeaustenr` and `sotu` packages, respectively. See `run_janeausten_app()` and `run_sotu_app()`
+* Added `directly_explore()` convenience function
+
+## Other
+
+* Minimum corpus plot height is again 100.
+
 # corporaexplorer 0.7.0
 
 ## Breaking API changes
