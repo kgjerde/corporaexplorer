@@ -17,7 +17,7 @@ run_sotu_decade_app(...)
 create_sotu_decade_app()
 }
 \arguments{
-\item{...}{Arguments passed to run_corpus_explorer()}
+\item{...}{Arguments passed to \code{run_corpus_explorer()}}
 }
 \value{
 The \code{run_sotu_*} functions launch a Shiny app.
@@ -27,7 +27,7 @@ The \code{run_sotu_*} functions launch a Shiny app.
 Two demo apps exploring the United States Presidential State of the Union addresses.
   The data are provided by the
   \href{https://cran.r-project.org/web/packages/sotu/index.html}{sotu}
-  package, and includes all adresses through 2016.
+  package, and include all adresses through 2016.
   Interrupt R to stop the application (usually by pressing Ctrl+C or Esc).
 }
 \details{

@@ -3,7 +3,7 @@
 #' Two demo apps exploring the United States Presidential State of the Union addresses.
 #'   The data are provided by the
 #'   \href{https://cran.r-project.org/web/packages/sotu/index.html}{sotu}
-#'   package, and includes all adresses through 2016.
+#'   package, and include all adresses through 2016.
 #'   Interrupt R to stop the application (usually by pressing Ctrl+C or Esc).
 #'
 #' @name demo_sotu
@@ -18,7 +18,7 @@ NULL
 
 #' Demo app: State of the Union addresses grouped by president
 #'
-#' @param ... Arguments passed to run_corpus_explorer()
+#' @param ... Arguments passed to \code{run_corpus_explorer()}
 #' @rdname demo_sotu
 #' @export
 run_sotu_app <- function(...) {
@@ -55,7 +55,7 @@ create_sotu_app <- function() {
 
 #' Demo app: State of the Union addresses grouped by decade
 #'
-#' @param ... Arguments passed to run_corpus_explorer()
+#' @param ... Arguments passed to \code{run_corpus_explorer()}
 #' @rdname demo_sotu
 #' @export
 run_sotu_decade_app <- function(...) {
