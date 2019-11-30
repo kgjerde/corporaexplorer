@@ -157,7 +157,7 @@
 <p><img align="left" src="../man/figures/sidebar.png" width="170" height="450" style="margin-right: 25px"></p>
 <ul>
 <li>
-<strong>Number of terms to chart</strong>: How many terms (phrases/patterns) should be charted in the corpus map? Current maximum is five.</li>
+<strong>Number of terms to chart</strong>: How many terms (phrases/patterns) should be charted in the corpus map? Current maximum is six.</li>
 <li>
 <strong>Term(s) to chart</strong>: Using colour fillings, the corpus map plot will indicate days/documents where these terms are present. The terms will also be highlighted in all documents.</li>
 <li>
@@ -242,7 +242,7 @@
 <p><strong>When in calendar view</strong>: Clicking on a day creates a second heat map tile chart where one tile is one document, and where the colour in a tile indicates how many times the search term is found in the document. In the box below is produced a list of the title of the documents this day.</p>
 <p><img src="../man/figures/day_corpus.png" width="80%"></p>
 <p><br></p>
-<p>Clicking on a “document tile” produces two things. First, the full text of the document with search terms highlighted. Second, above the text a tile chart consisting of n tiles where each tile represents a 1/n part of the document, and where the colour in a tile indicates whether and how many times the search term is found in that part of the document. Clicking on a tile scrolls the document to the corresponding part of the document.<sup><a href="#footnote1">1</a></sup></p>
+<p>Clicking on a “document tile” produces two things. First, the full text of the document with search terms highlighted. Second, above the text a tile chart consisting of n tiles where each tile represents a 1/n part of the document, and where the colour in a tile indicates whether and how many times the search term is found in that part of the document. Clicking on a tile scrolls the document to the corresponding part of the document.</p>
 <p><img src="../man/figures/wall.png" width="80%"></p>
 <p><strong>When in document wall view</strong>: Clicking on a tile in the corpus map leads straight to the relevant document.</p>
 </div>
@@ -290,7 +290,6 @@
 <a href="#b--advanced-detail-regular-expression-engines" class="anchor"></a>3b. Advanced detail: Regular expression engines</h3>
 <p>Speed is considered to be of less importance in this app, and all searches are carried out as full text searches with <code>stringr</code>. Again, note that a single backslash is used as escape character. For example will <code>\.</code> match a literal “.”, and <code>\d</code> match any digit.</p>
 <hr>
-<p><a name="footnote1"><em>1</em></a>. Using the <a href="https://github.com/flesler/jquery.scrollTo"><code>jquery.scrollTo</code></a> plugin.</p>
 </div>
 </div>
   </div>

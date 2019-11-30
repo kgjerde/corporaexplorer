@@ -150,21 +150,51 @@
       <small>Source: <a href='https://github.com/kgjerde/corporaexplorer/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="corporaexplorer-0-7-0" class="section level1">
+    <div id="corporaexplorer-0-7-0-9000" class="section level1">
 <h1 class="page-header">
-<a href="#corporaexplorer-0-7-0" class="anchor"></a>corporaexplorer 0.7.0<small> 2019-11-15 </small>
+<a href="#corporaexplorer-0-7-0-9000" class="anchor"></a>corporaexplorer 0.7.0.9000<small> Unreleased </small>
 </h1>
 <div id="breaking-api-changes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#breaking-api-changes" class="anchor"></a>Breaking API changes</h2>
 <ul>
-<li>Added <code>search_options</code> argument to <code><a href="../reference/run_corpus_explorer.html">run_corpus_explorer()</a></code>, and moved the arguments <code>use_matrix</code>, <code>regex_engine</code>, <code>optional_info</code>, <code>allow_unreasonable_patterns</code> there.</li>
-<li>Added <code>plot_options</code> argument (with several possibilities to customise plot colours etc.) to <code><a href="../reference/run_corpus_explorer.html">run_corpus_explorer()</a></code>, and moved the <code>max_docs_in_wall_view</code> setting there.</li>
+<li>Removed <code>normalise</code> argument from <code><a href="../reference/prepare_data.html">prepare_data()</a></code>
+</li>
+<li>Added <code>within_group_identifier</code> and <code>tile_length_range</code> arguments in <code><a href="../reference/prepare_data.html">prepare_data()</a></code> (leading to new order of arguments)</li>
+</ul>
+</div>
+<div id="new-functions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-functions" class="anchor"></a>New functions</h2>
+<ul>
+<li>Included demo apps: Jane Austen’s novels and State of the Union adresses, with data from the <code>janeaustenr</code> and <code>sotu</code> packages, respectively. See <code><a href="../reference/demo_jane_austen.html">run_janeausten_app()</a></code> and <code><a href="../reference/demo_sotu.html">run_sotu_app()</a></code>
+</li>
+<li>Added <code><a href="../reference/directly_explore.html">directly_explore()</a></code> convenience function</li>
 </ul>
 </div>
 <div id="other" class="section level2">
 <h2 class="hasAnchor">
 <a href="#other" class="anchor"></a>Other</h2>
+<ul>
+<li>Minimum corpus plot height is again 100.</li>
+</ul>
+</div>
+</div>
+    <div id="corporaexplorer-0-7-0" class="section level1">
+<h1 class="page-header">
+<a href="#corporaexplorer-0-7-0" class="anchor"></a>corporaexplorer 0.7.0<small> 2019-11-15 </small>
+</h1>
+<div id="breaking-api-changes-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#breaking-api-changes-1" class="anchor"></a>Breaking API changes</h2>
+<ul>
+<li>Added <code>search_options</code> argument to <code><a href="../reference/run_corpus_explorer.html">run_corpus_explorer()</a></code>, and moved the arguments <code>use_matrix</code>, <code>regex_engine</code>, <code>optional_info</code>, <code>allow_unreasonable_patterns</code> there.</li>
+<li>Added <code>plot_options</code> argument (with several possibilities to customise plot colours etc.) to <code><a href="../reference/run_corpus_explorer.html">run_corpus_explorer()</a></code>, and moved the <code>max_docs_in_wall_view</code> setting there.</li>
+</ul>
+</div>
+<div id="other-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#other-1" class="anchor"></a>Other</h2>
 <ul>
 <li>Greatly simplified deployment to Shiny Server and shinyapps.io etc. (<a href='https://github.com/kgjerde/corporaexplorer/issues/19'>#19</a>). See <a href="https://kgjerde.github.io/corporaexplorer/articles/deployment.html">article</a> on the package website.</li>
 <li>Improved app experience on small screens (avoiding cluttering of ui elements).</li>
@@ -194,9 +224,9 @@
 <li>Open but empty “Filter corpus” field no longer disables time filtering</li>
 </ul>
 </div>
-<div id="other-1" class="section level2">
+<div id="other-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#other-1" class="anchor"></a>Other</h2>
+<a href="#other-2" class="anchor"></a>Other</h2>
 <ul>
 <li>Documentation moved to <a href="https://kgjerde.github.io/corporaexplorer" class="uri">https://kgjerde.github.io/corporaexplorer</a>
 </li>
@@ -209,6 +239,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#corporaexplorer-0-7-0-9000">0.7.0.9000</a></li>
         <li><a href="#corporaexplorer-0-7-0">0.7.0</a></li>
         <li><a href="#corporaexplorer-0-6-3">0.6.3</a></li>
       </ul>
