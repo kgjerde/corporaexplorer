@@ -95,7 +95,6 @@ create_sotu_decade_app <- function() {
 #' From the "sotu" package.
 #'
 #' @return data frame
-#' @rdname demo_state_of_the_union
 #' @keywords internal
 create_sotu_df <- function() {
 
