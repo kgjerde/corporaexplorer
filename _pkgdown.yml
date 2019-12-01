@@ -19,22 +19,25 @@ reference:
       - test_data
 
 navbar:
+  structure:
+    left:  [home, reference, articles, examples, deployment, news]
+    right: [github]
   components:
     articles:
       text: How to use
+      href: articles/usage.html
+    examples:
+      text: Examples
       menu:
-      - text: 'How to use corporaxplorer'
-        href: articles/usage.html
-      - text: '---'
-      - text: 'Examples'
       - text: "Demo app: Jane Austen's novels"
         href: articles/jane_austen.html
       - text: "Demo app: State of the Union addresses"
         href: articles/sotu.html
       - text: 'The Bible'
         href: articles/bible.html
-      - text: '---'
-      - text: 'Deployment'
+    deployment:
+      text: Deployment
+      menu:
       - text: 'Use with Shiny Server and shinyapps.io'
         href: articles/deployment.html
 
