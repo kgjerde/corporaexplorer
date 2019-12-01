@@ -121,6 +121,33 @@ For a BibTeX entry, use the output from `citation(package =
 For usage instructions and example corpora, see the [package web
 page](https://kgjerde.github.io/corporaexplorer).
 
+## Demo apps
+
+The package includes two demo apps.
+
+To explore Jane Austen’s novels (data accessed through the
+[**janeaustenr**](https://github.com/juliasilge/janeaustenr) package):
+
+``` r
+library(corporaexplorer)
+run_janeausten_app()
+```
+
+To explore the US presidents’ State of the Union addresses (data
+accessed through the the
+[**sotu**](https://cran.r-project.org/web/packages/sotu/index.html)
+package):
+
+``` r
+library(corporaexplorer)
+run_sotu_app()
+```
+
+For more info, see
+<https://kgjerde.github.io/corporaexplorer/articles/jane_austen.html>
+and <https://kgjerde.github.io/corporaexplorer/articles/sotu.html>, and
+also the [function references](reference/index.html).
+
 ## A note on platforms and encoding
 
 **corporaexplorer** works on Mac OS, Windows and Linux, and there are

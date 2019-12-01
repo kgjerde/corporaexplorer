@@ -22,6 +22,8 @@ exploration of a "corporaexplorerobject".
 3. `run_document_extractor()` runs a Shiny app for simple retrieval/extraction of
 documents from a "corporaexplorerobject" in a reading-friendly format.
 
+See the [reference section](reference/index.html) for full details
+and all available options.
 
 ## 1. Prepare data for the Shiny apps
 

@@ -139,13 +139,40 @@ elements in the interactive apps:
 **corporaexplorer** contains three main functions:
 
 1.  `prepare_data()` converts a data frame to a “corporaexplorerobject”.
-2.  `explore()` runs the package’s core feature, a Shiny app
-    for fast and flexible exploration of a “corporaexplorerobject”.
+2.  `explore()` runs the package’s core feature, a Shiny app for fast
+    and flexible exploration of a “corporaexplorerobject”.
 3.  `run_document_extractor()` runs a Shiny app for simple
     retrieval/extraction of documents from a “corporaexplorerobject” in
     a reading-friendly format.
 
 See the [Usage](articles/usage.html) document for more details.
+
+## Demo apps
+
+The package includes two demo apps.
+
+To explore Jane Austen’s novels (data accessed through the
+[**janeaustenr**](https://github.com/juliasilge/janeaustenr) package):
+
+``` r
+library(corporaexplorer)
+run_janeausten_app()
+```
+
+To explore the US presidents’ State of the Union addresses (data
+accessed through the the
+[**sotu**](https://cran.r-project.org/web/packages/sotu/index.html)
+package):
+
+``` r
+library(corporaexplorer)
+run_sotu_app()
+```
+
+For more info, see
+<https://kgjerde.github.io/corporaexplorer/articles/jane_austen.html>
+and <https://kgjerde.github.io/corporaexplorer/articles/sotu.html>, and
+also the [function references](reference/index.html).
 
 ## Example corpora
 
@@ -184,10 +211,9 @@ Not all corpora are organised by date, and it is easy to create a
 example a collection of books, each organised in chapters – or just from
 a sequence of texts.
 
-See [here](articles/bible.html) for an example of how
-**corporaexplorer** can be used to explore the Bible, and
-[here](articles/jane_austen.html) for a starter on how to explore Jane
-Austen’s novels.
+In addition to the demo apps referred to above, click
+[here](articles/bible.html) for an example of how **corporaexplorer**
+can be used to explore the Bible.
 
 ## A note on platforms and encoding
 
