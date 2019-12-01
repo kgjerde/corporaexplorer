@@ -9,13 +9,16 @@ but yields a warning.
 * Removed `normalise` argument from `prepare_data()`
 * Added `within_group_identifier` and `tile_length_range` arguments in `prepare_data()` (leading to new order of arguments)
 
-## Demo apps and new functions
+## New function
 
-* Included demo apps: Jane Austen's novels and State of the Union adresses,
-with data from the `janeaustenr` and `sotu` packages, respectively. See `run_janeausten_app()` and `run_sotu_app()`
 * Added `explore0()`, a convenience function to directly explore a data frame
 or character vector without first creating a 'corporaexploreobject'
 with `prepare_data()`.
+
+## Demo apps
+
+* Included demo apps: Jane Austen's novels and State of the Union adresses,
+with data from the `janeaustenr` and `sotu` packages, respectively. See `run_janeausten_app()` and `run_sotu_app()`
 
 ## Other
 
