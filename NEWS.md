@@ -2,14 +2,20 @@
 
 ## Breaking API changes
 
+* **`run_corpus_explorer()` is deprecated and replaced with `explore()`.**
+  + `explore()` works in the precise same way as `run_corpus_explorer()`, but is faster to type and makes a nice pair with the new `explore0()` function (see below).
+  + `run_corpus_explorer()` still works (as a thin wrapper to `explore()`),
+but yields a warning.
 * Removed `normalise` argument from `prepare_data()`
 * Added `within_group_identifier` and `tile_length_range` arguments in `prepare_data()` (leading to new order of arguments)
 
-## New functions
+## Demo apps and new functions
 
 * Included demo apps: Jane Austen's novels and State of the Union adresses,
 with data from the `janeaustenr` and `sotu` packages, respectively. See `run_janeausten_app()` and `run_sotu_app()`
-* Added `directly_explore()` convenience function
+* Added `explore0()`, a convenience function to directly explore a data frame
+or character vector without first creating a 'corporaexploreobject'
+with `prepare_data()`.
 
 ## Other
 
