@@ -1,7 +1,7 @@
 #' Launch Shiny app for exploration of text collection
 #'
-#' \code{explore()} explores a 'corporaexplorerobject',
-#'   created with \code{prepare_data()}.
+#' \code{explore()} explores a 'corporaexplorerobject'
+#'   created with the \code{prepare_data()} function.
 #'   App settings optionally specified in
 #'   the arguments to \code{explore()}.
 #'

@@ -123,8 +123,8 @@ Launches a Shiny app.
 Launch Shiny app for exploration of text collection. Interrupt R to stop the
 application (usually by pressing Ctrl+C or Esc).
 
-\code{explore()} explores a 'corporaexplorerobject',
-  created with \code{prepare_data()}.
+\code{explore()} explores a 'corporaexplorerobject'
+  created with the \code{prepare_data()} function.
   App settings optionally specified in
   the arguments to \code{explore()}.
 
