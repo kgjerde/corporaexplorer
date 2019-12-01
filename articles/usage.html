@@ -120,7 +120,7 @@
 <li>
 <code><a href="../reference/prepare_data.html">prepare_data()</a></code> converts a data frame to a “corporaexplorerobject”.</li>
 <li>
-<code><a href="../reference/run_corpus_explorer.html">run_corpus_explorer()</a></code> runs the package’s core feature, a Shiny app for fast and flexible exploration of a “corporaexplorerobject”.</li>
+<code><a href="../reference/explore.html">explore()</a></code> runs the package’s core feature, a Shiny app for fast and flexible exploration of a “corporaexplorerobject”.</li>
 <li>
 <code><a href="../reference/run_document_extractor.html">run_document_extractor()</a></code> runs a Shiny app for simple retrieval/extraction of documents from a “corporaexplorerobject” in a reading-friendly format.</li>
 </ol>
@@ -146,9 +146,9 @@
 <div id="the-corpus-exploration-app" class="section level2">
 <h2 class="hasAnchor">
 <a href="#the-corpus-exploration-app" class="anchor"></a>2. The corpus exploration app</h2>
-<p>Start the app by running the <code><a href="../reference/run_corpus_explorer.html">run_corpus_explorer()</a></code> function with a “corporaexplorerobject” created by <code><a href="../reference/prepare_data.html">prepare_data()</a></code> as argument. Run the following in the R console to see documentation for the <code><a href="../reference/run_corpus_explorer.html">run_corpus_explorer()</a></code> function.</p>
+<p>Start the app by running the <code><a href="../reference/explore.html">explore()</a></code> function with a “corporaexplorerobject” created by <code><a href="../reference/prepare_data.html">prepare_data()</a></code> as argument. Run the following in the R console to see documentation for the <code><a href="../reference/explore.html">explore()</a></code> function.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(corporaexplorer)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">?run_corpus_explorer</a></code></pre></div>
+<a class="sourceLine" id="cb2-2" data-line-number="2">?explore</a></code></pre></div>
 <p>The default arguments are recommended for most use cases.</p>
 <p>While it should be possible to use the app without reading any further, the rest of this section includes user interface instructions as well as some details about the app’s inner workings that are relevant for advanced users. A date-based corpus is used as example.</p>
 <div id="a--sidebar-input" class="section level3">
@@ -249,7 +249,7 @@
 <div id="d--advanced-detail-regular-expression-engines" class="section level3">
 <h3 class="hasAnchor">
 <a href="#d--advanced-detail-regular-expression-engines" class="anchor"></a>2d. Advanced detail: Regular expression engines</h3>
-<p><code><a href="../reference/run_corpus_explorer.html">run_corpus_explorer()</a></code> lets you choose among three regex engine setups:</p>
+<p><code><a href="../reference/explore.html">explore()</a></code> lets you choose among three regex engine setups:</p>
 <ol style="list-style-type: decimal">
 <li>
 <code>default</code>: use the <a href="https://github.com/qinwf/re2r"><code>re2r</code></a> package for simple searches and the <a href="https://github.com/tidyverse/stringr"><code>stringr</code></a> package for complex regexes (details below). This is the recommended option.</li>
@@ -259,7 +259,7 @@
 <p><code>re2r</code> is very fast but has a more limited feature set than <code>stringr</code>, especially in handling non-ASCII text, including word boundary detection. With the <code>default</code> option, the <code>re2r</code> engine is run when no special regex characters are used; otherwise <code>stringr</code> is used. This option should fit most use cases.</p>
 <p>Please consult the documentation for <a href="https://github.com/qinwf/re2r"><code>re2r</code></a> and <a href="https://github.com/tidyverse/stringr"><code>stringr</code></a> for full information about syntax flavours.</p>
 <p>By default, searches for patterns consisting of a single word and without special characters will be carried out in a document term matrix. Other searches are carried out in full text.</p>
-<p>Advanced users can set the <code>optional_info</code> parameter in <code><a href="../reference/run_corpus_explorer.html">run_corpus_explorer()</a></code> to <code>TRUE</code>: this will print to console the following information for each input term: which regex engine was used, and whether the search was carried out in the document term matrix or in the full text documents.</p>
+<p>Advanced users can set the <code>optional_info</code> parameter in <code><a href="../reference/explore.html">explore()</a></code> to <code>TRUE</code>: this will print to console the following information for each input term: which regex engine was used, and whether the search was carried out in the document term matrix or in the full text documents.</p>
 </div>
 </div>
 <div id="the-download-documents-app" class="section level2">

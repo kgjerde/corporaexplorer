@@ -257,7 +257,7 @@ This should not be a problem for the vast opportunity of use cases, but if
 one so desires, there are three different solutions: set this parameter to
 <code>FALSE</code>, create a corporaexplorerobject without a matrix by setting
 the <code>use_matrix</code> parameter to <code>FALSE</code>, or run
-<code><a href='run_corpus_explorer.html'>run_corpus_explorer</a></code> with the
+<code><a href='explore.html'>explore</a></code> with the
 <code>use_matrix</code> parameter set to <code>FALSE</code>.</p></li>
 </ul><p>If <code>FALSE</code>, the corporaexplorer object will be larger, and most
  simple searches will be slower.</p></td>
@@ -277,7 +277,7 @@ Default is <code><a href='https://rdrr.io/r/base/c.html'>c(1, 10)</a></code>.</p
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A <code>corporaexplorer</code> object to be passed as argument to
-  <code><a href='run_corpus_explorer.html'>run_corpus_explorer</a></code> and
+  <code><a href='explore.html'>explore</a></code> and
   <code><a href='run_document_extractor.html'>run_document_extractor</a></code>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -311,7 +311,7 @@ Default is <code><a href='https://rdrr.io/r/base/c.html'>c(1, 10)</a></code>.</p
 <span class='no'>corpus</span> <span class='kw'>&lt;-</span> <span class='fu'>prepare_data</span>(<span class='no'>test_df</span>, <span class='kw'>corpus_name</span> <span class='kw'>=</span> <span class='st'>"Test corpus"</span>)</div><div class='output co'>#&gt; <span class='message'>Starting.</span></div><div class='output co'>#&gt; <span class='message'>Document data frame done.</span></div><div class='output co'>#&gt; <span class='message'>Calendar data frame done.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix: text processed.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix: tokenising completed.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix: word list created.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix done.</span></div><div class='output co'>#&gt; <span class='message'>Done.</span></div><div class='input'>
 <span class='kw'>if</span>(<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()){
 <span class='co'># Running exploration app:</span>
-<span class='fu'><a href='run_corpus_explorer.html'>run_corpus_explorer</a></span>(<span class='no'>corpus</span>)
+<span class='fu'><a href='explore.html'>explore</a></span>(<span class='no'>corpus</span>)
 
 <span class='co'># Running app to extract documents:</span>
 <span class='fu'><a href='run_document_extractor.html'>run_document_extractor</a></span>(<span class='no'>corpus</span>)
@@ -321,7 +321,7 @@ Default is <code><a href='https://rdrr.io/r/base/c.html'>c(1, 10)</a></code>.</p
 <span class='no'>alphabet_corpus</span> <span class='kw'>&lt;-</span> <span class='fu'>prepare_data</span>(<span class='no'>LETTERS</span>)</div><div class='output co'>#&gt; <span class='message'>Starting.</span></div><div class='output co'>#&gt; <span class='message'>Document data frame done.</span></div><div class='output co'>#&gt; <span class='message'>Corpus is not date based. Calendar data frame skipped.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix: text processed.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix: tokenising completed.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix: word list created.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix done.</span></div><div class='output co'>#&gt; <span class='message'>Done.</span></div><div class='input'>
 <span class='kw'>if</span>(<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()){
 <span class='co'># Running exploration app:</span>
-<span class='fu'><a href='run_corpus_explorer.html'>run_corpus_explorer</a></span>(<span class='no'>alphabet_corpus</span>)
+<span class='fu'><a href='explore.html'>explore</a></span>(<span class='no'>alphabet_corpus</span>)
 }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

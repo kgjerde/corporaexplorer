@@ -158,18 +158,27 @@
 <h2 class="hasAnchor">
 <a href="#breaking-api-changes" class="anchor"></a>Breaking API changes</h2>
 <ul>
+<li>
+<strong><code><a href="../reference/corporaexplorer-deprecated.html">run_corpus_explorer()</a></code> is deprecated and replaced with <code><a href="../reference/explore.html">explore()</a></code>.</strong>
+<ul>
+<li>
+<code><a href="../reference/explore.html">explore()</a></code> works in the precise same way as <code><a href="../reference/corporaexplorer-deprecated.html">run_corpus_explorer()</a></code>, but is faster to type and makes a nice pair with the new <code><a href="../reference/explore.html">explore0()</a></code> function (see below).</li>
+<li>
+<code><a href="../reference/corporaexplorer-deprecated.html">run_corpus_explorer()</a></code> still works (as a thin wrapper to <code><a href="../reference/explore.html">explore()</a></code>), but yields a warning.</li>
+</ul>
+</li>
 <li>Removed <code>normalise</code> argument from <code><a href="../reference/prepare_data.html">prepare_data()</a></code>
 </li>
 <li>Added <code>within_group_identifier</code> and <code>tile_length_range</code> arguments in <code><a href="../reference/prepare_data.html">prepare_data()</a></code> (leading to new order of arguments)</li>
 </ul>
 </div>
-<div id="new-functions" class="section level2">
+<div id="demo-apps-and-new-functions" class="section level2">
 <h2 class="hasAnchor">
-<a href="#new-functions" class="anchor"></a>New functions</h2>
+<a href="#demo-apps-and-new-functions" class="anchor"></a>Demo apps and new functions</h2>
 <ul>
 <li>Included demo apps: Jane Austen’s novels and State of the Union adresses, with data from the <code>janeaustenr</code> and <code>sotu</code> packages, respectively. See <code><a href="../reference/demo_jane_austen.html">run_janeausten_app()</a></code> and <code><a href="../reference/demo_sotu.html">run_sotu_app()</a></code>
 </li>
-<li>Added <code><a href="../reference/directly_explore.html">directly_explore()</a></code> convenience function</li>
+<li>Added <code><a href="../reference/explore.html">explore0()</a></code>, a convenience function to directly explore a data frame or character vector without first creating a ‘corporaexploreobject’ with <code><a href="../reference/prepare_data.html">prepare_data()</a></code>.</li>
 </ul>
 </div>
 <div id="other" class="section level2">
@@ -188,8 +197,8 @@
 <h2 class="hasAnchor">
 <a href="#breaking-api-changes-1" class="anchor"></a>Breaking API changes</h2>
 <ul>
-<li>Added <code>search_options</code> argument to <code><a href="../reference/run_corpus_explorer.html">run_corpus_explorer()</a></code>, and moved the arguments <code>use_matrix</code>, <code>regex_engine</code>, <code>optional_info</code>, <code>allow_unreasonable_patterns</code> there.</li>
-<li>Added <code>plot_options</code> argument (with several possibilities to customise plot colours etc.) to <code><a href="../reference/run_corpus_explorer.html">run_corpus_explorer()</a></code>, and moved the <code>max_docs_in_wall_view</code> setting there.</li>
+<li>Added <code>search_options</code> argument to <code><a href="../reference/corporaexplorer-deprecated.html">run_corpus_explorer()</a></code>, and moved the arguments <code>use_matrix</code>, <code>regex_engine</code>, <code>optional_info</code>, <code>allow_unreasonable_patterns</code> there.</li>
+<li>Added <code>plot_options</code> argument (with several possibilities to customise plot colours etc.) to <code><a href="../reference/corporaexplorer-deprecated.html">run_corpus_explorer()</a></code>, and moved the <code>max_docs_in_wall_view</code> setting there.</li>
 </ul>
 </div>
 <div id="other-1" class="section level2">

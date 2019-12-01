@@ -180,7 +180,7 @@
 <a class="sourceLine" id="cb5-16" data-line-number="16">                                         <span class="co"># is very small and searches will be fast anyway</span></a>
 <a class="sourceLine" id="cb5-17" data-line-number="17">)</a></code></pre></div>
 <p><strong>Run app</strong></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="../reference/run_corpus_explorer.html">run_corpus_explorer</a></span>(corpus)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="../reference/explore.html">explore</a></span>(corpus)</a></code></pre></div>
 <hr>
 </div>
 <div id="app-2-state-of-the-union-addresses-grouped-by-decade" class="section level3">
@@ -197,20 +197,20 @@
 <a class="sourceLine" id="cb7-8" data-line-number="8">    <span class="dt">tile_length_range =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">2</span>, <span class="dv">10</span>),</a>
 <a class="sourceLine" id="cb7-9" data-line-number="9">    <span class="dt">use_matrix =</span> <span class="ot">FALSE</span></a>
 <a class="sourceLine" id="cb7-10" data-line-number="10">)</a></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="../reference/run_corpus_explorer.html">run_corpus_explorer</a></span>(corpus)</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="../reference/explore.html">explore</a></span>(corpus)</a></code></pre></div>
 </div>
 </div>
 <div id="examples-of-app-adjustments" class="section level2">
 <h2 class="hasAnchor">
 <a href="#examples-of-app-adjustments" class="anchor"></a>Examples of app adjustments</h2>
-<p>See the documentation for <code><a href="../reference/run_corpus_explorer.html">run_corpus_explorer()</a></code> for all runtime options.</p>
+<p>See the documentation for <code><a href="../reference/explore.html">explore()</a></code> for all runtime options.</p>
 <p><strong>Example 1: Tile length</strong> By default, the length of the tiles representing documents in the app have varying lengths, depending on document length. For all tiles to of the same length:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="../reference/run_corpus_explorer.html">run_corpus_explorer</a></span>(corpus,</a>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="../reference/explore.html">explore</a></span>(corpus,</a>
 <a class="sourceLine" id="cb9-2" data-line-number="2">                    <span class="dt">plot_options =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(</a>
 <a class="sourceLine" id="cb9-3" data-line-number="3">                        <span class="dt">tile_length =</span> <span class="st">"uniform"</span></a>
 <a class="sourceLine" id="cb9-4" data-line-number="4">                    ))</a></code></pre></div>
 <p><strong>Example 2: Plot colours</strong> To change the use of colours in the corpus map, use e.g.:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="../reference/run_corpus_explorer.html">run_corpus_explorer</a></span>(corpus,</a>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="../reference/explore.html">explore</a></span>(corpus,</a>
 <a class="sourceLine" id="cb10-2" data-line-number="2">                    <span class="dt">plot_options =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(</a>
 <a class="sourceLine" id="cb10-3" data-line-number="3">                        <span class="dt">colours =</span> <span class="st">"green"</span></a>
 <a class="sourceLine" id="cb10-4" data-line-number="4">                    ))</a></code></pre></div>
@@ -218,24 +218,20 @@
 <div id="examples-of-app-usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#examples-of-app-usage" class="anchor"></a>Examples of app usage</h2>
-<p>Some <code><a href="../reference/run_corpus_explorer.html">run_corpus_explorer()</a></code> calls with pre-filled sidebar input:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="../reference/run_corpus_explorer.html">run_corpus_explorer</a></span>(corpus,</a>
-<a class="sourceLine" id="cb11-2" data-line-number="2">                    <span class="dt">search_input =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(</a>
-<a class="sourceLine" id="cb11-3" data-line-number="3">                        <span class="dt">search_terms =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"socialis"</span>,</a>
-<a class="sourceLine" id="cb11-4" data-line-number="4">                                         <span class="st">"communis"</span>,</a>
-<a class="sourceLine" id="cb11-5" data-line-number="5">                                         <span class="st">"soviet"</span>)</a>
-<a class="sourceLine" id="cb11-6" data-line-number="6">                    ))</a></code></pre></div>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw"><a href="../reference/run_corpus_explorer.html">run_corpus_explorer</a></span>(corpus,</a>
-<a class="sourceLine" id="cb12-2" data-line-number="2">                    <span class="dt">search_input =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(</a>
-<a class="sourceLine" id="cb12-3" data-line-number="3">                        <span class="dt">filter_terms =</span> <span class="st">"speech--sotu_type"</span></a>
-<a class="sourceLine" id="cb12-4" data-line-number="4">                    ))</a></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="../reference/run_corpus_explorer.html">run_corpus_explorer</a></span>(corpus,</a>
-<a class="sourceLine" id="cb13-2" data-line-number="2">                    <span class="dt">search_input =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(</a>
-<a class="sourceLine" id="cb13-3" data-line-number="3">                        <span class="dt">search_terms =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"democracy"</span>,</a>
-<a class="sourceLine" id="cb13-4" data-line-number="4">                                         <span class="st">"freedom"</span>,</a>
-<a class="sourceLine" id="cb13-5" data-line-number="5">                                         <span class="st">"democratic--party"</span>),</a>
-<a class="sourceLine" id="cb13-6" data-line-number="6">                        <span class="dt">filter_terms =</span> <span class="st">"speech--sotu_type"</span></a>
-<a class="sourceLine" id="cb13-7" data-line-number="7">                    ))</a></code></pre></div>
+<p>Some <code><a href="../reference/explore.html">explore()</a></code> calls with pre-filled sidebar input:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="../reference/explore.html">explore</a></span>(corpus,</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2">        <span class="dt">search_input =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">search_terms =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"socialis"</span>,</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3">                                             <span class="st">"communis"</span>,</a>
+<a class="sourceLine" id="cb11-4" data-line-number="4">                                             <span class="st">"soviet"</span>)))</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw"><a href="../reference/explore.html">explore</a></span>(corpus,</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">        <span class="dt">search_input =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">filter_terms =</span> <span class="st">"speech--sotu_type"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="../reference/explore.html">explore</a></span>(corpus,</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2">        <span class="dt">search_input =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(</a>
+<a class="sourceLine" id="cb13-3" data-line-number="3">            <span class="dt">search_terms =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"democracy"</span>,</a>
+<a class="sourceLine" id="cb13-4" data-line-number="4">                             <span class="st">"freedom"</span>,</a>
+<a class="sourceLine" id="cb13-5" data-line-number="5">                             <span class="st">"democratic--party"</span>),</a>
+<a class="sourceLine" id="cb13-6" data-line-number="6">            <span class="dt">filter_terms =</span> <span class="st">"speech--sotu_type"</span></a>
+<a class="sourceLine" id="cb13-7" data-line-number="7">        ))</a></code></pre></div>
 </div>
   </div>
 
