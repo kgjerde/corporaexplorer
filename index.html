@@ -58,19 +58,17 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="articles/usage.html">How to use</a>
+</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    How to use
+    Examples
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/usage.html">How to use corporaxplorer</a>
-    </li>
-    <li class="divider">
-    <li class="dropdown-header">Examples</li>
-    <li>
       <a href="articles/jane_austen.html">Demo app: Jane Austen's novels</a>
     </li>
     <li>
@@ -79,9 +77,16 @@
     <li>
       <a href="articles/bible.html">The Bible</a>
     </li>
-    <li class="divider">
-    <li class="dropdown-header">Deployment</li>
-    <li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Deployment
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
       <a href="articles/deployment.html">Use with Shiny Server and shinyapps.io</a>
     </li>
   </ul>
@@ -181,13 +186,25 @@
 <p><strong>corporaexplorer</strong> contains three main functions:</p>
 <ol>
 <li>
-<code><a href="reference/prepare_data.html">prepare_data()</a></code> converts a data frame to a “corporaexplorerobject”.</li>
+<code><a href="reference/prepare_data.html">prepare_data()</a></code> converts a data frame or character vector to a “corporaexplorerobject”.</li>
 <li>
 <code><a href="reference/explore.html">explore()</a></code> runs the package’s core feature, a Shiny app for fast and flexible exploration of a “corporaexplorerobject”.</li>
 <li>
 <code><a href="reference/run_document_extractor.html">run_document_extractor()</a></code> runs a Shiny app for simple retrieval/extraction of documents from a “corporaexplorerobject” in a reading-friendly format.</li>
 </ol>
 <p>See the <a href="articles/usage.html">Usage</a> document for more details.</p>
+</div>
+<div id="demo-apps" class="section level2">
+<h2 class="hasAnchor">
+<a href="#demo-apps" class="anchor"></a>Demo apps</h2>
+<p>The package includes two demo apps.</p>
+<p>To explore Jane Austen’s novels (data accessed through the <a href="https://github.com/juliasilge/janeaustenr"><strong>janeaustenr</strong></a> package):</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(corporaexplorer)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="reference/demo_jane_austen.html">run_janeausten_app</a></span>()</a></code></pre></div>
+<p>To explore the US presidents’ State of the Union addresses (data accessed through the the <a href="https://cran.r-project.org/web/packages/sotu/index.html"><strong>sotu</strong></a> package):</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(corporaexplorer)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="reference/demo_sotu.html">run_sotu_app</a></span>()</a></code></pre></div>
+<p>For more info, see <a href="https://kgjerde.github.io/corporaexplorer/articles/jane_austen.html" class="uri">https://kgjerde.github.io/corporaexplorer/articles/jane_austen.html</a> and <a href="https://kgjerde.github.io/corporaexplorer/articles/sotu.html" class="uri">https://kgjerde.github.io/corporaexplorer/articles/sotu.html</a>, and also the <a href="reference/index.html">function references</a>.</p>
 </div>
 <div id="example-corpora" class="section level2">
 <h2 class="hasAnchor">
@@ -203,7 +220,7 @@
 <h4 class="hasAnchor">
 <a href="#b--text-collections-that-are-not-organised-by-date" class="anchor"></a>B. Text collections that are not organised by date</h4>
 <p>Not all corpora are organised by date, and it is easy to create a “corporaexplorerobject” from a corpus with a different structure, for example a collection of books, each organised in chapters – or just from a sequence of texts.</p>
-<p>See <a href="articles/bible.html">here</a> for an example of how <strong>corporaexplorer</strong> can be used to explore the Bible, and <a href="articles/jane_austen.html">here</a> for a starter on how to explore Jane Austen’s novels.</p>
+<p>In addition to the demo apps referred to above, click <a href="articles/bible.html">here</a> for an example of how <strong>corporaexplorer</strong> can be used to explore the Bible.</p>
 </div>
 </div>
 <div id="a-note-on-platforms-and-encoding" class="section level2">
