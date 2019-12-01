@@ -139,7 +139,7 @@ elements in the interactive apps:
 **corporaexplorer** contains three main functions:
 
 1.  `prepare_data()` converts a data frame to a “corporaexplorerobject”.
-2.  `run_corpus_explorer()` runs the package’s core feature, a Shiny app
+2.  `explore()` runs the package’s core feature, a Shiny app
     for fast and flexible exploration of a “corporaexplorerobject”.
 3.  `run_document_extractor()` runs a Shiny app for simple
     retrieval/extraction of documents from a “corporaexplorerobject” in

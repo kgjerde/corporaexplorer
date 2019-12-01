@@ -167,7 +167,7 @@ validate_safe_search <- function() {
         paste(
             "\nThe search patterns will result in an enormous amount of hits or the search will run for a very long time, potentially infinitely.
 
-If this is something you want, set 'allow_unreasonable_patterns' in 'run_corpus_explorer()' to 'TRUE'."
+If this is something you want, set 'allow_unreasonable_patterns' in 'explore()' to 'TRUE'."
         )
     ))
 }
@@ -184,7 +184,7 @@ validate_max_docs_in_wall <- function() {
         paste(
             "\nCorpus map too large. Filter corpus or switch to calendar view if available.\n\n",
             "Alternatively, specify 'MAX_DOCS_IN_WALL_VIEW'",
-            "in the call to 'run_corpus_explorer()'."
+            "in the call to 'explore()'."
         )
     ))
 }

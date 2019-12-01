@@ -11,7 +11,7 @@ run_janeausten_app(...)
 create_janeausten_app()
 }
 \arguments{
-\item{...}{Arguments passed to \code{run_corpus_explorer()}}
+\item{...}{Arguments passed to \code{explore()}}
 }
 \value{
 \code{run_janeausten_app()} launches a Shiny app. \code{create_janeausten_app()} returns
@@ -21,7 +21,7 @@ create_janeausten_app()
 \code{run_janeausten_app()} is a convenience function to directly
   run the demo app without first creating
   a corporaexplorerobject.
-  Equals \code{run_corpus_explorer(create_janeausten_app())}.
+  Equals \code{explore(create_janeausten_app())}.
   Interrupt R to stop the
   application (usually by pressing Ctrl+C or Esc).
 }
@@ -40,7 +40,7 @@ jane_austen <- create_janeausten_app()
 if(interactive()){
 
 ## Run the corporaexplorerobject:
-run_corpus_explorer(jane_austen)
+explore(jane_austen)
 
 ## Or create and run the demo app in one step:
 

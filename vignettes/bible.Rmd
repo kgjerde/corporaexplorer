@@ -109,7 +109,7 @@ KJB <- prepare_data(dataset = bible_df,
 
 ##### Run corpus explorer
 ```{r eval=FALSE, include=TRUE}
-run_corpus_explorer(KJB)
+explore(KJB)
 ```
 
 

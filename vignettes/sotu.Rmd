@@ -97,7 +97,7 @@ corpus <- prepare_data(
 **Run app**
 
 ```{r eval=FALSE, include=TRUE}
-run_corpus_explorer(corpus)
+explore(corpus)
 ```
 
 <hr>
@@ -121,13 +121,13 @@ corpus <- prepare_data(
 ```
 
 ```{r eval=FALSE, include=TRUE}
-run_corpus_explorer(corpus)
+explore(corpus)
 ```
 
 
 ## Examples of app adjustments
 
-See the documentation for `run_corpus_explorer()` for all runtime options.
+See the documentation for `explore()` for all runtime options.
 
 **Example 1: Tile length**
 By default, the length of the tiles representing documents in the app
@@ -135,7 +135,7 @@ have varying lengths, depending on document length.
 For all tiles to of the same length:
 
 ```{r eval=FALSE, include=TRUE}
-run_corpus_explorer(corpus,
+explore(corpus,
                     plot_options = list(
                         tile_length = "uniform"
                     ))
@@ -146,7 +146,7 @@ To change the use of colours in the corpus map,
 use e.g.:
 
 ```{r eval=FALSE, include=TRUE}
-run_corpus_explorer(corpus,
+explore(corpus,
                     plot_options = list(
                         colours = "green"
                     ))
@@ -155,31 +155,27 @@ run_corpus_explorer(corpus,
 
 ## Examples of app usage
 
-Some `run_corpus_explorer()` calls with
+Some `explore()` calls with
 pre-filled sidebar input:
 
 ```{r eval=FALSE, include=TRUE}
-run_corpus_explorer(corpus,
-                    search_input = list(
-                        search_terms = c("socialis",
-                                         "communis",
-                                         "soviet")
-                    ))
+explore(corpus,
+        search_input = list(search_terms = c("socialis",
+                                             "communis",
+                                             "soviet")))
 ```
 
 ```{r eval=FALSE, include=TRUE}
-run_corpus_explorer(corpus,
-                    search_input = list(
-                        filter_terms = "speech--sotu_type"
-                    ))
+explore(corpus,
+        search_input = list(filter_terms = "speech--sotu_type"))
 ```
 
 ```{r eval=FALSE, include=TRUE}
-run_corpus_explorer(corpus,
-                    search_input = list(
-                        search_terms = c("democracy",
-                                         "freedom",
-                                         "democratic--party"),
-                        filter_terms = "speech--sotu_type"
-                    ))
+explore(corpus,
+        search_input = list(
+            search_terms = c("democracy",
+                             "freedom",
+                             "democratic--party"),
+            filter_terms = "speech--sotu_type"
+        ))
 ```

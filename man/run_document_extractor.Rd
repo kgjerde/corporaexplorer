@@ -34,7 +34,7 @@ test_df <- tibble::tibble(Date = dates, Text = texts, Title = titles)
 corpus <- prepare_data(test_df, corpus_name = "Test corpus")
 if(interactive()){
 # Running exploration app:
-run_corpus_explorer(corpus)
+explore(corpus)
 
 # Running app to extract documents:
 run_document_extractor(corpus)

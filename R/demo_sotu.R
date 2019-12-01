@@ -18,14 +18,14 @@ NULL
 
 #' Demo app: State of the Union addresses grouped by president
 #'
-#' @param ... Arguments passed to \code{run_corpus_explorer()}
+#' @param ... Arguments passed to \code{explore()}
 #' @rdname demo_sotu
 #' @export
 run_sotu_app <- function(...) {
 
     corpus <- create_sotu_app()
 
-    run_corpus_explorer(corpus, ...)
+    explore(corpus, ...)
 }
 
 
@@ -55,14 +55,14 @@ create_sotu_app <- function() {
 
 #' Demo app: State of the Union addresses grouped by decade
 #'
-#' @param ... Arguments passed to \code{run_corpus_explorer()}
+#' @param ... Arguments passed to \code{explore()}
 #' @rdname demo_sotu
 #' @export
 run_sotu_decade_app <- function(...) {
 
     corpus <- create_sotu_decade_app()
 
-    run_corpus_explorer(corpus, ...)
+    explore(corpus, ...)
 }
 
 

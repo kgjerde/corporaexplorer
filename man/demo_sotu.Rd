@@ -17,7 +17,7 @@ run_sotu_decade_app(...)
 create_sotu_decade_app()
 }
 \arguments{
-\item{...}{Arguments passed to \code{run_corpus_explorer()}}
+\item{...}{Arguments passed to \code{explore()}}
 }
 \value{
 The \code{run_sotu_*} functions launch a Shiny app.

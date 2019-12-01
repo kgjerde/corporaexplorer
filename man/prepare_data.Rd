@@ -84,7 +84,7 @@ This should not be a problem for the vast opportunity of use cases, but if
 one so desires, there are three different solutions: set this parameter to
 \code{FALSE}, create a corporaexplorerobject without a matrix by setting
 the \code{use_matrix} parameter to \code{FALSE}, or run
-\code{\link[corporaexplorer]{run_corpus_explorer}} with the
+\code{\link[corporaexplorer]{explore}} with the
 \code{use_matrix} parameter set to \code{FALSE}.
 }
  If \code{FALSE}, the corporaexplorer object will be larger, and most
@@ -100,7 +100,7 @@ Default is \code{c(1, 10)}.}
 }
 \value{
 A \code{corporaexplorer} object to be passed as argument to
-  \code{\link[corporaexplorer]{run_corpus_explorer}} and
+  \code{\link[corporaexplorer]{explore}} and
   \code{\link[corporaexplorer]{run_document_extractor}}.
 }
 \description{
@@ -140,7 +140,7 @@ corpus <- prepare_data(test_df, corpus_name = "Test corpus")
 
 if(interactive()){
 # Running exploration app:
-run_corpus_explorer(corpus)
+explore(corpus)
 
 # Running app to extract documents:
 run_document_extractor(corpus)
@@ -151,6 +151,6 @@ alphabet_corpus <- prepare_data(LETTERS)
 
 if(interactive()){
 # Running exploration app:
-run_corpus_explorer(alphabet_corpus)
+explore(alphabet_corpus)
 }
 }

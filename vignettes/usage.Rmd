@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 This document presents **corporaexplorer**'s three main functions:
 
 1. `prepare_data()` converts a data frame to a "corporaexplorerobject".
-2. `run_corpus_explorer()` runs the package's core feature, a Shiny app for fast and flexible
+2. `explore()` runs the package's core feature, a Shiny app for fast and flexible
 exploration of a "corporaexplorerobject".
 3. `run_document_extractor()` runs a Shiny app for simple retrieval/extraction of
 documents from a "corporaexplorerobject" in a reading-friendly format.
@@ -50,13 +50,13 @@ library(corporaexplorer)
 ```
 
 ## 2. The corpus exploration app
-Start the app by running the `run_corpus_explorer()` function with a
+Start the app by running the `explore()` function with a
 "corporaexplorerobject" created by `prepare_data()` as argument.
-Run the following in the R console to see documentation for the `run_corpus_explorer()` function.
+Run the following in the R console to see documentation for the `explore()` function.
 
 ``` r
 library(corporaexplorer)
-?run_corpus_explorer
+?explore
 ```
 
 The default arguments are recommended for most use cases.
@@ -183,7 +183,7 @@ knitr::include_graphics("../man/figures/wall.png")
 
 ### 2d. Advanced detail: Regular expression engines
 
-`run_corpus_explorer()` lets you choose among three regex engine setups:
+`explore()` lets you choose among three regex engine setups:
 
 1. `default`: use the [`re2r`](https://github.com/qinwf/re2r) package for simple searches and the [`stringr`](https://github.com/tidyverse/stringr) package for complex regexes (details below).
 This is the recommended option.
@@ -200,7 +200,7 @@ Please consult the documentation for [`re2r`](https://github.com/qinwf/re2r) and
 
 By default, searches for patterns consisting of a single word and without special characters will be carried out in a document term matrix. Other searches are carried out in full text.
 
-Advanced users can set the `optional_info` parameter in `run_corpus_explorer()` to `TRUE`:
+Advanced users can set the `optional_info` parameter in `explore()` to `TRUE`:
 this will print to console the following information for each input term:
 which regex engine was used,
 and whether the search was carried out in the document term matrix or in the full text documents.

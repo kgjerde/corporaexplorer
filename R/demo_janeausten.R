@@ -7,11 +7,11 @@ NULL
 #' \code{run_janeausten_app()} is a convenience function to directly
 #'   run the demo app without first creating
 #'   a corporaexplorerobject.
-#'   Equals \code{run_corpus_explorer(create_janeausten_app())}.
+#'   Equals \code{explore(create_janeausten_app())}.
 #'   Interrupt R to stop the
 #'   application (usually by pressing Ctrl+C or Esc).
 #'
-#' @param ... Arguments passed to \code{run_corpus_explorer()}
+#' @param ... Arguments passed to \code{explore()}
 #' @details The demo app's data are Jane Austen's six novels, retrieved
 #'   through the "janeaustenr" package
 #'   (\url{https://github.com/juliasilge/janeaustenr}) --
@@ -29,7 +29,7 @@ NULL
 #' if(interactive()){
 #'
 #' ## Run the corporaexplorerobject:
-#' run_corpus_explorer(jane_austen)
+#' explore(jane_austen)
 #'
 #' ## Or create and run the demo app in one step:
 #'
@@ -50,7 +50,7 @@ run_janeausten_app <- function(...) {
     }
 
     jane_austen <- create_janeausten_app()
-    run_corpus_explorer(jane_austen,
+    explore(jane_austen,
                         search_options = search_options_,
                         plot_options = plot_options_,
                         search_input = search_input_,
