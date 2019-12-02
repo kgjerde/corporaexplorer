@@ -1,6 +1,6 @@
 #' Directly explore data frame or character vector
 #'
-#' \code{explore0()} is a convencience function to directly explore
+#' \code{explore0()} is a convenience function to directly explore
 #'   a data frame or character vector
 #'   without first creating a corporaexplorerobject using
 #'   \code{prepare_data()}, instead creating one on the fly as the app

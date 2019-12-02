@@ -12,12 +12,12 @@ but yields a warning.
 ## New function
 
 * Added `explore0()`, a convenience function to directly explore a data frame
-or character vector without first creating a 'corporaexploreobject'
+or character vector without first creating a 'corporaexplorerobject'
 with `prepare_data()`.
 
 ## Demo apps
 
-* Included demo apps: Jane Austen's novels and State of the Union adresses,
+* Included demo apps: Jane Austen's novels and State of the Union addresses,
 with data from the `janeaustenr` and `sotu` packages, respectively. See `run_janeausten_app()` and `run_sotu_app()`
 
 ## Other

@@ -27,7 +27,7 @@ The \code{run_sotu_*} functions launch a Shiny app.
 Two demo apps exploring the United States Presidential State of the Union addresses.
   The data are provided by the
   \href{https://CRAN.R-project.org/package=sotu}{sotu}
-  package, and include all adresses through 2016.
+  package, and include all addresses through 2016.
   Interrupt R to stop the application (usually by pressing Ctrl+C or Esc).
 }
 \details{
