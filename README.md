@@ -135,8 +135,7 @@ run_janeausten_app()
 
 To explore the US presidents’ State of the Union addresses (data
 accessed through the the
-[**sotu**](https://cran.r-project.org/web/packages/sotu/index.html)
-package):
+[**sotu**](https://CRAN.R-project.org/package=sotu) package):
 
 ``` r
 library(corporaexplorer)
@@ -146,7 +145,8 @@ run_sotu_app()
 For more info, see
 <https://kgjerde.github.io/corporaexplorer/articles/jane_austen.html>
 and <https://kgjerde.github.io/corporaexplorer/articles/sotu.html>, and
-also the [function references](reference/index.html).
+also the [function
+references](https://kgjerde.github.io/corporaexplorer/reference/index.html).
 
 ## A note on platforms and encoding
 
