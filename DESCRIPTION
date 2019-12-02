@@ -1,15 +1,16 @@
 Package: corporaexplorer
 Type: Package
 Title: A 'Shiny' App for Exploration of Text Collections
-Version: 0.7.0.9000
+Version: 0.8.0
 Authors@R: person("Kristian Lundby", "Gjerde", email = "kristian.gjerde@gmail.com",
   role = c("aut", "cre"))
 Description: Facilitates dynamic exploration of text collections through an
-    intuitive graphical user interface. The package contains 1) a helper function
-    to convert a data frame to a 'corporaexplorerobject', 2) a 'Shiny' app for
-    fast and flexible exploration of a 'corporaexplorerobject', and 3) a 'Shiny'
-    app for simple retrieval/extraction of documents from a 'corporaexplorerobject'
-    in a reading-friendly format.
+    intuitive graphical user interface and the power of regular expressions.
+    The package contains 1) a helper function to convert a data frame to a
+    'corporaexplorerobject', 2) a 'Shiny' app for fast and flexible exploration
+    of a 'corporaexplorerobject', and 3) a 'Shiny' app for simple
+    retrieval/extraction of documents from a 'corporaexplorerobject' in a
+    reading-friendly format.
 Depends:
 	R (>= 3.0.0)
 Imports:

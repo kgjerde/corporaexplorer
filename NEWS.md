@@ -1,4 +1,4 @@
-# corporaexplorer 0.7.0.9000
+# corporaexplorer 0.8.0
 
 ## Breaking API changes
 
