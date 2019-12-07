@@ -183,8 +183,8 @@ validate_max_docs_in_wall <- function() {
         ,
         paste(
             "\nCorpus map too large. Filter corpus or switch to calendar view if available.\n\n",
-            "Alternatively, specify 'MAX_DOCS_IN_WALL_VIEW'",
-            "in the call to 'explore()'."
+            "Alternatively, specify 'max_docs_in_wall_view'",
+            "in the 'plot_options' argument in the call to 'explore()'."
         )
     ))
 }
