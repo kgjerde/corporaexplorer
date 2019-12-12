@@ -259,6 +259,51 @@ get_term_vector <- function(returned_list) {
   return(returned_list[[2]])
 }
 
+# 4. Helper function ------------------------------------------------------
+
+#' Values for custom UI sidebar checkbox filtering
+#'
+#' @param columns_for_ui_checkboxes Character or factor. Column(s) in new_df.
+#'   Include sets of checkboxes in the app sidebar for
+#'   convenient filtering of corpus.
+#'   Typical useful for columns with a small set of unique
+#'   (and short) values.
+#'   Checkboxes will be arranged by \code{sort()},
+#'   unless \code{columns_for_ui_checkboxes}
+#'   is a vector of factors, in which case the order will be according to
+#'   factor level order (easy relevelling with \code{forcats::fct_relevel()}).
+#'   To use a different
+#'   label in the sidebar than the columnn name,
+#'   simply pass a named character vector to \code{columns_for_ui_checkboxes}.
+#'   If \code{columns_for_ui_checkboxes} includes a column which is not
+#'   present in dataset, it will be ignored.
+#' @inheritParams transform_365
+#'
+#' @return List: column_names; values. Or NULL.
+#' @keywords internal
+include_columns_for_ui_checkboxes <-
+  function(new_df, columns_for_ui_checkboxes = NULL) {
+    column_names <-
+      columns_for_ui_checkboxes[columns_for_ui_checkboxes %in% colnames(new_df)]
+    if (length(column_names) == 0) {
+      return(NULL)
+    }
+
+    values <- vector("list", length(column_names))
+    for (i in seq_along(column_names)) {
+      if (is.factor(new_df[[column_names[i]]])) {
+        values[[i]] <-
+          levels(new_df[[column_names[i]]])
+      } else {
+        values[[i]] <- new_df[[column_names[i]]] %>%
+          as.character() %>%
+          unique() %>%
+          sort()
+      }
+    }
+    return(list(column_names = column_names, values = values))
+  }
+
 # 4. Main function --------------------------------------------------------
 
 # https://github.com/tidyverse/dplyr/blob/master/R/tbl-cube.r for tips on documentation
@@ -312,6 +357,7 @@ prepare_data <- function(dataset, ...) {
 #'   searching will be slower.
 #' @inheritParams transform_regular
 #' @inheritParams matrix_via_r
+#' @inheritParams include_columns_for_ui_checkboxes
 #' @details For data.frame: Each row in \code{dataset} is treated as a base differentiating unit in the corpus,
 #'   typically chapters in books, or a single document in document collections.
 #'   The following column names are reserved and cannot be used in \code{dataset}:
@@ -354,6 +400,7 @@ prepare_data.data.frame <- function(dataset,
                          use_matrix = TRUE,
                          matrix_without_punctuation = TRUE,
                          tile_length_range = c(1, 10),
+                         columns_for_ui_checkboxes = NULL,
                          ...) {
 
 # Argument checking general -----------------------------------------------
@@ -540,6 +587,9 @@ prepare_data.data.frame <- function(dataset,
   loaded_data$name <- corpus_name
   loaded_data$columns_for_info <-
     columns_doc_info[columns_doc_info %in% colnames(abc)]
+
+  loaded_data$columns_for_ui_checkboxes <-
+    include_columns_for_ui_checkboxes(abc, columns_for_ui_checkboxes)
 
   # For config constants
   loaded_data$date_based_corpus <- date_based_corpus

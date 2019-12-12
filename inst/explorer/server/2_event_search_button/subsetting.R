@@ -1,5 +1,26 @@
 
-  if (check_valid_column_names(search_arguments$subset_custom_column,
+# Sidebar checkbox filtering, if any --------------------------------------
+
+# Checking for presence of checkboxes
+if (!is.null(input$subset_corpus)) {
+  if (!is.null(UI_FILTERING_CHECKBOXES)) {
+
+    for (i in seq_along(UI_FILTERING_CHECKBOXES$column_names)) {
+      # Do nothing if every box checked
+      if (!all(UI_FILTERING_CHECKBOXES$values[[i]] %in% input[[paste0("type_", i)]])) {
+      # If some unchecked, filter:
+        session_variables$data_dok <-
+          session_variables$data_dok[
+            session_variables$data_dok[[UI_FILTERING_CHECKBOXES$column_names[i]]] %in% input[[paste0("type_", i)]],
+          ]
+      }
+    }
+  }
+}
+
+# And then the rest of the sidebar input ----------------------------------
+
+ if (check_valid_column_names(search_arguments$subset_custom_column,
                                session_variables$data_dok) &
       # TODO dirty hack because open but empty filter corpus field in app is list(),
       # which fails the regex check
@@ -7,7 +28,6 @@
       # (same dirty hack as other TODO):
       check_regexes(unlist(search_arguments$subset_terms))) {
     if (all(check_safe_search(search_arguments$subset_terms))) {
-
 
 # Filtering by years/dates ------------------------------------------------
 

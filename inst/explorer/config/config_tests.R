@@ -28,6 +28,8 @@ if (is.null(loaded_data$name)) {
     CORPUS_TITLE <- paste("Corpus map", "\u2013", loaded_data$name)
 }
 
+UI_FILTERING_CHECKBOXES <- NULL
+
 # From function arguments -------------------------------------------------
 
 NO_MATRIX <- FALSE

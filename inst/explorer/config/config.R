@@ -28,6 +28,8 @@ if (is.null(loaded_data$name)) {
     CORPUS_TITLE <- loaded_data$name
 }
 
+UI_FILTERING_CHECKBOXES <- loaded_data$columns_for_ui_checkboxes
+
 # Search options from function arguments ----------------------------------
 
 search_options <- shiny::getShinyOption("corporaexplorer_search_options")

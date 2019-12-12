@@ -56,15 +56,27 @@ shinydashboard::dashboardSidebar(
         size = "sm",
         selected = input_arguments_derived$filter_corpus_button
     ),
-    div(
+
     conditionalPanel(
         condition = "input.subset_corpus == 'Yes'",
-        textAreaInput("filter_text_area", label = NULL, placeholder = "Terms separated by newline",
-                      value = input_arguments_derived$filter_terms)
-    ), class = "subset_field"),
+
+        # Filter text area
+        div(
+            textAreaInput(
+                "filter_text_area",
+                label = NULL,
+                placeholder = "Terms separated by newline",
+                value = input_arguments_derived$filter_terms
+            )
+            ,
+            class = "subset_field"
+        ),
+
+        # Conditionally rendered checkbox filtering UI in server
+        shiny::uiOutput('checkbox_filtering_ui')
+    ),
 
     shiny::hr(),
-
     shinyWidgets::prettyCheckbox(inputId = "case_sensitivity",
                    label = "Case sensitive search (slower)",
                    value = input_arguments$case_sensitivity,

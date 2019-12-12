@@ -18,6 +18,7 @@ prepare_data(dataset, ...)
   use_matrix = TRUE,
   matrix_without_punctuation = TRUE,
   tile_length_range = c(1, 10),
+  columns_for_ui_checkboxes = NULL,
   ...
 )
 
@@ -97,6 +98,21 @@ and day corpus view. Tile length is calculated by
 to = tile_length_range,
 from = c(0, max(.)))}
 Default is \code{c(1, 10)}.}
+
+\item{columns_for_ui_checkboxes}{Character or factor. Column(s) in new_df.
+Include sets of checkboxes in the app sidebar for
+convenient filtering of corpus.
+Typical useful for columns with a small set of unique
+(and short) values.
+Checkboxes will be arranged by \code{sort()},
+unless \code{columns_for_ui_checkboxes}
+is a vector of factors, in which case the order will be according to
+factor level order (easy relevelling with \code{forcats::fct_relevel()}).
+To use a different
+label in the sidebar than the columnn name,
+simply pass a named character vector to \code{columns_for_ui_checkboxes}.
+If \code{columns_for_ui_checkboxes} includes a column which is not
+present in dataset, it will be ignored.}
 }
 \value{
 A \code{corporaexplorer} object to be passed as argument to

@@ -207,3 +207,30 @@ hr {
   margin-left: -50px;
   font-size: 13px;
 }
+
+/*The next 4 are for custom ui filtering columns
+checkboxes
+TODO tweaking*/
+
+.btn-group_ui {
+  margin-top:-1em;
+  background-color: rgb(230, 230, 230);
+  color: rgb(51, 51, 51);
+}
+
+.filtering_checkboxes {
+  margin-top: -1.5em;
+  margin-bottom: -1em;
+  font-size: 0.8em;
+  overflow: auto;
+}
+
+.checkbox-inline {
+  margin-left: 0;
+  margin-right: 0.3em;
+}
+
+.checkbox-inline+.checkbox-inline {
+  margin-left: 0;
+  margin-right: 0.3em;
+}

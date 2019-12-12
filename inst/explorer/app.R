@@ -79,6 +79,7 @@ source("./server/functions_ui_management.R", local = TRUE)
 source("./server/function_collect_edited_info_plot_legend_keys.R", local = TRUE)
 
 # Conditional and customised sidebar UI elements --------------------------
+source("./ui/render_ui_sidebar_checkbox_filtering.R", local = TRUE)
 source("./ui/render_ui_sidebar_date_filtering.R", local = TRUE)
 source("./ui/hide_ui_sidebar_plot_mode.R", local = TRUE)
 source("./ui/set_colours_in_search_fields.R", local = TRUE)
