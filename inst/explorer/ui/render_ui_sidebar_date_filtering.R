@@ -1,4 +1,4 @@
-output$time_filtering_ui <- renderUI({
+output$time_filtering_ui <- shiny::renderUI({
 
   if (DATE_BASED_CORPUS == TRUE) {
 
@@ -13,7 +13,7 @@ output$time_filtering_ui <- renderUI({
 
       shiny::conditionalPanel(
         condition = "input.years_or_dates == 'Year range'",
-        sliderInput(
+        shiny::sliderInput(
           "date_slider",
           label = NULL,
           min = min(loaded_data$original_data$data_dok$Year),

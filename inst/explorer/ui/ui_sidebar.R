@@ -62,7 +62,7 @@ shinydashboard::dashboardSidebar(
 
         # Filter text area
         div(
-            textAreaInput(
+            shiny::textAreaInput(
                 "filter_text_area",
                 label = NULL,
                 placeholder = "Terms separated by newline",
