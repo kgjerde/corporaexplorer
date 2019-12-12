@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Print corporaexplorerobject — print.corporaexplorerobject • corporaexplorer</title>
+<title>Values for custom UI sidebar checkbox filtering — include_columns_for_ui_checkboxes • corporaexplorer</title>
 
 
 <!-- jquery -->
@@ -37,8 +37,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Print corporaexplorerobject — print.corporaexplorerobject" />
-<meta property="og:description" content="Print corporaexplorerobject" />
+<meta property="og:title" content="Values for custom UI sidebar checkbox filtering — include_columns_for_ui_checkboxes" />
+<meta property="og:description" content="Values for custom UI sidebar checkbox filtering" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -153,30 +153,46 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Print corporaexplorerobject</h1>
-    <small class="dont-index">Source: <a href='https://github.com/kgjerde/corporaexplorer/blob/master/R/generic_methods.R'><code>R/generic_methods.R</code></a></small>
-    <div class="hidden name"><code>print.corporaexplorerobject.Rd</code></div>
+    <h1>Values for custom UI sidebar checkbox filtering</h1>
+    <small class="dont-index">Source: <a href='https://github.com/kgjerde/corporaexplorer/blob/master/R/prepare_data.R'><code>R/prepare_data.R</code></a></small>
+    <div class="hidden name"><code>include_columns_for_ui_checkboxes.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Print corporaexplorerobject</p>
+    <p>Values for custom UI sidebar checkbox filtering</p>
     </div>
 
-    <pre class="usage"><span class='co'># S3 method for corporaexplorerobject</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>include_columns_for_ui_checkboxes</span>(<span class='no'>new_df</span>, <span class='kw'>columns_for_ui_checkboxes</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A corporaexplorerobject</p></td>
+      <th>new_df</th>
+      <td><p>A "data_dok" tibble produced by <code>transform_regular</code></p></td>
+    </tr>
+    <tr>
+      <th>columns_for_ui_checkboxes</th>
+      <td><p>Character or factor. Column(s) in new_df.
+Include sets of checkboxes in the app sidebar for
+convenient filtering of corpus.
+Typical useful for columns with a small set of unique
+(and short) values.
+Checkboxes will be arranged by <code><a href='https://rdrr.io/r/base/sort.html'>sort()</a></code>,
+unless <code>columns_for_ui_checkboxes</code>
+is a vector of factors, in which case the order will be according to
+factor level order (easy relevelling with <code><a href='https://forcats.tidyverse.org/reference/fct_relevel.html'>forcats::fct_relevel()</a></code>).
+To use a different
+label in the sidebar than the columnn name,
+simply pass a named character vector to <code>columns_for_ui_checkboxes</code>.
+If <code>columns_for_ui_checkboxes</code> includes a column which is not
+present in dataset, it will be ignored.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Console-friendly output</p>
+    <p>List: column_names; values. Or NULL.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

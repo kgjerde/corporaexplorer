@@ -177,6 +177,7 @@
   <span class='kw'>use_matrix</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>matrix_without_punctuation</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
   <span class='kw'>tile_length_range</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>10</span>),
+  <span class='kw'>columns_for_ui_checkboxes</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='no'>...</span>
 )
 
@@ -276,6 +277,23 @@ and day corpus view. Tile length is calculated by
 to = tile_length_range,
 from = c(0, max(.)))</a></code>
 Default is <code><a href='https://rdrr.io/r/base/c.html'>c(1, 10)</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>columns_for_ui_checkboxes</th>
+      <td><p>Character or factor. Column(s) in new_df.
+Include sets of checkboxes in the app sidebar for
+convenient filtering of corpus.
+Typical useful for columns with a small set of unique
+(and short) values.
+Checkboxes will be arranged by <code><a href='https://rdrr.io/r/base/sort.html'>sort()</a></code>,
+unless <code>columns_for_ui_checkboxes</code>
+is a vector of factors, in which case the order will be according to
+factor level order (easy relevelling with <code><a href='https://forcats.tidyverse.org/reference/fct_relevel.html'>forcats::fct_relevel()</a></code>).
+To use a different
+label in the sidebar than the columnn name,
+simply pass a named character vector to <code>columns_for_ui_checkboxes</code>.
+If <code>columns_for_ui_checkboxes</code> includes a column which is not
+present in dataset, it will be ignored.</p></td>
     </tr>
     </table>
 
