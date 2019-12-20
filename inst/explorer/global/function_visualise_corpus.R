@@ -50,7 +50,7 @@ visualiser_korpus <-
       df$Term_1 <- NA
     } else {
 
-# 2. Count search term hits and assign factors for labelling --------------
+# 2. Count search term hits -----------------------------------------------
 
       count_overview <-
         count_search_terms_hits(
@@ -62,6 +62,8 @@ visualiser_korpus <-
           modus
         )
 
+# 3. Assign factors for labelling -----------------------------------------
+
       df <- create_factors_for_labelling(count_overview,
         df,
         search_terms = search_arguments$search_terms,
@@ -69,7 +71,7 @@ visualiser_korpus <-
       )
     }
 
-# 3. Create plot coordinates, step 1 --------------------------------------
+# 4. Create plot coordinates, step 1 --------------------------------------
 
     if (modus == "data_365") {
       # width = 53 # fordi uker
@@ -82,13 +84,13 @@ visualiser_korpus <-
       df <- create_coordinates_1_data_dok(df, linjer, max_width_for_row = 15)
     }
 
-# 4. Create plot coordinates, step 2 (if search terms > 1) ----------------
+# 5. Create plot coordinates, step 2 (if search terms > 1) ----------------
 
     df <-
       create_coordinates_several_search_terms(df, linjer)
     df <- dplyr::select(df, -dplyr::starts_with("Term_"))
 
-# 5. Create plot coordinates, step 3 (distance between days etc.) ---------
+# 6. Create plot coordinates, step 3 (distance between days etc.) ---------
 
     if (modus == "data_365") {
       df <- create_distance_coordinates_365(
@@ -111,14 +113,14 @@ visualiser_korpus <-
       )
     }
 
-# 6. Label x and y axes ---------------------------------------------------
+# 7. Label x and y axes ---------------------------------------------------
     y_text <- label_y_axis(df)
 
     if (modus == "data_365") {
       x_breaks <- label_x_axis_365(df)
     }
 
-# 7. Assign colours to plot labels/factors (up to 2 terms) ----------------
+# 8. Assign colours to plot labels/factors (up to 2 terms) ----------------
 
     temp_variable_for_unpacking <-
       colours_to_plot_and_legend(df,
@@ -130,7 +132,7 @@ visualiser_korpus <-
     df <- temp_variable_for_unpacking[[1]]
     legend_df <- temp_variable_for_unpacking[[2]]
 
-# 8. ggplotting -----------------------------------------------------------
+# 9. ggplotting -----------------------------------------------------------
 
     if (modus == "data_365") {
       plotting_corpus_data_365(df, x_breaks, y_text, legend_df, linjer)
