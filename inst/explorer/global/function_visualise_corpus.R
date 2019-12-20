@@ -54,14 +54,16 @@ visualiser_korpus <-
 
 # 2. Count search term hits and assign factors for labelling --------------
 
-      df <-
+      count_overview <-
         count_search_terms_hits(df,
                                 search_arguments,
                                 matriksen,
                                 ordvektor,
                                 doc_df,
-                                modus) %>%
-        create_factors_for_labelling(., df,
+                                modus)
+
+      df <- create_factors_for_labelling(count_overview,
+                                         df,
                                      search_terms = search_arguments$search_terms,
                                      number_of_factors)
     }
