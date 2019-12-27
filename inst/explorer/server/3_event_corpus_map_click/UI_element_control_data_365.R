@@ -1,34 +1,17 @@
 if (session_variables$doc_tab_open == TRUE) {
-    shiny::removeTab('dokumentboks',
-              target = "document_box_title",
-              session = shiny::getDefaultReactiveDomain())
-    shiny::removeTab('dokumentboks',
-              target = "document_box_title_info",
-              session = shiny::getDefaultReactiveDomain())
-
+    remove_tab_doc_tekst()
+    remove_tab_doc_info()
+    if (INCLUDE_EXTRA == TRUE) {
+        remove_tab_extra()
+    }
 
     session_variables$doc_tab_open <- FALSE
 
 }
 
 if (session_variables$doc_list_open == FALSE) {
-    shiny::appendTab(
-        'dokumentboks',
-        tab =
-            shiny::tabPanel(
-                title = shiny::textOutput('document_list_title'),
-                value = "document_list_title",
-                htmlOutput(
-                    outputId = "doc_list_tekst",
-                    container = tags$div,
-                    class = "boxed_doc_data_365"
-                )
-            ),
 
-        select = TRUE,
-        menuName = NULL,
-        session = shiny::getDefaultReactiveDomain()
-    )
+    add_tab_doc_list_tekst(365)
 
     session_variables$doc_list_open <- TRUE
 

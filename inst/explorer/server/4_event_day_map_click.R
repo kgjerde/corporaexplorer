@@ -18,5 +18,10 @@ source("server/4_event_day_map_click/document_info_tab_data_365.R", local = TRUE
 # Document text (and visualisation) tab -----------------------------------
 source("server/4_event_day_map_click/document_text_vis_tab.R", local = TRUE)
 
+# Potential "extra" tab ---------------------------------------------------
+if (INCLUDE_EXTRA == TRUE) {
+    create_extra_tab_content(plot_mode$mode, min_rad)
+}
+
 }
 })

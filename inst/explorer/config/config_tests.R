@@ -53,6 +53,10 @@ MAX_DOCS_IN_WALL_VIEW <- 12000
 MAIN_COLOURS <- c("red", "blue", "green", "purple", "orange", "gray")
 MY_COLOURS <- rep(MAIN_COLOURS, 10)
 
+# Extra boolean from function arguments -----------------------------------
+
+INCLUDE_EXTRA <- FALSE
+
 # Pre-filled sidebar input from function argument -------------------------
 
 source("./config/sidebar_input_values_from_function_call.R", local = TRUE)

@@ -44,6 +44,11 @@ source("./server/3_event_corpus_map_click/document_info_tab_data_dok.R", local =
 # Document visualisation --------------------------------------------------
 source("./server/3_event_corpus_map_click/document_visualisation.R", local = TRUE)
 
+# Potential "extra" tab ---------------------------------------------------
+if (INCLUDE_EXTRA == TRUE) {
+    create_extra_tab_content(plot_mode$mode, min_rad)
+}
+
 # Auto-scroll document to top
 source("./server/3_event_corpus_map_click/js_auto_scroll.R", local = TRUE)
 

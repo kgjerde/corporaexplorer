@@ -130,6 +130,15 @@ if (!is.null(plot_options$tile_length)) {
     }
 }
 
+# Extra boolean from function arguments -----------------------------------
+
+INCLUDE_EXTRA <- FALSE
+if (!is.null(shiny::getShinyOption("corporaexplorer_extra"))) {
+    INCLUDE_EXTRA <- shiny::getShinyOption("corporaexplorer_extra")
+    loaded_data$original_data$data_dok$Extra_tab_text <- ""
+}
+
+
 # Pre-filled sidebar input from function argument -------------------------
 
 source("./config/sidebar_input_values_from_function_call.R", local = TRUE)

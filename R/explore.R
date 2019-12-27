@@ -181,6 +181,8 @@ explore <- function(corpus_object,
 
   shiny::shinyOptions("corporaexplorer_data" = corpus_object)
 
+  shiny::shinyOptions("corporaexplorer_extra" = list(...)$extra)
+
   message(sprintf(
     "Exploring %s document%s",
     nrow(corpus_object$original_data$data_dok),

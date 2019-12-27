@@ -80,3 +80,14 @@ search_arguments$custom_column <- collect_custom_column(search_arguments$raw_hig
 
 # Checking search arguments -----------------------------------------------
 search_arguments$all_ok <- check_all_input()
+
+# Extra session variables -------------------------------------------------
+if (INCLUDE_EXTRA == TRUE) {
+    search_arguments$extra_plot <- input$extra_plot_mode
+    search_arguments$extra_chart_terms <- input$magic_search_area
+
+    if (!stringi::stri_isempty(search_arguments$extra_chart_terms) &
+        search_arguments$extra_plot != "regular") {
+        search_arguments$search_terms <- "PLACEHOLDER"
+    }
+}

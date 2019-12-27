@@ -18,6 +18,28 @@ if (!is.null(input$subset_corpus)) {
   }
 }
 
+# Extra -------------------------------------------------------------------
+if (INCLUDE_EXTRA == TRUE) {
+  search_arguments$subset_search <- !is.null(input$extra_fields)
+  if (search_arguments$subset_search == TRUE) {
+    if (stringi::stri_isempty(input$magic_text_area) == FALSE) {
+      if (cx_validate_input(input$magic_text_area) == TRUE) {
+        session_variables$data_dok <-
+          cx_extra_subset(input$magic_text_area, session_variables$data_dok, search_arguments$case_sensitive)
+
+      # If validation fails:
+      } else {
+        shinyWidgets::sendSweetAlert(
+          session = session,
+          title = "Warning",
+          text = "Input in 'Sentence based filtering' box is invalid and ignored.",
+          type = "warning"
+        )
+      }
+    }
+  }
+}
+
 # And then the rest of the sidebar input ----------------------------------
 
  if (check_valid_column_names(search_arguments$subset_custom_column,
@@ -52,11 +74,13 @@ if (!is.null(input$subset_corpus)) {
                             search_arguments,
                             plot_mode$mode,
                             session_variables)
+}
 
 # Ekstra filtrering av data_dok ved subsetting i data_365: ----------------
 
-  if (plot_mode$mode == "data_365" &
-      !is.null(input$subset_corpus)) {
+  if (plot_mode$mode == "data_365") {
+      if (search_arguments$subset_search == TRUE | search_arguments$subset_search == TRUE) {
+
     session_variables$data_dok <-
 
       filtrere_korpus_tid(
@@ -81,7 +105,7 @@ if (!is.null(input$subset_corpus)) {
       0
 
   }
-}
+  }
+    }
 
     }
-  }

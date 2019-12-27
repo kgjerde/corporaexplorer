@@ -20,7 +20,8 @@
   height: calc(100vh - 200px);
 }
 
-#highlight_terms_area, #filter_text_area {
+#highlight_terms_area,
+#filter_text_area {
   padding-left:10px;
   padding-top: 10px;
   padding-right:10px;
@@ -28,6 +29,22 @@
   resize: vertical;
   background-color: white;
   min-height: 40px;
+}
+
+#magic_text_area,
+#magic_search_area {
+  padding-left:10px;
+  padding-top: 10px;
+  padding-right:10px;
+  /*margin-top:-2em;*/
+  resize: vertical;
+  background-color: white;
+  min-height: 40px;
+  margin-bottom: -1em;
+}
+
+.magic_search {
+  margin-top: -1em;
 }
 
 /*https://stackoverflow.com/a/32506173/8399819*/

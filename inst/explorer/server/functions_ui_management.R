@@ -83,3 +83,94 @@ corpus_map_title <- function(plot_mode) {
         "Document wall view"
     }
 }
+
+
+# Add tabs ----------------------------------------------------------------
+
+add_tab_doc_list_tekst <- function(dok_or_365) {
+    shiny::appendTab(
+        'dokumentboks',
+        tab =
+            shiny::tabPanel(
+                title = shiny::textOutput('document_list_title'),
+                value = "document_list_title",
+                htmlOutput(
+                    outputId = "doc_list_tekst",
+                    container = tags$div,
+                    class = paste0("boxed_doc_data_", dok_or_365)
+                )
+            ),
+
+        select = TRUE,
+        menuName = NULL,
+        session = shiny::getDefaultReactiveDomain()
+    )
+}
+
+add_tab_doc_tekst <- function(dok_or_365) {
+    shiny::appendTab(
+      'dokumentboks',
+      tab =
+          shiny::tabPanel(
+              title = textOutput('document_box_title'),
+              value = "document_box_title",
+              shiny::plotOutput("dok_vis",
+                         click = "dok_vis_click",
+                         height = "auto"),
+
+              shiny::htmlOutput(
+                  outputId = "doc_tekst",
+                  container = tags$div,
+                  class = paste0("boxed_doc_data_", dok_or_365)
+              )
+          ),
+
+      select = TRUE,
+      menuName = NULL,
+      session = shiny::getDefaultReactiveDomain()
+  )
+}
+
+add_tab_doc_info <- function(dok_or_365) {
+    shiny::appendTab(
+        'dokumentboks',
+        tab =
+            shiny::tabPanel(
+                title = shiny::textOutput('document_box_title_info'),
+                value = "document_box_title_info",
+
+                shiny::htmlOutput(
+                    outputId = "doc_info",
+                    container = shiny::tags$div,
+                    class = paste0("boxed_doc_data_", dok_or_365)
+                )
+
+            ),
+
+        select = FALSE,
+        menuName = NULL,
+        session = shiny::getDefaultReactiveDomain()
+    )
+}
+
+
+# Remove tabs -------------------------------------------------------------
+
+remove_tab_doc_list_tekst <- function() {
+    shiny::removeTab('dokumentboks',
+              target = "document_list_title",
+              session = shiny::getDefaultReactiveDomain())
+}
+
+remove_tab_doc_tekst <- function() {
+    shiny::removeTab('dokumentboks',
+            target = "document_box_title",
+            session = shiny::getDefaultReactiveDomain())
+}
+
+remove_tab_doc_info <- function() {
+    shiny::removeTab('dokumentboks',
+              target = "document_box_title_info",
+              session = shiny::getDefaultReactiveDomain())
+}
+

@@ -2,54 +2,20 @@ shiny::updateTabsetPanel(session, inputId = "dokumentboks", selected = 'document
 
 
 if (session_variables$doc_list_open == TRUE) {
-    shiny::removeTab('dokumentboks',
-              target = "document_list_title",
-              session = shiny::getDefaultReactiveDomain())
 
-
+    remove_tab_doc_list_tekst()
 
     session_variables$doc_list_open <- FALSE
 }
 
 
 if (session_variables$doc_tab_open == FALSE) {
-    shiny::appendTab(
-        'dokumentboks',
-        tab =
-            tabPanel(
-                title = shiny::textOutput('document_box_title'),
-                value = "document_box_title",
-                shiny::plotOutput("dok_vis",
-                           click = "dok_vis_click",
-                           height = "auto"),
 
-                shiny::htmlOutput(
-                    outputId = "doc_tekst",
-                    container = shiny::tags$div,
-                    class = "boxed_doc_data_dok"
-                )
-            ),
-
-        select = TRUE,
-        menuName = NULL,
-        session = shiny::getDefaultReactiveDomain()
-    )
-
-    appendTab(
-        'dokumentboks',
-        tab =
-            shiny::tabPanel(
-                title = shiny::textOutput('document_box_title_info'),
-                value = "document_box_title_info",
-
-                shiny::htmlOutput(
-                    outputId = "doc_info",
-                    container = shiny::tags$div,
-                    class = "boxed_doc_data_dok"
-                )
-
-            )
-    )
+    add_tab_doc_tekst("dok")
+    add_tab_doc_info("dok")
+    if (INCLUDE_EXTRA == TRUE) {
+        add_tab_extra("dok")
+    }
 
     # Setter fane-tittel
     output$document_box_title_info <- shiny::renderText({

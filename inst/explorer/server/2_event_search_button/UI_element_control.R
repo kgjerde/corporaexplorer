@@ -55,10 +55,11 @@ if (DATE_BASED_CORPUS == TRUE) {
 }
 
 # Fjerner faner (relevant for data_dok)
-shiny::removeTab('dokumentboks', target = "document_box_title_info",
-          session = shiny::getDefaultReactiveDomain())
-shiny::removeTab('dokumentboks', target = "document_box_title",
-          session = shiny::getDefaultReactiveDomain())
+remove_tab_doc_info()
+remove_tab_doc_tekst()
+if (INCLUDE_EXTRA == TRUE) {
+  remove_tab_extra()
+}
 
 # Setter tab-tittel på korpuskart
 output$korpuskarttittel <- shiny::renderText({

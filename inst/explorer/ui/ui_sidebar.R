@@ -74,7 +74,10 @@ shinydashboard::dashboardSidebar(
 
         # Conditionally rendered checkbox filtering UI in server
         shiny::uiOutput('checkbox_filtering_ui')
-    ),
+        ),
+
+        # Conditionally rendered checkbox filtering UI in server
+        shiny::uiOutput('magic_text_area_ui'),
 
     shiny::hr(),
     shinyWidgets::prettyCheckbox(inputId = "case_sensitivity",

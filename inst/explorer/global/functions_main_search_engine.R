@@ -1,5 +1,5 @@
 #' Custom, faster replacement for padr::padint()
-#' 
+#'
 #' @return Data_365 df padded with rows for days without documents
 min_padding <- function(frekvensmatrix, original_tibble){
 # Full vektor -- alle dokumenter
@@ -8,7 +8,7 @@ min_padding <- function(frekvensmatrix, original_tibble){
 
     # Dokumenter med .pattern
     doc_vector <- unique(frekvensmatrix$i)
-    
+
     # Garderer meg mot ingen treff, fordi da blir det rar oppførsel:
     if (length(doc_vector) == 0) {
         manglende_vector <- full_vector
@@ -19,7 +19,7 @@ min_padding <- function(frekvensmatrix, original_tibble){
 
     # Lager tibble med value = 0 for de "innpaddede"
     manglende_vector <- tibble::tibble(i = manglende_vector, total = 0)
-    
+
     # Sette dem sammem og sorter
     treff_count_matrix_2 <- rbind(frekvensmatrix, manglende_vector) %>%
         dplyr::arrange(i)
@@ -36,18 +36,18 @@ filter_by_count_argument <- function(df, pattern, count_argument) {
 }
 
 #' Check if whitespace in pattern
-#' 
+#'
 #' Why: If whitespace, matrix will not be used.
-#' 
+#'
 #' @return Logical.
 contains_whitespace <- function(pattern) {
     return(length(stringr::str_split(pattern, "\\s|\\\\s", simplify = TRUE)) != 1)
 }
 
 #' Check for regex word boundary
-#' 
+#'
 #' Why: re2 does not recognize non-ASCII word boundaries.
-#' 
+#'
 #' @return Logical.
 contains_regex_word_boundary <- function(pattern) {
 # Fordi re2 ikke gjenkjenner ikke-ASCII word boundaries:
@@ -58,7 +58,7 @@ contains_regex_word_boundary <- function(pattern) {
 #' Checks for regex special characters
 #'
 #' Rationale: make stringr take almost all complex searches
-#' @param pattern 
+#' @param pattern
 #'
 #' @return Logical
 contains_other_regex_special_characters <- function(pattern) {
@@ -69,9 +69,9 @@ contains_other_regex_special_characters <- function(pattern) {
 }
 
 #' Check if punctuation in pattern
-#' 
+#'
 #' Why: If yes, matrix will not be used.
-#' 
+#'
 #' @return Logical.
 contains_punctuation_or_digit <- function(pattern) {
     if (MATRIX_WITHOUT_PUNCTUATION == FALSE) {
@@ -82,9 +82,9 @@ contains_punctuation_or_digit <- function(pattern) {
 
 
 #' Check if pattern is ASCII characters only
-#' 
+#'
 #' Why: re2 related. If no, check for word boundaries character.
-#' 
+#'
 #' @return Logical.
 is_ascii <- function(pattern) {
     return(stringi::stri_enc_mark(pattern) == "ASCII")
@@ -110,7 +110,7 @@ can_use_matrix <-
     }
 
 #' Combines checks to decide if re2 can be used.
-#' 
+#'
 #' @return Logical.
 can_use_re2 <- function(pattern) {
     if (USE_ONLY_STRINGR == TRUE) {
@@ -132,7 +132,7 @@ can_use_re2 <- function(pattern) {
 }
 
 #' Main matrix search function
-#' 
+#'
 #' @return Df with column with search_term count for each document.
 count_matrix <- function(pattern, matriks, df, ordvektor) {
     if (can_use_re2(pattern)) {
@@ -247,13 +247,14 @@ count_hits_for_each_search_term <-
             df_count <- count_df(pattern, dataframe, case_sensitive, custom_column)
             # print("df")
         }
-        
+
         colnames(df_count) <- pattern
-        
+
         if (!is.na(thresholds)) {
             df_count <-
                 filter_by_count_argument(df_count, pattern, thresholds)
         }
+
         # print(system.time({
         if (modus == "data_365") {
             df_count$Date <- doc_df$Date
@@ -266,6 +267,6 @@ count_hits_for_each_search_term <-
             colnames(df_count) <- pattern
         }
         # }))
-        
+
         return(df_count)
     }

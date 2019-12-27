@@ -37,7 +37,7 @@ if (!is.null(UI_FILTERING_CHECKBOXES)) {
         justified = TRUE,
         size = "xs",
         status = "group_ui",
-        selected = input_arguments_derived$filter_corpus_button
+        selected = NULL#input_arguments_derived$filter_corpus_button
       ),
       list_of_filtering_columns_ui
     )

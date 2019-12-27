@@ -59,7 +59,9 @@ ui <- function(request) {
 
                # shinyjs
                ,
-               shinyjs::useShinyjs()
+               shinyjs::useShinyjs(),
+               shinyWidgets::useSweetAlert()
+
                # Body ends
       )
       # Page ends
@@ -86,6 +88,14 @@ source("./ui/set_colours_in_search_fields.R", local = TRUE)
 
 # Session variables -------------------------------------------------------
 source("./server/session_variables.R", local = TRUE)
+
+# For use with potential "extra" plugins ----------------------------------
+if (INCLUDE_EXTRA == TRUE) {
+  source("./extra/extra_render_ui_sidebar_magic_filtering.R", local = TRUE)
+  source("./extra/extra_tab_content.R", local = TRUE)
+  source("./extra/extra_ui_management_functions.R", local = TRUE)
+  source("./extra/extra_session_variables.R", local = TRUE)
+}
 
 # Corpus info tab ---------------------------------------------------------
 source("./server/corpus_info_tab.R", local = TRUE)
