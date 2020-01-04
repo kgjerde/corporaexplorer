@@ -51,68 +51,32 @@ visualiser_korpus <-
     } else {
 
 # 2. Count search term hits -----------------------------------------------
-    local_flag <- FALSE
-    if (INCLUDE_EXTRA == TRUE) {
+local_flag <- FALSE
+if (INCLUDE_EXTRA == TRUE) {
+  if (search_arguments$extra_plot != "regular") {
+    linjer <- 1
+    search_arguments$search_terms <- "PLACEHOLDER"
+    local_flag <- TRUE
+    count_overview <- cx_extra_chart(search_arguments$extra_chart_terms,
+                                     doc_df,
+                                     df,
+                                     search_arguments$case_sensitive,
+                                     modus)
+  }
 
-      if (search_arguments$extra_plot != "regular") {
-        linjer <- 1
-        search_arguments$search_terms <- "PLACEHOLDER"
-        if (modus == "data_365") {
-          local_flag <- TRUE
-
-          count_overview <- cx_extra_chart(search_arguments$extra_chart_terms, session_variables$data_dok, search_arguments$case_sensitive)#get_number_of_sentences_per_doc()
-          # Make work with calendar plot
-          # Adapted from count_hits_for_each_search_term() TODO
-          count_overview$Date <- plyr::mapvalues(count_overview$ID, doc_df$ID, as.character(doc_df$Date), warn_missing = FALSE) %>%
-            as.Date()
-          count_overview <- count_overview %>%
-            dplyr::group_by(Date) %>%
-            dplyr::summarise(Term_1 = sum(Term_1))
-          count_overview <- dplyr::left_join(df, count_overview, by = "Date")
-          count_overview[["Term_1"]][is.na(count_overview[["Term_1"]])] <- 0
-          count_overview <- dplyr::select(count_overview, Term_1)
-          count_overview <- as.data.frame(count_overview)
-        } else if (modus == "data_dok") { # TODO, duplisering med "day"
-          local_flag <- TRUE
-          count_overview <- get_number_of_sentences_per_doc()
-          count_overview <- get_number_of_sentences_per_doc() %>%
-            dplyr::filter(ID %in% df$ID)
-          if (nrow(count_overview) != nrow(df)) {
-          day_doc_without_hits <- df$ID[!(df$ID %in% count_overview$ID)]
-          day_doc_without_hits <- data.frame(ID = day_doc_without_hits, Term_1 = 0)
-          count_overview <- rbind(count_overview, day_doc_without_hits) %>%
-            dplyr::arrange(ID)
-          }
-          count_overview <- dplyr::select(count_overview, Term_1)
-          count_overview <- as.data.frame(count_overview)
-        } else if (modus == "day") {
-          local_flag <- TRUE
-          count_overview <- get_number_of_sentences_per_doc() %>%
-            dplyr::filter(ID %in% df$ID)
-          if (nrow(count_overview) != nrow(df)) {
-          day_doc_without_hits <- df$ID[!(df$ID %in% count_overview$ID)]
-          day_doc_without_hits <- data.frame(ID = day_doc_without_hits, Term_1 = 0)
-          count_overview <- rbind(count_overview, day_doc_without_hits) %>%
-            dplyr::arrange(ID)
-          }
-          count_overview <- dplyr::select(count_overview, Term_1)
-          count_overview <- as.data.frame(count_overview)
-        }
-      }
-    }
-
-    # The regular one:
-    if (local_flag == FALSE) {
-      count_overview <-
-        count_search_terms_hits(
-          df,
-          search_arguments,
-          matriksen,
-          ordvektor,
-          doc_df,
-          modus
-        )
-    }
+  # The regular one:
+  if (local_flag == FALSE) {
+    count_overview <-
+      count_search_terms_hits(
+        df,
+        search_arguments,
+        matriksen,
+        ordvektor,
+        doc_df,
+        modus
+      )
+  }
+}
 
 # 3. Assign factors for labelling -----------------------------------------
 

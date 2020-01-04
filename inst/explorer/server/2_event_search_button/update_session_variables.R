@@ -83,6 +83,9 @@ search_arguments$all_ok <- check_all_input()
 
 # Extra session variables -------------------------------------------------
 if (INCLUDE_EXTRA == TRUE) {
+
+    cx_extra_reset_data()
+
     search_arguments$extra_plot <- input$extra_plot_mode
     search_arguments$extra_chart_terms <- input$magic_search_area
 
