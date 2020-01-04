@@ -23,11 +23,22 @@ if (INCLUDE_EXTRA == TRUE) {
   search_arguments$subset_search <- !is.null(input$extra_fields)
   if (search_arguments$subset_search == TRUE) {
     if (stringi::stri_isempty(input$magic_text_area) == FALSE) {
-      if (cx_validate_input(input$magic_text_area) == TRUE) {
-        session_variables$data_dok <-
-          cx_extra_subset(input$magic_text_area, session_variables$data_dok, search_arguments$case_sensitive)
+      # TODO better "collection" of patterns
+      extra_subset_terms <- input$magic_text_area %>%
+        stringr::str_split("\n") %>%
+        unlist(use.names = FALSE)
 
-      # If validation fails:
+      if (cx_validate_input(extra_subset_terms) == TRUE) {
+        for (pattern in extra_subset_terms) {
+          session_variables$data_dok <-
+            cx_extra_subset(
+              pattern,
+              session_variables$data_dok,
+              search_arguments$case_sensitive
+            )
+        }
+
+        # If validation fails:
       } else {
         shinyWidgets::sendSweetAlert(
           session = session,
