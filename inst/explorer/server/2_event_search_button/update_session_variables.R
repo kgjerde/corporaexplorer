@@ -83,14 +83,16 @@ search_arguments$all_ok <- check_all_input()
 
 # Extra session variables -------------------------------------------------
 if (INCLUDE_EXTRA == TRUE) {
+  cx_extra_reset_data()
 
-    cx_extra_reset_data()
+  search_arguments$extra_plot <- input$extra_plot_mode
 
-    search_arguments$extra_plot <- input$extra_plot_mode
-    search_arguments$extra_chart_terms <- input$magic_search_area
+  search_arguments$extra_chart_terms <- input$magic_search_area %>%
+    stringr::str_split("\n") %>%
+    unlist(use.names = FALSE)
 
-    if (!stringi::stri_isempty(search_arguments$extra_chart_terms) &
-        search_arguments$extra_plot != "regular") {
-        search_arguments$search_terms <- "PLACEHOLDER"
-    }
+  if (!identical(search_arguments$extra_chart_terms, "") &
+    search_arguments$extra_plot != "regular") {
+    search_arguments$search_terms <- sprintf("PLACEHOLDER", seq_along(search_arguments$extra_chart_terms))
+  }
 }

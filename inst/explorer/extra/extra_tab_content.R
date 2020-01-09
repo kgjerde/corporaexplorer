@@ -5,14 +5,12 @@ create_extra_tab_content <- function(mode, min_rad) {
     modus <- "data_day"
   }
 
-  ID_from_row <- session_variables[[modus]]$ID[min_rad]
-
   set_extra_tab_title(plot_mode$mode, min_rad)
 
   output$extra <- shiny::renderText({
     highlight_document(
       stringr::str_replace_all(
-        cx_extra_tab_text(ID_from_row),
+        cx_extra_tab_text(session_variables[[modus]], min_rad, search_arguments$extra_chart_terms),
         "\n",
         "<br>"
       ),

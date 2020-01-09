@@ -23,3 +23,7 @@ shiny::validate(shiny::need(
 ))
 
 validate_max_docs_in_wall()
+
+if (INCLUDE_EXTRA == TRUE) {
+    cx_shiny_validate(search_arguments$extra_chart_terms)
+}

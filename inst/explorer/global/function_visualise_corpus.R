@@ -46,6 +46,15 @@ visualiser_korpus <-
 
 # 1. Check if search contains search terms --------------------------------
 
+    if (INCLUDE_EXTRA == TRUE) {
+      if (search_arguments$extra_plot != "regular") {
+        if (identical(search_arguments$extra_chart_terms, "")) {
+          search_arguments$search_terms <- ""
+          linjer <- 1
+        }
+      }
+    }
+
     if (identical(search_arguments$search_terms, "")) {
       df$Term_1 <- NA
     } else {
@@ -54,15 +63,22 @@ visualiser_korpus <-
 local_flag <- FALSE
 if (INCLUDE_EXTRA == TRUE) {
   if (search_arguments$extra_plot != "regular") {
-    linjer <- 1
-    search_arguments$search_terms <- "PLACEHOLDER"
-    local_flag <- TRUE
-    count_overview <- cx_extra_chart(search_arguments$extra_chart_terms,
-                                     doc_df,
-                                     df,
-                                     search_arguments$case_sensitive,
-                                     modus)
+# TODO better validation
+      linjer <- length(search_arguments$extra_chart_terms)
+      local_flag <- TRUE
+      count_overview <- data.frame(dummy = seq_len(nrow(df)))
+
+      for (i in seq_len(linjer)) {
+        count_overview[i] <- cx_extra_chart(search_arguments$extra_chart_terms[i],
+                                         doc_df,
+                                         df,
+                                         search_arguments$case_sensitive,
+                                         modus,
+                                         indices_included = doc_df$ID - 1)
+      }
+      colnames(count_overview) <- sprintf("Term_%s", seq_len(linjer))
   }
+}
 
   # The regular one:
   if (local_flag == FALSE) {
@@ -76,7 +92,6 @@ if (INCLUDE_EXTRA == TRUE) {
         modus
       )
   }
-}
 
 # 3. Assign factors for labelling -----------------------------------------
 

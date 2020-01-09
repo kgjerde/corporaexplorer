@@ -34,7 +34,8 @@ if (INCLUDE_EXTRA == TRUE) {
             cx_extra_subset(
               pattern,
               session_variables$data_dok,
-              search_arguments$case_sensitive
+              search_arguments$case_sensitive,
+              session_variables$data_dok$ID - 1
             )
         }
 
