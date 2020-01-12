@@ -18,7 +18,7 @@
         choices = list("Show extra fields?" = "Yes"),
         justified = TRUE,
         size = "sm",
-        selected = input_arguments_derived$filter_corpus_button
+        selected = input_arguments_derived$extra_fields
     ),
 
     conditionalPanel(

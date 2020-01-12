@@ -36,4 +36,11 @@ input_arguments_derived <- list(
 if (INCLUDE_EXTRA == TRUE) {
     input_arguments_derived$extra_chart_terms <- paste(input_arguments$extra_chart_terms, collapse = "\n")
     input_arguments_derived$extra_subset_terms <- paste(input_arguments$extra_subset_terms, collapse = "\n")
+
+    input_arguments_derived$extra_fields <-
+        if (identical(input_arguments$extra_chart_terms, "") &
+            identical(input_arguments$extra_subset_terms, ""))
+            NULL
+        else
+            "Yes"
 }
