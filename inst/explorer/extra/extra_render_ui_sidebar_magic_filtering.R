@@ -30,7 +30,7 @@
             "magic_search_area",
             label = "Extra: Chart sentences",
             placeholder = "pattern--window(--pattern)*",
-            value = input_arguments_derived$extra_terms
+            value = input_arguments_derived$extra_chart_terms
         ), class = "magic_search"),
 
         # Filter text area
@@ -38,7 +38,7 @@
             "magic_text_area",
             label = "Extra: Filtering by sentences",
             placeholder = "pattern--window(--pattern)*",
-            value = input_arguments_derived$extra_terms
+            value = input_arguments_derived$extra_subset_terms
         ),
 
         # Heatmap choice

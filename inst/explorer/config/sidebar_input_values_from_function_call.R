@@ -4,7 +4,8 @@ input_arguments <- list(
     highlight_terms = "",
     filter_terms = "",
     case_sensitivity = FALSE,
-    extra_terms = ""
+    extra_chart_terms = "",
+    extra_subset_terms = ""
 )
 
 # Receiving input from function arguments
@@ -33,5 +34,6 @@ input_arguments_derived <- list(
 )
 
 if (INCLUDE_EXTRA == TRUE) {
-    input_arguments_derived$extra_terms <- input_arguments$extra_terms
+    input_arguments_derived$extra_chart_terms <- paste(input_arguments$extra_chart_terms, collapse = "\n")
+    input_arguments_derived$extra_subset_terms <- paste(input_arguments$extra_subset_terms, collapse = "\n")
 }
