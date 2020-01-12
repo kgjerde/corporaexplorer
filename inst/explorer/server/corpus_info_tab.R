@@ -1,14 +1,30 @@
 # Reactive behaviour ------------------------------------------------------
-
 shiny::observe({
   if (input$corpus_box == "Corpus info" &
     session_variables$created_info == FALSE) {
     if (search_arguments$all_ok) {
-      start_df_list <- create_df_for_info(
-        session_variables,
-        search_arguments,
-        plot_mode$mode
-      )
+      local_flag <- FALSE
+      if (INCLUDE_EXTRA == TRUE) {
+        if (search_arguments$extra_plot != "regular") {
+          INFO_MODE <- "extra"
+          local_flag <- TRUE
+          start_df_list <- cx_extra_create_df_for_info(
+            session_variables$data_dok,
+            search_arguments$extra_chart_terms,
+            search_arguments$case_sensitive
+          )
+        }
+      }
+
+      if (local_flag == FALSE) {
+        INFO_MODE <- "regular"
+        start_df_list <- create_df_for_info(
+          session_variables,
+          search_arguments,
+          plot_mode$mode
+        )
+      }
+
     }
 
     # Info til infofane
@@ -19,6 +35,13 @@ shiny::observe({
       # Flagging that validation passed and that therefore
       # also plot below can be displayed:
       session_variables$stop_info_tab <- FALSE
+      # Potentially overriding flag if extra
+      if (INFO_MODE == "extra") {
+        if (identical(search_arguments$extra_chart_terms, "")) {
+          session_variables$stop_info_tab <- TRUE
+        }
+      }
+
       # corpus_info_text()
       show_corpus_info_text(
         search_arguments,
@@ -32,7 +55,7 @@ shiny::observe({
 
     output$search_results <- shiny::renderText({
       if (session_variables$stop_info_tab == FALSE) {
-        if (highlight_terms_exist(search_arguments)) {
+        if (info_terms_exist(search_arguments, INFO_MODE)) {
           if (corpus_is_filtered(
             search_arguments,
             session_variables,
@@ -56,7 +79,7 @@ shiny::observe({
 
     output$TABLE <- shiny::renderTable({
       if (session_variables$stop_info_tab == FALSE) {
-        if (highlight_terms_exist(search_arguments)) {
+        if (info_terms_exist(search_arguments, INFO_MODE)) {
           show_corpus_info_table(
             search_arguments = search_arguments,
             session_variables = session_variables,
@@ -75,7 +98,7 @@ shiny::observe({
 
     output$info_plot_title <- shiny::renderText({
       if (session_variables$stop_info_tab == FALSE) {
-        if (highlight_terms_exist(search_arguments)) {
+        if (info_terms_exist(search_arguments, INFO_MODE)) {
           shinyjs::showElement("edit_info_plot_legend_keys")
           if (corpus_is_filtered(search_arguments,
                                  session_variables,
@@ -104,7 +127,7 @@ shiny::observe({
     output$corpus_info_plot <- shiny::renderPlot({
       if (session_variables$stop_info_tab == FALSE) {
         if (nrow(start_df_list$start_df) != 0) {
-          session_variables$corpus_info_plot <- corpus_info_plot(start_df_list, search_arguments)
+          session_variables$corpus_info_plot <- corpus_info_plot(start_df_list, search_arguments, INFO_MODE)
 
           session_variables$corpus_info_plot
         }
