@@ -89,7 +89,8 @@ if (INCLUDE_EXTRA == TRUE) {
 
   search_arguments$extra_chart_terms <- input$magic_search_area %>%
     stringr::str_split("\n") %>%
-    unlist(use.names = FALSE)
+    unlist(use.names = FALSE) %>%
+    unique()
 
   if (!identical(search_arguments$extra_chart_terms, "") &
     search_arguments$extra_plot != "regular") {
