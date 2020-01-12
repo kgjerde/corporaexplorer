@@ -9,10 +9,8 @@
 create_coordinates_1_data_dok <- function(df, linjer, max_width_for_row = NULL) {
 
 if(is.null(max_width_for_row)){
-max_width_for_row <- sqrt(sum(df$Tile_length) /  linjer)  # TODO: width-algoritmer
+max_width_for_row <- MAX_WIDTH_FOR_ROW / 1.3  # TODO: width-algoritmer
 }
-
-max_width_for_row <- MAX_WIDTH_FOR_ROW / 1.3
 
 # df$x_min <- NA
 df$x_max <- cumsum(df$Tile_length)
