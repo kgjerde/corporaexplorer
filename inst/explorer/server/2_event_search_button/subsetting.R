@@ -35,7 +35,7 @@ if (INCLUDE_EXTRA == TRUE) {
               pattern,
               session_variables$data_dok,
               search_arguments$case_sensitive,
-              session_variables$data_dok$ID - 1
+              session_variables$data_dok$ID
             )
         }
 

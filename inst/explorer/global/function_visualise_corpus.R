@@ -74,7 +74,7 @@ if (INCLUDE_EXTRA == TRUE) {
                                          df,
                                          search_arguments$case_sensitive,
                                          modus,
-                                         indices_included = doc_df$ID - 1)
+                                         indices_included = doc_df$ID)
       }
       colnames(count_overview) <- sprintf("Term_%s", seq_len(linjer))
   }
