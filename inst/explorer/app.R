@@ -125,6 +125,7 @@ shiny::onSessionEnded(function() {
   shiny::shinyOptions("corporaexplorer_ui_options" = NULL)
   shiny::shinyOptions("corporaexplorer_input_arguments" = NULL)
   shiny::shinyOptions("corporaexplorer_plot_options" = NULL)
+  shiny::shinyOptions("corporaexplorer_extra" = NULL)
 })
 }
 
