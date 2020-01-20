@@ -10,33 +10,29 @@ create_coordinates_1_data_365 <- function(df) {
     x_max <- cumsum(df$Tile_length)
     x_min <- x_max - 1
     # (Foreløpig er dette bare til én lang rad - se group_by nedenfor)
-    
+
     y_min <- rep(NA, nrow(df))
-    
+
     # Markerer uke(=rad)-skifte
     skifte_weekday <-
         which(df$Weekday_n != dplyr::lead(df$Weekday_n))
     y_min[skifte_weekday] <- seq_along(skifte_weekday)
-    
+
     # Fyller inn slik at alle dokumenter får sin y_min(=rad) på plass
-    y_min <- zoo::na.locf(y_min, fromLast = TRUE)
-    
-    # y_min-vektor blir like lang som nrow(df)
-    y_min <-
-        c(y_min, rep(max(y_min) + 1, nrow(df) - length(y_min)))
-    
+    y_min <- replace_NAs_with_next_or_previous_non_NA(y_min, direction = "next", remove_na = FALSE)
+
     # Fordi plott er "opp-ned" og rute-størrelse er 1
     y_max <- y_min
     y_min <- y_max - 1
-    
+
     # Kobler på df-tibble
     df$x_max <- x_max
     df$x_min <- x_min
-    
+
     df$y_min <- y_min
     df$y_max <- y_max
-    
-    
+
+
     ## DATAFRAME FOR GGPLOT
     test1 <- df %>%
         # Fordi x skal begynne på nytt hver rad:

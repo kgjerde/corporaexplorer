@@ -35,8 +35,7 @@ Imports:
 	stringi,
 	stringr,
 	tibble,
-	tidyr,
-	zoo
+	tidyr
 Suggests: janeaustenr, shinytest, sotu, testthat
 License: GPL-3 | file LICENSE
 Date/Publication: 2019

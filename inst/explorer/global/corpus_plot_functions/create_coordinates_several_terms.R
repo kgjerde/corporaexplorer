@@ -23,7 +23,8 @@ create_coordinates_several_search_terms <- function(test1, linjer) {
   test1$rad <- NA
   test1$rad[test1$x_min == 0] <-
     seq(1, by = 1, length.out = length(test1$x_min[test1$x_min == 0]))
-  test1$rad <- zoo::na.locf(test1$rad)
+
+  test1$rad <- replace_NAs_with_next_or_previous_non_NA(test1$rad, direction = "previous", remove_na = FALSE)
 
   ### Assigner y-verdier basert på at jeg allerede vet hvilken rad de skal ha
   test1$y_min <- test1$rad - 1
