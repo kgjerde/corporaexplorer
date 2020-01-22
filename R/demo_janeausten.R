@@ -40,8 +40,8 @@ run_janeausten_app <- function(...) {
 
     user_options <- list(...)
 
-    search_options_ = user_options$search_options
-    plot_options_ = user_options$plot_options
+    search_options_ <- user_options$search_options
+    plot_options_ <- user_options$plot_options
     search_input_ <- user_options$search_input
     ui_options_ <- user_options$ui_options
 
