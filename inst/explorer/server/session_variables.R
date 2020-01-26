@@ -33,7 +33,5 @@ plot_mode <- shiny::reactiveValues(mode = if (DATE_BASED_CORPUS == FALSE) "data_
 
 ui_elements <- shiny::reactiveValues(
     day_corpus_box = ".class_day_corpus .nav-tabs-custom",
-    show_day_corpus_box = FALSE,
-    document_box = ".class_doc_box .nav-tabs-custom",
-    show_document_box = FALSE
+    document_box = ".class_doc_box .nav-tabs-custom"
 )
