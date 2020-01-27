@@ -1,4 +1,4 @@
-output$korpuskart <- renderPlot({
+
 
 source("./server/2_event_search_button/check_search_arguments.R", local = TRUE)
 
@@ -20,9 +20,12 @@ source("./server/2_event_search_button/check_search_arguments.R", local = TRUE)
     session_variables$plot_build_info <-
         ggplot2::ggplot_build(plot_fase_1)$data[[index_of_main_grid_rects]]
 
-        value_for_slider <- plot_size(session_variables[[plot_mode$mode]],
-                                      calendar_mode = plot_mode$mode == "data_365",
-                                      number_of_search_terms = length(search_arguments$search_terms))
+    session_variables$plot_size <-
+        plot_size(
+            session_variables[[plot_mode$mode]],
+            calendar_mode = plot_mode$mode == "data_365",
+            number_of_search_terms = length(search_arguments$search_terms)
+        )
 
     # TODO Problem med omigjen-rendering ikke endelig løst
     # av commit 2b6ca83
@@ -30,17 +33,17 @@ source("./server/2_event_search_button/check_search_arguments.R", local = TRUE)
         session,
         "PLOTSIZE",
         label = NULL,
-        value = value_for_slider,
+        value = session_variables$plot_size,
         min = NULL,
-        max = value_for_slider * 2,
+        max = session_variables$plot_size * 2,
         step = NULL
     )
 
+    output$korpuskart <- renderPlot({
+        plot_fase_1
 
-    plot_fase_1
-
-}, #height = function() {  # https://github.com/rstudio/shiny/issues/650
-height =
-    function(x) {
-        input$PLOTSIZE
-    })
+    }, #height = function() {  # https://github.com/rstudio/shiny/issues/650
+    height =
+        function(x) {
+            session_variables$plot_size
+        })

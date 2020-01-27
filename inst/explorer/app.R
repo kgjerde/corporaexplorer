@@ -1,13 +1,4 @@
 
-# Setting up data and config ----------------------------------------------
-if (!is.null(getOption("shiny.testmode"))) {
-  if (getOption("shiny.testmode") == TRUE) {
-    source("./config/config_tests.R", local = TRUE)
-  }
-} else {
-  source("./config/config.R", local = TRUE)
-}
-
 # Function files ----------------------------------------------------------
 source("./global/function_display_document.R", local = TRUE)
 source("./global/function_display_document_info.R", local = TRUE)
@@ -20,6 +11,15 @@ source("./global/function_visualise_corpus.R", local = TRUE)
 source("./global/function_visualise_document.R", local = TRUE)
 source("./global/functions_info.R", local = TRUE)
 source("./global/functions_main_search_engine.R", local = TRUE)
+
+# Setting up data and config ----------------------------------------------
+if (!is.null(getOption("shiny.testmode"))) {
+  if (getOption("shiny.testmode") == TRUE) {
+    source("./config/config_tests.R", local = TRUE)
+  }
+} else {
+  source("./config/config.R", local = TRUE)
+}
 
 #=============================================================================#
 ####================================  UI  =================================####
@@ -117,6 +117,9 @@ source("./server/5_event_document_visualisation_click.R", local = TRUE)
 
 # 6. Event: hovering in corpus map ----------------------------------------
 source("./server/6_event_hover_corpus_map.R", local = TRUE)
+
+# 7. Event: update plot size ----------------------------------------------
+source("./server/7_event_plot_size_button.R", local = TRUE)
 
 # Cleaning up the session -------------------------------------------------
 shiny::onSessionEnded(function() {

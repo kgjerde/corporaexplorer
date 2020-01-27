@@ -95,6 +95,11 @@ input:-webkit-autofill:active {
   margin-top: 1em;
 }
 
+#size_button {
+  width: 87%;
+  margin-top: -0.5em;
+}
+
 /*Denne er for scrolling og beholde høyreboksen konstant.
 https://stackoverflow.com/questions/11399537/how-do-you-make-a-div-follow-as-you-scroll*/
 

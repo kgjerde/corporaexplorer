@@ -138,6 +138,10 @@ if (!is.null(shiny::getShinyOption("corporaexplorer_extra"))) {
     loaded_data$original_data$data_dok$Extra_tab_text <- ""
 }
 
+# Start-up plot size ------------------------------------------------------
+
+INITIAL_PLOT_SIZE <- plot_size(loaded_data$original_data$data_dok,
+                               DATE_BASED_CORPUS)
 
 # Pre-filled sidebar input from function argument -------------------------
 

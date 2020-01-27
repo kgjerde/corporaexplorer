@@ -112,19 +112,24 @@ shinydashboard::dashboardSidebar(
 
      shiny::div(shiny::conditionalPanel(
            condition = "input.adjust_plotsize == 'Yes'",
-        shiny::sliderInput(
+           shiny::sliderInput(
             inputId = "PLOTSIZE",
             label = NULL,
             min = 100,
             ticks = FALSE,
             step = 50,
-            max = plot_size(loaded_data$original_data$data_dok,
-                            DATE_BASED_CORPUS) * 2,
-            value = plot_size(loaded_data$original_data$data_dok,
-                              DATE_BASED_CORPUS)
-            )
-        ), class = "plotsize_field"
-    ),
+            max = INITIAL_PLOT_SIZE * 2,
+            value = INITIAL_PLOT_SIZE
+            ),
+
+           shinyWidgets::actionBttn(
+               "size_button",
+               label = "Adjust size",
+               size = "xs",
+               style = "bordered",
+               block = TRUE
+           ), class = "plotsize_field"
+     )),
 
     shiny::hr(),
 

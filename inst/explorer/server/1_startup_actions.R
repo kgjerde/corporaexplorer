@@ -32,5 +32,5 @@ output$korpuskart <- shiny::renderPlot({
 
 }, height = function() {
     # https://github.com/rstudio/shiny/issues/650
-    input$PLOTSIZE
+    session_variables$plot_size
 })
