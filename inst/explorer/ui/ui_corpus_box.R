@@ -19,9 +19,7 @@ shinydashboard::tabBox(
                 dblclick = "dobbeltklikk",
                 height = "auto",
                 width = "100%"
-            ) %>% shinycssloaders::withSpinner(type = 6)
-
-
+            )
             ,
             shiny::uiOutput("hover_info")
         )
