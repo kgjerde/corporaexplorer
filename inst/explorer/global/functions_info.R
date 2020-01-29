@@ -62,15 +62,17 @@ create_df_for_info <- function(session_variables,
 
   Years <- start_df$Year
 
-  start_df <- count_search_terms_hits(
-    start_df,
-    search_arguments,
-    loaded_data$original_matrix$data_dok,
-    loaded_data$ordvektorer$data_dok,
-    session_variables$data_dok,
-    "data_dok",
-    terms = terms
-  )
+  if (nrow(start_df) != 0) {
+    start_df <- count_search_terms_hits(
+      start_df,
+      search_arguments,
+      loaded_data$original_matrix$data_dok,
+      loaded_data$ordvektorer$data_dok,
+      session_variables$data_dok,
+      "data_dok",
+      terms = terms
+    )
+  }
 
   colnames(start_df) <- full_terms
 
