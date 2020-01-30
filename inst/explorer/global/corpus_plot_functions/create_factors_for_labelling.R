@@ -88,7 +88,7 @@ label_gruppering <- function(df, column_name, prefix, number_of_factors = NUMBER
     add_prefix <- function(x) {
       paste(prefix, x, sep = "-")
     }
-    df$faktorer <- forcats::fct_relabel(df$faktorer, add_prefix)
+    levels(df$faktorer) <- add_prefix(levels(df$faktorer))
   }
 
   return(df$faktorer)
