@@ -6,6 +6,8 @@ shinydashboard::tabBox(
         title = shiny::textOutput('korpuskarttittel'),
         value = "korpuskart_tab",
 
+        div("Preparing corpus map", class = "progress_text"),
+
         shiny::div(
             style = "position:relative",
             shiny::plotOutput(
@@ -23,6 +25,7 @@ shinydashboard::tabBox(
             ,
             shiny::uiOutput("hover_info")
         )
+
     ),
 
     shiny::tabPanel(

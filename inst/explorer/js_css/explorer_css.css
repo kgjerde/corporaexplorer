@@ -256,3 +256,12 @@ TODO tweaking*/
   margin-left: 0;
   margin-right: 0.3em;
 }
+
+.recalculating {opacity: 0;}
+
+.progress_text {
+  position: fixed;
+  font-size: 1em;
+  text-align: center;
+  display: none;
+}

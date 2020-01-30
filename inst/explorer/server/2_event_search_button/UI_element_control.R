@@ -1,3 +1,6 @@
+# Scroll to top
+shinyjs::runjs('window.scrollTo(0, 0);')
+
 # Tømmer ved nytt søk
 output$doc_tekst <- shiny::renderText({
     NULL
@@ -66,3 +69,4 @@ if (plot_mode$changed == TRUE) {
   output$korpuskarttittel <- shiny::renderText({
     corpus_map_title(plot_mode$mode)
   })
+}

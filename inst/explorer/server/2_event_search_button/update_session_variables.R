@@ -19,7 +19,15 @@ session_variables$corpus_info_plot <- NULL
 # Collect search arguments from sidebar -----------------------------------
 
 # Calendar or document wall -----------------------------------------------
+previous_mode <- plot_mode$mode
 plot_mode$mode <- input$modus
+
+# Save state change in order to update only when changed
+if (previous_mode != plot_mode$mode) {
+  plot_mode$changed <- TRUE
+} else {
+  plot_mode$changed <- FALSE
+}
 
 # Time --------------------------------------------------------------------
 if (DATE_BASED_CORPUS == TRUE) {
