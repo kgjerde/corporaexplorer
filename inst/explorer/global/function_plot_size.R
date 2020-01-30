@@ -3,13 +3,18 @@
 #' @param df
 #' @param max_width_for_row Must correspond with visualise_corpus()
 #' @param x_factor
+#' @param calendar_mode
+#' @param number_of_search_terms
+#' @param min_height
+#'
 #' @return Numeric
 plot_size <-
     function(df,
              calendar_mode,
              max_width_for_row = MAX_WIDTH_FOR_ROW,
              x_factor = PLOT_SIZE_FACTOR,
-             number_of_search_terms = 0
+             number_of_search_terms = 0,
+             min_height = 100
              ) {
         if (calendar_mode == TRUE) {
             size <- plot_size_data_365(df, max_width_for_row, x_factor)
@@ -25,6 +30,9 @@ plot_size <-
                     size <- size * (number_of_search_terms / 1.5)
                     }  # Divisors somewhat arbitrarily chosen through trying
             }
+        }
+        if (size < min_height) {
+            size <- min_height
         }
         return(ceiling(size))
     }
