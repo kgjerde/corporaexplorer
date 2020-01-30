@@ -61,7 +61,8 @@ if (INCLUDE_EXTRA == TRUE) {
   remove_tab_extra()
 }
 
-# Setter tab-tittel på korpuskart
-output$korpuskarttittel <- shiny::renderText({
-  corpus_map_title(plot_mode$mode)
-})
+# Setter tab-tittel på korpuskart hvis ny tittel
+if (plot_mode$changed == TRUE) {
+  output$korpuskarttittel <- shiny::renderText({
+    corpus_map_title(plot_mode$mode)
+  })
