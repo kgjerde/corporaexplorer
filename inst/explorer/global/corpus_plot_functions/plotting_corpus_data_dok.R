@@ -16,10 +16,6 @@ plotting_corpus_data_dok <-
 
 a <- ggplot2::ggplot()
 
-
-farger <-
-  c(rev(RColorBrewer::brewer.pal(9, name = "Reds")[2:9]), rev(RColorBrewer::brewer.pal(9, "Blues")[2:9]))
-
 a <-
   a + ggplot2::scale_fill_identity(
     labels = legend_df$legend_label,
