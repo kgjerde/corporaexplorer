@@ -94,7 +94,7 @@ create_janeausten_app <- function() {
     # we set `date_based_corpus` to `FALSE`.
     # Because we want to organise our exploration around Jane Austen's books,
     # we pass `"book"` to the `grouping_variable` argument.
-    jane_austen <- corporaexplorer::prepare_data(
+    corporaexplorer::prepare_data(
         dataset = books,
         date_based_corpus = FALSE,
         grouping_variable = "book"

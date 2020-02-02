@@ -21,7 +21,7 @@ min_padding <- function(frekvensmatrix, original_tibble){
     manglende_vector <- tibble::tibble(i = manglende_vector, total = 0)
 
     # Sette dem sammem og sorter
-    treff_count_matrix_2 <- rbind(frekvensmatrix, manglende_vector) %>%
+    rbind(frekvensmatrix, manglende_vector) %>%
         dplyr::arrange(i)
 }
 
@@ -177,7 +177,6 @@ count_df <- function(pattern, df, case_sensitive, custom_column) {
     }
 
     regex_or_fixed <- stringr::regex
-    ignoring_case <- FALSE
 
     if (case_sensitive == FALSE) {
         text_column <- df$Text

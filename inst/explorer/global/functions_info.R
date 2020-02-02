@@ -250,12 +250,7 @@ corpus_info_plot <- function(start_df_list, search_arguments, info_mode) {
         info_plot + ggplot2::geom_line(ggplot2::aes(x = Year, y = Count, color = Term)) + ggplot2::scale_color_manual(values = MY_COLOURS)
     }
 
-    # TODO Does this need to be differentiated? If not, delete.
-    break_and_label_seq <- if (length(unique(fig_tib$Year)) < 8) {
-      1
-    } else {
-      1
-    }
+    break_and_label_seq <- 1
 # TODO: fine-tune axis labels
     info_plot <- info_plot + ggplot2::theme_classic() +
       ggplot2::scale_x_continuous(

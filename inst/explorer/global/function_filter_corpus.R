@@ -62,11 +62,6 @@ filtrere_korpus_pattern <- function(df,
                                     modus,
                                     session_variables) {
 
-  if (search_arguments$case_sensitive == FALSE) {
-    text_column <- "Text"
-  } else if (search_arguments$case_sensitive == TRUE) {
-    text_column <- "Text_original_case"
-  }
   new_df <- df
   for (i in seq_along(search_arguments$subset_terms)) {
     treff <-
