@@ -8,10 +8,10 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-To deploy a **corporaexplorer** app with your own data (corporaexplorerobject) to a
+Deploying a **corporaexplorer** app with your own data (corporaexplorerobject) to a
 *[Shiny Server](https://rstudio.com/products/shiny/shiny-server/)* or 
 *[shinyapps.io](https://www.shinyapps.io/)*
-is incredibly simple -- all it takes is a folder with two files and three lines of code.
+is very simple -- all it takes is a folder with two files and three lines of code.
 
 Example folder structure of the folder "my_app":
 

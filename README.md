@@ -47,7 +47,17 @@ status](https://ci.appveyor.com/api/projects/status/github/kgjerde/corporaexplor
 
 <br>
 
-<img src="https://github.com/kgjerde/corporaexplorer/raw/master/man/figures/readme_illustration.png" title="plotting example" alt="plotting example" width="100%" />
+<div class="figure">
+
+<img src="https://github.com/kgjerde/corporaexplorer/raw/master/man/figures/readme_illustration.png" alt="plotting example" width="100%" />
+
+<p class="caption">
+
+plotting example
+
+</p>
+
+</div>
 
 *<sup>Illustration</sup> <sup>screenshots</sup>*
 
@@ -181,7 +191,7 @@ article](http://kunststube.net/encoding/) by David C. Zentgraf.
 Contributions in the form of feedback, bug reports and code are most
 welcome. Ways to contribute:
 
-  - Contact [the maintainer](mailto:klg@nupi.no) by email.
+  - Contact [me](mailto:klg@nupi.no) by email.
   - Issues and bug reports: [File a GitHub
     issue](https://github.com/kgjerde/corporaexplorer/issues).
   - Fork the source code, modify, and issue a [pull
