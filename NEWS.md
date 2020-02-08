@@ -3,7 +3,7 @@
 ## New arguments
 
 * Added `columns_for_ui_checkboxes` argument to prepare_data() in order to include
-sidebar checkboxes for convenient filtering by categorical variable/column (not necessarily factor type, but most helpful when limited number of values in the variable) in the explorer app (explore()).
+sidebar checkboxes for convenient filtering by categorical variable/column (not necessarily factor type, but most helpful when limited number of values in the variable) in the explorer app (`explore()`).
 
 ## Other
 
