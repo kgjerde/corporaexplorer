@@ -1,3 +1,17 @@
+# corporaexplorer 0.8.1.1
+
+## New arguments
+
+* Added `columns_for_ui_checkboxes` argument to prepare_data() in order to include
+sidebar checkboxes for convenient filtering by categorical variable/column (not necessarily factor type, but most helpful when limited number of values in the variable) in the explorer app (explore()).
+
+## Other
+
+* Removed dependencies on packages forcats, shinycssloaders, and zoo.
+* Fixed reactive issue leading to plots rendering twice when size was different from previous plot (now one has to click button to update plot size).
+* Other minor bug fixes.
+* Internal changes related to extension packages.
+
 # corporaexplorer 0.8.0
 
 ## Breaking API changes
