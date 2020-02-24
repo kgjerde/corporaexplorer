@@ -28,14 +28,12 @@ collect_custom_column <- function(chr_vector) {
 #' @return Character vector.
 collect_subset_terms <- function() {
     terms_subset <- input$filter_text %>%
-        stringr::str_trim() %>%
-        stringr::str_replace_all("(\\s){2,}", "\\1") %>%
         stringr::str_split("\n") %>%
         unlist %>%
         .[length(.) > 0] %>%
         (function(x)
             x <- x[x != ""]) %>%
         unique
-    
+
     return(terms_subset)
 }

@@ -10,8 +10,6 @@ collect_highlight_terms_1 <- function() {
         shiny::isolate(input$area_5),
         shiny::isolate(input$area_6)
     )[seq_len(shiny::isolate(input$antall_linjer))] %>%
-        stringr::str_trim() %>%
-        stringr::str_replace_all("(\\s){2,}", "\\1") %>%
         (function(x)
             x <- x[x != ""]) %>%
         unique
@@ -35,8 +33,6 @@ collect_highlight_terms <- function() {
         terms_highlight <- collect_highlight_terms_1()
     }   else if (isolate(input$more_terms_button == 'Yes')) {
         terms_highlight <- isolate(input$area) %>%
-            stringr::str_trim() %>%
-            stringr::str_replace_all("(\\s){2,}", "\\1") %>%
             stringr::str_split("\n") %>%
             unlist %>%
             .[length(.) > 0] %>%
@@ -141,8 +137,6 @@ check_regexes <- function(patterns) {
 #' @return Character vector.
 collect_subset_terms <- function() {
         terms_subset <- input$filter_text %>%
-            stringr::str_trim() %>%
-            stringr::str_replace_all("(\\s){2,}", "\\1") %>%
             stringr::str_split("\n") %>%
             unlist %>%
             .[length(.) > 0] %>%

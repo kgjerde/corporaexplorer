@@ -10,8 +10,6 @@ collect_search_terms <- function() {
         shiny::isolate(input$search_text_5),
         shiny::isolate(input$search_text_6)
     )[seq_len(shiny::isolate(input$antall_linjer))] %>%
-        stringr::str_trim() %>%
-        stringr::str_replace_all("(\\s){2,}", "\\1") %>%
         (function(x)
             x <- x[x != ""]) #%>%
         # unique
@@ -31,8 +29,6 @@ collect_highlight_terms <- function() {
         terms_highlight <- collect_search_terms()
     }   else if (isolate(input$more_terms_button == 'Yes')) {
         terms_highlight <- isolate(input$highlight_terms_area) %>%
-            stringr::str_trim() %>%
-            stringr::str_replace_all("(\\s){2,}", "\\1") %>%
             stringr::str_split("\n") %>%
             unlist %>%
             .[length(.) > 0]
@@ -53,8 +49,6 @@ collect_highlight_terms <- function() {
 collect_subset_terms <- function() {
     if (input$subset_corpus == 'Yes') {
         terms_subset <- input$filter_text_area %>%
-            stringr::str_trim() %>%
-            stringr::str_replace_all("(\\s){2,}", "\\1") %>%
             stringr::str_split("\n") %>%
             unlist %>%
             .[length(.) > 0] %>%
