@@ -99,7 +99,7 @@ to = tile_length_range,
 from = c(0, max(.)))}
 Default is \code{c(1, 10)}.}
 
-\item{columns_for_ui_checkboxes}{Character or factor. Column(s) in new_df.
+\item{columns_for_ui_checkboxes}{Character. Character or factor column(s) in dataset.
 Include sets of checkboxes in the app sidebar for
 convenient filtering of corpus.
 Typical useful for columns with a small set of unique
