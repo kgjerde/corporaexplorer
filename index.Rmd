@@ -37,10 +37,14 @@ knitr::opts_chunk$set(
 <p style="color:green"><strong>– Featured in RStudio’s “R Views” blog’s <a href="https://rviews.rstudio.com/2019/10/29/sept-2019-top-40-new-r-packages/"><strong><i>"Top 40 New R Packages”</i></strong></a> for September 2019</strong></p>
 </blockquote>
 
+<blockquote>
+<p style="color:green"><strong>– Included in <a href="https://CRAN.R-project.org/view=NaturalLanguageProcessing"><i>CRAN Task View: Natural Language Processing</i></a></strong></p>
+</blockquote>
+
 <hr>
 <br>
 
-```{r, out.width = "100%", echo = FALSE, fig.cap="plotting example"}
+```{r, out.width = "100%", echo = FALSE}
 knitr::include_graphics("man/figures/readme_illustration.png")
 ```
 

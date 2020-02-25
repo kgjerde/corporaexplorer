@@ -45,21 +45,23 @@ stars](https://img.shields.io/github/stars/kgjerde/corporaexplorer?style=flat)](
 
 </blockquote>
 
+<blockquote>
+
+<p style="color:green">
+
+<strong>– Included in
+<a href="https://CRAN.R-project.org/view=NaturalLanguageProcessing"><i>CRAN
+Task View: Natural Language Processing</i></a></strong>
+
+</p>
+
+</blockquote>
+
 <hr>
 
 <br>
 
-<div class="figure">
-
-<img src="man/figures/readme_illustration.png" alt="plotting example" width="100%" />
-
-<p class="caption">
-
-plotting example
-
-</p>
-
-</div>
+<img src="man/figures/readme_illustration.png" width="100%" />
 
 *<sup>Illustration</sup> <sup>screenshots</sup>*
 
