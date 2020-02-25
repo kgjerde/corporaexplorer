@@ -149,7 +149,7 @@ transform_365 <- function(new_df) {
   return(df_365)
 }
 
-# 3. Chr vector to til 'matrix'/data.table for faster search --------------
+# 3. Chr vector to 'matrix'/data.table for faster search ------------------
 
 #' Create document term matrix for fast search of single words
 #'
@@ -263,7 +263,7 @@ get_term_vector <- function(returned_list) {
 
 #' Values for custom UI sidebar checkbox filtering
 #'
-#' @param columns_for_ui_checkboxes Character or factor. Column(s) in new_df.
+#' @param columns_for_ui_checkboxes Character. Character or factor column(s) in dataset.
 #'   Include sets of checkboxes in the app sidebar for
 #'   convenient filtering of corpus.
 #'   Typical useful for columns with a small set of unique
