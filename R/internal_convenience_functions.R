@@ -15,6 +15,15 @@ get_df <- function(x, make_normal = TRUE) {
             df$Text <- df$Text_original_case
             df$Text_original_case <- NULL
         }
+        df$ID <- NULL
+        df$Text_original_case <- NULL
+        df$Tile_length <- NULL
+        df$Year <- NULL
+        df$Seq <- NULL
+        df$Weekday_n <- NULL
+        df$Day_without_docs <- NULL
+        df$Invisible_fake_date <- NULL
+        df$Tile_length <- NULL
     }
     return(df)
 }
