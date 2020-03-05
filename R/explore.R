@@ -16,16 +16,16 @@
 #'     \item \code{use_matrix} Logical. If the corporaexplorerobject contains a document
 #'     term matrix, should it be used for searches? (See
 #'     \code{\link[corporaexplorer]{prepare_data}}.) Defaults to \code{TRUE}.
-#'     \item \code{regex_engine} Character. Specify regular expression engine to be used
-#'     (defaults to \code{"default"}). Available options:
-#'     \itemize{
-#'         \item "default": use the \code{re2r} package
-#'         (\url{https://github.com/qinwf/re2r}) for simple searches and the
-#'         \code{stringr} package (\url{https://github.com/tidyverse/stringr} for
-#'         complex regexes (i.e. when special regex characters are used).
-#'         \item "stringr": use \code{stringr} for all searches.
-#'         \item "re2r": use \code{re2r} for all searches.
-#'     }
+    # \item \code{regex_engine} Character. Specify regular expression engine to be used
+    # (defaults to \code{"default"}). Available options:
+    # \itemize{
+    #     \item "default": use the \code{re2r} package
+    #     (\url{https://github.com/qinwf/re2r}) for simple searches and the
+    #     \code{stringr} package (\url{https://github.com/tidyverse/stringr} for
+    #     complex regexes (i.e. when special regex characters are used).
+    #     \item "stringr": use \code{stringr} for all searches.
+    #     \item "re2r": use \code{re2r} for all searches.
+    # }
 #'     \item \code{optional_info} Logical. If \code{TRUE}, information about search method
 #'     (regex engine and whether the search was conducted in the document term
 #'     matrix or in the full text documents).

@@ -54,11 +54,11 @@ check_regexes <- function(patterns) {
     patterns[is.null(patterns)] <-
         "OK"  # To deal with subset_terms == NULL TODO dirty hack
     if (USE_ONLY_RE2R == TRUE) {
-        tryCatch(
-            is.integer(re2r::re2_count("esel", patterns)),
-            error = function(e)
-                FALSE
-        )
+        # tryCatch(
+        #     is.integer(re2r::re2_count("esel", patterns)),
+        #     error = function(e)
+        #         FALSE
+        # )
     } else if (USE_ONLY_RE2R == FALSE) {
         tryCatch(
             is.integer(stringr::str_count("esel", patterns)),
@@ -146,7 +146,7 @@ check_safe_search <- Vectorize(function(pattern) {
         len <- nchar(test_text)
         ratio <- 0.1
         if (can_use_re2(pattern)) {
-            return(re2r::re2_count(test_text, pattern) / len < ratio)
+            # return(re2r::re2_count(test_text, pattern) / len < ratio)
         } else {
             return(stringr::str_count(test_text, pattern) / len < ratio)
         }

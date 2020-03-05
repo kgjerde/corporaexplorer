@@ -27,7 +27,7 @@ visualiser_dok <-
     }
 
     if (USE_ONLY_RE2R == TRUE) {
-      locate_all_function <- re2r::re2_locate_all
+      # locate_all_function <- re2r::re2_locate_all
     } else if (USE_ONLY_RE2R == FALSE) {
       locate_all_function <- stringr::str_locate_all
     }
