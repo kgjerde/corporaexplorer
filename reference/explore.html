@@ -216,15 +216,6 @@ application (usually by pressing Ctrl+C or Esc).</p>
 <li><p><code>use_matrix</code> Logical. If the corporaexplorerobject contains a document
     term matrix, should it be used for searches? (See
     <code><a href='prepare_data.html'>prepare_data</a></code>.) Defaults to <code>TRUE</code>.</p></li>
-<li><p><code>regex_engine</code> Character. Specify regular expression engine to be used
-    (defaults to <code>"default"</code>). Available options:</p><ul>
-<li><p>"default": use the <code>re2r</code> package
-        (<a href='https://github.com/qinwf/re2r'>https://github.com/qinwf/re2r</a>) for simple searches and the
-        <code>stringr</code> package (<a href='https://github.com/tidyverse/stringr'>https://github.com/tidyverse/stringr</a> for
-        complex regexes (i.e. when special regex characters are used).</p></li>
-<li><p>"stringr": use <code>stringr</code> for all searches.</p></li>
-<li><p>"re2r": use <code>re2r</code> for all searches.</p></li>
-</ul></li>
 <li><p><code>optional_info</code> Logical. If <code>TRUE</code>, information about search method
     (regex engine and whether the search was conducted in the document term
     matrix or in the full text documents).</p></li>
