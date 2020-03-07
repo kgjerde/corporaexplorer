@@ -1,3 +1,13 @@
+# corporaexplorer 0.8.2
+
+## re2r regex engine disabled
+* Because 're2r' will be removed/archived by the CRAN maintainers.
+See https://github.com/qinwf/re2r/issues/22.
+
+## Other
+
+* the apps now allow any mix of whitespace in input terms
+
 # corporaexplorer 0.8.1.1
 
 ## New arguments
