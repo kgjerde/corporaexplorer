@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">corporaexplorer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.2</span>
       </span>
     </div>
 
@@ -155,6 +155,25 @@
       <small>Source: <a href='https://github.com/kgjerde/corporaexplorer/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="corporaexplorer-0-8-2" class="section level1">
+<h1 class="page-header">
+<a href="#corporaexplorer-0-8-2" class="anchor"></a>corporaexplorer 0.8.2<small> Unreleased </small>
+</h1>
+<div id="re2r-regex-engine-disabled" class="section level2">
+<h2 class="hasAnchor">
+<a href="#re2r-regex-engine-disabled" class="anchor"></a>re2r regex engine disabled</h2>
+<ul>
+<li>Because ‘re2r’ will be removed/archived by the CRAN maintainers. See <a href="https://github.com/qinwf/re2r/issues/22" class="uri">https://github.com/qinwf/re2r/issues/22</a>.</li>
+</ul>
+</div>
+<div id="other" class="section level2">
+<h2 class="hasAnchor">
+<a href="#other" class="anchor"></a>Other</h2>
+<ul>
+<li>the apps now allow any mix of whitespace in input terms</li>
+</ul>
+</div>
+</div>
     <div id="corporaexplorer-0-8-1-1" class="section level1">
 <h1 class="page-header">
 <a href="#corporaexplorer-0-8-1-1" class="anchor"></a>corporaexplorer 0.8.1.1<small> 2020-02-07 </small>
@@ -166,9 +185,9 @@
 <li>Added <code>columns_for_ui_checkboxes</code> argument to prepare_data() in order to include sidebar checkboxes for convenient filtering by categorical variable/column (not necessarily factor type, but most helpful when limited number of values in the variable) in the explorer app (<code><a href="../reference/explore.html">explore()</a></code>).</li>
 </ul>
 </div>
-<div id="other" class="section level2">
+<div id="other-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#other" class="anchor"></a>Other</h2>
+<a href="#other-1" class="anchor"></a>Other</h2>
 <ul>
 <li>Removed dependencies on packages forcats, shinycssloaders, and zoo.</li>
 <li>Fixed reactive issue leading to plots rendering twice when size was different from previous plot (now one has to click button to update plot size).</li>
@@ -214,9 +233,9 @@
 </li>
 </ul>
 </div>
-<div id="other-1" class="section level2">
+<div id="other-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#other-1" class="anchor"></a>Other</h2>
+<a href="#other-2" class="anchor"></a>Other</h2>
 <ul>
 <li>Minimum corpus plot height is again 100.</li>
 </ul>
@@ -234,9 +253,9 @@
 <li>Added <code>plot_options</code> argument (with several possibilities to customise plot colours etc.) to <code><a href="../reference/corporaexplorer-deprecated.html">run_corpus_explorer()</a></code>, and moved the <code>max_docs_in_wall_view</code> setting there.</li>
 </ul>
 </div>
-<div id="other-2" class="section level2">
+<div id="other-3" class="section level2">
 <h2 class="hasAnchor">
-<a href="#other-2" class="anchor"></a>Other</h2>
+<a href="#other-3" class="anchor"></a>Other</h2>
 <ul>
 <li>Greatly simplified deployment to Shiny Server and shinyapps.io etc. (<a href='https://github.com/kgjerde/corporaexplorer/issues/19'>#19</a>). See <a href="https://kgjerde.github.io/corporaexplorer/articles/deployment.html">article</a> on the package website.</li>
 <li>Improved app experience on small screens (avoiding cluttering of ui elements).</li>
@@ -266,9 +285,9 @@
 <li>Open but empty “Filter corpus” field no longer disables time filtering</li>
 </ul>
 </div>
-<div id="other-3" class="section level2">
+<div id="other-4" class="section level2">
 <h2 class="hasAnchor">
-<a href="#other-3" class="anchor"></a>Other</h2>
+<a href="#other-4" class="anchor"></a>Other</h2>
 <ul>
 <li>Documentation moved to <a href="https://kgjerde.github.io/corporaexplorer" class="uri">https://kgjerde.github.io/corporaexplorer</a>
 </li>
@@ -281,6 +300,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#corporaexplorer-0-8-2">0.8.2</a></li>
         <li><a href="#corporaexplorer-0-8-1-1">0.8.1.1</a></li>
         <li><a href="#corporaexplorer-0-8-0">0.8.0</a></li>
         <li><a href="#corporaexplorer-0-7-0">0.7.0</a></li>
