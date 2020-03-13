@@ -58,21 +58,21 @@ if (!is.null(search_options$allow_unreasonable_patterns)) {
 }
 
 # Initialising
-USE_ONLY_STRINGR <- TRUE  # FALSE
+USE_ONLY_STRINGR <- FALSE
 USE_ONLY_RE2R <- FALSE
 
-# if (!is.null(search_options$regex_engine)) {
-#     if (search_options$regex_engine == "stringr") {
-#         USE_ONLY_STRINGR <- TRUE
-#     } else if (search_options$regex_engine == "re2r") {
-#         USE_ONLY_RE2R <- TRUE
-#     }
-# }
-#
-# # Safety precaution:
-# if (USE_ONLY_STRINGR == TRUE & USE_ONLY_RE2R == TRUE) {
-#     USE_ONLY_RE2R <- FALSE
-# }
+if (!is.null(search_options$regex_engine)) {
+    if (search_options$regex_engine == "stringr") {
+        USE_ONLY_STRINGR <- TRUE
+    } else if (search_options$regex_engine == "re2r") {
+        USE_ONLY_RE2R <- TRUE
+    }
+}
+
+# Safety precaution:
+if (USE_ONLY_STRINGR == TRUE & USE_ONLY_RE2R == TRUE) {
+    USE_ONLY_RE2R <- FALSE
+}
 
 # UI options from function arguments --------------------------------------
 

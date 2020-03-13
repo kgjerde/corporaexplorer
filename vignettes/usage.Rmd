@@ -186,11 +186,6 @@ knitr::include_graphics("../man/figures/wall.png")
 
 ### 2d. Advanced detail: Regular expression engines
 
-*Note March 2020: the `re2r` package has been removed ("archived") from CRAN by the CRAN maintainers*
-*due to WARNINGs in the CRAN check.*
-*As a result, from version 0.8.2, `corporaexplorer` uses `stringr` exclusively.*
-*`re2r` will hopefully return in later versions.*
-
 `explore()` lets you choose among three regex engine setups:
 
 1. `default`: use the [`re2r`](https://github.com/qinwf/re2r) package for simple searches and the [`stringr`](https://github.com/tidyverse/stringr) package for complex regexes (details below).
