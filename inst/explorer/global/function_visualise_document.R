@@ -14,7 +14,7 @@ visualiser_dok <-
            case_sensitive,
            my_colours = MY_COLOURS,
            tiles = DOCUMENT_TILES) {
-# browser()
+
     # No document map for extremely short documents
     if (nchar(.text$Text_original_case) < (tiles * 2)) {
       return(NULL)
@@ -108,36 +108,39 @@ visualiser_dok <-
 
       dok_tib_2$N[dok_tib_2$N == 0] <- NA
 
-      g <-
-        ggplot2::ggplot(dok_tib_2,
+      # Function from colours_to_plot_and_legend.R
+      gradient_colours <- rev(convert_colours_to_brewerpal_colours(my_colours[seq_along(.pattern)]))
+
+      # Create manually defined colour for each tile
+      dok_tib_2 <- dok_tib_2 %>%
+        dplyr::ungroup() %>%
+        dplyr::group_by(ord) %>%
+        dplyr::mutate(
+          scaled_N = round(scales::rescale(N, to = c(2, 9))),
+          group_colour = gradient_colours[as.integer(as.factor(ord))],
+          fill_colour = RColorBrewer::brewer.pal(name = group_colour[[1]], n = 9)[scaled_N]
+        )
+      dok_tib_2$fill_colour[is.na(dok_tib_2$fill_colour)] <-  "white"
+
+      ggplot2::ggplot(dok_tib_2,
                         ggplot2::aes(
                           x = dekadille,
                           y = ord,
-                          fill = N,
+                          fill = fill_colour,
                           width = 1,
                           height = 1
                         )) +
         ggplot2::geom_tile(color = "black", size = 0.1) +
         ggplot2::coord_fixed(ratio = 1, expand = FALSE) +
         ggplot2::labs(x = NULL, y = NULL) +
-        ggplot2::scale_fill_gradient(low = "yellow",
-                                     high = "red",
-                                     na.value = "white") + # , values = c(0,0.1,1)) +
+        ggplot2::scale_fill_identity() + # , values = c(0,0.1,1)) +
         ggplot2::scale_x_discrete(expand = c(0, 0), limits = c(0.00, NA)) +
         ggplot2::theme(axis.ticks.y = ggplot2::element_blank()) +
-        # ggplot2::theme_classic() +
         ggplot2::theme(
           axis.title.x = ggplot2::element_blank(),
           axis.text.x = ggplot2::element_blank(),
           axis.ticks.x = ggplot2::element_blank()
         ) +
-        ggplot2::theme(axis.text.y = ggplot2::element_text(colour = if (.pattern[1] == "") {
-          "red"
-        } else {
-          rev(c("red", my_colours[1:length(.pattern)]))
-        })) +
         ggplot2::theme(legend.position = "none")
-
-      g
     }
   }
