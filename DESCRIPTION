@@ -1,7 +1,7 @@
 Package: corporaexplorer
 Type: Package
 Title: A 'Shiny' App for Exploration of Text Collections
-Version: 0.8.2
+Version: 0.8.2.0.9000
 Authors@R: person("Kristian Lundby", "Gjerde", email = "kristian.gjerde@gmail.com",
   role = c("aut", "cre"))
 Description: Facilitates dynamic exploration of text collections through an
@@ -40,7 +40,7 @@ Suggests: janeaustenr, shinytest, sotu, testthat
 License: GPL-3 | file LICENSE
 Date/Publication: 2019
 LazyData: true
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Encoding: UTF-8
 URL: https://kgjerde.github.io/corporaexplorer, https://github.com/kgjerde/corporaexplorer
 BugReports: https://github.com/kgjerde/corporaexplorer/issues
