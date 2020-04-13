@@ -81,7 +81,7 @@ filtrere_korpus_pattern <- function(df,
     if (modus == "data_dok") {
       # Subsetting the tibble
        if (nrow(new_df) != 0) {
-      new_df <- new_df[treff[, 1] > 0,]
+      new_df <- new_df[treff[[1]] > 0,]
        }
     }
 
