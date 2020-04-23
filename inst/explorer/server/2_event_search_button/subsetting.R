@@ -26,7 +26,8 @@ if (INCLUDE_EXTRA == TRUE) {
       # TODO better "collection" of patterns
       extra_subset_terms <- input$magic_text_area %>%
         stringr::str_split("\n") %>%
-        unlist(use.names = FALSE)
+        unlist(use.names = FALSE) %>%
+        .[!stringi::stri_isempty(.)]
 
       if (cx_validate_input(extra_subset_terms) == TRUE) {
         for (pattern in extra_subset_terms) {
