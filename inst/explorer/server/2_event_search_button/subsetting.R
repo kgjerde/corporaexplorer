@@ -26,8 +26,13 @@ if (INCLUDE_EXTRA == TRUE) {
       # TODO better "collection" of patterns
       extra_subset_terms <- input$magic_text_area %>%
         stringr::str_split("\n") %>%
-        unlist(use.names = FALSE) %>%
-        .[!stringi::stri_isempty(.)]
+        unlist(use.names = FALSE)
+
+      # HACKY TODO. This is because otherwise an empty field is character(0) instead of "" and fails cx_validate_input
+      if (length(search_arguments$extra_subset_terms) > 1) {
+        search_arguments$extra_subset_terms <-
+          search_arguments$extra_subset_terms[!stringi::stri_isempty(search_arguments$extra_subset_terms)]
+      }
 
       if (cx_validate_input(extra_subset_terms) == TRUE) {
         for (pattern in extra_subset_terms) {
