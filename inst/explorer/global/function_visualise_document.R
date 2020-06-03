@@ -116,10 +116,14 @@ visualiser_dok <-
         dplyr::ungroup() %>%
         dplyr::group_by(ord) %>%
         dplyr::mutate(
-          scaled_N = round(scales::rescale(N, to = c(2, 9))),
+          scaled_N = if (all(is.na(dok_tib_2$N)))
+            NA
+          else
+            round(scales::rescale(N, to = c(2, 9))),
           group_colour = gradient_colours[as.integer(as.factor(ord))],
           fill_colour = RColorBrewer::brewer.pal(name = group_colour[[1]], n = 9)[scaled_N]
         )
+
       dok_tib_2$fill_colour[is.na(dok_tib_2$fill_colour)] <-  "white"
 
       ggplot2::ggplot(dok_tib_2,
