@@ -75,7 +75,7 @@ create_janeausten_app <- function() {
     books <- books %>%
         dplyr::group_by(book) %>%
         # Each book into one long string:
-        dplyr::summarise(Text = paste(text, collapse = " ")) %>%
+        dplyr::summarise(Text = paste(text, collapse = " "), .groups = "drop_last") %>%
         # Insert placeholder at beginning of each chapter
         dplyr::mutate(Text = stringr::str_replace_all(Text, chapter_regex, "NEW_CHAPTER\\1")) %>%
         # Replace double space with two newlines (to restore structure of the text):

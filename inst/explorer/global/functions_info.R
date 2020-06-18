@@ -99,7 +99,8 @@ show_corpus_info_table <- function(search_arguments,
     dplyr::group_by(Term = key) %>%
     dplyr::summarise(
       Hits = as.integer(sum(value)),
-      Documents = sum(value > 0)
+      Documents = sum(value > 0),
+      .groups = "drop_last"
     ) %>%
     dplyr::mutate(Threshold = plyr::mapvalues(
       Term,
@@ -229,7 +230,7 @@ corpus_info_plot <- function(start_df_list, search_arguments, info_mode) {
 
     fig_tib <- df %>%
       dplyr::group_by(Year, Term) %>%
-      dplyr::summarise(Count = as.integer(sum(Count)))
+      dplyr::summarise(Count = as.integer(sum(Count)), .groups = "drop_last")
 
     fig_tib$Term <- factor(fig_tib$Term, levels = full_terms)
 

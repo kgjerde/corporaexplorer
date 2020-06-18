@@ -260,7 +260,7 @@ adapt_legend_keys_for_terms_with_no_hits <-
              number_of_factors) {
     terms_w_no_hits <- from_dummy %>%
       dplyr::group_by(term) %>%
-      dplyr::summarise(lengde = dplyr::n()) %>%
+      dplyr::summarise(lengde = dplyr::n(), .groups = "drop_last") %>%
       dplyr::filter(lengde == number_of_factors) %>%
       .$term
 

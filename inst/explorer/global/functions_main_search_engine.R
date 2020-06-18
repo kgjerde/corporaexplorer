@@ -150,7 +150,7 @@ count_matrix <- function(pattern, matriks, df, ordvektor) {
     treff_count_matrix <- matriks[j %in% ord_indekser] %>%
         .[i %in% df$ID] %>%  # bare nødvendig ved subset-filtrering, men koster lite
         dplyr::group_by(i) %>%
-        dplyr::summarise(total = sum(x))
+        dplyr::summarise(total = sum(x), .groups = "drop_last")
     ## Padder, slik at vi får tibble med alle dokumentene, treff = 0 for de "innpaddede"
     #
     treff_count_matrix <-
@@ -259,7 +259,7 @@ count_hits_for_each_search_term <-
             df_count$Date <- doc_df$Date
             df_count <- df_count %>%
                 dplyr::group_by(Date) %>%
-                dplyr::summarise(treff = sum(!!rlang::sym(pattern)))
+                dplyr::summarise(treff = sum(!!rlang::sym(pattern)), .groups = "drop_last")
             df_count <- dplyr::left_join(df, df_count, by = "Date")
             df_count[["treff"]][is.na(df_count[["treff"]])] <- 0
             df_count <- dplyr::select(df_count, treff)
