@@ -4,7 +4,7 @@ library(shinytest)
 context("Explorer: Corpus info")
 
 test_that("Corpus info works", {
-    app <- shinytest::ShinyDriver$new("..")
+    app <- shinytest::ShinyDriver$new("../..")
     app$snapshotInit("corpus_info_test")
     app$snapshot()
     app$setInputs(search_text_1 = "document")

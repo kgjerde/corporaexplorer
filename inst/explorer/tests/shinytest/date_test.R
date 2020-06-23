@@ -4,7 +4,7 @@ library(shinytest)
 context("Explorer: Date test")
 
 test_that("Explorer: Dates work", {
-    app <- shinytest::ShinyDriver$new("..")
+    app <- shinytest::ShinyDriver$new("../..")
     app$snapshotInit("date_test")
     app$snapshot()
     app$setInputs(search_text_1 = "october")

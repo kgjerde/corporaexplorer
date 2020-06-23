@@ -4,7 +4,7 @@ library(shinytest)
 context("Extractor: Basic search works")
 
 test_that("Extractor: Search works", {
-    app <- ShinyDriver$new("../")
+    app <- ShinyDriver$new("../../")
     app$snapshotInit("search_test")
     app$snapshot()
     app$setInputs(search_text = "april")
