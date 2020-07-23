@@ -138,7 +138,7 @@ visualiser_dok <-
         ggplot2::coord_fixed(ratio = 1, expand = FALSE) +
         ggplot2::labs(x = NULL, y = NULL) +
         ggplot2::scale_fill_identity() + # , values = c(0,0.1,1)) +
-        ggplot2::scale_x_discrete(expand = c(0, 0), limits = c(0.00, NA)) +
+        ggplot2::scale_x_discrete(expand = c(0, 0)) +
         ggplot2::theme(axis.ticks.y = ggplot2::element_blank()) +
         ggplot2::theme(
           axis.title.x = ggplot2::element_blank(),
