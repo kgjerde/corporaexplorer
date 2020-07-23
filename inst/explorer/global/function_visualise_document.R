@@ -116,7 +116,7 @@ visualiser_dok <-
         dplyr::ungroup() %>%
         dplyr::group_by(ord) %>%
         dplyr::mutate(
-          scaled_N = if (all(is.na(dok_tib_2$N)))
+          scaled_N = if (all(is.na(N)))
             NA
           else
             round(scales::rescale(N, to = c(2, 9))),
