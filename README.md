@@ -183,7 +183,7 @@ thing is to check carefully that the texts appear as expected in
 `corporaexplorer`’s apps, and that the searches function as expected. If
 there are problems, a good place to start is a blog post with the
 telling title [“Escaping from character encoding hell in R on
-Windows”](https://dss.iq.harvard.edu/blog/escaping-character-encoding-hell-r-windows).
+Windows”](https://www.r-bloggers.com/escaping-from-character-encoding-hell-in-r-on-windows/).
 
 For (a lot) more information about encoding, see [this informative
 article](http://kunststube.net/encoding/) by David C. Zentgraf.
