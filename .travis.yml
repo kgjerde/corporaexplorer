@@ -7,5 +7,5 @@ cache: packages
 before_cache: Rscript -e 'remotes::install_cran("pkgdown"); install.packages("rvest"); install.packages("janeaustenr")'
 deploy:
   provider: script
-  script: Rscript -e 'install.packages("pkgdown"); pkgdown::deploy_site_github()'
+  script: Rscript -e 'pkgdown::deploy_site_github()'
   skip_cleanup: true
