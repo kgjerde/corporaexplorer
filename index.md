@@ -63,7 +63,7 @@ Task View: Natural Language Processing</i></a></strong>
 
 <img src="man/figures/readme_illustration.png" width="100%" />
 
-*<sup>Illustration</sup> <sup>screenshots</sup>*
+*<sup>Illustration screenshots</sup>*
 
 ## What is corporaexplorer?
 

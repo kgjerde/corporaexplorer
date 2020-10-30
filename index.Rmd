@@ -48,7 +48,7 @@ knitr::opts_chunk$set(
 knitr::include_graphics("man/figures/readme_illustration.png")
 ```
 
-*^Illustration^ ^screenshots^*
+*<sup>Illustration screenshots</sup>*
 
 
 ## What is corporaexplorer?
