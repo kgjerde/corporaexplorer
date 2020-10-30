@@ -39,7 +39,7 @@ Suggests: janeaustenr, shinytest, sotu, testthat
 License: GPL-3 | file LICENSE
 Date/Publication: 2019
 LazyData: true
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Encoding: UTF-8
 URL: https://kgjerde.github.io/corporaexplorer, https://github.com/kgjerde/corporaexplorer
 BugReports: https://github.com/kgjerde/corporaexplorer/issues
