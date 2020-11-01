@@ -14,8 +14,6 @@ status](https://travis-ci.org/kgjerde/corporaexplorer.svg?branch=master)](https:
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/kgjerde/corporaexplorer?branch=master&svg=true)](https://ci.appveyor.com/project/kgjerde/corporaexplorer)
 [![DOI](http://joss.theoj.org/papers/10.21105/joss.01342/status.svg)](https://doi.org/10.21105/joss.01342)
-[![R build
-status](https://github.com/kgjerde/corporaexplorer/workflows/R-CMD-check/badge.svg)](https://github.com/kgjerde/corporaexplorer/actions)
 <!-- badges: end -->
 
 > **“I really like the application and its simplicity. It looks great
