@@ -107,7 +107,8 @@
 
       
 
-      </header><div class="row">
+      </header><script src="usage_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="usage_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="usage_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>How to use corporaexplorer</h1>
@@ -146,15 +147,17 @@
 <p>The rest of the arguments can be used to fine-tune the presentation of the corpora in the <strong>corporaexplorer</strong> apps.</p>
 <p><code>prepare_data</code> can also be run with a character vector as only argument. In this case the function will return a simple “corporaexplorerobject” with no metadata.</p>
 <p>After installing <strong>corporaexplorer</strong>, run the following in the R console to see full documentation for the <code><a href="../reference/prepare_data.html">prepare_data()</a></code> function.</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">corporaexplorer</span>)
-?<span class="no">prepare_data</span></pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer">corporaexplorer</a></span><span class="op">)</span>
+<span class="op">?</span><span class="va">prepare_data</span></pre></div>
 </div>
 <div id="the-corpus-exploration-app" class="section level2">
 <h2 class="hasAnchor">
 <a href="#the-corpus-exploration-app" class="anchor"></a>2. The corpus exploration app</h2>
 <p>Start the app by running the <code><a href="../reference/explore.html">explore()</a></code> function with a “corporaexplorerobject” created by <code><a href="../reference/prepare_data.html">prepare_data()</a></code> as argument. Run the following in the R console to see documentation for the <code><a href="../reference/explore.html">explore()</a></code> function.</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">corporaexplorer</span>)
-?<span class="no">explore</span></pre></body></html></div>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer">corporaexplorer</a></span><span class="op">)</span>
+<span class="op">?</span><span class="va">explore</span></pre></div>
 <p>The default arguments are recommended for most use cases.</p>
 <p>While it should be possible to use the app without reading any further, the rest of this section includes user interface instructions as well as some details about the app’s inner workings that are relevant for advanced users. A date-based corpus is used as example.</p>
 <div id="a--sidebar-input" class="section level3">
@@ -192,10 +195,10 @@
 <code>.</code> in a search means “any single character”.</li>
 </ul>
 <p>Thus, (in a case insensitive search):</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r">arctic  # will match both "Arctic" and "Antarctic"
-\barctic  # will match only "Arctic"
-
-civili.ation  # will match both "civilisation" and "civilization"</pre></body></html></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>arctic  <span class="co"># will match both "Arctic" and "Antarctic"</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>\barctic  <span class="co"># will match only "Arctic"</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a>civili.ation  <span class="co"># will match both "civilisation" and "civilization"</span></span></code></pre></div>
 <p>For more about regex syntax and the regex flavours available, see the section about regex engines <a href="#2d-advanced-detail-regular-expression-engines">below</a>.</p>
 <p>(N.B. As seen in the example, a single backslash (not a double backslash as in the R console) is used as escape character. For example will <code>\.</code> match a literal “.”, and <code>\d</code> match any digit.)</p>
 </div>
@@ -206,18 +209,21 @@ civili.ation  # will match both "civilisation" and "civilization"</pre></body></
 <ol style="list-style-type: decimal">
 <li>The “threshold argument” has the syntax <code>--threshold</code> and determines the minimum number of search hits a day/document should contain in order to be coloured in the corpus map:</li>
 </ol>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">Russia</span>--<span class="fl">10</span>  <span class="co"># Will find documents that includes the pattern "Russia" at least 10 times.</span></pre></body></html></div>
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="va">Russia</span><span class="op">-</span><span class="op">-</span><span class="fl">10</span>  <span class="co"># Will find documents that includes the pattern "Russia" at least 10 times.</span></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>The “column argument” has the syntax <code>--column_name</code> and allows for searches in other columns than the default full text column:</li>
 </ol>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">Russia</span>--<span class="no">Title</span>  <span class="co"># Will find documents that has the pattern "Russia" in its "Title" column.</span></pre></body></html></div>
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="va">Russia</span><span class="op">-</span><span class="op">-</span><span class="va">Title</span>  <span class="co"># Will find documents that has the pattern "Russia" in its "Title" column.</span></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>The two arguments can be combined in any order:</li>
 </ol>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">Russia</span>--<span class="fl">2</span>--<span class="no">Title</span>
-<span class="no">Russia</span>--<span class="no">Title</span>--<span class="fl">2</span>
+<div class="sourceCode" id="cb6"><pre class="downlit">
+<span class="va">Russia</span><span class="op">-</span><span class="op">-</span><span class="fl">2</span><span class="op">-</span><span class="op">-</span><span class="va">Title</span>
+<span class="va">Russia</span><span class="op">-</span><span class="op">-</span><span class="va">Title</span><span class="op">-</span><span class="op">-</span><span class="fl">2</span>
 <span class="co"># Will both find documents that includes the pattern "Russia" at least 2 times</span>
-<span class="co"># in the Title column.</span></pre></body></html></div>
+<span class="co"># in the Title column.</span></pre></div>
 <p>These arguments have the following consequences:</p>
 <ul>
 <li>
@@ -239,7 +245,7 @@ civili.ation  # will match both "civilisation" and "civilization"</pre></body></
 <p>In the <strong>document wall view</strong>, each tile represents one document, and the filling indicates how many times the search term is found in this document:</p>
 <p><img src="../man/figures/wall_1.png" width="80%"></p>
 <p><br></p>
-<p>The <strong>Corpus info</strong> tab presents some very basic summary statistics of the search results. (Look at e.g. <a href="https://github.com/quanteda/quanteda"><code>quanteda</code></a> and <a href="https://github.com/juliasilge/tidytext"><code>tidytext</code></a> for excellent R packages for <em>quantitative</em> text analysis. Using such packages together with <strong>corporaexplorer</strong> is highly recommended in order to combine qualitative and quantitative insights.)</p>
+<p>The <strong>Corpus info</strong> tab presents some very basic summary statistics of the search results. (Look at e.g. <a href="https://github.com/quanteda/quanteda"><code>quanteda</code></a> and <a href="https://github.com/juliasilge/tidytext"><code>tidytext</code></a> for excellent R packages for <em>quantitative</em> text analysis. Using such packages together with <strong>corporaexplorer</strong> is highly recommended in order to combine qualitative and quantitative insights.)</p>
 <p>Clicking on a tile in the corpus map opens the <strong>document view</strong> to the right of the corpus map.</p>
 </div>
 <div id="c--document-view" class="section level3">
@@ -275,8 +281,9 @@ civili.ation  # will match both "civilisation" and "civilization"</pre></body></
 <p>This app is a simple helper app to retrieve a subset of the corpus in a format suitable for close reading.</p>
 <p><img src="../man/figures/download_tool.png" width="80%"></p>
 <p>Start the app by running the <code><a href="../reference/run_document_extractor.html">run_document_extractor()</a></code> function with a “corporaexplorerobject” created by <code><a href="../reference/prepare_data.html">prepare_data()</a></code> as argument. Run the following in the R console to see documentation for the <code><a href="../reference/run_document_extractor.html">run_document_extractor()</a></code> function.</p>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">corporaexplorer</span>)
-?<span class="no">run_document_extractor</span></pre></body></html></div>
+<div class="sourceCode" id="cb7"><pre class="downlit">
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer">corporaexplorer</a></span><span class="op">)</span>
+<span class="op">?</span><span class="va">run_document_extractor</span></pre></div>
 <div id="a--sidebar-input-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#a--sidebar-input-1" class="anchor"></a>3a. Sidebar input</h3>
@@ -316,7 +323,7 @@ civili.ation  # will match both "civilisation" and "civilization"</pre></body></
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

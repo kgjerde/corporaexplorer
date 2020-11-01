@@ -144,7 +144,7 @@
 <hr>
 <p><br></p>
 <p><img src="reference/figures/readme_illustration.png" width="100%"></p>
-<p><em><sup>Illustration</sup><sup>screenshots</sup></em></p>
+<p><em><sup>Illustration screenshots</sup></em></p>
 <div id="what-is-corporaexplorer" class="section level2">
 <h2 class="hasAnchor">
 <a href="#what-is-corporaexplorer" class="anchor"></a>What is corporaexplorer?</h2>
@@ -157,10 +157,12 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>To install the released version from CRAN, simply run the following from an R console:</p>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"corporaexplorer"</span>)</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"corporaexplorer"</span><span class="op">)</span></pre></div>
 <p>Alternatively, to install the development version from GitHub, run the following from an R console:</p>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>)
-<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu">install_github</span>(<span class="st">"kgjerde/corporaexplorer"</span>)</pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"kgjerde/corporaexplorer"</span><span class="op">)</span></pre></div>
 <p><strong>corporaexplorer</strong> works on Mac OS, Windows and Linux. (The Shiny apps look much clunkier on Windows than on the other platforms, but the apps are fully functional.)</p>
 <p><em>Note to developers: The package’s internal test suite uses the <a href="https://github.com/rstudio/shinytest"><code>shinytest</code></a> package, which requires that <a href="http://phantomjs.org/"><code>PhantomJS</code></a> is installed. This can be done through the <code><a href="https://rdrr.io/pkg/shinytest/man/installDependencies.html">shinytest::installDependencies()</a></code> function.</em></p>
 </div>
@@ -203,26 +205,28 @@
 <a href="#demo-apps" class="anchor"></a>Demo apps</h2>
 <p>The package includes two demo apps.</p>
 <p>To explore Jane Austen’s novels (data accessed through the <a href="https://github.com/juliasilge/janeaustenr"><strong>janeaustenr</strong></a> package):</p>
-<div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">corporaexplorer</span>)
-<span class="fu"><a href="reference/demo_jane_austen.html">run_janeausten_app</a></span>()</pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer">corporaexplorer</a></span><span class="op">)</span>
+<span class="fu"><a href="reference/demo_jane_austen.html">run_janeausten_app</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>To explore the US presidents’ State of the Union addresses (data accessed through the the <a href="https://cran.r-project.org/web/packages/sotu/index.html"><strong>sotu</strong></a> package):</p>
-<div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">corporaexplorer</span>)
-<span class="fu"><a href="reference/demo_sotu.html">run_sotu_app</a></span>()</pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer">corporaexplorer</a></span><span class="op">)</span>
+<span class="fu"><a href="reference/demo_sotu.html">run_sotu_app</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>For more info, see <a href="https://kgjerde.github.io/corporaexplorer/articles/jane_austen.html" class="uri">https://kgjerde.github.io/corporaexplorer/articles/jane_austen.html</a> and <a href="https://kgjerde.github.io/corporaexplorer/articles/sotu.html" class="uri">https://kgjerde.github.io/corporaexplorer/articles/sotu.html</a>, and also the <a href="reference/index.html">function references</a>.</p>
 </div>
 <div id="example-corpora" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example-corpora" class="anchor"></a>Example corpora</h2>
-<div id="a--date-based-corpora" class="section level4">
+<div id="a-date-based-corpora" class="section level4">
 <h4 class="hasAnchor">
-<a href="#a--date-based-corpora" class="anchor"></a>A. Date-based corpora</h4>
+<a href="#a-date-based-corpora" class="anchor"></a>A. Date-based corpora</h4>
 <p><strong>Many text collections can be freely shared</strong>, e.g. documents from governmental websites (such documents are usually equipped with a Creative Commons license or similar). An example corpus can be downloaded for testing <a href="https://ndownloader.figshare.com/files/14626970?private_link=820c105c12755d853801">here</a> – this is a “corporaexplorerobject” based on a document collection scraped from the Russian governmental website kremlin.ru (7751 documents, more info <a href="https://figshare.com/s/820c105c12755d853801">here</a>). The equivalent material in Russian (10,221 documents) can be downloaded <a href="https://figshare.com/articles/Kremlin_transcripts_1999_February_2019_Russian/7855853">here</a> (but see the note on character encoding <a href="#a-note-on-platforms-and-encoding">below</a>). A third, somewhat bigger (but less carefully prepared) test corpus (26,654 documents) from the same website is available <a href="https://figshare.com/s/fcd93f6f93bb23be3bb1">here</a>.<sup><a href="#footnote1">1</a></sup></p>
 <p>(The package of course works equally well with <strong>text collections that cannot be freely shared</strong>, e.g. a collection of newspaper articles etc. retrieved from a database, and indeed with any <strong>personal collection of texts</strong> that are meaningful to explore with a time aspect.)</p>
 <p>The package also includes a tiny “corporaexplorerobject” (see below): <code><a href="reference/test_data.html">corporaexplorer::test_data</a></code>, which consists of 10 tiny documents and can be used for testing the basic functionality of the package.</p>
 </div>
-<div id="b--text-collections-that-are-not-organised-by-date" class="section level4">
+<div id="b-text-collections-that-are-not-organised-by-date" class="section level4">
 <h4 class="hasAnchor">
-<a href="#b--text-collections-that-are-not-organised-by-date" class="anchor"></a>B. Text collections that are not organised by date</h4>
+<a href="#b-text-collections-that-are-not-organised-by-date" class="anchor"></a>B. Text collections that are not organised by date</h4>
 <p>Not all corpora are organised by date, and it is easy to create a “corporaexplorerobject” from a corpus with a different structure, for example a collection of books, each organised in chapters – or just from a sequence of texts.</p>
 <p>In addition to the demo apps referred to above, click <a href="articles/bible.html">here</a> for an example of how <strong>corporaexplorer</strong> can be used to explore the Bible.</p>
 </div>
@@ -303,7 +307,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

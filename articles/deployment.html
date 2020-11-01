@@ -107,7 +107,8 @@
 
       
 
-      </header><div class="row">
+      </header><script src="deployment_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="deployment_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="deployment_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Deployment to Shiny Server and shinyapps.io</h1>
@@ -127,16 +128,18 @@
   |-- app.R  
   |-- saved_corporaexplorerobject.rds  </code></pre>
 <p>Where “app.R” contains this code:</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">corporaexplorer</span>)
-<span class="no">corpus</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span>(<span class="st">"saved_corporaexplorerobject.rds"</span>)
-<span class="fu"><a href="../reference/explore.html">explore</a></span>(<span class="no">corpus</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer">corporaexplorer</a></span><span class="op">)</span>
+<span class="va">corpus</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="st">"saved_corporaexplorerobject.rds"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/explore.html">explore</a></span><span class="op">(</span><span class="va">corpus</span><span class="op">)</span></pre></div>
 <p>The folder “my_app” is now ready to be hosted on a <em>Shiny Server</em> or be uploaded to <em>shinyapps.io</em>.</p>
 <hr>
 <p><em>Tip 1: use the settings in the</em> <code>plot_options</code> <em>argument in</em> <code><a href="../reference/explore.html">explore()</a></code> <em>to fine-tune the appearance of the plots in the app.</em><br><em>Tip 2: to make the data load faster (at the cost of occupying more disk space), save the corporaexplorerobject created by</em> <code><a href="../reference/prepare_data.html">prepare_data()</a></code> <em>uncompressed by setting</em> <code>compress = FALSE</code> <em>in</em> <code><a href="https://rdrr.io/r/base/readRDS.html">saveRDS()</a></code>.</p>
 <p><em>Example (assuming you start with a data frame called df):</em></p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">corporaexplorer</span>)
-<span class="no">corpus</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/prepare_data.html">prepare_data</a></span>(<span class="no">df</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span>(<span class="no">corpus</span>, <span class="st">"saved_corporaexplorerobject.rds"</span>, <span class="kw">compress</span> <span class="kw">=</span> <span class="fl">FALSE</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer">corporaexplorer</a></span><span class="op">)</span>
+<span class="va">corpus</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/prepare_data.html">prepare_data</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">corpus</span>, <span class="st">"saved_corporaexplorerobject.rds"</span>, compress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></pre></div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -152,7 +155,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
