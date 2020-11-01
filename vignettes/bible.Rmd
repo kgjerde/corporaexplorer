@@ -21,13 +21,14 @@ library(tidyr)
 library(tibble)
 library(rvest)
 library(corporaexplorer)
+library(readr)
 ```
 
 ## Before corporaexplorer
 
 ##### Downloading the King James Bible from Project Gutenberg
 ```{r}
-bible <- readLines("http://www.gutenberg.org/cache/epub/10/pg10.txt")
+bible <- readr::read_lines("http://www.gutenberg.org/cache/epub/10/pg10.txt")
 ```
 
 ##### Pre-processing the text
