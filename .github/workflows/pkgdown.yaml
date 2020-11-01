@@ -38,6 +38,7 @@ jobs:
           remotes::install_deps(dependencies = TRUE)
           install.packages("pkgdown", type = "binary")
           install.packages("rvest", type = "binary")
+          install.packages("readr", type = "binary")
         shell: Rscript {0}
 
       - name: Install package
