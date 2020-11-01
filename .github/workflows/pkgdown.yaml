@@ -3,6 +3,7 @@ on:
     branches:
       - main
       - master
+      - kgjerde-patch-1
 
 name: pkgdown
 
