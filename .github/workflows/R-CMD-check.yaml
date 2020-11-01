@@ -5,10 +5,12 @@ on:
     branches:
       - main
       - master
+      - kgjerde-patch-1
   pull_request:
     branches:
       - main
       - master
+      - kgjerde-patch-1
 
 name: R-CMD-check
 
