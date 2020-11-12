@@ -30,31 +30,20 @@ status](https://ci.appveyor.com/api/projects/status/github/kgjerde/corporaexplor
 > [qdap](https://github.com/trinker/qdap)*
 
 <!-- HTML here, in order to add custom font colour in Github Pages-->
-
 <blockquote>
-
 <p style="color:green">
-
 <strong>– Featured in RStudio’s “R Views” blog’s
 <a href="https://rviews.rstudio.com/2019/10/29/sept-2019-top-40-new-r-packages/"><strong><i>“Top
 40 New R Packages”</i></strong></a> for September 2019</strong>
-
 </p>
-
 </blockquote>
-
 <blockquote>
-
 <p style="color:green">
-
 <strong>– Included in
 <a href="https://CRAN.R-project.org/view=NaturalLanguageProcessing"><i>CRAN
 Task View: Natural Language Processing</i></a></strong>
-
 </p>
-
 </blockquote>
-
 <hr>
 
 <br>
@@ -113,7 +102,7 @@ are fully functional.)
 
 *Note to developers: The package’s internal test suite uses the
 [`shinytest`](https://github.com/rstudio/shinytest) package, which
-requires that [`PhantomJS`](http://phantomjs.org/) is installed. This
+requires that [`PhantomJS`](https://phantomjs.org/) is installed. This
 can be done through the `shinytest::installDependencies()` function.*
 
 ## How to cite
@@ -125,13 +114,13 @@ research.
 > dynamic exploration of text collections.” *Journal of Open Source
 > Software* 4 (38): 1342. <https://doi.org/10.21105/joss.01342>.
 
-For a BibTeX entry, use the output from `citation(package =
-"corporaexplorer")`.
+For a BibTeX entry, use the output from
+`citation(package = "corporaexplorer")`.
 
 ## Usage
 
 For usage instructions and example corpora, see the [package web
-page](https://kgjerde.github.io/corporaexplorer).
+page](https://kgjerde.github.io/corporaexplorer/).
 
 ## Demo apps
 
@@ -172,31 +161,32 @@ particular on Windows.
 
 **On Mac OS or Linux**, problems with encoding will likely not arise at
 all. If problems do arise, they can typically be solved by making the R
-“locale” unicode-friendly (e.g. `Sys.setlocale("LC_ALL",
-"en_US.UTF-8")`). NB\! This assumes that the text is UTF-8 encoded, so
-if changing the locale in this way does not help, make sure that the
-text is encoded as UTF-8 characters. Alternatively, if you can ascertain
-the character encoding, set the locale correspondingly.
+“locale” unicode-friendly
+(e.g. `Sys.setlocale("LC_ALL", "en_US.UTF-8")`). NB! This assumes that
+the text is UTF-8 encoded, so if changing the locale in this way does
+not help, make sure that the text is encoded as UTF-8 characters.
+Alternatively, if you can ascertain the character encoding, set the
+locale correspondingly.
 
 **On Windows**, things can be much more complicated. The most important
 thing is to check carefully that the texts appear as expected in
 `corporaexplorer`’s apps, and that the searches function as expected. If
 there are problems, a good place to start is a blog post with the
 telling title [“Escaping from character encoding hell in R on
-Windows”](https://www.r-bloggers.com/escaping-from-character-encoding-hell-in-r-on-windows/).
+Windows”](https://www.r-bloggers.com/2016/06/escaping-from-character-encoding-hell-in-r-on-windows/).
 
 For (a lot) more information about encoding, see [this informative
-article](http://kunststube.net/encoding/) by David C. Zentgraf.
+article](https://kunststube.net/encoding/) by David C. Zentgraf.
 
 ## Contributing
 
 Contributions in the form of feedback, bug reports and code are most
 welcome. Ways to contribute:
 
-  - Contact [me](mailto:klg@nupi.no) by email.
-  - Issues and bug reports: [File a GitHub
+-   Contact [me](mailto:klg@nupi.no) by email.
+-   Issues and bug reports: [File a GitHub
     issue](https://github.com/kgjerde/corporaexplorer/issues).
-  - Fork the source code, modify, and issue a [pull
+-   Fork the source code, modify, and issue a [pull
     request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/)
     through the [project GitHub
     page](https://github.com/kgjerde/corporaexplorer).
