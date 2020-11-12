@@ -1,3 +1,9 @@
+# corporaexplorer 0.8.3
+
+* Fixed bugs and warning messages caused by changes in other packages (tibble and dplyr).
+* Fixed special case of warnings occurring when visualising documents with zero hits (2270046)
+* Changed the way colours are represented in document visualisation (63b3857)
+
 # corporaexplorer 0.8.2
 
 ## re2r regex engine disabled
