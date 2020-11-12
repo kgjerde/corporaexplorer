@@ -89,7 +89,7 @@ but the apps are fully functional.)
 
 *Note to developers:
 The package's internal test suite uses the [`shinytest`](https://github.com/rstudio/shinytest) package,
-which requires that [`PhantomJS`](http://phantomjs.org/) is installed.
+which requires that [`PhantomJS`](https://phantomjs.org/) is installed.
 This can be done through the `shinytest::installDependencies()` function.*
 
 
@@ -206,10 +206,10 @@ the texts appear as expected in `corporaexplorer`'s apps,
 and that the searches function as expected.
 If there are problems, a good place to start is a
 blog post with the telling title
-["Escaping from character encoding hell in R on Windows"](https://www.r-bloggers.com/escaping-from-character-encoding-hell-in-r-on-windows/).
+["Escaping from character encoding hell in R on Windows"](https://www.r-bloggers.com/2016/06/escaping-from-character-encoding-hell-in-r-on-windows/).
 
 For (a lot) more information about encoding, see
-[this informative article](http://kunststube.net/encoding/)
+[this informative article](https://kunststube.net/encoding/)
 by David C. Zentgraf.
 
 
