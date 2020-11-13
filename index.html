@@ -46,7 +46,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">corporaexplorer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.2.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.3</span>
       </span>
     </div>
 
@@ -131,15 +131,13 @@
 <!-- HTML here, in order to add custom font colour in Github Pages-->
 <blockquote>
 <p style="color:green">
+<strong>– Featured in RStudio’s “R Views” blog’s <a href="https://rviews.rstudio.com/2019/10/29/sept-2019-top-40-new-r-packages/"><strong><i>“Top 40 New R Packages”</i></strong></a> for September 2019</strong>
 </p>
-<p><strong>– Featured in RStudio’s “R Views” blog’s <a href="https://rviews.rstudio.com/2019/10/29/sept-2019-top-40-new-r-packages/"><strong><i>“Top 40 New R Packages”</i></strong></a> for September 2019</strong></p>
-
 </blockquote>
 <blockquote>
 <p style="color:green">
+<strong>– Included in <a href="https://CRAN.R-project.org/view=NaturalLanguageProcessing"><i>CRAN Task View: Natural Language Processing</i></a></strong>
 </p>
-<p><strong>– Included in <a href="https://CRAN.R-project.org/view=NaturalLanguageProcessing"><i>CRAN Task View: Natural Language Processing</i></a></strong></p>
-
 </blockquote>
 <hr>
 <p><br></p>
@@ -157,14 +155,14 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>To install the released version from CRAN, simply run the following from an R console:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"corporaexplorer"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"corporaexplorer"</span><span class="op">)</span></code></pre></div>
 <p>Alternatively, to install the development version from GitHub, run the following from an R console:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"kgjerde/corporaexplorer"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"kgjerde/corporaexplorer"</span><span class="op">)</span></code></pre></div>
 <p><strong>corporaexplorer</strong> works on Mac OS, Windows and Linux. (The Shiny apps look much clunkier on Windows than on the other platforms, but the apps are fully functional.)</p>
-<p><em>Note to developers: The package’s internal test suite uses the <a href="https://github.com/rstudio/shinytest"><code>shinytest</code></a> package, which requires that <a href="http://phantomjs.org/"><code>PhantomJS</code></a> is installed. This can be done through the <code><a href="https://rdrr.io/pkg/shinytest/man/installDependencies.html">shinytest::installDependencies()</a></code> function.</em></p>
+<p><em>Note to developers: The package’s internal test suite uses the <a href="https://github.com/rstudio/shinytest"><code>shinytest</code></a> package, which requires that <a href="https://phantomjs.org/"><code>PhantomJS</code></a> is installed. This can be done through the <code><a href="https://rdrr.io/pkg/shinytest/man/installDependencies.html">shinytest::installDependencies()</a></code> function.</em></p>
 </div>
 <div id="how-to-cite" class="section level2">
 <h2 class="hasAnchor">
@@ -205,13 +203,13 @@
 <a href="#demo-apps" class="anchor"></a>Demo apps</h2>
 <p>The package includes two demo apps.</p>
 <p>To explore Jane Austen’s novels (data accessed through the <a href="https://github.com/juliasilge/janeaustenr"><strong>janeaustenr</strong></a> package):</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer">corporaexplorer</a></span><span class="op">)</span>
-<span class="fu"><a href="reference/demo_jane_austen.html">run_janeausten_app</a></span><span class="op">(</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer/">corporaexplorer</a></span><span class="op">)</span>
+<span class="fu"><a href="reference/demo_jane_austen.html">run_janeausten_app</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>To explore the US presidents’ State of the Union addresses (data accessed through the the <a href="https://cran.r-project.org/web/packages/sotu/index.html"><strong>sotu</strong></a> package):</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer">corporaexplorer</a></span><span class="op">)</span>
-<span class="fu"><a href="reference/demo_sotu.html">run_sotu_app</a></span><span class="op">(</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer/">corporaexplorer</a></span><span class="op">)</span>
+<span class="fu"><a href="reference/demo_sotu.html">run_sotu_app</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>For more info, see <a href="https://kgjerde.github.io/corporaexplorer/articles/jane_austen.html" class="uri">https://kgjerde.github.io/corporaexplorer/articles/jane_austen.html</a> and <a href="https://kgjerde.github.io/corporaexplorer/articles/sotu.html" class="uri">https://kgjerde.github.io/corporaexplorer/articles/sotu.html</a>, and also the <a href="reference/index.html">function references</a>.</p>
 </div>
 <div id="example-corpora" class="section level2">
@@ -236,8 +234,8 @@
 <a href="#a-note-on-platforms-and-encoding" class="anchor"></a>A note on platforms and encoding</h2>
 <p><strong>corporaexplorer</strong> works on Mac OS, Windows and Linux, and there are some important differences in how R handles text on the different platforms. If you are working with plain English text, there will most likely be no issues with encoding on any platform. Unfortunately, working with non-<a href="https://en.wikipedia.org/wiki/ASCII">ASCII</a> encoded text in R (e.g. non-English characters), <em>can</em> be complicated – in particular on Windows.</p>
 <p><strong>On Mac OS or Linux</strong>, problems with encoding will likely not arise at all. If problems do arise, they can typically be solved by making the R “locale” unicode-friendly (e.g. <code><a href="https://rdrr.io/r/base/locales.html">Sys.setlocale("LC_ALL", "en_US.UTF-8")</a></code>). NB! This assumes that the text is UTF-8 encoded, so if changing the locale in this way does not help, make sure that the text is encoded as UTF-8 characters. Alternatively, if you can ascertain the character encoding, set the locale correspondingly.</p>
-<p><strong>On Windows</strong>, things can be much more complicated. The most important thing is to check carefully that the texts appear as expected in <code>corporaexplorer</code>’s apps, and that the searches function as expected. If there are problems, a good place to start is a blog post with the telling title <a href="https://www.r-bloggers.com/escaping-from-character-encoding-hell-in-r-on-windows/">“Escaping from character encoding hell in R on Windows”</a>.</p>
-<p>For (a lot) more information about encoding, see <a href="http://kunststube.net/encoding/">this informative article</a> by David C. Zentgraf.</p>
+<p><strong>On Windows</strong>, things can be much more complicated. The most important thing is to check carefully that the texts appear as expected in <code>corporaexplorer</code>’s apps, and that the searches function as expected. If there are problems, a good place to start is a blog post with the telling title <a href="https://www.r-bloggers.com/2016/06/escaping-from-character-encoding-hell-in-r-on-windows/">“Escaping from character encoding hell in R on Windows”</a>.</p>
+<p>For (a lot) more information about encoding, see <a href="https://kunststube.net/encoding/">this informative article</a> by David C. Zentgraf.</p>
 </div>
 <div id="contributing" class="section level2">
 <h2 class="hasAnchor">

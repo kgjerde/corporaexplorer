@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">corporaexplorer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.2.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.3</span>
       </span>
     </div>
 
@@ -125,14 +125,14 @@
 <div id="loading-packages" class="section level2">
 <h2 class="hasAnchor">
 <a href="#loading-packages" class="anchor"></a>Loading packages</h2>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://stringi.gagolewski.com/">stringi</a></span><span class="op">)</span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://stringi.gagolewski.com/">stringi</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://stringr.tidyverse.org">stringr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/">tibble</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://rvest.tidyverse.org/">rvest</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer">corporaexplorer</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></pre></div>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer/">corporaexplorer</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></code></pre></div>
 </div>
 <div id="before-corporaexplorer" class="section level2">
 <h2 class="hasAnchor">
@@ -140,14 +140,14 @@
 <div id="downloading-the-king-james-bible-from-project-gutenberg" class="section level5">
 <h5 class="hasAnchor">
 <a href="#downloading-the-king-james-bible-from-project-gutenberg" class="anchor"></a>Downloading the King James Bible from Project Gutenberg</h5>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="va">bible</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_lines.html">read_lines</a></span><span class="op">(</span><span class="st">"http://www.gutenberg.org/cache/epub/10/pg10.txt"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">bible</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_lines.html">read_lines</a></span><span class="op">(</span><span class="st">"http://www.gutenberg.org/cache/epub/10/pg10.txt"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="pre-processing-the-text" class="section level5">
 <h5 class="hasAnchor">
 <a href="#pre-processing-the-text" class="anchor"></a>Pre-processing the text</h5>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="co"># Collapsing into one string.</span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Collapsing into one string.</span>
 <span class="va">bible</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">bible</span>, collapse <span class="op">=</span> <span class="st">"\n"</span><span class="op">)</span>
 
 <span class="co"># Identifying the beginning and end of the Bible / stripping PJ metadata</span>
@@ -175,13 +175,13 @@
     <span class="fu"><a href="https://rdrr.io/pkg/stringi/man/stri_split.html">stri_split_regex</a></span><span class="op">(</span><span class="st">"NEW_CHAPTER"</span><span class="op">)</span>
 
 <span class="co"># Removing the chapter headings from the text (we want them as metadata).</span>
-<span class="va">chapters</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">chapters</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></pre></div>
+<span class="va">chapters</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">chapters</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="metadata" class="section level5">
 <h5 class="hasAnchor">
 <a href="#metadata" class="anchor"></a>Metadata</h5>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="co"># We are not quite happy with the long book titles in the King James Bible,</span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># We are not quite happy with the long book titles in the King James Bible,</span>
   <span class="co"># so we retrieve shorter versions from esv.org which will take up less</span>
   <span class="co"># space in the corpus map plot.</span>
 <span class="va">book_titles</span> <span class="op">&lt;-</span> <span class="fu">read_html</span><span class="op">(</span><span class="st">"https://www.esv.org/resources/esv-global-study-bible/list-of-abbreviations"</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -191,27 +191,27 @@
 
 <span class="co"># We add a column indicating whether a book belongs to the Old or New Testament,</span>
 <span class="co">#   knowing that they contain respectively 39 and 27 books.</span>
-<span class="va">testament</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"Old"</span>, <span class="fl">39</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"New"</span>, <span class="fl">27</span><span class="op">)</span><span class="op">)</span></pre></div>
+<span class="va">testament</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"Old"</span>, <span class="fl">39</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"New"</span>, <span class="fl">27</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="creating-data-frame-with-text-and-metadata" class="section level5">
 <h5 class="hasAnchor">
 <a href="#creating-data-frame-with-text-and-metadata" class="anchor"></a>Creating data frame with text and metadata</h5>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="co"># Data frame with one book as one row.</span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Data frame with one book as one row.</span>
 <span class="va">bible_df</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>Text <span class="op">=</span> <span class="va">chapters</span>,
                            Book <span class="op">=</span> <span class="va">book_titles</span>,
                            Testament <span class="op">=</span> <span class="va">testament</span><span class="op">)</span>
 
 <span class="co"># We want each chapter to be one row, but keep the metadata (book and which testament).</span>
-<span class="va">bible_df</span> <span class="op">&lt;-</span> <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span><span class="op">(</span><span class="va">bible_df</span>, <span class="va">Text</span><span class="op">)</span></pre></div>
+<span class="va">bible_df</span> <span class="op">&lt;-</span> <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html">unnest</a></span><span class="op">(</span><span class="va">bible_df</span>, <span class="va">Text</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
 <div id="corporaexplorer" class="section level2">
 <h2 class="hasAnchor">
 <a href="#corporaexplorer" class="anchor"></a>corporaexplorer</h2>
 <p>When we first have a data frame with text and metadata, creating a “corporaexplorerobject” for exploration is very simple:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="co"># As this is a corpus which is not organised by date,</span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># As this is a corpus which is not organised by date,</span>
   <span class="co"># we set `date_based_corpus` to `FALSE`.</span>
 <span class="co"># Because we want to organise our exploration around the books in the Bible,</span>
   <span class="co"># we pass `"Book"` to the `grouping_variable` argument.</span>
@@ -220,12 +220,12 @@
 <span class="va">KJB</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/prepare_data.html">prepare_data</a></span><span class="op">(</span>dataset <span class="op">=</span> <span class="va">bible_df</span>,
                     date_based_corpus <span class="op">=</span> <span class="cn">FALSE</span>,
                     grouping_variable <span class="op">=</span> <span class="st">"Book"</span>,
-                    columns_doc_info <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Testament"</span>, <span class="st">"Book"</span><span class="op">)</span><span class="op">)</span></pre></div>
+                    columns_doc_info <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Testament"</span>, <span class="st">"Book"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div id="run-corpus-explorer" class="section level5">
 <h5 class="hasAnchor">
 <a href="#run-corpus-explorer" class="anchor"></a>Run corpus explorer</h5>
-<div class="sourceCode" id="cb7"><pre class="downlit">
-<span class="fu"><a href="../reference/explore.html">explore</a></span><span class="op">(</span><span class="va">KJB</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/explore.html">explore</a></span><span class="op">(</span><span class="va">KJB</span><span class="op">)</span></code></pre></div>
 <p><strong>Example: mentions of Moses in the New Testament:</strong> <img src="../man/figures/KJB_moses_new_doc.png" width="80%"></p>
 <p><strong>Example: finding “pearl” in chapters in the Bible that also include “swine”:</strong> <img src="../man/figures/KJB_pearls_before_swine.png" width="80%"></p>
 </div>

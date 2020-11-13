@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">corporaexplorer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.2.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.3</span>
       </span>
     </div>
 
@@ -128,18 +128,18 @@
   |-- app.R  
   |-- saved_corporaexplorerobject.rds  </code></pre>
 <p>Where “app.R” contains this code:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer">corporaexplorer</a></span><span class="op">)</span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer/">corporaexplorer</a></span><span class="op">)</span>
 <span class="va">corpus</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="st">"saved_corporaexplorerobject.rds"</span><span class="op">)</span>
-<span class="fu"><a href="../reference/explore.html">explore</a></span><span class="op">(</span><span class="va">corpus</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="../reference/explore.html">explore</a></span><span class="op">(</span><span class="va">corpus</span><span class="op">)</span></code></pre></div>
 <p>The folder “my_app” is now ready to be hosted on a <em>Shiny Server</em> or be uploaded to <em>shinyapps.io</em>.</p>
 <hr>
 <p><em>Tip 1: use the settings in the</em> <code>plot_options</code> <em>argument in</em> <code><a href="../reference/explore.html">explore()</a></code> <em>to fine-tune the appearance of the plots in the app.</em><br><em>Tip 2: to make the data load faster (at the cost of occupying more disk space), save the corporaexplorerobject created by</em> <code><a href="../reference/prepare_data.html">prepare_data()</a></code> <em>uncompressed by setting</em> <code>compress = FALSE</code> <em>in</em> <code><a href="https://rdrr.io/r/base/readRDS.html">saveRDS()</a></code>.</p>
 <p><em>Example (assuming you start with a data frame called df):</em></p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer">corporaexplorer</a></span><span class="op">)</span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer/">corporaexplorer</a></span><span class="op">)</span>
 <span class="va">corpus</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/prepare_data.html">prepare_data</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">corpus</span>, <span class="st">"saved_corporaexplorerobject.rds"</span>, compress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">corpus</span>, <span class="st">"saved_corporaexplorerobject.rds"</span>, compress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
