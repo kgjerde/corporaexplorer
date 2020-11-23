@@ -9,10 +9,8 @@
 status](https://www.r-pkg.org/badges/version/corporaexplorer)](https://cran.r-project.org/package=corporaexplorer)
 [![License: GPL
 v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Travis build
-status](https://travis-ci.org/kgjerde/corporaexplorer.svg?branch=master)](https://travis-ci.org/kgjerde/corporaexplorer)
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/kgjerde/corporaexplorer?branch=master&svg=true)](https://ci.appveyor.com/project/kgjerde/corporaexplorer)
+[![R build
+status](https://github.com/kgjerde/corporaexplorer/workflows/R-CMD-check/badge.svg)](https://github.com/kgjerde/corporaexplorer/actions)
 [![DOI](http://joss.theoj.org/papers/10.21105/joss.01342/status.svg)](https://doi.org/10.21105/joss.01342)
 <!-- badges: end -->
 
