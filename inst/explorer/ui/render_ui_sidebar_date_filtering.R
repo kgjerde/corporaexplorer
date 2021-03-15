@@ -18,7 +18,7 @@ output$time_filtering_ui <- shiny::renderUI({
           label = NULL,
           min = min(loaded_data$original_data$data_dok$Year),
           max = max(loaded_data$original_data$data_dok$Year),
-          value = c(min, max),
+          value = range(loaded_data$original_data$data_dok$Year),
           sep = ""
         )
       ),

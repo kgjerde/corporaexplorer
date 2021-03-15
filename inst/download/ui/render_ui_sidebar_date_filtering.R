@@ -18,7 +18,7 @@ output$time_filtering_ui <- renderUI({
           label = NULL,
           min = min(abc$Year),
           max = max(abc$Year),
-          value = c(min, max),
+          value = range(abc$Year),
           sep = ""
         )
       ),
