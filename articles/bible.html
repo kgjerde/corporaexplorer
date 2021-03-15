@@ -46,7 +46,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -93,7 +93,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/kgjerde/corporaexplorer/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -107,8 +107,7 @@
 
       
 
-      </header><script src="bible_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="bible_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="bible_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><script src="bible_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Exploring the King James Bible</h1>
@@ -130,7 +129,7 @@
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://stringr.tidyverse.org">stringr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/">tibble</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://rvest.tidyverse.org/">rvest</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rvest.tidyverse.org/">rvest</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer/">corporaexplorer</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></code></pre></div>
 </div>
@@ -184,8 +183,8 @@
 <code class="sourceCode R"><span class="co"># We are not quite happy with the long book titles in the King James Bible,</span>
   <span class="co"># so we retrieve shorter versions from esv.org which will take up less</span>
   <span class="co"># space in the corpus map plot.</span>
-<span class="va">book_titles</span> <span class="op">&lt;-</span> <span class="fu">read_html</span><span class="op">(</span><span class="st">"https://www.esv.org/resources/esv-global-study-bible/list-of-abbreviations"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_nodes.html">html_nodes</a></span><span class="op">(</span><span class="st">"td:nth-child(1)"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<span class="va">book_titles</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://xml2.r-lib.org/reference/read_xml.html">read_html</a></span><span class="op">(</span><span class="st">"https://www.esv.org/resources/esv-global-study-bible/list-of-abbreviations"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rvest.tidyverse.org/reference/rename.html">html_nodes</a></span><span class="op">(</span><span class="st">"td:nth-child(1)"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="va">.</span><span class="op">[</span><span class="fl">13</span><span class="op">:</span><span class="fl">78</span><span class="op">]</span>  <span class="co"># Removing irrelevant elements after manual inspection.</span>
 

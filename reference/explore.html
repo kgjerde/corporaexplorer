@@ -104,7 +104,7 @@ explore0() is a convenience function to directly explore
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -151,7 +151,7 @@ explore0() is a convenience function to directly explore
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/kgjerde/corporaexplorer/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -287,7 +287,7 @@ application (usually by pressing Ctrl+C or Esc).</p>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Other arguments passed to <code><a href='https://shiny.rstudio.com/reference/shiny/latest/runApp.html'>runApp</a></code> in the Shiny
+      <td><p>Other arguments passed to <code><a href='https://rdrr.io/pkg/shiny/man/runApp.html'>runApp</a></code> in the Shiny
 package.</p></td>
     </tr>
     <tr>
@@ -331,7 +331,7 @@ default argument values.</p></td>
 
 <span class='co'># Converting to corporaexplorerobject:</span>
 <span class='va'>corpus</span> <span class='op'>&lt;-</span> <span class='fu'><a href='prepare_data.html'>prepare_data</a></span><span class='op'>(</span><span class='va'>test_df</span>, corpus_name <span class='op'>=</span> <span class='st'>"Test corpus"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Starting.</span></div><div class='output co'>#&gt; <span class='message'>Document data frame done.</span></div><div class='output co'>#&gt; <span class='message'>Calendar data frame done.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix: text processed.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix: tokenising completed.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix: word list created.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix done.</span></div><div class='output co'>#&gt; <span class='message'>Done.</span></div><div class='input'>
+</div><div class='output co'>#&gt; <span class='message'>Starting.</span></div><div class='output co'>#&gt; <span class='message'>Document data frame done.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: The `.dots` argument of `group_by()` is deprecated as of dplyr 1.0.0.</span></div><div class='output co'>#&gt; <span class='message'>Calendar data frame done.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix: text processed.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix: tokenising completed.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix: word list created.</span></div><div class='output co'>#&gt; <span class='message'>Document term matrix done.</span></div><div class='output co'>#&gt; <span class='message'>Done.</span></div><div class='input'>
 <span class='kw'>if</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span><span class='op'>{</span>
 
 <span class='co'># Running exploration app:</span>
