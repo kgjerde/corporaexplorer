@@ -1,3 +1,7 @@
+# corporaexplorer 0.8.4
+
+* Fixed bug where time selection slider widget in calendar view did not work (#25)
+
 # corporaexplorer 0.8.3
 
 * Fixed bugs and warning messages caused by changes in other packages (tibble and dplyr).
