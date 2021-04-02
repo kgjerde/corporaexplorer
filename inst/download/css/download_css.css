@@ -133,3 +133,12 @@ hr {
   margin-top: 1em;
 }
 
+/* Bit hacky restoring ticks and text to year slider input widget */
+
+.irs-grid-pol {
+  background: gray !important;
+}
+
+.irs-grid-text {
+  color: gray !important;
+}

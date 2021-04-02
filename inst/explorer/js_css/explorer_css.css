@@ -265,3 +265,13 @@ TODO tweaking*/
   text-align: center;
   display: none;
 }
+
+/* Bit hacky restoring ticks and text to year slider input widget: */
+
+.irs-grid-pol {
+  background: gray !important;
+}
+
+.irs-grid-text {
+  color: gray !important;
+}
