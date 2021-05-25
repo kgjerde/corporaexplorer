@@ -168,8 +168,8 @@ show_corpus_info_text <- function(search_arguments,
 
 text_about_original_corpus <- function(original_data_dok) {
   tekst <- sprintf(
-    "<h4>General information</h4>The corpus contains %i document(s).<br>",
-    nrow(original_data_dok)
+    "<h4>General information</h4>The corpus contains %s document(s).<br>",
+    format(nrow(original_data_dok), big.mark=",")
   )
   return(tekst)
 }
@@ -191,8 +191,8 @@ text_about_filtered_corpus <-
     documents <- nrow(start_df)
 
     sprintf(
-      "The filtered corpus contains %i document(s).",
-      documents
+      "The filtered corpus contains %s document(s).",
+      format(documents, big.mark = ",")
     )
   }
 

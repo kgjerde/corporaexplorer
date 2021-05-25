@@ -1,4 +1,4 @@
 output$info <- shiny::renderText({
-    tekst <- sprintf("The corpus contains %i documents.",
-                     nrow(abc))
+    tekst <- sprintf("The corpus contains %s documents.",
+                     format(nrow(abc), big.mark=","))
 })

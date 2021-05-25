@@ -185,7 +185,7 @@ explore <- function(corpus_object,
 
   message(sprintf(
     "Exploring %s document%s",
-    nrow(corpus_object$original_data$data_dok),
+    format(nrow(corpus_object$original_data$data_dok), big.mark = ","),
     if (nrow(corpus_object$original_data$data_dok) != 1) "s" else ""
   ))
 
