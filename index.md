@@ -14,6 +14,8 @@ status](https://github.com/kgjerde/corporaexplorer/workflows/R-CMD-check/badge.s
 [![DOI](http://joss.theoj.org/papers/10.21105/joss.01342/status.svg)](https://doi.org/10.21105/joss.01342)
 [![GitHub
 stars](https://img.shields.io/github/stars/kgjerde/corporaexplorer?style=flat)](https://github.com/kgjerde/corporaexplorer)
+[![Mentioned in Awesome
+R](https://awesome.re/mentioned-badge.svg)](https://github.com/qinwf/awesome-R)
 <!-- badges: end -->
 
 > **“I really like the application and its simplicity. It looks great
@@ -34,7 +36,7 @@ stars](https://img.shields.io/github/stars/kgjerde/corporaexplorer?style=flat)](
 <p style="color:green">
 <strong>– Featured in RStudio’s “R Views” blog’s
 <a href="https://rviews.rstudio.com/2019/10/29/sept-2019-top-40-new-r-packages/"><strong><i>“Top
-40 New R Packages”</i></strong></a> for September 2019</strong>
+40 New R Packages”</i></strong></a></strong>
 </p>
 </blockquote>
 <blockquote>
