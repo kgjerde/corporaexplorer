@@ -27,7 +27,7 @@ if (!is.null(getOption("shiny.testmode"))) {
 
 ui <- function(request) {
   shinydashboard::dashboardPage(
-    title = 'Corpus exploration',
+    title = if (CORPUS_TITLE == "Corpus map") "Corpus exploration" else CORPUS_TITLE,
 
     # Header --------------------------------------------------------------
     source("./ui/ui_header.R", local = TRUE)$value,
