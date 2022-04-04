@@ -53,13 +53,13 @@ validate_column_names <- function() {
 check_regexes <- function(patterns) {
     patterns[is.null(patterns)] <-
         "OK"  # To deal with subset_terms == NULL TODO dirty hack
-    if (USE_ONLY_RE2R == TRUE) {
+    if (USE_ONLY_RE2 == TRUE) {
         tryCatch(
-            is.integer(re2r::re2_count("esel", patterns)),
+            is.integer(re2::re2_count("esel", patterns)),
             error = function(e)
                 FALSE
         )
-    } else if (USE_ONLY_RE2R == FALSE) {
+    } else if (USE_ONLY_RE2 == FALSE) {
         tryCatch(
             is.integer(stringr::str_count("esel", patterns)),
             error = function(e)
@@ -146,7 +146,7 @@ check_safe_search <- Vectorize(function(pattern) {
         len <- nchar(test_text)
         ratio <- 0.1
         if (can_use_re2(pattern)) {
-            return(re2r::re2_count(test_text, pattern) / len < ratio)
+            return(re2::re2_count(test_text, pattern) / len < ratio)
         } else {
             return(stringr::str_count(test_text, pattern) / len < ratio)
         }

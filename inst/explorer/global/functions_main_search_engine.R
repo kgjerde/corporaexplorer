@@ -115,7 +115,7 @@ can_use_matrix <-
 can_use_re2 <- function(pattern) {
     if (USE_ONLY_STRINGR == TRUE) {
         return(FALSE)
-    } else if (USE_ONLY_RE2R == TRUE) {
+    } else if (USE_ONLY_RE2 == TRUE) {
         return(TRUE)
     }
     if (contains_other_regex_special_characters(pattern)) {
@@ -136,7 +136,7 @@ can_use_re2 <- function(pattern) {
 #' @return Df with column with search_term count for each document.
 count_matrix <- function(pattern, matriks, df, ordvektor) {
     if (can_use_re2(pattern)) {
-        regex_detect <- re2r::re2_detect
+        regex_detect <- re2::re2_detect
                 # print("re2")
     } else {
         regex_detect <- stringr::str_detect
@@ -169,7 +169,7 @@ count_df <- function(pattern, df, case_sensitive, custom_column) {
     re2_ok <- can_use_re2(pattern)
 
     if (re2_ok == TRUE) {
-        regex_count <- re2r::re2_count
+        regex_count <- re2::re2_count
         # print("re2")
     } else {
         regex_count <- stringr::str_count
@@ -187,9 +187,9 @@ count_df <- function(pattern, df, case_sensitive, custom_column) {
     if (!is.na(custom_column)) {
         if (re2_ok == TRUE) {
             treff_count_matrix <-
-                tibble::tibble(re2r::re2_count(
+                tibble::tibble(re2::re2_count(
                     df[[custom_column]],
-                    re2r::re2(pattern, case_sensitive = case_sensitive)
+                    re2::re2(pattern, case_sensitive = case_sensitive)
                 ))
             return(treff_count_matrix)
         } else if (re2_ok == FALSE) {

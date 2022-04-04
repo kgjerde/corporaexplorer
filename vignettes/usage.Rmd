@@ -188,17 +188,17 @@ knitr::include_graphics("../man/figures/wall.png")
 
 `explore()` lets you choose among three regex engine setups:
 
-1. `default`: use the [`re2r`](https://github.com/qinwf/re2r) package for simple searches and the [`stringr`](https://github.com/tidyverse/stringr) package for complex regexes (details below).
+1. `default`: use the [`re2`](https://github.com/girishji/re2) package for simple searches and the [`stringr`](https://github.com/tidyverse/stringr) package for complex regexes (details below).
 This is the recommended option.
 2. use `stringr` for all searches.
-3. use `re2r`for all searches.  
+3. use `re2`for all searches.  
 
-`re2r` is very fast but has a more limited feature set than `stringr`, especially
+`re2` is very fast but has a more limited feature set than `stringr`, especially
 in handling non-ASCII text, including word boundary detection.
-With the `default` option, the `re2r` engine is run when no special regex characters are used;
+With the `default` option, the `re2` engine is run when no special regex characters are used;
 otherwise `stringr` is used. This option should fit most use cases.
 
-Please consult the documentation for [`re2r`](https://github.com/qinwf/re2r) and
+Please consult the documentation for [`re2`](https://github.com/girishji/re2) and
 [`stringr`](https://github.com/tidyverse/stringr) for full information about syntax flavours.
 
 By default, searches for patterns consisting of a single word and without special characters will be carried out in a document term matrix. Other searches are carried out in full text.

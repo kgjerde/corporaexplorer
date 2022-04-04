@@ -24,7 +24,7 @@ Imports:
 	padr,
 	plyr,
 	RColorBrewer,
-	re2r,
+	re2,
 	rlang,
 	rmarkdown,
 	scales,
