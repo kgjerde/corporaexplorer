@@ -13,7 +13,7 @@ if ("Title" %in% colnames(data_day)) {
   }
 
   if (USE_ONLY_RE2R == TRUE) {
-    # count_function <- re2r::re2_count
+    count_function <- re2r::re2_count
   } else if (USE_ONLY_RE2R == FALSE) {
     count_function <- stringr::str_count
   }
