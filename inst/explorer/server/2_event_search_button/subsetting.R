@@ -67,7 +67,8 @@ if (INCLUDE_EXTRA == TRUE) {
       # (but NULL, i.e. `unlist(list())` passes the regex check)
       # (same dirty hack as other TODO):
       check_regexes(unlist(search_arguments$subset_terms))) {
-    if (all(check_safe_search(search_arguments$subset_terms))) {
+    # if (TRUE#all(check_safe_search(search_arguments$subset_terms))
+    #     ) {
 
 # Filtering by years/dates ------------------------------------------------
 
@@ -124,6 +125,6 @@ if (!is.null(input$subset_corpus)) {
 
   }
   }
-    }
+    #}
 
     }
