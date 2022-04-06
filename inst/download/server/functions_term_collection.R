@@ -117,19 +117,19 @@ check_valid_column_names <- function(chr_vector, df) {
 check_regexes <- function(patterns) {
     patterns[is.null(patterns)] <-
         "OK"  # To deal with subset_terms == NULL TODO dirty hack
-    if (USE_ONLY_RE2 == TRUE) {
-        tryCatch(
-            is.integer(re2::re2_count("esel", patterns)),
-            error = function(e)
-                FALSE
-        )
-    } else if (USE_ONLY_RE2 == FALSE) {
+    # if (USE_ONLY_RE2R == TRUE) {
+    #     tryCatch(
+    #         is.integer(re2r::re2_count("esel", patterns)),
+    #         error = function(e)
+    #             FALSE
+    #     )
+    # } else if (USE_ONLY_RE2R == FALSE) {
         tryCatch(
             is.integer(stringr::str_count("esel", patterns)),
             error = function(e)
                 FALSE
         )
-    }
+    # }
 }
 
 #' Collecting subset/filter terms from user input

@@ -28,7 +28,7 @@ corpus_info_text <- function() {
                 sep = "<br>",
                 tekst,
                 sprintf(
-                    "%s is found a total of %i times in %i documents.",
+                    "%s is found a total of %s times in %s documents.",
                     term,
                     format(treff, big.mark=","),
                     format(docs, big.mark=",")
