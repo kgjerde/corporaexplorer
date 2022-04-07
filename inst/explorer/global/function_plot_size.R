@@ -38,7 +38,7 @@ plot_size <-
     }
 
 plot_size_data_365 <- function(df, max_width_for_row, x_factor) {
-    years <- length(min(df$Year):max(df$Year))
+    years <- length(unique(df$Year))
     size <- years * 100
     return(size)
 }
