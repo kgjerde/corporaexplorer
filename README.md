@@ -187,6 +187,6 @@ welcome. Ways to contribute:
 -   Issues and bug reports: [File a GitHub
     issue](https://github.com/kgjerde/corporaexplorer/issues).
 -   Fork the source code, modify, and issue a [pull
-    request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/)
+    request](https://docs.github.com/articles/creating-a-pull-request-from-a-fork/)
     through the [project GitHub
     page](https://github.com/kgjerde/corporaexplorer).

@@ -198,9 +198,7 @@ same website is available
 [here](https://figshare.com/s/fcd93f6f93bb23be3bb1).<sup>[1](#footnote1)</sup>
 
 (The package of course works equally well with **text collections that
-cannot be freely shared**, e.g. a collection of newspaper articles etc.
-retrieved from a database, and indeed with any **personal collection of
-texts** that are meaningful to explore with a time aspect.)
+cannot be freely shared**.)
 
 The package also includes a tiny “corporaexplorerobject” (see below):
 `corporaexplorer::test_data`, which consists of 10 tiny documents and
@@ -255,7 +253,7 @@ welcome. Ways to contribute:
 -   Issues and bug reports: [File a GitHub
     issue](https://github.com/kgjerde/corporaexplorer/issues).
 -   Fork the source code, modify, and issue a [pull
-    request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/)
+    request](https://docs.github.com/articles/creating-a-pull-request-from-a-fork/)
     through the [project GitHub
     page](https://github.com/kgjerde/corporaexplorer).
 
