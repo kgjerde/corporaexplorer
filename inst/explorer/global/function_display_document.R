@@ -55,37 +55,37 @@ highlight_document <-
       max_ratio <- 0.02
 
       for (i in seq_along(patterns)) {
-        if (USE_ONLY_RE2R == TRUE) {
-          # hits <- re2r::re2_count(
-          #   text,
-          #   re2r::re2(patterns[i],
-          #     case_sensitive = case_sensitive
-          #   )
-          # )
-          # ratio <- hits / doclength
-          #
-          # if (ratio < max_ratio) {
-          #   text <-
-          #     re2r::re2_replace_all(
-          #       text,
-          #       re2r::re2(paste0("(", patterns[i], ")"),
-          #         case_sensitive = case_sensitive
-          #       ),
-          #       sprintf(
-          #         markup,
-          #         colours[i]
-          #       )
-          #     )[1]
-          # } else {
-          #   warning_text <- paste0(
-          #     warning_text,
-          #     sprintf(
-          #       "<b>%s occurs too frequently to be higlighted</b><br>",
-          #       patterns[i]
-          #     )
-          #   )
-          # }
-        } else if (USE_ONLY_RE2R == FALSE) {
+        if (USE_ONLY_RE2 == TRUE) {
+          hits <- re2::re2_count(
+            text,
+            re2::re2(patterns[i],
+              case_sensitive = case_sensitive
+            )
+          )
+          ratio <- hits / doclength
+
+          if (ratio < max_ratio) {
+            text <-
+              re2::re2_replace_all(
+                text,
+                re2::re2(paste0("(", patterns[i], ")"),
+                  case_sensitive = case_sensitive
+                ),
+                sprintf(
+                  markup,
+                  colours[i]
+                )
+              )[1]
+          } else {
+            warning_text <- paste0(
+              warning_text,
+              sprintf(
+                "<b>%s occurs too frequently to be higlighted</b><br>",
+                patterns[i]
+              )
+            )
+          }
+        } else if (USE_ONLY_RE2 == FALSE) {
           hits <- stringr::str_count(
             text,
             stringr::regex(patterns[i],

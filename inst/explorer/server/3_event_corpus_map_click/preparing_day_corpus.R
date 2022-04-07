@@ -12,9 +12,9 @@ if ("Title" %in% colnames(data_day)) {
     text_column <- data_day$Text_original_case
   }
 
-  if (USE_ONLY_RE2R == TRUE) {
-    # count_function <- re2r::re2_count
-  } else if (USE_ONLY_RE2R == FALSE) {
+  if (USE_ONLY_RE2 == TRUE) {
+    count_function <- re2::re2_count
+  } else if (USE_ONLY_RE2 == FALSE) {
     count_function <- stringr::str_count
   }
 

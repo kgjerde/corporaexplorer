@@ -1,3 +1,11 @@
+# corporaexplorer 0.8.4.9000
+
+* re2 regex engine again included, now using the 're2' package.
+This significantly speeds up many search operations.
+Thank you, @girishji!
+See https://github.com/girishji/re2  
+* Small UI fixes
+
 # corporaexplorer 0.8.4
 
 * Fixed bug where time selection slider widget in calendar view did not work (#25)
