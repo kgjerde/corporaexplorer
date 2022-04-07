@@ -26,6 +26,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -38,18 +40,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">corporaexplorer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.8.4.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.8.4.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -57,7 +53,7 @@
   <a href="../articles/usage.html">How to use</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Examples
      
     <span class="caret"></span>
@@ -75,7 +71,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Deployment
      
     <span class="caret"></span>
@@ -92,7 +88,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/kgjerde/corporaexplorer/">
+  <a href="https://github.com/kgjerde/corporaexplorer/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -113,14 +109,14 @@
       <h1 data-toc-skip>Deployment to Shiny Server and shinyapps.io</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/kgjerde/corporaexplorer/blob/master/vignettes/deployment.Rmd"><code>vignettes/deployment.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/kgjerde/corporaexplorer/blob/HEAD/vignettes/deployment.Rmd" class="external-link"><code>vignettes/deployment.Rmd</code></a></small>
       <div class="hidden name"><code>deployment.Rmd</code></div>
 
     </div>
 
     
     
-<p>Deploying a <strong>corporaexplorer</strong> app with your own data (corporaexplorerobject) to a <em><a href="https://rstudio.com/products/shiny/shiny-server/">Shiny Server</a></em> or <em><a href="https://www.shinyapps.io/">shinyapps.io</a></em> is very simple – all it takes is a folder with two files and three lines of code.</p>
+<p>Deploying a <strong>corporaexplorer</strong> app with your own data (corporaexplorerobject) to a <em><a href="https://rstudio.com/products/shiny/shiny-server/" class="external-link">Shiny Server</a></em> or <em><a href="https://www.shinyapps.io/" class="external-link">shinyapps.io</a></em> is very simple – all it takes is a folder with two files and three lines of code.</p>
 <p>Example folder structure of the folder “my_app”:</p>
 <pre><code>my_app  
   |  
@@ -128,17 +124,17 @@
   |-- saved_corporaexplorerobject.rds  </code></pre>
 <p>Where “app.R” contains this code:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer/">corporaexplorer</a></span><span class="op">)</span>
-<span class="va">corpus</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="st">"saved_corporaexplorerobject.rds"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer/" class="external-link">corporaexplorer</a></span><span class="op">)</span>
+<span class="va">corpus</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS</a></span><span class="op">(</span><span class="st">"saved_corporaexplorerobject.rds"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/explore.html">explore</a></span><span class="op">(</span><span class="va">corpus</span><span class="op">)</span></code></pre></div>
 <p>The folder “my_app” is now ready to be hosted on a <em>Shiny Server</em> or be uploaded to <em>shinyapps.io</em>.</p>
 <hr>
-<p><em>Tip 1: use the settings in the</em> <code>plot_options</code> <em>argument in</em> <code><a href="../reference/explore.html">explore()</a></code> <em>to fine-tune the appearance of the plots in the app.</em><br><em>Tip 2: to make the data load faster (at the cost of occupying more disk space), save the corporaexplorerobject created by</em> <code><a href="../reference/prepare_data.html">prepare_data()</a></code> <em>uncompressed by setting</em> <code>compress = FALSE</code> <em>in</em> <code><a href="https://rdrr.io/r/base/readRDS.html">saveRDS()</a></code>.</p>
+<p><em>Tip 1: use the settings in the</em> <code>plot_options</code> <em>argument in</em> <code><a href="../reference/explore.html">explore()</a></code> <em>to fine-tune the appearance of the plots in the app.</em><br><em>Tip 2: to make the data load faster (at the cost of occupying more disk space), save the corporaexplorerobject created by</em> <code><a href="../reference/prepare_data.html">prepare_data()</a></code> <em>uncompressed by setting</em> <code>compress = FALSE</code> <em>in</em> <code><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">saveRDS()</a></code>.</p>
 <p><em>Example (assuming you start with a data frame called df):</em></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer/">corporaexplorer</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer/" class="external-link">corporaexplorer</a></span><span class="op">)</span>
 <span class="va">corpus</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/prepare_data.html">prepare_data</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">saveRDS</a></span><span class="op">(</span><span class="va">corpus</span>, <span class="st">"saved_corporaexplorerobject.rds"</span>, compress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">saveRDS</a></span><span class="op">(</span><span class="va">corpus</span>, <span class="st">"saved_corporaexplorerobject.rds"</span>, compress <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -150,11 +146,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Kristian Lundby Gjerde.</p>
+  <p></p>
+<p>Developed by Kristian Lundby Gjerde.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
@@ -162,6 +160,8 @@
 
   
 
+
+  
 
   </body>
 </html>
