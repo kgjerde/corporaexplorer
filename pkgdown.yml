@@ -1,4 +1,4 @@
-pandoc: 2.7.3
+pandoc: 2.14.2
 pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
@@ -7,5 +7,5 @@ articles:
   jane_austen: jane_austen.html
   sotu: sotu.html
   usage: usage.html
-last_built: 2022-04-07T08:14Z
+last_built: 2022-04-07T09:56Z
 

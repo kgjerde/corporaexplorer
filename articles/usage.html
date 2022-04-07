@@ -103,7 +103,7 @@
 
       
 
-      </header><script src="usage_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>How to use corporaexplorer</h1>
@@ -190,10 +190,10 @@
 <code>.</code> in a search means “any single character”.</li>
 </ul>
 <p>Thus, (in a case insensitive search):</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>arctic  <span class="co"># will match both "Arctic" and "Antarctic"</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>\barctic  <span class="co"># will match only "Arctic"</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a></span>
-<span id="cb3-4"><a href="#cb3-4"></a>civili.ation  <span class="co"># will match both "civilisation" and "civilization"</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>arctic  <span class="co"># will match both "Arctic" and "Antarctic"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>\barctic  <span class="co"># will match only "Arctic"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>civili.ation  <span class="co"># will match both "civilisation" and "civilization"</span></span></code></pre></div>
 <p>For more about regex syntax and the regex flavours available, see the section about regex engines <a href="#2d-advanced-detail-regular-expression-engines">below</a>.</p>
 <p>(N.B. As seen in the example, a single backslash (not a double backslash as in the R console) is used as escape character. For example will <code>\.</code> match a literal “.”, and <code>\d</code> match any digit.)</p>
 </div>
@@ -256,16 +256,15 @@
 <div class="section level3">
 <h3 id="d--advanced-detail-regular-expression-engines">2d. Advanced detail: Regular expression engines<a class="anchor" aria-label="anchor" href="#d--advanced-detail-regular-expression-engines"></a>
 </h3>
-<p><em>Note March 2020: the <code>re2r</code> package has been removed (“archived”) from CRAN by the CRAN maintainers</em> <em>due to WARNINGs in the CRAN check.</em> <em>As a result, from version 0.8.2, <code>corporaexplorer</code> uses <code>stringr</code> exclusively.</em> <em><code>re2r</code> will hopefully return in later versions.</em></p>
 <p><code><a href="../reference/explore.html">explore()</a></code> lets you choose among three regex engine setups:</p>
 <ol style="list-style-type: decimal">
 <li>
-<code>default</code>: use the <a href="https://github.com/qinwf/re2r" class="external-link"><code>re2r</code></a> package for simple searches and the <a href="https://github.com/tidyverse/stringr" class="external-link"><code>stringr</code></a> package for complex regexes (details below). This is the recommended option.</li>
+<code>default</code>: use the <a href="https://github.com/girishji/re2" class="external-link"><code>re2</code></a> package for simple searches and the <a href="https://github.com/tidyverse/stringr" class="external-link"><code>stringr</code></a> package for complex regexes (details below). This is the recommended option.</li>
 <li>use <code>stringr</code> for all searches.</li>
-<li>use <code>re2r</code>for all searches.</li>
+<li>use <code>re2</code>for all searches.</li>
 </ol>
-<p><code>re2r</code> is very fast but has a more limited feature set than <code>stringr</code>, especially in handling non-ASCII text, including word boundary detection. With the <code>default</code> option, the <code>re2r</code> engine is run when no special regex characters are used; otherwise <code>stringr</code> is used. This option should fit most use cases.</p>
-<p>Please consult the documentation for <a href="https://github.com/qinwf/re2r" class="external-link"><code>re2r</code></a> and <a href="https://github.com/tidyverse/stringr" class="external-link"><code>stringr</code></a> for full information about syntax flavours.</p>
+<p><code>re2</code> is very fast but has a more limited feature set than <code>stringr</code>, especially in handling non-ASCII text, including word boundary detection. With the <code>default</code> option, the <code>re2</code> engine is run when no special regex characters are used; otherwise <code>stringr</code> is used. This option should fit most use cases.</p>
+<p>Please consult the documentation for <a href="https://github.com/girishji/re2" class="external-link"><code>re2</code></a> and <a href="https://github.com/tidyverse/stringr" class="external-link"><code>stringr</code></a> for full information about syntax flavours.</p>
 <p>By default, searches for patterns consisting of a single word and without special characters will be carried out in a document term matrix. Other searches are carried out in full text.</p>
 <p>Advanced users can set the <code>optional_info</code> parameter in <code><a href="../reference/explore.html">explore()</a></code> to <code>TRUE</code>: this will print to console the following information for each input term: which regex engine was used, and whether the search was carried out in the document term matrix or in the full text documents.</p>
 </div>
