@@ -82,9 +82,7 @@
       <small>Source: <a href="https://github.com/kgjerde/corporaexplorer/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
-    <div class="section level2">
-<h2 class="page-header" data-toc-text="0.8.5.9000" id="corporaexplorer-0859000">corporaexplorer 0.8.5.9000<a class="anchor" aria-label="anchor" href="#corporaexplorer-0859000"></a></h2>
-</div>
+    <div class="section level2"><h2 class="page-header" data-toc-text="0.8.5.9000" id="corporaexplorer-0859000">corporaexplorer 0.8.5.9000<a class="anchor" aria-label="anchor" href="#corporaexplorer-0859000"></a></h2></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.8.5" id="corporaexplorer-085">corporaexplorer 0.8.5<small>2022-04-08</small><a class="anchor" aria-label="anchor" href="#corporaexplorer-085"></a></h2>
 <ul><li>re2 regex engine again included, now using the ‘re2’ package. This significantly speeds up many search operations. Thank you, <a href="https://github.com/girishji" class="external-link">@girishji</a>! See <a href="https://github.com/girishji/re2" class="external-link uri">https://github.com/girishji/re2</a><br></li>
@@ -92,8 +90,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.8.4" id="corporaexplorer-084">corporaexplorer 0.8.4<small>2021-03-18</small><a class="anchor" aria-label="anchor" href="#corporaexplorer-084"></a></h2>
-<ul><li>Fixed bug where time selection slider widget in calendar view did not work (<a href="https://github.com/kgjerde/corporaexplorer/issues/25" class="external-link">#25</a>)</li>
-</ul></div>
+<ul><li>Fixed bug where time selection slider widget in calendar view did not work (<a href="https://github.com/kgjerde/corporaexplorer/issues/25" class="external-link">#25</a>)</li></ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.8.3" id="corporaexplorer-083">corporaexplorer 0.8.3<small>2020-11-13</small><a class="anchor" aria-label="anchor" href="#corporaexplorer-083"></a></h2>
 <ul><li>Fixed bugs and warning messages caused by changes in other packages (tibble and dplyr).</li>
@@ -104,19 +101,16 @@
 <h2 class="page-header" data-toc-text="0.8.2" id="corporaexplorer-082">corporaexplorer 0.8.2<small>2020-03-07</small><a class="anchor" aria-label="anchor" href="#corporaexplorer-082"></a></h2>
 <div class="section level3">
 <h3 id="re2r-regex-engine-disabled-0-8-2">re2r regex engine disabled<a class="anchor" aria-label="anchor" href="#re2r-regex-engine-disabled-0-8-2"></a></h3>
-<ul><li>Because ‘re2r’ will be removed/archived by the CRAN maintainers. See <a href="https://github.com/qinwf/re2r/issues/22" class="external-link uri">https://github.com/qinwf/re2r/issues/22</a>.</li>
-</ul></div>
+<ul><li>Because ‘re2r’ will be removed/archived by the CRAN maintainers. See <a href="https://github.com/qinwf/re2r/issues/22" class="external-link uri">https://github.com/qinwf/re2r/issues/22</a>.</li></ul></div>
 <div class="section level3">
 <h3 id="other-0-8-2">Other<a class="anchor" aria-label="anchor" href="#other-0-8-2"></a></h3>
-<ul><li>the apps now allow any mix of whitespace in input terms</li>
-</ul></div>
+<ul><li>the apps now allow any mix of whitespace in input terms</li></ul></div>
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.8.1.1" id="corporaexplorer-0811">corporaexplorer 0.8.1.1<small>2020-02-07</small><a class="anchor" aria-label="anchor" href="#corporaexplorer-0811"></a></h2>
 <div class="section level3">
 <h3 id="new-arguments-0-8-1-1">New arguments<a class="anchor" aria-label="anchor" href="#new-arguments-0-8-1-1"></a></h3>
-<ul><li>Added <code>columns_for_ui_checkboxes</code> argument to prepare_data() in order to include sidebar checkboxes for convenient filtering by categorical variable/column (not necessarily factor type, but most helpful when limited number of values in the variable) in the explorer app (<code><a href="../reference/explore.html">explore()</a></code>).</li>
-</ul></div>
+<ul><li>Added <code>columns_for_ui_checkboxes</code> argument to prepare_data() in order to include sidebar checkboxes for convenient filtering by categorical variable/column (not necessarily factor type, but most helpful when limited number of values in the variable) in the explorer app (<code><a href="../reference/explore.html">explore()</a></code>).</li></ul></div>
 <div class="section level3">
 <h3 id="other-0-8-1-1">Other<a class="anchor" aria-label="anchor" href="#other-0-8-1-1"></a></h3>
 <ul><li>Removed dependencies on packages forcats, shinycssloaders, and zoo.</li>
@@ -130,8 +124,7 @@
 <div class="section level3">
 <h3 id="breaking-api-changes-0-8-0">Breaking API changes<a class="anchor" aria-label="anchor" href="#breaking-api-changes-0-8-0"></a></h3>
 <ul><li>
-<strong><code><a href="../reference/corporaexplorer-deprecated.html">run_corpus_explorer()</a></code> is deprecated and replaced with <code><a href="../reference/explore.html">explore()</a></code>.</strong>
-<ul><li>
+<strong><code><a href="../reference/corporaexplorer-deprecated.html">run_corpus_explorer()</a></code> is deprecated and replaced with <code><a href="../reference/explore.html">explore()</a></code>.</strong><ul><li>
 <code><a href="../reference/explore.html">explore()</a></code> works in the precise same way as <code><a href="../reference/corporaexplorer-deprecated.html">run_corpus_explorer()</a></code>, but is faster to type and makes a nice pair with the new <code><a href="../reference/explore.html">explore0()</a></code> function (see below).</li>
 <li>
 <code><a href="../reference/corporaexplorer-deprecated.html">run_corpus_explorer()</a></code> still works (as a thin wrapper to <code><a href="../reference/explore.html">explore()</a></code>), but yields a warning.</li>
@@ -142,17 +135,14 @@
 </ul></div>
 <div class="section level3">
 <h3 id="new-function-0-8-0">New function<a class="anchor" aria-label="anchor" href="#new-function-0-8-0"></a></h3>
-<ul><li>Added <code><a href="../reference/explore.html">explore0()</a></code>, a convenience function to directly explore a data frame or character vector without first creating a ‘corporaexplorerobject’ with <code><a href="../reference/prepare_data.html">prepare_data()</a></code>.</li>
-</ul></div>
+<ul><li>Added <code><a href="../reference/explore.html">explore0()</a></code>, a convenience function to directly explore a data frame or character vector without first creating a ‘corporaexplorerobject’ with <code><a href="../reference/prepare_data.html">prepare_data()</a></code>.</li></ul></div>
 <div class="section level3">
 <h3 id="demo-apps-0-8-0">Demo apps<a class="anchor" aria-label="anchor" href="#demo-apps-0-8-0"></a></h3>
 <ul><li>Included demo apps: Jane Austen’s novels and State of the Union addresses, with data from the <code>janeaustenr</code> and <code>sotu</code> packages, respectively. See <code><a href="../reference/demo_jane_austen.html">run_janeausten_app()</a></code> and <code><a href="../reference/demo_sotu.html">run_sotu_app()</a></code>
-</li>
-</ul></div>
+</li></ul></div>
 <div class="section level3">
 <h3 id="other-0-8-0">Other<a class="anchor" aria-label="anchor" href="#other-0-8-0"></a></h3>
-<ul><li>Minimum corpus plot height is again 100.</li>
-</ul></div>
+<ul><li>Minimum corpus plot height is again 100.</li></ul></div>
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.7.0" id="corporaexplorer-070">corporaexplorer 0.7.0<small>2019-11-15</small><a class="anchor" aria-label="anchor" href="#corporaexplorer-070"></a></h2>
@@ -185,8 +175,7 @@
 <div class="section level3">
 <h3 id="other-0-6-3">Other<a class="anchor" aria-label="anchor" href="#other-0-6-3"></a></h3>
 <ul><li>Documentation moved to <a href="https://kgjerde.github.io/corporaexplorer" class="external-link uri">https://kgjerde.github.io/corporaexplorer</a>
-</li>
-</ul></div>
+</li></ul></div>
 </div>
   </div>
 
@@ -202,7 +191,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer></div>
