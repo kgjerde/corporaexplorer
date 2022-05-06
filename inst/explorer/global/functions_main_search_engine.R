@@ -189,7 +189,7 @@ count_df <- function(pattern, df, case_sensitive, custom_column) {
             treff_count_matrix <-
                 tibble::tibble(re2::re2_count(
                     df[[custom_column]],
-                    re2::re2(pattern, case_sensitive = case_sensitive)
+                    re2::re2_regexp(pattern, case_sensitive = case_sensitive)
                 ))
             return(treff_count_matrix)
         } else if (re2_ok == FALSE) {

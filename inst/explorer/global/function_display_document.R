@@ -58,7 +58,7 @@ highlight_document <-
         if (USE_ONLY_RE2 == TRUE) {
           hits <- re2::re2_count(
             text,
-            re2::re2(patterns[i],
+            re2::re2_regexp(patterns[i],
               case_sensitive = case_sensitive
             )
           )
@@ -68,7 +68,7 @@ highlight_document <-
             text <-
               re2::re2_replace_all(
                 text,
-                re2::re2(paste0("(", patterns[i], ")"),
+                re2::re2_regexp(paste0("(", patterns[i], ")"),
                   case_sensitive = case_sensitive
                 ),
                 sprintf(
