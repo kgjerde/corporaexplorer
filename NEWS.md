@@ -1,6 +1,6 @@
-# corporaexplorer 0.8.5.9000
+# corporaexplorer 0.8.6
 
-* Fix bug introduced when re2 was reintroduced, which caused
+* Fix bug introduced when re2 was reintroduced (4eeb2f3), which caused
 app to crash when searching in custom columns/metadata
 
 # corporaexplorer 0.8.5
