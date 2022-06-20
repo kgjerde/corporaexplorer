@@ -21,3 +21,17 @@ test_that("Corpus info works", {
     expect_true(stringr::str_detect(output, "2\\.00"))
 
 })
+
+test_that("Corpus info custom column search works", {
+    app <- shinytest::ShinyDriver$new("../..")
+    app$snapshotInit("corpus_info_test_custom")
+    app$snapshot()
+    app$setInputs(search_text_1 = "2--Title")
+    app$setInputs(search_button = "click")
+    app$setInputs(corpus_box = "Corpus info")
+
+    # Check that parts of TABLE is OK
+    output <- app$getValue(name = "TABLE")
+    expect_true(stringr::str_detect(output, "Title"))
+    expect_true(stringr::str_detect(output, "0\\.10"))
+})
