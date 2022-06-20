@@ -24,7 +24,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">corporaexplorer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.8.5.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.8.6</span>
       </span>
     </div>
 
@@ -126,36 +126,52 @@
   <code>dataset</code> must contain a column "Date" (of class Date).</p></li>
 <li><p>Or a non-empty character vector.</p></li>
 </ul></dd>
+
+
 <dt>...</dt>
 <dd><p>Other arguments to be passed to <code>prepare_data</code>.</p></dd>
+
+
 <dt>date_based_corpus</dt>
 <dd><p>Logical. Set to <code>FALSE</code> if the corpus
 is not to be organised according to document dates.</p></dd>
+
+
 <dt>grouping_variable</dt>
 <dd><p>Character string.
 If <code>date_based_corpus</code> is <code>TRUE</code>, this argument is ignored.
 If <code>date_based_corpus</code> is <code>FALSE</code>, this argument can be used
 to group the documents, e.g. if <code>dataset</code> is organised by chapters
 belonging to different books.</p></dd>
+
+
 <dt>within_group_identifier</dt>
 <dd><p>Character string indicating column name in <code>dataset</code>.
 <code>"Seq"</code>, the default, means the rows in each group are assigned
 a numeric sequence 1:n where n is the number of rows in the group.
 Used in document tab title in non-date based corpora.
 If <code>date_based_corpus</code> is <code>TRUE</code>, this argument is ignored.</p></dd>
+
+
 <dt>columns_doc_info</dt>
 <dd><p>Character vector. The columns from <code>dataset</code> to display in
 the "document information" tab in the corpus exploration app. By default
 "Date", "Title" and "URL" will be
 displayed, if included. If <code>columns_doc_info</code> includes a column which is not
 present in dataset, it will be ignored.</p></dd>
+
+
 <dt>corpus_name</dt>
 <dd><p>Character string with name of corpus.</p></dd>
+
+
 <dt>use_matrix</dt>
 <dd><p>Logical. Should the function create a document term matrix
 for fast searching? If <code>TRUE</code>, data preparation will run longer and demand
 more memory. If <code>FALSE</code>, the returning corporaexplorerobject will be more light-weight, but
 searching will be slower.</p></dd>
+
+
 <dt>matrix_without_punctuation</dt>
 <dd><p>Should punctuation and digits be stripped
   from the text before constructing the document term matrix? If <code>TRUE</code>,
@@ -174,6 +190,8 @@ the <code>use_matrix</code> parameter to <code>FALSE</code>, or run
 <code>use_matrix</code> parameter set to <code>FALSE</code>.</p></li>
 </ul><p>If <code>FALSE</code>, the corporaexplorer object will be larger, and most
  simple searches will be slower.</p></dd>
+
+
 <dt>tile_length_range</dt>
 <dd><p>Numeric vector of length two.
 Fine-tune the tile lengths in document wall
@@ -182,6 +200,8 @@ and day corpus view. Tile length is calculated by
 to = tile_length_range,
 from = c(0, max(.)))</code>
 Default is <code>c(1, 10)</code>.</p></dd>
+
+
 <dt>columns_for_ui_checkboxes</dt>
 <dd><p>Character. Character or factor column(s) in dataset.
 Include sets of checkboxes in the app sidebar for
@@ -197,12 +217,17 @@ label in the sidebar than the columnn name,
 simply pass a named character vector to <code>columns_for_ui_checkboxes</code>.
 If <code>columns_for_ui_checkboxes</code> includes a column which is not
 present in dataset, it will be ignored.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A <code>corporaexplorer</code> object to be passed as argument to
-<code><a href="explore.html">explore</a></code> and
-<code><a href="run_document_extractor.html">run_document_extractor</a></code>.</p>
+    
+
+<p>A <code>corporaexplorer</code> object to be passed as argument to</p>
+<p></p>
+<p><code><a href="explore.html">explore</a></code> and</p>
+<p></p>
+<p><code><a href="run_document_extractor.html">run_document_extractor</a></code>.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -282,7 +307,7 @@ present in dataset, it will be ignored.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
       </footer></div>

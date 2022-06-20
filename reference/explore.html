@@ -35,7 +35,7 @@ explore0() is a convenience function to directly explore
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">corporaexplorer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.8.5.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.8.6</span>
       </span>
     </div>
 
@@ -133,6 +133,8 @@ application (usually by pressing Ctrl+C or Esc).</p>
     <dl><dt>corpus_object</dt>
 <dd><p>A corporaexplorerobject created by
 <code><a href="prepare_data.html">prepare_data</a></code>.</p></dd>
+
+
 <dt>search_options</dt>
 <dd><p>List. Specify how search operations in the app are
   carried out. Available options:</p><ul><li><p><code>use_matrix</code> Logical. If the corporaexplorerobject contains a document
@@ -154,12 +156,16 @@ application (usually by pressing Ctrl+C or Esc).</p>
     lead to a very slow search. (Examples of such patterns will include
     '<code>.</code>' and '<code>\b</code>'.)</p></li>
 </ul></dd>
+
+
 <dt>ui_options</dt>
 <dd><p>List. Specify custom app settings (see example below).
   Currently available:</p><ul><li><p><code>font_size</code>. Character string specifying font size in
     document view,
     e.g. <code>"10px"</code></p></li>
 </ul></dd>
+
+
 <dt>search_input</dt>
 <dd><p>List. Gives the opportunity to pre-populate
   the following sidebar fields (see example below):</p><ul><li><p><code>search_terms</code>: The 'Term(s) to chart and highlight' field.
@@ -170,6 +176,8 @@ application (usually by pressing Ctrl+C or Esc).</p>
 <li><p><code>case_sensitivity</code>: Should the 'Case sensitive search' box
     be checked? Logical.</p></li>
 </ul></dd>
+
+
 <dt>plot_options</dt>
 <dd><p>List. Specify custom plot settings (see example below).
   Currently available:</p><ul><li><p><code>max_docs_in_wall_view</code>. Integer specifying the maximum number
@@ -202,23 +210,34 @@ application (usually by pressing Ctrl+C or Esc).</p>
       (see the <code>tile_length_range</code> argument in <code><a href="prepare_data.html">prepare_data()</a></code>).
       If <code>"uniform"</code>, all tiles will be of equal length.</p></li>
 </ul></dd>
+
+
 <dt>...</dt>
 <dd><p>Other arguments passed to <code><a href="https://rdrr.io/pkg/shiny/man/runApp.html" class="external-link">runApp</a></code> in the Shiny
 package.</p></dd>
+
+
 <dt>dataset</dt>
 <dd><p>Data frame or character vector as specified in <code><a href="prepare_data.html">prepare_data()</a></code></p></dd>
+
+
 <dt>arguments_prepare_data</dt>
 <dd><p>List. Arguments to be passed to
 <code><a href="prepare_data.html">prepare_data()</a></code> in order to override this function's
 default argument values.</p></dd>
+
+
 <dt>arguments_explore</dt>
 <dd><p>List. Arguments to be passed to
 <code>explore()</code> in order to override this function's
 default argument values.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Launches a Shiny app.</p>
+    
+
+<p>Launches a Shiny app.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -288,7 +307,7 @@ default argument values.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
 </div>
 
       </footer></div>

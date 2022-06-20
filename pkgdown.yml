@@ -1,5 +1,5 @@
 pandoc: 2.14.2
-pkgdown: 2.0.3
+pkgdown: 2.0.4
 pkgdown_sha: ~
 articles:
   bible: bible.html
@@ -7,5 +7,5 @@ articles:
   jane_austen: jane_austen.html
   sotu: sotu.html
   usage: usage.html
-last_built: 2022-05-06T13:42Z
+last_built: 2022-06-20T09:32Z
 
