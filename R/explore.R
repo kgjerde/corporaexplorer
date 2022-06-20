@@ -137,7 +137,7 @@ explore <- function(corpus_object,
     )
   }
 
-  if ("corporaexplorerobject" %in% class(corpus_object) == FALSE) {
+  if (inherits(corpus_object, "corporaexplorerobject") == FALSE) {
     stop("'corpus_object' is not a corporaexplorerobject",
       call. = FALSE
     )

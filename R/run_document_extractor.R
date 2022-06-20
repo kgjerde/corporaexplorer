@@ -35,7 +35,7 @@ run_document_extractor <- function(corpus_object, max_html_docs = 400, ...) {
     stop("Could not find directory. Try re-installing `corporaexplorer`.", call. = FALSE)
   }
 
-  if (class(corpus_object) != "corporaexplorerobject") {
+  if (inherits(corpus_object, "corporaexplorerobject") == FALSE) {
     stop("'corpus_object' is not a corporaexplorerobject",
       call. = FALSE
     )
