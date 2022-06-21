@@ -1,7 +1,7 @@
 
 
 # subset_year <- function(.tibble, year_1, year_2) {
-#     filtrert_tibble <- .tibble[.tibble$Year %in% year_1:year_2,]
+#     filtrert_tibble <- .tibble[.tibble$Year_ %in% year_1:year_2,]
 #     return(filtrert_tibble)
 # }
 
@@ -37,11 +37,11 @@ subset_terms <- function(.tibble, terms, threshold, custom_column) {
             } else {
                 text_column <- rlang::sym("Text")
             }
-            
+
             if (is.na(threshold[i])) {
                 threshold[i] <- 1
             }
-            
+
             .tibble <- .tibble %>%
                 dplyr::mutate(hitcount =
                                   stringr::str_count(

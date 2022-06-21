@@ -9,7 +9,7 @@ filtrere_korpus_tid <-
     if (search_arguments$time_filtering_mode == "Year range") {
       # Simple filtering
       filtrert_tibble <-
-        .tibble[.tibble$Year %in% search_arguments$time_range, ]
+        .tibble[.tibble$Year_ %in% search_arguments$time_range, ]
       return(filtrert_tibble)
     } else if (search_arguments$time_filtering_mode == "Date range") {
       if (plot_mode == "data_365") {
@@ -29,7 +29,7 @@ filtrere_korpus_tid <-
         # And then filtering.
 
         filtrert_tibble <-
-          .tibble[.tibble$Year %in% lubridate::year(search_arguments$time_range[1]):lubridate::year(search_arguments$time_range[2]), ]
+          .tibble[.tibble$Year_ %in% lubridate::year(search_arguments$time_range[1]):lubridate::year(search_arguments$time_range[2]), ]
       } else if (plot_mode == "data_dok") {
         filtrert_tibble <-
           .tibble[.tibble$Date %in% search_arguments$time_range[1]:search_arguments$time_range[2], ]

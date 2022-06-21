@@ -45,7 +45,7 @@ doc_title_non_date_based_corpora <- function(min_rad) {
   title <- ""
   if (ONLY_ONE_GROUP_IN_NON_DATE_BASED_CORPUS == FALSE) {
     title <- paste0(title,
-                        session_variables[[plot_mode$mode]]$Year[min_rad],
+                        session_variables[[plot_mode$mode]]$Year_[min_rad],
                         " \u2013 ")
   }
   title <- paste0(title,

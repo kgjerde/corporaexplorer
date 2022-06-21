@@ -16,9 +16,9 @@ output$time_filtering_ui <- shiny::renderUI({
         shiny::sliderInput(
           "date_slider",
           label = NULL,
-          min = min(loaded_data$original_data$data_dok$Year),
-          max = max(loaded_data$original_data$data_dok$Year),
-          value = range(loaded_data$original_data$data_dok$Year),
+          min = min(loaded_data$original_data$data_dok$Year_),
+          max = max(loaded_data$original_data$data_dok$Year_),
+          value = range(loaded_data$original_data$data_dok$Year_),
           sep = ""
         )
       ),

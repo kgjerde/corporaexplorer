@@ -39,7 +39,7 @@ plotting_corpus_data_365 <- function(test1, x_breaks, y_text, legend_df, linjer)
         xend = test1[test1$df == 1,]$x_max,
         y = test1[test1$df == 1,]$y_min,
         yend = test1[test1$df == 1,]$y_max + linjer - 1,
-        Year = test1$Year[test1$df == 1],
+        Year_ = test1$Year_[test1$df == 1],
         Month = test1$Month[test1$df == 1]
     )
 

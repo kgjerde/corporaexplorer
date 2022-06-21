@@ -8,7 +8,7 @@ utils::globalVariables(
     "Text",
     "Text_original_case",
     "Weekday_n",
-    "Year",
+    "Year_",
     "Yearday_n",
     "count",
     "i",

@@ -25,14 +25,14 @@ df$x_min <- dplyr::lag(df$x_max, default = 0)
 # :
 
 Tile_length <- df$Tile_length
-Year <- df$Year
+Year_ <- df$Year_
 last_tile_in_row <- integer(0)
 current_width <- Tile_length[1]
 
 if (nrow(df) > 1) {
     for (i in 2:nrow(df)) {
         if ((current_width + Tile_length[i]) > max_width_for_row |
-            Year[i] != Year[i - 1]) {
+            Year_[i] != Year_[i - 1]) {
             current_width <- Tile_length[i]
             last_tile_in_row <- c(last_tile_in_row, i - 1)
         } else {

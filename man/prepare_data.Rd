@@ -130,7 +130,7 @@ For data.frame: Each row in \code{dataset} is treated as a base differentiating 
   "ID",
   "Text_original_case",
   "Tile_length",
-  "Year",
+  "Year_",
   "Seq",
   "Weekday_n",
   "Day_without_docs",

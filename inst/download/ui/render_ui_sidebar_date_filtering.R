@@ -16,9 +16,9 @@ output$time_filtering_ui <- renderUI({
         sliderInput(
           "date_slider",
           label = NULL,
-          min = min(abc$Year),
-          max = max(abc$Year),
-          value = range(abc$Year),
+          min = min(abc$Year_),
+          max = max(abc$Year_),
+          value = range(abc$Year_),
           sep = ""
         )
       ),

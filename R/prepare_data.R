@@ -19,7 +19,7 @@ transform_regular <- function(df, tile_length_range = c(1, 10)) {
 
   df <- dplyr::arrange(df, Date)
 
-  df$Year <- lubridate::year(df$Date)
+  df$Year_ <- lubridate::year(df$Date)
 
   df$Tile_length <- nchar(df$Text) %>%
     scales::rescale(to = tile_length_range, from = c(0, max(.)))
@@ -37,13 +37,13 @@ transform_regular <- function(df, tile_length_range = c(1, 10)) {
                 Text,
                 Text_original_case,
                 Tile_length,
-                Year,
+                Year_,
                 sort(colnames(df)[!colnames(df) %in% c("ID",
                                                                "Date",
                                                                "Text",
                                                                "Text_original_case",
                                                                "Tile_length",
-                                                               "Year")]))
+                                                               "Year_")]))
 
   message("Document data frame done.")
   return(df)
@@ -68,13 +68,13 @@ transform_365 <- function(new_df) {
   min_date <- min(df_365$Date)
   max_date <- max(df_365$Date)
 
-  df_365$Year <- lubridate::year(df_365$Date)
+  df_365$Year_ <- lubridate::year(df_365$Date)
 
   df_365 <-
     padr::pad(df_365,
       interval = "day",
-      start_val = as.Date(paste0(min(df_365$Year), "-01-01")),
-      end_val = as.Date(paste0(max(df_365$Year), "-12-31"))
+      start_val = as.Date(paste0(min(df_365$Year_), "-01-01")),
+      end_val = as.Date(paste0(max(df_365$Year_), "-12-31"))
     )
 
   df_365$Day_without_docs <- is.na(df_365$Text)
@@ -85,7 +85,7 @@ transform_365 <- function(new_df) {
 
   df_365$Tile_length <- 1
 
-  df_365$Year <- lubridate::year(df_365$Date)
+  df_365$Year_ <- lubridate::year(df_365$Date)
 
   df_365$Weekday_n <- lubridate::wday(df_365$Date, week_start = 1)
 
@@ -94,14 +94,14 @@ transform_365 <- function(new_df) {
   df_365$Yearday_n <- lubridate::yday(df_365$Date)
 
   df_365 <-
-    dplyr::arrange(df_365, Year, Weekday_n, Yearday_n, Month_n)
+    dplyr::arrange(df_365, Year_, Weekday_n, Yearday_n, Month_n)
 
   df_365$Invisible_fake_date <- FALSE
 
   df_365$Invisible_fake_date[df_365$Date < min_date | df_365$Date > max_date] <- TRUE
 
   df_365_month_dividers <- df_365 %>%
-    dplyr::group_by(Year) %>%
+    dplyr::group_by(Year_) %>%
     dplyr::slice(1) %>%
     dplyr::mutate(Diff = Yearday_n - Weekday_n) %>%
     dplyr::filter(Diff > 0) %>%
@@ -112,7 +112,7 @@ transform_365 <- function(new_df) {
     for (row in seq_len(nrow(df_365_month_dividers))) {
       temp_tib <- tibble::tibble(
         Date = as.Date("8000-01-01"),
-        Year = df_365_month_dividers$Year[row],
+        Year_ = df_365_month_dividers$Year_[row],
         Month_n = 1,
         Weekday_n = seq_len(df_365_month_dividers$Diff[row]),
         Yearday_n = sort(-seq_len(df_365_month_dividers$Diff[row]), decreasing = FALSE),
@@ -131,14 +131,14 @@ transform_365 <- function(new_df) {
   }
 
   df_365 <-
-    dplyr::arrange(df_365, Year, Weekday_n, Yearday_n, Month_n)
+    dplyr::arrange(df_365, Year_, Weekday_n, Yearday_n, Month_n)
 
   df_365$ID <- seq_len(nrow(df_365))
 
   df_365 <- dplyr::select(df_365,
                           ID,
                           Date,
-                          Year,
+                          Year_,
                           Weekday_n,
                           Day_without_docs,
                           Invisible_fake_date,
@@ -364,7 +364,7 @@ prepare_data <- function(dataset, ...) {
 #'   "ID",
 #'   "Text_original_case",
 #'   "Tile_length",
-#'   "Year",
+#'   "Year_",
 #'   "Seq",
 #'   "Weekday_n",
 #'   "Day_without_docs",
@@ -451,7 +451,7 @@ prepare_data.data.frame <- function(dataset,
   RESERVED_NAMES <- c("ID",
                       "Text_original_case",
                       "Tile_length",
-                      "Year",
+                      "Year_",
                       "Seq",
                       "Weekday_n",
                       "Day_without_docs",
@@ -551,9 +551,9 @@ prepare_data.data.frame <- function(dataset,
     abc$Date <- NULL
 
     if (!is.null(grouping_variable)) {
-      abc$Year <- dataset[[grouping_variable]]
+      abc$Year_ <- dataset[[grouping_variable]]
     } else {
-      abc$Year <- " "
+      abc$Year_ <- " "
     }
 
     if (within_group_identifier %in% c("Seq", colnames(dataset)) == FALSE) {
@@ -563,7 +563,7 @@ prepare_data.data.frame <- function(dataset,
 
     if (within_group_identifier == "Seq") {
       abc <- abc %>%
-        dplyr::group_by(Year) %>%
+        dplyr::group_by(Year_) %>%
         dplyr::mutate(Seq = 1:dplyr::n())
     } else {
       abc$Seq <- abc[[within_group_identifier]]

@@ -47,7 +47,7 @@ for (i in seq_len(linjer)) {
                                xend = test1[test1$df == 1, ]$x_max,
                                y = test1[test1$df == 1, ]$y_min,
                                yend = test1[test1$df == 1, ]$y_max + linjer - 1,  # + 2 fordi tre rader i hver dokument FIX
-                               Year = test1$Year[test1$df == 1])
+                               Year_ = test1$Year_[test1$df == 1])
 
     rect_tib_vertikal$x_mid <- (rect_tib_vertikal$x + rect_tib_vertikal$xend)/2
     rect_tib_vertikal$y_mid <- (rect_tib_vertikal$y + rect_tib_vertikal$yend)/2

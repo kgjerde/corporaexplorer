@@ -9,9 +9,9 @@ label_y_axis <- function(test1) {
     ## For å automatisere label-årstall på y-aksen
 
     testus <- test1 %>%
-        dplyr::group_by(Year) %>%
+        dplyr::group_by(Year_) %>%
         dplyr::slice(c(1, dplyr::n())) %>%
-        dplyr::select(Year, label_id) %>%
+        dplyr::select(Year_, label_id) %>%
         dplyr::mutate(min_id = min(label_id),
                max_id = max(label_id)) %>%
         dplyr::slice(1) %>%
@@ -19,7 +19,7 @@ label_y_axis <- function(test1) {
         dplyr::ungroup()
     y_breaks <-
         (test1$y_max[testus$max_id] + test1$y_min[testus$min_id]) / 2
-    y_labels <- testus$Year
+    y_labels <- testus$Year_
 
     y_text <- list(breaks = y_breaks, labels = y_labels)
     return(y_text)
