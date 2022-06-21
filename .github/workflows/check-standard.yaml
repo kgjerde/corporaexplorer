@@ -4,11 +4,11 @@ on:
   push:
     branches:
       - master
-      - bring-re2-back
+      - dev
   pull_request:
     branches:
       - master
-      - bring-re2-back
+      - dev
 
 name: R-CMD-check
 
