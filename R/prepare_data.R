@@ -338,16 +338,25 @@ prepare_data <- function(dataset, ...) {
 #' @param date_based_corpus Logical. Set to \code{FALSE} if the corpus
 #'   is not to be organised according to document dates.
 #' @param text_column Character. Default: "Text".
-#' @param grouping_variable Character string.
+#' @param grouping_variable Character string indicating column name in \code{dataset}.
 #'   If \code{date_based_corpus} is \code{TRUE}, this argument is ignored.
 #'   If \code{date_based_corpus} is \code{FALSE}, this argument can be used
 #'   to group the documents, e.g. if \code{dataset} is organised by chapters
 #'   belonging to different books.
 #' @param within_group_identifier Character string indicating column name in \code{dataset}.
+#'  If \code{date_based_corpus} is \code{TRUE}, this argument is ignored.
+#'  If \code{date_based_corpus} is \code{FALSE},
 #'  \code{"Seq"}, the default, means the rows in each group are assigned
 #'  a numeric sequence 1:n where n is the number of rows in the group.
 #'  Used in document tab title in non-date based corpora.
-#'  If \code{date_based_corpus} is \code{TRUE}, this argument is ignored.
+#' @param grouping_order Character string.
+#'   If \code{date_based_corpus} is \code{TRUE}, this argument is ignored.
+#'   If \code{date_based_corpus} is \code{FALSE}, this argument specifies
+#'   the order in which the groups (as specified in \code{grouping_variable} is presented in
+#'   the app.
+#'   \code{default} means the order in which the groups first appear in \code{dataset}).
+#'   Alternatively, a character vector including all unique values in 'grouping_variable' in
+#'   the desired order.
 #' @param columns_doc_info Character vector. The columns from \code{dataset} to display in
 #'   the "document information" tab in the corpus exploration app. By default
 #'   "Date", "Title" and "URL" will be
@@ -400,6 +409,7 @@ prepare_data.data.frame <- function(dataset,
                          text_column = "Text",
                          grouping_variable = NULL,
                          within_group_identifier = "Seq",
+                         grouping_order = "default",
                          columns_doc_info = c("Date", "Title", "URL"),
                          corpus_name = NULL,
                          use_matrix = TRUE,
@@ -572,6 +582,22 @@ dataset[[text_column]] <- NULL
         call. = FALSE)
     }
 
+    # Order of groups
+    groups <- unique(abc$Year_)
+    if (grouping_order == "default") {
+      order_of_groups <- groups
+    } else {
+      if (identical(sort(grouping_order), sort(groups))) {
+            order_of_groups <- grouping_order
+        } else {
+            warning("'grouping_order' must correspond to the unique set of values in 'grouping_variable'. 'grouping_order' reverts to 'default'.", call. = FALSE)
+            order_of_groups <- groups
+        }
+    }
+    abc <- abc %>%
+      dplyr::arrange(match(Year_, order_of_groups))
+
+    # Identifier within groups
     if (within_group_identifier == "Seq") {
       abc <- abc %>%
         dplyr::group_by(Year_) %>%
