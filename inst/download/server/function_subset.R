@@ -35,7 +35,7 @@ subset_terms <- function(.tibble, terms, threshold, custom_column) {
                 text_column <-
                     rlang::sym(custom_column[i])
             } else {
-                text_column <- rlang::sym("Text")
+                text_column <- rlang::sym("Text_column_")
             }
 
             if (is.na(threshold[i])) {

@@ -20,7 +20,7 @@ if (class(abc) == "corporaexplorerobject") {
   }
 
   abc <- abc$original_data$data_dok
-  abc$Text <- abc$Text_original_case
+  abc$Text_column_ <- abc$Text_original_case
 }
 
 my_colours <-

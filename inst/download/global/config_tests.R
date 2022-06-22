@@ -22,7 +22,7 @@ GROUPING_VARIABLE <-
 
 INFO_COLUMNS <- abc$columns_for_info
 abc <- abc$original_data$data_dok
-abc$Text <- abc$Text_original_case
+abc$Text_column_ <- abc$Text_original_case
 
 my_colours <-
   rep(c("red", "blue", "green", "purple", "orange", "gray"), 10)

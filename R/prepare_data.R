@@ -2,45 +2,51 @@
 
 #' Adjusts data frame to corporaexplorer format
 #'
-#' @param df Data frame with Date column (Date), Text column (character), and
-#'   optionally Title (character), URL (character), and Type (character)
+#' @param df Data frame with text column (character),
+#'   Date column (Date) (if date based corpus),
+#'   and
+#'   optionally other
 #'   columns.
+#' @param text_column Character. Default: "Text"
 #' @param tile_length_range Numeric vector of length two.
 #'   Fine-tune the tile lengths in document wall
 #'   and day corpus view. Tile length is calculated by
-#'   \code{scales::rescale(nchar(dataset$Text),
+#'   \code{scales::rescale(nchar(dataset[[text_column]]),
 #'   to = tile_length_range,
 #'   from = c(0, max(.)))}
 #'   Default is \code{c(1, 10)}.
 #' @return A tibble ("data_dok")
 #' @keywords internal
-transform_regular <- function(df, tile_length_range = c(1, 10)) {
+transform_regular <- function(df, text_column = "Text", tile_length_range = c(1, 10)) {
   message("Starting.")
+
+  df$Text_column_ <- df[[text_column]]
+  df[[text_column]] <- NULL
 
   df <- dplyr::arrange(df, Date)
 
   df$Year_ <- lubridate::year(df$Date)
 
-  df$Tile_length <- nchar(df$Text) %>%
+  df$Tile_length <- nchar(df$Text_column_) %>%
     scales::rescale(to = tile_length_range, from = c(0, max(.)))
 
   df$ID <- seq_len(nrow(df))
 
-  df$Text_original_case <- df$Text
+  df$Text_original_case <- df$Text_column_
 
-  df$Text <-
-    stringr::str_to_lower(df$Text) # for søke-purposes
+  df$Text_column_ <-
+    stringr::str_to_lower(df$Text_column_) # for søke-purposes
 
   df <- dplyr::select(df,
                 ID,
                 Date,
-                Text,
+                Text_column_,
                 Text_original_case,
                 Tile_length,
                 Year_,
                 sort(colnames(df)[!colnames(df) %in% c("ID",
                                                                "Date",
-                                                               "Text",
+                                                               "Text_column_",
                                                                "Text_original_case",
                                                                "Tile_length",
                                                                "Year_")]))
@@ -63,7 +69,7 @@ transform_365 <- function(new_df) {
 
   df_365 <- new_df['Date'] %>%
     dplyr::distinct() %>%
-    dplyr::mutate(Text = "Date with document in original df")
+    dplyr::mutate(Text_column_ = "Date with document in original df")
 
   min_date <- min(df_365$Date)
   max_date <- max(df_365$Date)
@@ -77,9 +83,9 @@ transform_365 <- function(new_df) {
       end_val = as.Date(paste0(max(df_365$Year_), "-12-31"))
     )
 
-  df_365$Day_without_docs <- is.na(df_365$Text)
+  df_365$Day_without_docs <- is.na(df_365$Text_column_)
 
-  df_365$Text <- NULL
+  df_365$Text_column_ <- NULL
 
   df_365$Day_without_docs[df_365$Day_without_docs == FALSE] <- NA
 
@@ -180,10 +186,10 @@ transform_365 <- function(new_df) {
 #'   vector).
 #' @keywords internal
 matrix_via_r <- function(df, matrix_without_punctuation = TRUE) {
-  df <- dplyr::select(df, Text, ID)
+  df <- dplyr::select(df, Text_column_, ID)
 
   if (matrix_without_punctuation == TRUE) {
-    df$Text <- df$Text %>%
+    df$Text_column_ <- df$Text_column_ %>%
       # To satisfy R CMD check:
       # I have run stringi::stri_escape_unicode("[\\Q!"#$%&\'()*+,/:;<=>?@[]^_`{|}~«»…\\E]")
       # to see which non-ascii characters had to be replaced
@@ -195,7 +201,7 @@ matrix_via_r <- function(df, matrix_without_punctuation = TRUE) {
       stringr::str_replace_all("\\d", "")
   }
 
-  df$Text <- df$Text %>%
+  df$Text_column_ <- df$Text_column_ %>%
     stringr::str_replace_all("\\s", " ") %>%
     stringr::str_replace_all(" {2,}", " ") %>%
     stringr::str_trim()
@@ -204,7 +210,7 @@ matrix_via_r <- function(df, matrix_without_punctuation = TRUE) {
 
   data.table::setDT(df)
   df <-
-    df[, list(word = unlist(stringi::stri_split_fixed(Text, pattern = " "))),
+    df[, list(word = unlist(stringi::stri_split_fixed(Text_column_, pattern = " "))),
       by =
         ID
     ][,
@@ -329,12 +335,13 @@ prepare_data <- function(dataset, ...) {
 #' @export
 #' @rdname prepare_data
 #' @param dataset Object to be converted to a corporaexplorerobject.
-#'   Converts a data frame with a column "Text" (class
+#'   Converts a data frame with a specified column containing text (default column name: "Text") (class
 #'   character), and optionally other columns.
 #'   If \code{date_based_corpus} is \code{TRUE} (the default),
 #'   \code{dataset} must contain a column "Date" (of class Date).
 #' @param date_based_corpus Logical. Set to \code{FALSE} if the corpus
 #'   is not to be organised according to document dates.
+#' @param text_column Character. Default: "Text".
 #' @param grouping_variable Character string.
 #'   If \code{date_based_corpus} is \code{TRUE}, this argument is ignored.
 #'   If \code{date_based_corpus} is \code{FALSE}, this argument can be used
@@ -363,6 +370,7 @@ prepare_data <- function(dataset, ...) {
 #'   The following column names are reserved and cannot be used in \code{dataset}:
 #'   "ID",
 #'   "Text_original_case",
+#'   "Text_column_name",
 #'   "Tile_length",
 #'   "Year_",
 #'   "Seq",
@@ -393,6 +401,7 @@ prepare_data <- function(dataset, ...) {
 #' }
 prepare_data.data.frame <- function(dataset,
                          date_based_corpus = TRUE,
+                         text_column = "Text",
                          grouping_variable = NULL,
                          within_group_identifier = "Seq",
                          columns_doc_info = c("Date", "Title", "URL"),
@@ -423,20 +432,20 @@ prepare_data.data.frame <- function(dataset,
     )
   }
 
-  if ("Text" %in% colnames(dataset) == FALSE) {
-    stop("Hmm. Make sure that 'dataset' contains a 'Text' column.",
+  if (text_column %in% colnames(dataset) == FALSE) {
+    stop("Hmm. Make sure that 'dataset' contains the column specified in 'text_column' (defaults to 'Text').",
       call. = FALSE
     )
   }
 
-  if (anyNA(dataset$Text)) {
-    stop("Hmm. Make sure that 'dataset$Text' does not contain any NA values.",
+  if (anyNA(dataset[[text_column]])) {
+    stop("Hmm. Make sure that the column specified in 'text_column' (defaults to 'Text') does not contain any NA values.",
       call. = FALSE
     )
   }
 
-  if (!is.character(dataset$Text)) {
-    stop("Hmm. Make sure that 'dataset$Text' is a character vector.",
+  if (!is.character(dataset[[text_column]])) {
+    stop("Hmm. Make sure that the column specified in 'text_column' (defaults to 'Text') is a character vector.",
       call. = FALSE
     )
   }
@@ -453,6 +462,7 @@ prepare_data.data.frame <- function(dataset,
                       "Tile_length",
                       "Year_",
                       "Seq",
+                      "Text_column_",
                       "Weekday_n",
                       "Day_without_docs",
                       "Invisible_fake_date",
@@ -526,7 +536,7 @@ prepare_data.data.frame <- function(dataset,
 
 # The main function proper ------------------------------------------------
 
-  abc <- transform_regular(dataset, tile_length_range)
+  abc <- transform_regular(dataset, text_column, tile_length_range)
 
   if (date_based_corpus == TRUE) {
     abc_365 <- transform_365(abc)

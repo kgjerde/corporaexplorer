@@ -11,6 +11,7 @@ prepare_data(dataset, ...)
 \method{prepare_data}{data.frame}(
   dataset,
   date_based_corpus = TRUE,
+  text_column = "Text",
   grouping_variable = NULL,
   within_group_identifier = "Seq",
   columns_doc_info = c("Date", "Title", "URL"),
@@ -44,6 +45,8 @@ prepare_data(dataset, ...)
 
 \item{date_based_corpus}{Logical. Set to \code{FALSE} if the corpus
 is not to be organised according to document dates.}
+
+\item{text_column}{Character. Default: "Text".}
 
 \item{grouping_variable}{Character string.
 If \code{date_based_corpus} is \code{TRUE}, this argument is ignored.
@@ -94,7 +97,7 @@ the \code{use_matrix} parameter to \code{FALSE}, or run
 \item{tile_length_range}{Numeric vector of length two.
 Fine-tune the tile lengths in document wall
 and day corpus view. Tile length is calculated by
-\code{scales::rescale(nchar(dataset$Text),
+\code{scales::rescale(nchar(dataset[[text_column]]),
 to = tile_length_range,
 from = c(0, max(.)))}
 Default is \code{c(1, 10)}.}
@@ -129,6 +132,7 @@ For data.frame: Each row in \code{dataset} is treated as a base differentiating 
   The following column names are reserved and cannot be used in \code{dataset}:
   "ID",
   "Text_original_case",
+  "Text_column_name",
   "Tile_length",
   "Year_",
   "Seq",

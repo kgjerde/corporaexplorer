@@ -179,7 +179,7 @@ count_df <- function(pattern, df, case_sensitive, custom_column) {
     regex_or_fixed <- stringr::regex
 
     if (case_sensitive == FALSE) {
-        text_column <- df$Text
+        text_column <- df$Text_column_
     } else if (case_sensitive == TRUE) {
         text_column <- df$Text_original_case
     }

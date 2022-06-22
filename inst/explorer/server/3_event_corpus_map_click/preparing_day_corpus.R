@@ -7,7 +7,7 @@ if ("Title" %in% colnames(data_day)) {
     paste(seq_len(nrow(data_day)), data_day$Title)
 
   if (search_arguments$case_sensitive == FALSE) {
-    text_column <- data_day$Text
+    text_column <- data_day$Text_column_
   } else if (search_arguments$case_sensitive == TRUE) {
     text_column <- data_day$Text_original_case
   }
