@@ -141,9 +141,10 @@ Convert data frame or character vector to a ‘corporaexplorerobject’
 For data.frame: Each row in \code{dataset} is treated as a base differentiating unit in the corpus,
   typically chapters in books, or a single document in document collections.
   The following column names are reserved and cannot be used in \code{dataset}:
+  "Date_",
   "ID",
   "Text_original_case",
-  "Text_column_name",
+  "Text_column_",
   "Tile_length",
   "Year_",
   "Seq",
