@@ -518,11 +518,6 @@ prepare_data.data.frame <- function(dataset,
 
   if (date_based_corpus == FALSE) {
 
-    if ("Date" %in% colnames(dataset) == TRUE) {
-      stop("If 'date_based_corpus' == FALSE, 'dataset' is not allowed to contain a 'Date' column.",
-        call. = FALSE)
-    }
-
     if (!is.null(grouping_variable)) {
       if (grouping_variable %in% colnames(dataset) == FALSE) {
         stop("'grouping_variable' has to be a column in 'dataset'.",
@@ -535,9 +530,14 @@ prepare_data.data.frame <- function(dataset,
 # Pre-preparing non_date_based_corpus -------------------------------------
 
   if (date_based_corpus == FALSE) {
-    # 'Date' placeholder
-    dataset$Date <- as.Date("1882-09-05")
-
+      if ("Date" %in% colnames(dataset) == FALSE) {
+          # 'Date' placeholder
+          dataset$Date <- as.Date("1882-09-05")
+      } else {
+          # Temporarily assign 'Date' placeholder
+          dataset$Date_ <- dataset$Date
+          dataset$Date <- as.Date("1882-09-05")
+      }
   }
 
 # Assigning specified text_column -----------------------------------------
@@ -569,7 +569,11 @@ dataset[[text_column]] <- NULL
 # Post-preparing non_date_based_corpus ------------------------------------
 
   if (date_based_corpus == FALSE) {
-    abc$Date <- NULL
+    # Return original 'Date' column, if part of df
+    if ("Date_" %in% colnames(abc) == TRUE) {
+        abc$Date <- abc$Date_
+        abc$Date_ <- NULL
+    }
 
     if (!is.null(grouping_variable)) {
       abc$Year_ <- dataset[[grouping_variable]]
