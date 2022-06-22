@@ -6,15 +6,8 @@
 #' @keywords internal
 get_df <- function(x, make_normal = TRUE) {
     df <- x$original_data$data_dok
-
     if (make_normal == TRUE) {
-        if (is.null(x$version)) {
-            df$Text <- df$Text_case
-            df$Text_case <- NULL
-        } else {
-            df$Text <- df$Text_original_case
-            df$Text_original_case <- NULL
-        }
+        df$Text_column_ <- df$Text_original_case
         df$ID <- NULL
         df$Text_original_case <- NULL
         df$Tile_length <- NULL
@@ -24,6 +17,9 @@ get_df <- function(x, make_normal = TRUE) {
         df$Day_without_docs <- NULL
         df$Invisible_fake_date <- NULL
         df$Tile_length <- NULL
+        # "Return" previous name to column designated as text_column
+        df[[x$text_column]] <- df$Text_column_
+        df$Text_column_ <- NULL
     }
     return(df)
 }
