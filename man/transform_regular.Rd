@@ -4,7 +4,7 @@
 \alias{transform_regular}
 \title{Adjusts data frame to corporaexplorer format}
 \usage{
-transform_regular(df, text_column = "Text", tile_length_range = c(1, 10))
+transform_regular(df, tile_length_range = c(1, 10))
 }
 \arguments{
 \item{df}{Data frame with text column (character),
@@ -12,8 +12,6 @@ Date column (Date) (if date based corpus),
 and
 optionally other
 columns.}
-
-\item{text_column}{Character. Default: "Text"}
 
 \item{tile_length_range}{Numeric vector of length two.
 Fine-tune the tile lengths in document wall

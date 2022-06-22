@@ -7,7 +7,6 @@
 #'   and
 #'   optionally other
 #'   columns.
-#' @param text_column Character. Default: "Text"
 #' @param tile_length_range Numeric vector of length two.
 #'   Fine-tune the tile lengths in document wall
 #'   and day corpus view. Tile length is calculated by
@@ -17,11 +16,8 @@
 #'   Default is \code{c(1, 10)}.
 #' @return A tibble ("data_dok")
 #' @keywords internal
-transform_regular <- function(df, text_column = "Text", tile_length_range = c(1, 10)) {
+transform_regular <- function(df, tile_length_range = c(1, 10)) {
   message("Starting.")
-
-  df$Text_column_ <- df[[text_column]]
-  df[[text_column]] <- NULL
 
   df <- dplyr::arrange(df, Date)
 
@@ -534,9 +530,14 @@ prepare_data.data.frame <- function(dataset,
 
   }
 
+# Assigning specified text_column -----------------------------------------
+
+dataset$Text_column_ <- dataset[[text_column]]
+dataset[[text_column]] <- NULL
+
 # The main function proper ------------------------------------------------
 
-  abc <- transform_regular(dataset, text_column, tile_length_range)
+  abc <- transform_regular(dataset, tile_length_range)
 
   if (date_based_corpus == TRUE) {
     abc_365 <- transform_365(abc)
@@ -604,6 +605,9 @@ prepare_data.data.frame <- function(dataset,
   # For config constants
   loaded_data$date_based_corpus <- date_based_corpus
   loaded_data$original_data$grouping_variable <- grouping_variable
+
+  # Th column specified as text column
+  loaded_data$text_column <- text_column
 
   # Package version with which object is created
   loaded_data$version <- utils::packageVersion("corporaexplorer")
