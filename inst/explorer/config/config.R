@@ -2,6 +2,13 @@
 
 loaded_data <- getShinyOption("corporaexplorer_data")
 
+# Ugly hack because of testthat's "dry run" with empty data before testing
+if(is.null(loaded_data)) {
+    loaded_data <-
+        corporaexplorer::prepare_data("testthat has a 'dry run' of sorts, resulting in weird behaviour.",
+                                      corpus_name = "Not supposed to ever be launched as app")
+}
+
 source("./config/backwards_compatibility.R", local = TRUE)
 
 # Constants ---------------------------------------------------------------
