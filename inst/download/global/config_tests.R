@@ -6,6 +6,8 @@ library(corporaexplorer)
 
 abc <- test_data
 
+## corporaexplorer::test_data does not need this step,
+    # but it tests that new corporaexplorerobjects do not encounter errors here:
 source("./global/backwards_compatibility.R", local = TRUE)
 
 DATE_BASED_CORPUS <- abc$date_based_corpus

@@ -6,7 +6,9 @@ library(corporaexplorer)
 
 loaded_data <- corporaexplorer::test_data
 
-source("./config/backwards_compatibility.R", local = TRUE)  # TODO should noe be ncessary in tests.
+## corporaexplorer::test_data does not need this step,
+    # but it tests that new corporaexplorerobjects do not encounter errors here:
+source("./config/backwards_compatibility.R", local = TRUE)
 
 # Constants ---------------------------------------------------------------
 
