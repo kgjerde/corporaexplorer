@@ -26,7 +26,7 @@ transform_regular <- function(df, tile_length_range = c(1, 10)) {
   df$Tile_length <- nchar(df$Text_column_) %>%
     scales::rescale(to = tile_length_range, from = c(0, max(.)))
 
-  df$ID <- seq_len(nrow(df))
+  df$cx_ID <- seq_len(nrow(df))
 
   df$Text_original_case <- df$Text_column_
 
@@ -34,13 +34,13 @@ transform_regular <- function(df, tile_length_range = c(1, 10)) {
     stringr::str_to_lower(df$Text_column_) # for søke-purposes
 
   df <- dplyr::select(df,
-                ID,
+                cx_ID,
                 Date,
                 Text_column_,
                 Text_original_case,
                 Tile_length,
                 Year_,
-                sort(colnames(df)[!colnames(df) %in% c("ID",
+                sort(colnames(df)[!colnames(df) %in% c("cx_ID",
                                                                "Date",
                                                                "Text_column_",
                                                                "Text_original_case",
@@ -135,10 +135,10 @@ transform_365 <- function(new_df) {
   df_365 <-
     dplyr::arrange(df_365, Year_, Weekday_n, Yearday_n, Month_n)
 
-  df_365$ID <- seq_len(nrow(df_365))
+  df_365$cx_ID <- seq_len(nrow(df_365))
 
   df_365 <- dplyr::select(df_365,
-                          ID,
+                          cx_ID,
                           Date,
                           Year_,
                           Weekday_n,
@@ -182,7 +182,7 @@ transform_365 <- function(new_df) {
 #'   vector).
 #' @keywords internal
 matrix_via_r <- function(df, matrix_without_punctuation = TRUE) {
-  df <- dplyr::select(df, Text_column_, ID)
+  df <- dplyr::select(df, Text_column_, cx_ID)
 
   if (matrix_without_punctuation == TRUE) {
     df$Text_column_ <- df$Text_column_ %>%
@@ -208,11 +208,11 @@ matrix_via_r <- function(df, matrix_without_punctuation = TRUE) {
   df <-
     df[, list(word = unlist(stringi::stri_split_fixed(Text_column_, pattern = " "))),
       by =
-        ID
+        cx_ID
     ][,
       list(count = .N),
-      by = c("ID", "word")
-    ][order(ID, word), ]
+      by = c("cx_ID", "word")
+    ][order(cx_ID, word), ]
 
   message("Document term matrix: tokenising completed.")
 
@@ -224,7 +224,7 @@ matrix_via_r <- function(df, matrix_without_punctuation = TRUE) {
     plyr::mapvalues(df$word, ord, seq_along(ord)) %>%
     as.integer()
 
-  df <- dplyr::select(df, ID, word, count)
+  df <- dplyr::select(df, cx_ID, word, count)
 
   colnames(df) <- c("i", "j", "x")
 
@@ -374,7 +374,7 @@ prepare_data <- function(dataset, ...) {
 #'   typically chapters in books, or a single document in document collections.
 #'   The following column names are reserved and cannot be used in \code{dataset}:
 #'   "Date_",
-#'   "ID",
+#'   "cx_ID",
 #'   "Text_original_case",
 #'   "Text_column_",
 #'   "Tile_length",
@@ -464,7 +464,7 @@ prepare_data.data.frame <- function(dataset,
     )
   }
 
-  RESERVED_NAMES <- c("ID",
+  RESERVED_NAMES <- c("cx_ID",
                       "Text_original_case",
                       "Tile_length",
                       "Year_",

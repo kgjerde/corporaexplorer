@@ -142,7 +142,7 @@ For data.frame: Each row in \code{dataset} is treated as a base differentiating 
   typically chapters in books, or a single document in document collections.
   The following column names are reserved and cannot be used in \code{dataset}:
   "Date_",
-  "ID",
+  "cx_ID",
   "Text_original_case",
   "Text_column_",
   "Tile_length",

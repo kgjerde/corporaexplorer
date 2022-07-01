@@ -8,7 +8,7 @@ get_df <- function(x, make_normal = TRUE) {
     df <- x$original_data$data_dok
     if (make_normal == TRUE) {
         df$Text_column_ <- df$Text_original_case
-        df$ID <- NULL
+        df$cx_ID <- NULL
         df$Text_original_case <- NULL
         df$Tile_length <- NULL
         df$Year_ <- NULL

@@ -13,7 +13,7 @@ utils::globalVariables(
     "count",
     "i",
     "j",
-    "ID",
+    "cx_ID",
     "word",
     ".",
     "Day_without_docs",

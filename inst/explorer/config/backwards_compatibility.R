@@ -6,12 +6,12 @@ if ("mnd_vert" %in% colnames(loaded_data$original_data$data_365)) {
     loaded_data$original_data$data_dok <-
         dplyr::rename(loaded_data$original_data$data_dok,
                Tile_length = wc,
-               ID = id,
+               cx_ID = id,
                Text_original_case = Text_case)
 
     loaded_data$original_data$data_365 <-
         dplyr::rename(loaded_data$original_data$data_365,
-                      Invisible_fake_date = ID)
+                      Invisible_fake_date = cx_ID)
 
     loaded_data$original_data$data_365$Invisible_fake_date[loaded_data$original_data$data_365$Invisible_fake_date != 0] <- -1
     loaded_data$original_data$data_365$Invisible_fake_date[loaded_data$original_data$data_365$Invisible_fake_date == 0] <- 1
@@ -22,7 +22,7 @@ if ("mnd_vert" %in% colnames(loaded_data$original_data$data_365)) {
     loaded_data$original_data$data_365 <-
         dplyr::rename(loaded_data$original_data$data_365,
                Tile_length = wc,
-               ID = id,
+               cx_ID = id,
                Day_without_docs = empty)
 
     loaded_data$original_data$data_365 <-
