@@ -346,7 +346,7 @@ prepare_data <- function(dataset, ...) {
 #' @param within_group_identifier Character string indicating column name in \code{dataset}.
 #'  If \code{date_based_corpus} is \code{TRUE}, this argument is ignored.
 #'  If \code{date_based_corpus} is \code{FALSE},
-#'  \code{"Seq"}, the default, means the rows in each group are assigned
+#'  \code{"sequential"}, the default, means the rows in each group are assigned
 #'  a numeric sequence 1:n where n is the number of rows in the group.
 #'  Used in document tab title in non-date based corpora.
 #' @param grouping_order Character string.
@@ -379,7 +379,7 @@ prepare_data <- function(dataset, ...) {
 #'   "Text_column_",
 #'   "Tile_length",
 #'   "Year_",
-#'   "Seq",
+#'   "cx_Seq",
 #'   "Weekday_n",
 #'   "Day_without_docs",
 #'   "Invisible_fake_date",
@@ -409,7 +409,7 @@ prepare_data.data.frame <- function(dataset,
                          date_based_corpus = TRUE,
                          text_column = "Text",
                          grouping_variable = NULL,
-                         within_group_identifier = "Seq",
+                         within_group_identifier = "sequential",
                          grouping_order = "default",
                          columns_doc_info = c("Date", "Title", "URL"),
                          corpus_name = NULL,
@@ -468,7 +468,7 @@ prepare_data.data.frame <- function(dataset,
                       "Text_original_case",
                       "Tile_length",
                       "Year_",
-                      "Seq",
+                      "cx_Seq",
                       "Text_column_",
                       "Weekday_n",
                       "Day_without_docs",
@@ -582,7 +582,12 @@ dataset[[text_column]] <- NULL
       abc$Year_ <- " "
     }
 
-    if (within_group_identifier %in% c("Seq", colnames(dataset)) == FALSE) {
+    # Renaming argument
+    if (within_group_identifier == "sequential") {
+        within_group_identifier <- "cx_Seq"
+    }
+
+    if (within_group_identifier %in% c("cx_Seq", colnames(dataset)) == FALSE) {
       stop("'within_group_identifier' must be a column in 'dataset'.",
         call. = FALSE)
     }
@@ -603,12 +608,12 @@ dataset[[text_column]] <- NULL
       dplyr::arrange(match(Year_, order_of_groups))
 
     # Identifier within groups
-    if (within_group_identifier == "Seq") {
+    if (within_group_identifier == "cx_Seq") {
       abc <- abc %>%
         dplyr::group_by(Year_) %>%
-        dplyr::mutate(Seq = 1:dplyr::n())
+        dplyr::mutate(cx_Seq = 1:dplyr::n())
     } else {
-      abc$Seq <- abc[[within_group_identifier]]
+      abc$cx_Seq <- abc[[within_group_identifier]]
     }
 
   }

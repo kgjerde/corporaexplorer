@@ -206,7 +206,7 @@ if (DATE_BASED_CORPUS == TRUE) {
     )
   }
   utvalg_title <- paste0(utvalg_title,
-                         utvalg$Seq,
+                         utvalg$cx_Seq,
                          ' {.tabset .tabset-fade}')
 }
 ```

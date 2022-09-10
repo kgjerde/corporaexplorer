@@ -13,7 +13,7 @@ prepare_data(dataset, ...)
   date_based_corpus = TRUE,
   text_column = "Text",
   grouping_variable = NULL,
-  within_group_identifier = "Seq",
+  within_group_identifier = "sequential",
   grouping_order = "default",
   columns_doc_info = c("Date", "Title", "URL"),
   corpus_name = NULL,
@@ -58,7 +58,7 @@ belonging to different books.}
 \item{within_group_identifier}{Character string indicating column name in \code{dataset}.
 If \code{date_based_corpus} is \code{TRUE}, this argument is ignored.
 If \code{date_based_corpus} is \code{FALSE},
-\code{"Seq"}, the default, means the rows in each group are assigned
+\code{"sequential"}, the default, means the rows in each group are assigned
 a numeric sequence 1:n where n is the number of rows in the group.
 Used in document tab title in non-date based corpora.}
 
@@ -147,7 +147,7 @@ For data.frame: Each row in \code{dataset} is treated as a base differentiating 
   "Text_column_",
   "Tile_length",
   "Year_",
-  "Seq",
+  "cx_Seq",
   "Weekday_n",
   "Day_without_docs",
   "Invisible_fake_date",
