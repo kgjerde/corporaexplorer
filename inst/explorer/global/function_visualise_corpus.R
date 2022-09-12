@@ -6,6 +6,8 @@ source("./global/corpus_plot_functions/label_axes.R", local = TRUE)
 
 source("./global/corpus_plot_functions/convenience_functions_corpus_vis.R", local = TRUE)
 
+source("./global/corpus_plot_functions/improve_visualisation_of_2_terms.R", local = TRUE)
+
 source("./global/corpus_plot_functions/create_coordinates_1_data_365.R", local = TRUE)
 source("./global/corpus_plot_functions/create_distance_coordinates_365.R", local = TRUE)
 source("./global/corpus_plot_functions/plotting_corpus_data_365.R", local = TRUE)
