@@ -1,6 +1,6 @@
 # corporaexplorer 0.8.6.9000
 
-* Changed internals to avoid ggplot2 warning (1830ef7)
+* Changed internals to avoid ggplot2 warning (fbf1dd6)
 
 # corporaexplorer 0.8.6
 
