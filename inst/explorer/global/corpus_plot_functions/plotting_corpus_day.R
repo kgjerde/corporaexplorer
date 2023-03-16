@@ -54,7 +54,7 @@ for (i in seq_len(linjer)) {
 
     a <- a + ggplot2::geom_rect(data = rect_tib_vertikal, ggplot2::aes(xmin = x, ymin = y, xmax = xend, ymax = yend),
                        color = "black",
-                        fill = NA, size = 0.1,
+                        fill = NA, linewidth = 0.1,
                        show.legend = FALSE)
 
   a <-

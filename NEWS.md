@@ -5,6 +5,9 @@
 * Improve control over order of groups in corpora not based on date (7892551).
 * Changes in reserved column names (among other things, 'Year' is now allowed).
 
+* Changed internals to avoid ggplot2 warning (1830ef7)
+
+
 # corporaexplorer 0.8.6
 
 * Fix bug introduced when re2 was reintroduced (4eeb2f3), which caused
