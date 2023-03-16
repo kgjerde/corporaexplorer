@@ -87,7 +87,7 @@ for (i in seq_len(linjer)) {
         ),
         fill = NA,
         color = "black",
-        size = 0.15
+        linewidth = 0.15
     )
 
     # # Og her er for å indikere dager uten dokumenter:
@@ -102,7 +102,7 @@ for (i in seq_len(linjer)) {
             ),
             fill = "white",
             colour = "white",
-            size = 0.2,
+            linewidth = 0.2,
             na.rm = TRUE
         )
 
@@ -117,7 +117,7 @@ for (i in seq_len(linjer)) {
                 ymax = y_max
             ),
             fill = "white",
-            size = 1,
+            linewidth = 1,
             colour = "white"
         )
 

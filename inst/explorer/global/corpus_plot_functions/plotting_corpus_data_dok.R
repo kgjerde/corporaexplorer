@@ -106,7 +106,7 @@ if (length(unique(test1$Year)) > 1) {
       "segment",
       linetype = "solid",
       colour = "lightgray",
-      size = 0.3 * linjer,
+      linewidth = 0.3 * linjer,
       x = min(test1$x_min) - (difference_min_max_x / 35),
       xend = max(test1$x_max) + (difference_min_max_x / 125),
       y = coordinates_for_dividing_lines_btwn_groups,
@@ -127,7 +127,7 @@ a <-
     ),
     color = "black",
     fill = NA,
-    size = 0.1
+    linewidth = 0.1
   )
 
 return(a)

@@ -1,5 +1,7 @@
 # corporaexplorer 0.8.6.9000
 
+* Changed internals to avoid ggplot2 warning (1830ef7)
+
 # corporaexplorer 0.8.6
 
 * Fix bug introduced when re2 was reintroduced (4eeb2f3), which caused
