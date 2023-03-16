@@ -117,10 +117,24 @@
 <div class="page-header"><h1 id="corporaexplorer-an-r-package-for-dynamic-exploration-of-text-collections">corporaexplorer: An R package for dynamic exploration of text collections<a class="anchor" aria-label="anchor" href="#corporaexplorer-an-r-package-for-dynamic-exploration-of-text-collections"></a>
 </h1></div>
 <!-- badges: start -->
-<blockquote><p><strong>“I really like the application and its simplicity. It looks great and is very functional. … a nice addition to text analysis tools.”</strong><br><em>–<a href="https://github.com/kbenoit" class="external-link">Kenneth Benoit</a>, creator of <a href="https://quanteda.io/" class="external-link">quanteda</a>, professor of computational social science at <a href="https://www.lse.ac.uk/Methodology/People/Academic-Staff/Kenneth-Benoit/Kenneth-Benoit" class="external-link">LSE</a></em></p></blockquote>
-<blockquote><p><strong>“I really enjoyed interacting with corporaexplorer.</strong> <strong>This is exciting work that opens up doors for non-technical users.”</strong><br><em>–<a href="https://github.com/trinker" class="external-link">Tyler Rinker</a>, creator of <a href="https://github.com/trinker/sentimentr" class="external-link">sentimentr</a> and <a href="https://github.com/trinker/qdap" class="external-link">qdap</a></em></p></blockquote>
-<!-- HTML here, in order to add custom font colour in Github Pages--><blockquote><p style="color:green"><strong>– Featured in RStudio’s “R Views” blog’s <a href="https://rviews.rstudio.com/2019/10/29/sept-2019-top-40-new-r-packages/" class="external-link"><strong><i>“Top 40 New R Packages”</i></strong></a></strong></p></blockquote>
-<blockquote><p style="color:green"><strong>– Included in <a href="https://CRAN.R-project.org/view=NaturalLanguageProcessing" class="external-link"><i>CRAN Task View: Natural Language Processing</i></a></strong></p></blockquote>
+
+<blockquote>
+<p><strong>“I really like the application and its simplicity. It looks great and is very functional. … a nice addition to text analysis tools.”</strong><br><em>–<a href="https://github.com/kbenoit" class="external-link">Kenneth Benoit</a>, creator of <a href="https://quanteda.io/" class="external-link">quanteda</a>, professor of computational social science at <a href="https://www.lse.ac.uk/Methodology/People/Academic-Staff/Kenneth-Benoit/Kenneth-Benoit" class="external-link">LSE</a></em></p>
+</blockquote>
+<blockquote>
+<p><strong>“I really enjoyed interacting with corporaexplorer.</strong> <strong>This is exciting work that opens up doors for non-technical users.”</strong><br><em>–<a href="https://github.com/trinker" class="external-link">Tyler Rinker</a>, creator of <a href="https://github.com/trinker/sentimentr" class="external-link">sentimentr</a> and <a href="https://github.com/trinker/qdap" class="external-link">qdap</a></em></p>
+</blockquote>
+<!-- HTML here, in order to add custom font colour in Github Pages-->
+<blockquote>
+<p style="color:green">
+<strong>– Featured in RStudio’s “R Views” blog’s <a href="https://rviews.rstudio.com/2019/10/29/sept-2019-top-40-new-r-packages/" class="external-link"><strong><i>“Top 40 New R Packages”</i></strong></a></strong>
+</p>
+</blockquote>
+<blockquote>
+<p style="color:green">
+<strong>– Included in <a href="https://CRAN.R-project.org/view=NaturalLanguageProcessing" class="external-link"><i>CRAN Task View: Natural Language Processing</i></a></strong>
+</p>
+</blockquote>
 <hr>
 <p><br></p>
 <p><img src="reference/figures/readme_illustration.png" width="100%"></p>
@@ -138,11 +152,11 @@
 </h2>
 <p>To install the released version from CRAN, simply run the following from an R console:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"corporaexplorer"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"corporaexplorer"</span><span class="op">)</span></span></code></pre></div>
 <p>Alternatively, to install the development version from GitHub, run the following from an R console:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"kgjerde/corporaexplorer"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"kgjerde/corporaexplorer"</span><span class="op">)</span></span></code></pre></div>
 <p><strong>corporaexplorer</strong> works on Mac OS, Windows and Linux. (The Shiny apps look much clunkier on Windows than on the other platforms, but the apps are fully functional.)</p>
 <p><em>Note to developers: The package’s internal test suite uses the <a href="https://github.com/rstudio/shinytest" class="external-link"><code>shinytest</code></a> package, which requires that <a href="https://phantomjs.org/" class="external-link"><code>PhantomJS</code></a> is installed. This can be done through the <code><a href="https://rdrr.io/pkg/shinytest/man/installDependencies.html" class="external-link">shinytest::installDependencies()</a></code> function.</em></p>
 </div>
@@ -150,7 +164,9 @@
 <h2 id="how-to-cite">How to cite<a class="anchor" aria-label="anchor" href="#how-to-cite"></a>
 </h2>
 <p>Please cite the following paper if you use <strong>corporaexplorer</strong> in your research.</p>
-<blockquote><p>Gjerde, Kristian Lundby. 2019. “corporaexplorer: An R package for dynamic exploration of text collections.” <em>Journal of Open Source Software</em> 4 (38): 1342. <a href="https://doi.org/10.21105/joss.01342" class="external-link uri">https://doi.org/10.21105/joss.01342</a>.</p></blockquote>
+<blockquote>
+<p>Gjerde, Kristian Lundby. 2019. “corporaexplorer: An R package for dynamic exploration of text collections.” <em>Journal of Open Source Software</em> 4 (38): 1342. <a href="https://doi.org/10.21105/joss.01342" class="external-link uri">https://doi.org/10.21105/joss.01342</a>.</p>
+</blockquote>
 <p>For a BibTeX entry, use the output from <code>citation(package = "corporaexplorer")</code>.</p>
 </div>
 <div class="section level2">
@@ -184,12 +200,12 @@
 <p>The package includes two demo apps.</p>
 <p>To explore Jane Austen’s novels (data accessed through the <a href="https://github.com/juliasilge/janeaustenr" class="external-link"><strong>janeaustenr</strong></a> package):</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer/" class="external-link">corporaexplorer</a></span><span class="op">)</span>
-<span class="fu"><a href="reference/demo_jane_austen.html">run_janeausten_app</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer/" class="external-link">corporaexplorer</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/demo_jane_austen.html">run_janeausten_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>To explore the US presidents’ State of the Union addresses (data accessed through the the <a href="https://cran.r-project.org/web/packages/sotu/index.html" class="external-link"><strong>sotu</strong></a> package):</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer/" class="external-link">corporaexplorer</a></span><span class="op">)</span>
-<span class="fu"><a href="reference/demo_sotu.html">run_sotu_app</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer/" class="external-link">corporaexplorer</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/demo_sotu.html">run_sotu_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>For more info, see <a href="https://kgjerde.github.io/corporaexplorer/articles/jane_austen.html" class="external-link uri">https://kgjerde.github.io/corporaexplorer/articles/jane_austen.html</a> and <a href="https://kgjerde.github.io/corporaexplorer/articles/sotu.html" class="external-link uri">https://kgjerde.github.io/corporaexplorer/articles/sotu.html</a>, and also the <a href="reference/index.html">function references</a>.</p>
 </div>
 <div class="section level2">
@@ -289,7 +305,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

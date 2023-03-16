@@ -116,49 +116,53 @@
 
     
     
-<p>To run the State of the Union demo app, run the following in the R console:</p>
+<p>To run the State of the Union demo app, run the following in the R
+console:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer/" class="external-link">corporaexplorer</a></span><span class="op">)</span>
-<span class="fu"><a href="../reference/demo_sotu.html">run_sotu_app</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>To run an alternative State of the Union app, organised by decade rather than by president, run the following in the R console:</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer/" class="external-link">corporaexplorer</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/demo_sotu.html">run_sotu_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>To run an alternative State of the Union app, organised by decade
+rather than by president, run the following in the R console:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer/" class="external-link">corporaexplorer</a></span><span class="op">)</span>
-<span class="fu"><a href="../reference/demo_sotu.html">run_sotu_decade_app</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>These two apps are created with the code below. The State of the Union texts and metadata are accessed through the <a href="https://cran.r-project.org/web/packages/sotu/index.html" class="external-link"><strong>sotu</strong></a> package.</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer/" class="external-link">corporaexplorer</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/demo_sotu.html">run_sotu_decade_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>These two apps are created with the code below. The State of the
+Union texts and metadata are accessed through the <a href="https://cran.r-project.org/web/packages/sotu/index.html" class="external-link"><strong>sotu</strong></a>
+package.</p>
 <div class="section level2">
 <h2 id="step-1-preprocessing-before-corporaexplorer">Step 1: Preprocessing before “corporaexplorer”<a class="anchor" aria-label="anchor" href="#step-1-preprocessing-before-corporaexplorer"></a>
 </h2>
 <p><strong>Loading packages</strong></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://github.com/statsmaths/sotu/issues" class="external-link">sotu</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://stringr.tidyverse.org" class="external-link">stringr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer/" class="external-link">corporaexplorer</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/statsmaths/sotu/" class="external-link">sotu</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://stringr.tidyverse.org" class="external-link">stringr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer/" class="external-link">corporaexplorer</a></span><span class="op">)</span></span></code></pre></div>
 <p><strong>Creating data frame</strong></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">## Merge data from 'sotu' package into one df</span>
-<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">sotu</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/sotu/man/sotu_meta.html" class="external-link">sotu_meta</a></span>
-<span class="va">df</span><span class="op">$</span><span class="va">Text</span> <span class="op">&lt;-</span> <span class="fu">sotu</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/sotu/man/sotu_text.html" class="external-link">sotu_text</a></span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-    <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_trim.html" class="external-link">str_trim</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="co">## Avoid clutter in corpus plot</span>
-<span class="co"># A. Distinguish between non-consecutive terms</span>
-<span class="va">df</span><span class="op">$</span><span class="va">president</span><span class="op">[</span><span class="fl">97</span><span class="op">:</span><span class="fl">100</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"Grover Cleveland 1"</span>
-<span class="va">df</span><span class="op">$</span><span class="va">president</span><span class="op">[</span><span class="fl">105</span><span class="op">:</span><span class="fl">108</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"Grover Cleveland 2"</span>
-
-<span class="co"># B. Get correct order of rows in data frame</span>
-    <span class="co"># in the cases where incumbent holds a final sotu before leaving office,</span>
-    <span class="co"># resulting in two sotus in one year</span>
-<span class="va">presidents</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">president</span><span class="op">)</span>
-<span class="va">df</span><span class="op">$</span><span class="va">president</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">president</span>, levels <span class="op">=</span> <span class="va">presidents</span><span class="op">)</span>
-<span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html" class="external-link">order</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">president</span><span class="op">)</span>,<span class="op">]</span>
-<span class="va">df</span><span class="op">$</span><span class="va">president</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">president</span><span class="op">)</span>
-
-<span class="co">## Add decade variable for variation of app</span>
-<span class="va">df</span><span class="op">$</span><span class="va">decade</span> <span class="op">&lt;-</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_sub.html" class="external-link">str_sub</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">year</span>, <span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-    <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"0s"</span><span class="op">)</span>
-
-<span class="co"># And add variable for informative document tab title in that app variation</span>
-<span class="va">df</span><span class="op">$</span><span class="va">for_tab_title</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">president</span>, <span class="va">df</span><span class="op">$</span><span class="va">year</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">## Merge data from 'sotu' package into one df</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">sotu</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/sotu/man/sotu_meta.html" class="external-link">sotu_meta</a></span></span>
+<span><span class="va">df</span><span class="op">$</span><span class="va">Text</span> <span class="op">&lt;-</span> <span class="fu">sotu</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/sotu/man/sotu_text.html" class="external-link">sotu_text</a></span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_trim.html" class="external-link">str_trim</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Avoid clutter in corpus plot</span></span>
+<span><span class="co"># A. Distinguish between non-consecutive terms</span></span>
+<span><span class="va">df</span><span class="op">$</span><span class="va">president</span><span class="op">[</span><span class="fl">97</span><span class="op">:</span><span class="fl">100</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"Grover Cleveland 1"</span></span>
+<span><span class="va">df</span><span class="op">$</span><span class="va">president</span><span class="op">[</span><span class="fl">105</span><span class="op">:</span><span class="fl">108</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"Grover Cleveland 2"</span></span>
+<span></span>
+<span><span class="co"># B. Get correct order of rows in data frame</span></span>
+<span>    <span class="co"># in the cases where incumbent holds a final sotu before leaving office,</span></span>
+<span>    <span class="co"># resulting in two sotus in one year</span></span>
+<span><span class="va">presidents</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">president</span><span class="op">)</span></span>
+<span><span class="va">df</span><span class="op">$</span><span class="va">president</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">president</span>, levels <span class="op">=</span> <span class="va">presidents</span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html" class="external-link">order</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">president</span><span class="op">)</span>,<span class="op">]</span></span>
+<span><span class="va">df</span><span class="op">$</span><span class="va">president</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">president</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Add decade variable for variation of app</span></span>
+<span><span class="va">df</span><span class="op">$</span><span class="va">decade</span> <span class="op">&lt;-</span> <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_sub.html" class="external-link">str_sub</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">year</span>, <span class="fl">1</span>, <span class="fl">3</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"0s"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># And add variable for informative document tab title in that app variation</span></span>
+<span><span class="va">df</span><span class="op">$</span><span class="va">for_tab_title</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">president</span>, <span class="va">df</span><span class="op">$</span><span class="va">year</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="step-2-creating-app-with-corporaexplorer">Step 2: Creating app with “corporaexplorer”<a class="anchor" aria-label="anchor" href="#step-2-creating-app-with-corporaexplorer"></a>
@@ -168,84 +172,89 @@
 </h3>
 <p><strong>Create ‘corporaexplorerobject’</strong></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">corpus</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/prepare_data.html">prepare_data</a></span><span class="op">(</span>
-    <span class="va">df</span>,                                <span class="co"># the data frame created above</span>
-    date_based_corpus <span class="op">=</span> <span class="cn">FALSE</span>,         <span class="co"># dates are not the organising principle in the corpus</span>
-    grouping_variable <span class="op">=</span> <span class="st">"president"</span>,   <span class="co"># group the sotu addresses by president</span>
-
-<span class="co"># The remaining arguments are not strictly necessary, but we use them to fine-tune</span>
-      <span class="co"># how the corpus will be presented in the app</span>
-
-    within_group_identifier <span class="op">=</span> <span class="st">"year"</span>,  <span class="co"># The tab header in document view will then be e.g. </span>
-                                         <span class="co"># "Theodore Roosevelt – 1901"</span>
-    columns_doc_info <span class="op">=</span>                 <span class="co"># metadata to be included in a "Document info" tab,</span>
-        <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>,               <span class="co"># in this case the first five columns in the data frame</span>
-    tile_length_range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">10</span><span class="op">)</span>,      <span class="co"># fine-tuning the length of the tiles representing</span>
-                                         <span class="co"># the length of the addrsses</span>
-    use_matrix <span class="op">=</span> <span class="cn">FALSE</span>                 <span class="co"># we don't create a document term matrix, as the corpus</span>
-                                         <span class="co"># is very small and searches will be fast anyway</span>
-<span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">corpus</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/prepare_data.html">prepare_data</a></span><span class="op">(</span></span>
+<span>    <span class="va">df</span>,                                <span class="co"># the data frame created above</span></span>
+<span>    date_based_corpus <span class="op">=</span> <span class="cn">FALSE</span>,         <span class="co"># dates are not the organising principle in the corpus</span></span>
+<span>    grouping_variable <span class="op">=</span> <span class="st">"president"</span>,   <span class="co"># group the sotu addresses by president</span></span>
+<span></span>
+<span><span class="co"># The remaining arguments are not strictly necessary, but we use them to fine-tune</span></span>
+<span>      <span class="co"># how the corpus will be presented in the app</span></span>
+<span></span>
+<span>    within_group_identifier <span class="op">=</span> <span class="st">"year"</span>,  <span class="co"># The tab header in document view will then be e.g. </span></span>
+<span>                                         <span class="co"># "Theodore Roosevelt – 1901"</span></span>
+<span>    columns_doc_info <span class="op">=</span>                 <span class="co"># metadata to be included in a "Document info" tab,</span></span>
+<span>        <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>,               <span class="co"># in this case the first five columns in the data frame</span></span>
+<span>    tile_length_range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">10</span><span class="op">)</span>,      <span class="co"># fine-tuning the length of the tiles representing</span></span>
+<span>                                         <span class="co"># the length of the addrsses</span></span>
+<span>    use_matrix <span class="op">=</span> <span class="cn">FALSE</span>                 <span class="co"># we don't create a document term matrix, as the corpus</span></span>
+<span>                                         <span class="co"># is very small and searches will be fast anyway</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <p><strong>Run app</strong></p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/explore.html">explore</a></span><span class="op">(</span><span class="va">corpus</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/explore.html">explore</a></span><span class="op">(</span><span class="va">corpus</span><span class="op">)</span></span></code></pre></div>
 <hr>
 </div>
 <div class="section level3">
 <h3 id="app-2-state-of-the-union-addresses-grouped-by-decade">App 2: State of the Union addresses grouped by decade<a class="anchor" aria-label="anchor" href="#app-2-state-of-the-union-addresses-grouped-by-decade"></a>
 </h3>
-<p>By just changing two arguments (or even one), we create an app with a quite different organisation of the texts.</p>
+<p>By just changing two arguments (or even one), we create an app with a
+quite different organisation of the texts.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">corpus</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/prepare_data.html">prepare_data</a></span><span class="op">(</span>
-    <span class="va">df</span>,
-    date_based_corpus <span class="op">=</span> <span class="cn">FALSE</span>,
-    grouping_variable <span class="op">=</span> <span class="st">"decade"</span>,                <span class="co"># change grouping variable</span>
-    within_group_identifier <span class="op">=</span> <span class="st">"for_tab_title"</span>,   <span class="co"># adjust tab header in document view</span>
-    columns_doc_info <span class="op">=</span>
-        <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>,
-    tile_length_range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">10</span><span class="op">)</span>,
-    use_matrix <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">corpus</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/prepare_data.html">prepare_data</a></span><span class="op">(</span></span>
+<span>    <span class="va">df</span>,</span>
+<span>    date_based_corpus <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>    grouping_variable <span class="op">=</span> <span class="st">"decade"</span>,                <span class="co"># change grouping variable</span></span>
+<span>    within_group_identifier <span class="op">=</span> <span class="st">"for_tab_title"</span>,   <span class="co"># adjust tab header in document view</span></span>
+<span>    columns_doc_info <span class="op">=</span></span>
+<span>        <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>,</span>
+<span>    tile_length_range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">10</span><span class="op">)</span>,</span>
+<span>    use_matrix <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/explore.html">explore</a></span><span class="op">(</span><span class="va">corpus</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/explore.html">explore</a></span><span class="op">(</span><span class="va">corpus</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
 <h2 id="examples-of-app-adjustments">Examples of app adjustments<a class="anchor" aria-label="anchor" href="#examples-of-app-adjustments"></a>
 </h2>
-<p>See the documentation for <code><a href="../reference/explore.html">explore()</a></code> for all runtime options.</p>
-<p><strong>Example 1: Tile length</strong> By default, the length of the tiles representing documents in the app have varying lengths, depending on document length. For all tiles to of the same length:</p>
+<p>See the documentation for <code><a href="../reference/explore.html">explore()</a></code> for all runtime
+options.</p>
+<p><strong>Example 1: Tile length</strong> By default, the length of the
+tiles representing documents in the app have varying lengths, depending
+on document length. For all tiles to of the same length:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/explore.html">explore</a></span><span class="op">(</span><span class="va">corpus</span>,
-                    plot_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-                        tile_length <span class="op">=</span> <span class="st">"uniform"</span>
-                    <span class="op">)</span><span class="op">)</span></code></pre></div>
-<p><strong>Example 2: Plot colours</strong> To change the use of colours in the corpus map, use e.g.:</p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/explore.html">explore</a></span><span class="op">(</span><span class="va">corpus</span>,</span>
+<span>                    plot_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>                        tile_length <span class="op">=</span> <span class="st">"uniform"</span></span>
+<span>                    <span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><strong>Example 2: Plot colours</strong> To change the use of colours
+in the corpus map, use e.g.:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/explore.html">explore</a></span><span class="op">(</span><span class="va">corpus</span>,
-                    plot_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-                        colours <span class="op">=</span> <span class="st">"green"</span>
-                    <span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/explore.html">explore</a></span><span class="op">(</span><span class="va">corpus</span>,</span>
+<span>                    plot_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>                        colours <span class="op">=</span> <span class="st">"green"</span></span>
+<span>                    <span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="examples-of-app-usage">Examples of app usage<a class="anchor" aria-label="anchor" href="#examples-of-app-usage"></a>
 </h2>
 <p>Some <code><a href="../reference/explore.html">explore()</a></code> calls with pre-filled sidebar input:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/explore.html">explore</a></span><span class="op">(</span><span class="va">corpus</span>,
-        search_input <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>search_terms <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"socialis"</span>,
-                                             <span class="st">"communis"</span>,
-                                             <span class="st">"soviet"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/explore.html">explore</a></span><span class="op">(</span><span class="va">corpus</span>,</span>
+<span>        search_input <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>search_terms <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"socialis"</span>,</span>
+<span>                                             <span class="st">"communis"</span>,</span>
+<span>                                             <span class="st">"soviet"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/explore.html">explore</a></span><span class="op">(</span><span class="va">corpus</span>,
-        search_input <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>filter_terms <span class="op">=</span> <span class="st">"speech--sotu_type"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/explore.html">explore</a></span><span class="op">(</span><span class="va">corpus</span>,</span>
+<span>        search_input <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>filter_terms <span class="op">=</span> <span class="st">"speech--sotu_type"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/explore.html">explore</a></span><span class="op">(</span><span class="va">corpus</span>,
-        search_input <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>
-            search_terms <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"democracy"</span>,
-                             <span class="st">"freedom"</span>,
-                             <span class="st">"democratic--party"</span><span class="op">)</span>,
-            filter_terms <span class="op">=</span> <span class="st">"speech--sotu_type"</span>
-        <span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/explore.html">explore</a></span><span class="op">(</span><span class="va">corpus</span>,</span>
+<span>        search_input <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>            search_terms <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"democracy"</span>,</span>
+<span>                             <span class="st">"freedom"</span>,</span>
+<span>                             <span class="st">"democratic--party"</span><span class="op">)</span>,</span>
+<span>            filter_terms <span class="op">=</span> <span class="st">"speech--sotu_type"</span></span>
+<span>        <span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
   </div>
 
@@ -266,7 +275,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

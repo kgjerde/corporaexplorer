@@ -92,7 +92,7 @@ Interrupt R to stop the application (usually by pressing Ctrl+C or Esc).</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">run_document_extractor</span><span class="op">(</span><span class="va">corpus_object</span>, max_html_docs <span class="op">=</span> <span class="fl">400</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">run_document_extractor</span><span class="op">(</span><span class="va">corpus_object</span>, max_html_docs <span class="op">=</span> <span class="fl">400</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -107,24 +107,24 @@ Interrupt R to stop the application (usually by pressing Ctrl+C or Esc).</p>
 
 
 <dt>...</dt>
-<dd><p>Other arguments passed to <code><a href="https://rdrr.io/pkg/shiny/man/runApp.html" class="external-link">runApp</a></code> in the Shiny
+<dd><p>Other arguments passed to <code><a href="https://shiny.rstudio.com/reference/shiny/latest/runApp.html" class="external-link">runApp</a></code> in the Shiny
 package.</p></dd>
 
 </dl></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Constructing test data frame:</span></span>
-<span class="r-in"><span class="va">dates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="fl">2011</span><span class="op">:</span><span class="fl">2020</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">21</span><span class="op">:</span><span class="fl">30</span>, sep <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">texts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span>
-<span class="r-in">  <span class="st">"This is a document about "</span>, <span class="va">month.name</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span>, <span class="st">". "</span>,</span>
-<span class="r-in">  <span class="st">"This is not a document about "</span>, <span class="fu"><a href="https://rdrr.io/r/base/rev.html" class="external-link">rev</a></span><span class="op">(</span><span class="va">month.name</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span><span class="op">)</span>, <span class="st">"."</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="va">titles</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Text"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">test_df</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Date <span class="op">=</span> <span class="va">dates</span>, Text <span class="op">=</span> <span class="va">texts</span>, Title <span class="op">=</span> <span class="va">titles</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Converting to corporaexplorer object:</span></span>
-<span class="r-in"><span class="va">corpus</span> <span class="op">&lt;-</span> <span class="fu"><a href="prepare_data.html">prepare_data</a></span><span class="op">(</span><span class="va">test_df</span>, corpus_name <span class="op">=</span> <span class="st">"Test corpus"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Constructing test data frame:</span></span></span>
+<span class="r-in"><span><span class="va">dates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="fl">2011</span><span class="op">:</span><span class="fl">2020</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">21</span><span class="op">:</span><span class="fl">30</span>, sep <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">texts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="st">"This is a document about "</span>, <span class="va">month.name</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span>, <span class="st">". "</span>,</span></span>
+<span class="r-in"><span>  <span class="st">"This is not a document about "</span>, <span class="fu"><a href="https://rdrr.io/r/base/rev.html" class="external-link">rev</a></span><span class="op">(</span><span class="va">month.name</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span><span class="op">)</span>, <span class="st">"."</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">titles</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Text"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">test_df</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Date <span class="op">=</span> <span class="va">dates</span>, Text <span class="op">=</span> <span class="va">texts</span>, Title <span class="op">=</span> <span class="va">titles</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Converting to corporaexplorer object:</span></span></span>
+<span class="r-in"><span><span class="va">corpus</span> <span class="op">&lt;-</span> <span class="fu"><a href="prepare_data.html">prepare_data</a></span><span class="op">(</span><span class="va">test_df</span>, corpus_name <span class="op">=</span> <span class="st">"Test corpus"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Starting.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Document data frame done.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Calendar data frame done.</span>
@@ -133,13 +133,13 @@ package.</p></dd>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Document term matrix: word list created.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Document term matrix done.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Done.</span>
-<span class="r-in"><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
-<span class="r-in"><span class="co"># Running exploration app:</span></span>
-<span class="r-in"><span class="fu"><a href="explore.html">explore</a></span><span class="op">(</span><span class="va">corpus</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Running app to extract documents:</span></span>
-<span class="r-in"><span class="fu">run_document_extractor</span><span class="op">(</span><span class="va">corpus</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+<span class="r-in"><span><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># Running exploration app:</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="explore.html">explore</a></span><span class="op">(</span><span class="va">corpus</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Running app to extract documents:</span></span></span>
+<span class="r-in"><span><span class="fu">run_document_extractor</span><span class="op">(</span><span class="va">corpus</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -154,7 +154,7 @@ package.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

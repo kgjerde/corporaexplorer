@@ -112,20 +112,20 @@ application (usually by pressing Ctrl+C or Esc).</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">explore</span><span class="op">(</span>
-  <span class="va">corpus_object</span>,
-  search_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,
-  ui_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,
-  search_input <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,
-  plot_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,
-  <span class="va">...</span>
-<span class="op">)</span>
-
-<span class="fu">explore0</span><span class="op">(</span>
-  <span class="va">dataset</span>,
-  arguments_prepare_data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>use_matrix <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,
-  arguments_explore <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">explore</span><span class="op">(</span></span>
+<span>  <span class="va">corpus_object</span>,</span>
+<span>  search_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  ui_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  search_input <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  plot_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">explore0</span><span class="op">(</span></span>
+<span>  <span class="va">dataset</span>,</span>
+<span>  arguments_prepare_data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>use_matrix <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,</span>
+<span>  arguments_explore <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -213,7 +213,7 @@ application (usually by pressing Ctrl+C or Esc).</p>
 
 
 <dt>...</dt>
-<dd><p>Other arguments passed to <code><a href="https://rdrr.io/pkg/shiny/man/runApp.html" class="external-link">runApp</a></code> in the Shiny
+<dd><p>Other arguments passed to <code><a href="https://shiny.rstudio.com/reference/shiny/latest/runApp.html" class="external-link">runApp</a></code> in the Shiny
 package.</p></dd>
 
 
@@ -250,17 +250,17 @@ default argument values.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Constructing test data frame:</span></span>
-<span class="r-in"><span class="va">dates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="fl">2011</span><span class="op">:</span><span class="fl">2020</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">21</span><span class="op">:</span><span class="fl">30</span>, sep <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">texts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span>
-<span class="r-in">  <span class="st">"This is a document about "</span>, <span class="va">month.name</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span>, <span class="st">". "</span>,</span>
-<span class="r-in">  <span class="st">"This is not a document about "</span>, <span class="fu"><a href="https://rdrr.io/r/base/rev.html" class="external-link">rev</a></span><span class="op">(</span><span class="va">month.name</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span><span class="op">)</span>, <span class="st">"."</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="va">titles</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Text"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">test_df</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Date <span class="op">=</span> <span class="va">dates</span>, Text <span class="op">=</span> <span class="va">texts</span>, Title <span class="op">=</span> <span class="va">titles</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Converting to corporaexplorerobject:</span></span>
-<span class="r-in"><span class="va">corpus</span> <span class="op">&lt;-</span> <span class="fu"><a href="prepare_data.html">prepare_data</a></span><span class="op">(</span><span class="va">test_df</span>, corpus_name <span class="op">=</span> <span class="st">"Test corpus"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Constructing test data frame:</span></span></span>
+<span class="r-in"><span><span class="va">dates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="fl">2011</span><span class="op">:</span><span class="fl">2020</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">21</span><span class="op">:</span><span class="fl">30</span>, sep <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">texts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="st">"This is a document about "</span>, <span class="va">month.name</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span>, <span class="st">". "</span>,</span></span>
+<span class="r-in"><span>  <span class="st">"This is not a document about "</span>, <span class="fu"><a href="https://rdrr.io/r/base/rev.html" class="external-link">rev</a></span><span class="op">(</span><span class="va">month.name</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span><span class="op">)</span>, <span class="st">"."</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">titles</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Text"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">test_df</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Date <span class="op">=</span> <span class="va">dates</span>, Text <span class="op">=</span> <span class="va">texts</span>, Title <span class="op">=</span> <span class="va">titles</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Converting to corporaexplorerobject:</span></span></span>
+<span class="r-in"><span><span class="va">corpus</span> <span class="op">&lt;-</span> <span class="fu"><a href="prepare_data.html">prepare_data</a></span><span class="op">(</span><span class="va">test_df</span>, corpus_name <span class="op">=</span> <span class="st">"Test corpus"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Starting.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Document data frame done.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Calendar data frame done.</span>
@@ -269,30 +269,30 @@ default argument values.</p></dd>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Document term matrix: word list created.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Document term matrix done.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Done.</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Running exploration app:</span></span>
-<span class="r-in"><span class="fu">explore</span><span class="op">(</span><span class="va">corpus</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">explore</span><span class="op">(</span><span class="va">corpus</span>,</span>
-<span class="r-in">        search_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>optional_info <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span class="r-in">        ui_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>font_size <span class="op">=</span> <span class="st">"10px"</span><span class="op">)</span>,</span>
-<span class="r-in">        search_input <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>search_terms <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Tottenham"</span>, <span class="st">"Spurs"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span class="r-in">        plot_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>max_docs_in_wall_view <span class="op">=</span> <span class="fl">12001</span>,</span>
-<span class="r-in">                                        colours <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gray"</span>, <span class="st">"green"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Running app to extract documents:</span></span>
-<span class="r-in"><span class="fu"><a href="run_document_extractor.html">run_document_extractor</a></span><span class="op">(</span><span class="va">corpus</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">explore0</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="va">LETTERS</span><span class="op">)</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">explore0</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="va">LETTERS</span><span class="op">)</span>, <span class="fl">10</span><span class="op">)</span>,</span>
-<span class="r-in">  arguments_explore <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>search_input <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>search_terms <span class="op">=</span> <span class="st">"Z"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="op">}</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Running exploration app:</span></span></span>
+<span class="r-in"><span><span class="fu">explore</span><span class="op">(</span><span class="va">corpus</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">explore</span><span class="op">(</span><span class="va">corpus</span>,</span></span>
+<span class="r-in"><span>        search_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>optional_info <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>        ui_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>font_size <span class="op">=</span> <span class="st">"10px"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>        search_input <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>search_terms <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Tottenham"</span>, <span class="st">"Spurs"</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>        plot_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>max_docs_in_wall_view <span class="op">=</span> <span class="fl">12001</span>,</span></span>
+<span class="r-in"><span>                                        colours <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gray"</span>, <span class="st">"green"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Running app to extract documents:</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="run_document_extractor.html">run_document_extractor</a></span><span class="op">(</span><span class="va">corpus</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">explore0</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="va">LETTERS</span><span class="op">)</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">explore0</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="va">LETTERS</span><span class="op">)</span>, <span class="fl">10</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  arguments_explore <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>search_input <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>search_terms <span class="op">=</span> <span class="st">"Z"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -307,7 +307,7 @@ default argument values.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

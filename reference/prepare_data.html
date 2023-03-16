@@ -90,31 +90,31 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">prepare_data</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S3 method for data.frame</span>
-<span class="fu">prepare_data</span><span class="op">(</span>
-  <span class="va">dataset</span>,
-  date_based_corpus <span class="op">=</span> <span class="cn">TRUE</span>,
-  grouping_variable <span class="op">=</span> <span class="cn">NULL</span>,
-  within_group_identifier <span class="op">=</span> <span class="st">"Seq"</span>,
-  columns_doc_info <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Date"</span>, <span class="st">"Title"</span>, <span class="st">"URL"</span><span class="op">)</span>,
-  corpus_name <span class="op">=</span> <span class="cn">NULL</span>,
-  use_matrix <span class="op">=</span> <span class="cn">TRUE</span>,
-  matrix_without_punctuation <span class="op">=</span> <span class="cn">TRUE</span>,
-  tile_length_range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span><span class="op">)</span>,
-  columns_for_ui_checkboxes <span class="op">=</span> <span class="cn">NULL</span>,
-  <span class="va">...</span>
-<span class="op">)</span>
-
-<span class="co"># S3 method for character</span>
-<span class="fu">prepare_data</span><span class="op">(</span>
-  <span class="va">dataset</span>,
-  corpus_name <span class="op">=</span> <span class="cn">NULL</span>,
-  use_matrix <span class="op">=</span> <span class="cn">TRUE</span>,
-  matrix_without_punctuation <span class="op">=</span> <span class="cn">TRUE</span>,
-  <span class="va">...</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">prepare_data</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for data.frame</span></span>
+<span><span class="fu">prepare_data</span><span class="op">(</span></span>
+<span>  <span class="va">dataset</span>,</span>
+<span>  date_based_corpus <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  grouping_variable <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  within_group_identifier <span class="op">=</span> <span class="st">"Seq"</span>,</span>
+<span>  columns_doc_info <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Date"</span>, <span class="st">"Title"</span>, <span class="st">"URL"</span><span class="op">)</span>,</span>
+<span>  corpus_name <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  use_matrix <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  matrix_without_punctuation <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  tile_length_range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span><span class="op">)</span>,</span>
+<span>  columns_for_ui_checkboxes <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for character</span></span>
+<span><span class="fu">prepare_data</span><span class="op">(</span></span>
+<span>  <span class="va">dataset</span>,</span>
+<span>  corpus_name <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  use_matrix <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  matrix_without_punctuation <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -249,18 +249,18 @@ present in dataset, it will be ignored.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co">## From data.frame</span></span>
-<span class="r-in"><span class="co"># Constructing test data frame:</span></span>
-<span class="r-in"><span class="va">dates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="fl">2011</span><span class="op">:</span><span class="fl">2020</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">21</span><span class="op">:</span><span class="fl">30</span>, sep <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">texts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span>
-<span class="r-in">  <span class="st">"This is a document about "</span>, <span class="va">month.name</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span>, <span class="st">". "</span>,</span>
-<span class="r-in">  <span class="st">"This is not a document about "</span>, <span class="fu"><a href="https://rdrr.io/r/base/rev.html" class="external-link">rev</a></span><span class="op">(</span><span class="va">month.name</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span><span class="op">)</span>, <span class="st">"."</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="va">titles</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Text"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">test_df</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Date <span class="op">=</span> <span class="va">dates</span>, Text <span class="op">=</span> <span class="va">texts</span>, Title <span class="op">=</span> <span class="va">titles</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Converting to corporaexplorerobject:</span></span>
-<span class="r-in"><span class="va">corpus</span> <span class="op">&lt;-</span> <span class="fu">prepare_data</span><span class="op">(</span><span class="va">test_df</span>, corpus_name <span class="op">=</span> <span class="st">"Test corpus"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## From data.frame</span></span></span>
+<span class="r-in"><span><span class="co"># Constructing test data frame:</span></span></span>
+<span class="r-in"><span><span class="va">dates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="fl">2011</span><span class="op">:</span><span class="fl">2020</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="fl">21</span><span class="op">:</span><span class="fl">30</span>, sep <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">texts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="st">"This is a document about "</span>, <span class="va">month.name</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span>, <span class="st">". "</span>,</span></span>
+<span class="r-in"><span>  <span class="st">"This is not a document about "</span>, <span class="fu"><a href="https://rdrr.io/r/base/rev.html" class="external-link">rev</a></span><span class="op">(</span><span class="va">month.name</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span><span class="op">)</span>, <span class="st">"."</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">titles</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Text"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">test_df</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>Date <span class="op">=</span> <span class="va">dates</span>, Text <span class="op">=</span> <span class="va">texts</span>, Title <span class="op">=</span> <span class="va">titles</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Converting to corporaexplorerobject:</span></span></span>
+<span class="r-in"><span><span class="va">corpus</span> <span class="op">&lt;-</span> <span class="fu">prepare_data</span><span class="op">(</span><span class="va">test_df</span>, corpus_name <span class="op">=</span> <span class="st">"Test corpus"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Starting.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Document data frame done.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Calendar data frame done.</span>
@@ -269,17 +269,17 @@ present in dataset, it will be ignored.</p></dd>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Document term matrix: word list created.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Document term matrix done.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Done.</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
-<span class="r-in"><span class="co"># Running exploration app:</span></span>
-<span class="r-in"><span class="fu"><a href="explore.html">explore</a></span><span class="op">(</span><span class="va">corpus</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Running app to extract documents:</span></span>
-<span class="r-in"><span class="fu"><a href="run_document_extractor.html">run_document_extractor</a></span><span class="op">(</span><span class="va">corpus</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## From character vector</span></span>
-<span class="r-in"><span class="va">alphabet_corpus</span> <span class="op">&lt;-</span> <span class="fu">prepare_data</span><span class="op">(</span><span class="va">LETTERS</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># Running exploration app:</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="explore.html">explore</a></span><span class="op">(</span><span class="va">corpus</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Running app to extract documents:</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="run_document_extractor.html">run_document_extractor</a></span><span class="op">(</span><span class="va">corpus</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## From character vector</span></span></span>
+<span class="r-in"><span><span class="va">alphabet_corpus</span> <span class="op">&lt;-</span> <span class="fu">prepare_data</span><span class="op">(</span><span class="va">LETTERS</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Starting.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Document data frame done.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Corpus is not date based. Calendar data frame skipped.</span>
@@ -288,11 +288,11 @@ present in dataset, it will be ignored.</p></dd>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Document term matrix: word list created.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Document term matrix done.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Done.</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
-<span class="r-in"><span class="co"># Running exploration app:</span></span>
-<span class="r-in"><span class="fu"><a href="explore.html">explore</a></span><span class="op">(</span><span class="va">alphabet_corpus</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># Running exploration app:</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="explore.html">explore</a></span><span class="op">(</span><span class="va">alphabet_corpus</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -307,7 +307,7 @@ present in dataset, it will be ignored.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

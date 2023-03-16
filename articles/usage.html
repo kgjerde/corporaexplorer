@@ -116,76 +116,130 @@
 
     
     
-<p>This document presents <strong>corporaexplorer</strong>’s three main functions:</p>
+<p>This document presents <strong>corporaexplorer</strong>’s three main
+functions:</p>
 <ol style="list-style-type: decimal">
 <li>
-<code><a href="../reference/prepare_data.html">prepare_data()</a></code> converts a data frame to a “corporaexplorerobject”.</li>
+<code><a href="../reference/prepare_data.html">prepare_data()</a></code> converts a data frame to a
+“corporaexplorerobject”.</li>
 <li>
-<code><a href="../reference/explore.html">explore()</a></code> runs the package’s core feature, a Shiny app for fast and flexible exploration of a “corporaexplorerobject”.</li>
+<code><a href="../reference/explore.html">explore()</a></code> runs the package’s core feature, a Shiny app
+for fast and flexible exploration of a “corporaexplorerobject”.</li>
 <li>
-<code><a href="../reference/run_document_extractor.html">run_document_extractor()</a></code> runs a Shiny app for simple retrieval/extraction of documents from a “corporaexplorerobject” in a reading-friendly format.</li>
+<code><a href="../reference/run_document_extractor.html">run_document_extractor()</a></code> runs a Shiny app for simple
+retrieval/extraction of documents from a “corporaexplorerobject” in a
+reading-friendly format.</li>
 </ol>
-<p>See the <a href="reference/index.html">reference section</a> for full details and all available options.</p>
+<p>See the <a href="reference/index.html">reference section</a> for full
+details and all available options.</p>
 <div class="section level2">
 <h2 id="prepare-data-for-the-shiny-apps">1. Prepare data for the Shiny apps<a class="anchor" aria-label="anchor" href="#prepare-data-for-the-shiny-apps"></a>
 </h2>
-<p>The <code><a href="../reference/prepare_data.html">prepare_data()</a></code> function returns a “corporaexplorerobject” that can be explored in the package’s two Shiny apps.</p>
+<p>The <code><a href="../reference/prepare_data.html">prepare_data()</a></code> function returns a
+“corporaexplorerobject” that can be explored in the package’s two Shiny
+apps.</p>
 <p>The three most important arguments are:</p>
 <ul>
 <li>
-<code>dataset</code>: a data frame with, as a minimum, a <code>Text</code> column. If <code>date_based_corpus</code> is <code>TRUE</code> (the default), dataset must also contain a column “Date” (of class Date).</li>
+<code>dataset</code>: a data frame with, as a minimum, a
+<code>Text</code> column. If <code>date_based_corpus</code> is
+<code>TRUE</code> (the default), dataset must also contain a column
+“Date” (of class Date).</li>
 <li>
-<code>date_based_corpus</code>. Default is <code>TRUE</code>. Set to <code>FALSE</code> if the corpus is not to be organised according to document dates.</li>
+<code>date_based_corpus</code>. Default is <code>TRUE</code>. Set to
+<code>FALSE</code> if the corpus is not to be organised according to
+document dates.</li>
 <li>
-<code>grouping_variable</code>. If date_based_corpus is TRUE, this argument is ignored. If date_based_corpus is FALSE, this argument can be used to group the documents, e.g. if <code>dataset</code> consists of chapters belonging to different books, and the book indicated in a “Book” column, set this argument to <code>"Book"</code>.</li>
+<code>grouping_variable</code>. If date_based_corpus is TRUE, this
+argument is ignored. If date_based_corpus is FALSE, this argument can be
+used to group the documents, e.g. if <code>dataset</code> consists of
+chapters belonging to different books, and the book indicated in a
+“Book” column, set this argument to <code>"Book"</code>.</li>
 </ul>
-<p>The rest of the arguments can be used to fine-tune the presentation of the corpora in the <strong>corporaexplorer</strong> apps.</p>
-<p><code>prepare_data</code> can also be run with a character vector as only argument. In this case the function will return a simple “corporaexplorerobject” with no metadata.</p>
-<p>After installing <strong>corporaexplorer</strong>, run the following in the R console to see full documentation for the <code><a href="../reference/prepare_data.html">prepare_data()</a></code> function.</p>
+<p>The rest of the arguments can be used to fine-tune the presentation
+of the corpora in the <strong>corporaexplorer</strong> apps.</p>
+<p><code>prepare_data</code> can also be run with a character vector as
+only argument. In this case the function will return a simple
+“corporaexplorerobject” with no metadata.</p>
+<p>After installing <strong>corporaexplorer</strong>, run the following
+in the R console to see full documentation for the
+<code><a href="../reference/prepare_data.html">prepare_data()</a></code> function.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer/" class="external-link">corporaexplorer</a></span><span class="op">)</span>
-<span class="op">?</span><span class="va">prepare_data</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer/" class="external-link">corporaexplorer</a></span><span class="op">)</span></span>
+<span><span class="op">?</span><span class="va">prepare_data</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="the-corpus-exploration-app">2. The corpus exploration app<a class="anchor" aria-label="anchor" href="#the-corpus-exploration-app"></a>
 </h2>
-<p>Start the app by running the <code><a href="../reference/explore.html">explore()</a></code> function with a “corporaexplorerobject” created by <code><a href="../reference/prepare_data.html">prepare_data()</a></code> as argument. Run the following in the R console to see documentation for the <code><a href="../reference/explore.html">explore()</a></code> function.</p>
+<p>Start the app by running the <code><a href="../reference/explore.html">explore()</a></code> function with a
+“corporaexplorerobject” created by <code><a href="../reference/prepare_data.html">prepare_data()</a></code> as
+argument. Run the following in the R console to see documentation for
+the <code><a href="../reference/explore.html">explore()</a></code> function.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer/" class="external-link">corporaexplorer</a></span><span class="op">)</span>
-<span class="op">?</span><span class="va">explore</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer/" class="external-link">corporaexplorer</a></span><span class="op">)</span></span>
+<span><span class="op">?</span><span class="va">explore</span></span></code></pre></div>
 <p>The default arguments are recommended for most use cases.</p>
-<p>While it should be possible to use the app without reading any further, the rest of this section includes user interface instructions as well as some details about the app’s inner workings that are relevant for advanced users. A date-based corpus is used as example.</p>
+<p>While it should be possible to use the app without reading any
+further, the rest of this section includes user interface instructions
+as well as some details about the app’s inner workings that are relevant
+for advanced users. A date-based corpus is used as example.</p>
 <div class="section level3">
 <h3 id="a--sidebar-input">2a. Sidebar input<a class="anchor" aria-label="anchor" href="#a--sidebar-input"></a>
 </h3>
 <p><img align="left" src="../reference/figures/sidebar.png" width="170" height="450" style="margin-right: 25px"></p>
 <ul>
 <li>
-<strong>Number of terms to chart</strong>: How many terms (phrases/patterns) should be charted in the corpus map? Current maximum is six.</li>
+<strong>Number of terms to chart</strong>: How many terms
+(phrases/patterns) should be charted in the corpus map? Current maximum
+is six.</li>
 <li>
-<strong>Term(s) to chart</strong>: Using colour fillings, the corpus map plot will indicate days/documents where these terms are present. The terms will also be highlighted in all documents.</li>
+<strong>Term(s) to chart</strong>: Using colour fillings, the corpus
+map plot will indicate days/documents where these terms are present. The
+terms will also be highlighted in all documents.</li>
 <li>
-<strong>Additional terms for text highlighting</strong>: Terms included here (one on each line) will be highlighted in all documents. An arbitrary number of terms can be added.</li>
+<strong>Additional terms for text highlighting</strong>: Terms
+included here (one on each line) will be highlighted in all documents.
+An arbitrary number of terms can be added.</li>
 <li>
-<strong>Filter corpus?</strong> Input terms here (one on each line) will filter the corpus so that it includes only documents where all these terms are present. Unlike terms entered in the two fields above, these terms will not be included in the summary statistics in the “Corpus info” tab. An arbitrary number of terms can be used.</li>
+<strong>Filter corpus?</strong> Input terms here (one on each line)
+will filter the corpus so that it includes only documents where all
+these terms are present. Unlike terms entered in the two fields above,
+these terms will not be included in the summary statistics in the
+“Corpus info” tab. An arbitrary number of terms can be used.</li>
 <li>
-<strong>Case sensitive search</strong>: Check this box to distinguish between lower and upper case in the search. Unchecked, <code>war</code> will find both “war” and “War”; if checked, <code>war</code> will only find “war”.</li>
+<strong>Case sensitive search</strong>: Check this box to
+distinguish between lower and upper case in the search. Unchecked,
+<code>war</code> will find both “war” and “War”; if checked,
+<code>war</code> will only find “war”.</li>
 <li>
-<strong>“Year range” or “date range”</strong>: Filters the corpus (the first and last date included) by time span. (Only for date-based corpora.)</li>
+<strong>“Year range” or “date range”</strong>: Filters the corpus
+(the first and last date included) by time span. (Only for date-based
+corpora.)</li>
 <li>
-<strong>Plot mode (“calendar” or “document wall”)</strong>: Should the resulting corpus map treat one day or one document as its base unit? (Only for date-based corpora.)</li>
+<strong>Plot mode (“calendar” or “document wall”)</strong>: Should
+the resulting corpus map treat one day or one document as its base unit?
+(Only for date-based corpora.)</li>
 <li>
-<strong>Adjust plot size</strong>: Change plot height by adjusting the bar and clicking the “Adjust size” button.</li>
+<strong>Adjust plot size</strong>: Change plot height by adjusting
+the bar and clicking the “Adjust size” button.</li>
 <li>
-<strong>Search button</strong>: Only when search button is clicked will input from the sidebar (with the exception of the “Adjust plot size” input) be handled by the app.</li>
+<strong>Search button</strong>: Only when search button is clicked
+will input from the sidebar (with the exception of the “Adjust plot
+size” input) be handled by the app.</li>
 </ul>
 <div class="section level4">
 <h4 id="note-text-input-regular-expressions">Note: Text input – regular expressions<a class="anchor" aria-label="anchor" href="#note-text-input-regular-expressions"></a>
 </h4>
-<p>All text input will be treated as regular expressions (or <em>regexes</em>). Regular expressions can be very powerful for identifying exactly the text patterns one is interested in, but this power comes at a high complexity cost. That said, for simple searches that do not include punctuation, all one needs to know is basically this:</p>
+<p>All text input will be treated as regular expressions (or
+<em>regexes</em>). Regular expressions can be very powerful for
+identifying exactly the text patterns one is interested in, but this
+power comes at a high complexity cost. That said, for simple searches
+that do not include punctuation, all one needs to know is basically
+this:</p>
 <ul>
 <li>
-<code>\b</code> in a search means the beginning or the end of a word.</li>
+<code>\b</code> in a search means the beginning or the end of a
+word.</li>
 <li>
 <code>.</code> in a search means “any single character”.</li>
 </ul>
@@ -194,109 +248,192 @@
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>\barctic  <span class="co"># will match only "Arctic"</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>civili.ation  <span class="co"># will match both "civilisation" and "civilization"</span></span></code></pre></div>
-<p>For more about regex syntax and the regex flavours available, see the section about regex engines <a href="#2d-advanced-detail-regular-expression-engines">below</a>.</p>
-<p>(N.B. As seen in the example, a single backslash (not a double backslash as in the R console) is used as escape character. For example will <code>\.</code> match a literal “.”, and <code>\d</code> match any digit.)</p>
+<p>For more about regex syntax and the regex flavours available, see the
+section about regex engines <a href="#id_2d-advanced-detail-regular-expression-engines">below</a>.</p>
+<p>(N.B. As seen in the example, a single backslash (not a double
+backslash as in the R console) is used as escape character. For example
+will <code>\.</code> match a literal “.”, and <code>\d</code> match any
+digit.)</p>
 </div>
 <div class="section level4">
 <h4 id="note-additional-search-arguments">Note: Additional search arguments<a class="anchor" aria-label="anchor" href="#note-additional-search-arguments"></a>
 </h4>
-<p><strong>corporaexplorer</strong> offers two optional arguments that can be used separately or together by adding them to the end of a search pattern (with no space between):</p>
+<p><strong>corporaexplorer</strong> offers two optional arguments that
+can be used separately or together by adding them to the end of a search
+pattern (with no space between):</p>
 <ol style="list-style-type: decimal">
-<li>The “threshold argument” has the syntax <code>--threshold</code> and determines the minimum number of search hits a day/document should contain in order to be coloured in the corpus map:</li>
+<li>The “threshold argument” has the syntax <code>--threshold</code> and
+determines the minimum number of search hits a day/document should
+contain in order to be coloured in the corpus map:</li>
 </ol>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">Russia</span><span class="op">-</span><span class="op">-</span><span class="fl">10</span>  <span class="co"># Will find documents that includes the pattern "Russia" at least 10 times.</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">Russia</span><span class="op">-</span><span class="op">-</span><span class="fl">10</span>  <span class="co"># Will find documents that includes the pattern "Russia" at least 10 times.</span></span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
-<li>The “column argument” has the syntax <code>--column_name</code> and allows for searches in other columns than the default full text column:</li>
+<li>The “column argument” has the syntax <code>--column_name</code> and
+allows for searches in other columns than the default full text
+column:</li>
 </ol>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">Russia</span><span class="op">-</span><span class="op">-</span><span class="va">Title</span>  <span class="co"># Will find documents that has the pattern "Russia" in its "Title" column.</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">Russia</span><span class="op">-</span><span class="op">-</span><span class="va">Title</span>  <span class="co"># Will find documents that has the pattern "Russia" in its "Title" column.</span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>The two arguments can be combined in any order:</li>
 </ol>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">Russia</span><span class="op">-</span><span class="op">-</span><span class="fl">2</span><span class="op">-</span><span class="op">-</span><span class="va">Title</span>
-<span class="va">Russia</span><span class="op">-</span><span class="op">-</span><span class="va">Title</span><span class="op">-</span><span class="op">-</span><span class="fl">2</span>
-<span class="co"># Will both find documents that includes the pattern "Russia" at least 2 times</span>
-<span class="co"># in the Title column.</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">Russia</span><span class="op">-</span><span class="op">-</span><span class="fl">2</span><span class="op">-</span><span class="op">-</span><span class="va">Title</span></span>
+<span><span class="va">Russia</span><span class="op">-</span><span class="op">-</span><span class="va">Title</span><span class="op">-</span><span class="op">-</span><span class="fl">2</span></span>
+<span><span class="co"># Will both find documents that includes the pattern "Russia" at least 2 times</span></span>
+<span><span class="co"># in the Title column.</span></span></code></pre></div>
 <p>These arguments have the following consequences:</p>
 <ul>
 <li>
-<em>If used in the “Term(s) to chart” fields</em>: The corpus map plot will use colour fillings to indicate days/documents that satisfy the search arguments. Likewise, the summary statistics displayed in the “Corpus info” tab will be based on the documents matching the search arguments. In the documents themselves, all pattern matches will be highlighted. For example, a search for <code>Russia--Title</code> will in the corpus map plot colour only documents with the pattern Russia in the Title column, but the pattern Russia will be highlighted in all documents.</li>
+<em>If used in the “Term(s) to chart” fields</em>: The corpus map
+plot will use colour fillings to indicate days/documents that satisfy
+the search arguments. Likewise, the summary statistics displayed in the
+“Corpus info” tab will be based on the documents matching the search
+arguments. In the documents themselves, all pattern matches will be
+highlighted. For example, a search for <code>Russia--Title</code> will
+in the corpus map plot colour only documents with the pattern Russia in
+the Title column, but the pattern Russia will be highlighted in all
+documents.</li>
 <li>
-<em>If used in the “Add terms for highlighting” field</em>: The pattern will be highlighted in all documents. The summary statistics displayed in the “Corpus info” tab will be based on the documents matching the search arguments.</li>
+<em>If used in the “Add terms for highlighting” field</em>: The
+pattern will be highlighted in all documents. The summary statistics
+displayed in the “Corpus info” tab will be based on the documents
+matching the search arguments.</li>
 <li>
-<em>If used in the “Filter corpus” field</em>: The corpus will be filtered to include only documents that match the search arguments.</li>
+<em>If used in the “Filter corpus” field</em>: The corpus will be
+filtered to include only documents that match the search arguments.</li>
 </ul>
 </div>
 </div>
 <div class="section level3">
 <h3 id="b--corpus-map">2b. Corpus map<a class="anchor" aria-label="anchor" href="#b--corpus-map"></a>
 </h3>
-<p>The result of the search is an interactive heat map, a <strong>corpus map</strong>, where the filling indicates how many times the search term is found (legend above the plot).</p>
-<p>In the <strong>calendar view</strong> (only for date-based corpora), each tile represents a day, and the filling indicates how many times the search term is found in the documents that day:</p>
+<p>The result of the search is an interactive heat map, a <strong>corpus
+map</strong>, where the filling indicates how many times the search term
+is found (legend above the plot).</p>
+<p>In the <strong>calendar view</strong> (only for date-based corpora),
+each tile represents a day, and the filling indicates how many times the
+search term is found in the documents that day:</p>
 <p><img src="../reference/figures/first_search.png" width="80%"></p>
 <p><br></p>
-<p>In the <strong>document wall view</strong>, each tile represents one document, and the filling indicates how many times the search term is found in this document:</p>
+<p>In the <strong>document wall view</strong>, each tile represents one
+document, and the filling indicates how many times the search term is
+found in this document:</p>
 <p><img src="../reference/figures/wall_1.png" width="80%"></p>
 <p><br></p>
-<p>The <strong>Corpus info</strong> tab presents some very basic summary statistics of the search results. (Look at e.g. <a href="https://github.com/quanteda/quanteda" class="external-link"><code>quanteda</code></a> and <a href="https://github.com/juliasilge/tidytext" class="external-link"><code>tidytext</code></a> for excellent R packages for <em>quantitative</em> text analysis. Using such packages together with <strong>corporaexplorer</strong> is highly recommended in order to combine qualitative and quantitative insights.)</p>
-<p>Clicking on a tile in the corpus map opens the <strong>document view</strong> to the right of the corpus map.</p>
+<p>The <strong>Corpus info</strong> tab presents some very basic summary
+statistics of the search results. (Look at e.g. <a href="https://github.com/quanteda/quanteda" class="external-link"><code>quanteda</code></a>
+and <a href="https://github.com/juliasilge/tidytext" class="external-link"><code>tidytext</code></a>
+for excellent R packages for <em>quantitative</em> text analysis. Using
+such packages together with <strong>corporaexplorer</strong> is highly
+recommended in order to combine qualitative and quantitative
+insights.)</p>
+<p>Clicking on a tile in the corpus map opens the <strong>document
+view</strong> to the right of the corpus map.</p>
 </div>
 <div class="section level3">
 <h3 id="c--document-view">2c. Document view<a class="anchor" aria-label="anchor" href="#c--document-view"></a>
 </h3>
-<p><strong>When in calendar view</strong>: Clicking on a day creates a second heat map tile chart where one tile is one document, and where the colour in a tile indicates how many times the search term is found in the document. In the box below is produced a list of the title of the documents this day.</p>
+<p><strong>When in calendar view</strong>: Clicking on a day creates a
+second heat map tile chart where one tile is one document, and where the
+colour in a tile indicates how many times the search term is found in
+the document. In the box below is produced a list of the title of the
+documents this day.</p>
 <p><img src="../reference/figures/day_corpus.png" width="80%"></p>
 <p><br></p>
-<p>Clicking on a “document tile” produces two things. First, the full text of the document with search terms highlighted. Second, above the text a tile chart consisting of n tiles where each tile represents a 1/n part of the document, and where the colour in a tile indicates whether and how many times the search term is found in that part of the document. Clicking on a tile scrolls the document to the corresponding part of the document.</p>
+<p>Clicking on a “document tile” produces two things. First, the full
+text of the document with search terms highlighted. Second, above the
+text a tile chart consisting of n tiles where each tile represents a 1/n
+part of the document, and where the colour in a tile indicates whether
+and how many times the search term is found in that part of the
+document. Clicking on a tile scrolls the document to the corresponding
+part of the document.</p>
 <p><img src="../reference/figures/wall.png" width="80%"></p>
-<p><strong>When in document wall view</strong>: Clicking on a tile in the corpus map leads straight to the relevant document.</p>
+<p><strong>When in document wall view</strong>: Clicking on a tile in
+the corpus map leads straight to the relevant document.</p>
 </div>
 <div class="section level3">
 <h3 id="d--advanced-detail-regular-expression-engines">2d. Advanced detail: Regular expression engines<a class="anchor" aria-label="anchor" href="#d--advanced-detail-regular-expression-engines"></a>
 </h3>
-<p><code><a href="../reference/explore.html">explore()</a></code> lets you choose among three regex engine setups:</p>
+<p><code><a href="../reference/explore.html">explore()</a></code> lets you choose among three regex engine
+setups:</p>
 <ol style="list-style-type: decimal">
 <li>
-<code>default</code>: use the <a href="https://github.com/girishji/re2" class="external-link"><code>re2</code></a> package for simple searches and the <a href="https://github.com/tidyverse/stringr" class="external-link"><code>stringr</code></a> package for complex regexes (details below). This is the recommended option.</li>
+<code>default</code>: use the <a href="https://github.com/girishji/re2" class="external-link"><code>re2</code></a> package for
+simple searches and the <a href="https://github.com/tidyverse/stringr" class="external-link"><code>stringr</code></a>
+package for complex regexes (details below). This is the recommended
+option.</li>
 <li>use <code>stringr</code> for all searches.</li>
 <li>use <code>re2</code>for all searches.</li>
 </ol>
-<p><code>re2</code> is very fast but has a more limited feature set than <code>stringr</code>, especially in handling non-ASCII text, including word boundary detection. With the <code>default</code> option, the <code>re2</code> engine is run when no special regex characters are used; otherwise <code>stringr</code> is used. This option should fit most use cases.</p>
-<p>Please consult the documentation for <a href="https://github.com/girishji/re2" class="external-link"><code>re2</code></a> and <a href="https://github.com/tidyverse/stringr" class="external-link"><code>stringr</code></a> for full information about syntax flavours.</p>
-<p>By default, searches for patterns consisting of a single word and without special characters will be carried out in a document term matrix. Other searches are carried out in full text.</p>
-<p>Advanced users can set the <code>optional_info</code> parameter in <code><a href="../reference/explore.html">explore()</a></code> to <code>TRUE</code>: this will print to console the following information for each input term: which regex engine was used, and whether the search was carried out in the document term matrix or in the full text documents.</p>
+<p><code>re2</code> is very fast but has a more limited feature set than
+<code>stringr</code>, especially in handling non-ASCII text, including
+word boundary detection. With the <code>default</code> option, the
+<code>re2</code> engine is run when no special regex characters are
+used; otherwise <code>stringr</code> is used. This option should fit
+most use cases.</p>
+<p>Please consult the documentation for <a href="https://github.com/girishji/re2" class="external-link"><code>re2</code></a> and <a href="https://github.com/tidyverse/stringr" class="external-link"><code>stringr</code></a> for
+full information about syntax flavours.</p>
+<p>By default, searches for patterns consisting of a single word and
+without special characters will be carried out in a document term
+matrix. Other searches are carried out in full text.</p>
+<p>Advanced users can set the <code>optional_info</code> parameter in
+<code><a href="../reference/explore.html">explore()</a></code> to <code>TRUE</code>: this will print to console
+the following information for each input term: which regex engine was
+used, and whether the search was carried out in the document term matrix
+or in the full text documents.</p>
 </div>
 </div>
 <div class="section level2">
 <h2 id="the-download-documents-app">3. The download documents app<a class="anchor" aria-label="anchor" href="#the-download-documents-app"></a>
 </h2>
-<p>This app is a simple helper app to retrieve a subset of the corpus in a format suitable for close reading.</p>
+<p>This app is a simple helper app to retrieve a subset of the corpus in
+a format suitable for close reading.</p>
 <p><img src="../reference/figures/download_tool.png" width="80%"></p>
-<p>Start the app by running the <code><a href="../reference/run_document_extractor.html">run_document_extractor()</a></code> function with a “corporaexplorerobject” created by <code><a href="../reference/prepare_data.html">prepare_data()</a></code> as argument. Run the following in the R console to see documentation for the <code><a href="../reference/run_document_extractor.html">run_document_extractor()</a></code> function.</p>
+<p>Start the app by running the <code><a href="../reference/run_document_extractor.html">run_document_extractor()</a></code>
+function with a “corporaexplorerobject” created by
+<code><a href="../reference/prepare_data.html">prepare_data()</a></code> as argument. Run the following in the R
+console to see documentation for the
+<code><a href="../reference/run_document_extractor.html">run_document_extractor()</a></code> function.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer/" class="external-link">corporaexplorer</a></span><span class="op">)</span>
-<span class="op">?</span><span class="va">run_document_extractor</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer/" class="external-link">corporaexplorer</a></span><span class="op">)</span></span>
+<span><span class="op">?</span><span class="va">run_document_extractor</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="a--sidebar-input-1">3a. Sidebar input<a class="anchor" aria-label="anchor" href="#a--sidebar-input-1"></a>
 </h3>
 <ul>
 <li>
-<strong>Term(s) to highlight</strong>: An arbitrary number of search terms (regular expressions) that will be highlighted in the documents in the produced HTML reports.</li>
+<strong>Term(s) to highlight</strong>: An arbitrary number of search
+terms (regular expressions) that will be highlighted in the documents in
+the produced HTML reports.</li>
 <li>
-<strong>Filter corpus?</strong>: Input terms here (one on each line) will filter the corpus so that it includes only documents where all these terms are present. Unlike terms entered in the two fields above, these terms will not be included in the summary statistics in the “Corpus info” tab. An arbitrary number of terms can be used.</li>
+<strong>Filter corpus?</strong>: Input terms here (one on each line)
+will filter the corpus so that it includes only documents where all
+these terms are present. Unlike terms entered in the two fields above,
+these terms will not be included in the summary statistics in the
+“Corpus info” tab. An arbitrary number of terms can be used.</li>
 <li>
-<strong>Case sensitive search</strong>: Check this box to distinguish between lower and upper case in the search. Unchecked, <code>war</code> will find both “war” and “War”; if checked, <code>war</code> will only find “war”.</li>
+<strong>Case sensitive search</strong>: Check this box to
+distinguish between lower and upper case in the search. Unchecked,
+<code>war</code> will find both “war” and “War”; if checked,
+<code>war</code> will only find “war”.</li>
 <li>
-<strong>“Year range” or “date range”</strong>: Filters the corpus (the first and last date included).</li>
+<strong>“Year range” or “date range”</strong>: Filters the corpus
+(the first and last date included).</li>
 </ul>
-<p>By default, there is an upper limit of 400 documents to be included in one report (can be changed in the <code>max_html_docs</code> parameter in <code><a href="../reference/run_document_extractor.html">run_document_extractor()</a></code>).</p>
+<p>By default, there is an upper limit of 400 documents to be included
+in one report (can be changed in the <code>max_html_docs</code>
+parameter in <code><a href="../reference/run_document_extractor.html">run_document_extractor()</a></code>).</p>
 </div>
 <div class="section level3">
 <h3 id="b--advanced-detail-regular-expression-engines">3b. Advanced detail: Regular expression engines<a class="anchor" aria-label="anchor" href="#b--advanced-detail-regular-expression-engines"></a>
 </h3>
-<p>Speed is considered to be of less importance in this app, and all searches are carried out as full text searches with <code>stringr</code>. Again, note that a single backslash is used as escape character. For example will <code>\.</code> match a literal “.”, and <code>\d</code> match any digit.</p>
+<p>Speed is considered to be of less importance in this app, and all
+searches are carried out as full text searches with
+<code>stringr</code>. Again, note that a single backslash is used as
+escape character. For example will <code>\.</code> match a literal “.”,
+and <code>\d</code> match any digit.</p>
 <hr>
 </div>
 </div>
@@ -319,7 +456,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
