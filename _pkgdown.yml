@@ -40,7 +40,8 @@ navbar:
       menu:
       - text: 'Use with Shiny Server and shinyapps.io'
         href: articles/deployment.html
-
 template:
-  params:
-    ganalytics: UA-130957512-2
+  includes:
+    after_body: >
+      <script data-goatcounter="https://esel.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
