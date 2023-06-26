@@ -38,7 +38,7 @@ bible <- paste(bible, collapse = "\n")
 
 # Identifying the beginning and end of the Bible / stripping PJ metadata
  # (technique borrowed from https://quanteda.io/articles/pkgdown/replication/digital-humanities.html).
-start_v <- stri_locate_first_fixed(bible, "The First Book of Moses:  Called Genesis")[1]
+start_v <- stri_locate_first_fixed(bible, "The First Book of Moses: Called Genesis")[1]
 end_v <- stri_locate_last_fixed(bible, "Amen.")[2]
 bible <- stri_sub(bible, start_v, end_v)
 
@@ -54,6 +54,7 @@ books <- stri_split_regex(bible, "\n{5}") %>%
 books <- str_replace_all(books, "\n{2,}", "NEW_PARAGRAPH") %>%
     str_replace_all("\n", " ") %>%
     str_replace_all("NEW_PARAGRAPH", "\n\n")
+books <- books[3:68]  # The two first elements are not books
 
 # Identifying new chapters within each book and split the text into chapters.
 # (The first characters in chapter 2 will e.g. be 2:1)
