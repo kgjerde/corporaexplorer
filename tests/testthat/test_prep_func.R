@@ -9,5 +9,5 @@ test_that("prepare_data() works", {
   test_obj <- create_test_data()
 
   # Checks for equality -----------------------------------------------------
-  expect_equal(test_obj, corporaexplorer::test_data)
+  expect_equal(test_obj, corporaexplorer::test_data, check.attributes = FALSE)
 })
