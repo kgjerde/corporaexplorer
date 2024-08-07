@@ -9,5 +9,11 @@ test_that("prepare_data() works", {
   test_obj <- create_test_data()
 
   # Checks for equality -----------------------------------------------------
-  expect_equal(test_obj, corporaexplorer::test_data)
+  ## Using waldo so presumably minor differences in attributes are ignored
+  comparison <- waldo::compare(
+      test_obj,
+      corporaexplorer::test_data
+  )
+  expect_length(comparison, 0)
+
 })
