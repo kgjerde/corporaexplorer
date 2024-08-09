@@ -1,5 +1,7 @@
 #' Launch Shiny app for retrieval of documents from text collection
 #'
+#' This function will be removed in a future version of corporexplorer.
+#'
 #' Shiny app for simple retrieval/extraction of
 #' documents from a "corporaexplorerobject" in a reading-friendly format.
 #' Interrupt R to stop the application (usually by pressing Ctrl+C or Esc).
@@ -30,6 +32,13 @@
 #' run_document_extractor(corpus)
 #' }
 run_document_extractor <- function(corpus_object, max_html_docs = 400, ...) {
+
+  warning(
+    "The 'run_document_extractor()' app will be removed in a future version of corporaexplorer.",
+    call. = FALSE,
+    domain = NA
+  )
+
   app <- system.file("download", "app.R", package = "corporaexplorer")
   if (app == "") {
     stop("Could not find directory. Try re-installing `corporaexplorer`.", call. = FALSE)

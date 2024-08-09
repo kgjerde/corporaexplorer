@@ -16,6 +16,9 @@ run_document_extractor(corpus_object, max_html_docs = 400, ...)
 package.}
 }
 \description{
+This function will be removed in a future version of corporexplorer.
+}
+\details{
 Shiny app for simple retrieval/extraction of
 documents from a "corporaexplorerobject" in a reading-friendly format.
 Interrupt R to stop the application (usually by pressing Ctrl+C or Esc).
