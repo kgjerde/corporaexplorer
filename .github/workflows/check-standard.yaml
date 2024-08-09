@@ -20,7 +20,6 @@ jobs:
         config:
           - {os: macos-latest, r: 'release'}
           - {os: windows-latest, r: 'release'}
-          - {os: ubuntu-latest, r: 'devel', http-user-agent: 'release'}
           - {os: ubuntu-latest, r: 'release'}
           - {os: ubuntu-latest, r: 'oldrel-1'}
 
@@ -43,11 +42,6 @@ jobs:
         with:
           extra-packages: any::rcmdcheck
           needs: check
-
-      - name: Install phantomJS
-        uses: rstudio/shiny-workflows/setup-phantomjs@v1
-        with:
-          cache-version: ${{ inputs.cache-version }}
 
       - uses: r-lib/actions/check-r-package@v2
         with:
