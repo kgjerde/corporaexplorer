@@ -36,7 +36,11 @@ Imports:
 	stringr,
 	tibble,
 	tidyr
-Suggests: janeaustenr, shinytest, sotu, testthat, waldo
+Suggests: 
+    janeaustenr,
+    shinytest2,
+    sotu,
+    testthat (>= 3.0.0)
 License: GPL-3 | file LICENSE
 Date/Publication: 2022
 LazyData: true
@@ -44,3 +48,4 @@ RoxygenNote: 7.3.2
 Encoding: UTF-8
 URL: https://kgjerde.github.io/corporaexplorer/, https://github.com/kgjerde/corporaexplorer
 BugReports: https://github.com/kgjerde/corporaexplorer/issues
+Config/testthat/edition: 3
