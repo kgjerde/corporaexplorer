@@ -1,5 +1,5 @@
 
-# Important for shinytest to work -----------------------------------------
+# Important for shinytest2 to work -----------------------------------------
 library(corporaexplorer)
 
 # Data set-up -------------------------------------------------------------
