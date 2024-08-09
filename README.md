@@ -10,7 +10,7 @@ status](https://www.r-pkg.org/badges/version/corporaexplorer)](https://cran.r-pr
 [![License: GPL
 v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![R build
-status](https://github.com/kgjerde/corporaexplorer/workflows/R-CMD-check/badge.svg)](https://github.com/kgjerde/corporaexplorer/actions)
+status](https://github.com/kgjerde/corporaexplorer/actions/workflows/check-standard.yaml/badge.svg)](https://github.com/kgjerde/corporaexplorer/actions)
 [![DOI](http://joss.theoj.org/papers/10.21105/joss.01342/status.svg)](https://doi.org/10.21105/joss.01342)
 [![Mentioned in Awesome
 R](https://awesome.re/mentioned-badge.svg)](https://github.com/qinwf/awesome-R)
