@@ -102,11 +102,6 @@ devtools::install_github("kgjerde/corporaexplorer")
 look much clunkier on Windows than on the other platforms, but the apps
 are fully functional.)
 
-*Note to developers: The package’s internal test suite uses the
-[`shinytest`](https://github.com/rstudio/shinytest) package, which
-requires that [`PhantomJS`](https://phantomjs.org/) is installed. This
-can be done through the `shinytest::installDependencies()` function.*
-
 ## How to cite
 
 Please cite the following paper if you use **corporaexplorer** in your

@@ -100,11 +100,6 @@ devtools::install_github("kgjerde/corporaexplorer")
 look much clunkier on Windows than on the other platforms, but the apps
 are fully functional.)
 
-*Note to developers: The package’s internal test suite uses the
-[`shinytest`](https://github.com/rstudio/shinytest) package, which
-requires that [`PhantomJS`](https://phantomjs.org/) is installed. This
-can be done through the `shinytest::installDependencies()` function.*
-
 ## How to cite
 
 Please cite the following paper if you use **corporaexplorer** in your
@@ -149,15 +144,44 @@ and <https://kgjerde.github.io/corporaexplorer/articles/sotu.html>, and
 also the [function
 references](https://kgjerde.github.io/corporaexplorer/reference/index.html).
 
+## A note on platforms and encoding
+
+**corporaexplorer** works on Mac OS, Windows and Linux, and there are
+some important differences in how R handles text on the different
+platforms. If you are working with plain English text, there will most
+likely be no issues with encoding on any platform. Unfortunately,
+working with non-[ASCII](https://en.wikipedia.org/wiki/ASCII) encoded
+text in R (e.g. non-English characters), *can* be complicated – in
+particular on Windows.
+
+**On Mac OS or Linux**, problems with encoding will likely not arise at
+all. If problems do arise, they can typically be solved by making the R
+“locale” unicode-friendly
+(e.g. `Sys.setlocale("LC_ALL", "en_US.UTF-8")`). NB! This assumes that
+the text is UTF-8 encoded, so if changing the locale in this way does
+not help, make sure that the text is encoded as UTF-8 characters.
+Alternatively, if you can ascertain the character encoding, set the
+locale correspondingly.
+
+**On Windows**, things can be much more complicated. The most important
+thing is to check carefully that the texts appear as expected in
+`corporaexplorer`’s apps, and that the searches function as expected. If
+there are problems, a good place to start is a blog post with the
+telling title [“Escaping from character encoding hell in R on
+Windows”](https://www.r-bloggers.com/2016/06/escaping-from-character-encoding-hell-in-r-on-windows/).
+
+For (a lot) more information about encoding, see [this informative
+article](https://kunststube.net/encoding/) by David C. Zentgraf.
+
 ## Contributing
 
 Contributions in the form of feedback, bug reports and code are most
 welcome. Ways to contribute:
 
--   Contact [me](mailto:klg@nupi.no) by email.
--   Issues and bug reports: [File a GitHub
-    issue](https://github.com/kgjerde/corporaexplorer/issues).
--   Fork the source code, modify, and issue a [pull
-    request](https://docs.github.com/articles/creating-a-pull-request-from-a-fork/)
-    through the [project GitHub
-    page](https://github.com/kgjerde/corporaexplorer).
+- Contact [me](mailto:klg@nupi.no) by email.
+- Issues and bug reports: [File a GitHub
+  issue](https://github.com/kgjerde/corporaexplorer/issues).
+- Fork the source code, modify, and issue a [pull
+  request](https://docs.github.com/articles/creating-a-pull-request-from-a-fork/)
+  through the [project GitHub
+  page](https://github.com/kgjerde/corporaexplorer).
