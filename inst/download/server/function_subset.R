@@ -6,7 +6,7 @@
 # }
 
 subset_date <- function(.tibble, date_1, date_2) {
-    filtrert_tibble <- .tibble[.tibble$Date %in% date_1:date_2,]
+    filtrert_tibble <- .tibble[.tibble$Date >= date_1 & .tibble$Date <= date_2,]
     return(filtrert_tibble)
 }
 
@@ -37,11 +37,11 @@ subset_terms <- function(.tibble, terms, threshold, custom_column) {
             } else {
                 text_column <- rlang::sym("Text")
             }
-            
+
             if (is.na(threshold[i])) {
                 threshold[i] <- 1
             }
-            
+
             .tibble <- .tibble %>%
                 dplyr::mutate(hitcount =
                                   stringr::str_count(

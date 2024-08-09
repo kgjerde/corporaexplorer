@@ -12,27 +12,26 @@ filtrere_korpus_tid <-
         .tibble[.tibble$Year %in% search_arguments$time_range, ]
       return(filtrert_tibble)
     } else if (search_arguments$time_filtering_mode == "Date range") {
+        start_date <- search_arguments$time_range[1]
+        end_date <- search_arguments$time_range[2]
       if (plot_mode == "data_365") {
         # Not removing dates outside of the range but in the same year,
         # but rendering them empty/outside of corpus:
          # Identifying:
         ikke_i_subset_indekser <- which(
-          .tibble$Date %in%
-            first_day_in_year(search_arguments$time_range[1]):(search_arguments$time_range[1] - 1)
-          |
-            .tibble$Date %in%
-              (search_arguments$time_range[2] + 1):last_day_in_year(search_arguments$time_range[2])
+             (.tibble$Date >= first_day_in_year(start_date) & .tibble$Date < start_date) |
+             (.tibble$Date > end_date & .tibble$Date <= last_day_in_year(end_date))
         )
         # Rendering "empty"
         .tibble$Day_without_docs[ikke_i_subset_indekser] <- TRUE
         .tibble$Invisible_fake_date[ikke_i_subset_indekser] <- TRUE
         # And then filtering.
-
         filtrert_tibble <-
-          .tibble[.tibble$Year %in% lubridate::year(search_arguments$time_range[1]):lubridate::year(search_arguments$time_range[2]), ]
+            .tibble[.tibble$Date >= first_day_in_year(start_date) &
+                        .tibble$Date <= last_day_in_year(end_date), ]
       } else if (plot_mode == "data_dok") {
-        filtrert_tibble <-
-          .tibble[.tibble$Date %in% search_arguments$time_range[1]:search_arguments$time_range[2], ]
+          filtrert_tibble <-
+              .tibble[.tibble$Date >= start_date & .tibble$Date <= end_date, ]
       }
       return(filtrert_tibble)
     }
