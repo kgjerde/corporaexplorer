@@ -27,8 +27,9 @@ a <-
     drop=FALSE  # To include my dummy levels
   )
 
-# Fill, one for each search_term (or for no search_term)
+test1 <- improve_visualisation_of_2_terms(test1, linjer)
 
+# Fill, one for each search_term (or for no search_term)
 for (i in seq_len(linjer)) {
   a <-
     a + ggplot2::geom_rect(data = test1[test1$df == i,],

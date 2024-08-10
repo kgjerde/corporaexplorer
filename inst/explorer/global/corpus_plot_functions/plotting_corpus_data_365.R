@@ -61,6 +61,7 @@ plotting_corpus_data_365 <- function(test1, x_breaks, y_text, legend_df, linjer)
             drop=FALSE  # To include my dummy levels
         )
 
+test1 <- improve_visualisation_of_2_terms(test1, linjer)
 
 # Fill, one for each search_term (or for no search_term)
 for (i in seq_len(linjer)) {
