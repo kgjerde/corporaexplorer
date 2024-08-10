@@ -1,6 +1,11 @@
 # corporaexplorer 0.8.6.9000
 
-* Changed internals to avoid ggplot2 warning (fbf1dd6)
+* Any character column can be specified as as the column containing the main textual data (not only 'Text' as before).
+* Non-date-based corpora can now contain column called 'Date'.
+* Improve control over order of groups in corpora not based on date (7892551).
+* Changes in reserved column names (among other things, 'Year' is now allowed).
+
+* Changed internals to avoid ggplot2 warning (CHECK COMMIT #)
 
 # corporaexplorer 0.8.6
 

@@ -2,13 +2,15 @@
 
 #' Adjusts data frame to corporaexplorer format
 #'
-#' @param df Data frame with Date column (Date), Text column (character), and
-#'   optionally Title (character), URL (character), and Type (character)
+#' @param df Data frame with text column (character),
+#'   Date column (Date) (if date based corpus),
+#'   and
+#'   optionally other
 #'   columns.
 #' @param tile_length_range Numeric vector of length two.
 #'   Fine-tune the tile lengths in document wall
 #'   and day corpus view. Tile length is calculated by
-#'   \code{scales::rescale(nchar(dataset$Text),
+#'   \code{scales::rescale(nchar(dataset[[text_column]]),
 #'   to = tile_length_range,
 #'   from = c(0, max(.)))}
 #'   Default is \code{c(1, 10)}.
@@ -19,31 +21,31 @@ transform_regular <- function(df, tile_length_range = c(1, 10)) {
 
   df <- dplyr::arrange(df, Date)
 
-  df$Year <- lubridate::year(df$Date)
+  df$Year_ <- lubridate::year(df$Date)
 
-  df$Tile_length <- nchar(df$Text) %>%
+  df$Tile_length <- nchar(df$Text_column_) %>%
     scales::rescale(to = tile_length_range, from = c(0, max(.)))
 
-  df$ID <- seq_len(nrow(df))
+  df$cx_ID <- seq_len(nrow(df))
 
-  df$Text_original_case <- df$Text
+  df$Text_original_case <- df$Text_column_
 
-  df$Text <-
-    stringr::str_to_lower(df$Text) # for søke-purposes
+  df$Text_column_ <-
+    stringr::str_to_lower(df$Text_column_) # for søke-purposes
 
   df <- dplyr::select(df,
-                ID,
+                cx_ID,
                 Date,
-                Text,
+                Text_column_,
                 Text_original_case,
                 Tile_length,
-                Year,
-                sort(colnames(df)[!colnames(df) %in% c("ID",
+                Year_,
+                sort(colnames(df)[!colnames(df) %in% c("cx_ID",
                                                                "Date",
-                                                               "Text",
+                                                               "Text_column_",
                                                                "Text_original_case",
                                                                "Tile_length",
-                                                               "Year")]))
+                                                               "Year_")]))
 
   message("Document data frame done.")
   return(df)
@@ -63,29 +65,29 @@ transform_365 <- function(new_df) {
 
   df_365 <- new_df['Date'] %>%
     dplyr::distinct() %>%
-    dplyr::mutate(Text = "Date with document in original df")
+    dplyr::mutate(Text_column_ = "Date with document in original df")
 
   min_date <- min(df_365$Date)
   max_date <- max(df_365$Date)
 
-  df_365$Year <- lubridate::year(df_365$Date)
+  df_365$Year_ <- lubridate::year(df_365$Date)
 
   df_365 <-
     padr::pad(df_365,
       interval = "day",
-      start_val = as.Date(paste0(min(df_365$Year), "-01-01")),
-      end_val = as.Date(paste0(max(df_365$Year), "-12-31"))
+      start_val = as.Date(paste0(min(df_365$Year_), "-01-01")),
+      end_val = as.Date(paste0(max(df_365$Year_), "-12-31"))
     )
 
-  df_365$Day_without_docs <- is.na(df_365$Text)
+  df_365$Day_without_docs <- is.na(df_365$Text_column_)
 
-  df_365$Text <- NULL
+  df_365$Text_column_ <- NULL
 
   df_365$Day_without_docs[df_365$Day_without_docs == FALSE] <- NA
 
   df_365$Tile_length <- 1
 
-  df_365$Year <- lubridate::year(df_365$Date)
+  df_365$Year_ <- lubridate::year(df_365$Date)
 
   df_365$Weekday_n <- lubridate::wday(df_365$Date, week_start = 1)
 
@@ -94,14 +96,14 @@ transform_365 <- function(new_df) {
   df_365$Yearday_n <- lubridate::yday(df_365$Date)
 
   df_365 <-
-    dplyr::arrange(df_365, Year, Weekday_n, Yearday_n, Month_n)
+    dplyr::arrange(df_365, Year_, Weekday_n, Yearday_n, Month_n)
 
   df_365$Invisible_fake_date <- FALSE
 
   df_365$Invisible_fake_date[df_365$Date < min_date | df_365$Date > max_date] <- TRUE
 
   df_365_month_dividers <- df_365 %>%
-    dplyr::group_by(Year) %>%
+    dplyr::group_by(Year_) %>%
     dplyr::slice(1) %>%
     dplyr::mutate(Diff = Yearday_n - Weekday_n) %>%
     dplyr::filter(Diff > 0) %>%
@@ -112,7 +114,7 @@ transform_365 <- function(new_df) {
     for (row in seq_len(nrow(df_365_month_dividers))) {
       temp_tib <- tibble::tibble(
         Date = as.Date("8000-01-01"),
-        Year = df_365_month_dividers$Year[row],
+        Year_ = df_365_month_dividers$Year_[row],
         Month_n = 1,
         Weekday_n = seq_len(df_365_month_dividers$Diff[row]),
         Yearday_n = sort(-seq_len(df_365_month_dividers$Diff[row]), decreasing = FALSE),
@@ -131,14 +133,14 @@ transform_365 <- function(new_df) {
   }
 
   df_365 <-
-    dplyr::arrange(df_365, Year, Weekday_n, Yearday_n, Month_n)
+    dplyr::arrange(df_365, Year_, Weekday_n, Yearday_n, Month_n)
 
-  df_365$ID <- seq_len(nrow(df_365))
+  df_365$cx_ID <- seq_len(nrow(df_365))
 
   df_365 <- dplyr::select(df_365,
-                          ID,
+                          cx_ID,
                           Date,
-                          Year,
+                          Year_,
                           Weekday_n,
                           Day_without_docs,
                           Invisible_fake_date,
@@ -180,10 +182,10 @@ transform_365 <- function(new_df) {
 #'   vector).
 #' @keywords internal
 matrix_via_r <- function(df, matrix_without_punctuation = TRUE) {
-  df <- dplyr::select(df, Text, ID)
+  df <- dplyr::select(df, Text_column_, cx_ID)
 
   if (matrix_without_punctuation == TRUE) {
-    df$Text <- df$Text %>%
+    df$Text_column_ <- df$Text_column_ %>%
       # To satisfy R CMD check:
       # I have run stringi::stri_escape_unicode("[\\Q!"#$%&\'()*+,/:;<=>?@[]^_`{|}~«»…\\E]")
       # to see which non-ascii characters had to be replaced
@@ -195,7 +197,7 @@ matrix_via_r <- function(df, matrix_without_punctuation = TRUE) {
       stringr::str_replace_all("\\d", "")
   }
 
-  df$Text <- df$Text %>%
+  df$Text_column_ <- df$Text_column_ %>%
     stringr::str_replace_all("\\s", " ") %>%
     stringr::str_replace_all(" {2,}", " ") %>%
     stringr::str_trim()
@@ -204,13 +206,13 @@ matrix_via_r <- function(df, matrix_without_punctuation = TRUE) {
 
   data.table::setDT(df)
   df <-
-    df[, list(word = unlist(stringi::stri_split_fixed(Text, pattern = " "))),
+    df[, list(word = unlist(stringi::stri_split_fixed(Text_column_, pattern = " "))),
       by =
-        ID
+        cx_ID
     ][,
       list(count = .N),
-      by = c("ID", "word")
-    ][order(ID, word), ]
+      by = c("cx_ID", "word")
+    ][order(cx_ID, word), ]
 
   message("Document term matrix: tokenising completed.")
 
@@ -222,7 +224,7 @@ matrix_via_r <- function(df, matrix_without_punctuation = TRUE) {
     plyr::mapvalues(df$word, ord, seq_along(ord)) %>%
     as.integer()
 
-  df <- dplyr::select(df, ID, word, count)
+  df <- dplyr::select(df, cx_ID, word, count)
 
   colnames(df) <- c("i", "j", "x")
 
@@ -329,22 +331,32 @@ prepare_data <- function(dataset, ...) {
 #' @export
 #' @rdname prepare_data
 #' @param dataset Object to be converted to a corporaexplorerobject.
-#'   Converts a data frame with a column "Text" (class
+#'   Converts a data frame with a specified column containing text (default column name: "Text") (class
 #'   character), and optionally other columns.
 #'   If \code{date_based_corpus} is \code{TRUE} (the default),
 #'   \code{dataset} must contain a column "Date" (of class Date).
 #' @param date_based_corpus Logical. Set to \code{FALSE} if the corpus
 #'   is not to be organised according to document dates.
-#' @param grouping_variable Character string.
+#' @param text_column Character. Default: "Text".
+#' @param grouping_variable Character string indicating column name in \code{dataset}.
 #'   If \code{date_based_corpus} is \code{TRUE}, this argument is ignored.
 #'   If \code{date_based_corpus} is \code{FALSE}, this argument can be used
 #'   to group the documents, e.g. if \code{dataset} is organised by chapters
 #'   belonging to different books.
 #' @param within_group_identifier Character string indicating column name in \code{dataset}.
-#'  \code{"Seq"}, the default, means the rows in each group are assigned
+#'  If \code{date_based_corpus} is \code{TRUE}, this argument is ignored.
+#'  If \code{date_based_corpus} is \code{FALSE},
+#'  \code{"sequential"}, the default, means the rows in each group are assigned
 #'  a numeric sequence 1:n where n is the number of rows in the group.
 #'  Used in document tab title in non-date based corpora.
-#'  If \code{date_based_corpus} is \code{TRUE}, this argument is ignored.
+#' @param grouping_order Character string.
+#'   If \code{date_based_corpus} is \code{TRUE}, this argument is ignored.
+#'   If \code{date_based_corpus} is \code{FALSE}, this argument specifies
+#'   the order in which the groups (as specified in \code{grouping_variable} is presented in
+#'   the app.
+#'   \code{default} means the order in which the groups first appear in \code{dataset}).
+#'   Alternatively, a character vector including all unique values in 'grouping_variable' in
+#'   the desired order.
 #' @param columns_doc_info Character vector. The columns from \code{dataset} to display in
 #'   the "document information" tab in the corpus exploration app. By default
 #'   "Date", "Title" and "URL" will be
@@ -361,11 +373,13 @@ prepare_data <- function(dataset, ...) {
 #' @details For data.frame: Each row in \code{dataset} is treated as a base differentiating unit in the corpus,
 #'   typically chapters in books, or a single document in document collections.
 #'   The following column names are reserved and cannot be used in \code{dataset}:
-#'   "ID",
+#'   "Date_",
+#'   "cx_ID",
 #'   "Text_original_case",
+#'   "Text_column_",
 #'   "Tile_length",
-#'   "Year",
-#'   "Seq",
+#'   "Year_",
+#'   "cx_Seq",
 #'   "Weekday_n",
 #'   "Day_without_docs",
 #'   "Invisible_fake_date",
@@ -393,8 +407,10 @@ prepare_data <- function(dataset, ...) {
 #' }
 prepare_data.data.frame <- function(dataset,
                          date_based_corpus = TRUE,
+                         text_column = "Text",
                          grouping_variable = NULL,
-                         within_group_identifier = "Seq",
+                         within_group_identifier = "sequential",
+                         grouping_order = "default",
                          columns_doc_info = c("Date", "Title", "URL"),
                          corpus_name = NULL,
                          use_matrix = TRUE,
@@ -423,20 +439,20 @@ prepare_data.data.frame <- function(dataset,
     )
   }
 
-  if ("Text" %in% colnames(dataset) == FALSE) {
-    stop("Hmm. Make sure that 'dataset' contains a 'Text' column.",
+  if (text_column %in% colnames(dataset) == FALSE) {
+    stop("Hmm. Make sure that 'dataset' contains the column specified in 'text_column' (defaults to 'Text').",
       call. = FALSE
     )
   }
 
-  if (anyNA(dataset$Text)) {
-    stop("Hmm. Make sure that 'dataset$Text' does not contain any NA values.",
+  if (anyNA(dataset[[text_column]])) {
+    stop("Hmm. Make sure that the column specified in 'text_column' (defaults to 'Text') does not contain any NA values.",
       call. = FALSE
     )
   }
 
-  if (!is.character(dataset$Text)) {
-    stop("Hmm. Make sure that 'dataset$Text' is a character vector.",
+  if (!is.character(dataset[[text_column]])) {
+    stop("Hmm. Make sure that the column specified in 'text_column' (defaults to 'Text') is a character vector.",
       call. = FALSE
     )
   }
@@ -448,11 +464,12 @@ prepare_data.data.frame <- function(dataset,
     )
   }
 
-  RESERVED_NAMES <- c("ID",
+  RESERVED_NAMES <- c("cx_ID",
                       "Text_original_case",
                       "Tile_length",
-                      "Year",
-                      "Seq",
+                      "Year_",
+                      "cx_Seq",
+                      "Text_column_",
                       "Weekday_n",
                       "Day_without_docs",
                       "Invisible_fake_date",
@@ -502,11 +519,6 @@ prepare_data.data.frame <- function(dataset,
 
   if (date_based_corpus == FALSE) {
 
-    if ("Date" %in% colnames(dataset) == TRUE) {
-      stop("If 'date_based_corpus' == FALSE, 'dataset' is not allowed to contain a 'Date' column.",
-        call. = FALSE)
-    }
-
     if (!is.null(grouping_variable)) {
       if (grouping_variable %in% colnames(dataset) == FALSE) {
         stop("'grouping_variable' has to be a column in 'dataset'.",
@@ -519,10 +531,20 @@ prepare_data.data.frame <- function(dataset,
 # Pre-preparing non_date_based_corpus -------------------------------------
 
   if (date_based_corpus == FALSE) {
-    # 'Date' placeholder
-    dataset$Date <- as.Date("1882-09-05")
-
+      if ("Date" %in% colnames(dataset) == FALSE) {
+          # 'Date' placeholder
+          dataset$Date <- as.Date("1882-09-05")
+      } else {
+          # Temporarily assign 'Date' placeholder
+          dataset$Date_ <- dataset$Date
+          dataset$Date <- as.Date("1882-09-05")
+      }
   }
+
+# Assigning specified text_column -----------------------------------------
+
+dataset$Text_column_ <- dataset[[text_column]]
+dataset[[text_column]] <- NULL
 
 # The main function proper ------------------------------------------------
 
@@ -548,25 +570,50 @@ prepare_data.data.frame <- function(dataset,
 # Post-preparing non_date_based_corpus ------------------------------------
 
   if (date_based_corpus == FALSE) {
-    abc$Date <- NULL
-
-    if (!is.null(grouping_variable)) {
-      abc$Year <- dataset[[grouping_variable]]
-    } else {
-      abc$Year <- " "
+    # Return original 'Date' column, if part of df
+    if ("Date_" %in% colnames(abc) == TRUE) {
+        abc$Date <- abc$Date_
+        abc$Date_ <- NULL
     }
 
-    if (within_group_identifier %in% c("Seq", colnames(dataset)) == FALSE) {
+    if (!is.null(grouping_variable)) {
+      abc$Year_ <- dataset[[grouping_variable]]
+    } else {
+      abc$Year_ <- " "
+    }
+
+    # Renaming argument
+    if (within_group_identifier == "sequential") {
+        within_group_identifier <- "cx_Seq"
+    }
+
+    if (within_group_identifier %in% c("cx_Seq", colnames(dataset)) == FALSE) {
       stop("'within_group_identifier' must be a column in 'dataset'.",
         call. = FALSE)
     }
 
-    if (within_group_identifier == "Seq") {
-      abc <- abc %>%
-        dplyr::group_by(Year) %>%
-        dplyr::mutate(Seq = 1:dplyr::n())
+    # Order of groups
+    groups <- unique(abc$Year_)
+    if (grouping_order == "default") {
+      order_of_groups <- groups
     } else {
-      abc$Seq <- abc[[within_group_identifier]]
+      if (identical(sort(grouping_order), sort(groups))) {
+            order_of_groups <- grouping_order
+        } else {
+            warning("'grouping_order' must correspond to the unique set of values in 'grouping_variable'. 'grouping_order' reverts to 'default'.", call. = FALSE)
+            order_of_groups <- groups
+        }
+    }
+    abc <- abc %>%
+      dplyr::arrange(match(Year_, order_of_groups))
+
+    # Identifier within groups
+    if (within_group_identifier == "cx_Seq") {
+      abc <- abc %>%
+        dplyr::group_by(Year_) %>%
+        dplyr::mutate(cx_Seq = 1:dplyr::n())
+    } else {
+      abc$cx_Seq <- abc[[within_group_identifier]]
     }
 
   }
@@ -594,6 +641,9 @@ prepare_data.data.frame <- function(dataset,
   # For config constants
   loaded_data$date_based_corpus <- date_based_corpus
   loaded_data$original_data$grouping_variable <- grouping_variable
+
+  # Th column specified as text column
+  loaded_data$text_column <- text_column
 
   # Package version with which object is created
   loaded_data$version <- utils::packageVersion("corporaexplorer")

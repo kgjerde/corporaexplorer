@@ -5,22 +5,23 @@ utils::globalVariables(
     "Date",
     "Diff",
     "Month_n",
-    "Text",
+    "Text_column_",
     "Text_original_case",
     "Weekday_n",
-    "Year",
+    "Year_",
     "Yearday_n",
     "count",
     "i",
     "j",
-    "ID",
+    "cx_ID",
     "word",
     ".",
     "Day_without_docs",
     "Invisible_fake_date",
     "Tile_length",
-    # "book" and "text" belong to the demo app function
+    # "book" and "text" and "Text" belong to the demo app function
     "book",
-    "text"
+    "text",
+    "Text"
   )
 )

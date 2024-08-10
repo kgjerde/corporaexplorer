@@ -44,7 +44,7 @@ display_document_info <- function(df, min_rad, info_columns = INFO_COLUMNS) {
                            sep = "<br>",
                            paste0(
                                tags$b("Word count: "),
-                               stringi::stri_count_words(df$Text[min_rad])
+                               stringi::stri_count_words(df$Text_column_[min_rad])
                            ))
 
     other_columns <-

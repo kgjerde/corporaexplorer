@@ -45,8 +45,8 @@ test1$y_max[test1$df == i] <- test1$y_max[test1$df == i] - (day_distance * (i-1)
 #
 # #AVSTAND MELLOM ÅR
 # year_distance<- 1.5
-# test1$y_min <- test1$y_min + (year_distance * test1$Year - min(test1$Year))
-# test1$y_max <- test1$y_max + (year_distance * test1$Year - min(test1$Year))
+# test1$y_min <- test1$y_min + (year_distance * test1$Year_ - min(test1$Year_))
+# test1$y_max <- test1$y_max + (year_distance * test1$Year_ - min(test1$Year_))
 
 return(test1)
 }

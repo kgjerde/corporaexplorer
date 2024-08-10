@@ -77,7 +77,7 @@ rect_tib_vertikal <- tibble::tibble(
   y = test1[test1$df == 1,]$y_min,
   yend = test1[test1$df == 1,]$y_max + linjer - 1,
   # + 2 fordi tre rader i hver dokument FIX
-  Year = test1$Year[test1$df == 1],
+  Year_ = test1$Year_[test1$df == 1],
 )
 
 rect_tib_vertikal$x_mid <- (rect_tib_vertikal$x + rect_tib_vertikal$xend) /
@@ -88,7 +88,7 @@ rect_tib_vertikal$y_mid <- (rect_tib_vertikal$y + rect_tib_vertikal$yend) /
 # dividing_lines_btwn_groups ------------------------------
 
 # Check if there are more than one group
-if (length(unique(test1$Year)) > 1) {
+if (length(unique(test1$Year_)) > 1) {
 
   # Find the y coordinate between the groups
   coordinates_for_dividing_lines_btwn_groups <-

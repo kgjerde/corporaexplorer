@@ -4,7 +4,7 @@
 min_padding <- function(frekvensmatrix, original_tibble){
 # Full vektor -- alle dokumenter
     # full_vector <- seq_len(max(summ$i))
-    full_vector <- original_tibble$ID # MYE raskere å telle rader i text-tibble enn å søke etter maks dok-verdi i matrixen
+    full_vector <- original_tibble$cx_ID # MYE raskere å telle rader i text-tibble enn å søke etter maks dok-verdi i matrixen
 
     # Dokumenter med .pattern
     doc_vector <- unique(frekvensmatrix$i)
@@ -148,7 +148,7 @@ count_matrix <- function(pattern, matriks, df, ordvektor) {
     ## Lager data.table med bare dokumentene som inneholder ordene og total count
     #
     treff_count_matrix <- matriks[j %in% ord_indekser] %>%
-        .[i %in% df$ID] %>%  # bare nødvendig ved subset-filtrering, men koster lite
+        .[i %in% df$cx_ID] %>%  # bare nødvendig ved subset-filtrering, men koster lite
         dplyr::group_by(i) %>%
         dplyr::summarise(total = sum(x), .groups = "drop_last")
     ## Padder, slik at vi får tibble med alle dokumentene, treff = 0 for de "innpaddede"
@@ -179,7 +179,7 @@ count_df <- function(pattern, df, case_sensitive, custom_column) {
     regex_or_fixed <- stringr::regex
 
     if (case_sensitive == FALSE) {
-        text_column <- df$Text
+        text_column <- df$Text_column_
     } else if (case_sensitive == TRUE) {
         text_column <- df$Text_original_case
     }

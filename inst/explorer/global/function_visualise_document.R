@@ -21,7 +21,7 @@ visualiser_dok <-
     }
 
     if (case_sensitive == FALSE) {
-      .text <- .text$Text
+      .text <- .text$Text_column_
     } else if (case_sensitive == TRUE) {
       .text <- .text$Text_original_case
     }
