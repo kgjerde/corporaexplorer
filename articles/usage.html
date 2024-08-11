@@ -131,7 +131,7 @@ details and all available options.</p>
 <p>The <code><a href="../reference/prepare_data.html">prepare_data()</a></code> function returns a
 “corporaexplorerobject” that can be explored in the package’s two Shiny
 apps.</p>
-<p>The three most important arguments are:</p>
+<p>The most important arguments are:</p>
 <ul>
 <li>
 <code>dataset</code>: a data frame with, as a minimum, a
@@ -142,6 +142,9 @@ apps.</p>
 <code>date_based_corpus</code>. Default is <code>TRUE</code>. Set to
 <code>FALSE</code> if the corpus is not to be organised according to
 document dates.</li>
+<li>
+<code>text_column</code>. Default is <code>Text</code>. The column
+in <code>dataset</code> comtaining the texts to be explored.</li>
 <li>
 <code>grouping_variable</code>. If date_based_corpus is TRUE, this
 argument is ignored. If date_based_corpus is FALSE, this argument can be

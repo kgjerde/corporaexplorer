@@ -78,8 +78,29 @@
 
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.8.6.9000" id="corporaexplorer-0869000">corporaexplorer 0.8.6.9000<a class="anchor" aria-label="anchor" href="#corporaexplorer-0869000"></a></h2>
-<ul><li>Changed internals to avoid ggplot2 warning (fbf1dd6)</li>
+<div class="section level3">
+<h3 id="breaking-changes-0-8-6-9000">Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes-0-8-6-9000"></a></h3>
+<p>New arguments (and new order of arguments) in <code><a href="../reference/prepare_data.html">prepare_data()</a></code>:<br>
+* <code>text_column</code>: Any character column can be specified as as the column containing the main textual data (not only ‘Text’ as before). Thanks to <a href="https://github.com/discoleo" class="external-link">@discoleo</a> for suggestion (<a href="https://github.com/kgjerde/corporaexplorer/issues/31" class="external-link">#31</a>).<br>
+* <code>grouping_order</code> to control order of groups in corpora not based on date (7892551).</p>
+<p>Changes in reserved column names (see <code><a href="../reference/prepare_data.html">?prepare_data</a></code> for details). In particular, <code>Year</code> is now allowed.</p>
+</div>
+<div class="section level3">
+<h3 id="improvements-0-8-6-9000">Improvements<a class="anchor" aria-label="anchor" href="#improvements-0-8-6-9000"></a></h3>
+<ul><li>Non-date-based corpora can now contain column called ‘Date’.<br></li>
+<li>Introduced nicer display of searches with (exactly) two search terms (feebc552, feebc552e4, 325aeb3b).</li>
 </ul></div>
+<div class="section level3">
+<h3 id="bug-fix-0-8-6-9000">Bug fix:<a class="anchor" aria-label="anchor" href="#bug-fix-0-8-6-9000"></a></h3>
+<p>Fixed filtering by dates (8c1a175b)</p>
+</div>
+<div class="section level3">
+<h3 id="other-0-8-6-9000">Other<a class="anchor" aria-label="anchor" href="#other-0-8-6-9000"></a></h3>
+<ul><li>Changed internals to avoid ggplot2 warning</li>
+<li>Changing testing library to shinytest2</li>
+<li>Change in testing due to changes in data.table (thanks for heads-up, <a href="https://github.com/MichaelChirico" class="external-link">@MichaelChirico</a>)</li>
+</ul></div>
+</div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.8.6" id="corporaexplorer-086">corporaexplorer 0.8.6<small>2022-06-20</small><a class="anchor" aria-label="anchor" href="#corporaexplorer-086"></a></h2>
 <ul><li>Fix bug introduced when re2 was reintroduced (4eeb2f3), which caused app to crash when searching in custom columns/metadata</li>

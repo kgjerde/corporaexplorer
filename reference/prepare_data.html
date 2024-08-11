@@ -90,8 +90,10 @@
 <span><span class="fu">prepare_data</span><span class="op">(</span></span>
 <span>  <span class="va">dataset</span>,</span>
 <span>  date_based_corpus <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  text_column <span class="op">=</span> <span class="st">"Text"</span>,</span>
 <span>  grouping_variable <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  within_group_identifier <span class="op">=</span> <span class="st">"Seq"</span>,</span>
+<span>  within_group_identifier <span class="op">=</span> <span class="st">"sequential"</span>,</span>
+<span>  grouping_order <span class="op">=</span> <span class="st">"default"</span>,</span>
 <span>  columns_doc_info <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Date"</span>, <span class="st">"Title"</span>, <span class="st">"URL"</span><span class="op">)</span>,</span>
 <span>  corpus_name <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  use_matrix <span class="op">=</span> <span class="cn">TRUE</span>,</span>
@@ -133,8 +135,12 @@
 is not to be organised according to document dates.</p></dd>
 
 
+<dt id="arg-text-column">text_column<a class="anchor" aria-label="anchor" href="#arg-text-column"></a></dt>
+<dd><p>Character. Default: "Text".</p></dd>
+
+
 <dt id="arg-grouping-variable">grouping_variable<a class="anchor" aria-label="anchor" href="#arg-grouping-variable"></a></dt>
-<dd><p>Character string.
+<dd><p>Character string indicating column name in <code>dataset</code>.
 If <code>date_based_corpus</code> is <code>TRUE</code>, this argument is ignored.
 If <code>date_based_corpus</code> is <code>FALSE</code>, this argument can be used
 to group the documents, e.g. if <code>dataset</code> is organised by chapters
@@ -143,10 +149,22 @@ belonging to different books.</p></dd>
 
 <dt id="arg-within-group-identifier">within_group_identifier<a class="anchor" aria-label="anchor" href="#arg-within-group-identifier"></a></dt>
 <dd><p>Character string indicating column name in <code>dataset</code>.
-<code>"Seq"</code>, the default, means the rows in each group are assigned
+If <code>date_based_corpus</code> is <code>TRUE</code>, this argument is ignored.
+If <code>date_based_corpus</code> is <code>FALSE</code>,
+<code>"sequential"</code>, the default, means the rows in each group are assigned
 a numeric sequence 1:n where n is the number of rows in the group.
-Used in document tab title in non-date based corpora.
-If <code>date_based_corpus</code> is <code>TRUE</code>, this argument is ignored.</p></dd>
+Used in document tab title in non-date based corpora.</p></dd>
+
+
+<dt id="arg-grouping-order">grouping_order<a class="anchor" aria-label="anchor" href="#arg-grouping-order"></a></dt>
+<dd><p>Character string.
+If <code>date_based_corpus</code> is <code>TRUE</code>, this argument is ignored.
+If <code>date_based_corpus</code> is <code>FALSE</code>, this argument specifies
+the order in which the groups (as specified in <code>grouping_variable</code> is presented in
+the app.
+<code>default</code> means the order in which the groups first appear in <code>dataset</code>).
+Alternatively, a character vector including all unique values in 'grouping_variable' in
+the desired order.</p></dd>
 
 
 <dt id="arg-columns-doc-info">columns_doc_info<a class="anchor" aria-label="anchor" href="#arg-columns-doc-info"></a></dt>
@@ -192,7 +210,7 @@ the <code>use_matrix</code> parameter to <code>FALSE</code>, or run
 <dd><p>Numeric vector of length two.
 Fine-tune the tile lengths in document wall
 and day corpus view. Tile length is calculated by
-<code>scales::rescale(nchar(dataset$Text),
+<code>scales::rescale(nchar(dataset[[text_column]]),
 to = tile_length_range,
 from = c(0, max(.)))</code>
 Default is <code>c(1, 10)</code>.</p></dd>
@@ -226,11 +244,13 @@ present in dataset, it will be ignored.</p></dd>
     <p>For data.frame: Each row in <code>dataset</code> is treated as a base differentiating unit in the corpus,
   typically chapters in books, or a single document in document collections.
   The following column names are reserved and cannot be used in <code>dataset</code>:
-  "ID",
+  "Date_",
+  "cx_ID",
   "Text_original_case",
+  "Text_column_",
   "Tile_length",
-  "Year",
-  "Seq",
+  "Year_",
+  "cx_Seq",
   "Weekday_n",
   "Day_without_docs",
   "Invisible_fake_date",
