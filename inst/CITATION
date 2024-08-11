@@ -1,8 +1,8 @@
 citHeader("To cite corporaexplorer in publications use:")
 
-citEntry(entry = "Article",
+bibentry(bibtype = "article",
   title        = "{corporaexplorer}: An R package for dynamic exploration of text collections",
-  author       = personList(as.person("Kristian Lundby Gjerde")),
+  author       = c(person("Kristian Lundby", "Gjerde")),
   journal      = "Journal of Open Source Software",
   year         = "2019",
   volume       = "4",
