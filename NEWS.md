@@ -14,6 +14,10 @@ In particular, `Year` is now allowed.
 * Non-date-based corpora can now contain column called 'Date'.  
 * Introduced nicer display of searches with (exactly) two search terms (feebc552, feebc552e4, 325aeb3b).
 
+## Future removal
+
+Added warning that the 'run_document_extractor()' app will be removed in a future version of corporaexplorer.
+
 ## Bug fix:
 
 Fixed filtering by dates (8c1a175b)
