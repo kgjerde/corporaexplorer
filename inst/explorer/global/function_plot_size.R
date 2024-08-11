@@ -38,13 +38,13 @@ plot_size <-
     }
 
 plot_size_data_365 <- function(df, max_width_for_row, x_factor) {
-    years <- length(unique(df$Year))
+    years <- length(unique(df$Year_))
     size <- years * 100
     return(size)
 }
 
 plot_size_data_dok <- function(df, max_width_for_row, x_factor) {
-    size <- dplyr::group_by(df, Year) %>%
+    size <- dplyr::group_by(df, Year_) %>%
         dplyr::summarise(rader = ceiling(sum(Tile_length) / max_width_for_row), .groups = "drop_last") %>%
         dplyr::summarise(total = sum(rader), .groups = "drop_last") %>%
         unlist(use.names = FALSE)
@@ -53,7 +53,7 @@ plot_size_data_dok <- function(df, max_width_for_row, x_factor) {
     }
     size <- size * x_factor
     # Because more groups = more vertical space use
-    size <- size + (10 * length(unique(df$Year)))
+    size <- size + (10 * length(unique(df$Year_)))
     if (size > (30 * nrow(df))) {
         size <- 30 * nrow(df)
     }

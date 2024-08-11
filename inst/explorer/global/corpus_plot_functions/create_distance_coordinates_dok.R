@@ -36,7 +36,7 @@ create_distance_coordinates_dok <- function(test1,
     }
 
     # DISTANCE BETWEEN YEARS/GROUPS
-    test1$Year_numeric <- as.numeric(factor(test1$Year, levels = unique(test1$Year)))
+    test1$Year_numeric <- as.numeric(factor(test1$Year_, levels = unique(test1$Year_)))
     test1$y_min <- test1$y_min + (year_distance * test1$Year_numeric - min(test1$Year_numeric))
     test1$y_max <- test1$y_max + (year_distance * test1$Year_numeric - min(test1$Year_numeric))
     return(test1)

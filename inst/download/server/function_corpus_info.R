@@ -19,7 +19,7 @@ corpus_info_text <- function() {
         for (i in seq_along(terms_highlight)) {
             term <- terms_highlight[i]
 
-            term_count <- stringr::str_count(sv$subset$Text, stringr::regex(term,
+            term_count <- stringr::str_count(sv$subset$Text_column_, stringr::regex(term,
                                                                      ignore_case = !search_arguments$case_sensitive))
             treff <- sum(term_count)
             docs <- length(term_count[term_count > 0])

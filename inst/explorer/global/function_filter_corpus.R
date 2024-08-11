@@ -9,7 +9,7 @@ filtrere_korpus_tid <-
     if (search_arguments$time_filtering_mode == "Year range") {
       # Simple filtering
       filtrert_tibble <-
-        .tibble[.tibble$Year %in% search_arguments$time_range, ]
+        .tibble[.tibble$Year_ %in% search_arguments$time_range, ]
       return(filtrert_tibble)
     } else if (search_arguments$time_filtering_mode == "Date range") {
         start_date <- search_arguments$time_range[1]
