@@ -3,7 +3,7 @@ Type: Package
 Title: A 'Shiny' App for Exploration of Text Collections
 Version: 0.8.6.9000
 Authors@R: person("Kristian Lundby", "Gjerde", email = "kristian.gjerde@gmail.com",
-  role = c("aut", "cre"))
+  role = c("aut", "cre"), comment = c(ORCID = "0000-0001-8291-6837"))
 Description: Facilitates dynamic exploration of text collections through an
     intuitive graphical user interface and the power of regular expressions.
     The package contains 1) a helper function to convert a data frame to a
@@ -42,7 +42,7 @@ Suggests:
     sotu,
     testthat (>= 3.0.0)
 License: GPL-3 | file LICENSE
-Date/Publication: 2022
+Date/Publication: 2024
 LazyData: true
 RoxygenNote: 7.3.2
 Encoding: UTF-8
