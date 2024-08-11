@@ -9,7 +9,7 @@ New arguments (and new order of arguments) in `prepare_data()`:
 Changes in reserved column names (see `?prepare_data` for details).
 In particular, `Year` is now allowed.
 
-## Improvements
+## Other improvements
 
 * Non-date-based corpora can now contain column called 'Date'.  
 * Introduced nicer display of searches with (exactly) two search terms (feebc552, feebc552e4, 325aeb3b).
