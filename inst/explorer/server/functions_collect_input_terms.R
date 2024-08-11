@@ -82,7 +82,7 @@ collect_threshold_values <- function(chr_vector) {
 collect_custom_column <- function(chr_vector) {
     column <- stringr::str_extract(chr_vector, "--[^\\d].*($|--)") %>%
         stringr::str_replace_all("(--\\d+|--)", "")
-    if (column == loaded_data$text_column) {
+    if (isTRUE(column == loaded_data$text_column)) {
         column <- "Text_column_"
     }
     return(column)
