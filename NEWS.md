@@ -7,6 +7,13 @@
 
 * Changed internals to avoid ggplot2 warning (CHECK COMMIT #)
 
+* tests to shinytest2
+* change in testing due to changes in data.table (thanks for heads-up)
+
+fixed date filtering
+
+introduced nicer display of searches with (exactly) two search terms
+
 # corporaexplorer 0.8.6
 
 * Fix bug introduced when re2 was reintroduced (4eeb2f3), which caused
