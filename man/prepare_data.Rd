@@ -47,7 +47,8 @@ prepare_data(dataset, ...)
 \item{date_based_corpus}{Logical. Set to \code{FALSE} if the corpus
 is not to be organised according to document dates.}
 
-\item{text_column}{Character. Default: "Text".}
+\item{text_column}{Character. Default: "Text".
+The column in `dataset` containing texts to be explored.}
 
 \item{grouping_variable}{Character string indicating column name in \code{dataset}.
 If \code{date_based_corpus} is \code{TRUE}, this argument is ignored.
