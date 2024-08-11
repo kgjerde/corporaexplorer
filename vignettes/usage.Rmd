@@ -33,7 +33,7 @@ The most important arguments are:
 
 * `dataset`: a data frame with, as a minimum, a `Text` column. If `date_based_corpus` is `TRUE` (the default), dataset must also contain a column "Date" (of class Date).
 * `date_based_corpus`. Default is `TRUE`. Set to `FALSE` if the corpus is not to be organised according to document dates.
-* `text_column`. Default is `Text`. The column in `dataset` comtaining the texts to be explored.
+* `text_column`. Default is `Text`. The column in `dataset` containing the texts to be explored.
 * `grouping_variable`. If date_based_corpus is TRUE, this argument is ignored. If date_based_corpus is FALSE, this argument can be used to group the documents, e.g. if `dataset` consists of chapters belonging to different books, and the book indicated in a "Book" column,
 set this argument to `"Book"`.
 
