@@ -41,7 +41,7 @@ if (INCLUDE_EXTRA == TRUE) {
               pattern,
               session_variables$data_dok,
               search_arguments$case_sensitive,
-              session_variables$data_dok$ID
+              session_variables$data_dok$cx_ID
             )
         }
 
@@ -120,7 +120,7 @@ if (!is.null(input$subset_corpus)) {
     session_variables$data_365$Day_without_docs[session_variables$data_365$Date %in% non_empty_dates == FALSE] <-
       TRUE
 
-    session_variables$data_365$ID[session_variables$data_365$Date %in% non_empty_dates == FALSE] <-
+    session_variables$data_365$cx_ID[session_variables$data_365$Date %in% non_empty_dates == FALSE] <-
       0
 
   }

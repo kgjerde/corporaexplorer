@@ -60,7 +60,7 @@ create_df_for_info <- function(session_variables,
     terms <- search_arguments$terms_highlight
   }
 
-  Years <- start_df$Year
+  Years <- start_df$Year_
 
   if (nrow(start_df) != 0) {
     start_df <- count_search_terms_hits(
@@ -224,31 +224,31 @@ corpus_info_plot <- function(start_df_list, search_arguments, info_mode) {
       years <- as.numeric(factor(years, levels = unique(years)))
     }
 
-    df <- cbind(start_df, Year = years)
+    df <- cbind(start_df, Year_ = years)
 
-    df <- tidyr::gather(df, "Term", value = "Count", -Year)
+    df <- tidyr::gather(df, "Term", value = "Count", -Year_)
 
     fig_tib <- df %>%
-      dplyr::group_by(Year, Term) %>%
+      dplyr::group_by(Year_, Term) %>%
       dplyr::summarise(Count = as.integer(sum(Count)), .groups = "drop_last")
 
     fig_tib$Term <- factor(fig_tib$Term, levels = full_terms)
 
     # In case of "missing years"
-    if (length(unique(fig_tib$Year)) > 1) {
+    if (length(unique(fig_tib$Year_)) > 1) {
     fig_tib <-
-      padr::pad_int(dplyr::ungroup(fig_tib), by = "Year", group = "Term") %>%
+      padr::pad_int(dplyr::ungroup(fig_tib), by = "Year_", group = "Term") %>%
       padr::fill_by_value(Count, value = 0)
     }
 
     info_plot <- ggplot2::ggplot(data = fig_tib)
-    if (length(unique(fig_tib$Year)) == 1 | DATE_BASED_CORPUS == FALSE) {
+    if (length(unique(fig_tib$Year_)) == 1 | DATE_BASED_CORPUS == FALSE) {
       info_plot <-
-        info_plot + ggplot2::geom_col(ggplot2::aes(x = Year, y = Count, fill = Term), position = "dodge") +
+        info_plot + ggplot2::geom_col(ggplot2::aes(x = Year_, y = Count, fill = Term), position = "dodge") +
         ggplot2::scale_fill_manual(values = MY_COLOURS)
     } else {
       info_plot <-
-        info_plot + ggplot2::geom_line(ggplot2::aes(x = Year, y = Count, color = Term)) + ggplot2::scale_color_manual(values = MY_COLOURS)
+        info_plot + ggplot2::geom_line(ggplot2::aes(x = Year_, y = Count, color = Term)) + ggplot2::scale_color_manual(values = MY_COLOURS)
     }
 
     break_and_label_seq <- 1
@@ -257,18 +257,18 @@ corpus_info_plot <- function(start_df_list, search_arguments, info_mode) {
       ggplot2::scale_x_continuous(
         expand = c(0.01, 0),
         breaks = seq(
-          from = min(fig_tib$Year),
-          to = max(fig_tib$Year),
+          from = min(fig_tib$Year_),
+          to = max(fig_tib$Year_),
           by = break_and_label_seq
           ),
         labels = if (DATE_BASED_CORPUS == TRUE) {
-          seq(min(fig_tib$Year),
-              max(fig_tib$Year),
+          seq(min(fig_tib$Year_),
+              max(fig_tib$Year_),
               by = break_and_label_seq)
         } else if (DATE_BASED_CORPUS == FALSE) {
           {stringr::str_sub(unique(start_df_list$years), 1, -1)[
-            seq(min(fig_tib$Year),
-              max(fig_tib$Year),
+            seq(min(fig_tib$Year_),
+              max(fig_tib$Year_),
               by = break_and_label_seq)
             ]}
         }

@@ -1,6 +1,28 @@
 # corporaexplorer 0.8.6.9000
 
-* Changed internals to avoid ggplot2 warning (fbf1dd6)
+## Breaking changes
+
+New arguments (and new order of arguments) in `prepare_data()`:  
+* `text_column`: Any character column can be specified as as the column containing the main textual data (not only 'Text' as before). Thanks to @discoleo for suggestion (#31).  
+* `grouping_order` to control order of groups in corpora not based on date (7892551).
+
+Changes in reserved column names (see `?prepare_data` for details).
+In particular, `Year` is now allowed.
+
+## Improvements
+
+* Non-date-based corpora can now contain column called 'Date'.  
+* Introduced nicer display of searches with (exactly) two search terms (feebc552, feebc552e4, 325aeb3b).
+
+## Bug fix:
+
+Fixed filtering by dates (8c1a175b)
+
+## Other
+
+* Changed internals to avoid ggplot2 warning
+* Changing testing library to shinytest2
+* Change in testing due to changes in data.table (thanks for heads-up, @MichaelChirico)
 
 # corporaexplorer 0.8.6
 

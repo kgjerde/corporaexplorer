@@ -3,6 +3,13 @@
 
 abc <- shiny::getShinyOption("corporaexplorer_download_data")
 
+# Ugly hack because of testthat's "dry run" with empty data before testing
+if(is.null(abc)) {
+    abc <-
+        corporaexplorer::prepare_data("testthat has a 'dry run' of sorts, resulting in weird behaviour.",
+                                      corpus_name = "Not supposed to ever be launched as app")
+}
+
 source("./global/backwards_compatibility.R", local = TRUE)
 
 if (class(abc) == "corporaexplorerobject") {
@@ -20,7 +27,7 @@ if (class(abc) == "corporaexplorerobject") {
   }
 
   abc <- abc$original_data$data_dok
-  abc$Text <- abc$Text_original_case
+  abc$Text_column_ <- abc$Text_original_case
 }
 
 my_colours <-
