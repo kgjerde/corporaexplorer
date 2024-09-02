@@ -7,10 +7,8 @@ Authors@R: person("Kristian Lundby", "Gjerde", email = "kristian.gjerde@gmail.co
 Description: Facilitates dynamic exploration of text collections through an
     intuitive graphical user interface and the power of regular expressions.
     The package contains 1) a helper function to convert a data frame to a
-    'corporaexplorerobject', 2) a 'Shiny' app for fast and flexible exploration
-    of a 'corporaexplorerobject', and 3) a 'Shiny' app for simple
-    retrieval/extraction of documents from a 'corporaexplorerobject' in a
-    reading-friendly format. The package also includes demo apps with which
+    'corporaexplorerobject' and 2) a 'Shiny' app for fast and flexible exploration
+    of a 'corporaexplorerobject'. The package also includes demo apps with which
     one can explore Jane Austen's novels and the State of the Union Addresses
     (data from the 'janeaustenr' and 'sotu' packages respectively).
 Depends:
