@@ -4,12 +4,11 @@
 
 New arguments (and new order of arguments) in `prepare_data()`:  
 * `text_column`: Any character column can be specified as as the column containing the main textual data (not only 'Text' as before). Thanks to @discoleo for suggestion (#31).  
-* `grouping_order` to control order of groups in corpora not based on date (7892551).
 
 Changes in reserved column names (see `?prepare_data` for details).
 In particular, `Year` is now allowed.
 
-## Other improvements
+## Other changes
 
 * Non-date-based corpora can now contain column called 'Date'.  
 * Introduced nicer display of searches with (exactly) two search terms (feebc552, feebc552e4, 325aeb3b).

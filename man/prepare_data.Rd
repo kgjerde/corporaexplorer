@@ -14,7 +14,6 @@ prepare_data(dataset, ...)
   text_column = "Text",
   grouping_variable = NULL,
   within_group_identifier = "sequential",
-  grouping_order = "default",
   columns_doc_info = c("Date", "Title", "URL"),
   corpus_name = NULL,
   use_matrix = TRUE,
@@ -35,7 +34,7 @@ prepare_data(dataset, ...)
 \arguments{
 \item{dataset}{Object to convert to corporaexplorerobject:
   \itemize{
-  \item A data frame with a column "Text" (class
+  \item A data frame with a specified column containing text (default column name: "Text") (class
   character), and optionally other columns.
   If \code{date_based_corpus} is \code{TRUE} (the default),
   \code{dataset} must contain a column "Date" (of class Date).
@@ -50,11 +49,15 @@ is not to be organised according to document dates.}
 \item{text_column}{Character. Default: "Text".
 The column in \code{dataset} containing texts to be explored.}
 
-\item{grouping_variable}{Character string indicating column name in \code{dataset}.
-If \code{date_based_corpus} is \code{TRUE}, this argument is ignored.
-If \code{date_based_corpus} is \code{FALSE}, this argument can be used
-to group the documents, e.g. if \code{dataset} is organised by chapters
-belonging to different books.}
+\item{grouping_variable}{Character string indicating column name in dataset.
+If date_based_corpus is TRUE, this argument is ignored.
+If date_based_corpus is FALSE, this argument is used to group the documents,
+e.g., if dataset is organised by chapters belonging to different books.
+The order of groups in the app is determined as follows:
+\itemize{
+\item If grouping_variable is a factor column, the factor levels determine the order.
+\item If grouping_variable is not a factor, the order is determined by the
+  sequence in which unique values first appear in the dataset.}}
 
 \item{within_group_identifier}{Character string indicating column name in \code{dataset}.
 If \code{date_based_corpus} is \code{TRUE}, this argument is ignored.
@@ -62,15 +65,6 @@ If \code{date_based_corpus} is \code{FALSE},
 \code{"sequential"}, the default, means the rows in each group are assigned
 a numeric sequence 1:n where n is the number of rows in the group.
 Used in document tab title in non-date based corpora.}
-
-\item{grouping_order}{Character string.
-If \code{date_based_corpus} is \code{TRUE}, this argument is ignored.
-If \code{date_based_corpus} is \code{FALSE}, this argument specifies
-the order in which the groups (as specified in \code{grouping_variable} is presented in
-the app.
-\code{default} means the order in which the groups first appear in \code{dataset}).
-Alternatively, a character vector including all unique values in 'grouping_variable' in
-the desired order.}
 
 \item{columns_doc_info}{Character vector. The columns from \code{dataset} to display in
 the "document information" tab in the corpus exploration app. By default
