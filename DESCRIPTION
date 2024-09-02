@@ -1,7 +1,7 @@
 Package: corporaexplorer
 Type: Package
 Title: A 'Shiny' App for Exploration of Text Collections
-Version: 0.8.6.9000
+Version: 0.9.0
 Authors@R: person("Kristian Lundby", "Gjerde", email = "kristian.gjerde@gmail.com",
   role = c("aut", "cre"), comment = c(ORCID = "0000-0001-8291-6837"))
 Description: Facilitates dynamic exploration of text collections through an

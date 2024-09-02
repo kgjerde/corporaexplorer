@@ -1,4 +1,4 @@
-# corporaexplorer 0.8.6.9000
+# corporaexplorer 0.9.0
 
 ## Breaking changes
 
