@@ -100,47 +100,35 @@ input:-webkit-autofill:active {
   margin-top: -0.5em;
 }
 
-/*Denne er for scrolling og beholde høyreboksen konstant.
-https://stackoverflow.com/questions/11399537/how-do-you-make-a-div-follow-as-you-scroll*/
+/*
+Hide day and document boxes initially until content is loaded.
+These are shown/hidden via JavaScript based on user interactions.
+*/
 
-.class_day_corpus .nav-tabs-custom {
-    position: fixed;
-    top: 60px;
-    margin-right: 10px;
-    display:none;
+.class_day_corpus .card {
+    display: none;
 }
 
-.class_doc_box .nav-tabs-custom {
-    position: fixed;
-    margin-right: 10px;
-    bottom: 0;
-    overflow: scroll;
-    display:none;
+.class_doc_box .card {
+    display: none;
+    max-height: 50vh;
+    overflow: auto;
 }
 
 /*
-To enable day and doc boxes to move under corpus map if resizing or
-on small screen + avoid "double navbar" on small screen by removing
-logo element
+Responsive adjustments for smaller screens
 */
 
 @media (max-width:768px){
-  .class_doc_box .nav-tabs-custom,
-  .class_day_corpus .nav-tabs-custom,
+  .class_doc_box .card,
+  .class_day_corpus .card,
   .class_doc_box {
-    position:static;
-  }
-}
-
-@media (max-width:768px){
-  .skin-blue .main-header .logo {
-  display:none;
+    position: static;
   }
 }
 
 /*
-To keep tab box "nav bars" white also when boxes moved under corpus map
-due to resizing
+Ensure tab navigation background is visible
 */
 .nav-tabs {
   background-color: white;
@@ -153,33 +141,10 @@ due to resizing
 }
 
 
-/*De tre neste er for locked header og sidebar.
-https://stackoverflow.com/questions/41240878/r-shiny-fixed-sidebar-and-main-header-in-a-shiny-dashboard*/
-
-.sidebar {
-  color: #FFF;
-  position: fixed;
-  width: 220px;
-  white-space: nowrap;
-  overflow-y: auto;
-  top: 50px;
-  bottom: 0;
-}
-
-.dropdownsettings {
-  color: blue;
-  width: 100%;
-  font-size: 40px;
-}
-
-.main-header {
-  position: fixed;
-  width:100%;
-}
-
-.content {
-  padding-top: 60px;
-}
+/*
+bslib page_sidebar handles fixed sidebar automatically.
+These legacy styles are no longer needed.
+*/
 
 /*Fordi det viste seg at jeg hoppet ca. en linje for langt i dokumentvisning fra dok_vis.
 Jeg har hacka litt fra denne. Må kanskje justeres, men dette er nok prinsippet.

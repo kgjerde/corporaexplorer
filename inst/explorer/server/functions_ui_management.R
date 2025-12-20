@@ -91,12 +91,12 @@ add_tab_doc_list_tekst <- function(dok_or_365) {
     shiny::appendTab(
         'dokumentboks',
         tab =
-            shiny::tabPanel(
+            bslib::nav_panel(
                 title = shiny::textOutput('document_list_title'),
                 value = "document_list_title",
-                htmlOutput(
+                shiny::htmlOutput(
                     outputId = "doc_list_tekst",
-                    container = tags$div,
+                    container = shiny::tags$div,
                     class = paste0("boxed_doc_data_", dok_or_365)
                 )
             ),
@@ -111,8 +111,8 @@ add_tab_doc_tekst <- function(dok_or_365) {
     shiny::appendTab(
       'dokumentboks',
       tab =
-          shiny::tabPanel(
-              title = textOutput('document_box_title'),
+          bslib::nav_panel(
+              title = shiny::textOutput('document_box_title'),
               value = "document_box_title",
               shiny::plotOutput("dok_vis",
                          click = "dok_vis_click",
@@ -120,7 +120,7 @@ add_tab_doc_tekst <- function(dok_or_365) {
 
               shiny::htmlOutput(
                   outputId = "doc_tekst",
-                  container = tags$div,
+                  container = shiny::tags$div,
                   class = paste0("boxed_doc_data_", dok_or_365)
               )
           ),
@@ -135,7 +135,7 @@ add_tab_doc_info <- function(dok_or_365) {
     shiny::appendTab(
         'dokumentboks',
         tab =
-            shiny::tabPanel(
+            bslib::nav_panel(
                 title = shiny::textOutput('document_box_title_info'),
                 value = "document_box_title_info",
 

@@ -1,4 +1,7 @@
-shinydashboard::dashboardSidebar(
+bslib::sidebar(
+    width = 250,
+    open = TRUE,
+
     shinyWidgets::radioGroupButtons(
         inputId = "antall_linjer",
         label = "No. of terms to chart",
@@ -57,11 +60,11 @@ shinydashboard::dashboardSidebar(
         selected = input_arguments_derived$filter_corpus_button
     ),
 
-    conditionalPanel(
+    shiny::conditionalPanel(
         condition = "input.subset_corpus == 'Yes'",
 
         # Filter text area
-        div(
+        shiny::div(
             shiny::textAreaInput(
                 "filter_text_area",
                 label = NULL,
@@ -84,7 +87,7 @@ shinydashboard::dashboardSidebar(
                    label = "Case sensitive search (slower)",
                    value = input_arguments$case_sensitivity,
                    width = "100%",
-                   icon = icon("check")),
+                   icon = shiny::icon("check")),
 
     shiny::hr(),
 

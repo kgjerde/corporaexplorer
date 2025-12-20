@@ -26,46 +26,45 @@ if (!is.null(getOption("shiny.testmode"))) {
 #=============================================================================#
 
 ui <- function(request) {
-  shinydashboard::dashboardPage(
+  bslib::page_sidebar(
     title = if (CORPUS_TITLE == "Corpus map") "Corpus exploration" else CORPUS_TITLE,
-
-    # Header --------------------------------------------------------------
-    source("./ui/ui_header.R", local = TRUE)$value,
+    theme = bslib::bs_theme(version = 5),
+    fillable = TRUE,
 
     # Sidebar -------------------------------------------------------------
-    source("./ui/ui_sidebar.R", local = TRUE)$value,
+    sidebar = source("./ui/ui_sidebar.R", local = TRUE)$value,
 
-    # Body ----------------------------------------------------------------
+    # CSS and JS files ----------------------------------------------------
+    source("./ui/css_js_import.R", local = TRUE)$value,
+    source("./ui/css_from_arguments.R", local = TRUE)$value,
 
-    shinydashboard::dashboardBody(
-      # CSS and JS files --------------------------------------------------
-      source("./ui/css_js_import.R", local = TRUE)$value,
-      source("./ui/css_from_arguments.R", local = TRUE)$value,
+    # Main content --------------------------------------------------------
+    bslib::layout_columns(
+      col_widths = c(6, 6),
+      fill = TRUE,
+      fillable = TRUE,
 
-      # Fluid row ---------------------------------------------------------
+      # Left column: Corpus map/corpus info box
+      source("./ui/ui_corpus_box.R", local = TRUE)$value,
 
-      shiny::fluidRow(
-               # Corpus map/corpus info box -------------------------------
-               source("./ui/ui_corpus_box.R", local = TRUE)$value,
+      # Right column: Day corpus box + Document box stacked
+      bslib::layout_columns(
+        col_widths = 12,
+        fill = TRUE,
+        fillable = TRUE,
 
-               # A day in the corpus box (for data_365) -------------------
-               source("./ui/ui_day_in_corpus_box.R", local = TRUE)$value,
+        # A day in the corpus box (for data_365)
+        source("./ui/ui_day_in_corpus_box.R", local = TRUE)$value,
 
-               # Document box ---------------------------------------------
-               source("./ui/ui_document_box.R", local = TRUE)$value
-
-               # Fluid row ends
-               )
-
-               # shinyjs
-               ,
-               shinyjs::useShinyjs(),
-               shinyWidgets::useSweetAlert()
-
-               # Body ends
+        # Document box
+        source("./ui/ui_document_box.R", local = TRUE)$value
       )
-      # Page ends
-    )
+    ),
+
+    # shinyjs
+    shinyjs::useShinyjs(),
+    shinyWidgets::useSweetAlert()
+  )
 }
 
 #=============================================================================#

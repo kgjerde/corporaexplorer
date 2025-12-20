@@ -1,2 +1,7 @@
-shiny::div(shinydashboard::tabBox(width = 6,
-           id = "dokumentboks"), class = "class_doc_box")
+shiny::div(
+    bslib::navset_card_tab(
+        id = "dokumentboks",
+        full_screen = TRUE
+    ),
+    class = "class_doc_box"
+)

@@ -1,19 +1,20 @@
-shinydashboard::tabBox(
+bslib::navset_card_tab(
     id = "corpus_box",
-    width = 6,
+    full_screen = TRUE,
     title = CORPUS_TITLE,
-    shiny::tabPanel(
+
+    bslib::nav_panel(
         title = shiny::textOutput('korpuskarttittel'),
         value = "korpuskart_tab",
 
-        div("Preparing corpus map", class = "progress_text"),
+        shiny::div("Preparing corpus map", class = "progress_text"),
 
         shiny::div(
             style = "position:relative",
             shiny::plotOutput(
                 "korpuskart",
                 click = "plot_click",
-                hover = hoverOpts(
+                hover = shiny::hoverOpts(
                     id = "plot_hover",
                     delayType = "debounce",
                     delay = 500
@@ -28,7 +29,7 @@ shinydashboard::tabBox(
 
     ),
 
-    shiny::tabPanel(
+    bslib::nav_panel(
         title = "Corpus info",
         shiny::htmlOutput("corpus_info"),
         shiny::htmlOutput("search_results"),

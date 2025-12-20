@@ -14,6 +14,7 @@ Description: Facilitates dynamic exploration of text collections through an
 Depends:
 	R (>= 3.0.0)
 Imports:
+	bslib,
 	data.table,
 	dplyr,
 	ggplot2,
@@ -27,7 +28,6 @@ Imports:
 	rmarkdown,
 	scales,
 	shiny,
-	shinydashboard,
 	shinyjs,
 	shinyWidgets,
 	stringi,

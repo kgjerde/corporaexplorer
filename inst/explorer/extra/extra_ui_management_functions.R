@@ -2,7 +2,7 @@ add_tab_extra <- function(dok_or_365) {
     shiny::appendTab(
     'dokumentboks',
     tab =
-        shiny::tabPanel(
+        bslib::nav_panel(
             title = shiny::textOutput('document_box_extra'),
             value = "document_box_extra",
 

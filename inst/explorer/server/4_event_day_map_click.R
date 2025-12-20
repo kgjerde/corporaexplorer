@@ -3,7 +3,7 @@ shiny::observeEvent(input$dag_klikk, {
     shinyjs::runjs(sprintf("$('.boxed_doc_%s').scrollTo('#%s');",
                            plot_mode$mode,
                            1))
-    shinyjs::runjs("$('.class_doc_box .nav-tabs-custom').scrollTo('0%');")
+    shinyjs::runjs("$('.class_doc_box .card').scrollTo('0%');")
 
     min_rad <-
         finn_min_rad(input$dag_klikk, session_variables$plotinfo_dag)
