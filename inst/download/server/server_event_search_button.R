@@ -10,14 +10,15 @@ shiny::observeEvent(input$trykk, {
     shinyjs::disable("download_html")
 
     if (DATE_BASED_CORPUS == TRUE) {
-      if (input$years_or_dates == "Year range") {
-          date_1 <- paste0(input$date_slider[1], "-01-01") %>%
+      # Use search_arguments which handles NULL inputs with defaults
+      if (search_arguments$time_filtering_mode == "Year range") {
+          date_1 <- paste0(min(search_arguments$time_range), "-01-01") %>%
               as.Date
-          date_2 <- paste0(input$date_slider[2], "-12-31") %>%
+          date_2 <- paste0(max(search_arguments$time_range), "-12-31") %>%
               as.Date
-      } else if (input$years_or_dates == "Date range") {
-          date_1 <- input$date_calendar[1]
-          date_2 <- input$date_calendar[2]
+      } else if (search_arguments$time_filtering_mode == "Date range") {
+          date_1 <- search_arguments$time_range[1]
+          date_2 <- search_arguments$time_range[2]
       }
 
       sv$subset <- subset_date(abc,
@@ -41,9 +42,9 @@ shiny::observeEvent(input$trykk, {
             clean_terms(search_arguments$subset_terms)
     }
 
-    if (DATE_BASED_CORPUS == TRUE) {
+    if (DATE_BASED_CORPUS == TRUE && !is.null(input$date_slider) && !is.null(input$date_calendar)) {
       # Update date inputs, making sure they remain within corpus date range
-      if (input$years_or_dates == "Year range") {
+      if (search_arguments$time_filtering_mode == "Year range") {
         updateDateRangeInput(
           session,
           "date_calendar",
@@ -60,7 +61,7 @@ shiny::observeEvent(input$trykk, {
             max(abc$Date)
           }
         )
-      } else if (input$years_or_dates == "Date range") {
+      } else if (search_arguments$time_filtering_mode == "Date range") {
         updateSliderInput(session,
           "date_slider",
           value = c(

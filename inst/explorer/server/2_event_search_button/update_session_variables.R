@@ -31,11 +31,19 @@ if (previous_mode != plot_mode$mode) {
 
 # Time --------------------------------------------------------------------
 if (DATE_BASED_CORPUS == TRUE) {
-    search_arguments$time_filtering_mode <- input$years_or_dates
-    if (search_arguments$time_filtering_mode == "Year range") {
-        search_arguments$time_range <- input$date_slider[1]:input$date_slider[2]
-    } else if (search_arguments$time_filtering_mode == "Date range") {
-        search_arguments$time_range <- c(input$date_calendar[1], input$date_calendar[2])
+    # Handle case where date inputs might not be initialized (accordion not opened)
+    if (!is.null(input$years_or_dates) && !is.null(input$date_slider)) {
+        search_arguments$time_filtering_mode <- input$years_or_dates
+        if (search_arguments$time_filtering_mode == "Year range") {
+            search_arguments$time_range <- input$date_slider[1]:input$date_slider[2]
+        } else if (search_arguments$time_filtering_mode == "Date range" && !is.null(input$date_calendar)) {
+            search_arguments$time_range <- c(input$date_calendar[1], input$date_calendar[2])
+        }
+    } else {
+        # Default to full year range if accordion not opened yet
+        search_arguments$time_filtering_mode <- "Year range"
+        year_range <- range(loaded_data$original_data$data_dok$Year_)
+        search_arguments$time_range <- year_range[1]:year_range[2]
     }
 }
 
@@ -43,7 +51,10 @@ if (DATE_BASED_CORPUS == TRUE) {
 search_arguments$case_sensitive <- input$case_sensitivity
 
 # Filtering corpus --------------------------------------------------------
-if (!is.null(input$subset_corpus)) {
+# Check if filter_text_area has content instead of checkbox
+filter_area <- input$filter_text_area
+if (!is.null(filter_area) && nchar(trimws(filter_area)) > 0) {
+    search_arguments$subset_search <- TRUE
     search_arguments$raw_subset_terms <- collect_subset_terms()  # For later argument check
     search_arguments$subset_thresholds <- collect_threshold_values(search_arguments$raw_subset_terms)
     search_arguments$subset_custom_column <- collect_custom_column(search_arguments$raw_subset_terms)

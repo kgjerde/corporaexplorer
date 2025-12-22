@@ -26,13 +26,13 @@ search_arguments <- shiny::reactiveValues(
     raw_highlight_terms = character(0), # TODO unsatisfcactory
     case_sensitive = FALSE,
     time_filtering_mode = "Year range",
-    time_range = NA,
+    time_range = min(loaded_data$original_data$data_dok$Year_):max(loaded_data$original_data$data_dok$Year_),
     all_ok = TRUE
 )
 
 plot_mode <- shiny::reactiveValues(mode = if (DATE_BASED_CORPUS == FALSE) "data_dok" else "data_365")
 
 ui_elements <- shiny::reactiveValues(
-    day_corpus_box = ".class_day_corpus .card",
-    document_box = ".class_doc_box .card"
+    day_corpus_box = ".class_day_corpus > .card, .class_day_corpus > .bslib-card",
+    document_box = ".class_doc_box > .card, .class_doc_box > .bslib-card"
 )

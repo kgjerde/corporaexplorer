@@ -28,7 +28,8 @@ shinyWidgets::updateCheckboxGroupButtons(session,
 shinyjs::hideElement("edit_info_plot_legend_keys")
 
 # Update date inputs, making sure they remain within corpus date range
-if (DATE_BASED_CORPUS == TRUE) {
+# Only do this if the date inputs exist (accordion panel has been opened)
+if (DATE_BASED_CORPUS == TRUE && !is.null(input$date_slider) && !is.null(input$date_calendar)) {
   if (search_arguments$time_filtering_mode == "Year range") {
     updateDateRangeInput(
       session,

@@ -1,7 +1,6 @@
 bslib::navset_card_tab(
     id = "corpus_box",
     full_screen = TRUE,
-    title = CORPUS_TITLE,
 
     bslib::nav_panel(
         title = shiny::textOutput('korpuskarttittel'),
@@ -10,7 +9,7 @@ bslib::navset_card_tab(
         shiny::div("Preparing corpus map", class = "progress_text"),
 
         shiny::div(
-            style = "position:relative",
+            style = "position:relative;",
             shiny::plotOutput(
                 "korpuskart",
                 click = "plot_click",
@@ -20,25 +19,21 @@ bslib::navset_card_tab(
                     delay = 500
                 ),
                 dblclick = "dobbeltklikk",
-                height = "auto",
+                height = "700px",
                 width = "100%"
-            )
-            ,
+            ),
             shiny::uiOutput("hover_info")
         )
-
     ),
 
     bslib::nav_panel(
         title = "Corpus info",
         shiny::htmlOutput("corpus_info"),
         shiny::htmlOutput("search_results"),
-        shiny::div(style = 'overflow-x: scroll', shiny::tableOutput('TABLE')),
+        shiny::div(style = 'overflow-x: auto', shiny::tableOutput('TABLE')),
         shiny::htmlOutput("info_plot_title"),
         shiny::plotOutput("corpus_info_plot", width = "100%", height = "250px"),
         shiny::br(),
-
-# Edit plot legend keys UI ------------------------------------------------
 
         shinyWidgets::checkboxGroupButtons(
             inputId = "edit_info_plot_legend_keys",
@@ -51,7 +46,6 @@ bslib::navset_card_tab(
         shiny::conditionalPanel(
             condition = "input.edit_info_plot_legend_keys == 'Yes'",
             shiny::br(),
-
             shiny::flowLayout(
                 shiny::uiOutput("column_info_names_ui"),
                 shiny::div(
@@ -59,7 +53,6 @@ bslib::navset_card_tab(
                     class = "text_in_box"
                 )
             ),
-
             shinyWidgets::actionBttn(
                 "update_info_plot_legend_keys",
                 label = "Update legend",

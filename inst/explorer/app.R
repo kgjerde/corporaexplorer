@@ -28,8 +28,12 @@ if (!is.null(getOption("shiny.testmode"))) {
 ui <- function(request) {
   bslib::page_sidebar(
     title = if (CORPUS_TITLE == "Corpus map") "Corpus exploration" else CORPUS_TITLE,
-    theme = bslib::bs_theme(version = 5),
-    fillable = TRUE,
+    theme = bslib::bs_theme(
+      version = 5,
+      primary = "#0d6efd",
+      "card-border-radius" = "0.375rem",
+      "card-cap-bg" = "#f8f9fa"
+    ),
 
     # Sidebar -------------------------------------------------------------
     sidebar = source("./ui/ui_sidebar.R", local = TRUE)$value,
@@ -39,20 +43,16 @@ ui <- function(request) {
     source("./ui/css_from_arguments.R", local = TRUE)$value,
 
     # Main content --------------------------------------------------------
-    bslib::layout_columns(
-      col_widths = c(6, 6),
-      fill = TRUE,
-      fillable = TRUE,
+    shiny::fluidRow(
+      # Left column: Corpus map/corpus info box (7/12 width)
+      shiny::column(
+        width = 7,
+        source("./ui/ui_corpus_box.R", local = TRUE)$value
+      ),
 
-      # Left column: Corpus map/corpus info box
-      source("./ui/ui_corpus_box.R", local = TRUE)$value,
-
-      # Right column: Day corpus box + Document box stacked
-      bslib::layout_columns(
-        col_widths = 12,
-        fill = TRUE,
-        fillable = TRUE,
-
+      # Right column: Day corpus box + Document box stacked (5/12 width)
+      shiny::column(
+        width = 5,
         # A day in the corpus box (for data_365)
         source("./ui/ui_day_in_corpus_box.R", local = TRUE)$value,
 

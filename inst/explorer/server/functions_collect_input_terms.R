@@ -2,18 +2,17 @@
 #'
 #' @return Character vector.
 collect_search_terms <- function() {
-    terms <- c(
-        shiny::isolate(input$search_text_1),
-        shiny::isolate(input$search_text_2),
-        shiny::isolate(input$search_text_3),
-        shiny::isolate(input$search_text_4),
-        shiny::isolate(input$search_text_5),
-        shiny::isolate(input$search_text_6)
-    )[seq_len(shiny::isolate(input$antall_linjer))] %>%
-        (function(x)
-            x <- x[x != ""]) #%>%
-        # unique
-    if(length(terms) == 0){
+    search_area <- shiny::isolate(input$search_terms_area)
+    if (is.null(search_area) || nchar(trimws(search_area)) == 0) {
+        return("")
+    }
+
+    terms <- search_area %>%
+        stringr::str_split("\n") %>%
+        unlist(use.names = FALSE) %>%
+        .[. != ""]
+
+    if (length(terms) == 0) {
         terms <- ""
     }
 
@@ -24,21 +23,21 @@ collect_search_terms <- function() {
 #'
 #' @return Character vector.
 collect_highlight_terms <- function() {
-    if (is.null(isolate(input$more_terms_button))) {
-        # avgjørende at is.null-varianten kommer først i if-statementet!
-        terms_highlight <- collect_search_terms()
-    }   else if (isolate(input$more_terms_button == 'Yes')) {
-        terms_highlight <- isolate(input$highlight_terms_area) %>%
+    # Start with search terms
+    terms_highlight <- collect_search_terms()
+
+    # Add highlight terms if any entered (no checkbox needed - just check content)
+    highlight_area <- isolate(input$highlight_terms_area)
+    if (!is.null(highlight_area) && nchar(trimws(highlight_area)) > 0) {
+        extra_terms <- highlight_area %>%
             stringr::str_split("\n") %>%
             unlist %>%
-            .[length(.) > 0]
+            .[. != ""]
 
-        terms_highlight <-
-            c(collect_search_terms(), terms_highlight[terms_highlight != ""])
-
+        terms_highlight <- c(terms_highlight, extra_terms)
     }
-    terms_highlight <-
-        terms_highlight[terms_highlight != ""]
+
+    terms_highlight <- terms_highlight[terms_highlight != ""]
 
     return(terms_highlight)
 }
@@ -47,7 +46,9 @@ collect_highlight_terms <- function() {
 #'
 #' @return Character vector.
 collect_subset_terms <- function() {
-    if (input$subset_corpus == 'Yes') {
+    # Check if filter_text_area has content (no checkbox needed)
+    filter_area <- input$filter_text_area
+    if (!is.null(filter_area) && nchar(trimws(filter_area)) > 0) {
         terms_subset <- input$filter_text_area %>%
             stringr::str_split("\n") %>%
             unlist %>%
