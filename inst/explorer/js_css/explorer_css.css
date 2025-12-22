@@ -8,11 +8,11 @@
 /* --------------------------------------------------------------------------
    Right column - flexbox layout for stacked panels
    -------------------------------------------------------------------------- */
-.col-5 {
+.col-sm-5 {
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 70px);
-    overflow: hidden;
+    gap: 0.5rem;
+    height: calc(100vh - 100px);
 }
 
 /* --------------------------------------------------------------------------
@@ -70,26 +70,11 @@
    -------------------------------------------------------------------------- */
 .class_day_corpus {
     flex: 0 0 auto;
-    margin-bottom: 0.25rem;
 }
 
 .class_day_corpus > .card,
 .class_day_corpus > .bslib-card {
     display: none;
-}
-
-.class_day_corpus .card-header {
-    padding: 0.15rem 0.4rem !important;
-    font-size: 0.75rem;
-}
-
-.class_day_corpus .card-body {
-    padding: 0.15rem !important;
-}
-
-.class_day_corpus .day_map {
-    height: 100px;
-    min-height: 80px;
 }
 
 /* --------------------------------------------------------------------------
@@ -98,7 +83,6 @@
 .class_doc_box {
     flex: 1 1 auto;
     min-height: 0;
-    overflow: hidden;
 }
 
 .class_doc_box > .card,
@@ -107,36 +91,22 @@
     height: 100%;
 }
 
-.class_doc_box .card-body,
-.class_doc_box .tab-content,
 .class_doc_box .tab-pane {
-    height: 100%;
-    overflow: auto;
-}
-
-/* Document content boxes */
-.boxed_doc_data_365,
-.boxed_doc_data_dok {
-    border: 1px solid #e0e0e0;
-    border-radius: 0.2rem;
-    padding: 0.4rem;
-    overflow: auto;
-    font-size: 0.82rem;
-    line-height: 1.45;
-    height: calc(100% - 10px);
-    max-height: none;
+    padding: 0.75rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
 }
 
 /* --------------------------------------------------------------------------
    Corpus map box (left column)
    -------------------------------------------------------------------------- */
-.col-7 > .card,
-.col-7 > .bslib-card {
-    height: calc(100vh - 70px);
+.col-sm-7 > .card,
+.col-sm-7 > .bslib-card {
+    height: calc(100vh - 100px);
 }
 
-.col-7 .card-body {
-    overflow: hidden;
+.col-sm-7 .card-body {
+    overflow: auto;
 }
 
 /* --------------------------------------------------------------------------
@@ -282,22 +252,9 @@ span.___ {
 
 .recalculating { opacity: 0.5; }
 
-/* Full-screen mode */
-.bslib-full-screen .boxed_doc_data_365,
-.bslib-full-screen .boxed_doc_data_dok {
-    height: calc(100vh - 100px);
-    max-height: none;
-}
-
 /* Responsive - mobile */
 @media (max-width: 768px) {
-    .col-5 {
-        height: auto;
-        flex-direction: column;
-    }
-
-    .boxed_doc_data_365, .boxed_doc_data_dok {
-        max-height: 300px;
+    .col-sm-5 {
         height: auto;
     }
 }
@@ -305,9 +262,4 @@ span.___ {
 /* Autofill override */
 input:-webkit-autofill {
     -webkit-transition-delay: 9999s;
-}
-
-/* Hide margin on mb-3 for day corpus */
-.class_day_corpus .mb-3 {
-    margin-bottom: 0.25rem !important;
 }

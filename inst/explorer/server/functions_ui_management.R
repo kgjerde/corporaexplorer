@@ -17,7 +17,7 @@ change_ui_class <- function(class_name, property, value) {
 show_ui <- function(element_name_as_defined_in_ui_elements) {
     change_ui_class(ui_elements[[element_name_as_defined_in_ui_elements]],
                     property = "display",
-                    value = "inline")
+                    value = "flex")
 }
 
 #' Hide UI element

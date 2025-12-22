@@ -15,7 +15,7 @@ shiny::div(
                     click = "dag_klikk",
                     hover = shiny::hoverOpts(id = "dag_hover"),
                     dblclick = "dag_dobbeltklikk",
-                    height = "90px"
+                    height = "auto"
                 ),
                 class = "day_map"
             )
