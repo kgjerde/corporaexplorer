@@ -1,7 +1,7 @@
 bslib::sidebar(
-    width = 220,
+    # width = 220,
     open = TRUE,
-    bg = "#f8f9fa",
+    bg = "#ffffff",
 
     # Search terms with color legend
     shiny::div(

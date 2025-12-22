@@ -3,29 +3,7 @@
 /* --------------------------------------------------------------------------
    Global layout - minimal spacing
    -------------------------------------------------------------------------- */
-.bslib-page-fill, .bslib-sidebar-layout {
-    --bs-gutter-x: 0.25rem;
-}
 
-.main {
-    padding: 0.25rem !important;
-}
-
-body {
-    font-size: 0.85rem;
-}
-
-/* Row and column spacing */
-.row {
-    margin-left: -0.125rem;
-    margin-right: -0.125rem;
-    --bs-gutter-x: 0.25rem;
-}
-
-.col-7, .col-5 {
-    padding-left: 0.125rem;
-    padding-right: 0.125rem;
-}
 
 /* --------------------------------------------------------------------------
    Right column - flexbox layout for stacked panels
@@ -57,20 +35,34 @@ body {
     padding: 0.25rem !important;
 }
 
-/* Tab navigation - super compact */
-.nav-tabs {
-    border-bottom: 1px solid #ddd;
+/* Tab/pill navigation - compact, clean */
+.nav-tabs, .nav-pills {
+    border-bottom: none;
+    background: transparent;
 }
 
-.nav-tabs .nav-link {
+.nav-tabs .nav-link,
+.nav-pills .nav-link {
     padding: 0.2rem 0.5rem;
-    font-size: 0.75rem;
-    border-radius: 0.2rem 0.2rem 0 0;
+    font-size: 0.7rem;
+    border-radius: 0.2rem;
 }
 
-.nav-tabs .nav-link.active {
+.nav-tabs .nav-link.active,
+.nav-pills .nav-link.active {
     background-color: #fff;
-    border-color: #ddd #ddd #fff;
+    border: 1px solid #ddd;
+    color: #212529 !important;
+}
+
+.nav-pills .nav-link {
+    color: #666;
+}
+
+/* Card header - clean, no background */
+.card-header, .bslib-card .card-header {
+    background: transparent !important;
+    border-bottom: 1px solid #eee;
 }
 
 /* --------------------------------------------------------------------------

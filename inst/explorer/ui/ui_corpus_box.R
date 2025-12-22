@@ -1,4 +1,4 @@
-bslib::navset_card_tab(
+bslib::navset_card_pill(
     id = "corpus_box",
     full_screen = TRUE,
 
@@ -19,7 +19,7 @@ bslib::navset_card_tab(
                     delay = 500
                 ),
                 dblclick = "dobbeltklikk",
-                height = "700px",
+                height = "calc(100vh - 140px)",
                 width = "100%"
             ),
             shiny::uiOutput("hover_info")
