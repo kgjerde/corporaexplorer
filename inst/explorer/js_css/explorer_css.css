@@ -241,10 +241,18 @@ span.___ {
 
 .recalculating { opacity: 0.5; }
 
-/* Responsive - mobile */
+/* Responsive - mobile: stack columns vertically */
 @media (max-width: 768px) {
-    .col-sm-5 {
-        height: auto;
+    .col-sm-6, .col-sm-5, .col-sm-7 {
+        width: 100% !important;
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    .class_doc_box,
+    .class_day_corpus {
+        position: static;
     }
 }
 

@@ -44,15 +44,15 @@ ui <- function(request) {
 
     # Main content --------------------------------------------------------
     shiny::fluidRow(
-      # Left column: Corpus map/corpus info box (7/12 width)
+      # Left column: Corpus map/corpus info box
       shiny::column(
-        width = 7,
+        width = 6,
         source("./ui/ui_corpus_box.R", local = TRUE)$value
       ),
 
-      # Right column: Day corpus box + Document box stacked (5/12 width)
+      # Right column: Day corpus box + Document box stacked
       shiny::column(
-        width = 5,
+        width = 6,
         # A day in the corpus box (for data_365)
         source("./ui/ui_day_in_corpus_box.R", local = TRUE)$value,
 
