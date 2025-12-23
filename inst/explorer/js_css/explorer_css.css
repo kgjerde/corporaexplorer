@@ -33,6 +33,7 @@
 
 .card-body {
     padding: 0.25rem !important;
+    font-size: 0.85rem;
 }
 
 /* Tab/pill navigation - compact, clean */
@@ -93,8 +94,8 @@
 
 .class_doc_box .tab-pane {
     padding: 0.75rem;
-    font-size: 0.85rem;
     line-height: 1.5;
+    font-size: 0.85rem;
 }
 
 /* --------------------------------------------------------------------------
