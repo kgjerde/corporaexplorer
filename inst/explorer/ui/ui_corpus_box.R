@@ -6,8 +6,6 @@ bslib::navset_card_pill(
         title = shiny::textOutput('korpuskarttittel'),
         value = "korpuskart_tab",
 
-        shiny::div("Preparing corpus map", class = "progress_text"),
-
         shiny::div(
             style = "position:relative;",
             shiny::plotOutput(

@@ -17,17 +17,11 @@ shiny::updateSliderInput(
   step = NULL
 )
 
-# Hide "progress text" in case rendering stops at arguments check
-shinyjs::hide(selector = ".progress_text")
-
 # Plot output
 output$korpuskart <- renderPlot(
   {
     # Arguments check
     source("./server/2_event_search_button/check_search_arguments.R", local = TRUE)
-
-    # Show "progress text" again (will remain hidden under the plot)
-    shinyjs::show(selector = ".progress_text")
 
     # The plot itself
     plot_fase_1 <-
