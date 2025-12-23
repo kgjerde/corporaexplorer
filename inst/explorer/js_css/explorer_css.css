@@ -8,7 +8,7 @@
 /* --------------------------------------------------------------------------
    Right column - flexbox layout for stacked panels
    -------------------------------------------------------------------------- */
-.col-sm-5 {
+.col-sm-6:last-child {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -90,6 +90,7 @@
 .class_doc_box > .bslib-card {
     display: none;
     height: 100%;
+    overflow: auto;
 }
 
 .class_doc_box .tab-pane {
@@ -101,12 +102,12 @@
 /* --------------------------------------------------------------------------
    Corpus map box (left column)
    -------------------------------------------------------------------------- */
-.col-sm-7 > .card,
-.col-sm-7 > .bslib-card {
+.col-sm-6:first-child > .card,
+.col-sm-6:first-child > .bslib-card {
     height: calc(100vh - 100px);
 }
 
-.col-sm-7 .card-body {
+.col-sm-6:first-child .card-body {
     overflow: auto;
 }
 
