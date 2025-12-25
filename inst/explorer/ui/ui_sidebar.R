@@ -7,12 +7,12 @@ bslib::sidebar(
     shiny::div(
         class = "shiny-input-container w-100",
         style = "margin-bottom: 0.2rem;",
-        shiny::tags$label("Search terms", class = "control-label"),
+        shiny::tags$label("Term(s) to chart and highlight", class = "control-label"),
         shiny::div(class = "search-terms-legend", id = "search_terms_legend"),
         shiny::tags$textarea(
             id = "search_terms_area",
             class = "form-control",
-            placeholder = "One term per line (max 6)",
+            placeholder = "Terms separated by newline (max 6)",
             rows = 6,
             style = "font-size: 0.8rem; resize: vertical;",
             {
@@ -29,10 +29,10 @@ bslib::sidebar(
         multiple = TRUE,
 
         bslib::accordion_panel(
-            title = "Highlight terms",
+            title = "Highlight additional terms",
             value = "highlight",
             shiny::textAreaInput("highlight_terms_area", label = NULL,
-                                placeholder = "One term per line", rows = 2,
+                                placeholder = "Terms separated by newline", rows = 2,
                                 value = input_arguments_derived$highlight_terms)
         ),
 
@@ -40,7 +40,7 @@ bslib::sidebar(
             title = "Filter corpus",
             value = "filter",
             shiny::textAreaInput("filter_text_area", label = NULL,
-                               placeholder = "One term per line", rows = 2,
+                               placeholder = "Terms separated by newline", rows = 2,
                                value = input_arguments_derived$filter_terms),
             shiny::uiOutput('checkbox_filtering_ui')
         ),
@@ -70,11 +70,11 @@ bslib::sidebar(
     shiny::uiOutput('magic_text_area_ui'),
 
     # Case sensitivity as switch
-    bslib::input_switch("case_sensitivity", "Case sensitive", value = input_arguments$case_sensitivity),
+    bslib::input_switch("case_sensitivity", "Case sensitive search (slower)", value = input_arguments$case_sensitivity),
 
     # Plot mode - compact inline radio
     shiny::radioButtons("modus", label = "Plot mode",
-                       choices = list("Calendar" = "data_365", "Wall" = "data_dok"),
+                       choices = list("Calendar" = "data_365", "Document wall" = "data_dok"),
                        selected = if (DATE_BASED_CORPUS == FALSE) "data_dok" else "data_365",
                        inline = TRUE),
 
