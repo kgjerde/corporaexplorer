@@ -57,6 +57,13 @@ bslib::sidebar(
             shiny::sliderInput("PLOTSIZE", label = NULL, min = 100, ticks = FALSE,
                               step = 50, max = INITIAL_PLOT_SIZE * 2, value = INITIAL_PLOT_SIZE),
             shiny::actionButton("size_button", "Apply", class = "btn-sm btn-outline-secondary w-100")
+        ),
+
+        bslib::accordion_panel(
+            title = "Layout",
+            value = "layout",
+            shiny::sliderInput("column_width", label = "Left column %", min = 30, max = 70,
+                              value = 50, step = 5, ticks = FALSE)
         )
     ),
 
