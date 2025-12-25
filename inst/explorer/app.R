@@ -61,6 +61,9 @@ ui <- function(request) {
       )
     ),
 
+    # Hover tooltip - outside cards to avoid clipping
+    shiny::uiOutput("hover_info"),
+
     # shinyjs
     shinyjs::useShinyjs(),
     shinyWidgets::useSweetAlert()

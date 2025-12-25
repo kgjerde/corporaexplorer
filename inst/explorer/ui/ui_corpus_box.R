@@ -6,21 +6,17 @@ bslib::navset_card_pill(
         title = shiny::textOutput('korpuskarttittel'),
         value = "korpuskart_tab",
 
-        shiny::div(
-            style = "position:relative;",
-            shiny::plotOutput(
-                "korpuskart",
-                click = "plot_click",
-                hover = shiny::hoverOpts(
-                    id = "plot_hover",
-                    delayType = "debounce",
-                    delay = 500
-                ),
-                dblclick = "dobbeltklikk",
-                height = "calc(100vh - 140px)",
-                width = "100%"
+        shiny::plotOutput(
+            "korpuskart",
+            click = "plot_click",
+            hover = shiny::hoverOpts(
+                id = "plot_hover",
+                delayType = "debounce",
+                delay = 500
             ),
-            shiny::uiOutput("hover_info")
+            dblclick = "dobbeltklikk",
+            height = "calc(100vh - 140px)",
+            width = "100%"
         )
     ),
 

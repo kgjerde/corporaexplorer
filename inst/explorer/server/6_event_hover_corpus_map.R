@@ -34,13 +34,13 @@ output$hover_info <- shiny::renderUI({
   # Tooltip style and defining position -------------------------------------
   style <-
     paste0(
-      "position:absolute; z-index:100; background-color: rgba(245, 245, 245, 0.85); ",
+      "position:fixed; z-index:9999; background-color: rgba(245, 245, 245, 0.95); ",
       "left:",
       left_px + 2,
       "px; top:",
       top_px + 2,
       "px;",
-      "font-size: 14px;"
+      "font-size: 14px; pointer-events: none;"
     )
 
 
