@@ -63,7 +63,7 @@ bslib::sidebar(
             title = "Layout",
             value = "layout",
             shiny::sliderInput("column_width", label = "Left column %", min = 30, max = 70,
-                              value = 50, step = 5, ticks = FALSE)
+                              value = CORPUS_MAP_COLUMN_WIDTH_PCT, step = 5, ticks = FALSE)
         )
     ),
 

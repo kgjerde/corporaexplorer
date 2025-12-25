@@ -1,5 +1,13 @@
 // Dynamic column width adjustment
 $(document).ready(function() {
+    // Apply initial value on page load
+    $(document).on('shiny:connected', function() {
+        var initialValue = $('#column_width').val();
+        if (initialValue && initialValue != 50) {
+            updateColumnWidths(initialValue);
+        }
+    });
+
     // Listen for slider changes
     $(document).on('change', '#column_width', function() {
         updateColumnWidths($(this).val());

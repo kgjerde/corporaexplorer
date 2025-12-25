@@ -85,7 +85,14 @@ if (USE_ONLY_STRINGR == TRUE & USE_ONLY_RE2 == TRUE) {
 
 ui_options <- shiny::getShinyOption("corporaexplorer_ui_options")
 
-## At the moment only css arguments here.
+CORPUS_MAP_COLUMN_WIDTH_PCT <- 50
+if (!is.null(ui_options$corpus_map_column_width)) {
+    if (is.numeric(ui_options$corpus_map_column_width)) {
+        if (ui_options$corpus_map_column_width >= 30 & ui_options$corpus_map_column_width <= 70) {
+            CORPUS_MAP_COLUMN_WIDTH_PCT <- as.integer(ui_options$corpus_map_column_width)
+        }
+    }
+}
 
 # Plot options from function arguments ------------------------------------
 
