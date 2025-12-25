@@ -22,9 +22,7 @@ hide_ui("day_corpus_box")
 hide_ui("document_box")
 
 # Edit info plot legend keys UI
-shinyWidgets::updateCheckboxGroupButtons(session,
-                                         "edit_info_plot_legend_keys",
-                                         selected = "No")
+shiny::updateCheckboxInput(session, "edit_info_plot_legend_keys", value = FALSE)
 shinyjs::hideElement("edit_info_plot_legend_keys")
 
 # Update date inputs, making sure they remain within corpus date range

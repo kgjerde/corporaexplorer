@@ -31,32 +31,20 @@ bslib::navset_card_pill(
         shiny::div(style = 'overflow-x: auto', shiny::tableOutput('TABLE')),
         shiny::htmlOutput("info_plot_title"),
         shiny::plotOutput("corpus_info_plot", width = "100%", height = "250px"),
-        shiny::br(),
 
-        shinyWidgets::checkboxGroupButtons(
+        shiny::checkboxInput(
             inputId = "edit_info_plot_legend_keys",
-            label = NULL,
-            choices = list("Edit plot legend?" = "Yes"),
-            justified = TRUE,
-            size = "xs"
+            label = "Edit plot legend?",
+            value = FALSE
         ),
 
         shiny::conditionalPanel(
-            condition = "input.edit_info_plot_legend_keys == 'Yes'",
-            shiny::br(),
-            shiny::flowLayout(
-                shiny::uiOutput("column_info_names_ui"),
-                shiny::div(
-                    "Edit to change the legend key associated with a colour in the plot.",
-                    class = "text_in_box"
-                )
-            ),
-            shinyWidgets::actionBttn(
+            condition = "input.edit_info_plot_legend_keys == true",
+            shiny::uiOutput("column_info_names_ui"),
+            shiny::actionButton(
                 "update_info_plot_legend_keys",
                 label = "Update legend",
-                size = "xs",
-                style = "simple",
-                block = FALSE
+                class = "btn-sm btn-outline-secondary mt-2"
             )
         )
     )

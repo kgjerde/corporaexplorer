@@ -111,6 +111,11 @@
     overflow: auto;
 }
 
+#corpus_info_plot {
+    min-height: 250px !important;
+    height: 250px !important;
+}
+
 /* --------------------------------------------------------------------------
    Sidebar - compact bslib native
    -------------------------------------------------------------------------- */
