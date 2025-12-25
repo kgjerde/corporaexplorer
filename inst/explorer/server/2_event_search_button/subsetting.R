@@ -47,11 +47,10 @@ if (INCLUDE_EXTRA == TRUE) {
 
         # If validation fails:
       } else {
-        shinyWidgets::sendSweetAlert(
-          session = session,
-          title = "Warning",
-          text = "Input in 'Sentence based filtering' box is invalid and ignored.",
-          type = "warning"
+        shiny::showNotification(
+          "Input in 'Sentence based filtering' box is invalid and ignored.",
+          type = "warning",
+          duration = 5
         )
       }
     }

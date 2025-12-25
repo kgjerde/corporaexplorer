@@ -3,12 +3,11 @@ output$time_filtering_ui <- shiny::renderUI({
   if (DATE_BASED_CORPUS == TRUE) {
 
     shiny::tagList(
-      shinyWidgets::radioGroupButtons(
+      shiny::radioButtons(
         inputId = "years_or_dates",
         label = NULL,
         choices = c("Year range", "Date range"),
-        justified = TRUE,
-        size = "sm"
+        inline = TRUE
       ),
 
       shiny::conditionalPanel(

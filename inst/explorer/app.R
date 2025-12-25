@@ -65,8 +65,7 @@ ui <- function(request) {
     shiny::uiOutput("hover_info"),
 
     # shinyjs
-    shinyjs::useShinyjs(),
-    shinyWidgets::useSweetAlert()
+    shinyjs::useShinyjs()
   )
 }
 

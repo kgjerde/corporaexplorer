@@ -6,7 +6,7 @@ if (!is.null(UI_FILTERING_CHECKBOXES)) {
   for (i in seq_along(UI_FILTERING_CHECKBOXES$column_names)) {
     list_of_filtering_columns_ui[[i]] <-
       conditionalPanel(
-        condition = "input.subset_group == 'Yes'",
+        condition = "input.subset_group == true",
 
         div(
           shiny::checkboxGroupInput(
@@ -30,14 +30,10 @@ if (!is.null(UI_FILTERING_CHECKBOXES)) {
 
   output$checkbox_filtering_ui <- renderUI({
     shiny::tagList(
-      shinyWidgets::checkboxGroupButtons(
+      shiny::checkboxInput(
         inputId = "subset_group",
-        label = NULL,
-        choices = list("More filtering options" = "Yes"),
-        justified = TRUE,
-        size = "xs",
-        status = "group_ui",
-        selected = NULL#input_arguments_derived$filter_corpus_button
+        label = "More filtering options",
+        value = FALSE
       ),
       list_of_filtering_columns_ui
     )
