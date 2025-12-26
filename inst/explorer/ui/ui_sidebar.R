@@ -3,30 +3,29 @@ bslib::sidebar(
     open = TRUE,
     bg = "#ffffff",
 
-    # Search terms with color legend
-    shiny::div(
-        class = "shiny-input-container w-100",
-        style = "margin-bottom: 0.2rem;",
-        shiny::tags$label("Term(s) to chart and highlight", class = "control-label"),
-        shiny::div(class = "search-terms-legend", id = "search_terms_legend"),
-        shiny::tags$textarea(
-            id = "search_terms_area",
-            class = "form-control",
-            placeholder = "Terms separated by newline (max 6)",
-            rows = 6,
-            style = "font-size: 0.8rem; resize: vertical;",
-            {
-                terms <- input_arguments$search_terms[!is.na(input_arguments$search_terms) & input_arguments$search_terms != ""]
-                if (length(terms) == 0) "" else paste(terms, collapse = "\n")
-            }
-        )
-    ),
-
-    # Options in accordion
+    # All options in accordion
     bslib::accordion(
         id = "sidebar_options",
-        open = FALSE,
+        open = "search",
         multiple = TRUE,
+
+        # Search terms - open by default
+        bslib::accordion_panel(
+            title = "Term(s) to chart and highlight",
+            value = "search",
+            shiny::div(class = "search-terms-legend", id = "search_terms_legend"),
+            shiny::tags$textarea(
+                id = "search_terms_area",
+                class = "form-control",
+                placeholder = "Terms separated by newline (max 6)",
+                rows = 6,
+                style = "font-size: 0.8rem; resize: vertical;",
+                {
+                    terms <- input_arguments$search_terms[!is.na(input_arguments$search_terms) & input_arguments$search_terms != ""]
+                    if (length(terms) == 0) "" else paste(terms, collapse = "\n")
+                }
+            )
+        ),
 
         bslib::accordion_panel(
             title = "Highlight additional terms",
