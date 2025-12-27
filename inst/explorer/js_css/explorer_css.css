@@ -263,6 +263,17 @@ span.___ {
     }
 }
 
+/* Document visualisation wrapper - only show border when chart is rendered */
+.doc-vis-wrapper {
+    padding-top: 0;
+}
+
+.doc-vis-wrapper:has(img) {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dee2e6;
+}
+
 /* Autofill override */
 input:-webkit-autofill {
     -webkit-transition-delay: 9999s;

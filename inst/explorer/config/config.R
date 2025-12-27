@@ -116,7 +116,7 @@ if (!is.null(plot_options$documents_per_row_factor)) {
     }
 }
 
-DOCUMENT_TILES <- 50
+DOCUMENT_TILES <- 40
 if (!is.null(plot_options$document_tiles)) {
     if (is.numeric(plot_options$document_tiles)) {
         if (plot_options$document_tiles %in% 1:50) {

@@ -47,9 +47,30 @@ visualiser_dok <-
         sum_treff[[i]] <- length(word_loc[[i]])
       }
 
-      names(word_loc) <-
-        stringr::str_trunc(.pattern, 25) %>%
-        paste(sum_treff[seq_along(.pattern)], sep = " | ")
+      # Check if there are any matches at all
+      has_matches <- unlist(sum_treff) > 0
+
+      if (sum(has_matches) == 0) {
+        # No matches - just don't show the chart
+        return(NULL)
+      }
+
+      # Track which terms have no matches (for subtitle)
+      no_match_indices <- which(!has_matches)
+      no_match_message <- if (length(no_match_indices) > 0) {
+        paste0("No matches for: ", paste(paste0("search term ", no_match_indices), collapse = ", "))
+      } else {
+        NULL
+      }
+
+      # Filter to only terms with matches, keeping original indices for colors
+      original_indices <- which(has_matches)
+      word_loc <- word_loc[has_matches]
+      .pattern <- .pattern[has_matches]
+      sum_treff <- sum_treff[has_matches]
+
+      # Use hit counts as labels for y-axis
+      names(word_loc) <- unlist(sum_treff)
 
       word_location <-
         locate_all_function(.text,
@@ -108,8 +129,8 @@ visualiser_dok <-
 
       dok_tib_2$N[dok_tib_2$N == 0] <- NA
 
-      # Function from colours_to_plot_and_legend.R
-      gradient_colours <- rev(convert_colours_to_brewerpal_colours(my_colours[seq_along(.pattern)]))
+      # Function from colours_to_plot_and_legend.R - use original indices for correct colors
+      gradient_colours <- rev(convert_colours_to_brewerpal_colours(my_colours[original_indices]))
 
       # Create manually defined colour for each tile
       dok_tib_2 <- dok_tib_2 %>%
@@ -124,7 +145,7 @@ visualiser_dok <-
           fill_colour = RColorBrewer::brewer.pal(name = group_colour[[1]], n = 9)[scaled_N]
         )
 
-      dok_tib_2$fill_colour[is.na(dok_tib_2$fill_colour)] <-  "white"
+      dok_tib_2$fill_colour[is.na(dok_tib_2$fill_colour)] <- "white"
 
       ggplot2::ggplot(dok_tib_2,
                         ggplot2::aes(
@@ -134,17 +155,23 @@ visualiser_dok <-
                           width = 1,
                           height = 1
                         )) +
-        ggplot2::geom_tile(color = "black", linewidth = 0.1) +
+        ggplot2::geom_tile(color = NA) +
         ggplot2::coord_fixed(ratio = 1, expand = FALSE) +
-        ggplot2::labs(x = NULL, y = NULL) +
+        ggplot2::labs(x = NULL, y = NULL, title = "Document map", caption = no_match_message) +
         ggplot2::scale_fill_identity() + # , values = c(0,0.1,1)) +
         ggplot2::scale_x_discrete(expand = c(0, 0)) +
-        ggplot2::theme(axis.ticks.y = ggplot2::element_blank()) +
         ggplot2::theme(
+          axis.ticks.y = ggplot2::element_blank(),
+          axis.text.y = ggplot2::element_text(size = 9, color = "gray40", margin = ggplot2::margin(r = 2)),
           axis.title.x = ggplot2::element_blank(),
           axis.text.x = ggplot2::element_blank(),
-          axis.ticks.x = ggplot2::element_blank()
-        ) +
-        ggplot2::theme(legend.position = "none")
+          axis.ticks.x = ggplot2::element_blank(),
+          legend.position = "none",
+          plot.title = ggplot2::element_text(hjust = 0, size = 10, color = "gray50", margin = ggplot2::margin(b = 3)),
+          plot.caption = ggplot2::element_text(hjust = 0, size = 9, color = "gray40"),
+          panel.background = ggplot2::element_rect(fill = "white", color = NA),
+          panel.border = ggplot2::element_rect(color = "gray60", fill = NA, linewidth = 0.5, linetype = "dashed"),
+          plot.background = ggplot2::element_rect(fill = "white", color = NA)
+        )
     }
   }

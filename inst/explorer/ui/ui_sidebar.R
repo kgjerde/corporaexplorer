@@ -30,6 +30,7 @@ bslib::sidebar(
         bslib::accordion_panel(
             title = "Highlight additional terms",
             value = "highlight",
+            shiny::div(class = "search-terms-legend", id = "highlight_terms_legend"),
             shiny::textAreaInput("highlight_terms_area", label = NULL,
                                 placeholder = "Terms separated by newline", rows = 2,
                                 value = input_arguments_derived$highlight_terms)

@@ -49,7 +49,7 @@ PLOT_SIZE_FACTOR <- 15
 
 MAX_WIDTH_FOR_ROW <- 75
 
-DOCUMENT_TILES <- 50
+DOCUMENT_TILES <- 40
 
 ui_options <- NULL  # To avoid errors when later checking for !is.null css elements
 

@@ -114,9 +114,12 @@ add_tab_doc_tekst <- function(dok_or_365) {
           bslib::nav_panel(
               title = shiny::textOutput('document_box_title'),
               value = "document_box_title",
-              shiny::plotOutput("dok_vis",
-                         click = "dok_vis_click",
-                         height = "auto"),
+              shiny::div(
+                  class = "doc-vis-wrapper",
+                  shiny::plotOutput("dok_vis",
+                             click = "dok_vis_click",
+                             height = "auto")
+              ),
 
               shiny::htmlOutput(
                   outputId = "doc_tekst",
