@@ -121,10 +121,29 @@ add_tab_doc_tekst <- function(dok_or_365) {
                              height = "auto")
               ),
 
-              shiny::htmlOutput(
-                  outputId = "doc_tekst",
-                  container = shiny::tags$div,
-                  class = paste0("boxed_doc_data_", dok_or_365)
+              # Find bar - sticky search within document
+              if (INCLUDE_FIND_IN_TEXT) shiny::div(
+                  class = "doc-find-bar",
+                  shiny::tags$select(id = "docFindPresets", class = "doc-find-presets"),
+                  shiny::tags$input(type = "text", id = "docFindInput", placeholder = "Find (regex)..."),
+                  shiny::tags$label(
+                      class = "doc-find-case",
+                      shiny::tags$input(type = "checkbox", id = "docFindCaseSensitive"),
+                      "Aa"
+                  ),
+                  shiny::tags$button(id = "docFindPrev", disabled = NA, "\u25C0"),
+                  shiny::tags$button(id = "docFindNext", disabled = NA, "\u25B6"),
+                  shiny::tags$span(id = "docFindInfo", class = "doc-find-info")
+              ),
+
+              # Document content - searchable container
+              shiny::div(
+                  class = "doc-content-searchable",
+                  shiny::htmlOutput(
+                      outputId = "doc_tekst",
+                      container = shiny::tags$div,
+                      class = paste0("boxed_doc_data_", dok_or_365)
+                  )
               )
           ),
 

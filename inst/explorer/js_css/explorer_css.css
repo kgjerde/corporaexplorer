@@ -279,3 +279,101 @@ input:-webkit-autofill {
     -webkit-transition-delay: 9999s;
 }
 
+/* --------------------------------------------------------------------------
+   Document Find feature
+   -------------------------------------------------------------------------- */
+.doc-find-bar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+}
+
+/* Shared control styles */
+.doc-find-presets,
+.doc-find-bar input[type="text"],
+.doc-find-bar button,
+.doc-find-case {
+    border: 1px solid #ced4da;
+    border-radius: 3px;
+    background: white;
+}
+
+.doc-find-presets {
+    padding: 2px 4px;
+    min-width: 95px;
+}
+
+.doc-find-bar input[type="text"] {
+    flex: 1;
+    min-width: 80px;
+    padding: 3px 6px;
+}
+
+.doc-find-bar input[type="text"]:focus {
+    outline: none;
+    border-color: #80bdff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.15);
+}
+
+.doc-find-bar button,
+.doc-find-case {
+    padding: 2px 6px;
+    cursor: pointer;
+}
+
+.doc-find-bar button:hover:not(:disabled),
+.doc-find-case:hover {
+    background: #e9ecef;
+}
+
+.doc-find-bar button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.doc-find-info,
+.doc-find-case {
+    color: #666;
+}
+
+.doc-find-info {
+    min-width: 35px;
+    text-align: right;
+}
+
+.doc-find-case {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    user-select: none;
+}
+
+.doc-find-case:has(input:checked) {
+    background: #e7f1ff;
+    border-color: #80bdff;
+    color: #004085;
+}
+
+.doc-find-case input {
+    display: none;
+}
+
+/* Find match highlights */
+.doc-find-match {
+    background-color: #ffeb3b;
+    padding: 1px 0;
+    border-radius: 2px;
+}
+
+.doc-find-match.current {
+    background-color: #ff9800;
+    box-shadow: 0 0 0 2px rgba(255, 152, 0, 0.4);
+}
+

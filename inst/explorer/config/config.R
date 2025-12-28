@@ -94,6 +94,13 @@ if (!is.null(ui_options$corpus_map_column_width)) {
     }
 }
 
+INCLUDE_FIND_IN_TEXT <- TRUE
+if (!is.null(ui_options$find_in_text)) {
+    if (is.logical(ui_options$find_in_text)) {
+        INCLUDE_FIND_IN_TEXT <- ui_options$find_in_text
+    }
+} # Not included in explore() documentation yet.
+
 # Plot options from function arguments ------------------------------------
 
 plot_options <- shiny::getShinyOption("corporaexplorer_plot_options")

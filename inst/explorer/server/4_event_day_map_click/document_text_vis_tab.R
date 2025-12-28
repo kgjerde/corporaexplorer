@@ -5,6 +5,13 @@ output$doc_tekst <- shiny::renderText({
                      search_arguments)
 })
 
+if (INCLUDE_FIND_IN_TEXT) {
+    shinyjs::runjs(sprintf(
+        "setTimeout(function() { window.initDocFind(%s); }, 200);",
+        jsonlite::toJSON(search_arguments$terms_highlight, auto_unbox = FALSE)
+    ))
+}
+
 # Document visualisation --------------------------------------------------
 if (length(search_arguments$terms_highlight) > 0) {
     output$dok_vis <- shiny::renderPlot({
