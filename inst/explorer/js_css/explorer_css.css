@@ -71,11 +71,12 @@
    -------------------------------------------------------------------------- */
 .class_day_corpus {
     flex: 0 0 auto;
+    display: none;
 }
 
 .class_day_corpus > .card,
 .class_day_corpus > .bslib-card {
-    display: none;
+    width: 100%;
 }
 
 /* --------------------------------------------------------------------------

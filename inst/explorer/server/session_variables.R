@@ -33,6 +33,6 @@ search_arguments <- shiny::reactiveValues(
 plot_mode <- shiny::reactiveValues(mode = if (DATE_BASED_CORPUS == FALSE) "data_dok" else "data_365")
 
 ui_elements <- shiny::reactiveValues(
-    day_corpus_box = ".class_day_corpus > .card, .class_day_corpus > .bslib-card",
+    day_corpus_box = ".class_day_corpus",
     document_box = ".class_doc_box > .card, .class_doc_box > .bslib-card"
 )
