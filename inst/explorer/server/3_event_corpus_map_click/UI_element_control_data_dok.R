@@ -1,3 +1,6 @@
+shiny::updateTabsetPanel(session, inputId = "dokumentboks", selected = 'document_box_title')
+
+
 if (session_variables$doc_list_open == TRUE) {
 
     remove_tab_doc_list_tekst()
@@ -22,9 +25,6 @@ if (session_variables$doc_tab_open == FALSE) {
     session_variables$doc_tab_open <- TRUE
 
 }
-
-# Select the document tab (after it's been inserted)
-shiny::updateTabsetPanel(session, inputId = "dokumentboks", selected = 'document_box_title')
 
 show_ui("document_box")
 

@@ -56,18 +56,11 @@ if (DATE_BASED_CORPUS == TRUE && !is.null(input$date_slider) && !is.null(input$d
   }
 }
 
-# Fjerner faner (relevant for data_dok) - only if they exist
-if (session_variables$doc_tab_open == TRUE) {
-  remove_tab_doc_info()
-  remove_tab_doc_tekst()
-  if (INCLUDE_EXTRA == TRUE) {
-    remove_tab_extra()
-  }
-  session_variables$doc_tab_open <- FALSE
-}
-if (session_variables$doc_list_open == TRUE) {
-  remove_tab_doc_list_tekst()
-  session_variables$doc_list_open <- FALSE
+# Fjerner faner (relevant for data_dok)
+remove_tab_doc_info()
+remove_tab_doc_tekst()
+if (INCLUDE_EXTRA == TRUE) {
+  remove_tab_extra()
 }
 
 # Setter tab-tittel på korpuskart hvis ny tittel
