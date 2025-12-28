@@ -69,8 +69,10 @@ visualiser_dok <-
       .pattern <- .pattern[has_matches]
       sum_treff <- sum_treff[has_matches]
 
-      # Use hit counts as labels for y-axis
-      names(word_loc) <- unlist(sum_treff)
+      # Use unique term indices as internal column names, map to hit counts for display
+      term_ids <- paste0("term_", seq_along(.pattern))
+      names(word_loc) <- term_ids
+      hit_count_labels <- setNames(as.character(unlist(sum_treff)), term_ids)
 
       word_location <-
         locate_all_function(.text,
@@ -120,11 +122,11 @@ visualiser_dok <-
       dok_tib_2 <-
         dok_tib_2[nrow(dok_tib_2):1,] # snur på hodet for å få "riktig" rekkefølge...
 
+      # Keep term_ids as factor levels (for unique rows), display hit counts via scale_y_discrete
       dok_tib_2$ord <-
         factor(
           dok_tib_2$ord,
-          levels = unique(dok_tib_2$ord),
-          labels = unique(dok_tib_2$ord)
+          levels = unique(dok_tib_2$ord)
         )
 
       dok_tib_2$N[dok_tib_2$N == 0] <- NA
@@ -160,6 +162,7 @@ visualiser_dok <-
         ggplot2::labs(x = NULL, y = NULL, title = "Document map", caption = no_match_message) +
         ggplot2::scale_fill_identity() + # , values = c(0,0.1,1)) +
         ggplot2::scale_x_discrete(expand = c(0, 0)) +
+        ggplot2::scale_y_discrete(labels = hit_count_labels) +
         ggplot2::theme(
           axis.ticks.y = ggplot2::element_blank(),
           axis.text.y = ggplot2::element_text(size = 9, color = "gray40", margin = ggplot2::margin(r = 2)),
