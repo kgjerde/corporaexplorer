@@ -1,17 +1,14 @@
-#' Displaying document with html anchors and term highlighting
+#' Displaying document with term highlighting
 #'
 #' @param document Character string of length 1.
 #' @param search_arguments reactiveValues object with search arguments.
-#' @param chunks Number of html anchors to insert.
 #'
 #' @return Html coded character string
 display_document <-
   function(document,
              search_arguments,
-             my_colours = MY_COLOURS,
-             chunks = DOCUMENT_TILES) {
-    vis_tekst <-
-      insert_doc_navigation_links(document, chunks)
+             my_colours = MY_COLOURS) {
+    vis_tekst <- document
 
     patterns <- unique(search_arguments$terms_highlight)
 
