@@ -1,5 +1,4 @@
 bslib::sidebar(
-    # width = 220,
     open = TRUE,
     bg = "#ffffff",
 

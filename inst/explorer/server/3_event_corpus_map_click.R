@@ -55,7 +55,4 @@ source("./server/3_event_corpus_map_click/js_auto_scroll.R", local = TRUE)
         }
     }
 
-# JS positioning of UI elements --------------------------------------
-source("./server/3_event_corpus_map_click/ui_positioning.R", local = TRUE)
-
 })
