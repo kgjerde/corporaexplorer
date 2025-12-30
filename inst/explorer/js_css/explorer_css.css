@@ -4,6 +4,16 @@
    Global layout - minimal spacing
    -------------------------------------------------------------------------- */
 
+/* Compact navbar/header */
+.navbar {
+    min-height: unset !important;
+    padding: 0.35rem 0.5rem !important;
+}
+
+.navbar .navbar-brand {
+    font-size: 0.95rem;
+    padding: 0;
+}
 
 /* --------------------------------------------------------------------------
    Column resize handle (drag between columns)
@@ -26,7 +36,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 75px);
 }
 
 /* --------------------------------------------------------------------------
@@ -124,7 +134,7 @@
    -------------------------------------------------------------------------- */
 .col-sm-6:first-child > .card,
 .col-sm-6:first-child > .bslib-card {
-    height: calc(100vh - 100px);
+    height: calc(100vh - 75px);
 }
 
 .col-sm-6:first-child .card-body {
