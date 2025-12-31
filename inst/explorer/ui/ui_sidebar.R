@@ -2,13 +2,11 @@ bslib::sidebar(
     open = TRUE,
     bg = "#ffffff",
 
-    # All options in accordion
     bslib::accordion(
         id = "sidebar_options",
-        open = "search",
+        open = c("search", "plotmode"),
         multiple = TRUE,
 
-        # Search terms - open by default
         bslib::accordion_panel(
             title = "Term(s) to chart and highlight",
             value = "search",
@@ -51,31 +49,39 @@ bslib::sidebar(
         ),
 
         bslib::accordion_panel(
-            title = "Plot size",
-            value = "plotsize",
-            shiny::sliderInput("PLOTSIZE", label = NULL, min = 100, ticks = FALSE,
-                              step = 50, max = INITIAL_PLOT_SIZE * 2, value = INITIAL_PLOT_SIZE),
-            shiny::actionButton("size_button", "Apply", class = "btn-sm btn-outline-secondary w-100")
+            title = "Search options",
+            value = "search_options",
+            bslib::input_switch("case_sensitivity", "Case sensitive (slower)", value = input_arguments$case_sensitivity)
         ),
 
         bslib::accordion_panel(
             title = "Layout",
             value = "layout",
-            shiny::sliderInput("column_width", label = "Left column %", min = 30, max = 70,
-                              value = CORPUS_MAP_COLUMN_WIDTH_PCT, step = 5, ticks = FALSE)
+            shiny::div(
+                class = "d-flex align-items-center gap-2",
+                shiny::div(style = "flex: 1; min-width: 0;",
+                    shiny::sliderInput("PLOTSIZE", label = "Corpus map height", min = 100, ticks = FALSE,
+                                      step = 50, max = INITIAL_PLOT_SIZE * 2, value = INITIAL_PLOT_SIZE)
+                ),
+                shiny::actionButton("size_button", "Apply", class = "btn-sm btn-outline-secondary py-0 px-2", style = "font-size: 0.7rem; margin-top: 0.5rem;")
+            ),
+            shiny::div(style = "margin-top: 0.5rem;",
+                shiny::sliderInput("column_width", label = "Left column %", min = 30, max = 70,
+                                  value = CORPUS_MAP_COLUMN_WIDTH_PCT, step = 5, ticks = FALSE)
+            )
+        ),
+
+        bslib::accordion_panel(
+            title = "Plot mode",
+            value = "plotmode",
+            shiny::radioButtons("modus", label = NULL,
+                               choices = list("Calendar" = "data_365", "Document wall" = "data_dok"),
+                               selected = if (DATE_BASED_CORPUS == FALSE) "data_dok" else "data_365",
+                               inline = TRUE)
         )
     ),
 
     shiny::uiOutput('magic_text_area_ui'),
-
-    # Case sensitivity as switch
-    bslib::input_switch("case_sensitivity", "Case sensitive search (slower)", value = input_arguments$case_sensitivity),
-
-    # Plot mode - compact inline radio
-    shiny::radioButtons("modus", label = "Plot mode",
-                       choices = list("Calendar" = "data_365", "Document wall" = "data_dok"),
-                       selected = if (DATE_BASED_CORPUS == FALSE) "data_dok" else "data_365",
-                       inline = TRUE),
 
     # Search button
     shiny::actionButton("search_button", "Search", class = "btn-primary w-100 mt-2")

@@ -6,7 +6,7 @@ output$time_filtering_ui <- shiny::renderUI({
       shiny::radioButtons(
         inputId = "years_or_dates",
         label = NULL,
-        choices = c("Year range", "Date range"),
+        choices = c("By year" = "Year range", "By date" = "Date range"),
         inline = TRUE
       ),
 

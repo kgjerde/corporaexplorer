@@ -225,7 +225,7 @@
     min-height: 1.2rem;
 }
 
-/* Year slider - hide grid, compact */
+/* Sidebar sliders - compact */
 .sidebar .irs {
     height: 35px;
 }
@@ -236,6 +236,11 @@
 
 .sidebar .irs-min, .sidebar .irs-max {
     display: none;
+}
+
+/* Year slider - inset from edges */
+.accordion-item[data-value="daterange"] .irs {
+    margin: 0 0.5rem;
 }
 
 /* --------------------------------------------------------------------------
