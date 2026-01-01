@@ -42,7 +42,7 @@ bslib::sidebar(
             shiny::uiOutput('checkbox_filtering_ui')
         ),
 
-        bslib::accordion_panel(
+        if (DATE_BASED_CORPUS) bslib::accordion_panel(
             title = "Date range",
             value = "daterange",
             shiny::uiOutput('time_filtering_ui')
@@ -71,12 +71,12 @@ bslib::sidebar(
             )
         ),
 
-        bslib::accordion_panel(
+        if (DATE_BASED_CORPUS) bslib::accordion_panel(
             title = "Plot mode",
             value = "plotmode",
             shiny::radioButtons("modus", label = NULL,
                                choices = list("Calendar" = "data_365", "Document wall" = "data_dok"),
-                               selected = if (DATE_BASED_CORPUS == FALSE) "data_dok" else "data_365",
+                               selected = "data_365",
                                inline = TRUE)
         )
     ),

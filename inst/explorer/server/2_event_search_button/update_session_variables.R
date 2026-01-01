@@ -20,7 +20,8 @@ session_variables$corpus_info_plot <- NULL
 
 # Calendar or document wall -----------------------------------------------
 previous_mode <- plot_mode$mode
-plot_mode$mode <- input$modus
+# For non-date-based corpora, Plot mode panel is hidden so input$modus doesn't exist
+plot_mode$mode <- if (DATE_BASED_CORPUS) input$modus else "data_dok"
 
 # Save state change in order to update only when changed
 if (previous_mode != plot_mode$mode) {
