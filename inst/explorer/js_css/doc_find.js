@@ -13,7 +13,7 @@
         // Get fresh DOM references each time (Shiny recreates elements)
         getElements() {
             return {
-                content: document.querySelector('.doc-content-searchable'),
+                content: document.getElementById('doc_tekst'),
                 input: document.getElementById('docFindInput'),
                 presets: document.getElementById('docFindPresets'),
                 prevBtn: document.getElementById('docFindPrev'),
