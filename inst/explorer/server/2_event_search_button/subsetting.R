@@ -1,19 +1,18 @@
 
 # Sidebar checkbox filtering, if any --------------------------------------
 
-# Checking for presence of checkboxes
-if (search_arguments$subset_search == TRUE) {
-  if (!is.null(UI_FILTERING_CHECKBOXES)) {
+# Checkbox filtering works independently of filter text
+if (!is.null(UI_FILTERING_CHECKBOXES)) {
 
-    for (i in seq_along(UI_FILTERING_CHECKBOXES$column_names)) {
-      # Do nothing if every box checked
-      if (!all(UI_FILTERING_CHECKBOXES$values[[i]] %in% input[[paste0("type_", i)]])) {
-      # If some unchecked, filter:
-        session_variables$data_dok <-
-          session_variables$data_dok[
-            session_variables$data_dok[[UI_FILTERING_CHECKBOXES$column_names[i]]] %in% input[[paste0("type_", i)]],
-          ]
-      }
+  for (i in seq_along(UI_FILTERING_CHECKBOXES$column_names)) {
+    # Do nothing if every box checked
+    if (!all(UI_FILTERING_CHECKBOXES$values[[i]] %in% input[[paste0("type_", i)]])) {
+    # If some unchecked, filter:
+      search_arguments$subset_search <- TRUE
+      session_variables$data_dok <-
+        session_variables$data_dok[
+          session_variables$data_dok[[UI_FILTERING_CHECKBOXES$column_names[i]]] %in% input[[paste0("type_", i)]],
+        ]
     }
   }
 }
@@ -95,7 +94,7 @@ if (search_arguments$subset_search == TRUE) {
 # Ekstra filtrering av data_dok ved subsetting i data_365: ----------------
 
   if (plot_mode$mode == "data_365") {
-      if (search_arguments$subset_search == TRUE | search_arguments$subset_search == TRUE) {
+      if (search_arguments$subset_search == TRUE) {
 
     session_variables$data_dok <-
 
