@@ -6,10 +6,8 @@ if (search_arguments$all_ok == FALSE) {
 
     validate_thresholds(isolate(search_arguments$raw_highlight_terms))
 
-    if (!is.null(isolate(input$subset_corpus))) {
-        if (isolate(input$subset_corpus == 'Yes')) {
-            validate_thresholds(isolate(search_arguments$raw_subset_terms))
-        }
+    if (search_arguments$subset_search == TRUE) {
+        validate_thresholds(isolate(search_arguments$raw_subset_terms))
     }
 
     validate_column_names()

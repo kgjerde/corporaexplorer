@@ -114,7 +114,7 @@ validate_search_term_length <- function() {
 #' @return Logical
 check_all_input <- function() {
     all_terms <- search_arguments$raw_highlight_terms
-    if (!is.null(input$subset_corpus)) {
+    if (search_arguments$subset_search == TRUE) {
         all_terms <- c(all_terms, search_arguments$raw_subset_terms)
     }
     if (length(all_terms) > 0) {

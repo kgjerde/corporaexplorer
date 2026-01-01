@@ -53,21 +53,6 @@ doc_title_non_date_based_corpora <- function(min_rad) {
   return(title)
 }
 
-# Avoiding flashing sidebar elements on load (w/css) ----------------------
-shiny::observeEvent(input$adjust_plotsize, {
-    change_ui_class(".plotsize_field", property = "display", "inline")
-})
-shiny::observeEvent(input$subset_corpus, {
-    change_ui_class(".subset_field", property = "display", "inline")
-})
-shiny::observeEvent(input$more_terms_button, {
-    change_ui_class(".more_terms_field", property = "display", "inline")
-})
-shiny::observeEvent(input$antall_linjer, {
-    change_ui_class(".additional_search_terms", property = "display", "inline")
-})
-
-
 # Corpus info tab: edit plot legend keys UI -------------------------------
 observe({
   shinyjs::hide("edit_info_plot_legend_keys")

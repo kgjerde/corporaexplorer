@@ -2,7 +2,7 @@
 # Sidebar checkbox filtering, if any --------------------------------------
 
 # Checking for presence of checkboxes
-if (!is.null(input$subset_corpus)) {
+if (search_arguments$subset_search == TRUE) {
   if (!is.null(UI_FILTERING_CHECKBOXES)) {
 
     for (i in seq_along(UI_FILTERING_CHECKBOXES$column_names)) {
@@ -84,9 +84,7 @@ session_variables[[plot_mode$mode]] <-
 
 # Filtering by filter pattern if present ----------------------------------
 
-if (!is.null(input$subset_corpus)) {
-  search_arguments$subset_search <- TRUE
-
+if (search_arguments$subset_search == TRUE) {
   session_variables[[plot_mode$mode]] <-
     filtrere_korpus_pattern(session_variables[[plot_mode$mode]],
                             search_arguments,
