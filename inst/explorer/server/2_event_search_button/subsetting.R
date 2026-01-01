@@ -117,9 +117,6 @@ if (search_arguments$subset_search == TRUE) {
     session_variables$data_365$Day_without_docs[session_variables$data_365$Date %in% non_empty_dates == FALSE] <-
       TRUE
 
-    session_variables$data_365$cx_ID[session_variables$data_365$Date %in% non_empty_dates == FALSE] <-
-      0
-
   }
   }
     #}
