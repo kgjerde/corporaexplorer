@@ -26,7 +26,7 @@ search_arguments <- shiny::reactiveValues(
     raw_highlight_terms = character(0), # TODO unsatisfcactory
     case_sensitive = FALSE,
     time_filtering_mode = "Year range",
-    time_range = min(loaded_data$original_data$data_dok$Year_):max(loaded_data$original_data$data_dok$Year_),
+    time_range = NA,
     all_ok = TRUE
 )
 
