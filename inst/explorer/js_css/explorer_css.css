@@ -118,7 +118,6 @@
 }
 
 .class_doc_box .tab-content {
-    overflow: auto;
     flex: 1 1 auto;
     min-height: 0;
 }
@@ -127,6 +126,15 @@
     padding: 0.75rem;
     line-height: 1.5;
     font-size: 0.85rem;
+    height: 100%;
+    overflow: auto;
+}
+
+/* Only document tab needs flex layout for find-bar + scrollable content */
+.class_doc_box .tab-pane.active:has(.doc-content-searchable) {
+    display: flex !important;
+    flex-direction: column;
+    overflow: visible;
 }
 
 /* --------------------------------------------------------------------------
@@ -312,10 +320,14 @@ input:-webkit-autofill {
 /* --------------------------------------------------------------------------
    Document Find feature
    -------------------------------------------------------------------------- */
+.doc-content-searchable {
+    flex: 1 1 auto;
+    overflow: auto;
+    min-height: 0;
+}
+
 .doc-find-bar {
-    position: sticky;
-    top: 0;
-    z-index: 10;
+    flex-shrink: 0;
     background: #f8f9fa;
     border-bottom: 1px solid #dee2e6;
     padding: 4px 8px;

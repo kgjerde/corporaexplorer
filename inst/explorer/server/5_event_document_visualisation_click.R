@@ -6,7 +6,7 @@ shiny::observeEvent(input$dok_vis_click, {
     # This avoids inserting anchor spans that fragment text nodes
     pct <- (rute_nr - 1) / DOCUMENT_TILES * 100
     shinyjs::runjs(sprintf(
-        "$('.class_doc_box .tab-content').scrollTo('%f%%', {duration: 200});",
+        "$('.class_doc_box .doc-content-searchable').scrollTo('%f%%', {duration: 200});",
         pct
     ))
 })
