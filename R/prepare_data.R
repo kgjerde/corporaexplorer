@@ -319,8 +319,7 @@ include_columns_for_ui_checkboxes <-
 #'
 #' @param ... Ignored.
 #' @return A \code{corporaexplorer} object to be passed as argument to
-#'   \code{\link[corporaexplorer]{explore}} and
-#'   \code{\link[corporaexplorer]{run_document_extractor}}.
+#'   \code{\link[corporaexplorer]{explore}}.
 #' @export
 prepare_data <- function(dataset, ...) {
    UseMethod("prepare_data")
@@ -398,9 +397,6 @@ prepare_data <- function(dataset, ...) {
 #' if(interactive()){
 #' # Running exploration app:
 #' explore(corpus)
-#'
-#' # Running app to extract documents:
-#' run_document_extractor(corpus)
 #' }
 prepare_data.data.frame <- function(dataset,
                          date_based_corpus = TRUE,

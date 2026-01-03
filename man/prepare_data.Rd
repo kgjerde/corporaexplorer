@@ -125,8 +125,7 @@ present in dataset, it will be ignored.}
 }
 \value{
 A \code{corporaexplorer} object to be passed as argument to
-  \code{\link[corporaexplorer]{explore}} and
-  \code{\link[corporaexplorer]{run_document_extractor}}.
+  \code{\link[corporaexplorer]{explore}}.
 }
 \description{
 Convert data frame or character vector to a ‘corporaexplorerobject’
@@ -168,9 +167,6 @@ corpus <- prepare_data(test_df, corpus_name = "Test corpus")
 if(interactive()){
 # Running exploration app:
 explore(corpus)
-
-# Running app to extract documents:
-run_document_extractor(corpus)
 }
 
 ## From character vector

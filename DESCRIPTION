@@ -25,7 +25,6 @@ Imports:
 	RColorBrewer,
 	re2,
 	rlang,
-	rmarkdown,
 	scales,
 	shiny,
 	shinyjs,

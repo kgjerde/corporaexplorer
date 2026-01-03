@@ -116,9 +116,6 @@
 #'         search_input = list(search_terms = c("Tottenham", "Spurs")),
 #'         plot_options = list(max_docs_in_wall_view = 12001,
 #'                                         colours = c("gray", "green")))
-#'
-#' # Running app to extract documents:
-#' run_document_extractor(corpus)
 #' }
 explore <- function(corpus_object,
                                 search_options = list(),
