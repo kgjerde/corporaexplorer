@@ -62,6 +62,11 @@ MY_COLOURS <- rep(MAIN_COLOURS, 10)
 
 INCLUDE_EXTRA <- FALSE
 
+# UI options from function arguments --------------------------------------
+
+CORPUS_MAP_COLUMN_WIDTH_PCT <- 50
+INCLUDE_FIND_IN_TEXT <- TRUE
+
 # Start-up plot size ------------------------------------------------------
 
 INITIAL_PLOT_SIZE <- plot_size(loaded_data$original_data$data_dok,
