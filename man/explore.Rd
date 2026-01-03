@@ -55,6 +55,9 @@ explore0(
     \item \code{font_size}. Character string specifying font size in
     document view,
     e.g. \code{"10px"}
+    \item \code{corpus_map_column_width}. Integer between 30 and 70
+    specifying the width (in percent) of the left column containing the
+    corpus map. Defaults to 50.
     }}
 
 \item{search_input}{List. Gives the opportunity to pre-populate
