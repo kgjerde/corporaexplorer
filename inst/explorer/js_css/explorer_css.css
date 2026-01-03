@@ -296,6 +296,13 @@
     }
 }
 
+/* Document scroll container - single scrollable area for vis + find bar + content */
+.doc-scroll-container {
+    flex: 1 1 auto;
+    overflow: auto;
+    min-height: 0;
+}
+
 /* Document visualisation wrapper - only show border when chart is rendered */
 .doc-vis-wrapper {
     padding-top: 0;
@@ -315,13 +322,10 @@ input:-webkit-autofill {
 /* --------------------------------------------------------------------------
    Document Find feature
    -------------------------------------------------------------------------- */
-.doc-content-searchable {
-    flex: 1 1 auto;
-    overflow: auto;
-    min-height: 0;
-}
-
 .doc-find-bar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
     flex-shrink: 0;
     background: #f8f9fa;
     border-bottom: 1px solid #dee2e6;
