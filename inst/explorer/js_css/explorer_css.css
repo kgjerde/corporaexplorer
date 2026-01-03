@@ -154,6 +154,29 @@
     height: 250px !important;
 }
 
+/* Corpus info tab - compact headings and spacing */
+.tab-pane[data-value="Corpus info"] > .card-body {
+    margin-top: 0.25rem !important;
+    gap: 0.25rem !important;
+}
+
+#corpus_info h4,
+#search_results h4,
+#info_plot_title h4 {
+    font-size: 1rem;
+    margin: 0 0 0.1rem 0;
+}
+
+#corpus_info hr,
+#search_results hr,
+#info_plot_title hr {
+    margin: 0.25rem 0 0.5rem 0;
+}
+
+#TABLE {
+    margin-bottom: 0;
+}
+
 /* --------------------------------------------------------------------------
    Sidebar - compact bslib native
    -------------------------------------------------------------------------- */
