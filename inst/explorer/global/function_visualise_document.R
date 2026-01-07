@@ -39,6 +39,8 @@ visualiser_dok <-
     } else {
       word_loc <- list()
       sum_treff <- list()
+      # Track original positions before deduplication for correct color mapping
+      true_original_indices <- which(!duplicated(.pattern))
       .pattern <- unique(.pattern)
       for (i in seq_along(.pattern)) {
         word_loc[[i]] <-
@@ -56,7 +58,8 @@ visualiser_dok <-
       }
 
       # Track which terms have no matches (for subtitle)
-      no_match_indices <- which(!has_matches)
+      # Map to original indices so message matches legend numbering
+      no_match_indices <- true_original_indices[!has_matches]
       no_match_message <- if (length(no_match_indices) > 0) {
         paste0("No matches for: ", paste(paste0("search term ", no_match_indices), collapse = ", "))
       } else {
@@ -64,7 +67,7 @@ visualiser_dok <-
       }
 
       # Filter to only terms with matches, keeping original indices for colors
-      original_indices <- which(has_matches)
+      original_indices <- true_original_indices[has_matches]
       word_loc <- word_loc[has_matches]
       .pattern <- .pattern[has_matches]
       sum_treff <- sum_treff[has_matches]

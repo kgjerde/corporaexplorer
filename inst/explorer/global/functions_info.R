@@ -49,6 +49,7 @@ create_df_for_info <- function(session_variables,
   )
 
   # Checking distinctness
+  # Track original positions before deduplication for correct color mapping
   distinkt <- which(!duplicated(full_terms))
 
   if (length(distinkt) != length(full_terms)) {
@@ -82,7 +83,8 @@ create_df_for_info <- function(session_variables,
     tresh = tresh,
     cust_col = cust_col,
     terms = terms,
-    years = Years
+    years = Years,
+    color_indices = distinkt
   ))
 }
 
@@ -241,14 +243,17 @@ corpus_info_plot <- function(start_df_list, search_arguments, info_mode) {
       padr::fill_by_value(Count, value = 0)
     }
 
+    # Use correct colors based on original indices (handles duplicates)
+    correct_colors <- MY_COLOURS[start_df_list$color_indices]
+
     info_plot <- ggplot2::ggplot(data = fig_tib)
     if (length(unique(fig_tib$Year_)) == 1 | DATE_BASED_CORPUS == FALSE) {
       info_plot <-
         info_plot + ggplot2::geom_col(ggplot2::aes(x = Year_, y = Count, fill = Term), position = "dodge") +
-        ggplot2::scale_fill_manual(values = MY_COLOURS)
+        ggplot2::scale_fill_manual(values = correct_colors)
     } else {
       info_plot <-
-        info_plot + ggplot2::geom_line(ggplot2::aes(x = Year_, y = Count, color = Term)) + ggplot2::scale_color_manual(values = MY_COLOURS)
+        info_plot + ggplot2::geom_line(ggplot2::aes(x = Year_, y = Count, color = Term)) + ggplot2::scale_color_manual(values = correct_colors)
     }
 
     break_and_label_seq <- 1

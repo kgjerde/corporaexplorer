@@ -74,29 +74,19 @@ if (!is.null(filter_area) && nchar(trimws(filter_area)) > 0) {
 # Search terms ------------------------------------------------------------
 search_arguments$search_terms <- collect_search_terms() %>%
     to_lower_if_case_insensitive_search() %>%
-    unique() %>%
     clean_terms()
 
 #  Highlight terms - collect and keep raw for later argument check---------
 search_arguments$raw_highlight_terms <- collect_highlight_terms()
 
-# Highlight terms - step 1 ------------------------------------------------
+# Highlight terms --------------------------------------------------------
 search_arguments$terms_highlight <- search_arguments$raw_highlight_terms %>%
-    to_lower_if_case_insensitive_search()
-
-# Identifying duplicates --------------------------------------------------
-highlight_terms_not_duplicated <- !duplicated(search_arguments$terms_highlight)
-
-# Highlight terms - step 2 ------------------------------------------------
-search_arguments$terms_highlight <-
-    search_arguments$terms_highlight[highlight_terms_not_duplicated] %>%
+    to_lower_if_case_insensitive_search() %>%
     clean_terms()
 
 # Search arguments for all terms (search terms and highlight terms) -------
-search_arguments$thresholds <- collect_threshold_values(search_arguments$raw_highlight_terms) %>%
-    .[highlight_terms_not_duplicated]
-search_arguments$custom_column <- collect_custom_column(search_arguments$raw_highlight_terms) %>%
-    .[highlight_terms_not_duplicated]
+search_arguments$thresholds <- collect_threshold_values(search_arguments$raw_highlight_terms)
+search_arguments$custom_column <- collect_custom_column(search_arguments$raw_highlight_terms)
 
 # Checking search arguments -----------------------------------------------
 search_arguments$all_ok <- check_all_input()

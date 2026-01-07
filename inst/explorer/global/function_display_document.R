@@ -10,13 +10,16 @@ display_document <-
              my_colours = MY_COLOURS) {
     vis_tekst <- document
 
+    # Track original positions before deduplication for correct color mapping
+    true_original_indices <- which(!duplicated(search_arguments$terms_highlight))
     patterns <- unique(search_arguments$terms_highlight)
+    colours_to_use <- MY_COLOURS[true_original_indices]
 
     vis_tekst <-
       highlight_document(
         vis_tekst,
         patterns,
-        MY_COLOURS,
+        colours_to_use,
         search_arguments$case_sensitive
       )
 
