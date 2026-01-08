@@ -85,7 +85,7 @@ bslib::sidebar(
         )
     ),
 
-    shiny::uiOutput('magic_text_area_ui'),
+    if (INCLUDE_EXTRA) shiny::uiOutput('magic_text_area_ui'),
 
     # Search button
     shiny::actionButton("search_button", "Search", class = "btn-primary w-100 mt-2")
