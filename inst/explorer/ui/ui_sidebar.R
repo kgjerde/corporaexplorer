@@ -36,6 +36,10 @@ bslib::sidebar(
         bslib::accordion_panel(
             title = "Filter corpus",
             value = "filter",
+            shiny::checkboxInput("filter_by_search_terms",
+                                 label = "Add search terms to filters",
+                                 value = FALSE),
+            shiny::uiOutput("filter_by_search_terms_preview"),
             shiny::textAreaInput("filter_text_area", label = NULL,
                                placeholder = "Terms separated by newline", rows = 2,
                                value = input_arguments_derived$filter_terms),

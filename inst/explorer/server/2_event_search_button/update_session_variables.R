@@ -88,6 +88,20 @@ search_arguments$terms_highlight <- search_arguments$raw_highlight_terms %>%
 search_arguments$thresholds <- collect_threshold_values(search_arguments$raw_highlight_terms)
 search_arguments$custom_column <- collect_custom_column(search_arguments$raw_highlight_terms)
 
+# Prepend search terms to filter if checkbox is checked -------------------
+# Re-processes combined terms for simplicity; duplication is negligible
+if (isTRUE(input$filter_by_search_terms) && length(search_arguments$raw_highlight_terms) > 0) {
+    combined_raw <- c(search_arguments$raw_highlight_terms, search_arguments$raw_subset_terms) %>%
+        unique()
+    search_arguments$subset_search <- TRUE
+    search_arguments$raw_subset_terms <- combined_raw
+    search_arguments$subset_thresholds <- collect_threshold_values(combined_raw)
+    search_arguments$subset_custom_column <- collect_custom_column(combined_raw)
+    search_arguments$subset_terms <- combined_raw %>%
+        to_lower_if_case_insensitive_search() %>%
+        clean_terms()
+}
+
 # Checking search arguments -----------------------------------------------
 search_arguments$all_ok <- check_all_input()
 
