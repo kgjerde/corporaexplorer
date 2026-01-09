@@ -78,6 +78,7 @@ server <- function(input, output, session) {
 source("./server/functions_collect_input_terms.R", local = TRUE)
 source("./server/functions_checking_input.R", local = TRUE)
 source("./server/functions_ui_management.R", local = TRUE)
+source("./server/functions_corpus_navigation.R", local = TRUE)
 source("./server/function_collect_edited_info_plot_legend_keys.R", local = TRUE)
 
 # Conditional and customised sidebar UI elements --------------------------

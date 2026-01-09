@@ -1,3 +1,6 @@
+# Initialize navigation index (used by calendar view; NULL for wall view)
+shiny::isolate(update_navigable_days())
+
 # Set corpus map tab title
 output$korpuskarttittel <- shiny::renderText({
     corpus_map_title(plot_mode$mode)

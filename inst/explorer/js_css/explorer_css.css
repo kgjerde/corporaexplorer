@@ -441,3 +441,42 @@ input:-webkit-autofill {
     box-shadow: 0 0 0 2px rgba(255, 152, 0, 0.4);
 }
 
+/* --------------------------------------------------------------------------
+   Navigation arrows (corpus map prev/next)
+   -------------------------------------------------------------------------- */
+.nav-arrows {
+    display: flex;
+    align-items: center;
+}
+
+.nav-arrows a {
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: opacity 0.15s;
+}
+
+.nav-arrows a.disabled,
+.nav-arrows a[disabled] {
+    opacity: 0.25;
+    pointer-events: none;
+}
+
+.nav-position {
+    font-size: 0.7rem;
+    min-width: 3em;
+    text-align: center;
+}
+
+/* Document box - relative positioning for absolute arrows */
+.class_doc_box {
+    position: relative;
+}
+
+/* Document box nav arrows - absolute position in header area, far right */
+#doc_nav_arrows {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.5rem;
+    z-index: 10;
+}
+

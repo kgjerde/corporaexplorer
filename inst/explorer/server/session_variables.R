@@ -10,7 +10,9 @@ session_variables <- shiny::reactiveValues(
     stop_info_tab = TRUE,
     day_plot_height = EMPTY_DAY_PLOT_HEIGHT,
     corpus_info_plot = NULL,
-    plot_size = INITIAL_PLOT_SIZE
+    plot_size = INITIAL_PLOT_SIZE,
+    current_min_rad = NULL,
+    navigable_days = NULL
 )
 
 search_arguments <- shiny::reactiveValues(
