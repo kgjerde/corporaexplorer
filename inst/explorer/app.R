@@ -26,7 +26,7 @@ if (!is.null(getOption("shiny.testmode"))) {
 
 ui <- function(request) {
   bslib::page_sidebar(
-    title = if (CORPUS_TITLE == "Corpus map") "Corpus exploration" else CORPUS_TITLE,
+    title = CORPUS_TITLE,
     theme = bslib::bs_theme(
       version = 5,
       primary = "#0d6efd",
