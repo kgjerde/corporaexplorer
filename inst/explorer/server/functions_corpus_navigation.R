@@ -56,7 +56,8 @@ select_corpus_row <- function(min_rad) {
   session_variables$current_min_rad <- min_rad
 
   if (plot_mode$mode == "data_365") {
-    if (session_variables[[plot_mode$mode]]$Invisible_fake_date[min_rad] == FALSE) {
+    if (session_variables[[plot_mode$mode]]$Invisible_fake_date[min_rad] == FALSE &
+        is.na(session_variables[[plot_mode$mode]]$Day_without_docs[min_rad])) {
       source("./server/3_event_corpus_map_click/UI_element_control_data_365.R", local = TRUE)
       source("./server/3_event_corpus_map_click/preparing_day_corpus.R", local = TRUE)
       source("./server/3_event_corpus_map_click/title_list.R", local = TRUE)

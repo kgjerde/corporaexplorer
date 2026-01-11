@@ -30,19 +30,5 @@ if (length(min_rad) > 0) {
         session_variables$day_plot_height
       }
     )
-  # Insert empty plot as placeholder when no documents this day
-  } else if (nrow(data_day) == 0) {
-    session_variables$day_plot_height <- EMPTY_DAY_PLOT_HEIGHT
-    make_unclickable_ui(".day_map")
-    output$dag_kart <- shiny::renderPlot({
-      ggplot2::ggplot() +
-        ggplot2::geom_blank() +
-        ggplot2::theme_classic()
-    },
-    height =
-      function(x) {
-        session_variables$day_plot_height
-      }
-    )
   }
 }
