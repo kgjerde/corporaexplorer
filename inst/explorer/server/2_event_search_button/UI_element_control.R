@@ -11,15 +11,17 @@ output$dok_vis <-
     }, height = function() {
         1
     })
-output$dag_kart <-
-    shiny::renderPlot({
-        NULL
-    }, height = function() {
-        1
-    })
-
 hide_ui("day_corpus_box")
 hide_ui("document_box")
+
+# Clear day corpus box content
+output$title <- shiny::renderText({ NULL })
+output$dag_kart <- shiny::renderPlot({ NULL }, height = function() { 1 })
+output$doc_list_tekst <- shiny::renderUI({ NULL })
+
+# Clear document box content (wall view)
+output$doc_info <- shiny::renderText({ NULL })
+output$document_box_title <- shiny::renderText({ NULL })
 
 # Edit info plot legend keys UI
 shiny::updateCheckboxInput(session, "edit_info_plot_legend_keys", value = FALSE)
@@ -56,7 +58,8 @@ if (DATE_BASED_CORPUS == TRUE && !is.null(input$date_slider) && !is.null(input$d
   }
 }
 
-# Fjerner faner (relevant for data_dok)
+# Fjerner faner
+remove_tab_doc_list_tekst()
 remove_tab_doc_info()
 remove_tab_doc_tekst()
 if (INCLUDE_EXTRA == TRUE) {

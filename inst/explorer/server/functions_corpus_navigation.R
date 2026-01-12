@@ -17,6 +17,7 @@ compute_navigable_days <- function() {
 
 # Reset navigation state (called at start of new search)
 reset_corpus_navigation <- function() {
+  # Navigation state
   session_variables$current_min_rad <- NULL
   session_variables$navigable_days <- NULL
   shinyjs::disable("nav_prev_day")
@@ -26,6 +27,13 @@ reset_corpus_navigation <- function() {
   shinyjs::runjs("$('#doc_nav_arrows').hide();")
   shinyjs::runjs("$('#nav_pos_day').text('');")
   shinyjs::runjs("$('#nav_pos_doc').text('');")
+
+  # Day corpus and tab state
+  session_variables$data_day <- NULL
+  session_variables$plotinfo_dag <- NULL
+  session_variables$day_plot_height <- EMPTY_DAY_PLOT_HEIGHT
+  session_variables$doc_tab_open <- FALSE
+  session_variables$doc_list_open <- FALSE
 }
 
 # Update navigation index (called after data is updated)
