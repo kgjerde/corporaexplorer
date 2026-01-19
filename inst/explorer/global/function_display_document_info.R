@@ -33,7 +33,7 @@ display_document_info <- function(df, min_rad, info_columns = INFO_COLUMNS) {
                 tags$b("URL: "),
                 "<a href='",
                 df$URL[min_rad],
-                "'a <- tb target='_blank'>",
+                "' target='_blank'>",
                 df$URL[min_rad],
                 "</a>"
             )
