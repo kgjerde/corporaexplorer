@@ -12,12 +12,10 @@
 
     shiny::hr(),
 
-    shinyWidgets::checkboxGroupButtons(
-        inputId = "extra_fields",
-        label = NULL,
-        choices = list("Show extra fields?" = "Yes"),
-        justified = TRUE,
-        size = "sm",
+    bslib::input_checkbox_group(
+        id = "extra_fields",
+        label = "Show extra fields?",
+        choices = c("Yes" = "Yes"),
         selected = input_arguments_derived$extra_fields
     ),
 
@@ -42,12 +40,10 @@
         ),
 
         # Heatmap choice
-        shinyWidgets::radioGroupButtons(
-          "extra_plot_mode",
+        bslib::input_radio_buttons(
+          id = "extra_plot_mode",
           label = "Heatmap mode",
-          choices = list("Regular" = "regular", "Chunks" = "chunkmap"),
-          size = "xs",
-          justified = TRUE
+          choices = c("Regular" = "regular", "Chunks" = "chunkmap")
         )
         )
 
