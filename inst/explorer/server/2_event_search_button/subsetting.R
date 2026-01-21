@@ -1,17 +1,23 @@
-
 # Sidebar checkbox filtering, if any --------------------------------------
 
 # Checkbox filtering works independently of filter text
 if (!is.null(UI_FILTERING_CHECKBOXES)) {
-
   for (i in seq_along(UI_FILTERING_CHECKBOXES$column_names)) {
     # Do nothing if every box checked
-    if (!all(UI_FILTERING_CHECKBOXES$values[[i]] %in% input[[paste0("type_", i)]])) {
-    # If some unchecked, filter:
+    if (
+      !all(
+        UI_FILTERING_CHECKBOXES$values[[i]] %in%
+          input[[paste0("type_", i)]]
+      )
+    ) {
+      # If some unchecked, filter:
       search_arguments$subset_search <- TRUE
       session_variables$data_dok <-
         session_variables$data_dok[
-          session_variables$data_dok[[UI_FILTERING_CHECKBOXES$column_names[i]]] %in% input[[paste0("type_", i)]],
+          session_variables$data_dok[[UI_FILTERING_CHECKBOXES$column_names[
+            i
+          ]]] %in%
+            input[[paste0("type_", i)]],
         ]
     }
   }
@@ -30,7 +36,11 @@ if (INCLUDE_EXTRA == TRUE) {
       # HACKY TODO. This is because otherwise an empty field is character(0) instead of "" and fails cx_validate_input
       if (length(search_arguments$extra_subset_terms) > 1) {
         search_arguments$extra_subset_terms <-
-          search_arguments$extra_subset_terms[!stringi::stri_isempty(search_arguments$extra_subset_terms)]
+          search_arguments$extra_subset_terms[
+            !stringi::stri_isempty(
+              search_arguments$extra_subset_terms
+            )
+          ]
       }
 
       if (cx_validate_input(extra_subset_terms) == TRUE) {
@@ -58,66 +68,70 @@ if (INCLUDE_EXTRA == TRUE) {
 
 # And then the rest of the sidebar input ----------------------------------
 
- if (check_valid_column_names(search_arguments$subset_custom_column,
-                               session_variables$data_dok) &
-      # TODO dirty hack because open but empty filter corpus field in app is list(),
-      # which fails the regex check
-      # (but NULL, i.e. `unlist(list())` passes the regex check)
-      # (same dirty hack as other TODO):
-      check_regexes(unlist(search_arguments$subset_terms))) {
-    # if (TRUE#all(check_safe_search(search_arguments$subset_terms))
-    #     ) {
+if (
+  check_valid_column_names(
+    search_arguments$subset_custom_column,
+    session_variables$data_dok
+  ) &
+    # TODO dirty hack because open but empty filter corpus field in app is list(),
+    # which fails the regex check
+    # (but NULL, i.e. `unlist(list())` passes the regex check)
+    # (same dirty hack as other TODO):
+    check_regexes(unlist(search_arguments$subset_terms))
+) {
+  # if (TRUE#all(check_safe_search(search_arguments$subset_terms))
+  #     ) {
 
-# Filtering by years/dates ------------------------------------------------
+  # Filtering by years/dates ------------------------------------------------
 
-if (DATE_BASED_CORPUS == TRUE) {
+  if (DATE_BASED_CORPUS == TRUE) {
+    session_variables[[plot_mode$mode]] <-
+      filtrere_korpus_tid(
+        .tibble = session_variables[[plot_mode$mode]],
+        search_arguments = search_arguments,
+        plot_mode$mode
+      )
+  }
 
-session_variables[[plot_mode$mode]] <-
-  filtrere_korpus_tid(
-    .tibble = session_variables[[plot_mode$mode]],
-    search_arguments = search_arguments,
-    plot_mode$mode
-  )
+  # Filtering by filter pattern if present ----------------------------------
 
-}
+  if (search_arguments$subset_search == TRUE) {
+    session_variables[[plot_mode$mode]] <-
+      filtrere_korpus_pattern(
+        session_variables[[plot_mode$mode]],
+        search_arguments,
+        plot_mode$mode,
+        session_variables
+      )
+  }
 
-# Filtering by filter pattern if present ----------------------------------
-
-if (search_arguments$subset_search == TRUE) {
-  session_variables[[plot_mode$mode]] <-
-    filtrere_korpus_pattern(session_variables[[plot_mode$mode]],
-                            search_arguments,
-                            plot_mode$mode,
-                            session_variables)
-}
-
-# Ekstra filtrering av data_dok ved subsetting i data_365: ----------------
+  # Ekstra filtrering av data_dok ved subsetting i data_365: ----------------
 
   if (plot_mode$mode == "data_365") {
-      if (search_arguments$subset_search == TRUE) {
+    if (search_arguments$subset_search == TRUE) {
+      session_variables$data_dok <-
+        filtrere_korpus_tid(
+          .tibble = session_variables$data_dok,
+          search_arguments = search_arguments,
+          "data_dok" #plot_mode$mode
+        ) %>%
 
-    session_variables$data_dok <-
+        filtrere_korpus_pattern(
+          .,
+          search_arguments,
+          "data_dok",
+          session_variables
+        )
 
-      filtrere_korpus_tid(
-        .tibble = session_variables$data_dok,
-        search_arguments = search_arguments,
-        "data_dok"#plot_mode$mode
-      ) %>%
+      # Telling the data_365 tibble which dates contain
+      # at least one document with all the subset terms:
+      non_empty_dates <- unique(session_variables$data_dok$Date)
 
-      filtrere_korpus_pattern(.,
-                              search_arguments,
-                              "data_dok",
-                              session_variables)
-
-  # Telling the data_365 tibble which dates contain
-    # at least one document with all the subset terms:
-    non_empty_dates <- unique(session_variables$data_dok$Date)
-
-    session_variables$data_365$Day_without_docs[session_variables$data_365$Date %in% non_empty_dates == FALSE] <-
-      TRUE
-
-  }
-  }
-    #}
-
+      session_variables$data_365$Day_without_docs[
+        session_variables$data_365$Date %in% non_empty_dates == FALSE
+      ] <-
+        TRUE
     }
+  }
+  #}
+}

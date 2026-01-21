@@ -38,14 +38,16 @@
 #' )
 #'
 #' }
-explore0 <- function(dataset,
-         arguments_prepare_data = list(use_matrix = FALSE),
-         arguments_explore = list()) {
-    message("Attempting to build corporaexplorerobject.")
-    # Step 1
-    arguments_prepare_data <- c(quote(dataset), arguments_prepare_data)
-    corpus <- do.call(prepare_data, arguments_prepare_data)
-    # Step 2
-    arguments_explore <- c(quote(corpus), arguments_explore)
-    do.call(explore, arguments_explore)
+explore0 <- function(
+  dataset,
+  arguments_prepare_data = list(use_matrix = FALSE),
+  arguments_explore = list()
+) {
+  message("Attempting to build corporaexplorerobject.")
+  # Step 1
+  arguments_prepare_data <- c(quote(dataset), arguments_prepare_data)
+  corpus <- do.call(prepare_data, arguments_prepare_data)
+  # Step 2
+  arguments_explore <- c(quote(corpus), arguments_explore)
+  do.call(explore, arguments_explore)
 }

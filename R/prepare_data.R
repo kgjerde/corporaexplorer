@@ -33,24 +33,30 @@ transform_regular <- function(df, tile_length_range = c(1, 10)) {
   df$Text_column_ <-
     stringr::str_to_lower(df$Text_column_) # for søke-purposes
 
-  df <- dplyr::select(df,
-                cx_ID,
-                Date,
-                Text_column_,
-                Text_original_case,
-                Tile_length,
-                Year_,
-                sort(colnames(df)[!colnames(df) %in% c("cx_ID",
-                                                               "Date",
-                                                               "Text_column_",
-                                                               "Text_original_case",
-                                                               "Tile_length",
-                                                               "Year_")]))
+  df <- dplyr::select(
+    df,
+    cx_ID,
+    Date,
+    Text_column_,
+    Text_original_case,
+    Tile_length,
+    Year_,
+    sort(colnames(df)[
+      !colnames(df) %in%
+        c(
+          "cx_ID",
+          "Date",
+          "Text_column_",
+          "Text_original_case",
+          "Tile_length",
+          "Year_"
+        )
+    ])
+  )
 
   message("Document data frame done.")
   return(df)
 }
-
 
 
 # 2. 365: 1 day = 1 tile --------------------------------------------------
@@ -62,7 +68,6 @@ transform_regular <- function(df, tile_length_range = c(1, 10)) {
 #' @return A "data_365" tibble.
 #' @keywords internal
 transform_365 <- function(new_df) {
-
   df_365 <- new_df['Date'] %>%
     dplyr::distinct() %>%
     dplyr::mutate(Text_column_ = "Date with document in original df")
@@ -73,7 +78,8 @@ transform_365 <- function(new_df) {
   df_365$Year_ <- lubridate::year(df_365$Date)
 
   df_365 <-
-    padr::pad(df_365,
+    padr::pad(
+      df_365,
       interval = "day",
       start_val = as.Date(paste0(min(df_365$Year_), "-01-01")),
       end_val = as.Date(paste0(max(df_365$Year_), "-12-31"))
@@ -100,7 +106,9 @@ transform_365 <- function(new_df) {
 
   df_365$Invisible_fake_date <- FALSE
 
-  df_365$Invisible_fake_date[df_365$Date < min_date | df_365$Date > max_date] <- TRUE
+  df_365$Invisible_fake_date[
+    df_365$Date < min_date | df_365$Date > max_date
+  ] <- TRUE
 
   df_365_month_dividers <- df_365 %>%
     dplyr::group_by(Year_) %>%
@@ -117,7 +125,10 @@ transform_365 <- function(new_df) {
         Year_ = df_365_month_dividers$Year_[row],
         Month_n = 1,
         Weekday_n = seq_len(df_365_month_dividers$Diff[row]),
-        Yearday_n = sort(-seq_len(df_365_month_dividers$Diff[row]), decreasing = FALSE),
+        Yearday_n = sort(
+          -seq_len(df_365_month_dividers$Diff[row]),
+          decreasing = FALSE
+        ),
         Invisible_fake_date = TRUE,
         Day_without_docs = TRUE,
         Tile_length = 1
@@ -137,15 +148,16 @@ transform_365 <- function(new_df) {
 
   df_365$cx_ID <- seq_len(nrow(df_365))
 
-  df_365 <- dplyr::select(df_365,
-                          cx_ID,
-                          Date,
-                          Year_,
-                          Weekday_n,
-                          Day_without_docs,
-                          Invisible_fake_date,
-                          Tile_length
-                          )
+  df_365 <- dplyr::select(
+    df_365,
+    cx_ID,
+    Date,
+    Year_,
+    Weekday_n,
+    Day_without_docs,
+    Invisible_fake_date,
+    Tile_length
+  )
 
   message("Calendar data frame done.")
   return(df_365)
@@ -206,9 +218,14 @@ matrix_via_r <- function(df, matrix_without_punctuation = TRUE) {
 
   data.table::setDT(df)
   df <-
-    df[, list(word = unlist(stringi::stri_split_fixed(Text_column_, pattern = " "))),
-      by =
-        cx_ID
+    df[,
+      list(
+        word = unlist(stringi::stri_split_fixed(
+          Text_column_,
+          pattern = " "
+        ))
+      ),
+      by = cx_ID
     ][,
       list(count = .N),
       by = c("cx_ID", "word")
@@ -286,7 +303,9 @@ get_term_vector <- function(returned_list) {
 include_columns_for_ui_checkboxes <-
   function(new_df, columns_for_ui_checkboxes = NULL) {
     column_names <-
-      columns_for_ui_checkboxes[columns_for_ui_checkboxes %in% colnames(new_df)]
+      columns_for_ui_checkboxes[
+        columns_for_ui_checkboxes %in% colnames(new_df)
+      ]
     if (length(column_names) == 0) {
       return(NULL)
     }
@@ -322,8 +341,8 @@ include_columns_for_ui_checkboxes <-
 #'   \code{\link[corporaexplorer]{explore}}.
 #' @export
 prepare_data <- function(dataset, ...) {
-   UseMethod("prepare_data")
- }
+  UseMethod("prepare_data")
+}
 
 # Method for data.frame ---------------------------------------------------
 
@@ -398,26 +417,29 @@ prepare_data <- function(dataset, ...) {
 #' # Running exploration app:
 #' explore(corpus)
 #' }
-prepare_data.data.frame <- function(dataset,
-                         date_based_corpus = TRUE,
-                         text_column = "Text",
-                         grouping_variable = NULL,
-                         within_group_identifier = "sequential",
-                         columns_doc_info = c("Date", "Title", "URL"),
-                         corpus_name = NULL,
-                         use_matrix = TRUE,
-                         matrix_without_punctuation = TRUE,
-                         tile_length_range = c(1, 10),
-                         columns_for_ui_checkboxes = NULL,
-                         ...) {
+prepare_data.data.frame <- function(
+  dataset,
+  date_based_corpus = TRUE,
+  text_column = "Text",
+  grouping_variable = NULL,
+  within_group_identifier = "sequential",
+  columns_doc_info = c("Date", "Title", "URL"),
+  corpus_name = NULL,
+  use_matrix = TRUE,
+  matrix_without_punctuation = TRUE,
+  tile_length_range = c(1, 10),
+  columns_for_ui_checkboxes = NULL,
+  ...
+) {
+  # Argument checking general -----------------------------------------------
 
-# Argument checking general -----------------------------------------------
-
-  if (!all(is.logical(c(
-    date_based_corpus,
-    use_matrix,
-    matrix_without_punctuation
-  )))) {
+  if (
+    !all(is.logical(c(
+      date_based_corpus,
+      use_matrix,
+      matrix_without_punctuation
+    )))
+  ) {
     stop(
       "Hmm. Make sure all arguments that are supposed to be boolean is either TRUE or FALSE.",
       call. = FALSE
@@ -432,41 +454,46 @@ prepare_data.data.frame <- function(dataset,
   }
 
   if (text_column %in% colnames(dataset) == FALSE) {
-    stop("Hmm. Make sure that 'dataset' contains the column specified in 'text_column' (defaults to 'Text').",
+    stop(
+      "Hmm. Make sure that 'dataset' contains the column specified in 'text_column' (defaults to 'Text').",
       call. = FALSE
     )
   }
 
   if (anyNA(dataset[[text_column]])) {
-    stop("Hmm. Make sure that the column specified in 'text_column' (defaults to 'Text') does not contain any NA values.",
+    stop(
+      "Hmm. Make sure that the column specified in 'text_column' (defaults to 'Text') does not contain any NA values.",
       call. = FALSE
     )
   }
 
   if (!is.character(dataset[[text_column]])) {
-    stop("Hmm. Make sure that the column specified in 'text_column' (defaults to 'Text') is a character vector.",
+    stop(
+      "Hmm. Make sure that the column specified in 'text_column' (defaults to 'Text') is a character vector.",
       call. = FALSE
     )
   }
 
   if (nrow(dataset) == 0) {
-    stop("Hmm. corporaexplorer cannot explore an empty corpus. ",
-         "Please check 'dataset'.",
+    stop(
+      "Hmm. corporaexplorer cannot explore an empty corpus. ",
+      "Please check 'dataset'.",
       call. = FALSE
     )
   }
 
-  RESERVED_NAMES <- c("cx_ID",
-                      "Text_original_case",
-                      "Tile_length",
-                      "Year_",
-                      "cx_Seq",
-                      "Text_column_",
-                      "Weekday_n",
-                      "Day_without_docs",
-                      "Invisible_fake_date",
-                      "Tile_length"
-                      )
+  RESERVED_NAMES <- c(
+    "cx_ID",
+    "Text_original_case",
+    "Tile_length",
+    "Year_",
+    "cx_Seq",
+    "Text_column_",
+    "Weekday_n",
+    "Day_without_docs",
+    "Invisible_fake_date",
+    "Tile_length"
+  )
 
   if (any(RESERVED_NAMES %in% colnames(dataset))) {
     stop(
@@ -480,65 +507,73 @@ prepare_data.data.frame <- function(dataset,
     )
   }
 
-  if (is.numeric(tile_length_range) == FALSE |
-      length(tile_length_range) != 2) {
-    stop("Hmm. Make sure that 'tile_length_range' is a numeric vector of length 2.",
+  if (
+    is.numeric(tile_length_range) == FALSE |
+      length(tile_length_range) != 2
+  ) {
+    stop(
+      "Hmm. Make sure that 'tile_length_range' is a numeric vector of length 2.",
       call. = FALSE
     )
   }
 
-# Argument checking date_based_corpus -------------------------------------
+  # Argument checking date_based_corpus -------------------------------------
 
   if (date_based_corpus == TRUE) {
-
     if ("Date" %in% colnames(dataset) == FALSE) {
-      stop("Hmm. Make sure that 'dataset' contains a 'Date' column.",
-        call. = FALSE)
+      stop(
+        "Hmm. Make sure that 'dataset' contains a 'Date' column.",
+        call. = FALSE
+      )
     }
 
     if (lubridate::is.Date(dataset$Date) == FALSE) {
-      stop("Hmm. Make sure that 'dataset$Date' is of class 'Date'.",
-           call. = FALSE)
+      stop(
+        "Hmm. Make sure that 'dataset$Date' is of class 'Date'.",
+        call. = FALSE
+      )
     }
 
     if (anyNA(dataset$Date)) {
-      stop("Hmm. Make sure that 'dataset$Date' does not contain any NA values.",
-           call. = FALSE)
+      stop(
+        "Hmm. Make sure that 'dataset$Date' does not contain any NA values.",
+        call. = FALSE
+      )
     }
   }
 
-# Argument checking non_date_based_corpus ---------------------------------
+  # Argument checking non_date_based_corpus ---------------------------------
 
   if (date_based_corpus == FALSE) {
-
     if (!is.null(grouping_variable)) {
       if (grouping_variable %in% colnames(dataset) == FALSE) {
-        stop("'grouping_variable' has to be a column in 'dataset'.",
-          call. = FALSE)
+        stop(
+          "'grouping_variable' has to be a column in 'dataset'.",
+          call. = FALSE
+        )
       }
     }
-
   }
 
-# Pre-preparing non_date_based_corpus -------------------------------------
+  # Pre-preparing non_date_based_corpus -------------------------------------
 
   if (date_based_corpus == FALSE) {
-      if ("Date" %in% colnames(dataset) == FALSE) {
-          # 'Date' placeholder
-          dataset$Date <- as.Date("1882-09-05")
-      } else {
-          # Temporarily assign 'Date' placeholder
-          dataset$Date_ <- dataset$Date
-          dataset$Date <- as.Date("1882-09-05")
-      }
+    if ("Date" %in% colnames(dataset) == FALSE) {
+      # 'Date' placeholder
+      dataset$Date <- as.Date("1882-09-05")
+    } else {
+      # Temporarily assign 'Date' placeholder
+      dataset$Date_ <- dataset$Date
+      dataset$Date <- as.Date("1882-09-05")
+    }
   }
 
-# Assigning specified text_column -----------------------------------------
+  # Assigning specified text_column -----------------------------------------
 
-dataset$Text_column_ <- dataset[[text_column]]
-dataset[[text_column]] <- NULL
+  dataset$Text_column_ <- dataset[[text_column]]
+  dataset[[text_column]] <- NULL
 
-# The main function proper ------------------------------------------------
+  # The main function proper ------------------------------------------------
 
   abc <- transform_regular(dataset, tile_length_range)
 
@@ -558,14 +593,13 @@ dataset[[text_column]] <- NULL
     ordvektor_dok <- FALSE
   }
 
-
-# Post-preparing non_date_based_corpus ------------------------------------
+  # Post-preparing non_date_based_corpus ------------------------------------
 
   if (date_based_corpus == FALSE) {
     # Return original 'Date' column, if part of df
     if ("Date_" %in% colnames(abc) == TRUE) {
-        abc$Date <- abc$Date_
-        abc$Date_ <- NULL
+      abc$Date <- abc$Date_
+      abc$Date_ <- NULL
     }
 
     if (!is.null(grouping_variable)) {
@@ -576,12 +610,14 @@ dataset[[text_column]] <- NULL
 
     # Renaming argument
     if (within_group_identifier == "sequential") {
-        within_group_identifier <- "cx_Seq"
+      within_group_identifier <- "cx_Seq"
     }
 
     if (within_group_identifier %in% c("cx_Seq", colnames(dataset)) == FALSE) {
-      stop("'within_group_identifier' must be a column in 'dataset'.",
-        call. = FALSE)
+      stop(
+        "'within_group_identifier' must be a column in 'dataset'.",
+        call. = FALSE
+      )
     }
 
     # Order of groups
@@ -601,7 +637,6 @@ dataset[[text_column]] <- NULL
     } else {
       abc$cx_Seq <- abc[[within_group_identifier]]
     }
-
   }
 
   # 5. Putting the 'corporaexplorerobject' together ---------------------
@@ -670,11 +705,13 @@ dataset[[text_column]] <- NULL
 #' explore(alphabet_corpus)
 #' }
 prepare_data.character <-
-  function(dataset,
-           corpus_name = NULL,
-           use_matrix = TRUE,
-           matrix_without_punctuation = TRUE,
-           ...) {
+  function(
+    dataset,
+    corpus_name = NULL,
+    use_matrix = TRUE,
+    matrix_without_punctuation = TRUE,
+    ...
+  ) {
     data <- tibble::tibble(Text = dataset)
     prepare_data.data.frame(
       data,

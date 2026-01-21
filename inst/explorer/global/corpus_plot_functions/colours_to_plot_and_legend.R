@@ -9,11 +9,13 @@
 #' @param mode plot mode
 #'
 #' @return List of length 2: 1) df with column Term_colour for colour of each document/day, 2) df for legend.
-colours_to_plot_and_legend <- function(main_df,
-                                       linjer,
-                                       number_of_factors = NUMBER_OF_FACTORS,
-                                       search_terms_exist,
-                                       plot_mode) {
+colours_to_plot_and_legend <- function(
+  main_df,
+  linjer,
+  number_of_factors = NUMBER_OF_FACTORS,
+  search_terms_exist,
+  plot_mode
+) {
   legend_df <- create_legend_df_step_1(main_df)
 
   colour_schemes <- define_colours(
@@ -48,26 +50,23 @@ colours_to_plot_and_legend <- function(main_df,
 # Return chr length equalling length(number_of_factors)
 define_indices_in_colour_palette <-
   function(number_of_factors) {
-      fargeutvalg_vektor <- list(
-        3,
-        c(5, 9),
-        c(3, 6, 9),
-        c(3, 5, 7, 9),
-        5:9,
-        4:9,
-        3:9,
-        2:9
-      )
+    fargeutvalg_vektor <- list(
+      3,
+      c(5, 9),
+      c(3, 6, 9),
+      c(3, 5, 7, 9),
+      5:9,
+      4:9,
+      3:9,
+      2:9
+    )
     return(fargeutvalg_vektor[seq_len(number_of_factors)])
   }
 
 # Lighter colours for day_corpus
 define_indices_in_colour_palette_day <-
   function(number_of_factors) {
-    fargeutvalg_vektor <- list(4,
-                               c(4, 6),
-                               4:6,
-                               3:6)
+    fargeutvalg_vektor <- list(4, c(4, 6), 4:6, 3:6)
     return(fargeutvalg_vektor[seq_len(number_of_factors)])
   }
 
@@ -81,11 +80,17 @@ create_legend_df_step_1 <-
     ) %>%
       dplyr::distinct() %>%
       dplyr::filter(!is.na(legend_label)) %>%
-      dplyr::mutate(term = as.integer(stringr::str_extract(legend_label, "^\\d"))) %>% # = opp til ni terms
+      dplyr::mutate(
+        term = as.integer(stringr::str_extract(legend_label, "^\\d"))
+      ) %>% # = opp til ni terms
       dplyr::arrange(term) %>%
       dplyr::mutate(
         legend_label = stringr::str_replace(legend_label, "^\\d-", ""),
-        for_sortering = as.integer(stringr::str_replace(legend_label, "-.*", ""))
+        for_sortering = as.integer(stringr::str_replace(
+          legend_label,
+          "-.*",
+          ""
+        ))
       ) %>%
       dplyr::group_by(term) %>%
       dplyr::arrange(term, for_sortering) %>%
@@ -106,12 +111,13 @@ number_of_labels_for_each_term <- function(legend_df, linjer) {
 }
 
 
-define_colours <- function(main_colours = MAIN_COLOURS,
-                           legend_df,
-                           linjer,
-                           number_of_factors,
-                           plot_mode) {
-
+define_colours <- function(
+  main_colours = MAIN_COLOURS,
+  legend_df,
+  linjer,
+  number_of_factors,
+  plot_mode
+) {
   # TODO: this 'main_colours' value means max 6 search terms
 
   main_colours <- convert_colours_to_brewerpal_colours(main_colours)
@@ -131,23 +137,26 @@ define_colours <- function(main_colours = MAIN_COLOURS,
 
   for (i in unique(legend_df$term)) {
     colour_schemes[[i]] <-
-      RColorBrewer::brewer.pal(name = main_colours[i], 9)[colour_index[[factor_length[i]]]]
+      RColorBrewer::brewer.pal(
+        name = main_colours[i],
+        9
+      )[colour_index[[factor_length[i]]]]
   }
 
   return(colour_schemes)
 }
 
 convert_colours_to_brewerpal_colours <- function(colours) {
-  brewerpal_colours <- plyr::mapvalues(x = colours,
-                                       from = c("red", "blue", "green", "purple", "orange", "gray"),
-                                       to = c("Reds", "Blues", "Greens", "Purples", "Oranges", "Greys"),
-                                       warn_missing = FALSE)
+  brewerpal_colours <- plyr::mapvalues(
+    x = colours,
+    from = c("red", "blue", "green", "purple", "orange", "gray"),
+    to = c("Reds", "Blues", "Greens", "Purples", "Oranges", "Greys"),
+    warn_missing = FALSE
+  )
   return(brewerpal_colours)
 }
 
-update_legend_df_w_colours <- function(legend_df,
-                                       colour_schemes) {
-
+update_legend_df_w_colours <- function(legend_df, colour_schemes) {
   # Add colour code to legend tibble
   unlisted_colour_schemes <- unlist(colour_schemes)
 
@@ -158,14 +167,10 @@ update_legend_df_w_colours <- function(legend_df,
 }
 
 
-populate_df_colour_codes <- function(main_df,
-                                     legend_df) {
+populate_df_colour_codes <- function(main_df, legend_df) {
   main_df$Term_color <- # [!is.na(main_df$Term_color)]
-
-
     plyr::mapvalues(
-      x = main_df$Term # [!is.na(main_df$Term_color)]
-      ,
+      x = main_df$Term, # [!is.na(main_df$Term_color)]
       from = legend_df$factor_names,
       to = legend_df$colour_code
     )
@@ -175,24 +180,21 @@ populate_df_colour_codes <- function(main_df,
 
 # Keys for each term should start on new row in legend --------------------
 
-discrepancy_in_legend_keys <- function(legend_df,
-                                       linjer,
-                                       number_of_factors) {
+discrepancy_in_legend_keys <- function(legend_df, linjer, number_of_factors) {
   max_possible_legend_keys <- linjer * number_of_factors
   actual_legend_keys <- nrow(legend_df)
   return(max_possible_legend_keys - actual_legend_keys)
 }
 
-need_to_add_dummy_colours <- function(legend_key_discrepancy,
-                                      search_terms_exist) {
+need_to_add_dummy_colours <- function(
+  legend_key_discrepancy,
+  search_terms_exist
+) {
   return(search_terms_exist == TRUE & legend_key_discrepancy != 0)
 }
 
 add_dummy_colours_to_legend_df <-
-  function(legend_df,
-             linjer,
-             number_of_factors,
-             search_terms_exist) {
+  function(legend_df, linjer, number_of_factors, search_terms_exist) {
     legend_key_discrepancy <-
       discrepancy_in_legend_keys(
         legend_df,
@@ -214,12 +216,15 @@ add_dummy_colours_to_legend_df <-
   }
 
 create_temp_dummy_df <- function(number_of_factors, linjer) {
-  dummy_levels <- rgb(sprintf(
-    "%i",
-    seq_len(number_of_factors * linjer)
-  ),
-  0, 0,
-  alpha = 0, maxColorValue = 255
+  dummy_levels <- rgb(
+    sprintf(
+      "%i",
+      seq_len(number_of_factors * linjer)
+    ),
+    0,
+    0,
+    alpha = 0,
+    maxColorValue = 255
   )
 
   dummy_df <- tibble::tibble(
@@ -247,7 +252,8 @@ merge_dfs <- function(legend_df, dummy_df, number_of_factors) {
     number_of_factors
   )
 
-  legend_df <- dplyr::full_join(legend_df,
+  legend_df <- dplyr::full_join(
+    legend_df,
     from_dummy,
     by = c("legend_label", "colour_code", "term", "for_sortering", "id")
   ) %>%
@@ -256,8 +262,7 @@ merge_dfs <- function(legend_df, dummy_df, number_of_factors) {
 }
 
 adapt_legend_keys_for_terms_with_no_hits <-
-  function(from_dummy,
-             number_of_factors) {
+  function(from_dummy, number_of_factors) {
     terms_w_no_hits <- from_dummy %>%
       dplyr::group_by(term) %>%
       dplyr::summarise(lengde = dplyr::n(), .groups = "drop_last") %>%
@@ -265,7 +270,6 @@ adapt_legend_keys_for_terms_with_no_hits <-
       .$term
 
     if (length(terms_w_no_hits) > 0) {
-
       # This can be used if I want to exclude the terms with no hits from the legend:
       # from_dummy <- from_dummy %>%
       #   dplyr::filter(term != terms_w_no_hits)
@@ -273,16 +277,27 @@ adapt_legend_keys_for_terms_with_no_hits <-
 
       from_dummy <- from_dummy %>%
         dplyr::group_by(term) %>%
-        dplyr::mutate(legend_label = dplyr::if_else(term %in% terms_w_no_hits & dplyr::row_number() == 1, "No hits", legend_label))
+        dplyr::mutate(
+          legend_label = dplyr::if_else(
+            term %in% terms_w_no_hits & dplyr::row_number() == 1,
+            "No hits",
+            legend_label
+          )
+        )
 
-      from_dummy$colour_code[from_dummy$legend_label == "No hits"] <- MY_COLOURS[from_dummy$term[from_dummy$legend_label == "No hits"]]
+      from_dummy$colour_code[
+        from_dummy$legend_label == "No hits"
+      ] <- MY_COLOURS[from_dummy$term[
+        from_dummy$legend_label == "No hits"
+      ]]
     }
     return(from_dummy)
   }
 
 
 add_dummy_colours_to_main_df <- function(main_df, legend_df) {
-  main_df$Term_color <- factor(main_df$Term_color,
+  main_df$Term_color <- factor(
+    main_df$Term_color,
     levels = legend_df$colour_code
   )
   return(main_df)

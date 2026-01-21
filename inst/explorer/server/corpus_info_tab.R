@@ -1,7 +1,9 @@
 # Reactive behaviour ------------------------------------------------------
 shiny::observe({
-  if (input$corpus_box == "Corpus info" &
-    session_variables$created_info == FALSE) {
+  if (
+    input$corpus_box == "Corpus info" &
+      session_variables$created_info == FALSE
+  ) {
     if (search_arguments$all_ok) {
       local_flag <- FALSE
       if (INCLUDE_EXTRA == TRUE) {
@@ -24,12 +26,12 @@ shiny::observe({
           plot_mode$mode
         )
       }
-
     }
 
     # Info til infofane
     output$corpus_info <- shiny::renderText({
-      source("./server/2_event_search_button/check_search_arguments.R",
+      source(
+        "./server/2_event_search_button/check_search_arguments.R",
         local = TRUE
       )
       # Flagging that validation passed and that therefore
@@ -51,16 +53,18 @@ shiny::observe({
       )
     })
 
-# Table title -------------------------------------------------------------
+    # Table title -------------------------------------------------------------
 
     output$search_results <- shiny::renderText({
       if (session_variables$stop_info_tab == FALSE) {
         if (info_terms_exist(search_arguments, INFO_MODE)) {
-          if (corpus_is_filtered(
-            search_arguments,
-            session_variables,
-            loaded_data$original_data$data_dok
-          )) {
+          if (
+            corpus_is_filtered(
+              search_arguments,
+              session_variables,
+              loaded_data$original_data$data_dok
+            )
+          ) {
             paste(
               "<hr>",
               "<h4>Search results (in filtered corpus)</h4>"
@@ -75,82 +79,100 @@ shiny::observe({
       }
     })
 
-# Table -------------------------------------------------------------------
+    # Table -------------------------------------------------------------------
 
-    output$TABLE <- shiny::renderTable({
-      if (session_variables$stop_info_tab == FALSE) {
-        if (info_terms_exist(search_arguments, INFO_MODE)) {
-          show_corpus_info_table(
-            search_arguments = search_arguments,
-            session_variables = session_variables,
-            start_df_list
-          )
-        }
-      }
-    }, na = "\u2013", digits = 2, width = "100%")
-
-
-# Condition: not one-group, non-date corpus -------------------------------
-
-  if (ONLY_ONE_GROUP_IN_NON_DATE_BASED_CORPUS == FALSE) {
-
-# Plot title --------------------------------------------------------------
-
-    output$info_plot_title <- shiny::renderText({
-      if (session_variables$stop_info_tab == FALSE) {
-        if (info_terms_exist(search_arguments, INFO_MODE)) {
-          shinyjs::showElement("edit_info_plot_legend_keys")
-          if (corpus_is_filtered(search_arguments,
-                                 session_variables,
-                                 loaded_data$original_data$data_dok)) {
-            plot_title <- paste(
-              "<hr>",
-              "<h4>Search results chart (based on filtered corpus) \u2013 hits per year</h4>"
+    output$TABLE <- shiny::renderTable(
+      {
+        if (session_variables$stop_info_tab == FALSE) {
+          if (info_terms_exist(search_arguments, INFO_MODE)) {
+            show_corpus_info_table(
+              search_arguments = search_arguments,
+              session_variables = session_variables,
+              start_df_list
             )
-          } else {
-            plot_title <- paste("<hr>",
-                                "<h4>Search results chart \u2013 hits per year</h4>")
           }
-          if (DATE_BASED_CORPUS == FALSE) {
-            plot_title <- stringr::str_replace(plot_title,
-                                               "year",
-                                               "group")
+        }
+      },
+      na = "\u2013",
+      digits = 2,
+      width = "100%"
+    )
+
+    # Condition: not one-group, non-date corpus -------------------------------
+
+    if (ONLY_ONE_GROUP_IN_NON_DATE_BASED_CORPUS == FALSE) {
+      # Plot title --------------------------------------------------------------
+
+      output$info_plot_title <- shiny::renderText({
+        if (session_variables$stop_info_tab == FALSE) {
+          if (info_terms_exist(search_arguments, INFO_MODE)) {
+            shinyjs::showElement("edit_info_plot_legend_keys")
+            if (
+              corpus_is_filtered(
+                search_arguments,
+                session_variables,
+                loaded_data$original_data$data_dok
+              )
+            ) {
+              plot_title <- paste(
+                "<hr>",
+                "<h4>Search results chart (based on filtered corpus) \u2013 hits per year</h4>"
+              )
+            } else {
+              plot_title <- paste(
+                "<hr>",
+                "<h4>Search results chart \u2013 hits per year</h4>"
+              )
+            }
+            if (DATE_BASED_CORPUS == FALSE) {
+              plot_title <- stringr::str_replace(
+                plot_title,
+                "year",
+                "group"
+              )
+            }
+            plot_title
           }
-          plot_title
         }
-      }
-    })
-
-
-# Plot --------------------------------------------------------------------
-
-    output$corpus_info_plot <- shiny::renderPlot({
-      if (session_variables$stop_info_tab == FALSE) {
-        if (nrow(start_df_list$start_df) != 0) {
-          session_variables$corpus_info_plot <- corpus_info_plot(start_df_list, search_arguments, INFO_MODE)
-
-          session_variables$corpus_info_plot
-        }
-      } else {
-        NULL
-      }
-    })
-
-# Edit legend key text input UI -------------------------------------------
-
-    output$column_info_names_ui <- shiny::renderUI({
-      ui_list <- lapply(seq_along(start_df_list$full_terms), function(i) {
-        id <- paste0("info_legend_", i)
-        shiny::textInput(id,
-          label = NULL,
-          value = start_df_list$full_terms[i]
-        )
       })
 
-      for (i in seq_along(start_df_list$full_terms)) {
-        ui_list[[i]][["children"]][[2]][["attribs"]][["style"]] <-
-          paste0(
-            "
+      # Plot --------------------------------------------------------------------
+
+      output$corpus_info_plot <- shiny::renderPlot({
+        if (session_variables$stop_info_tab == FALSE) {
+          if (nrow(start_df_list$start_df) != 0) {
+            session_variables$corpus_info_plot <- corpus_info_plot(
+              start_df_list,
+              search_arguments,
+              INFO_MODE
+            )
+
+            session_variables$corpus_info_plot
+          }
+        } else {
+          NULL
+        }
+      })
+
+      # Edit legend key text input UI -------------------------------------------
+
+      output$column_info_names_ui <- shiny::renderUI({
+        ui_list <- lapply(
+          seq_along(start_df_list$full_terms),
+          function(i) {
+            id <- paste0("info_legend_", i)
+            shiny::textInput(
+              id,
+              label = NULL,
+              value = start_df_list$full_terms[i]
+            )
+          }
+        )
+
+        for (i in seq_along(start_df_list$full_terms)) {
+          ui_list[[i]][["children"]][[2]][["attribs"]][["style"]] <-
+            paste0(
+              "
   padding-left:10px;
   padding-top:10px;
   padding-right:10px;
@@ -162,23 +184,24 @@ shiny::observe({
   color:white;
   width:75%;
   ",
-            paste0("background-color:", MY_COLOURS[i])
-          )
-      }
+              paste0("background-color:", MY_COLOURS[i])
+            )
+        }
 
-      ui_list
-    })
+        ui_list
+      })
 
-
-    session_variables$created_info <- TRUE
-  }
+      session_variables$created_info <- TRUE
+    }
   }
 })
 
 # Event: update button ----------------------------------------------------
 
 shiny::observeEvent(input$update_info_plot_legend_keys, {
-  new_legend_terms <- collect_info_plot_legends(search_arguments$terms_highlight)
+  new_legend_terms <- collect_info_plot_legends(
+    search_arguments$terms_highlight
+  )
 
   output$corpus_info_plot <- shiny::renderPlot({
     shiny::validate(shiny::need(
@@ -201,4 +224,3 @@ shiny::observeEvent(input$update_info_plot_legend_keys, {
     session_variables$corpus_info_plot
   })
 })
-

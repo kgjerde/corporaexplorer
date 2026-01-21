@@ -5,13 +5,13 @@
 #'
 #' @return Html coded character string
 display_document <-
-  function(document,
-             search_arguments,
-             my_colours = MY_COLOURS) {
+  function(document, search_arguments, my_colours = MY_COLOURS) {
     vis_tekst <- document
 
     # Track original positions before deduplication for correct color mapping
-    true_original_indices <- which(!duplicated(search_arguments$terms_highlight))
+    true_original_indices <- which(
+      !duplicated(search_arguments$terms_highlight)
+    )
     patterns <- unique(search_arguments$terms_highlight)
     colours_to_use <- MY_COLOURS[true_original_indices]
 
@@ -37,11 +37,13 @@ display_document <-
 #'
 #' @return highlighted document
 highlight_document <-
-  function(text,
-             patterns,
-             colours,
-             case_sensitive,
-             markup = '<mark style="color:%s">\\1</mark>') {
+  function(
+    text,
+    patterns,
+    colours,
+    case_sensitive,
+    markup = '<mark style="color:%s">\\1</mark>'
+  ) {
     if (case_sensitive == FALSE) {
       ignoring_case <- TRUE
     } else if (case_sensitive == TRUE) {
@@ -58,7 +60,8 @@ highlight_document <-
         if (USE_ONLY_RE2 == TRUE) {
           hits <- re2::re2_count(
             text,
-            re2::re2_regexp(patterns[i],
+            re2::re2_regexp(
+              patterns[i],
               case_sensitive = case_sensitive
             )
           )
@@ -68,7 +71,8 @@ highlight_document <-
             text <-
               re2::re2_replace_all(
                 text,
-                re2::re2_regexp(paste0("(", patterns[i], ")"),
+                re2::re2_regexp(
+                  paste0("(", patterns[i], ")"),
                   case_sensitive = case_sensitive
                 ),
                 sprintf(
@@ -88,9 +92,7 @@ highlight_document <-
         } else if (USE_ONLY_RE2 == FALSE) {
           hits <- stringr::str_count(
             text,
-            stringr::regex(patterns[i],
-              ignore_case = ignoring_case
-            )
+            stringr::regex(patterns[i], ignore_case = ignoring_case)
           )
           ratio <- hits / doclength
 
@@ -98,7 +100,8 @@ highlight_document <-
             text <-
               stringr::str_replace_all(
                 text,
-                stringr::regex(paste0("(", patterns[i], ")"),
+                stringr::regex(
+                  paste0("(", patterns[i], ")"),
                   ignore_case = ignoring_case
                 ),
                 sprintf(

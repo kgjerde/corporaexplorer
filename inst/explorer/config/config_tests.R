@@ -1,4 +1,3 @@
-
 # Important for shinytest2 to work -----------------------------------------
 library(corporaexplorer)
 
@@ -7,7 +6,7 @@ library(corporaexplorer)
 loaded_data <- corporaexplorer::test_data
 
 ## corporaexplorer::test_data does not need this step,
-    # but it tests that new corporaexplorerobjects do not encounter errors here:
+# but it tests that new corporaexplorerobjects do not encounter errors here:
 source("./config/backwards_compatibility.R", local = TRUE)
 
 # Constants ---------------------------------------------------------------
@@ -18,16 +17,19 @@ source("./config/constants.R", local = TRUE)
 
 DATE_BASED_CORPUS <- loaded_data$date_based_corpus
 # To decide if to display x-axis label in plot:
-ONLY_ONE_GROUP_IN_NON_DATE_BASED_CORPUS <- is.null(loaded_data$original_data$grouping_variable) & DATE_BASED_CORPUS == FALSE
+ONLY_ONE_GROUP_IN_NON_DATE_BASED_CORPUS <- is.null(
+  loaded_data$original_data$grouping_variable
+) &
+  DATE_BASED_CORPUS == FALSE
 
 INFO_COLUMNS <- loaded_data$columns_for_info
 NO_MATRIX <- identical(loaded_data$ordvektorer$data_dok, FALSE)
 MATRIX_WITHOUT_PUNCTUATION <- loaded_data$ordvektorer$without_punctuation
 
 if (is.null(loaded_data$name)) {
-    CORPUS_TITLE <- "corporaexplorer"
+  CORPUS_TITLE <- "corporaexplorer"
 } else {
-    CORPUS_TITLE <- loaded_data$name
+  CORPUS_TITLE <- loaded_data$name
 }
 
 UI_FILTERING_CHECKBOXES <- NULL
@@ -51,7 +53,7 @@ MAX_WIDTH_FOR_ROW <- 75
 
 DOCUMENT_TILES <- 40
 
-ui_options <- NULL  # To avoid errors when later checking for !is.null css elements
+ui_options <- NULL # To avoid errors when later checking for !is.null css elements
 
 MAX_DOCS_IN_WALL_VIEW <- 12000
 
@@ -69,8 +71,10 @@ INCLUDE_FIND_IN_TEXT <- TRUE
 
 # Start-up plot size ------------------------------------------------------
 
-INITIAL_PLOT_SIZE <- plot_size(loaded_data$original_data$data_dok,
-                               DATE_BASED_CORPUS)
+INITIAL_PLOT_SIZE <- plot_size(
+  loaded_data$original_data$data_dok,
+  DATE_BASED_CORPUS
+)
 
 # Pre-filled sidebar input from function argument -------------------------
 

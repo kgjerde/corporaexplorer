@@ -1,7 +1,5 @@
 output$time_filtering_ui <- shiny::renderUI({
-
   if (DATE_BASED_CORPUS == TRUE) {
-
     shiny::tagList(
       shiny::radioButtons(
         inputId = "years_or_dates",
@@ -36,7 +34,5 @@ output$time_filtering_ui <- shiny::renderUI({
         )
       )
     )
-
   }
-
 })

@@ -5,7 +5,6 @@ if (length(min_rad) > 0) {
     session_variables$data_day <- data_day
 
     esel <-
-
       visualiser_korpus(
         session_variables$data_day,
         search_arguments = search_arguments,
@@ -18,15 +17,21 @@ if (length(min_rad) > 0) {
       )
 
     session_variables$plotinfo_dag <-
-      ggplot2::ggplot_build(esel)$data[[as.integer(length(ggplot2::ggplot_build(esel)$data) - 1)]]
+      ggplot2::ggplot_build(esel)$data[[as.integer(
+        length(ggplot2::ggplot_build(esel)$data) - 1
+      )]]
 
-    session_variables$day_plot_height <- (length(unique(session_variables$plotinfo_dag$ymax)) * 20) + 15
+    session_variables$day_plot_height <- (length(unique(
+      session_variables$plotinfo_dag$ymax
+    )) *
+      20) +
+      15
 
-    output$dag_kart <- shiny::renderPlot({
-      esel
-    },
-    height =
-      function(x) {
+    output$dag_kart <- shiny::renderPlot(
+      {
+        esel
+      },
+      height = function(x) {
         session_variables$day_plot_height
       }
     )

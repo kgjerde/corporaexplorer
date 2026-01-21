@@ -32,7 +32,9 @@ print.corporaexplorerobject <- function(x, ...) {
       "Date based corpus:",
       as.character(x[["original_data"]][["data_dok"]][["Date"]][1]),
       "to",
-      as.character(x[["original_data"]][["data_dok"]][["Date"]][nrow(x[["original_data"]][["data_dok"]])]),
+      as.character(x[["original_data"]][["data_dok"]][["Date"]][nrow(x[[
+        "original_data"
+      ]][["data_dok"]])]),
       "\n"
     )
   }

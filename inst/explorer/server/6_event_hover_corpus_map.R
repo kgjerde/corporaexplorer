@@ -19,9 +19,19 @@ output$hover_info <- shiny::renderUI({
 
   # calculate distance from left and bottom side of the picture in pixels
   left_px <-
-    hover$range$left / hover$img_css_ratio$x + left_pct * (hover$range$right / hover$img_css_ratio$x - hover$range$left / hover$img_css_ratio$x)
+    hover$range$left /
+    hover$img_css_ratio$x +
+    left_pct *
+      (hover$range$right /
+        hover$img_css_ratio$x -
+        hover$range$left / hover$img_css_ratio$x)
   top_px <-
-    hover$range$top / hover$img_css_ratio$y + top_pct * (hover$range$bottom / hover$img_css_ratio$y - hover$range$top / hover$img_css_ratio$y)
+    hover$range$top /
+    hover$img_css_ratio$y +
+    top_pct *
+      (hover$range$bottom /
+        hover$img_css_ratio$y -
+        hover$range$top / hover$img_css_ratio$y)
 
   if (top_px > (session$clientData$output_korpuskart_height - 200)) {
     top_px <- session$clientData$output_korpuskart_height - 200
@@ -43,23 +53,32 @@ output$hover_info <- shiny::renderUI({
       "font-size: 14px; pointer-events: none;"
     )
 
-
   # Tooltip text ------------------------------------------------------------
   if (plot_mode$mode == "data_365") {
     if (length(min_rad) > 0) {
-      if (session_variables[[plot_mode$mode]]$Invisible_fake_date[min_rad] == FALSE) {
+      if (
+        session_variables[[plot_mode$mode]]$Invisible_fake_date[
+          min_rad
+        ] ==
+          FALSE
+      ) {
         if (length(min_rad) != 0) {
           shiny::wellPanel(
             style = style,
             shiny::p(shiny::HTML(
               paste0(
                 "<b> Date: </b>",
-                format_date(session_variables[[plot_mode$mode]]$Date[min_rad]),
+                format_date(session_variables[[
+                  plot_mode$mode
+                ]]$Date[min_rad]),
                 "<br/>",
                 "<b> Documents this day: </b>",
                 length(
                   which(
-                    session_variables$data_dok$Date == session_variables[[plot_mode$mode]]$Date[min_rad]
+                    session_variables$data_dok$Date ==
+                      session_variables[[
+                        plot_mode$mode
+                      ]]$Date[min_rad]
                   )
                 ),
                 "<br/>"
@@ -77,7 +96,9 @@ output$hover_info <- shiny::renderUI({
           shiny::p(shiny::HTML(
             paste0(
               "<b> Date: </b>",
-              format_date(session_variables[[plot_mode$mode]]$Date[min_rad]),
+              format_date(session_variables[[
+                plot_mode$mode
+              ]]$Date[min_rad]),
               "<br/>"
             )
           ))

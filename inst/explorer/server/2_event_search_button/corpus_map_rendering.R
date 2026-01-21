@@ -21,7 +21,10 @@ shiny::updateSliderInput(
 output$korpuskart <- renderPlot(
   {
     # Arguments check
-    source("./server/2_event_search_button/check_search_arguments.R", local = TRUE)
+    source(
+      "./server/2_event_search_button/check_search_arguments.R",
+      local = TRUE
+    )
 
     # The plot itself
     plot_fase_1 <-
@@ -35,8 +38,12 @@ output$korpuskart <- renderPlot(
     # Identifying the coordinates for the rectangles around date/document
     # Depends on plot mode and # of search terms.
     index_of_main_grid_rects <- dplyr::case_when(
-      plot_mode$mode == "data_365" ~ as.integer(length(ggplot2::ggplot_build(plot_fase_1)$data) - 2),
-      plot_mode$mode == "data_dok" ~ as.integer(length(ggplot2::ggplot_build(plot_fase_1)$data))
+      plot_mode$mode == "data_365" ~ as.integer(
+        length(ggplot2::ggplot_build(plot_fase_1)$data) - 2
+      ),
+      plot_mode$mode == "data_dok" ~ as.integer(length(
+        ggplot2::ggplot_build(plot_fase_1)$data
+      ))
     )
 
     # Plot info for use for interactivity with plot
@@ -45,10 +52,8 @@ output$korpuskart <- renderPlot(
 
     # Returning the plot object
     plot_fase_1
-
   }, # https://github.com/rstudio/shiny/issues/650
-  height =
-    function(x) {
-      session_variables$plot_size
-    }
+  height = function(x) {
+    session_variables$plot_size
+  }
 )

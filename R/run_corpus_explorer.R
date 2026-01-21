@@ -17,9 +17,7 @@ NULL
 #'
 #' @export
 run_corpus_explorer <- function(...) {
-
   .Deprecated("explore")
 
-    explore(...)
-
+  explore(...)
 }

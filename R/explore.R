@@ -117,15 +117,18 @@
 #'         plot_options = list(max_docs_in_wall_view = 12001,
 #'                                         colours = c("gray", "green")))
 #' }
-explore <- function(corpus_object,
-                                search_options = list(),
-                                ui_options = list(),
-                                search_input = list(),
-                                plot_options = list(),
-                                ...) {
+explore <- function(
+  corpus_object,
+  search_options = list(),
+  ui_options = list(),
+  search_input = list(),
+  plot_options = list(),
+  ...
+) {
   app <- system.file("explorer", "app.R", package = "corporaexplorer")
   if (app == "") {
-    stop("Could not find directory. Try re-installing `corporaexplorer`.",
+    stop(
+      "Could not find directory. Try re-installing `corporaexplorer`.",
       call. = FALSE
     )
   }
@@ -138,25 +141,25 @@ explore <- function(corpus_object,
   }
 
   if (inherits(corpus_object, "corporaexplorerobject") == FALSE) {
-    stop("'corpus_object' is not a corporaexplorerobject",
-      call. = FALSE
-    )
+    stop("'corpus_object' is not a corporaexplorerobject", call. = FALSE)
   }
 
-
-# Deprecated arguments ----------------------------------------------------
+  # Deprecated arguments ----------------------------------------------------
 
   if (!is.null(ui_options$MAX_DOCS_IN_WALL_VIEW)) {
-    warning("The `MAX_DOCS_IN_WALL_VIEW` option is now part of the `plot_options` argument, but with lower case. E.g. `plot_options = list(max_docs_in_wall_view = 15000)`. This warning message will be removed in future releases.",
+    warning(
+      "The `MAX_DOCS_IN_WALL_VIEW` option is now part of the `plot_options` argument, but with lower case. E.g. `plot_options = list(max_docs_in_wall_view = 15000)`. This warning message will be removed in future releases.",
       call. = FALSE,
       immediate. = TRUE
     )
   }
 
-  deprecated_arguments <- c("use_matrix",
-                            "regex_engine",
-                            "optional_info",
-                            "allow_unreasonable_patterns")
+  deprecated_arguments <- c(
+    "use_matrix",
+    "regex_engine",
+    "optional_info",
+    "allow_unreasonable_patterns"
+  )
 
   for (name in deprecated_arguments) {
     if (name %in% names(list(...))) {
@@ -171,8 +174,7 @@ explore <- function(corpus_object,
     }
   }
 
-
-# Pass data ---------------------------------------------------------------
+  # Pass data ---------------------------------------------------------------
 
   shiny::shinyOptions("corporaexplorer_search_options" = search_options)
   shiny::shinyOptions("corporaexplorer_ui_options" = ui_options)

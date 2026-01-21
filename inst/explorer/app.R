@@ -1,4 +1,3 @@
-
 # Function files ----------------------------------------------------------
 source("./global/function_display_document.R", local = TRUE)
 source("./global/function_display_document_info.R", local = TRUE)
@@ -73,64 +72,69 @@ ui <- function(request) {
 #=============================================================================#
 
 server <- function(input, output, session) {
+  # Session scope function files --------------------------------------------
+  source("./server/functions_collect_input_terms.R", local = TRUE)
+  source("./server/functions_checking_input.R", local = TRUE)
+  source("./server/functions_ui_management.R", local = TRUE)
+  source("./server/functions_corpus_navigation.R", local = TRUE)
+  source(
+    "./server/function_collect_edited_info_plot_legend_keys.R",
+    local = TRUE
+  )
 
-# Session scope function files --------------------------------------------
-source("./server/functions_collect_input_terms.R", local = TRUE)
-source("./server/functions_checking_input.R", local = TRUE)
-source("./server/functions_ui_management.R", local = TRUE)
-source("./server/functions_corpus_navigation.R", local = TRUE)
-source("./server/function_collect_edited_info_plot_legend_keys.R", local = TRUE)
+  # Conditional and customised sidebar UI elements --------------------------
+  source("./ui/render_ui_sidebar_checkbox_filtering.R", local = TRUE)
+  source("./ui/render_ui_sidebar_date_filtering.R", local = TRUE)
+  source("./ui/hide_ui_sidebar_plot_mode.R", local = TRUE)
+  source("./ui/set_colours_in_search_fields.R", local = TRUE)
 
-# Conditional and customised sidebar UI elements --------------------------
-source("./ui/render_ui_sidebar_checkbox_filtering.R", local = TRUE)
-source("./ui/render_ui_sidebar_date_filtering.R", local = TRUE)
-source("./ui/hide_ui_sidebar_plot_mode.R", local = TRUE)
-source("./ui/set_colours_in_search_fields.R", local = TRUE)
+  # Session variables -------------------------------------------------------
+  source("./server/session_variables.R", local = TRUE)
 
-# Session variables -------------------------------------------------------
-source("./server/session_variables.R", local = TRUE)
+  # For use with potential "extra" plugins ----------------------------------
+  if (INCLUDE_EXTRA == TRUE) {
+    source(
+      "./extra/extra_render_ui_sidebar_magic_filtering.R",
+      local = TRUE
+    )
+    source("./extra/extra_tab_content.R", local = TRUE)
+    source("./extra/extra_ui_management_functions.R", local = TRUE)
+    source("./extra/extra_session_variables.R", local = TRUE)
+  }
 
-# For use with potential "extra" plugins ----------------------------------
-if (INCLUDE_EXTRA == TRUE) {
-  source("./extra/extra_render_ui_sidebar_magic_filtering.R", local = TRUE)
-  source("./extra/extra_tab_content.R", local = TRUE)
-  source("./extra/extra_ui_management_functions.R", local = TRUE)
-  source("./extra/extra_session_variables.R", local = TRUE)
-}
+  # Corpus info tab ---------------------------------------------------------
+  source("./server/corpus_info_tab.R", local = TRUE)
 
-# Corpus info tab ---------------------------------------------------------
-source("./server/corpus_info_tab.R", local = TRUE)
+  # 1. Startup actions ------------------------------------------------------
+  source("./server/1_startup_actions.R", local = TRUE)
 
-# 1. Startup actions ------------------------------------------------------
-source("./server/1_startup_actions.R", local = TRUE)
+  # 2. Event: search button -------------------------------------------------
+  source("./server/2_event_search_button.R", local = TRUE)
 
-# 2. Event: search button -------------------------------------------------
-source("./server/2_event_search_button.R", local = TRUE)
+  # 3. Event: click in corpus map -------------------------------------------
+  source("./server/3_event_corpus_map_click.R", local = TRUE)
 
-# 3. Event: click in corpus map -------------------------------------------
-source("./server/3_event_corpus_map_click.R", local = TRUE)
+  # 4. Event: click in day map ----------------------------------------------
+  source("./server/4_event_day_map_click.R", local = TRUE)
 
-# 4. Event: click in day map ----------------------------------------------
-source("./server/4_event_day_map_click.R", local = TRUE)
+  # 5. Event: click in document visualisation -------------------------------
+  source("./server/5_event_document_visualisation_click.R", local = TRUE)
 
-# 5. Event: click in document visualisation -------------------------------
-source("./server/5_event_document_visualisation_click.R", local = TRUE)
+  # 6. Event: hovering in corpus map ----------------------------------------
+  source("./server/6_event_hover_corpus_map.R", local = TRUE)
 
-# 6. Event: hovering in corpus map ----------------------------------------
-source("./server/6_event_hover_corpus_map.R", local = TRUE)
+  # 7. Event: update plot size ----------------------------------------------
+  source("./server/7_event_plot_size_button.R", local = TRUE)
 
-# 7. Event: update plot size ----------------------------------------------
-source("./server/7_event_plot_size_button.R", local = TRUE)
-
-# Cleaning up the session -------------------------------------------------
-shiny::onSessionEnded(function() {
-  shiny::shinyOptions("corporaexplorer_data" = NULL)
-  shiny::shinyOptions("corporaexplorer_search_options" = NULL)
-  shiny::shinyOptions("corporaexplorer_ui_options" = NULL)
-  shiny::shinyOptions("corporaexplorer_input_arguments" = NULL)
-  shiny::shinyOptions("corporaexplorer_plot_options" = NULL)
-  shiny::shinyOptions("corporaexplorer_extra" = NULL)
-})
+  # Cleaning up the session -------------------------------------------------
+  shiny::onSessionEnded(function() {
+    shiny::shinyOptions("corporaexplorer_data" = NULL)
+    shiny::shinyOptions("corporaexplorer_search_options" = NULL)
+    shiny::shinyOptions("corporaexplorer_ui_options" = NULL)
+    shiny::shinyOptions("corporaexplorer_input_arguments" = NULL)
+    shiny::shinyOptions("corporaexplorer_plot_options" = NULL)
+    shiny::shinyOptions("corporaexplorer_extra" = NULL)
+  })
 }
 
 # Run app -----------------------------------------------------------------

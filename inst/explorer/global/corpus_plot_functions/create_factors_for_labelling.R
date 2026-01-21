@@ -1,9 +1,6 @@
 #' Wrapper/loop function for label_gruppering()
 create_factors_for_labelling <-
-  function(count_oversikt,
-           df,
-           search_terms,
-           number_of_factors) {
+  function(count_oversikt, df, search_terms, number_of_factors) {
     # Samennslåing og faktor-ordning (til fargeinndeling og label)
     # Arbitrært antall søketermer
     # Fancy dplyr for assigning strings as column names
@@ -12,7 +9,12 @@ create_factors_for_labelling <-
       df <-
         dplyr::bind_cols(
           df,
-          !!kolonnenavn := label_gruppering(count_oversikt, kolonnenavn, i, number_of_factors)
+          !!kolonnenavn := label_gruppering(
+            count_oversikt,
+            kolonnenavn,
+            i,
+            number_of_factors
+          )
         )
     }
     return(df)
@@ -30,7 +32,12 @@ create_factors_for_labelling <-
 #'
 #' @return Vector with factor/category for a search term. E.g. c("<NA>",
 #'   "1-1-2").
-label_gruppering <- function(df, column_name, prefix, number_of_factors = NUMBER_OF_FACTORS) {
+label_gruppering <- function(
+  df,
+  column_name,
+  prefix,
+  number_of_factors = NUMBER_OF_FACTORS
+) {
   df[column_name][df[column_name] == 0] <- NA
 
   if (length(unique(df[column_name][!is.na(df[column_name])])) > 1) {
@@ -40,16 +47,15 @@ label_gruppering <- function(df, column_name, prefix, number_of_factors = NUMBER
       df[[column_name]],
       breaks = stats::quantile(
         unique(df[[column_name]]),
-        probs =
-          seq(0, 1, by = 1 / number_of_factors),
+        probs = seq(0, 1, by = 1 / number_of_factors),
         na.rm = TRUE
       ),
       include.lowest = TRUE # labels = 1:7
     )
 
-
     # change level order
-    df$treff_faktor <- factor(as.character(df$treff_faktor),
+    df$treff_faktor <- factor(
+      as.character(df$treff_faktor),
       levels = rev(levels(df$treff_faktor))
     )
 

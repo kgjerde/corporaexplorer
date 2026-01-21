@@ -12,26 +12,32 @@ filtrere_korpus_tid <-
         .tibble[.tibble$Year_ %in% search_arguments$time_range, ]
       return(filtrert_tibble)
     } else if (search_arguments$time_filtering_mode == "Date range") {
-        start_date <- search_arguments$time_range[1]
-        end_date <- search_arguments$time_range[2]
+      start_date <- search_arguments$time_range[1]
+      end_date <- search_arguments$time_range[2]
       if (plot_mode == "data_365") {
         # Not removing dates outside of the range but in the same year,
         # but rendering them empty/outside of corpus:
-         # Identifying:
+        # Identifying:
         ikke_i_subset_indekser <- which(
-             (.tibble$Date >= first_day_in_year(start_date) & .tibble$Date < start_date) |
-             (.tibble$Date > end_date & .tibble$Date <= last_day_in_year(end_date))
+          (.tibble$Date >= first_day_in_year(start_date) &
+            .tibble$Date < start_date) |
+            (.tibble$Date > end_date &
+              .tibble$Date <= last_day_in_year(end_date))
         )
         # Rendering "empty"
         .tibble$Day_without_docs[ikke_i_subset_indekser] <- TRUE
         .tibble$Invisible_fake_date[ikke_i_subset_indekser] <- TRUE
         # And then filtering.
         filtrert_tibble <-
-            .tibble[.tibble$Date >= first_day_in_year(start_date) &
-                        .tibble$Date <= last_day_in_year(end_date), ]
+          .tibble[
+            .tibble$Date >= first_day_in_year(start_date) &
+              .tibble$Date <= last_day_in_year(end_date),
+          ]
       } else if (plot_mode == "data_dok") {
-          filtrert_tibble <-
-              .tibble[.tibble$Date >= start_date & .tibble$Date <= end_date, ]
+        filtrert_tibble <-
+          .tibble[
+            .tibble$Date >= start_date & .tibble$Date <= end_date,
+          ]
       }
       return(filtrert_tibble)
     }
@@ -56,11 +62,12 @@ last_day_in_year <- function(date) {
 #' @param modus Either "data_365" or "data_dok".
 #'
 #' @return Filtered coprus df
-filtrere_korpus_pattern <- function(df,
-                                    search_arguments,
-                                    modus,
-                                    session_variables) {
-
+filtrere_korpus_pattern <- function(
+  df,
+  search_arguments,
+  modus,
+  session_variables
+) {
   new_df <- df
   for (i in seq_along(search_arguments$subset_terms)) {
     treff <-
@@ -79,12 +86,13 @@ filtrere_korpus_pattern <- function(df,
 
     if (modus == "data_dok") {
       # Subsetting the tibble
-       if (nrow(new_df) != 0) {
-      new_df <- new_df[treff[[1]] > 0,]
-       }
+      if (nrow(new_df) != 0) {
+        new_df <- new_df[treff[[1]] > 0, ]
+      }
     }
 
-    if (nrow(new_df) == 0) {  # For å ikke sette igang subseeting av tom df
+    if (nrow(new_df) == 0) {
+      # For å ikke sette igang subseeting av tom df
       return(new_df)
     }
   }

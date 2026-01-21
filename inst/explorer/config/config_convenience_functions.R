@@ -8,12 +8,15 @@
 #'
 #' @return Character. New MAIN_COLOURS
 create_colours_from_input <-
-    function(input_colours, standard_colours) {
-        if (!all(input_colours %in% standard_colours)) {
-            return(standard_colours)
-        }
-        if (any(duplicated(input_colours))) {
-            return(standard_colours)
-        }
-        return(c(input_colours, standard_colours[!standard_colours %in% input_colours]))
+  function(input_colours, standard_colours) {
+    if (!all(input_colours %in% standard_colours)) {
+      return(standard_colours)
     }
+    if (any(duplicated(input_colours))) {
+      return(standard_colours)
+    }
+    return(c(
+      input_colours,
+      standard_colours[!standard_colours %in% input_colours]
+    ))
+  }

@@ -12,3 +12,4 @@
 ^environment$
 ^\.github$
 _\.new\.png$
+^[.]?air[.]toml$
