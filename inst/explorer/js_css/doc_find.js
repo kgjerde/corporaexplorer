@@ -208,7 +208,6 @@
 
     class DocumentFind {
         constructor() {
-            this.originalContent = null;
             this.matches = [];
             this.currentMatchIndex = -1;
         }
@@ -226,6 +225,19 @@
             };
         }
 
+        // Remove JS highlights by unwrapping spans, preserving R's <mark> highlighting
+        removeHighlights() {
+            const els = this.getElements();
+            if (!els.content) return;
+
+            els.content.querySelectorAll('.doc-find-match').forEach(span => {
+                span.replaceWith(span.textContent);
+            });
+            els.content.normalize(); // Merge adjacent text nodes
+            this.matches = [];
+            this.currentMatchIndex = -1;
+        }
+
         init(terms) {
             const els = this.getElements();
 
@@ -233,8 +245,7 @@
                 return;
             }
 
-            // Capture original content (with R's highlighting)
-            this.originalContent = els.content.innerHTML;
+            // Reset state (no need to capture content anymore)
             this.matches = [];
             this.currentMatchIndex = -1;
 
@@ -285,10 +296,8 @@
                 return;
             }
 
-            // Restore original content (R's highlighting)
-            els.content.innerHTML = this.originalContent;
-            this.matches = [];
-            this.currentMatchIndex = -1;
+            // Remove any existing JS highlights (preserves R's <mark> highlighting)
+            this.removeHighlights();
 
             try {
                 const caseSensitive = els.caseSensitive && els.caseSensitive.checked;
@@ -398,11 +407,7 @@
         clear() {
             const els = this.getElements();
             if (els.input) els.input.value = '';
-            if (els.content && this.originalContent) {
-                els.content.innerHTML = this.originalContent;
-            }
-            this.matches = [];
-            this.currentMatchIndex = -1;
+            this.removeHighlights();
             this.updateUI();
         }
     }
