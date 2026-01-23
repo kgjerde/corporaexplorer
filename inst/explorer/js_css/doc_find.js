@@ -3,6 +3,209 @@
 // Uses event delegation for reliability with Shiny DOM updates
 
 (function() {
+    /**
+     * Convert ASCII-only regex shortcuts to Unicode-aware equivalents.
+     * Makes \w, \W, \b, \B, \d, \D work with all Unicode scripts.
+     *
+     * @param {string} pattern - The regex pattern from user input
+     * @returns {string} - Pattern with Unicode-aware replacements
+     * @throws {Error} - If browser doesn't support required features or pattern is invalid
+     */
+    function unicodifyRegex(pattern) {
+      // Validation
+      if (!pattern || typeof pattern !== 'string') {
+        throw new Error('Pattern must be a non-empty string');
+      }
+
+      // Feature detection - check for Unicode lookbehind support
+      if (unicodifyRegex._supportsLookbehinds === null) {
+        try {
+          new RegExp('(?<=a)b', 'u');
+          unicodifyRegex._supportsLookbehinds = true;
+        } catch (e) {
+          throw new Error(
+            'Your browser doesn\'t support Unicode regex lookbehinds. ' +
+            'Please update to: Chrome 62+, Firefox 78+, Safari 16.4+, or Edge 79+'
+          );
+        }
+      }
+
+      // Unicode-aware character classes
+      const WORD_CHAR = '[\\p{L}\\p{N}_]';
+      const NON_WORD_CHAR = '[^\\p{L}\\p{N}_]';
+      const DIGIT = '\\p{Nd}';
+      const NON_DIGIT = '\\P{Nd}';
+
+      // Unicode-aware word boundaries using lookbehinds/lookaheads
+      const WORD_BOUNDARY =
+        '(?:(?<=[\\p{L}\\p{N}_])(?![\\p{L}\\p{N}_])|(?<![\\p{L}\\p{N}_])(?=[\\p{L}\\p{N}_]))';
+      const NON_WORD_BOUNDARY =
+        '(?:(?<=[\\p{L}\\p{N}_])(?=[\\p{L}\\p{N}_])|(?<![\\p{L}\\p{N}_])(?![\\p{L}\\p{N}_]))';
+
+      // Unique placeholder using multiple private-use characters
+      const PLACEHOLDER = '\uE000\uE001\uE002';
+
+      let result = '';
+      let i = 0;
+      let inCharClass = false;
+      let escaped = false;
+
+      while (i < pattern.length) {
+        const char = pattern[i];
+
+        // Handle escaped sequences
+        if (escaped) {
+          escaped = false;
+
+          // Double backslash - literal backslash
+          if (char === '\\') {
+            result += PLACEHOLDER;
+            i++;
+            continue;
+          }
+
+          // Escaped bracket - keep as-is
+          if (char === '[' || char === ']') {
+            result += '\\' + char;
+            i++;
+            continue;
+          }
+
+          // Handle shortcuts based on context
+          if (inCharClass) {
+            // Inside character class [...]
+            switch (char) {
+              case 'w':
+                result += '\\p{L}\\p{N}_';
+                i++;
+                continue;
+              case 'W':
+                console.warn('\\W inside character class may not work as expected with Unicode. Consider using negated class outside brackets.');
+                result += '\\' + char;
+                i++;
+                continue;
+              case 'd':
+                result += '\\p{Nd}';
+                i++;
+                continue;
+              case 'D':
+                console.warn('\\D inside character class may not work as expected with Unicode. Consider using negated class outside brackets.');
+                result += '\\' + char;
+                i++;
+                continue;
+              // \b and \B inside [...] have different meanings (backspace/literal B)
+              default:
+                result += '\\' + char;
+                i++;
+                continue;
+            }
+          } else {
+            // Outside character class
+            switch (char) {
+              case 'w':
+                result += WORD_CHAR;
+                i++;
+                continue;
+              case 'W':
+                result += NON_WORD_CHAR;
+                i++;
+                continue;
+              case 'b':
+                result += WORD_BOUNDARY;
+                i++;
+                continue;
+              case 'B':
+                result += NON_WORD_BOUNDARY;
+                i++;
+                continue;
+              case 'd':
+                result += DIGIT;
+                i++;
+                continue;
+              case 'D':
+                result += NON_DIGIT;
+                i++;
+                continue;
+              default:
+                result += '\\' + char;
+                i++;
+                continue;
+            }
+          }
+        }
+
+        // Start of escape sequence
+        if (char === '\\') {
+          escaped = true;
+          i++;
+          continue;
+        }
+
+        // Track character class boundaries (only for non-escaped brackets)
+        if (char === '[') {
+          inCharClass = true;
+          result += char;
+          i++;
+          continue;
+        }
+
+        if (char === ']') {
+          inCharClass = false;
+          result += char;
+          i++;
+          continue;
+        }
+
+        // Regular character
+        result += char;
+        i++;
+      }
+
+      // Check for incomplete escape at end
+      if (escaped) {
+        console.warn('Pattern ends with incomplete escape sequence');
+        result += '\\';
+      }
+
+      // Warn if character class wasn't closed
+      if (inCharClass) {
+        console.warn('Unclosed character class in pattern - regex may be invalid');
+      }
+
+      // Restore escaped backslashes
+      result = result.replace(new RegExp(PLACEHOLDER, 'g'), '\\\\');
+
+      return result;
+    }
+
+    // Cache feature detection result (null = not checked yet)
+    unicodifyRegex._supportsLookbehinds = null;
+
+    /**
+     * Safe wrapper that catches errors and provides helpful messages
+     *
+     * @param {string} pattern - The regex pattern from user input
+     * @param {string} flags - Regex flags (default: 'giu')
+     * @returns {RegExp} - Compiled Unicode-aware regex
+     */
+    function createUnicodeRegex(pattern, flags = 'giu') {
+      try {
+        // Ensure 'u' flag is always present for Unicode support
+        if (!flags.includes('u')) {
+          flags += 'u';
+        }
+
+        const unicodePattern = unicodifyRegex(pattern);
+        return new RegExp(unicodePattern, flags);
+      } catch (error) {
+        // Provide context in error message
+        if (error.message.includes('browser')) {
+          throw error; // Re-throw browser compatibility errors as-is
+        }
+        throw new Error(`Invalid regex pattern: ${error.message}`);
+      }
+    }
+
     class DocumentFind {
         constructor() {
             this.originalContent = null;
@@ -89,12 +292,15 @@
 
             try {
                 const caseSensitive = els.caseSensitive && els.caseSensitive.checked;
-                const regex = new RegExp(searchTerm, caseSensitive ? 'g' : 'gi');
+                const flags = caseSensitive ? 'gu' : 'giu';
+                const regex = createUnicodeRegex(searchTerm, flags);
                 this.highlightInElement(els.content, regex);
                 this.updateUI();
             } catch (error) {
                 if (els.info) {
-                    els.info.textContent = 'Invalid pattern';
+                    els.info.textContent = error.message.includes('browser')
+                        ? 'Browser not supported'
+                        : 'Invalid pattern';
                     els.info.style.color = '#dc3545';
                 }
             }
