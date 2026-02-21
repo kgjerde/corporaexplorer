@@ -1,5 +1,30 @@
 # corporaexplorer 0.9.0.9000
 
+## Breaking changes
+
+* Removed `run_document_extractor()` app (previously deprecated in 0.9.0).
+
+## UI overhaul: migration to bslib
+
+* Migrated UI framework from shinydashboard to bslib, resulting in a redesigned interface.
+* Sidebar reorganized into accordion panels for cleaner grouping.
+* Drag-to-resize column layout; column split also configurable via new `corpus_map_column_width` argument in `explore()`.
+* Reduced navbar height for more vertical content space.
+
+## New UI features
+
+* Added find-in-text bar for searching within the document viewer, with unicode support and sticky positioning while the corpus map scrolls.
+* Added prev/next navigation arrows for browsing days and documents.
+* Added checkbox to include active search terms in corpus filtering.
+* Redesigned document visualisation with color legend for search/highlight terms.
+* Duplicate search patterns now allowed.
+* Calendar days without documents are now ignored when clicked.
+
+## Other
+
+* Removed dependency on shinyWidgets.
+* Introduced code formatting with air.
+
 # corporaexplorer 0.9.0
 
 ## Breaking changes
