@@ -9,7 +9,6 @@ reference:
     desc: "Explore a 'corporaexplorerobject' (or, with explore0(), a data frame or character vector directly)."
     contents:
       - explore
-      - run_document_extractor
   - title: "Demo apps"
     contents:
       - run_janeausten_app
