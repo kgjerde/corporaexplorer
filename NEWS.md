@@ -6,13 +6,9 @@
 
 ## UI overhaul: migration to bslib
 
-* Migrated UI framework from shinydashboard to bslib, resulting in a redesigned interface.
+* Migrated UI framework from shinydashboard to bslib.
 * Sidebar reorganized into accordion panels for cleaner grouping.
 * Drag-to-resize column layout; column split also configurable via new `corpus_map_column_width` argument in `explore()`.
-* Reduced navbar height for more vertical content space.
-
-## New UI features
-
 * Added find-in-text bar for searching within the document viewer, with unicode support and sticky positioning while the corpus map scrolls.
 * Added prev/next navigation arrows for browsing days and documents.
 * Added checkbox to include active search terms in corpus filtering.
