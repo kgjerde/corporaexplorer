@@ -30,25 +30,34 @@ R](https://awesome.re/mentioned-badge.svg)](https://github.com/qinwf/awesome-R)
 > [qdap](https://github.com/trinker/qdap)*
 
 <!-- HTML here, in order to add custom font colour in Github Pages-->
+
 <blockquote>
+
 <p style="color:green">
+
 <strong>– Featured in RStudio’s “R Views” blog’s
 <a href="https://rviews.rstudio.com/2019/10/29/sept-2019-top-40-new-r-packages/"><strong><i>“Top
 40 New R Packages”</i></strong></a></strong>
 </p>
+
 </blockquote>
+
 <blockquote>
+
 <p style="color:green">
+
 <strong>– Included in
 <a href="https://CRAN.R-project.org/view=NaturalLanguageProcessing"><i>CRAN
 Task View: Natural Language Processing</i></a></strong>
 </p>
+
 </blockquote>
+
 <hr>
 
 <br>
 
-<img src="https://github.com/kgjerde/corporaexplorer/raw/master/man/figures/readme_illustration.png" width="100%" />
+<img src="https://github.com/kgjerde/corporaexplorer/raw/master/man/figures/readme_illustration.png" alt="" width="100%" />
 
 *<sup>Illustration</sup> <sup>screenshots</sup>*
 
@@ -72,12 +81,12 @@ explore any character vector, it can also be useful for a wide range of
 other R users.
 
 While collecting and preparing the text collections to be explored
-requires some familiarity with R programming, using the Shiny apps for
-exploring and extracting documents from the corpus should be fairly
-intuitive also for those with no programming knowledge, once the apps
-have been set up by a collaborator. Thus, the aim is for the package to
-be useful for anyone with a rudimentary knowledge of R – or with
-collaborators who have such knowledge.
+requires some familiarity with R programming, using the Shiny app for
+exploring documents from the corpus should be fairly intuitive also for
+those with no programming knowledge, once the app has been set up by a
+collaborator. Thus, the aim is for the package to be useful for anyone
+with a rudimentary knowledge of R – or with collaborators who have such
+knowledge.
 
 ## Installation
 

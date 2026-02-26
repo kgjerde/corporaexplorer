@@ -14,13 +14,11 @@ knitr::opts_chunk$set(
 ```
 
 
-This document presents **corporaexplorer**'s three main functions:
+This document presents **corporaexplorer**'s two main functions:
 
 1. `prepare_data()` converts a data frame to a "corporaexplorerobject".
 2. `explore()` runs the package's core feature, a Shiny app for fast and flexible
 exploration of a "corporaexplorerobject".
-3. `run_document_extractor()` runs a Shiny app for simple retrieval/extraction of
-documents from a "corporaexplorerobject" in a reading-friendly format.
 
 See the [reference section](reference/index.html) for full details
 and all available options.
@@ -208,40 +206,5 @@ Advanced users can set the `optional_info` parameter in `explore()` to `TRUE`:
 this will print to console the following information for each input term:
 which regex engine was used,
 and whether the search was carried out in the document term matrix or in the full text documents.
-
-## 3. The download documents app
-
-This app is a simple helper app to retrieve a subset of the corpus in a format suitable for close reading.
-
-```{r out.width="80%", echo=FALSE}
-knitr::include_graphics("../man/figures/download_tool.png")
-```
-
-Start the app by running the `run_document_extractor()` function with a
-"corporaexplorerobject" created by `prepare_data()` as argument.
-Run the following in the R console to see documentation for the `run_document_extractor()` function.
-
-``` r
-library(corporaexplorer)
-?run_document_extractor
-```
-
-### 3a. Sidebar input
-
-* **Term(s) to highlight**: An arbitrary number of search terms (regular expressions)
-that will be highlighted in the documents in the produced HTML reports.
-* **Filter corpus?**: Input terms here (one on each line) will filter the corpus so that it includes only documents where all these terms are present. Unlike terms entered in the two fields above, these terms will not be included in the summary statistics in the "Corpus info" tab. An arbitrary number of terms can be used.
-* **Case sensitive search**: Check this box to distinguish between lower and upper case in the search. Unchecked, `war` will find both "war" and "War"; if checked, `war` will only find "war".
-* **"Year range" or "date range"**: Filters the corpus (the first and last date included).
-
-By default, there is an upper limit
-of 400 documents to be included in one report (can be changed in the
-`max_html_docs` parameter in `run_document_extractor()`).
-
-
-### 3b. Advanced detail: Regular expression engines
-
-Speed is considered to be of less importance in this app, and all searches
-are carried out as full text searches with `stringr`. Again, note that a single backslash is used as escape character. For example will `\.` match a literal ".", and `\d` match any digit.
 
 <hr>

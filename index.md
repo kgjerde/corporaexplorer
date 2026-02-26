@@ -32,25 +32,34 @@ R](https://awesome.re/mentioned-badge.svg)](https://github.com/qinwf/awesome-R)
 > [qdap](https://github.com/trinker/qdap)*
 
 <!-- HTML here, in order to add custom font colour in Github Pages-->
+
 <blockquote>
+
 <p style="color:green">
+
 <strong>– Featured in RStudio’s “R Views” blog’s
 <a href="https://rviews.rstudio.com/2019/10/29/sept-2019-top-40-new-r-packages/"><strong><i>“Top
 40 New R Packages”</i></strong></a></strong>
 </p>
+
 </blockquote>
+
 <blockquote>
+
 <p style="color:green">
+
 <strong>– Included in
 <a href="https://CRAN.R-project.org/view=NaturalLanguageProcessing"><i>CRAN
 Task View: Natural Language Processing</i></a></strong>
 </p>
+
 </blockquote>
+
 <hr>
 
 <br>
 
-<img src="man/figures/readme_illustration.png" width="100%" />
+<img src="man/figures/readme_illustration.png" alt="" width="100%" />
 
 *<sup>Illustration screenshots</sup>*
 
@@ -120,27 +129,23 @@ The **corporaexplorer** concept is simple, yet has the potential to
 enhance research work with text collections in a powerful way. Main
 elements in the interactive apps:
 
--   **Input**: The ability to filter the corpus and/or highlight
-    documents, based on search patterns (in main text or metadata,
-    including date range).
--   **Corpus visualisation**: An interactive heat-map of the corpus,
-    based on the search input (calendar heat-map or heat-map where each
-    tile represents one document, optionally grouped by metadata
-    properties).
--   **Document visualisation and display**: Easy navigation to and
-    within full-text documents with pattern matches highlighted.
--   **Document retrieval**: Extraction of subsets of the corpus in a
-    format suitable for close reading.
+- **Input**: The ability to filter the corpus and/or highlight
+  documents, based on search patterns (in main text or metadata,
+  including date range).
+- **Corpus visualisation**: An interactive heat-map of the corpus, based
+  on the search input (calendar heat-map or heat-map where each tile
+  represents one document, optionally grouped by metadata properties).
+- **Document visualisation and display**: Easy navigation to and within
+  full-text documents with pattern matches highlighted.
+- **Document retrieval**: Extraction of subsets of the corpus in a
+  format suitable for close reading.
 
-**corporaexplorer** contains three main functions:
+**corporaexplorer** contains two main functions:
 
 1.  `prepare_data()` converts a data frame or character vector to a
     “corporaexplorerobject”.
 2.  `explore()` runs the package’s core feature, a Shiny app for fast
     and flexible exploration of a “corporaexplorerobject”.
-3.  `run_document_extractor()` runs a Shiny app for simple
-    retrieval/extraction of documents from a “corporaexplorerobject” in
-    a reading-friendly format.
 
 See the [Usage](articles/usage.html) document for more details.
 
@@ -244,13 +249,13 @@ article](https://kunststube.net/encoding/) by David C. Zentgraf.
 Contributions in the form of feedback, bug reports and code are most
 welcome. Ways to contribute:
 
--   Contact [me](mailto:klg@nupi.no) by email.
--   Issues and bug reports: [File a GitHub
-    issue](https://github.com/kgjerde/corporaexplorer/issues).
--   Fork the source code, modify, and issue a [pull
-    request](https://docs.github.com/articles/creating-a-pull-request-from-a-fork/)
-    through the [project GitHub
-    page](https://github.com/kgjerde/corporaexplorer).
+- Contact [me](mailto:klg@nupi.no) by email.
+- Issues and bug reports: [File a GitHub
+  issue](https://github.com/kgjerde/corporaexplorer/issues).
+- Fork the source code, modify, and issue a [pull
+  request](https://docs.github.com/articles/creating-a-pull-request-from-a-fork/)
+  through the [project GitHub
+  page](https://github.com/kgjerde/corporaexplorer).
 
 <hr>
 

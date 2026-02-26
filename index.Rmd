@@ -107,14 +107,12 @@ The **corporaexplorer** concept is simple, yet has the potential to enhance rese
 * **Document visualisation and display**: Easy navigation to and within full-text documents with pattern matches highlighted.
 * **Document retrieval**: Extraction of subsets of the corpus in a format suitable for close reading.
 
-**corporaexplorer** contains three main functions:
+**corporaexplorer** contains two main functions:
 
 1. `prepare_data()` converts a data frame
 or character vector to a "corporaexplorerobject".
 2. `explore()` runs the package's core feature, a Shiny app for fast and flexible
 exploration of a "corporaexplorerobject".
-3. `run_document_extractor()` runs a Shiny app for simple retrieval/extraction of
-documents from a "corporaexplorerobject" in a reading-friendly format.
 
 See the [Usage](articles/usage.html) document for more details.
 
