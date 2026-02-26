@@ -109,7 +109,7 @@
 
     
     
-<p>This document presents <strong>corporaexplorer</strong>’s three main
+<p>This document presents <strong>corporaexplorer</strong>’s two main
 functions:</p>
 <ol style="list-style-type: decimal">
 <li>
@@ -118,10 +118,6 @@ functions:</p>
 <li>
 <code><a href="../reference/explore.html">explore()</a></code> runs the package’s core feature, a Shiny app
 for fast and flexible exploration of a “corporaexplorerobject”.</li>
-<li>
-<code>run_document_extractor()</code> runs a Shiny app for simple
-retrieval/extraction of documents from a “corporaexplorerobject” in a
-reading-friendly format.</li>
 </ol>
 <p>See the <a href="reference/index.html">reference section</a> for full
 details and all available options.</p>
@@ -379,57 +375,6 @@ matrix. Other searches are carried out in full text.</p>
 the following information for each input term: which regex engine was
 used, and whether the search was carried out in the document term matrix
 or in the full text documents.</p>
-</div>
-</div>
-<div class="section level2">
-<h2 id="the-download-documents-app">3. The download documents app<a class="anchor" aria-label="anchor" href="#the-download-documents-app"></a>
-</h2>
-<p>This app is a simple helper app to retrieve a subset of the corpus in
-a format suitable for close reading.</p>
-<p><img src="../reference/figures/download_tool.png" class="r-plt" alt="" width="80%"></p>
-<p>Start the app by running the <code>run_document_extractor()</code>
-function with a “corporaexplorerobject” created by
-<code><a href="../reference/prepare_data.html">prepare_data()</a></code> as argument. Run the following in the R
-console to see documentation for the
-<code>run_document_extractor()</code> function.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer/" class="external-link">corporaexplorer</a></span><span class="op">)</span></span>
-<span><span class="op">?</span><span class="va">run_document_extractor</span></span></code></pre></div>
-<div class="section level3">
-<h3 id="a--sidebar-input-1">3a. Sidebar input<a class="anchor" aria-label="anchor" href="#a--sidebar-input-1"></a>
-</h3>
-<ul>
-<li>
-<strong>Term(s) to highlight</strong>: An arbitrary number of search
-terms (regular expressions) that will be highlighted in the documents in
-the produced HTML reports.</li>
-<li>
-<strong>Filter corpus?</strong>: Input terms here (one on each line)
-will filter the corpus so that it includes only documents where all
-these terms are present. Unlike terms entered in the two fields above,
-these terms will not be included in the summary statistics in the
-“Corpus info” tab. An arbitrary number of terms can be used.</li>
-<li>
-<strong>Case sensitive search</strong>: Check this box to
-distinguish between lower and upper case in the search. Unchecked,
-<code>war</code> will find both “war” and “War”; if checked,
-<code>war</code> will only find “war”.</li>
-<li>
-<strong>“Year range” or “date range”</strong>: Filters the corpus
-(the first and last date included).</li>
-</ul>
-<p>By default, there is an upper limit of 400 documents to be included
-in one report (can be changed in the <code>max_html_docs</code>
-parameter in <code>run_document_extractor()</code>).</p>
-</div>
-<div class="section level3">
-<h3 id="b--advanced-detail-regular-expression-engines">3b. Advanced detail: Regular expression engines<a class="anchor" aria-label="anchor" href="#b--advanced-detail-regular-expression-engines"></a>
-</h3>
-<p>Speed is considered to be of less importance in this app, and all
-searches are carried out as full text searches with
-<code>stringr</code>. Again, note that a single backslash is used as
-escape character. For example will <code>\.</code> match a literal “.”,
-and <code>\d</code> match any digit.</p>
 <hr>
 </div>
 </div>
