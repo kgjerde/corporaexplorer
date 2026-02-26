@@ -119,7 +119,7 @@ functions:</p>
 <code><a href="../reference/explore.html">explore()</a></code> runs the package’s core feature, a Shiny app
 for fast and flexible exploration of a “corporaexplorerobject”.</li>
 <li>
-<code><a href="../reference/run_document_extractor.html">run_document_extractor()</a></code> runs a Shiny app for simple
+<code>run_document_extractor()</code> runs a Shiny app for simple
 retrieval/extraction of documents from a “corporaexplorerobject” in a
 reading-friendly format.</li>
 </ol>
@@ -311,12 +311,12 @@ is found (legend above the plot).</p>
 <p>In the <strong>calendar view</strong> (only for date-based corpora),
 each tile represents a day, and the filling indicates how many times the
 search term is found in the documents that day:</p>
-<p><img src="../reference/figures/first_search.png" width="80%"></p>
+<p><img src="../reference/figures/first_search.png" class="r-plt" alt="" width="80%"></p>
 <p><br></p>
 <p>In the <strong>document wall view</strong>, each tile represents one
 document, and the filling indicates how many times the search term is
 found in this document:</p>
-<p><img src="../reference/figures/wall_1.png" width="80%"></p>
+<p><img src="../reference/figures/wall_1.png" class="r-plt" alt="" width="80%"></p>
 <p><br></p>
 <p>The <strong>Corpus info</strong> tab presents some very basic summary
 statistics of the search results. (Look at e.g. <a href="https://github.com/quanteda/quanteda" class="external-link"><code>quanteda</code></a>
@@ -336,7 +336,7 @@ second heat map tile chart where one tile is one document, and where the
 colour in a tile indicates how many times the search term is found in
 the document. In the box below is produced a list of the title of the
 documents this day.</p>
-<p><img src="../reference/figures/day_corpus.png" width="80%"></p>
+<p><img src="../reference/figures/day_corpus.png" class="r-plt" alt="" width="80%"></p>
 <p><br></p>
 <p>Clicking on a “document tile” produces two things. First, the full
 text of the document with search terms highlighted. Second, above the
@@ -345,7 +345,7 @@ part of the document, and where the colour in a tile indicates whether
 and how many times the search term is found in that part of the
 document. Clicking on a tile scrolls the document to the corresponding
 part of the document.</p>
-<p><img src="../reference/figures/wall.png" width="80%"></p>
+<p><img src="../reference/figures/wall.png" class="r-plt" alt="" width="80%"></p>
 <p><strong>When in document wall view</strong>: Clicking on a tile in
 the corpus map leads straight to the relevant document.</p>
 </div>
@@ -386,12 +386,12 @@ or in the full text documents.</p>
 </h2>
 <p>This app is a simple helper app to retrieve a subset of the corpus in
 a format suitable for close reading.</p>
-<p><img src="../reference/figures/download_tool.png" width="80%"></p>
-<p>Start the app by running the <code><a href="../reference/run_document_extractor.html">run_document_extractor()</a></code>
+<p><img src="../reference/figures/download_tool.png" class="r-plt" alt="" width="80%"></p>
+<p>Start the app by running the <code>run_document_extractor()</code>
 function with a “corporaexplorerobject” created by
 <code><a href="../reference/prepare_data.html">prepare_data()</a></code> as argument. Run the following in the R
 console to see documentation for the
-<code><a href="../reference/run_document_extractor.html">run_document_extractor()</a></code> function.</p>
+<code>run_document_extractor()</code> function.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://kgjerde.github.io/corporaexplorer/" class="external-link">corporaexplorer</a></span><span class="op">)</span></span>
 <span><span class="op">?</span><span class="va">run_document_extractor</span></span></code></pre></div>
@@ -420,7 +420,7 @@ distinguish between lower and upper case in the search. Unchecked,
 </ul>
 <p>By default, there is an upper limit of 400 documents to be included
 in one report (can be changed in the <code>max_html_docs</code>
-parameter in <code><a href="../reference/run_document_extractor.html">run_document_extractor()</a></code>).</p>
+parameter in <code>run_document_extractor()</code>).</p>
 </div>
 <div class="section level3">
 <h3 id="b--advanced-detail-regular-expression-engines">3b. Advanced detail: Regular expression engines<a class="anchor" aria-label="anchor" href="#b--advanced-detail-regular-expression-engines"></a>
@@ -450,7 +450,7 @@ and <code>\d</code> match any digit.</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer>

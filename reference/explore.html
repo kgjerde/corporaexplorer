@@ -159,6 +159,9 @@ application (usually by pressing Ctrl+C or Esc).</p>
   Currently available:</p><ul><li><p><code>font_size</code>. Character string specifying font size in
     document view,
     e.g. <code>"10px"</code></p></li>
+<li><p><code>corpus_map_column_width</code>. Integer between 30 and 70
+    specifying the width (in percent) of the left column containing the
+    corpus map. Defaults to 50.</p></li>
 </ul></dd>
 
 
@@ -274,9 +277,6 @@ default argument values.</p></dd>
 <span class="r-in"><span>        search_input <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>search_terms <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Tottenham"</span>, <span class="st">"Spurs"</span><span class="op">)</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>        plot_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>max_docs_in_wall_view <span class="op">=</span> <span class="fl">12001</span>,</span></span>
 <span class="r-in"><span>                                        colours <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"gray"</span>, <span class="st">"green"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Running app to extract documents:</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="run_document_extractor.html">run_document_extractor</a></span><span class="op">(</span><span class="va">corpus</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span></span></span>
@@ -301,7 +301,7 @@ default argument values.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer></div>

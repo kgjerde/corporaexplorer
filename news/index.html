@@ -78,6 +78,27 @@
 
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.9.0.9000" id="corporaexplorer-0909000">corporaexplorer 0.9.0.9000<a class="anchor" aria-label="anchor" href="#corporaexplorer-0909000"></a></h2>
+<div class="section level3">
+<h3 id="breaking-changes-0-9-0-9000">Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes-0-9-0-9000"></a></h3>
+<ul><li>Removed <code>run_document_extractor()</code> app (previously deprecated in 0.9.0).</li>
+</ul></div>
+<div class="section level3">
+<h3 id="ui-overhaul-migration-to-bslib-0-9-0-9000">UI overhaul: migration to bslib<a class="anchor" aria-label="anchor" href="#ui-overhaul-migration-to-bslib-0-9-0-9000"></a></h3>
+<ul><li>Migrated UI framework from shinydashboard to bslib.</li>
+<li>Sidebar reorganized into accordion panels for cleaner grouping.</li>
+<li>Drag-to-resize column layout; column split also configurable via new <code>corpus_map_column_width</code> argument in <code><a href="../reference/explore.html">explore()</a></code>.</li>
+<li>Added find-in-text bar for searching within the document viewer, with unicode support and sticky positioning while the corpus map scrolls.</li>
+<li>Added prev/next navigation arrows for browsing days and documents.</li>
+<li>Added checkbox to include active search terms in corpus filtering.</li>
+<li>Redesigned document visualisation with color legend for search/highlight terms.</li>
+<li>Duplicate search patterns now allowed.</li>
+<li>Calendar days without documents are now ignored when clicked.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="other-0-9-0-9000">Other<a class="anchor" aria-label="anchor" href="#other-0-9-0-9000"></a></h3>
+<ul><li>Removed dependency on shinyWidgets.</li>
+<li>Introduced code formatting with air.</li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.9.0" id="corporaexplorer-090">corporaexplorer 0.9.0<small>2024-09-02</small><a class="anchor" aria-label="anchor" href="#corporaexplorer-090"></a></h2>
@@ -228,7 +249,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer></div>
