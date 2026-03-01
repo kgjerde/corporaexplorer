@@ -116,12 +116,12 @@ explore(KJB)
 
 
 **Example: mentions of Moses in the New Testament:**
-```{r, out.width = "80%", echo = FALSE}
+```{r, out.width = "100%", echo = FALSE}
 knitr::include_graphics("../man/figures/KJB_moses_new_doc.png")
 ```
 
 
 **Example: finding "pearl" in chapters in the Bible that also include "swine":**
-```{r, out.width = "80%", echo = FALSE}
+```{r, out.width = "100%", echo = FALSE}
 knitr::include_graphics("../man/figures/KJB_pearls_before_swine.png")
 ```

@@ -140,7 +140,7 @@ The result of the search is an interactive heat map, a **corpus map**, where the
 
 In the **calendar view** (only for date-based corpora), each tile represents a day, and the filling indicates how many times the search term is found in the documents that day:
 
-```{r, out.width = "80%", echo = FALSE}
+```{r, out.width = "100%", echo = FALSE}
 knitr::include_graphics("../man/figures/first_search.png")
 ```
 
@@ -148,7 +148,7 @@ knitr::include_graphics("../man/figures/first_search.png")
 
 In the **document wall view**, each tile represents one document, and the filling indicates how many times the search term is found in this document:
 
-```{r, out.width = "80%", echo = FALSE}
+```{r, out.width = "100%", echo = FALSE}
 knitr::include_graphics("../man/figures/wall_1.png")
 ```
 
@@ -168,7 +168,7 @@ Clicking on a tile in the corpus map opens the **document view** to the right of
 and where the colour in a tile indicates how many times the search term is found in the document.
 In the box below is produced a list of the title of the documents this day.
 
-```{r, out.width = "80%", echo = FALSE}
+```{r, out.width = "100%", echo = FALSE}
 knitr::include_graphics("../man/figures/day_corpus.png")
 ```
 
@@ -176,7 +176,7 @@ knitr::include_graphics("../man/figures/day_corpus.png")
 
 Clicking on a "document tile" produces two things. First, the full text of the document with search terms highlighted. Second, above the text a tile chart consisting of n tiles where each tile represents a 1/n part of the document, and where the colour in a tile indicates whether and how many times the search term is found in that part of the document. Clicking on a tile scrolls the document to the corresponding part of the document.
 
-```{r out.width="80%", echo=FALSE}
+```{r out.width = "100%", echo=FALSE}
 knitr::include_graphics("../man/figures/wall.png")
 ```
 
@@ -207,4 +207,3 @@ this will print to console the following information for each input term:
 which regex engine was used,
 and whether the search was carried out in the document term matrix or in the full text documents.
 
-<hr>

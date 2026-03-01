@@ -137,8 +137,6 @@ elements in the interactive apps:
   represents one document, optionally grouped by metadata properties).
 - **Document visualisation and display**: Easy navigation to and within
   full-text documents with pattern matches highlighted.
-- **Document retrieval**: Extraction of subsets of the corpus in a
-  format suitable for close reading.
 
 **corporaexplorer** contains two main functions:
 

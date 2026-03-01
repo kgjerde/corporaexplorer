@@ -91,6 +91,6 @@ explore(jane_austen)
 
 **Example: "death" in Jane Austen's books:**
 
-```{r, out.width = "80%", echo = FALSE}
+```{r, out.width = "100%", echo = FALSE}
 knitr::include_graphics("../man/figures/austen_death.png")
 ```
