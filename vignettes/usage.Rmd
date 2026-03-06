@@ -25,7 +25,7 @@ and all available options.
 
 ## 1. Prepare data for the Shiny apps
 
-The `prepare_data()` function returns a "corporaexplorerobject" that can be explored in the package's two Shiny apps.
+The `prepare_data()` function returns a "corporaexplorerobject" that can be explored in the package's Shiny app.
 
 The most important arguments are:
 
@@ -70,16 +70,15 @@ that are relevant for advanced users. A date-based corpus is used as example.
 
 <img align="left" src="../man/figures/sidebar.png" width="170" height="450" style="margin-right: 25px"/>
 
-* **Number of terms to chart**: How many terms (phrases/patterns) should be charted in the corpus map? Current maximum is six.
-* **Term(s) to chart**: Using colour fillings, the corpus map plot will indicate days/documents where these terms are present. The terms will also be highlighted in all documents.
-* **Additional terms for text highlighting**: Terms included here (one on each line) will be highlighted in all documents. An arbitrary number of terms can be added.
-* **Filter corpus?** Input terms here (one on each line) will filter the corpus so that it includes only documents where all these terms are present. Unlike terms entered in the two fields above, these terms will not be included in the summary statistics in the "Corpus info" tab. An arbitrary number of terms can be used.
-* **Case sensitive search**: Check this box to distinguish between lower and upper case in the search. Unchecked, `war` will find both "war" and "War"; if checked, `war` will only find "war".
-* **"Year range" or "date range"**: Filters the corpus (the first and last date included) by time span. (Only for date-based corpora.)
-* **Plot mode ("calendar" or "document wall")**: Should the resulting corpus map treat one day or one document as its base unit? (Only for date-based corpora.)
-* **Adjust plot size**: Change plot height by adjusting the bar and clicking the
-"Adjust size" button.
-* **Search button**: Only when search button is clicked will input from the sidebar (with the exception  of the "Adjust plot size" input) be handled by the app.
+* **Term(s) to chart and highlight**: Search terms separated by newline (enter). Using colour fillings, the corpus map plot will indicate days/documents where these terms are present. The terms will also be highlighted in all documents. Current maximum: six search terms.
+* **Highlight additional terms**: Terms included here (one on each line) will be highlighted in all documents. An arbitrary number of terms can be added.
+* **Filter corpus** Input terms here (one on each line) will filter the corpus so that it includes only documents where all these terms are present. Unlike terms entered in the two fields above, these terms will not be included in the summary statistics in the "Corpus info" tab. An arbitrary number of terms can be used.
+* **Date range by year or by date**: Filters the corpus (the first and last date included) by time span. (Only for date-based corpora.)
+* **Case sensitive (slower)**: Check this box to distinguish between lower and upper case in the search. Unchecked, `war` will find both "war" and "War"; if checked, `war` will only find "war".
+* **Corpus map height**: Change plot height by adjusting the bar and clicking the "Apply" button.
+* **Left column %**: Higher % means wider corpus map box and more narrow document view box. Can also be adjusted by clicking and dragging between the boxes.
+* **Plot mode ("Calendar" or "Document wall")**: Should the resulting corpus map treat one day or one document as its base unit? (Only for date-based corpora.)
+* **Search button**: Only when search button is clicked will input from the sidebar (with the exception  of the "Adjust plot size" input) be handled by the app. The search button can also be triggered by the keyboard combination cmd+enter (ctrl+enter on Windows) from within any text box.
 
 #### Note: Text input -- regular expressions
 
@@ -202,7 +201,7 @@ Please consult the documentation for [`re2`](https://github.com/girishji/re2) an
 
 By default, searches for patterns consisting of a single word and without special characters will be carried out in a document term matrix. Other searches are carried out in full text.
 
-Advanced users can set the `optional_info` parameter in `explore()` to `TRUE`:
+Advanced users can set `optional_info` to `TRUE` via the `search_options` argument in `explore()` (i.e. `search_options = list(optional_info = TRUE)`):
 this will print to console the following information for each input term:
 which regex engine was used,
 and whether the search was carried out in the document term matrix or in the full text documents.

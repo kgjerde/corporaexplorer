@@ -83,12 +83,12 @@ explore any character vector, it can also be useful for a wide range of
 other R users.
 
 While collecting and preparing the text collections to be explored
-requires some familiarity with R programming, using the Shiny apps for
-exploring and extracting documents from the corpus should be fairly
-intuitive also for those with no programming knowledge, once the apps
-have been set up by a collaborator. Thus, the aim is for the package to
-be useful for anyone with a rudimentary knowledge of R – or with
-collaborators who have such knowledge.
+requires some familiarity with R programming, using the Shiny app for
+exploring documents from the corpus should be fairly intuitive also for
+those with no programming knowledge, once the app has been set up by a
+collaborator. Thus, the aim is for the package to be useful for anyone
+with a rudimentary knowledge of R – or with collaborators who have such
+knowledge.
 
 ## Installation
 
